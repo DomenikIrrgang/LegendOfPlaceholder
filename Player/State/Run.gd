@@ -11,16 +11,17 @@ func handle_input(_event: InputEvent) -> void:
 
 func update(_delta: float) -> void:
 	var direction = player.get_directional_vector().normalized()
+	print(direction)
 	player.velocity = direction * player.speed
 	update_animation()
 	
 func update_animation() -> void:
-	match (player.get_direction()):
-		"LEFT":
+	match (player.direction):
+		Player.Direction.LEFT:
 			player.set_animation("Left")
-		"RIGHT":
+		Player.Direction.RIGHT:
 			player.set_animation("Right")
-		"DOWN":
+		Player.Direction.DOWN:
 			player.set_animation("Down")
-		"UP":
+		Player.Direction.UP:
 			player.set_animation("Up")

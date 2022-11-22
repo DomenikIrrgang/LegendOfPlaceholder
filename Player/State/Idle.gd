@@ -12,12 +12,12 @@ func enter(_data := {}) -> void:
 	update_animation()
 
 func update_animation() -> void:
-	match (player.get_direction()):
-		"LEFT":
+	match (player.direction):
+		Player.Direction.LEFT:
 			player.set_animation("Idle_Left")
-		"RIGHT":
+		Player.Direction.RIGHT:
 			player.set_animation("Idle_Right")
-		"DOWN":
+		Player.Direction.DOWN:
 			player.set_animation("Idle_Down")
-		"UP":
+		Player.Direction.UP:
 			player.set_animation("Idle_Up")
