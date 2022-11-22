@@ -1,0 +1,47 @@
+[gd_scene load_steps=13 format=3 uid="uid://bct2ljcpnxtk0"]
+
+[ext_resource type="Texture2D" uid="uid://b8uqgr8axuptj" path="res://textures/slime.png" id="1_umknl"]
+[ext_resource type="Script" path="res://Unit/Unit.gd" id="1_x5av6"]
+[ext_resource type="Animation" uid="uid://ctiau02k5u1v4" path="res://Unit/Animations/Right.res" id="2_7aa67"]
+[ext_resource type="Animation" uid="uid://clhe6l4ubufhk" path="res://Unit/Animations/Down.res" id="3_3macp"]
+[ext_resource type="Animation" uid="uid://cs2st5c2f0v2i" path="res://Unit/Animations/Left.res" id="4_bbtnd"]
+[ext_resource type="Animation" uid="uid://wsvb57gm2wpm" path="res://Unit/Animations/Up.res" id="5_bd2r7"]
+[ext_resource type="Animation" uid="uid://b0spjcfavr42x" path="res://Unit/Animations/Idle_Down.res" id="6_bw884"]
+[ext_resource type="Animation" uid="uid://qaad3qvjd620" path="res://Unit/Animations/Idle_Left.res" id="7_iq06h"]
+[ext_resource type="Animation" uid="uid://c4m0k5ea8kwyt" path="res://Unit/Animations/Idle_Right.res" id="8_foj6w"]
+[ext_resource type="Animation" uid="uid://b536o550711vi" path="res://Unit/Animations/Idle_Up.res" id="9_l4obw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8s4lu"]
+size = Vector2(14, 5)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fe40q"]
+_data = {
+"Down": ExtResource("3_3macp"),
+"Idle_Down": ExtResource("6_bw884"),
+"Idle_Left": ExtResource("7_iq06h"),
+"Idle_Right": ExtResource("8_foj6w"),
+"Idle_Up": ExtResource("9_l4obw"),
+"Left": ExtResource("4_bbtnd"),
+"Right": ExtResource("2_7aa67"),
+"Up": ExtResource("5_bd2r7")
+}
+
+[node name="Unit" type="CharacterBody2D"]
+script = ExtResource("1_x5av6")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_8s4lu")
+
+[node name="Model" type="Sprite2D" parent="."]
+texture = ExtResource("1_umknl")
+hframes = 4
+vframes = 8
+frame = 18
+
+[node name="ModelAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fe40q")
+}
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="."]

@@ -1,0 +1,204 @@
+[gd_scene load_steps=35 format=3 uid="uid://c8pbg6lllwiv5"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_hqrbj"]
+[ext_resource type="Texture2D" uid="uid://02xo8rphiwgt" path="res://textures/player.png" id="3_f15qw"]
+[ext_resource type="Animation" uid="uid://cocraw1jx8unp" path="res://Player/Animations/Attack_Down.res" id="3_n1sks"]
+[ext_resource type="Script" path="res://StateMachine.gd" id="4_f0hp5"]
+[ext_resource type="Animation" uid="uid://tnorjeehjxm7" path="res://Player/Animations/Attack_Left.res" id="4_ygspt"]
+[ext_resource type="Script" path="res://Player/State/IdleToRun.gd" id="5_bdqid"]
+[ext_resource type="Animation" uid="uid://cmjkity7iwddo" path="res://Player/Animations/Attack_Right.res" id="5_uevr8"]
+[ext_resource type="Script" path="res://Player/State/Idle.gd" id="5_wtyg5"]
+[ext_resource type="Script" path="res://Player/State/IdleToAttack.gd" id="6_dyfbh"]
+[ext_resource type="Animation" uid="uid://df5j1gduykd41" path="res://Player/Animations/Attack_Up.res" id="6_ftwer"]
+[ext_resource type="Script" path="res://Player/State/Run.gd" id="6_k0odg"]
+[ext_resource type="Script" path="res://Player/State/RunToIdle.gd" id="7_oemwf"]
+[ext_resource type="Animation" uid="uid://b1bay6a3pan1y" path="res://Player/Animations/Down.res" id="7_rfn86"]
+[ext_resource type="Animation" uid="uid://drmbw8xnxdov1" path="res://Player/Animations/Idle_Down.res" id="8_77cha"]
+[ext_resource type="Script" path="res://Player/State/Dash.gd" id="8_atsjb"]
+[ext_resource type="Texture2D" uid="uid://cg4pq1pgk3bmh" path="res://textures/sword.png" id="9_bk63g"]
+[ext_resource type="Script" path="res://Player/State/Attack.gd" id="9_lq2tq"]
+[ext_resource type="Animation" uid="uid://qrtlju45g7xq" path="res://Player/Animations/Idle_Left.res" id="9_re24d"]
+[ext_resource type="Script" path="res://Player/State/RunToAttack.gd" id="9_yea6i"]
+[ext_resource type="Script" path="res://Player/State/AttackToIdle.gd" id="10_dn0on"]
+[ext_resource type="Animation" uid="uid://cwb7mnrchs1c1" path="res://Player/Animations/Idle_Right.res" id="10_v8x0r"]
+[ext_resource type="Animation" uid="uid://6fije23hdpvk" path="res://Player/Animations/Idle_Up.res" id="11_2vgsf"]
+[ext_resource type="Animation" uid="uid://creeojfoqy7lh" path="res://Player/Animations/Left.res" id="12_8yb1c"]
+[ext_resource type="Animation" uid="uid://dv8m2ic0ifk6l" path="res://Player/Animations/Right.res" id="13_ptw37"]
+[ext_resource type="Animation" uid="uid://dcl2bnq56ks2o" path="res://Player/Animations/Up.res" id="14_ulw1v"]
+[ext_resource type="Script" path="res://Player/State/RunToDash.gd" id="19_yoqx6"]
+[ext_resource type="Script" path="res://Player/State/DashToRun.gd" id="24_fsluq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5l03r"]
+size = Vector2(12, 5)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6j1ms"]
+_data = {
+"Attack_Down": ExtResource("3_n1sks"),
+"Attack_Left": ExtResource("4_ygspt"),
+"Attack_Right": ExtResource("5_uevr8"),
+"Attack_Up": ExtResource("6_ftwer"),
+"Down": ExtResource("7_rfn86"),
+"Idle_Down": ExtResource("8_77cha"),
+"Idle_Left": ExtResource("9_re24d"),
+"Idle_Right": ExtResource("10_v8x0r"),
+"Idle_Up": ExtResource("11_2vgsf"),
+"Left": ExtResource("12_8yb1c"),
+"Right": ExtResource("13_ptw37"),
+"Up": ExtResource("14_ulw1v")
+}
+
+[sub_resource type="Animation" id="Animation_hpblh"]
+resource_name = "Attack_Down"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_85l5s"]
+resource_name = "Attack_Left"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_v5ccw"]
+resource_name = "Attack_Right"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_4wtqd"]
+resource_name = "Attack_Up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bq4au"]
+_data = {
+"Attack_Down": SubResource("Animation_hpblh"),
+"Attack_Left": SubResource("Animation_85l5s"),
+"Attack_Right": SubResource("Animation_v5ccw"),
+"Attack_Up": SubResource("Animation_4wtqd")
+}
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_hqrbj")
+
+[node name="Model" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("3_f15qw")
+hframes = 8
+vframes = 16
+frame = 33
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 256)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_5l03r")
+
+[node name="Animations" type="AnimationPlayer" parent="."]
+method_call_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_6j1ms")
+}
+
+[node name="MovementState" type="Node" parent="."]
+script = ExtResource("4_f0hp5")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="MovementState"]
+script = ExtResource("5_wtyg5")
+
+[node name="IdleToRun" type="Node" parent="MovementState/Idle"]
+script = ExtResource("5_bdqid")
+target_state_path = NodePath("../../Run")
+
+[node name="IdleToAttack" type="Node" parent="MovementState/Idle"]
+script = ExtResource("6_dyfbh")
+target_state_path = NodePath("../../Attack")
+
+[node name="Run" type="Node" parent="MovementState"]
+script = ExtResource("6_k0odg")
+
+[node name="RunToIdle" type="Node" parent="MovementState/Run"]
+script = ExtResource("7_oemwf")
+target_state_path = NodePath("../../Idle")
+
+[node name="RunToAttack" type="Node" parent="MovementState/Run"]
+script = ExtResource("9_yea6i")
+target_state_path = NodePath("../../Attack")
+
+[node name="RunToDash" type="Node" parent="MovementState/Run"]
+script = ExtResource("19_yoqx6")
+target_state_path = NodePath("../../Dash")
+
+[node name="Dash" type="Node" parent="MovementState"]
+script = ExtResource("8_atsjb")
+
+[node name="DashToRun" type="Node" parent="MovementState/Dash"]
+script = ExtResource("24_fsluq")
+target_state_path = NodePath("../../Run")
+
+[node name="Attack" type="Node" parent="MovementState"]
+script = ExtResource("9_lq2tq")
+
+[node name="AttackToIdle" type="Node" parent="MovementState/Attack"]
+script = ExtResource("10_dn0on")
+target_state_path = NodePath("../../Idle")
+
+[node name="Weapon" type="Sprite2D" parent="."]
+visible = false
+y_sort_enabled = true
+texture = ExtResource("9_bk63g")
+hframes = 4
+vframes = 4
+frame = 8
+region_enabled = true
+region_rect = Rect2(0, 128, 128, 128)
+
+[node name="WeaponAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bq4au")
+}
