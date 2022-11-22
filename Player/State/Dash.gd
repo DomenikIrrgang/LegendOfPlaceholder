@@ -10,12 +10,8 @@ func enter(_data := {}) -> void:
 	tween.finished.connect(self.dash_finished)
 	var original_velocity = player.velocity
 	player.velocity = player.velocity * initial_speed_increase
-	print(original_velocity, player.velocity)
 	tween.tween_property(player, "velocity", original_velocity, duration).set_ease(Tween.EASE_OUT)
 	tween.play()
-
-func update(_delta: float) -> void:
-	print(player.velocity)
 	
 func dash_finished() -> void:
 	print("dash finished")

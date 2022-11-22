@@ -14,7 +14,7 @@ enum Direction {
 var direction: int = Direction.DOWN
 
 @onready
-var model_animations: AnimationPlayer = $Animations
+var model_animation: AnimationPlayer = $Animations
 
 @onready
 var weapon_animation: AnimationPlayer = $WeaponAnimation
@@ -25,7 +25,7 @@ var weapon: Sprite2D = $Weapon
 func _ready() -> void:
 	weapon_animation.animation_finished.connect(on_weapon_animation_finished)
 	
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if (velocity.y != 0):
 		if (velocity.y > 0):
 			direction = Direction.DOWN
@@ -36,8 +36,6 @@ func _process(_delta: float) -> void:
 			direction = Direction.RIGHT
 		else:
 			direction = Direction.LEFT
-			
-func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func attack() -> AnimationPlayer:
@@ -45,13 +43,31 @@ func attack() -> AnimationPlayer:
 	match (direction):
 		Direction.LEFT:
 			weapon_animation.play("Attack_Left")
+			model_animation.play("Attack_Left")
+			weapon.position.x = -10
+			weapon.position.y = 3
+		Direction.DOWN:
+			weapon_animation.play("Attack_Down")
+			model_animation.play("Attack_Down")
+			weapon.position.x = 0
+			weapon.position.y = 10
+		Direction.RIGHT:
+			weapon_animation.play("Attack_Right")
+			model_animation.play("Attack_Right")
+			weapon.position.x = 10
+			weapon.position.y = 0
+		Direction.UP:
+			weapon_animation.play("Attack_Up")
+			model_animation.play("Attack_Up")
+			weapon.position.x = 0
+			weapon.position.y = -10
 	return weapon_animation
 	
 func on_weapon_animation_finished(_animation_name: String) -> void:
 	weapon.visible = false
 	
 func set_animation(animation_name: String) -> void:
-	model_animations.play(animation_name)
+	model_animation.play(animation_name)
 	
 func get_directional_vector() -> Vector2:
 	return Vector2(

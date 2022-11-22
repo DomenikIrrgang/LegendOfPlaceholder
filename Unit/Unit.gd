@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 	if (navigation_agent.distance_to_target() > 75):
 		navigation_agent.target_location = position
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var move_direction = position.direction_to(navigation_agent.get_next_location())
 	velocity = 20.0 * move_direction
 	if (navigation_agent.distance_to_target() > 20):

@@ -1,6 +1,6 @@
 extends PlayerState
 
-func handle_input(_event: InputEvent) -> void:
+func update(_delta: float) -> void:
 	if (not Input.is_action_pressed("right") && not Input.is_action_pressed("left") &&
 		not Input.is_action_pressed("up") && not Input.is_action_pressed("down")):
 		state_machine.transition_to("Idle")
@@ -9,9 +9,8 @@ func handle_input(_event: InputEvent) -> void:
 	if (Input.is_action_just_pressed("Dash")):
 		state_machine.transition_to("Dash")
 
-func update(_delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	var direction = player.get_directional_vector().normalized()
-	print(direction)
 	player.velocity = direction * player.speed
 	update_animation()
 	
