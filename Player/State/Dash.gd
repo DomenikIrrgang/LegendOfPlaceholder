@@ -12,7 +12,10 @@ func enter(_data := {}) -> void:
 	player.velocity = player.velocity * initial_speed_increase
 	tween.tween_property(player, "velocity", original_velocity, duration).set_ease(Tween.EASE_OUT)
 	tween.play()
+	player.get_node("Dust").emitting = true
+	
+func exit() -> void:
+	player.get_node("Dust").emitting = false
 	
 func dash_finished() -> void:
-	print("dash finished")
 	state_machine.transition_to("Run")

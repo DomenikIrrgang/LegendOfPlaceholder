@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://bynepnt28k52g"]
+
+[ext_resource type="Texture2D" uid="uid://cg4pq1pgk3bmh" path="res://textures/sword.png" id="1_htaxv"]
+[ext_resource type="Script" path="res://Weapons/BasicSword.gd" id="2_0u6lv"]
+
+[sub_resource type="Animation" id="Animation_hpblh"]
+resource_name = "Attack_Down"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_85l5s"]
+resource_name = "Attack_Left"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_v5ccw"]
+resource_name = "Attack_Right"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_4wtqd"]
+resource_name = "Attack_Up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bq4au"]
+_data = {
+"Attack_Down": SubResource("Animation_hpblh"),
+"Attack_Left": SubResource("Animation_85l5s"),
+"Attack_Right": SubResource("Animation_v5ccw"),
+"Attack_Up": SubResource("Animation_4wtqd")
+}
+
+[node name="Sword" type="Sprite2D"]
+visible = false
+z_index = 1
+y_sort_enabled = true
+texture = ExtResource("1_htaxv")
+hframes = 4
+vframes = 4
+region_enabled = true
+region_rect = Rect2(0, 128, 128, 128)
+script = ExtResource("2_0u6lv")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_bq4au")
+}

@@ -9,15 +9,15 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Weapon",
+"class": &"BasicSword",
+"language": &"GDScript",
+"path": "res://Weapons/BasicSword.gd"
+}, {
 "base": "Camera2D",
 "class": &"CustomCamera",
 "language": &"GDScript",
 "path": "res://CustomCamera.gd"
-}, {
-"base": "Node",
-"class": &"Direction",
-"language": &"GDScript",
-"path": "res://Direction.gd"
 }, {
 "base": "CharacterBody2D",
 "class": &"Entity",
@@ -48,16 +48,22 @@ _global_script_classes=[{
 "class": &"StateTransition",
 "language": &"GDScript",
 "path": "res://StateTransition.gd"
+}, {
+"base": "Node2D",
+"class": &"Weapon",
+"language": &"GDScript",
+"path": "res://Weapons/Weapon.gd"
 }]
 _global_script_class_icons={
+"BasicSword": "",
 "CustomCamera": "",
-"Direction": "",
 "Entity": "",
 "Player": "",
 "PlayerState": "",
 "State": "",
 "StateMachine": "",
-"StateTransition": ""
+"StateTransition": "",
+"Weapon": ""
 }
 
 [application]
