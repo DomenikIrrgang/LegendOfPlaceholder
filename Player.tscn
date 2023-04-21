@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c8pbg6lllwiv5"]
+[gd_scene load_steps=31 format=3 uid="uid://c8pbg6lllwiv5"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_hqrbj"]
 [ext_resource type="Texture2D" uid="uid://02xo8rphiwgt" path="res://textures/player.png" id="3_f15qw"]
@@ -28,7 +28,10 @@
 [ext_resource type="Script" path="res://Player/State/DashToRun.gd" id="24_fsluq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5l03r"]
-size = Vector2(12, 5)
+size = Vector2(8, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bw8l"]
+size = Vector2(12, 8)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6j1ms"]
 _data = {
@@ -59,7 +62,7 @@ color = Color(0.658824, 0.47451, 0.172549, 0.619608)
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_hqrbj")
-weapon_path = "res://Weapons/Sword.tscn"
+weapon_path = "C:/Users/domen/Documents/Programming/LegendOfPlaceholder/Weapons/Sword.tscn"
 
 [node name="Model" type="Sprite2D" parent="."]
 z_index = 1
@@ -73,9 +76,14 @@ region_rect = Rect2(0, 0, 128, 256)
 metadata/_edit_lock_ = true
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_5l03r")
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_0bw8l")
+disabled = true
+debug_color = Color(0.964706, 0, 0.490196, 0.419608)
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 method_call_mode = 1
@@ -128,13 +136,13 @@ script = ExtResource("10_dn0on")
 target_state_path = NodePath("../../Idle")
 
 [node name="Dust" type="GPUParticles2D" parent="."]
+y_sort_enabled = true
 use_parent_material = true
 position = Vector2(0, 8)
-y_sort_enabled = true
 emitting = false
 amount = 25
+process_material = SubResource("ParticleProcessMaterial_qjaa5")
 lifetime = 0.3
 randomness = 1.0
 fixed_fps = 60
 trail_lifetime = 0.1
-process_material = SubResource("ParticleProcessMaterial_qjaa5")

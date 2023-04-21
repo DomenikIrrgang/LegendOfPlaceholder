@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bynepnt28k52g"]
+[gd_scene load_steps=10 format=3 uid="uid://bynepnt28k52g"]
 
 [ext_resource type="Texture2D" uid="uid://cg4pq1pgk3bmh" path="res://textures/sword.png" id="1_htaxv"]
 [ext_resource type="Script" path="res://Weapons/BasicSword.gd" id="2_0u6lv"]
+[ext_resource type="Script" path="res://Unit/HitBox.gd" id="3_4d4cj"]
 
 [sub_resource type="Animation" id="Animation_hpblh"]
 resource_name = "Attack_Down"
@@ -75,13 +76,15 @@ _data = {
 "Attack_Up": SubResource("Animation_4wtqd")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bborc"]
+
 [node name="Sword" type="Sprite2D"]
-visible = false
 z_index = 1
 y_sort_enabled = true
 texture = ExtResource("1_htaxv")
 hframes = 4
 vframes = 4
+frame = 12
 region_enabled = true
 region_rect = Rect2(0, 128, 128, 128)
 script = ExtResource("2_0u6lv")
@@ -91,3 +94,11 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_bq4au")
 }
+
+[node name="HitBox2D" type="Area2D" parent="."]
+script = ExtResource("3_4d4cj")
+
+[node name="HitBox" type="CollisionShape2D" parent="HitBox2D"]
+shape = SubResource("CircleShape2D_bborc")
+disabled = true
+debug_color = Color(0.968627, 0, 0.47451, 0.419608)

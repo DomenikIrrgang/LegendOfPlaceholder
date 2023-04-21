@@ -1139,13 +1139,13 @@ pattern_0 = SubResource("TileMapPattern_k4mto")
 pattern_1 = SubResource("TileMapPattern_orm3y")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_yh1c6"]
-vertices = PackedVector2Array(-33, -124, -42, -27, -169, -28, -179, -119)
-polygons = [PackedInt32Array(0, 1, 2, 3)]
-outlines = [PackedVector2Array(-179, -119, -169, -28, -42, -27, -33, -124)]
+vertices = PackedVector2Array(101, -157, 99, 32, -231, 34, -228, -158)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-228, -158, -231, 34, 99, 32, 101, -157)])
 
 [node name="Demo" type="Node2D"]
-texture_filter = 1
 y_sort_enabled = true
+texture_filter = 1
 script = ExtResource("1_x6rkb")
 
 [node name="Background" type="TileMap" parent="."]
@@ -1172,7 +1172,6 @@ layer_2/tile_data = PackedInt32Array(720921, 393217, 10, 786457, 393217, 12, 851
 [node name="Player" parent="." instance=ExtResource("3_k1eps")]
 
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("targeted_node")]
-current = true
 zoom = Vector2(6, 6)
 position_smoothing_enabled = true
 position_smoothing_speed = 1.0
@@ -1180,9 +1179,10 @@ script = ExtResource("4_hmvdk")
 targeted_node = NodePath("../Player")
 
 [node name="Unit" parent="." instance=ExtResource("5_h48g7")]
-position = Vector2(-129, -77)
 z_index = 1
 y_sort_enabled = true
+position = Vector2(-129, -77)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navpoly = SubResource("NavigationPolygon_yh1c6")
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_yh1c6")

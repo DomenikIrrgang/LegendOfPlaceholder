@@ -11,14 +11,16 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	var player = get_node("../Player")
-	navigation_agent.target_location = player.position
+	navigation_agent.target_position = player.position
 	if (navigation_agent.distance_to_target() > 75):
-		navigation_agent.target_location = position
+		navigation_agent.target_position = position
 	
 func _physics_process(_delta: float) -> void:
-	var move_direction = position.direction_to(navigation_agent.get_next_location())
-	velocity = 20.0 * move_direction
-	if (navigation_agent.distance_to_target() > 20):
+	var move_direction = position.direction_to(navigation_agent.get_next_path_position())
+	#velocity = 20.0 * move_direction
+	if (navigation_agent.distance_to_target() > 80):
 		move_and_slide()
+	move_and_slide()
+	
 	
 	

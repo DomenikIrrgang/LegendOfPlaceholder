@@ -1,6 +1,12 @@
 class_name BasicSword
 extends Weapon
 
+func _ready() -> void:
+	super()
+	$Animation.connect("animation_started", _on_attack_start)
+	$Animation.connect("animation_finished", _on_attack_finished)
+
+
 func attack(player: Player) -> AnimationPlayer:
 	match (player.direction):
 		Player.Direction.LEFT:
@@ -24,3 +30,9 @@ func attack(player: Player) -> AnimationPlayer:
 			position.x = 0
 			position.y = -10
 	return animation
+	
+func _on_attack_start(animation_name: String) -> void:
+	$HitBox2D/HitBox.disabled = false
+	
+func _on_attack_finished(animation_name: String) -> void:
+	$HitBox2D/HitBox.disabled = true

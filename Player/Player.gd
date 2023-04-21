@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export
 var speed: float = 50
 
-@export_file("")
+@export_global_file
 var weapon_path: String
 
 var weapon: Weapon
