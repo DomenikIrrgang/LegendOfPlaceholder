@@ -8,9 +8,9 @@ var tween: Tween
 func enter(_data := {}) -> void:
 	tween = create_tween()
 	tween.finished.connect(self.dash_finished)
-	var original_velocity = player.velocity
-	player.velocity = player.velocity * initial_speed_increase
-	tween.tween_property(player, "velocity", original_velocity, duration).set_ease(Tween.EASE_OUT)
+	var original_velocity = player.movement_velocity
+	player.movement_velocity = player.movement_velocity * initial_speed_increase
+	tween.tween_property(player, "movement_velocity", original_velocity, duration).set_ease(Tween.EASE_OUT)
 	tween.play()
 	player.get_node("Dust").emitting = true
 	

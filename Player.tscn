@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c8pbg6lllwiv5"]
+[gd_scene load_steps=32 format=3 uid="uid://c8pbg6lllwiv5"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_hqrbj"]
 [ext_resource type="Texture2D" uid="uid://02xo8rphiwgt" path="res://textures/player.png" id="3_f15qw"]
@@ -26,12 +26,10 @@
 [ext_resource type="Animation" uid="uid://dcl2bnq56ks2o" path="res://Player/Animations/Up.res" id="14_ulw1v"]
 [ext_resource type="Script" path="res://Player/State/RunToDash.gd" id="19_yoqx6"]
 [ext_resource type="Script" path="res://Player/State/DashToRun.gd" id="24_fsluq"]
+[ext_resource type="Script" path="res://Unit/HurtBox.gd" id="27_3nmce"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5l03r"]
 size = Vector2(8, 5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bw8l"]
-size = Vector2(12, 8)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6j1ms"]
 _data = {
@@ -58,6 +56,9 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 color = Color(0.658824, 0.47451, 0.172549, 0.619608)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yed2"]
+size = Vector2(11, 14)
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
@@ -79,13 +80,7 @@ metadata/_edit_lock_ = true
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_5l03r")
 
-[node name="HitBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
-shape = SubResource("RectangleShape2D_0bw8l")
-disabled = true
-debug_color = Color(0.964706, 0, 0.490196, 0.419608)
-
-[node name="Animations" type="AnimationPlayer" parent="."]
+[node name="ModelAnimation" type="AnimationPlayer" parent="."]
 method_call_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_6j1ms")
@@ -146,3 +141,13 @@ lifetime = 0.3
 randomness = 1.0
 fixed_fps = 60
 trail_lifetime = 0.1
+
+[node name="HurtBox2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("27_3nmce")
+
+[node name="HurtBox" type="CollisionShape2D" parent="HurtBox2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_8yed2")
+debug_color = Color(0.988235, 0, 0.286275, 0.419608)

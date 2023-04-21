@@ -1,8 +1,5 @@
 class_name Player
-extends CharacterBody2D
-
-@export
-var speed: float = 50
+extends Unit
 
 @export_global_file
 var weapon_path: String
@@ -19,9 +16,6 @@ enum Direction {
 var direction: int = Direction.DOWN
 
 @onready
-var model_animation: AnimationPlayer = $Animations
-
-@onready
 var weapon_animation: AnimationPlayer = $WeaponAnimation
 
 func _ready() -> void:
@@ -30,14 +24,18 @@ func _ready() -> void:
 	add_child(weapon)
 	pass
 	
+func _process(delta) -> void:
+	pass
+	
 func _physics_process(_delta: float) -> void:
-	if (velocity.y != 0):
-		if (velocity.y > 0):
+	super(_delta)
+	if (movement_velocity.y != 0):
+		if (movement_velocity.y > 0):
 			direction = Direction.DOWN
 		else:
 			direction = Direction.UP
-	if (velocity.x != 0):
-		if (velocity.x > 0):
+	if (movement_velocity.x != 0):
+		if (movement_velocity.x > 0):
 			direction = Direction.RIGHT
 		else:
 			direction = Direction.LEFT

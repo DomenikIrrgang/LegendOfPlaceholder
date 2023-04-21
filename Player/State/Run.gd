@@ -11,7 +11,7 @@ func update(_delta: float) -> void:
 
 func physics_update(_delta: float) -> void:
 	var direction = player.get_directional_vector().normalized()
-	player.velocity = direction * player.speed
+	player.movement_velocity = direction * player.movement_speed
 	update_animation()
 	
 func update_animation() -> void:

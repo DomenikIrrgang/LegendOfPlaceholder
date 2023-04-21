@@ -13,7 +13,7 @@ func attack(player: Player) -> AnimationPlayer:
 			animation.play("Attack_Left")
 			player.set_animation("Attack_Left")
 			position.x = -10
-			position.y = 3
+			position.y = 0
 		Player.Direction.DOWN:
 			animation.play("Attack_Down")
 			player.set_animation("Attack_Down")
