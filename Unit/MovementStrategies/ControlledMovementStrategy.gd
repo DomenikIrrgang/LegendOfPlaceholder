@@ -1,8 +1,8 @@
 class_name ControlledMovementStrategy
 extends UnitMovementStrategy
 
-func _init(unit: Unit):
-	super(unit)
+func _init(_unit: Unit):
+	super(_unit)
 	
 func calculateMovementVelocity() -> Vector2:
 	var movement_velocity: Vector2

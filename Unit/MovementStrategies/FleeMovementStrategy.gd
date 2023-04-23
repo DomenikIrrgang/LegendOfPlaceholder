@@ -3,9 +3,9 @@ extends UnitMovementStrategy
 
 var unit_to_follow: Unit
 
-func _init(unit: Unit, unit_to_follow: Unit):
-	super(unit)
-	self.unit_to_follow = unit_to_follow
+func _init(_unit: Unit, _unit_to_follow: Unit):
+	super(_unit)
+	unit_to_follow = _unit_to_follow
 	
 func calculateMovementVelocity() -> Vector2:
 	var movement_velocity: Vector2

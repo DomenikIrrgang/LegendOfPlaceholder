@@ -28,22 +28,19 @@ func _ready():
 func has_controller() -> bool:
 	return Input.get_connected_joypads().size() > 0
 		
-func joy_connection_changed(device_id: int, connected: bool):
+func joy_connection_changed(_device_id: int, connected: bool):
 	if connected:
-		self.device_id = device_id
+		device_id = _device_id
 	else:
-		self.device_id = -1
+		device_id = -1
 
 func get_button_texture(action_name: String) -> String:
 	var input_events: Array[InputEvent] = InputMap.action_get_events(action_name)
 	for input_event in input_events:
-		print(input_event)
 		if has_controller() and input_event is InputEventJoypadButton or input_event is InputEventJoypadMotion:
 			if "XInput" in Input.get_joy_name(device_id):
 				return XBOX_BUTTON_TEXTURE[input_event.button_index]
 		if !has_controller() and input_event is InputEventKey:
-			print(KEY_ESCAPE, " ", KEY_SPACE)
-			print(input_event.physical_keycode)
 			return KEY_TEXTURE[input_event.physical_keycode]
 		if !has_controller() and input_event is InputEventMouse:
 			return MOUSE_TEXTURE[input_event.button_index]
