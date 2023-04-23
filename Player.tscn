@@ -63,7 +63,7 @@ size = Vector2(10, 12)
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_hqrbj")
-weapon_path = "C:/Users/domen/Documents/Programming/LegendOfPlaceholder/Weapons/Sword.tscn"
+weapon_path = "res://Weapons/Sword.tscn"
 alias = "Suu"
 
 [node name="Model" type="Sprite2D" parent="."]

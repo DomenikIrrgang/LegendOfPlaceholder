@@ -9,7 +9,9 @@ const KEY_TEXTURE = {
 	KEY_ESCAPE: InputTextures.KEY_ESCAPE,
 	KEY_SPACE: InputTextures.KEY_SPACE,
 	KEY_SHIFT: InputTextures.KEY_SHIFT,
-	KEY_R: InputTextures.KEY_R
+	KEY_R: InputTextures.KEY_R,
+	KEY_L: InputTextures.KEY_L,
+	KEY_K: InputTextures.KEY_K
 }
 
 const MOUSE_TEXTURE = {

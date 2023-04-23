@@ -7,6 +7,8 @@ const KEY_ESCAPE = BASE_PATH + "key_escape.png"
 const KEY_SPACE = BASE_PATH + "key_space.png"
 const KEY_SHIFT = BASE_PATH + "key_shift.png"
 const KEY_R = BASE_PATH + "key_r.png"
+const KEY_K = BASE_PATH + "key_k.png"
+const KEY_L = BASE_PATH + "key_l.png"
 
 const LEFT_MOUSE = BASE_PATH + "left_mouse_button.png"
 const RIGHT_MOUSE = BASE_PATH + "right_mouse_button.png"

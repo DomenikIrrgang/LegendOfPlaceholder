@@ -1,8 +1,9 @@
 class_name Player
 extends Unit
 
-@export_global_file
+@export
 var weapon_path: String
+
 var weapon: Weapon
 
 # Dash
