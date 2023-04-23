@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg4pq1pgk3bmh"
-path="res://.godot/imported/sword.png-93b66e9511d7c2a967a2dc8dab61e2ef.ctex"
+uid="uid://c7jsyyrdfqg85"
+path="res://.godot/imported/x_button.png-662285df3e0e313024badae67e5195f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/sword.png"
-dest_files=["res://.godot/imported/sword.png-93b66e9511d7c2a967a2dc8dab61e2ef.ctex"]
+source_file="res://assets/ui/buttons/x_button.png"
+dest_files=["res://.godot/imported/x_button.png-662285df3e0e313024badae67e5195f9.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

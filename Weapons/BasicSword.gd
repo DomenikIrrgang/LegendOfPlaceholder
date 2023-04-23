@@ -31,8 +31,8 @@ func attack(player: Player) -> AnimationPlayer:
 			position.y = -10
 	return animation
 	
-func _on_attack_start(animation_name: String) -> void:
+func _on_attack_start(_animation_name: String) -> void:
 	$HitBox2D/HitBox.disabled = false
 	
-func _on_attack_finished(animation_name: String) -> void:
+func _on_attack_finished(_animation_name: String) -> void:
 	$HitBox2D/HitBox.disabled = true

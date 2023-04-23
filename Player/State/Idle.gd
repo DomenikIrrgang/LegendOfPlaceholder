@@ -8,7 +8,7 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Attack")
 
 func enter(_data := {}) -> void:
-	player.movement_velocity = Vector2.ZERO
+	player.movement_strategy = UnitMovementStrategy.new(player)
 	update_animation()
 
 func update_animation() -> void:

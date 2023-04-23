@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://02xo8rphiwgt"
-path="res://.godot/imported/player.png-ce289a19efa81f268b1bb13630e9f80b.ctex"
+uid="uid://bm4nqio06yolk"
+path="res://.godot/imported/key_shift.png-f90ca6bf3e0037d4352e5fc027c83936.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/player.png"
-dest_files=["res://.godot/imported/player.png-ce289a19efa81f268b1bb13630e9f80b.ctex"]
+source_file="res://assets/ui/buttons/key_shift.png"
+dest_files=["res://.godot/imported/key_shift.png-f90ca6bf3e0037d4352e5fc027c83936.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
