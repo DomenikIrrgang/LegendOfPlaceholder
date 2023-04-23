@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://b4kh3x2mugaum"]
 
 [ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://Assets/ui/buttons/b_button.png" id="1_28268"]
 [ext_resource type="Script" path="res://Ui/GameUI.gd" id="1_x76ic"]
@@ -6,16 +6,10 @@
 [ext_resource type="FontFile" uid="uid://cg2cudsemqolr" path="res://Assets/fonts/Minecraft.ttf" id="3_1hx4t"]
 [ext_resource type="PackedScene" path="res://Ui/unit/DashMeter.tscn" id="5_17056"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_14unu"]
-font = ExtResource("3_1hx4t")
-font_size = 256
-outline_size = 50
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_tf2yf"]
 font = ExtResource("3_1hx4t")
-font_size = 256
-outline_size = 50
+font_size = 22
+outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [node name="GameUI" type="Control"]
@@ -45,13 +39,12 @@ action_name = "Dash"
 
 [node name="DashLabel" type="Label" parent="Dash"]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 5.0
-offset_right = 650.0
-offset_bottom = 264.0
-scale = Vector2(0.1, 0.1)
+offset_left = 40.0
+offset_top = 6.0
+offset_right = 110.0
+offset_bottom = 32.0
 text = "Dash"
-label_settings = SubResource("LabelSettings_14unu")
+label_settings = SubResource("LabelSettings_tf2yf")
 
 [node name="Attack" type="Control" parent="."]
 layout_mode = 3
@@ -71,15 +64,15 @@ action_name = "Attack"
 
 [node name="AttackLabel" type="Label" parent="Attack"]
 layout_mode = 0
-offset_left = 42.0
-offset_top = 5.0
-offset_right = 650.0
-offset_bottom = 264.0
-scale = Vector2(0.1, 0.1)
+offset_left = 41.0
+offset_top = 6.0
+offset_right = 111.0
+offset_bottom = 32.0
 text = "Attack"
 label_settings = SubResource("LabelSettings_tf2yf")
 
 [node name="DashMeter" parent="." instance=ExtResource("5_17056")]
+z_index = 0
 offset_left = 1825.0
 offset_top = 894.0
 offset_right = 1825.0

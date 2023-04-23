@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c8pbg6lllwiv5" path="res://Player.tscn" id="3_k1eps"]
 [ext_resource type="Script" path="res://CustomCamera.gd" id="4_hmvdk"]
 [ext_resource type="PackedScene" uid="uid://d2fptqxkfwipo" path="res://Enemy/Enemy.tscn" id="6_cvdgk"]
-[ext_resource type="PackedScene" path="res://ui/GameUI.tscn" id="6_wce2l"]
+[ext_resource type="PackedScene" uid="uid://b4kh3x2mugaum" path="res://ui/GameUI.tscn" id="6_wce2l"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_k4mto"]
 tile_data = PackedInt32Array(0, 327681, 3, 65536, 327681, 3, 131072, 327681, 3, 1, 327681, 3, 65537, 327681, 3, 131073, 327681, 3, 2, 327681, 3, 65538, 327681, 3, 131074, 327681, 3)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://mhpsxo2061uh"]
+
+[ext_resource type="Script" path="res://Combat/abilities/Fireball.gd" id="1_kj4ij"]
+
+[node name="Fireball" type="Node2D"]
+script = ExtResource("1_kj4ij")
+alias = "Fireball"
+tooltip = "Test"
+spell_school = 1
+resource_cost = 3
