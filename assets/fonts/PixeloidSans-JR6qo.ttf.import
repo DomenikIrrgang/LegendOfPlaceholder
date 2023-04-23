@@ -2,31 +2,31 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cg2cudsemqolr"
-path="res://.godot/imported/Minecraft.ttf-795455c6105b4a68e8228d634156ccf2.fontdata"
+uid="uid://ygvmsmppelgp"
+path="res://.godot/imported/PixeloidSans-JR6qo.ttf-d594fe4ba90fceecfd35b4565f993f53.fontdata"
 
 [deps]
 
-source_file="res://Assets/fonts/Minecraft.ttf"
-dest_files=["res://.godot/imported/Minecraft.ttf-795455c6105b4a68e8228d634156ccf2.fontdata"]
+source_file="res://Assets/fonts/PixeloidSans-JR6qo.ttf"
+dest_files=["res://.godot/imported/PixeloidSans-JR6qo.ttf-d594fe4ba90fceecfd35b4565f993f53.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=0
+antialiasing=1
 generate_mipmaps=false
 multichannel_signed_distance_field=true
 msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
-hinting=0
+hinting=1
 subpixel_positioning=1
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]
 Compress=null
-compress=false
+compress=true
 preload=[]
 language_support={}
 script_support={}

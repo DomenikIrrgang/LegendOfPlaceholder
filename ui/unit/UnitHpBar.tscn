@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bs4vic3a267uk"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://ui/unit/UnitHpBar.gd" id="1_offtm"]
-[ext_resource type="Texture2D" uid="uid://4iww5pxjg408" path="res://assets/textures/hp_bar_under.png" id="2_idegu"]
-[ext_resource type="Texture2D" uid="uid://bul8wi047f78f" path="res://assets/textures/hp_bar.png" id="3_cqyjs"]
-[ext_resource type="FontFile" uid="uid://cg2cudsemqolr" path="res://assets/fonts/Minecraft.ttf" id="4_hpikt"]
+[ext_resource type="Script" path="res://Ui/unit/UnitHpBar.gd" id="1_offtm"]
+[ext_resource type="Texture2D" uid="uid://4iww5pxjg408" path="res://Assets/textures/hp_bar_under.png" id="2_idegu"]
+[ext_resource type="Texture2D" uid="uid://bul8wi047f78f" path="res://Assets/textures/hp_bar.png" id="3_cqyjs"]
+[ext_resource type="FontFile" uid="uid://cg2cudsemqolr" path="res://Assets/fonts/Minecraft.ttf" id="4_hpikt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cnex0"]
 font = ExtResource("4_hpikt")

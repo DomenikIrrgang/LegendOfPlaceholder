@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://g53pa1johpfm"]
+[gd_scene load_steps=8 format=3]
 
-[ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://assets/ui/buttons/b_button.png" id="1_28268"]
-[ext_resource type="Script" path="res://ui/GameUI.gd" id="1_x76ic"]
-[ext_resource type="Script" path="res://ui/Keybind.gd" id="2_nc7tq"]
-[ext_resource type="FontFile" uid="uid://cg2cudsemqolr" path="res://assets/fonts/Minecraft.ttf" id="3_1hx4t"]
-[ext_resource type="PackedScene" uid="uid://cvdvugwhq4onq" path="res://ui/unit/DashMeter.tscn" id="5_17056"]
+[ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://Assets/ui/buttons/b_button.png" id="1_28268"]
+[ext_resource type="Script" path="res://Ui/GameUI.gd" id="1_x76ic"]
+[ext_resource type="Script" path="res://Ui/Keybind.gd" id="2_nc7tq"]
+[ext_resource type="FontFile" uid="uid://cg2cudsemqolr" path="res://Assets/fonts/Minecraft.ttf" id="3_1hx4t"]
+[ext_resource type="PackedScene" path="res://Ui/unit/DashMeter.tscn" id="5_17056"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_14unu"]
 font = ExtResource("3_1hx4t")

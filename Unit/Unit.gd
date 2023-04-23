@@ -10,11 +10,6 @@ var model: Sprite2D = $Model
 @onready
 var model_animation: AnimationPlayer = $ModelAnimation
 
-# UI
-@onready
-var health_bar
-var HealthBar = preload("res://ui/unit/UnitHpBar.tscn")
-
 # Movement
 var pushback_velocity = Vector2(0, 0)
 var movement_velocity = Vector2(0, 0)
@@ -43,10 +38,6 @@ signal direction_changed(direction: int)
 
 func _ready() -> void:
 	movement_strategy = FollowMovementStrategy.new(self, get_node("../Player"))
-	health_bar = HealthBar.instantiate()
-	health_bar.position.y = -15
-	add_child(health_bar)
-	health_bar.initialize(self)
 	model_animation.play("Down")
 
 func _process(_delta: float) -> void:

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2fptqxkfwipo"]
+
+[ext_resource type="PackedScene" uid="uid://cwlfjeoq2pkvi" path="res://Unit/Unit.tscn" id="1_216fp"]
+[ext_resource type="Script" path="res://Enemy/Enemy.gd" id="2_rhr6a"]
+
+[node name="Enemy" instance=ExtResource("1_216fp")]
+script = ExtResource("2_rhr6a")
+alias = "Slime"
+
+[node name="HurtBox2D" parent="." index="3"]
+collision_layer = 6
+
+[node name="HitBox2D" parent="." index="4"]
+collision_layer = 6
+
+[node name="HitBox" parent="HitBox2D" index="0"]
+position = Vector2(0, 3)

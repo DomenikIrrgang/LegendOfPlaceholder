@@ -20,16 +20,8 @@ signal dash_charges_changed(dash_charges: float, dash_charge_change: float)
 func _ready() -> void:
 	super()
 	init_weapon()
-	init_dash_meter()
 	movement_speed = 50.0
 	pass
-
-func init_dash_meter() -> void:
-	health_bar.visible = false
-	#dash_meter = DashMeter.instantiate()
-	#dash_meter.position.y = -15
-	#add_child(dash_meter)
-	#dash_meter.initialize(self)
 	
 func _process(delta: float) -> void:
 	super(delta)
