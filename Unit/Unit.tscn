@@ -11,7 +11,7 @@
 [ext_resource type="Animation" uid="uid://c4m0k5ea8kwyt" path="res://Unit/Animations/Idle_Right.res" id="8_foj6w"]
 [ext_resource type="Animation" uid="uid://b536o550711vi" path="res://Unit/Animations/Idle_Up.res" id="9_l4obw"]
 [ext_resource type="Script" path="res://Unit/HurtBox.gd" id="11_pfggj"]
-[ext_resource type="Script" path="res://Unit/HitBox.gd" id="12_a4bo0"]
+[ext_resource type="Script" path="res://Unit/UnitHitbox.gd" id="12_ywdi5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8s4lu"]
 size = Vector2(12, 5)
@@ -55,8 +55,8 @@ libraries = {
 }
 
 [node name="HurtBox2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("11_pfggj")
 
 [node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox2D"]
@@ -65,10 +65,9 @@ shape = SubResource("RectangleShape2D_43esu")
 debug_color = Color(0.976471, 0, 0.407843, 0.419608)
 
 [node name="HitBox2D" type="Area2D" parent="."]
-visible = false
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("12_a4bo0")
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("12_ywdi5")
 
 [node name="HitBox" type="CollisionShape2D" parent="HitBox2D"]
 position = Vector2(0, 3.5)

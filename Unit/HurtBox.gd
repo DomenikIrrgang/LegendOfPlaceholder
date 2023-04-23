@@ -7,7 +7,3 @@ func _ready() -> void:
 func _on_area_entered(hitbox: HitBox2D) -> void:
 	if hitbox == null:
 		return
-	var pushback_strength = 10.0
-	var hit_direction = hitbox.global_position.direction_to(global_position)
-	owner.apply_pushback(hit_direction, pushback_strength, 0.3)
-	owner.change_health(-250)

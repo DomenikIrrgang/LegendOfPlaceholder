@@ -144,8 +144,8 @@ fixed_fps = 60
 trail_lifetime = 0.1
 
 [node name="HurtBox2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
+collision_layer = 2
+collision_mask = 13
 script = ExtResource("27_3nmce")
 
 [node name="HurtBox" type="CollisionShape2D" parent="HurtBox2D"]
