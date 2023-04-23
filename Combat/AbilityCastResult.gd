@@ -1,8 +1,8 @@
-const Ability = preload("res://src/combat/abilities/Ability.gd")
+class_name AbilityCastResult
 
 var ability: Ability
 var results: Array
 
-func _init(param_ability, param_results):
-	ability = param_ability
-	results = param_results
+func _init(_ability: Ability, _results: Array):
+	ability = _ability
+	results = _results

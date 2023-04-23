@@ -1,10 +1,10 @@
-const Unit = preload("res://src/combat/Unit.gd")
+class_name ResourceUpdate
 
-var unit
-var type
-var value
+var unit: Unit
+var type: int
+var value: int
 
-func _init(param_unit: Unit, param_type: String, param_value: int):
-	unit = param_unit
-	type = param_type
-	value = param_value
+func _init(_unit: Unit, _type: int, _value: int):
+	unit = _unit
+	type = _type
+	value = _value

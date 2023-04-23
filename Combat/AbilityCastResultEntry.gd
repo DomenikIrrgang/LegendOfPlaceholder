@@ -1,14 +1,16 @@
-var hit_type
-var ability_value = 0
-var value = 0
-var source
-var target
-var original_target
-var resist_amount = 0
+class_name AbilityCastResultEntry
 
-func _init(param_source, param_target):
-	source = param_source
-	target = param_target
+var hit_type: int
+var ability_value: int = 0
+var value: int = 0
+var source: Unit
+var target: Unit
+var original_target: Unit
+var resist_amount: int = 0
+
+func _init(_source: Unit, _target: Unit):
+	source = _source
+	target = _target
 	original_target = target
 
 func is_reflected():

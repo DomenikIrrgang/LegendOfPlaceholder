@@ -1,11 +1,10 @@
-const Unit = preload("res://src/combat/Unit.gd")
-const Ability = preload("res://src/combat/abilities/Ability.gd")
+class_name AbilityCastStart
 
-var unit
-var target
-var ability
+var unit: Unit
+var target: Unit
+var ability: Ability
 
-func _init(param_unit: Unit, param_target: Unit, param_ability: Ability):
-	unit = param_unit
-	target = param_target
-	ability = param_ability
+func _init(_unit: Unit, _target: Unit, _ability: Ability):
+	unit = _unit
+	target = _target
+	ability = _ability

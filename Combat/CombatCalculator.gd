@@ -1,7 +1,9 @@
+class_name CombatCalculator
+
 func get_ability_value(ability, source, target, critical):
 	var ability_value = ability.get_value(source, target)
 	var scaling_value = ability.get_scaling_factor(source, target)
-	if ability.get_spell_school() != SpellSchool.PHYSICAL:
+	if ability.get_spell_school() != SpellSchool.Enum.PHYSICAL:
 		scaling_value *= source.stat_calculator.get_spell_power(ability.get_spell_school())
 	else:
 		scaling_value *= source.stat_calculator.get_attack_power()

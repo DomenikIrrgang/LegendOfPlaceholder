@@ -1,8 +1,8 @@
-extends Node
+class_name CombatResult
 
-var type
-var data
+var type: int
+var data: Array
 
-func _init(param_type: String, param_data: Array):
-	type = param_type
-	data = param_data
+func _init(_type: int, _data: Array):
+	type = _type
+	data = _data

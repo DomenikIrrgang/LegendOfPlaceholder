@@ -1,6 +1,8 @@
-var ability
-var unit
+class_name AbilityCastFailedMissingResource
 
-func _init(param_ability, param_unit):
-	ability = param_ability
-	unit = param_unit
+var ability: Ability
+var unit: Unit
+
+func _init(_unit: Unit, _ability: Ability):
+	ability = _ability
+	unit = _unit

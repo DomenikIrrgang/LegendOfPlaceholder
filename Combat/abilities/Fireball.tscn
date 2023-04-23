@@ -5,6 +5,10 @@
 [node name="Fireball" type="Node2D"]
 script = ExtResource("1_kj4ij")
 alias = "Fireball"
-tooltip = "Test"
+tooltip = "Sends a fireball in your facing direction."
 spell_school = 1
-resource_cost = 3
+resource_cost = 10
+crittable = true
+missable = true
+miss_chance = 5.0
+reflectable = true
