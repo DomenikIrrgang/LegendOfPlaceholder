@@ -1,8 +1,6 @@
 extends HitBox2D
 
 func on_hit(hurt_box: HurtBox2D) -> void:
-	if (!hurt_box):
-		return
 	var unit = hurt_box.owner
 	var pushback_strength = 10.0
 	var hit_direction = global_position.direction_to(unit.global_position)

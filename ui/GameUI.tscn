@@ -1,4 +1,22 @@
-[gd_scene format=3 uid="uid://g53pa1johpfm"]
+[gd_scene load_steps=8 format=3 uid="uid://g53pa1johpfm"]
+
+[ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://assets/ui/buttons/b_button.png" id="1_28268"]
+[ext_resource type="Script" path="res://ui/GameUI.gd" id="1_x76ic"]
+[ext_resource type="Script" path="res://ui/Keybind.gd" id="2_nc7tq"]
+[ext_resource type="FontFile" uid="uid://cg2cudsemqolr" path="res://assets/fonts/Minecraft.ttf" id="3_1hx4t"]
+[ext_resource type="PackedScene" uid="uid://cvdvugwhq4onq" path="res://ui/unit/DashMeter.tscn" id="5_17056"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_14unu"]
+font = ExtResource("3_1hx4t")
+font_size = 256
+outline_size = 50
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tf2yf"]
+font = ExtResource("3_1hx4t")
+font_size = 256
+outline_size = 50
+outline_color = Color(0, 0, 0, 1)
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -7,3 +25,63 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_x76ic")
+
+[node name="Dash" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1784.0
+offset_top = 22.0
+offset_right = 1892.0
+offset_bottom = 56.0
+
+[node name="Keybind" type="TextureRect" parent="Dash"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1_28268")
+script = ExtResource("2_nc7tq")
+action_name = "Dash"
+
+[node name="DashLabel" type="Label" parent="Dash"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 5.0
+offset_right = 650.0
+offset_bottom = 264.0
+scale = Vector2(0.1, 0.1)
+text = "Dash"
+label_settings = SubResource("LabelSettings_14unu")
+
+[node name="Attack" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1641.0
+offset_top = 22.0
+offset_right = 1749.0
+offset_bottom = 56.0
+
+[node name="Keybind" type="TextureRect" parent="Attack"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1_28268")
+script = ExtResource("2_nc7tq")
+action_name = "Attack"
+
+[node name="AttackLabel" type="Label" parent="Attack"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 5.0
+offset_right = 650.0
+offset_bottom = 264.0
+scale = Vector2(0.1, 0.1)
+text = "Attack"
+label_settings = SubResource("LabelSettings_tf2yf")
+
+[node name="DashMeter" parent="." instance=ExtResource("5_17056")]
+offset_left = 1825.0
+offset_top = 894.0
+offset_right = 1825.0
+offset_bottom = 894.0
+scale = Vector2(5, 5)

@@ -42,7 +42,7 @@ var direction: int = Direction.DOWN
 signal direction_changed(direction: int)
 
 func _ready() -> void:
-	#movement_strategy = FollowMovementStrategy.new(self, get_node("../Player"))
+	movement_strategy = FollowMovementStrategy.new(self, get_node("../Player"))
 	health_bar = HealthBar.instantiate()
 	health_bar.position.y = -15
 	add_child(health_bar)
@@ -90,5 +90,6 @@ func change_health(change: int) -> int:
 	if (health > max_health):
 		health = max_health
 	var health_change = health - old_value
-	emit_signal("health_changed", health, health_change)
+	if (health_change != 0):
+		health_changed.emit(health, health_change)
 	return health_change

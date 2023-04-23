@@ -2,8 +2,11 @@ class_name HurtBox2D
 extends Area2D
 
 func _ready() -> void:
-	connect("area_entered", _on_area_entered)
+	connect("area_entered", on_area_entered)
 	
-func _on_area_entered(hitbox: HitBox2D) -> void:
-	if hitbox == null:
-		return
+func on_area_entered(hit_box) -> void:
+	if hit_box is HitBox2D:
+		on_hurt(hit_box)
+		
+func on_hurt(_hit_box: HitBox2D) -> void:
+	pass
