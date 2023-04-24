@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ceso0rhoftjaq"
-path="res://.godot/imported/right_mouse_button.png-dec6dee3e76dea4450efe9d77e5de31a.ctex"
+path="res://.godot/imported/right_mouse_button.png-3a3849164b62e45f41f9a62cd347c0e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/buttons/right_mouse_button.png"
-dest_files=["res://.godot/imported/right_mouse_button.png-dec6dee3e76dea4450efe9d77e5de31a.ctex"]
+source_file="res://Assets/ui/buttons/right_mouse_button.png"
+dest_files=["res://.godot/imported/right_mouse_button.png-3a3849164b62e45f41f9a62cd347c0e4.ctex"]
 
 [params]
 
