@@ -8,8 +8,14 @@
 script = ExtResource("2_rhr6a")
 alias = "Slime"
 
+[node name="Collision" parent="." index="0"]
+position = Vector2(0, 4)
+
+[node name="HurtBoxShape" parent="HurtBox2D" index="0"]
+position = Vector2(-0.25, 4)
+
 [node name="HitBox" parent="HitBox2D" index="0"]
-position = Vector2(0, 3)
+position = Vector2(0, 4)
 
 [node name="UnitHpBar" parent="." index="5" instance=ExtResource("3_ttyn3")]
 z_index = 1000

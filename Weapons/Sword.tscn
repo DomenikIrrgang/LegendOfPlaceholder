@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bynepnt28k52g"]
+[gd_scene load_steps=11 format=3 uid="uid://bynepnt28k52g"]
 
 [ext_resource type="Texture2D" uid="uid://cg4pq1pgk3bmh" path="res://Assets/textures/sword.png" id="1_sopmw"]
 [ext_resource type="Script" path="res://Weapons/BasicSword.gd" id="2_0u6lv"]
 [ext_resource type="Script" path="res://Weapons/SwordHitBox.gd" id="3_yvabn"]
+[ext_resource type="PackedScene" uid="uid://ll7pxsueavbo" path="res://Combat/abilities/Attack.tscn" id="4_00mmt"]
 
 [sub_resource type="Animation" id="Animation_hpblh"]
 resource_name = "Attack_Down"
@@ -100,6 +101,7 @@ libraries = {
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("3_yvabn")
+ability_scene = ExtResource("4_00mmt")
 
 [node name="HitBox" type="CollisionShape2D" parent="HitBox2D"]
 shape = SubResource("CircleShape2D_bborc")

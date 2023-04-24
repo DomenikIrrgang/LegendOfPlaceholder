@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ll7pxsueavbo"]
+
+[ext_resource type="Script" path="res://Combat/abilities/Attack.gd" id="1_uwywo"]
+
+[node name="Attack" type="Node2D"]
+script = ExtResource("1_uwywo")
+alias = "Attack"
+tooltip = "Physical attack against the target."
+resource_type = 1
+crittable = true
+critical_chance = 10.0
+critical_effect = 1.0
+dodgeable = true
+parriable = true

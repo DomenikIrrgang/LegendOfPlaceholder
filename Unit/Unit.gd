@@ -10,6 +10,9 @@ var model: Sprite2D = $Model
 @onready
 var model_animation: AnimationPlayer = $ModelAnimation
 
+@onready
+var hurt_box: HurtBox2D = $HurtBox2D
+
 # Base Stats
 var level: int = 1
 var max_level: int = 60
@@ -48,8 +51,11 @@ func _ready() -> void:
 	set_stats(base_stats)
 	stat_calculator = StatCalculator.new(self)
 	health = Health.new(stat_calculator)
-	movement_strategy = FollowMovementStrategy.new(self, get_node("../Player"))
+	#movement_strategy = FollowMovementStrategy.new(self, get_node("../Player"))
+	movement_strategy = UnitMovementStrategy.new(self)
 	model_animation.play("Down")
+	hurt_box.got_hurt.connect(on_hurt)
+	
 
 func _process(_delta: float) -> void:
 	movement_velocity = movement_strategy.calculateMovementVelocity()
@@ -58,6 +64,9 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	velocity = (movement_velocity * get_movement_speed() + pushback_velocity) * (delta * 60)
 	move_and_slide()
+	
+func on_hurt(source: Unit, ability: Ability) -> void:
+	ability.execute(source, self)
 	
 func set_level(_level: int) -> void:
 	if _level <= max_level:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=3 uid="uid://c8pbg6lllwiv5"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_hqrbj"]
-[ext_resource type="Texture2D" uid="uid://02xo8rphiwgt" path="res://assets/textures/player.png" id="2_8tpy3"]
+[ext_resource type="Texture2D" uid="uid://02xo8rphiwgt" path="res://Assets/textures/player.png" id="2_8tpy3"]
 [ext_resource type="Animation" uid="uid://cocraw1jx8unp" path="res://Player/Animations/Attack_Down.res" id="3_n1sks"]
 [ext_resource type="Script" path="res://StateMachine.gd" id="4_f0hp5"]
 [ext_resource type="Animation" uid="uid://tnorjeehjxm7" path="res://Player/Animations/Attack_Left.res" id="4_ygspt"]
@@ -60,8 +60,8 @@ color = Color(0.658824, 0.47451, 0.172549, 0.619608)
 size = Vector2(10, 12)
 
 [node name="Player" type="CharacterBody2D"]
-z_index = 1
 y_sort_enabled = true
+position = Vector2(0, -8)
 script = ExtResource("1_hqrbj")
 weapon_path = "res://Weapons/Sword.tscn"
 alias = "Suu"

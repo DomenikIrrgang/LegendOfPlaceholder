@@ -110,16 +110,14 @@ func get_resource_cost() -> int:
 func get_target_type() -> int:
 	return target_type
 	
-func get_value(source, target) -> int:
-	assert(false, "Function not implemented yet!")
+func execute(_source: Unit, _target: Unit) -> void:
+	pass
+	
+func get_value(_source: Unit, _target: Unit) -> int:
 	return 0
 	
-func get_scaling_factor(source, target) -> float:
-	assert(false, "Function not implemented yet!")
+func get_scaling_factor(_source: Unit, _target: Unit) -> float:
 	return 0.0
 
 func get_animation() -> void:
-	assert(false, "Function not implemented yet!")
-	
-func execute(combat, source, target) -> void:
-	assert(false, "Function not implemented yet!")
+	pass

@@ -11,8 +11,6 @@ func on_area_entered(hit_box) -> void:
 		on_hurt(hit_box)
 		
 func on_hurt(_hit_box: HitBox2D) -> void:
-	print("hurt")
 	var slime = SlimeScene.instantiate()
 	get_node("../../").add_child(slime)
 	slime.global_position = global_position + Vector2(20, 20)
-	print("slime added")
