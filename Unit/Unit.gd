@@ -54,7 +54,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	movement_velocity = movement_strategy.calculateMovementVelocity()
 	update_direction()
-	change_health(1)
 	
 func _physics_process(delta: float) -> void:
 	velocity = (movement_velocity * get_movement_speed() + pushback_velocity) * (delta * 60)

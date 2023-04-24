@@ -46,10 +46,6 @@ func change_dash_charges(change: float) -> float:
 func gain_experience(amount: int) -> void:
 	if (level < max_level):
 		experience += amount
-		print("total experience ", experience)
-		print("current experience ", current_experience())
-		print("experience needed for next level ", experience_needed_for_next_level())
-		print("experience missing to level up ", experience_needed_for_next_level() - current_experience())
 		while (experience_needed_for_next_level() - current_experience() <= 0):
 			set_level(level + 1)
 		experience_changed.emit(amount)

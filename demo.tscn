@@ -6,9 +6,9 @@
 [ext_resource type="Script" path="res://CustomCamera.gd" id="4_hmvdk"]
 [ext_resource type="Shader" path="res://Shaders/Blur.gdshader" id="5_5uuxf"]
 [ext_resource type="Script" path="res://Ui/PauseMenu.gd" id="5_hj28t"]
-[ext_resource type="PackedScene" uid="uid://d2fptqxkfwipo" path="res://Enemy/Enemy.tscn" id="6_cvdgk"]
 [ext_resource type="PackedScene" uid="uid://b4kh3x2mugaum" path="res://Ui/GameUI.tscn" id="6_wce2l"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="8_xa5hp"]
+[ext_resource type="PackedScene" uid="uid://j2cv1ftbmjnr" path="res://Enemy/MegaSlime.tscn" id="10_01rkg"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_k4mto"]
 tile_data = PackedInt32Array(0, 327681, 3, 65536, 327681, 3, 131072, 327681, 3, 1, 327681, 3, 65537, 327681, 3, 131073, 327681, 3, 2, 327681, 3, 65538, 327681, 3, 131074, 327681, 3)
@@ -1226,10 +1226,5 @@ layout_mode = 2
 text = "- PAUSE -"
 label_settings = SubResource("LabelSettings_7xwet")
 
-[node name="Slime1" parent="." instance=ExtResource("6_cvdgk")]
-position = Vector2(-87, -60)
-alias = ""
-
-[node name="Slime2" parent="." instance=ExtResource("6_cvdgk")]
-position = Vector2(-20, -94)
-alias = ""
+[node name="MegaSlime" parent="." instance=ExtResource("10_01rkg")]
+position = Vector2(-66, -66)

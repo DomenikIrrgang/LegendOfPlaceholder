@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://j2cv1ftbmjnr"]
+
+[ext_resource type="PackedScene" uid="uid://d2fptqxkfwipo" path="res://Enemy/Enemy.tscn" id="1_caj56"]
+[ext_resource type="Script" path="res://Enemy/MegaSlime.gd" id="2_rxbhk"]
+[ext_resource type="Script" path="res://Enemy/MegaSlimeHurtBox.gd" id="3_r3ljq"]
+
+[node name="MegaSlime" instance=ExtResource("1_caj56")]
+position = Vector2(0, -13)
+script = ExtResource("2_rxbhk")
+alias = "Megaslime"
+
+[node name="Collision" parent="." index="0"]
+position = Vector2(0, 2)
+
+[node name="Model" parent="." index="1"]
+position = Vector2(0, -11)
+scale = Vector2(3, 3)
+
+[node name="HurtBoxShape" parent="HurtBox2D" index="0"]
+position = Vector2(0.5, 3)
+
+[node name="HitBox2D" parent="." index="4"]
+script = ExtResource("3_r3ljq")
+
+[node name="HitBox" parent="HitBox2D" index="0"]
+position = Vector2(0.5, 3)
+
+[node name="UnitHpBar" parent="." index="5"]
+offset_top = -35.0
+offset_bottom = -35.0
+metadata/_edit_use_anchors_ = true

@@ -8,9 +8,6 @@
 script = ExtResource("2_rhr6a")
 alias = "Slime"
 
-[node name="HitBox2D" parent="." index="4"]
-collision_layer = 6
-
 [node name="HitBox" parent="HitBox2D" index="0"]
 position = Vector2(0, 3)
 
