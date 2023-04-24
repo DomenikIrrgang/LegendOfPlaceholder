@@ -1,16 +1,41 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4kh3x2mugaum"]
+[gd_scene load_steps=18 format=3 uid="uid://b4kh3x2mugaum"]
 
-[ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://Assets/ui/buttons/b_button.png" id="1_28268"]
+[ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://assets/ui/buttons/b_button.png" id="1_28268"]
 [ext_resource type="Script" path="res://Ui/GameUI.gd" id="1_x76ic"]
 [ext_resource type="Script" path="res://Ui/Keybind.gd" id="2_nc7tq"]
-[ext_resource type="FontFile" uid="uid://cg2cudsemqolr" path="res://Assets/fonts/Minecraft.ttf" id="3_1hx4t"]
-[ext_resource type="PackedScene" path="res://Ui/unit/DashMeter.tscn" id="5_17056"]
+[ext_resource type="FontFile" uid="uid://cg2cudsemqolr" path="res://assets/fonts/Minecraft.ttf" id="3_1hx4t"]
+[ext_resource type="PackedScene" uid="uid://dlgaq1jr4o8os" path="res://Ui/unit/DashMeter.tscn" id="5_17056"]
+[ext_resource type="Texture2D" uid="uid://4iww5pxjg408" path="res://assets/textures/hp_bar_under.png" id="6_1fg3s"]
+[ext_resource type="Script" path="res://Ui/UnitFramePlayer.gd" id="6_52hwt"]
+[ext_resource type="Texture2D" uid="uid://bul8wi047f78f" path="res://assets/textures/hp_bar.png" id="7_jk5bi"]
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="9_x1hww"]
+[ext_resource type="Script" path="res://Ui/SystemMessage.gd" id="10_e3ncc"]
+[ext_resource type="Script" path="res://Ui/XpBar.gd" id="11_5sq0i"]
+[ext_resource type="Texture2D" uid="uid://c2rkr00w6e13y" path="res://assets/ui/xp_bar/xp_bar_behind.png" id="11_tokam"]
+[ext_resource type="Texture2D" uid="uid://b4sfs10wndems" path="res://assets/ui/xp_bar/xp_bar_filled.png" id="12_slqef"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tf2yf"]
 font = ExtResource("3_1hx4t")
 font_size = 22
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_np8qo"]
+font = ExtResource("9_x1hww")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
+font = ExtResource("9_x1hww")
+font_size = 44
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jpyj4"]
+font = ExtResource("9_x1hww")
+font_size = 12
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -73,8 +98,89 @@ label_settings = SubResource("LabelSettings_tf2yf")
 
 [node name="DashMeter" parent="." instance=ExtResource("5_17056")]
 z_index = 0
-offset_left = 1825.0
-offset_top = 894.0
-offset_right = 1825.0
-offset_bottom = 894.0
+offset_left = -21.0
+offset_top = 900.0
+offset_right = -21.0
+offset_bottom = 900.0
 scale = Vector2(5, 5)
+
+[node name="UnitFramePlayer" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 53.0
+offset_top = 1002.0
+offset_right = 257.0
+offset_bottom = 1073.0
+script = ExtResource("6_52hwt")
+
+[node name="HealthBar" type="TextureProgressBar" parent="UnitFramePlayer"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 15.0
+offset_right = 47.0
+offset_bottom = 23.0
+scale = Vector2(6, 6)
+value = 100.0
+texture_under = ExtResource("6_1fg3s")
+texture_progress = ExtResource("7_jk5bi")
+
+[node name="CurrentHealth" type="Label" parent="UnitFramePlayer"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 25.0
+offset_right = 91.0
+offset_bottom = 58.0
+text = "100"
+label_settings = SubResource("LabelSettings_np8qo")
+horizontal_alignment = 2
+
+[node name="MaxHealth" type="Label" parent="UnitFramePlayer"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 25.0
+offset_right = 184.0
+offset_bottom = 58.0
+text = "/100"
+label_settings = SubResource("LabelSettings_np8qo")
+
+[node name="SystemMessage" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 582.0
+script = ExtResource("10_e3ncc")
+
+[node name="Message" type="Label" parent="SystemMessage"]
+layout_mode = 2
+text = "SystemMessage"
+label_settings = SubResource("LabelSettings_5a6ab")
+
+[node name="ExperienceBar" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 31.0
+scale = Vector2(2, 2)
+script = ExtResource("11_5sq0i")
+
+[node name="Bar" type="TextureProgressBar" parent="ExperienceBar"]
+layout_mode = 2
+value = 50.0
+texture_under = ExtResource("11_tokam")
+texture_progress = ExtResource("12_slqef")
+
+[node name="CurrentExperience" type="Label" parent="ExperienceBar/Bar"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 1.0
+offset_right = 120.0
+offset_bottom = 24.0
+text = "100"
+label_settings = SubResource("LabelSettings_jpyj4")
+horizontal_alignment = 2
+
+[node name="ExperienceNeeded" type="Label" parent="ExperienceBar/Bar"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 1.0
+offset_right = 252.0
+offset_bottom = 24.0
+text = "/100"
+label_settings = SubResource("LabelSettings_jpyj4")

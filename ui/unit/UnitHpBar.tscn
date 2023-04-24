@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bxhcqy03xm6oi"]
 
 [ext_resource type="Script" path="res://Ui/unit/UnitHpBar.gd" id="1_offtm"]
-[ext_resource type="Texture2D" uid="uid://4iww5pxjg408" path="res://Assets/textures/hp_bar_under.png" id="2_idegu"]
-[ext_resource type="Texture2D" uid="uid://bul8wi047f78f" path="res://Assets/textures/hp_bar.png" id="3_cqyjs"]
-[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="4_561ag"]
+[ext_resource type="Texture2D" uid="uid://4iww5pxjg408" path="res://assets/textures/hp_bar_under.png" id="2_idegu"]
+[ext_resource type="Texture2D" uid="uid://bul8wi047f78f" path="res://assets/textures/hp_bar.png" id="3_cqyjs"]
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="4_561ag"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cnex0"]
 font = ExtResource("4_561ag")
@@ -12,7 +12,6 @@ outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
 [node name="UnitHpBar" type="Control"]
-z_index = 1000
 layout_mode = 3
 anchors_preset = 0
 scale = Vector2(0.5, 0.5)
@@ -30,9 +29,9 @@ texture_progress = ExtResource("3_cqyjs")
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 0
-offset_left = -14.0
+offset_left = -94.0
 offset_top = -18.0
-offset_right = 16.0
+offset_right = 94.0
 offset_bottom = -2.0
 text = "Name"
 label_settings = SubResource("LabelSettings_cnex0")

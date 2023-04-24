@@ -11,7 +11,7 @@ signal resource_maximum_value_changed(new_maximum_value: int)
 
 func _init(_stat_calculator: StatCalculator) -> void:
 	stat_calculator = _stat_calculator
-	stat_calculator.get_stat_set().stat_changed.connect(on_stat_changed)
+	stat_calculator.get_unit().stat_changed.connect(on_stat_changed)
 
 func set_value(new_value: int) -> int:
 	var old_value = value
@@ -22,7 +22,8 @@ func set_value(new_value: int) -> int:
 			value = get_maximum_value()
 	else:
 		value = 0
-	resource_value_changed.emit(value, old_value)
+	if (value != old_value):
+		resource_value_changed.emit(value, old_value)
 	return value - old_value
 	
 func set_maximum_value(new_maximum_value: int) -> int:

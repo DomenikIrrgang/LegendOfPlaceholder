@@ -8,6 +8,7 @@ func _ready() -> void:
 
 
 func attack(player: Player) -> AnimationPlayer:
+	player.gain_experience(200)
 	match (player.direction):
 		Unit.Direction.LEFT:
 			animation.play("Attack_Left")

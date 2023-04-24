@@ -13,7 +13,7 @@ func calculateMovementVelocity() -> Vector2:
 		movement_velocity = Vector2(0, 0)
 	else:
 		var movement_direction = get_direction_to_target()
-		movement_velocity = unit.movement_speed * movement_direction
+		movement_velocity = movement_direction
 	return movement_velocity
 	
 func get_distance_to_target() -> float:

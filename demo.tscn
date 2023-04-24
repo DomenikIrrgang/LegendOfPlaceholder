@@ -1,11 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cu683ds455pjx"]
+[gd_scene load_steps=12 format=3 uid="uid://bntlibb5y6nb7"]
 
-[ext_resource type="Texture2D" uid="uid://cjj1ypedmcl6e" path="res://Tilemaps/Solaria Demo Update 01.png" id="1_uiosg"]
+[ext_resource type="Texture2D" uid="uid://cjj1ypedmcl6e" path="res://tilemaps/Solaria Demo Update 01.png" id="1_uiosg"]
 [ext_resource type="Script" path="res://demo.gd" id="1_x6rkb"]
 [ext_resource type="PackedScene" uid="uid://c8pbg6lllwiv5" path="res://Player.tscn" id="3_k1eps"]
 [ext_resource type="Script" path="res://CustomCamera.gd" id="4_hmvdk"]
 [ext_resource type="PackedScene" uid="uid://d2fptqxkfwipo" path="res://Enemy/Enemy.tscn" id="6_cvdgk"]
-[ext_resource type="PackedScene" uid="uid://b4kh3x2mugaum" path="res://ui/GameUI.tscn" id="6_wce2l"]
+[ext_resource type="PackedScene" uid="uid://b4kh3x2mugaum" path="res://Ui/GameUI.tscn" id="6_wce2l"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_k4mto"]
 tile_data = PackedInt32Array(0, 327681, 3, 65536, 327681, 3, 131072, 327681, 3, 1, 327681, 3, 65537, 327681, 3, 131073, 327681, 3, 2, 327681, 3, 65538, 327681, 3, 131074, 327681, 3)

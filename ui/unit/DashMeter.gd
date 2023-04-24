@@ -17,7 +17,6 @@ func initialize(_player: Player):
 	
 func update_progress_bar(new_value: float, _change: int) -> void:
 	progress_bar.value = fmod(new_value, 1.0) * 1000
-	visible = new_value != player.max_dash_charges
 	charges_label.text = str(floor(new_value))
 	
 	

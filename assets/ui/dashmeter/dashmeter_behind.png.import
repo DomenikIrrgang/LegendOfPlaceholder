@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://drnx2qhsoe23h"
-path="res://.godot/imported/dashmeter_behind.png-cd7ccf4ea0145f2907c2fee32a7021de.ctex"
+path="res://.godot/imported/dashmeter_behind.png-396ad16c42d09254c9bad3bfce53e42c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ui/dashmeter/dashmeter_behind.png"
-dest_files=["res://.godot/imported/dashmeter_behind.png-cd7ccf4ea0145f2907c2fee32a7021de.ctex"]
+source_file="res://assets/ui/dashmeter/dashmeter_behind.png"
+dest_files=["res://.godot/imported/dashmeter_behind.png-396ad16c42d09254c9bad3bfce53e42c.ctex"]
 
 [params]
 

@@ -47,4 +47,10 @@ func get_button_texture(action_name: String) -> String:
 		if !has_controller() and input_event is InputEventMouse:
 			return MOUSE_TEXTURE[input_event.button_index]
 	return KEY_TEXTURE[action_name]
+	
+func get_directional_vector() -> Vector2:
+	return Vector2(
+		Input.get_action_strength("right") - Input.get_action_strength("left"),
+		Input.get_action_strength("down") - Input.get_action_strength("up")
+	)
 

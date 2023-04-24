@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2fptqxkfwipo"]
+[gd_scene load_steps=4 format=3 uid="uid://d2fptqxkfwipo"]
 
 [ext_resource type="PackedScene" uid="uid://cwlfjeoq2pkvi" path="res://Unit/Unit.tscn" id="1_216fp"]
 [ext_resource type="Script" path="res://Enemy/Enemy.gd" id="2_rhr6a"]
+[ext_resource type="PackedScene" uid="uid://bxhcqy03xm6oi" path="res://Ui/unit/UnitHpBar.tscn" id="3_ttyn3"]
 
 [node name="Enemy" instance=ExtResource("1_216fp")]
 script = ExtResource("2_rhr6a")
@@ -15,3 +16,8 @@ collision_layer = 6
 
 [node name="HitBox" parent="HitBox2D" index="0"]
 position = Vector2(0, 3)
+
+[node name="UnitHpBar" parent="." index="5" instance=ExtResource("3_ttyn3")]
+z_index = 1000
+offset_top = -11.0
+offset_bottom = -11.0

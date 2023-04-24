@@ -9,18 +9,21 @@ var animation_speed = 0.2
 var name_label: Label = $Name
 
 func initialize(unit: Unit):
-	unit.health_changed.connect(health_changed)
-	progress_bar.max_value = unit.max_health
-	progress_bar.value = unit.health
+	unit.health.resource_value_changed.connect(health_changed)
+	unit.health.resource_maximum_value_changed.connect(max_health_changed)
+	progress_bar.max_value = unit.health.get_maximum_value()
+	progress_bar.value = unit.health.get_value()
 	name_label.text = unit.alias
-	name_label.position.x = -((name_label.size.x * name_label.scale.x) / 2)
 	
 func health_changed(new_value: int, change: int) -> void:
 	update_progress_bar(new_value, change)
 	
-func update_progress_bar(new_value: int, _change: int) -> void:
+func update_progress_bar(new_value: int, _old_value: int) -> void:
 	var tween = create_tween()
 	tween.tween_property(progress_bar, 'value', new_value, animation_speed)
 	tween.play()
+	
+func max_health_changed(new_value: int, _old_value: int) -> void:
+	progress_bar.max_value = new_value
 	
 	

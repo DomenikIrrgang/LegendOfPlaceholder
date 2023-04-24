@@ -10,19 +10,26 @@ var model: Sprite2D = $Model
 @onready
 var model_animation: AnimationPlayer = $ModelAnimation
 
-# Movement
-var pushback_velocity = Vector2(0, 0)
-var movement_velocity = Vector2(0, 0)
-var movement_speed = 30.0
-var movement_strategy: UnitMovementStrategy = UnitMovementStrategy.new(self)
-
+# Base Stats
+var level: int = 1
+var max_level: int = 60
+var base_movement_speed: float = 30.0
 var mass: float = 50.0
 
-# Health
-var max_health: int = 1000
-var health: int = 1000
+var stat_calculator: StatCalculator
+var base_stats: StatSet
+var stats: StatSet
 
-signal health_changed(new_value: int, change: int)
+signal stat_changed(stat: Stat, new_value: int)
+signal level_changed(level: int)
+
+# Movement
+var pushback_velocity: Vector2 = Vector2(0, 0)
+var movement_velocity: Vector2 = Vector2(0, 0)
+var movement_strategy: UnitMovementStrategy = UnitMovementStrategy.new(self)
+
+# Health
+var health: Health
 
 # Direction
 enum Direction {
@@ -37,6 +44,10 @@ var direction: int = Direction.DOWN
 signal direction_changed(direction: int)
 
 func _ready() -> void:
+	base_stats = BaseStats.new(level)
+	set_stats(base_stats)
+	stat_calculator = StatCalculator.new(self)
+	health = Health.new(stat_calculator)
 	movement_strategy = FollowMovementStrategy.new(self, get_node("../Player"))
 	model_animation.play("Down")
 
@@ -46,8 +57,34 @@ func _process(_delta: float) -> void:
 	change_health(1)
 	
 func _physics_process(delta: float) -> void:
-	velocity = movement_velocity + pushback_velocity * delta
+	velocity = (movement_velocity * get_movement_speed() + pushback_velocity) * (delta * 60)
 	move_and_slide()
+	
+func set_level(_level: int) -> void:
+	if _level <= max_level:
+		level = _level
+	else:
+		if _level < 1:
+			level = 1
+		else:
+			level = max_level
+	set_stats(stats.subtract_stat_set(base_stats).add_stat_set(BaseStats.new(level)))
+	base_stats = BaseStats.new(level)
+	level_changed.emit(level)
+	
+func set_stats(_stat_set: StatSet) -> void:
+	if stats:
+		stats.stat_changed.disconnect(on_stat_changed)
+	stats = _stat_set
+	stats.stat_changed.connect(on_stat_changed)
+	for stat in stats.get_stats():
+		stat_changed.emit(stat, stats.get_stat(stat))
+		
+func on_stat_changed(stat: int, new_value: int) -> void:
+	stat_changed.emit(stat, new_value)
+
+func get_movement_speed() -> float:
+	return stats.get_stat(Stat.MOVEMENT_SPEED) + base_movement_speed
 	
 func update_direction() -> void:
 	var original_direction = direction
@@ -74,13 +111,4 @@ func apply_pushback(pushback_direction: Vector2, pushback_strength: float, pushb
 	tween.play()
 	
 func change_health(change: int) -> int:
-	var old_value = health
-	health = health + change
-	if (health < 0):
-		health = 0
-	if (health > max_health):
-		health = max_health
-	var health_change = health - old_value
-	if (health_change != 0):
-		health_changed.emit(health, health_change)
-	return health_change
+	return health.increase_value(change)

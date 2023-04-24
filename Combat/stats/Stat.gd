@@ -89,5 +89,8 @@ enum {
 	HEALING_TAKEN,
 	
 	# Gives a chance to reflect spells
-	SPELL_REFLECT
+	SPELL_REFLECT,
+	
+	# Effects the Units Movementspeed
+	MOVEMENT_SPEED
 }

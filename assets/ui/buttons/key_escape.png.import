@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhgv0irle1oss"
-path="res://.godot/imported/key_escape.png-94e48d75dcfbd034c48a4434bbf0823b.ctex"
+path="res://.godot/imported/key_escape.png-22dfec6625c58cbbda396fec44f805fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ui/buttons/key_escape.png"
-dest_files=["res://.godot/imported/key_escape.png-94e48d75dcfbd034c48a4434bbf0823b.ctex"]
+source_file="res://assets/ui/buttons/key_escape.png"
+dest_files=["res://.godot/imported/key_escape.png-22dfec6625c58cbbda396fec44f805fd.ctex"]
 
 [params]
 

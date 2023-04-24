@@ -1,8 +1,8 @@
 extends PlayerState
 
 func update(_delta: float) -> void:
-	if (not Input.is_action_pressed("right") && not Input.is_action_pressed("left") &&
-		not Input.is_action_pressed("up") && not Input.is_action_pressed("down")):
+	update_animation()
+	if (InputControlls.get_directional_vector() == Vector2.ZERO):
 		state_machine.transition_to("Idle")
 	if (Input.is_action_just_pressed("Attack")):
 		state_machine.transition_to("Attack")
@@ -11,9 +11,6 @@ func update(_delta: float) -> void:
 		
 func enter(_data := {}) -> void:
 	player.movement_strategy = ControlledMovementStrategy.new(player)
-
-func physics_update(_delta: float) -> void:
-	update_animation()
 	
 func update_animation() -> void:
 	match (player.direction):

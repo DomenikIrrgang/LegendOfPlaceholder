@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bynepnt28k52g"]
 
-[ext_resource type="Texture2D" uid="uid://cg4pq1pgk3bmh" path="res://Assets/textures/sword.png" id="1_sopmw"]
+[ext_resource type="Texture2D" uid="uid://cg4pq1pgk3bmh" path="res://assets/textures/sword.png" id="1_sopmw"]
 [ext_resource type="Script" path="res://Weapons/BasicSword.gd" id="2_0u6lv"]
 [ext_resource type="Script" path="res://Weapons/SwordHitBox.gd" id="3_yvabn"]
 

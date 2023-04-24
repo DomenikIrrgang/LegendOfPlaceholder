@@ -30,7 +30,6 @@ func has_state(state_name: String) -> bool:
 func transition_to(target_state_name: String, data: Dictionary = {}) -> void:
 	assert(has_state(target_state_name), "State does not exist.")
 	if not current_state.can_transition_to_state(get_node(target_state_name)):
-		print("Tried to transition to ", target_state_name, " but failed.")
 		return
 	current_state.exit()
 	current_state = get_node(target_state_name)
