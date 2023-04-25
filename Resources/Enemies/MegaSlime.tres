@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://dp7afxuihduss"]
+
+[ext_resource type="Script" path="res://Resources/Enemies/EnemyData.gd" id="1_1ejyo"]
+
+[resource]
+script = ExtResource("1_1ejyo")
+mass = 500.0
+alias = "Megaslime"
+level = 5
+stats = Array[Resource("res://Resources/StatAssignment.gd")]([])

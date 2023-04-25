@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://j2cv1ftbmjnr"]
+[gd_scene load_steps=5 format=3 uid="uid://j2cv1ftbmjnr"]
 
 [ext_resource type="PackedScene" uid="uid://d2fptqxkfwipo" path="res://Enemy/Enemy.tscn" id="1_caj56"]
 [ext_resource type="Script" path="res://Enemy/MegaSlime.gd" id="2_rxbhk"]
+[ext_resource type="Script" path="res://Resources/Enemies/EnemyData.gd" id="3_36wyg"]
+
+[sub_resource type="Resource" id="Resource_g3xy8"]
+script = ExtResource("3_36wyg")
+mass = 0.0
+alias = "Test"
+level = 0
+stats = Array[Resource("res://Resources/StatAssignment.gd")]([])
 
 [node name="MegaSlime" instance=ExtResource("1_caj56")]
 position = Vector2(0, -13)
 script = ExtResource("2_rxbhk")
-alias = "Megaslime"
+unit_data = SubResource("Resource_g3xy8")
 
 [node name="Collision" parent="." index="0"]
 position = Vector2(0, 2)

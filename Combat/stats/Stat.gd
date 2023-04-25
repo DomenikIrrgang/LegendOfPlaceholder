@@ -1,5 +1,5 @@
 class_name Stat
-enum {
+enum Enum {
 	# Increases attackpower, dodge, critical effect, haste.
 	AGILITY,
 

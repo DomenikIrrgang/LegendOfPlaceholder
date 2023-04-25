@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=5 format=3 uid="uid://31rg15sio2vh"]
+
+[ext_resource type="Script" path="res://Resources/Player/PlayerData.gd" id="1_r31r4"]
+[ext_resource type="Resource" uid="uid://bepfeap53acv8" path="res://Resources/Classes/Warrior.tres" id="2_6r1x2"]
+[ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="2_vyk2h"]
+
+[sub_resource type="Resource" id="Resource_wtt6l"]
+script = ExtResource("2_vyk2h")
+stat = 3
+value = 5000
+
+[resource]
+script = ExtResource("1_r31r4")
+experience = 50000
+unit_class = ExtResource("2_6r1x2")
+alias = "Suu"
+level = 1
+stats = Array[ExtResource("2_vyk2h")]([SubResource("Resource_wtt6l")])

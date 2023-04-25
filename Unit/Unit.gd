@@ -2,7 +2,7 @@ class_name Unit
 extends CharacterBody2D
 
 @export
-var alias: String
+var unit_data: UnitData
 
 @onready
 var model: Sprite2D = $Model
@@ -14,6 +14,7 @@ var model_animation: AnimationPlayer = $ModelAnimation
 var hurt_box: HurtBox2D = $HurtBox2D
 
 # Base Stats
+var alias: String
 var level: int = 1
 var max_level: int = 60
 var base_movement_speed: float = 30.0
@@ -47,7 +48,11 @@ var direction: int = Direction.DOWN
 signal direction_changed(direction: int)
 
 func _ready() -> void:
+	alias = unit_data.alias
+	level = unit_data.level
 	base_stats = BaseStats.new(level)
+	for stat_assignment in unit_data.stats:
+		base_stats.increase_stat(stat_assignment.stat, stat_assignment.value)
 	set_stats(base_stats)
 	stat_calculator = StatCalculator.new(self)
 	health = Health.new(stat_calculator)
@@ -92,7 +97,7 @@ func on_stat_changed(stat: int, new_value: int) -> void:
 	stat_changed.emit(stat, new_value)
 
 func get_movement_speed() -> float:
-	return stats.get_stat(Stat.MOVEMENT_SPEED) + base_movement_speed
+	return stats.get_stat(Stat.Enum.MOVEMENT_SPEED) + base_movement_speed
 	
 func update_direction() -> void:
 	var original_direction = direction

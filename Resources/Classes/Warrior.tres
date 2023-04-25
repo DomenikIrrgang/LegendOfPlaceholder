@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="UnitClass" load_steps=7 format=3 uid="uid://bepfeap53acv8"]
+
+[ext_resource type="Script" path="res://Resources/Classes/UnitClass.gd" id="1_7sssr"]
+[ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="2_80xmr"]
+
+[sub_resource type="Resource" id="Resource_6whap"]
+script = ExtResource("2_80xmr")
+stat = 4
+value = 20
+
+[sub_resource type="Resource" id="Resource_607rp"]
+script = ExtResource("2_80xmr")
+stat = 0
+value = 10
+
+[sub_resource type="Resource" id="Resource_e5lf3"]
+script = ExtResource("2_80xmr")
+stat = 32
+value = 10
+
+[sub_resource type="Resource" id="Resource_3imew"]
+script = ExtResource("2_80xmr")
+stat = 2
+value = 10
+
+[resource]
+script = ExtResource("1_7sssr")
+name = "Warrior"
+stats = Array[ExtResource("2_80xmr")]([SubResource("Resource_6whap"), SubResource("Resource_607rp"), SubResource("Resource_e5lf3"), SubResource("Resource_3imew")])

@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://cwlfjeoq2pkvi"]
+[gd_scene load_steps=19 format=3 uid="uid://cwlfjeoq2pkvi"]
 
 [ext_resource type="Script" path="res://Unit/Unit.gd" id="1_x5av6"]
 [ext_resource type="Animation" uid="uid://ctiau02k5u1v4" path="res://Unit/Animations/Right.res" id="2_7aa67"]
 [ext_resource type="Texture2D" uid="uid://b8uqgr8axuptj" path="res://Assets/textures/slime.png" id="2_gmb67"]
+[ext_resource type="Resource" uid="uid://dp7afxuihduss" path="res://Resources/Enemies/MegaSlime.tres" id="2_iv5ls"]
 [ext_resource type="Animation" uid="uid://clhe6l4ubufhk" path="res://Unit/Animations/Down.res" id="3_3macp"]
 [ext_resource type="Animation" uid="uid://cs2st5c2f0v2i" path="res://Unit/Animations/Left.res" id="4_bbtnd"]
 [ext_resource type="Animation" uid="uid://wsvb57gm2wpm" path="res://Unit/Animations/Up.res" id="5_bd2r7"]
@@ -38,6 +39,7 @@ size = Vector2(14, 8)
 [node name="Unit" type="CharacterBody2D"]
 position = Vector2(0, -8)
 script = ExtResource("1_x5av6")
+unit_data = ExtResource("2_iv5ls")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)

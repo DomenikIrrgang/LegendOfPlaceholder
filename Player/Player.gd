@@ -21,6 +21,8 @@ signal experience_changed(change: int)
 func _ready() -> void:
 	super()
 	init_weapon()
+	experience = unit_data.experience
+	gain_experience(experience)
 	base_movement_speed = 50.0
 	pass
 	

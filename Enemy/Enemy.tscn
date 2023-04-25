@@ -6,7 +6,6 @@
 
 [node name="Enemy" instance=ExtResource("1_216fp")]
 script = ExtResource("2_rhr6a")
-alias = "Slime"
 
 [node name="Collision" parent="." index="0"]
 position = Vector2(0, 4)
