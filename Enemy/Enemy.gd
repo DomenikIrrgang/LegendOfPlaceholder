@@ -7,7 +7,6 @@ var health_bar: UnitHpBar = $UnitHpBar
 
 func _ready() -> void:
 	super()
-	mass = unit_data.mass
 	health_bar.initialize(self)
 	health.resource_value_changed.connect(check_dead)
 	

@@ -14,11 +14,7 @@ var model_animation: AnimationPlayer = $ModelAnimation
 var hurt_box: HurtBox2D = $HurtBox2D
 
 # Base Stats
-var alias: String
-var level: int = 1
 var max_level: int = 60
-var base_movement_speed: float = 30.0
-var mass: float = 50.0
 
 var stat_calculator: StatCalculator
 var base_stats: StatSet
@@ -48,19 +44,15 @@ var direction: int = Direction.DOWN
 signal direction_changed(direction: int)
 
 func _ready() -> void:
-	alias = unit_data.alias
-	level = unit_data.level
-	base_stats = BaseStats.new(level)
+	base_stats = BaseStats.new(unit_data.level)
 	for stat_assignment in unit_data.stats:
 		base_stats.increase_stat(stat_assignment.stat, stat_assignment.value)
 	set_stats(base_stats)
 	stat_calculator = StatCalculator.new(self)
 	health = Health.new(stat_calculator)
-	#movement_strategy = FollowMovementStrategy.new(self, get_node("../Player"))
 	movement_strategy = UnitMovementStrategy.new(self)
 	model_animation.play("Down")
 	hurt_box.got_hurt.connect(on_hurt)
-	
 
 func _process(_delta: float) -> void:
 	movement_velocity = movement_strategy.calculateMovementVelocity()
@@ -75,15 +67,15 @@ func on_hurt(source: Unit, ability: Ability) -> void:
 	
 func set_level(_level: int) -> void:
 	if _level <= max_level:
-		level = _level
+		unit_data.level = _level
 	else:
 		if _level < 1:
-			level = 1
+			unit_data.level = 1
 		else:
-			level = max_level
-	set_stats(stats.subtract_stat_set(base_stats).add_stat_set(BaseStats.new(level)))
-	base_stats = BaseStats.new(level)
-	level_changed.emit(level)
+			unit_data.level = max_level
+	set_stats(stats.subtract_stat_set(base_stats).add_stat_set(BaseStats.new(unit_data.level)))
+	base_stats = BaseStats.new(unit_data.level)
+	level_changed.emit(unit_data.level)
 	
 func set_stats(_stat_set: StatSet) -> void:
 	if stats:
@@ -97,7 +89,7 @@ func on_stat_changed(stat: int, new_value: int) -> void:
 	stat_changed.emit(stat, new_value)
 
 func get_movement_speed() -> float:
-	return stats.get_stat(Stat.Enum.MOVEMENT_SPEED) + base_movement_speed
+	return stats.get_stat(Stat.Enum.MOVEMENT_SPEED) + get_base_movement_speed()
 	
 func update_direction() -> void:
 	var original_direction = direction
@@ -118,10 +110,23 @@ func set_animation(animation_name: String) -> void:
 	model_animation.play(animation_name)
 	
 func apply_pushback(pushback_direction: Vector2, pushback_strength: float, pushback_duration: float) -> void:
-	var tween = create_tween()
-	pushback_velocity = pushback_direction.normalized() * (pushback_strength * 700) * (100.0 / mass)
-	tween.tween_property(self, "pushback_velocity", Vector2(0, 0), pushback_duration).set_ease(Tween.EASE_IN)
-	tween.play()
+	if unit_data.knockbackable:
+		var tween = create_tween()
+		pushback_velocity = pushback_direction.normalized() * (pushback_strength * 700) * (100.0 / unit_data.mass)
+		tween.tween_property(self, "pushback_velocity", Vector2(0, 0), pushback_duration).set_ease(Tween.EASE_IN)
+		tween.play()
 	
 func change_health(change: int) -> int:
 	return health.increase_value(change)
+	
+func get_alias() -> String:
+	return unit_data.alias
+	
+func get_level() -> int:
+	return unit_data.level
+	
+func get_mass() -> float:
+	return unit_data.mass
+	
+func get_base_movement_speed() -> float:
+	return unit_data.base_movement_speed

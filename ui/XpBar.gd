@@ -27,7 +27,7 @@ func level_changed(_level: int) -> void:
 	update_bar()	
 	
 func update_bar() -> void:
-	if player.level < player.max_level:
+	if player.get_level() < player.max_level:
 		current_experience_label.text = str(player.current_experience())
 		experience_needed_label.text = "/" + str(player.experience_needed_for_next_level())
 		if tween:

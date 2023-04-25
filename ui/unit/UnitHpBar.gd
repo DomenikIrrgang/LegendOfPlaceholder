@@ -13,7 +13,7 @@ func initialize(unit: Unit):
 	unit.health.resource_maximum_value_changed.connect(max_health_changed)
 	progress_bar.max_value = unit.health.get_maximum_value()
 	progress_bar.value = unit.health.get_value()
-	name_label.text = unit.alias
+	name_label.text = unit.get_alias()
 	
 func health_changed(new_value: int, change: int) -> void:
 	update_progress_bar(new_value, change)

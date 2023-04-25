@@ -14,16 +14,15 @@ var dash_charge_regeneration_rate: float = 0.4
 signal dash_charges_changed(dash_charges: float, dash_charge_change: float)
 
 # Experience
-var experience: int = 0
-
 signal experience_changed(change: int)
+
+func _init() -> void:
+	unit_data = GameResources.player_data
 
 func _ready() -> void:
 	super()
 	init_weapon()
-	experience = unit_data.experience
-	gain_experience(experience)
-	base_movement_speed = 50.0
+	gain_experience(unit_data.experience)
 	pass
 	
 func _process(delta: float) -> void:
@@ -46,17 +45,17 @@ func change_dash_charges(change: float) -> float:
 	return dash_charges_change
 	
 func gain_experience(amount: int) -> void:
-	if (level < max_level):
-		experience += amount
+	if (get_level() < max_level):
+		unit_data.experience += amount
 		while (experience_needed_for_next_level() - current_experience() <= 0):
-			set_level(level + 1)
+			set_level(get_level() + 1)
 		experience_changed.emit(amount)
 	
 func current_experience() -> int:
-	return experience - experience_needed_for_level(level - 1)
+	return unit_data.experience - experience_needed_for_level(get_level() - 1)
 	
 func experience_needed_for_next_level() -> int:
-	return experience_needed_for_level(level) - experience_needed_for_level(level - 1)
+	return experience_needed_for_level(get_level()) - experience_needed_for_level(get_level() - 1)
 	
 func experience_needed_for_level(_level: int) -> int:
 	return _level * _level * 100

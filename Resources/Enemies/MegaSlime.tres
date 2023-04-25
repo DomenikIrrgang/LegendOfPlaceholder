@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_1ejyo")
-mass = 500.0
 alias = "Megaslime"
 level = 5
 stats = Array[Resource("res://Resources/StatAssignment.gd")]([])
+mass = 200.0
+knockbackable = false

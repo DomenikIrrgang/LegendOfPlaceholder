@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://darf8wynyc0xs"]
+
+[ext_resource type="PackedScene" uid="uid://d2fptqxkfwipo" path="res://Enemy/Enemy.tscn" id="1_14pbx"]
+[ext_resource type="Resource" uid="uid://djsprq100uefx" path="res://Resources/Enemies/Slime.tres" id="2_8vajf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ffdo"]
+size = Vector2(10, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1crxu"]
+size = Vector2(13.5, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlujc"]
+size = Vector2(14, 8)
+
+[node name="Slime" instance=ExtResource("1_14pbx")]
+unit_data = ExtResource("2_8vajf")
+
+[node name="Collision" parent="." index="0"]
+shape = SubResource("RectangleShape2D_1ffdo")
+
+[node name="HurtBoxShape" parent="HurtBox2D" index="0"]
+shape = SubResource("RectangleShape2D_1crxu")
+
+[node name="HitBox" parent="HitBox2D" index="0"]
+shape = SubResource("RectangleShape2D_vlujc")

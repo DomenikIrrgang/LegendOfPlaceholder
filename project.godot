@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 InputControlls="*res://Input/InputControlls.gd"
+GameResources="*res://Resources/GameResources.gd"
 
 [display]
 
