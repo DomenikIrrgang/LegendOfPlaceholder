@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://darf8wynyc0xs"]
+[gd_scene load_steps=7 format=3 uid="uid://darf8wynyc0xs"]
 
 [ext_resource type="PackedScene" uid="uid://d2fptqxkfwipo" path="res://Enemy/Enemy.tscn" id="1_14pbx"]
-[ext_resource type="Resource" uid="uid://djsprq100uefx" path="res://Resources/Enemies/Slime.tres" id="2_8vajf"]
+[ext_resource type="Script" path="res://Enemy/Slime.gd" id="2_1hrf6"]
+[ext_resource type="Resource" uid="uid://djsprq100uefx" path="res://Resources/Enemies/Slime.tres" id="3_pevri"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ffdo"]
 size = Vector2(10, 4)
@@ -14,7 +15,8 @@ size = Vector2(14, 8)
 
 [node name="Slime" instance=ExtResource("1_14pbx")]
 safe_margin = 0.01
-unit_data = ExtResource("2_8vajf")
+script = ExtResource("2_1hrf6")
+unit_data = ExtResource("3_pevri")
 
 [node name="Collision" parent="." index="0"]
 z_index = 1000

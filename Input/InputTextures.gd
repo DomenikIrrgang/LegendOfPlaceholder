@@ -1,7 +1,7 @@
 class_name InputTextures
 extends Node
 
-const BASE_PATH = "res://assets/ui/buttons/"
+const BASE_PATH = "res://Assets/ui/buttons/"
 
 const KEY_ESCAPE = BASE_PATH + "key_escape.png"
 const KEY_SPACE = BASE_PATH + "key_space.png"

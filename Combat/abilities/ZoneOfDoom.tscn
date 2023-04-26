@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvw6oa24rueq0"]
+
+[ext_resource type="Script" path="res://Combat/abilities/ZoneOfDoom.gd" id="1_tmdbj"]
+[ext_resource type="Script" path="res://Combat/abilities/ZoneOfDoomHitBox.gd" id="2_kto1g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pi4go"]
+
+[node name="ZoneOfDoom" type="Node2D"]
+script = ExtResource("1_tmdbj")
+alias = "Zone of Doom"
+tooltip = "Places a Zone that does damage."
+value = 5
+scaling_factor = 0.01
+spell_school = 10
+target_type = 1
+resource_type = 5
+resistable = true
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_kto1g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_pi4go")
+
+[node name="ColorRect" type="ColorRect" parent="HitBox/CollisionShape2D"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0, 0.752941, 0.247059, 1)
