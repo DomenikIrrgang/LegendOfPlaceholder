@@ -6,7 +6,7 @@ var initial_speed_increase: float = 5
 var tween: Tween
 
 func enter(_data := {}) -> void:
-	player.change_dash_charges(-1.0)
+	player.dash.reduce_charges(1)
 	tween = create_tween()
 	tween.finished.connect(self.dash_finished)
 	var original_velocity = player.movement_velocity

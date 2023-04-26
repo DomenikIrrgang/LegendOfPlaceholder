@@ -75,6 +75,7 @@ enum Enum {
 	RAGE,
 	ENERGY,
 	MANA,
+	DASH_CHARGE,
 
 	# Reduces costs of abilities.
 	RESOURCE_COST_MANA,

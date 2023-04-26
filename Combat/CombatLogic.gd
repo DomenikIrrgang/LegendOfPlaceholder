@@ -1,10 +1,7 @@
-class_name CombatLogic
+extends Node
 
-var calculator: CombatCalculator
+var calculator: CombatCalculator = CombatCalculator.new()
 
-func _init(_calculator: CombatCalculator = CombatCalculator.new()):
-	calculator = _calculator
-		
 func cast_ability(ability: Ability, source: Unit, target: Unit):
 	var results = []
 	results.append(CombatResult.new(CombatResultType.Enum.ABILITY_CAST_START, [ AbilityCastStart.new(source, target, ability) ]))
@@ -27,7 +24,7 @@ func cast_ability(ability: Ability, source: Unit, target: Unit):
 					result.value = round(result.ability_value - result.resist_amount)
 				ability_results.append(result)
 				resource_results.append(reduce_resource(result.target, ResourceType.Enum.HEALTH, result.value))
-				ability.execute(self, result.source, result.target)
+				ability.execute(result.source, result.target)
 			else:
 				ability_results.append(result)
 			results.append(CombatResult.new(CombatResultType.Enum.ABILITY_CAST_RESULT, [ AbilityCastResult.new(ability, ability_results) ]))

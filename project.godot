@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 InputControlls="*res://Input/InputControlls.gd"
 GameResources="*res://Resources/GameResources.gd"
+CombatLogic="*res://Combat/CombatLogic.gd"
+
+[debug]
+
+gdscript/warnings/narrowing_conversion=0
+gdscript/warnings/integer_division=0
 
 [display]
 

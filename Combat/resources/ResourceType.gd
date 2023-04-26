@@ -3,5 +3,6 @@ enum Enum {
 	MANA,
 	RAGE,
 	ENERGY,
-	HEALTH
+	HEALTH,
+	DASH_CHARGE
 }

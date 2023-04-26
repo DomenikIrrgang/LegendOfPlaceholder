@@ -12,6 +12,9 @@ signal resource_maximum_value_changed(new_maximum_value: int)
 func _init(_stat_calculator: StatCalculator) -> void:
 	stat_calculator = _stat_calculator
 	stat_calculator.get_unit().stat_changed.connect(on_stat_changed)
+	
+func update(_delta: float) -> void:
+	pass
 
 func set_value(new_value: int) -> int:
 	var old_value = value

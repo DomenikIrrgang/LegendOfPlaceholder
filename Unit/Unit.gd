@@ -63,7 +63,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func on_hurt(source: Unit, ability: Ability) -> void:
-	ability.execute(source, self)
+	CombatLogic.cast_ability(ability, source, self)
 	
 func set_level(_level: int) -> void:
 	if _level <= max_level:
@@ -127,6 +127,9 @@ func get_level() -> int:
 	
 func get_mass() -> float:
 	return unit_data.mass
+	
+func get_stats() -> StatSet:
+	return stats
 	
 func get_base_movement_speed() -> float:
 	return unit_data.base_movement_speed

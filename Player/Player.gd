@@ -7,11 +7,7 @@ var weapon_path: String
 var weapon: Weapon
 
 # Dash
-var dash_charges: float = 0.0
-var max_dash_charges: int = 3
-var dash_charge_regeneration_rate: float = 0.4
-
-signal dash_charges_changed(dash_charges: float, dash_charge_change: float)
+var dash: DashCharge
 
 # Experience
 signal experience_changed(change: int)
@@ -21,29 +17,15 @@ func _init() -> void:
 
 func _ready() -> void:
 	super()
+	dash = DashCharge.new(stat_calculator)
 	init_weapon()
 	gain_experience(unit_data.experience)
 	pass
 	
 func _process(delta: float) -> void:
 	super(delta)
-	update_dash_charges(delta)
-	
-func update_dash_charges(delta: float) -> void:
-	change_dash_charges(delta * dash_charge_regeneration_rate)
-	
-func change_dash_charges(change: float) -> float:
-	var old_value = dash_charges
-	dash_charges = dash_charges + change
-	if (dash_charges < 0):
-		dash_charges = 0
-	if (dash_charges > max_dash_charges):
-		dash_charges = max_dash_charges
-	var dash_charges_change = dash_charges - old_value
-	if (dash_charges_change != 0):
-		dash_charges_changed.emit(dash_charges, dash_charges_change)
-	return dash_charges_change
-	
+	dash.update(delta)
+
 func gain_experience(amount: int) -> void:
 	if (get_level() < max_level):
 		unit_data.experience += amount
