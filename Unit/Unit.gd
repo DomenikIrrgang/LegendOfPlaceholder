@@ -49,7 +49,7 @@ var direction: int = Direction.DOWN
 signal direction_changed(direction: int)
 
 signal took_damage(value: int)
-signal died()
+signal died(unit: Unit)
 
 func _ready() -> void:
 	base_stats = BaseStats.new(unit_data.level)
@@ -87,7 +87,7 @@ func increase_resource_value(resource_type: ResourceType.Enum, value: int) -> in
 	if has_resource(resource_type):
 		var change = get_resource(resource_type).increase_value(value)
 		if is_dead():
-			died.emit()
+			died.emit(self)
 		return change
 	return 0
 

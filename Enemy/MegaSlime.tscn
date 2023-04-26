@@ -7,7 +7,7 @@
 size = Vector2(38, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_liqmg"]
-size = Vector2(45, 17)
+size = Vector2(45, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vm8t"]
 size = Vector2(42, 16)
@@ -27,7 +27,7 @@ position = Vector2(0, -11)
 scale = Vector2(3, 3)
 
 [node name="HurtBoxShape" parent="HurtBox2D" index="0"]
-position = Vector2(0.5, 2.5)
+position = Vector2(0.5, 3.5)
 shape = SubResource("RectangleShape2D_liqmg")
 
 [node name="HitBox" parent="HitBox2D" index="0"]

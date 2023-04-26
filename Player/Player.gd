@@ -14,17 +14,18 @@ signal experience_changed(change: int)
 
 func _init() -> void:
 	unit_data = GameResources.player_data
+	unit_data.experience = 0
+	unit_data.level = 1
 	level_changed.connect(on_level_change)
 
 func _ready() -> void:
 	super()
 	dash = DashCharge.new(stat_calculator)
 	init_weapon()
-	gain_experience(unit_data.experience)
 	died.connect(on_player_died)
 	pass
 	
-func on_player_died() -> void:
+func on_player_died(player: Unit) -> void:
 	print("died reloading game")
 	get_tree().reload_current_scene()
 	
