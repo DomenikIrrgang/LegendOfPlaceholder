@@ -1,11 +1,24 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://dp7afxuihduss"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=5 format=3 uid="uid://dp7afxuihduss"]
 
 [ext_resource type="Script" path="res://Resources/Enemies/EnemyData.gd" id="1_1ejyo"]
+[ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="2_2fuk2"]
+
+[sub_resource type="Resource" id="Resource_4bl6u"]
+script = ExtResource("2_2fuk2")
+stat = 15
+value = 200
+
+[sub_resource type="Resource" id="Resource_70vve"]
+script = ExtResource("2_2fuk2")
+stat = 3
+value = 500
 
 [resource]
 script = ExtResource("1_1ejyo")
+experience = 30000
 alias = "Megaslime"
 level = 5
-stats = Array[Resource("res://Resources/StatAssignment.gd")]([])
+base_movement_speed = 15.0
 mass = 200.0
 knockbackable = false
+stats = Array[ExtResource("2_2fuk2")]([SubResource("Resource_4bl6u"), SubResource("Resource_70vve")])

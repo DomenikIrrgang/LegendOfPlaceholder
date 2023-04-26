@@ -4,6 +4,7 @@ extends UnitResource
 func _init(_stat_calculator: StatCalculator) -> void:
 	super(_stat_calculator)
 	set_maximum_value(100)
+	set_value(get_maximum_value())
 	
 func get_maximum_value() -> int:
 	return super.get_maximum_value() + stat_calculator.get_health()

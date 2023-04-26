@@ -38,6 +38,12 @@ size = Vector2(14, 8)
 
 [node name="Unit" type="CharacterBody2D"]
 position = Vector2(0, -8)
+slide_on_ceiling = false
+floor_stop_on_slope = false
+floor_block_on_wall = false
+platform_on_leave = 2
+platform_floor_layers = 4294901760
+safe_margin = 0.04
 script = ExtResource("1_x5av6")
 unit_data = ExtResource("2_iv5ls")
 

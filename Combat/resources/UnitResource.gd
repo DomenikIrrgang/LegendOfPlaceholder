@@ -53,6 +53,9 @@ func increase_maximum_value(change: int) -> int:
 	
 func decrease_maximum_value(change: int) -> int:
 	return increase_maximum_value(-change)
+	
+func get_percentage() -> float:
+	return float(get_value()) / get_maximum_value()
 
 func reset() -> void:
 	set_value(get_maximum_value())

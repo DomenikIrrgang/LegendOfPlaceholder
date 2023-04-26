@@ -13,10 +13,11 @@ var max_health_label: Label = $MaxHealth
 var animation_speed: float = 0.1
 
 func initialize(player: Player) -> void:
-	player.health.resource_value_changed.connect(health_changed)
-	player.health.resource_maximum_value_changed.connect(max_health_changed)
-	health_bar.max_value = player.health.get_maximum_value()
-	health_bar.value = player.health.get_value()
+	var health = player.get_resource(ResourceType.Enum.HEALTH)
+	health.resource_value_changed.connect(health_changed)
+	health.resource_maximum_value_changed.connect(max_health_changed)
+	health_bar.max_value = health.get_maximum_value()
+	health_bar.value = health.get_value()
 	current_health_label.text = str(health_bar.value)
 	max_health_label.text = "/" + str(health_bar.max_value)
 	

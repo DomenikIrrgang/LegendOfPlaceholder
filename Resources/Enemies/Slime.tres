@@ -4,7 +4,10 @@
 
 [resource]
 script = ExtResource("1_ov5lo")
+experience = 50
 alias = "Slime"
 level = 1
-stats = Array[Resource("res://Resources/StatAssignment.gd")]([])
+base_movement_speed = 30.0
 mass = 50.0
+knockbackable = true
+stats = Array[Resource("res://Resources/StatAssignment.gd")]([])

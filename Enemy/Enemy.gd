@@ -8,8 +8,9 @@ var health_bar: UnitHpBar = $UnitHpBar
 func _ready() -> void:
 	super()
 	health_bar.initialize(self)
-	health.resource_value_changed.connect(check_dead)
+	movement_strategy = FollowMovementStrategy.new(self, get_node("../Player"))
+	died.connect(on_died)
 	
-func check_dead(value: int, change: int) -> void:
-	if health.get_value() == 0:
-		queue_free()
+func on_died() -> void:
+	get_node("../Player").gain_experience(unit_data.experience)
+	queue_free()

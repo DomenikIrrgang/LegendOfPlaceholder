@@ -12,6 +12,12 @@ var cooldown: float
 var remaining_cooldown: float
 
 @export
+var value: int
+
+@export
+var scaling_factor: float
+
+@export
 var spell_school: SpellSchool.Enum
 
 @export
@@ -114,10 +120,10 @@ func execute(_source: Unit, _target: Unit) -> void:
 	pass
 	
 func get_value(_source: Unit, _target: Unit) -> int:
-	return 0
+	return value
 	
 func get_scaling_factor(_source: Unit, _target: Unit) -> float:
-	return 0.0
+	return scaling_factor
 
 func get_animation() -> void:
 	pass

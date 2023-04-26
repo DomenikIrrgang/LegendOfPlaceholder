@@ -40,13 +40,13 @@ func get_button_texture(action_name: String) -> String:
 	var input_events: Array[InputEvent] = InputMap.action_get_events(action_name)
 	for input_event in input_events:
 		if has_controller() and input_event is InputEventJoypadButton or input_event is InputEventJoypadMotion:
-			if "XInput" in Input.get_joy_name(device_id):
+			if has_controller():
 				return XBOX_BUTTON_TEXTURE[input_event.button_index]
 		if !has_controller() and input_event is InputEventKey:
 			return KEY_TEXTURE[input_event.physical_keycode]
 		if !has_controller() and input_event is InputEventMouse:
 			return MOUSE_TEXTURE[input_event.button_index]
-	return KEY_TEXTURE[action_name]
+	return InputTextures.KEY_ESCAPE
 	
 func get_directional_vector() -> Vector2:
 	return Vector2(

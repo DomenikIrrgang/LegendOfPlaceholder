@@ -9,10 +9,11 @@ var animation_speed = 0.2
 var name_label: Label = $Name
 
 func initialize(unit: Unit):
-	unit.health.resource_value_changed.connect(health_changed)
-	unit.health.resource_maximum_value_changed.connect(max_health_changed)
-	progress_bar.max_value = unit.health.get_maximum_value()
-	progress_bar.value = unit.health.get_value()
+	var health: Health = unit.get_resource(ResourceType.Enum.HEALTH)
+	health.resource_value_changed.connect(health_changed)
+	health.resource_maximum_value_changed.connect(max_health_changed)
+	progress_bar.max_value = health.get_maximum_value()
+	progress_bar.value = health.get_value()
 	name_label.text = unit.get_alias()
 	
 func health_changed(new_value: int, change: int) -> void:

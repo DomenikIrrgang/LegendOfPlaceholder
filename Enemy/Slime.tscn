@@ -13,13 +13,21 @@ size = Vector2(13.5, 8)
 size = Vector2(14, 8)
 
 [node name="Slime" instance=ExtResource("1_14pbx")]
+safe_margin = 0.01
 unit_data = ExtResource("2_8vajf")
 
 [node name="Collision" parent="." index="0"]
+z_index = 1000
 shape = SubResource("RectangleShape2D_1ffdo")
+
+[node name="HurtBox2D" parent="." index="3"]
+visible = false
 
 [node name="HurtBoxShape" parent="HurtBox2D" index="0"]
 shape = SubResource("RectangleShape2D_1crxu")
+
+[node name="HitBox2D" parent="." index="4"]
+visible = false
 
 [node name="HitBox" parent="HitBox2D" index="0"]
 shape = SubResource("RectangleShape2D_vlujc")

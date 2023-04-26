@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://bt478kfwk2qsl"]
+
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="1_3oncc"]
+[ext_resource type="Script" path="res://Ui/unit/DamageNumber.gd" id="1_4uphf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yqk6p"]
+font = ExtResource("1_3oncc")
+font_size = 6
+
+[sub_resource type="Animation" id="Animation_a3n6p"]
+resource_name = "float_up"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Number:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-53, 2.08165e-12), Vector2(-53, -20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Number:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vk4et"]
+_data = {
+"float_up": SubResource("Animation_a3n6p")
+}
+
+[node name="DamageNumber" type="Node2D"]
+z_index = 1000
+script = ExtResource("1_4uphf")
+
+[node name="Number" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -53.0
+offset_right = 53.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_yqk6p")
+horizontal_alignment = 1
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vk4et")
+}

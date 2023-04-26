@@ -4,5 +4,6 @@ enum Enum {
 	RAGE,
 	ENERGY,
 	HEALTH,
-	DASH_CHARGE
+	DASH_CHARGE,
+	FREE
 }

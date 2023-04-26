@@ -39,14 +39,14 @@ func get_critical_chance() -> float:
 func get_critical_effect() -> float:
 	return (unit.stats.get_stat(Stat.Enum.CRITICAL_EFFECT) + unit.stats.get_stat(Stat.Enum.AGILITY) * 0.25) / 20.0
 	
-func get_spell_power(spell_school) -> int:
-	return unit.stats.get_stat(Stat.Enum.SPELL_POWER) + unit.stats.get_stat(spell_school[0]) + unit.stats.get_stat(Stat.Enum.INTELLECT)
+func get_spell_power(spell_school: SpellSchool.Enum) -> int:
+	return unit.stats.get_stat(Stat.Enum.SPELL_POWER) + unit.stats.get_stat(SpellSchool.SPELLPOWER[spell_school]) + unit.stats.get_stat(Stat.Enum.INTELLECT)
 	
 func get_attack_power() -> int:
 	return unit.stats.get_stat(Stat.Enum.ATTACK_POWER) + unit.stats.get_stat(Stat.Enum.AGILITY)
 	
 func get_resistance(spell_school) -> float:
-	return unit.stats.get_stat(spell_school[1]) + unit.stats.get_stat(Stat.Enum.STAMINA)
+	return unit.stats.get_stat(SpellSchool.RESISTANCE[spell_school]) + unit.stats.get_stat(Stat.Enum.STAMINA)
 	
 func get_expertise() -> float:
 	return unit.stats.get_stat(Stat.Enum.EXPERTISE) / 20.0

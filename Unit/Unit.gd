@@ -1,6 +1,8 @@
 class_name Unit
 extends CharacterBody2D
 
+var DamageNumber = preload("res://Ui/unit/DamageNumber.tscn")
+
 @export
 var unit_data: UnitData
 
@@ -25,11 +27,14 @@ signal level_changed(level: int)
 
 # Movement
 var pushback_velocity: Vector2 = Vector2(0, 0)
+var last_pushback: float = 0.0
+var pushback_cooldown: float = 0.3
+
 var movement_velocity: Vector2 = Vector2(0, 0)
 var movement_strategy: UnitMovementStrategy = UnitMovementStrategy.new(self)
 
-# Health
-var health: Health
+# Resources
+var resources: Array[UnitResource]
 
 # Direction
 enum Direction {
@@ -43,16 +48,48 @@ var direction: int = Direction.DOWN
 
 signal direction_changed(direction: int)
 
+signal took_damage(value: int)
+signal died()
+
 func _ready() -> void:
 	base_stats = BaseStats.new(unit_data.level)
 	for stat_assignment in unit_data.stats:
 		base_stats.increase_stat(stat_assignment.stat, stat_assignment.value)
 	set_stats(base_stats)
 	stat_calculator = StatCalculator.new(self)
-	health = Health.new(stat_calculator)
+	resources.resize(ResourceType.Enum.size())
+	resources[ResourceType.Enum.HEALTH] = Health.new(stat_calculator)
 	movement_strategy = UnitMovementStrategy.new(self)
 	model_animation.play("Down")
 	hurt_box.got_hurt.connect(on_hurt)
+	took_damage.connect(on_took_damage)
+	
+func on_took_damage(value: int) -> void:
+	var damage_number = DamageNumber.instantiate()
+	add_child(damage_number)
+	damage_number.show_number(value)
+	
+func is_dead() -> bool:
+	return get_resource(ResourceType.Enum.HEALTH).get_value() == 0
+	
+func get_resource(resource_type: ResourceType.Enum) -> UnitResource:
+	return resources[resource_type]
+	
+func has_resource(resource_type: ResourceType.Enum) -> bool:
+	return resources[resource_type] != null
+	
+func has_resource_amount(resource_type: ResourceType.Enum, amount: int) -> bool:
+	return amount <= 0 or (has_resource(resource_type) and get_resource(resource_type).get_value() >= amount)
+	
+func increase_resource_value(resource_type: ResourceType.Enum, value: int) -> int:
+	if (resource_type == ResourceType.Enum.HEALTH):
+		took_damage.emit(value)
+	if has_resource(resource_type):
+		var change = get_resource(resource_type).increase_value(value)
+		if is_dead():
+			died.emit()
+		return change
+	return 0
 
 func _process(_delta: float) -> void:
 	movement_velocity = movement_strategy.calculateMovementVelocity()
@@ -64,7 +101,7 @@ func _physics_process(delta: float) -> void:
 	
 func on_hurt(source: Unit, ability: Ability) -> void:
 	CombatLogic.cast_ability(ability, source, self)
-	
+		
 func set_level(_level: int) -> void:
 	if _level <= max_level:
 		unit_data.level = _level
@@ -110,14 +147,12 @@ func set_animation(animation_name: String) -> void:
 	model_animation.play(animation_name)
 	
 func apply_pushback(pushback_direction: Vector2, pushback_strength: float, pushback_duration: float) -> void:
-	if unit_data.knockbackable:
+	if unit_data.knockbackable and Time.get_unix_time_from_system() - last_pushback > pushback_cooldown:
 		var tween = create_tween()
+		last_pushback = Time.get_unix_time_from_system()
 		pushback_velocity = pushback_direction.normalized() * (pushback_strength * 700) * (100.0 / unit_data.mass)
 		tween.tween_property(self, "pushback_velocity", Vector2(0, 0), pushback_duration).set_ease(Tween.EASE_IN)
 		tween.play()
-	
-func change_health(change: int) -> int:
-	return health.increase_value(change)
 	
 func get_alias() -> String:
 	return unit_data.alias

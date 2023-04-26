@@ -6,6 +6,8 @@
 script = ExtResource("1_uwywo")
 alias = "Attack"
 tooltip = "Physical attack against the target."
+value = 10
+scaling_factor = 0.5
 resource_type = 1
 crittable = true
 critical_chance = 10.0
