@@ -8,18 +8,14 @@ var player: Player
 var dashmeter: DashMeter = $DashMeter
 
 @onready
-var unit_frame_player: UnitFramePlayer = $UnitFramePlayer
+var main_hud: MainHUD = $MainHUD
 
 @onready
 var system_message: SystemMessage = $SystemMessage
 
-@onready
-var experience_bar: ExperienceBar = $ExperienceBar
-
 func _ready() -> void:
 	dashmeter.initialize(player)
-	unit_frame_player.initialize(player)
+	main_hud.initialize(player)
 	system_message.initialize(player)
-	experience_bar.initialize(player)
 	
 	

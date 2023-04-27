@@ -1,14 +1,5 @@
-class_name UnitFramePlayer
-extends Control
-
-@onready
-var health_bar: TextureProgressBar = $HealthBar
-
-@onready
-var current_health_label: Label = $CurrentHealth
-
-@onready
-var max_health_label: Label = $MaxHealth
+class_name HealthBar
+extends TextureProgressBar
 
 var animation_speed: float = 0.1
 
@@ -16,22 +7,16 @@ func initialize(player: Player) -> void:
 	var health = player.get_resource(ResourceType.Enum.HEALTH)
 	health.resource_value_changed.connect(health_changed)
 	health.resource_maximum_value_changed.connect(max_health_changed)
-	health_bar.max_value = health.get_maximum_value()
-	health_bar.value = health.get_value()
-	current_health_label.text = str(health_bar.value)
-	max_health_label.text = "/" + str(health_bar.max_value)
-	
-func _process(_delta: float) -> void:
-	current_health_label.text = str(health_bar.value)	
+	max_value = health.get_maximum_value()
+	value = health.get_value()
 
 func health_changed(new_value: int, change: int) -> void:
 	update_progress_bar(new_value, change)
 	
 func update_progress_bar(new_value: int, _old_value: int) -> void:
 	var tween = create_tween()
-	tween.tween_property(health_bar, 'value', new_value, animation_speed)
+	tween.tween_property(self, 'value', new_value, animation_speed)
 	tween.play()
 	
 func max_health_changed(new_value: int, _old_value: int) -> void:
-	health_bar.max_value = new_value
-	max_health_label.text = "/" + str(health_bar.max_value)	
+	max_value = new_value

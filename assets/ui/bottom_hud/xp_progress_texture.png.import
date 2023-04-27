@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjj1ypedmcl6e"
-path="res://.godot/imported/Solaria Demo Update 01.png-1cc4a39c3f6dead6b28a597774fd48a8.ctex"
+uid="uid://dnnrkom0xsipj"
+path="res://.godot/imported/xp_progress_texture.png-66a720b516d2e8f02a9e9ef1f6ad0049.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemaps/Solaria Demo Update 01.png"
-dest_files=["res://.godot/imported/Solaria Demo Update 01.png-1cc4a39c3f6dead6b28a597774fd48a8.ctex"]
+source_file="res://Assets/ui/bottom_hud/xp_progress_texture.png"
+dest_files=["res://.godot/imported/xp_progress_texture.png-66a720b516d2e8f02a9e9ef1f6ad0049.ctex"]
 
 [params]
 
