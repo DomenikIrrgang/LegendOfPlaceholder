@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b4kh3x2mugaum"]
+[gd_scene load_steps=19 format=3 uid="uid://b4kh3x2mugaum"]
 
 [ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://Assets/ui/buttons/b_button.png" id="1_28268"]
 [ext_resource type="Script" path="res://Ui/GameUI.gd" id="1_x76ic"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Ui/XpBar.gd" id="11_5sq0i"]
 [ext_resource type="Texture2D" uid="uid://c2rkr00w6e13y" path="res://Assets/ui/xp_bar/xp_bar_behind.png" id="11_tokam"]
 [ext_resource type="Texture2D" uid="uid://b4sfs10wndems" path="res://Assets/ui/xp_bar/xp_bar_filled.png" id="12_slqef"]
+[ext_resource type="Texture2D" uid="uid://b3jelvjfa2rtj" path="res://Assets/ui/bottom_hud/overlay.png" id="14_w5ov7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tf2yf"]
 font = ExtResource("3_1hx4t")
@@ -184,3 +185,18 @@ offset_right = 252.0
 offset_bottom = 24.0
 text = "/100"
 label_settings = SubResource("LabelSettings_jpyj4")
+
+[node name="MainHUD" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CenterContainer" type="CenterContainer" parent="MainHUD"]
+layout_mode = 0
+offset_top = 977.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="TextureRect" type="TextureRect" parent="MainHUD/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("14_w5ov7")

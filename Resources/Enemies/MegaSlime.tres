@@ -6,12 +6,12 @@
 [sub_resource type="Resource" id="Resource_4bl6u"]
 script = ExtResource("2_2fuk2")
 stat = 15
-value = 200
+value = 150
 
 [sub_resource type="Resource" id="Resource_70vve"]
 script = ExtResource("2_2fuk2")
 stat = 3
-value = 500
+value = 400
 
 [resource]
 script = ExtResource("1_1ejyo")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://cstsjvo6tv6w"]
 
-[ext_resource type="Texture2D" uid="uid://cjj1ypedmcl6e" path="res://tilemaps/Solaria Demo Update 01.png" id="1_uiosg"]
+[ext_resource type="Texture2D" uid="uid://cjj1ypedmcl6e" path="res://Tilemaps/Solaria Demo Update 01.png" id="1_uiosg"]
 [ext_resource type="Script" path="res://demo.gd" id="1_x6rkb"]
 [ext_resource type="PackedScene" uid="uid://c8pbg6lllwiv5" path="res://Player/Player.tscn" id="3_k1eps"]
 [ext_resource type="Script" path="res://CustomCamera.gd" id="4_hmvdk"]
@@ -1231,15 +1231,7 @@ text = "- PAUSE -"
 label_settings = SubResource("LabelSettings_7xwet")
 
 [node name="MegaSlime" parent="." instance=ExtResource("10_01rkg")]
-position = Vector2(22, -67)
-slide_on_ceiling = true
-floor_stop_on_slope = true
-floor_block_on_wall = true
-platform_on_leave = 0
-platform_floor_layers = 4294967295
-
-[node name="MegaSlime2" parent="." instance=ExtResource("10_01rkg")]
-position = Vector2(-122, -65)
+position = Vector2(-63, -69)
 slide_on_ceiling = true
 floor_stop_on_slope = true
 floor_block_on_wall = true
