@@ -1,9 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvw6oa24rueq0"]
+[gd_scene load_steps=6 format=3 uid="uid://b36kjfwlo3i"]
 
 [ext_resource type="Script" path="res://Combat/abilities/ZoneOfDoom.gd" id="1_tmdbj"]
 [ext_resource type="Script" path="res://Combat/abilities/ZoneOfDoomHitBox.gd" id="2_kto1g"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pi4go"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_b6gxc"]
+
+[sub_resource type="Shader" id="Shader_wnid5"]
+code = "shader_type canvas_item;
+
+// for circles
+uniform float amplitude: hint_range(0, 2, 0.01) = 2.0;
+uniform float frequency: hint_range(0, 15, 0.01) = 12.69;
+uniform float rippleRate : hint_range(0.5, 150.0, 0.1) = 9.2;
+
+
+// for wave
+uniform float waveAmplitude = 0.1;
+uniform float waveFrequency = 4.0;
+uniform float blendingAmount = 0.6;
+
+
+// other
+uniform sampler2D noise;
+
+
+
+vec2 wave(vec2 uv, float time) {
+    return vec2(
+        uv.x + sin(uv.y * waveFrequency * 5.0 + time) * waveAmplitude,
+        uv.y + sin(uv.x * waveFrequency + time) * waveAmplitude
+    );
+}
+
+void fragment() {
+	vec2 wave_uv = wave(UV, TIME);
+	vec4 ns = texture(noise, wave_uv);
+	
+	vec2 motion = vec2(0.0, 1.0);
+	float pi = 3.14159265358979323846;
+	vec2 uv = UV * 2.0 - 1.0;
+
+	float dist = length(uv);
+	ns *= 1.4142135;
+	dist += -0.1 * ns.x;
+	float ripple = sin(dist * -frequency * pi + rippleRate * TIME) * amplitude / (dist + 1.0);
+
+
+	vec4 color = vec4(0, 1, 0.5, 2.0 * ripple);
+	
+	float alphaScalar = (1.0 - min(dist, 1.0)) * ns.x * 2.5; 
+
+
+	color.a *= 1.0 * alphaScalar * (ripple + ns.x * ns.y);
+	color.a = max(color.a - (ns.y * 0.45), 0.0);
+
+    COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yejg"]
+shader = SubResource("Shader_wnid5")
+shader_parameter/amplitude = 0.5
+shader_parameter/frequency = 5.0
+shader_parameter/rippleRate = 5.0
+shader_parameter/waveAmplitude = 5.0
+shader_parameter/waveFrequency = 10.0
+shader_parameter/blendingAmount = 10.0
 
 [node name="ZoneOfDoom" type="Node2D"]
 script = ExtResource("1_tmdbj")
@@ -22,9 +83,10 @@ collision_mask = 2
 script = ExtResource("2_kto1g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("RectangleShape2D_pi4go")
+shape = SubResource("CircleShape2D_b6gxc")
 
 [node name="ColorRect" type="ColorRect" parent="HitBox/CollisionShape2D"]
+material = SubResource("ShaderMaterial_3yejg")
 offset_left = -10.0
 offset_top = -10.0
 offset_right = 10.0

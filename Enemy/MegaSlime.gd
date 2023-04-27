@@ -4,7 +4,7 @@ extends Enemy
 var slime_cooldown: float = 8
 var last_slime_spawn_time: float = Time.get_unix_time_from_system()
 
-var zone_cooldown: float = 10
+var zone_cooldown: float = 5
 var last_zone_spawn: float
 
 var phase_2_start: float = 0.7
