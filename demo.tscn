@@ -1231,7 +1231,15 @@ text = "- PAUSE -"
 label_settings = SubResource("LabelSettings_7xwet")
 
 [node name="MegaSlime" parent="." instance=ExtResource("10_01rkg")]
-position = Vector2(-63, -70)
+position = Vector2(22, -67)
+slide_on_ceiling = true
+floor_stop_on_slope = true
+floor_block_on_wall = true
+platform_on_leave = 0
+platform_floor_layers = 4294967295
+
+[node name="MegaSlime2" parent="." instance=ExtResource("10_01rkg")]
+position = Vector2(-122, -65)
 slide_on_ceiling = true
 floor_stop_on_slope = true
 floor_block_on_wall = true
