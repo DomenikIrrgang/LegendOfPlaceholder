@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b4kh3x2mugaum"]
+[gd_scene load_steps=30 format=3 uid="uid://b4kh3x2mugaum"]
 
 [ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://Assets/ui/buttons/b_button.png" id="1_28268"]
 [ext_resource type="Script" path="res://Ui/GameUI.gd" id="1_x76ic"]
@@ -7,15 +7,19 @@
 [ext_resource type="PackedScene" uid="uid://dlgaq1jr4o8os" path="res://Ui/unit/DashMeter.tscn" id="5_17056"]
 [ext_resource type="Script" path="res://Ui/UnitFramePlayer.gd" id="6_52hwt"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="9_x1hww"]
+[ext_resource type="Texture2D" uid="uid://7sbgo11asvra" path="res://Assets/ui/bottom_hud/health_progress_texture_under.png" id="10_dv1e0"]
 [ext_resource type="Script" path="res://Ui/SystemMessage.gd" id="10_e3ncc"]
 [ext_resource type="Script" path="res://Ui/MainHUD.gd" id="11_advoo"]
 [ext_resource type="Texture2D" uid="uid://iseefhpilikl" path="res://Assets/ui/bottom_hud/health_progress_texture.png" id="12_0viwj"]
 [ext_resource type="Texture2D" uid="uid://dnnrkom0xsipj" path="res://Assets/ui/bottom_hud/xp_progress_texture.png" id="12_dsyyh"]
 [ext_resource type="Script" path="res://Ui/ExperienceBar.gd" id="12_gq3vu"]
 [ext_resource type="Texture2D" uid="uid://c7x7hb1xvylko" path="res://Assets/ui/bottom_hud/mana_progress_texture.png" id="12_w73u0"]
+[ext_resource type="Texture2D" uid="uid://v8vt7sd8r3h4" path="res://Assets/ui/bottom_hud/resource_progress_texture_under.png" id="13_t2i81"]
 [ext_resource type="Script" path="res://Ui/TextureProgressBar.gd" id="14_1bhi6"]
 [ext_resource type="Texture2D" uid="uid://cb8r0k1s7cnmy" path="res://Assets/ui/bottom_hud/dash_progress_texture.png" id="14_oetjh"]
 [ext_resource type="Texture2D" uid="uid://b3jelvjfa2rtj" path="res://Assets/ui/bottom_hud/overlay.png" id="14_w5ov7"]
+[ext_resource type="Texture2D" uid="uid://cub6t8pg6hs5y" path="res://Assets/ui/bottom_hud/xp_progress_texture_under.png" id="15_qa8ts"]
+[ext_resource type="Texture2D" uid="uid://bcsg8qngbcxsa" path="res://Assets/ui/bottom_hud/dash_progress_texture_under.png" id="18_ee1fj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tf2yf"]
 font = ExtResource("3_1hx4t")
@@ -28,6 +32,94 @@ font = ExtResource("9_x1hww")
 font_size = 44
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Shader" id="Shader_ds05e"]
+code = "shader_type canvas_item;
+
+void fragment() {
+	// Place fragment code here.
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_80tss"]
+shader = SubResource("Shader_ds05e")
+
+[sub_resource type="Shader" id="Shader_s1b21"]
+code = "shader_type canvas_item;
+
+uniform float timeScaleFactor = .04;
+
+// Make sure to use a seamless noise texture
+uniform sampler2D noise_texture: repeat_enable, filter_linear;
+
+float localTime() {
+	return TIME * timeScaleFactor;
+}
+
+mat2 makem2(float theta) {
+	float c = cos(theta);
+	float s = sin(theta);
+	return mat2(vec2(c, -s), vec2(s, c));
+}
+
+float noise(vec2 x) {
+	return texture(noise_texture, x * .01).x;
+}
+
+vec2 gradn(vec2 p) {
+	float ep = .09;
+	float gradx = noise(vec2(p.x + ep, p.y)) - noise(vec2(p.x - ep, p.y));
+	float grady = noise(vec2(p.x, p.y + ep)) - noise(vec2(p.x, p.y - ep));
+	return vec2(gradx, grady);
+}
+
+float flow(vec2 p) {
+	float z = 2.;
+	float rz = 0.;
+	vec2 bp = p;
+	
+	for(float i = 1.; i < 7.; ++i) {
+		p += localTime() * .6;
+		bp += localTime() * 1.9;
+		vec2 gr = gradn(i * p * .34 + localTime() * 1.);
+		gr *= makem2(localTime() * 6. - (.05 * p.x + 0.03 * p.y) * 40.);
+		p += gr * .5;
+		rz += (sin(noise(p) * 7.) *.5 + .5) / z;
+		p = mix(bp, p, .77);
+		z *= 1.4;
+		p *= 2.;
+		bp *= 1.9;
+	}
+	return rz;
+}
+
+void fragment() {
+	vec2 resolution = 1. / SCREEN_PIXEL_SIZE;
+	vec2 fragCoord = FRAGCOORD.xy;
+	fragCoord = vec2(fragCoord.x, resolution.y - fragCoord.y);
+	vec2 p = fragCoord / resolution - 0.5;
+	
+	p.x *= resolution.x / resolution.y;
+	p *= 3.;
+	
+	float rz = flow(p);
+	vec3 col = vec3(.2, .07, .01) / rz;
+	col = pow(col, vec3(1.4));
+	
+	COLOR = vec4(col, 1.0);
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_x3f38"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r18re"]
+noise = SubResource("FastNoiseLite_x3f38")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwqmm"]
+shader = SubResource("Shader_s1b21")
+shader_parameter/timeScaleFactor = 0.04
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_r18re")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rjt1a"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -121,10 +213,22 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="Overlay" type="TextureRect" parent="MainHUD/CenterContainer"]
+material = SubResource("ShaderMaterial_80tss")
 layout_mode = 2
 texture = ExtResource("14_w5ov7")
 
+[node name="ColorRect" type="ColorRect" parent="MainHUD/CenterContainer/Overlay"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_pwqmm")
+layout_mode = 0
+offset_left = 103.0
+offset_top = 52.0
+offset_right = 735.0
+offset_bottom = 101.0
+
 [node name="HealthBar" type="TextureProgressBar" parent="MainHUD/CenterContainer/Overlay"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_rjt1a")
 layout_mode = 0
 offset_left = 9.0
 offset_top = 8.0
@@ -132,6 +236,7 @@ offset_right = 95.0
 offset_bottom = 93.0
 value = 100.0
 fill_mode = 3
+texture_under = ExtResource("10_dv1e0")
 texture_progress = ExtResource("12_0viwj")
 script = ExtResource("6_52hwt")
 
@@ -140,10 +245,11 @@ show_behind_parent = true
 layout_mode = 0
 offset_left = 741.0
 offset_top = 8.0
-offset_right = 827.0
+offset_right = 784.0
 offset_bottom = 93.0
 value = 100.0
 fill_mode = 3
+texture_under = ExtResource("13_t2i81")
 texture_progress = ExtResource("12_w73u0")
 
 [node name="ExperienceBar" type="TextureProgressBar" parent="MainHUD/CenterContainer/Overlay"]
@@ -154,6 +260,7 @@ offset_top = 35.0
 offset_right = 734.0
 offset_bottom = 41.0
 value = 50.0
+texture_under = ExtResource("15_qa8ts")
 texture_progress = ExtResource("12_dsyyh")
 script = ExtResource("12_gq3vu")
 
@@ -166,5 +273,6 @@ offset_right = 827.0
 offset_bottom = 93.0
 value = 100.0
 fill_mode = 3
+texture_under = ExtResource("18_ee1fj")
 texture_progress = ExtResource("14_oetjh")
 script = ExtResource("14_1bhi6")
