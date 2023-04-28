@@ -30,6 +30,8 @@ func get_abilities() -> Array[Ability]:
 	return Keybinds.get_abilities() 
 	
 func on_player_died(_player: Unit) -> void:
+	for ability in get_abilities():
+		ability.reset()
 	get_tree().reload_current_scene()
 	
 func on_level_change(_level: int) -> void:

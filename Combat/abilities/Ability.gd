@@ -79,6 +79,7 @@ func get_alias() -> String:
 	
 func reset() -> void:
 	remaining_cooldown = 0
+	charges = max_charges
 	
 func get_tooltip() -> String:
 	return tooltip
