@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cv102qedh50l3"]
+
+[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://Assets/ui/bottom_hud/keybind_slot.png" id="1_jo4j6"]
+[ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://Assets/ui/buttons/b_button.png" id="2_0i1fd"]
+[ext_resource type="Script" path="res://Ui/AbilitySlot.gd" id="2_i2822"]
+[ext_resource type="Script" path="res://Ui/Keybind.gd" id="3_dc4wj"]
+[ext_resource type="Texture2D" uid="uid://cfln5j2nbb8am" path="res://Assets/ui/bottom_hud/dash_icon.png" id="4_quu4r"]
+
+[node name="AbilitySlot" type="TextureRect"]
+offset_right = 36.0
+offset_bottom = 36.0
+texture = ExtResource("1_jo4j6")
+script = ExtResource("2_i2822")
+
+[node name="Keybind" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 33.0
+offset_right = 42.0
+offset_bottom = 65.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_0i1fd")
+script = ExtResource("3_dc4wj")
+action_name = "Dash"
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 36.0
+offset_bottom = 36.0
+texture = ExtResource("4_quu4r")
+expand_mode = 1

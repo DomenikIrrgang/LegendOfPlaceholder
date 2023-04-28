@@ -7,4 +7,4 @@ func _ready() -> void:
 	player = self.get_parent().get_parent().get_parent() as Player
 
 func can_transition() -> bool:
-	return player.dash.get_charges() >= 1
+	return true

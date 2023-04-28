@@ -8,7 +8,7 @@ func on_animation_finshed(_animation_name: String) -> void:
 
 func enter(_data := {}) -> void:
 	player.movement_strategy = UnitMovementStrategy.new(player)
-	attack_animation = player.attack()
+	attack_animation = player.weapon.attack(player)
 	attack_animation.connect("animation_finished", on_animation_finshed)
 
 func exit() -> void:

@@ -60,7 +60,7 @@ color = Color(0.658824, 0.47451, 0.172549, 0.619608)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8yed2"]
 size = Vector2(10, 5)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 position = Vector2(0, -8)
 slide_on_ceiling = false

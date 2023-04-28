@@ -2,6 +2,11 @@ extends Node
 
 var calculator: CombatCalculator = CombatCalculator.new()
 
+func use_ability(ability: Ability, source: Unit) -> void:
+	if calculator.has_ability_resource(ability, source, source):
+		increase_resource(source, ability.get_resource_type(), -calculator.get_ability_cost(ability, source, source))
+		ability.use(source)
+
 func cast_ability(ability: Ability, source: Unit, target: Unit):
 	var results = []
 	results.append(CombatResult.new(CombatResultType.Enum.ABILITY_CAST_START, [ AbilityCastStart.new(source, target, ability) ]))
