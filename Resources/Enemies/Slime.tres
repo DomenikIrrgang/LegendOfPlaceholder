@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_ov5lo")
-experience = 50
+experience = 0
 alias = "Slime"
 level = 1
 base_movement_speed = 30.0

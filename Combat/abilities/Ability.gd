@@ -2,74 +2,77 @@ class_name Ability
 extends Node
 
 @export
-var alias: String
+var alias: String = ""
 
 @export
-var tooltip: String
+var tooltip: String = ""
 
 @export
-var cooldown: float
-var remaining_cooldown: float
+var cooldown: float = 0.0
+var remaining_cooldown: float = 0
 
 @export
-var value: int
+var value: int = 0
 
 @export
-var scaling_factor: float
+var scaling_factor: float = 0.1
 
 @export
-var spell_school: SpellSchool.Enum
+var spell_school: SpellSchool.Enum = SpellSchool.Enum.PHYSICAL
 
 @export
-var target_type: TargetType.Enum
+var target_type: TargetType.Enum = TargetType.Enum.SINGLE
 
 @export
-var resource_cost: int
+var resource_cost: int = 0
 
 @export
-var resource_type: ResourceType.Enum
+var resource_type: ResourceType.Enum = ResourceType.Enum.MANA
 
 @export
-var crittable: bool
+var crittable: bool = true
 
 @export
-var critical_chance: float
+var critical_chance: float = 0.0
 
 @export
-var critical_effect: float
+var critical_effect: float = 0.0
 
 @export
-var missable: bool
+var missable: bool = false
 
 @export
-var miss_chance: float
+var miss_chance: float = 0.0
 
 @export
-var dodgeable: bool
+var dodgeable: bool = false
 
 @export
-var parriable: bool
+var parriable: bool = false
 
 @export
-var resistable: bool
+var resistable: bool = false
 
 @export
-var reflectable: bool
+var reflectable: bool = false
 
 @export
 var icon: Texture
 
+# Charges
+@export
+var max_charges: int = 1
+var charges: float = 1.0
+
+signal charges_changed(current_charges: int, change: int)
+signal remaining_cooldown_changed(remaining_cooldown: float, cooldown: float)
+signal used(ability: Ability)
+
 func _init() -> void:
 	remaining_cooldown = 0.0
-	
-func get_cool_down() -> float:
+		
+func get_cooldown() -> float:
 	return cooldown
-	
-func set_remaining_cool_down(new_remaining_cool_down: float) -> void:
-	remaining_cooldown = new_remaining_cool_down
-
-func get_remaining_cool_down() -> float:
-	return remaining_cooldown
 	
 func get_alias() -> String:
 	return alias
@@ -128,5 +131,45 @@ func get_value(_source: Unit, _target: Unit) -> int:
 func get_scaling_factor(_source: Unit, _target: Unit) -> float:
 	return scaling_factor
 	
-func use(unit: Unit) -> void:
-	pass
+func can_use(source: Unit) -> bool:
+	return get_charges() >= 1
+
+func use(_unit: Unit) -> void:
+	if get_charges() == get_max_charges():
+		set_remaining_cooldown(get_cooldown())
+	gain_charges(-1)
+	used.emit(self)
+	
+func get_charges() -> int:
+	return charges
+	
+func get_max_charges() -> int:
+	return max_charges
+	
+func gain_charges(change: int) -> void:
+	charges += change
+	charges_changed.emit(charges, change)
+	
+func set_remaining_cooldown(_remaining_cooldown) -> void:
+	remaining_cooldown = _remaining_cooldown
+	remaining_cooldown_changed.emit(remaining_cooldown, cooldown)
+	
+func get_remaining_cooldown() -> float:
+	return remaining_cooldown
+	
+func get_cooldown_progress() -> float:
+	return get_remaining_cooldown() * 100.0 / get_cooldown()
+	
+func update(delta: float) -> void:
+	if remaining_cooldown > 0.0:
+		set_remaining_cooldown(get_remaining_cooldown() - delta)
+	else:
+		if get_charges() < get_max_charges():
+			gain_charges(1)
+			if get_charges() == get_max_charges():
+				set_remaining_cooldown(0.0)				
+			else:
+				set_remaining_cooldown(cooldown)
+		else:
+			if remaining_cooldown < 0.0:
+				set_remaining_cooldown(0.0)

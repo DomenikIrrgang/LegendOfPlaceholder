@@ -34,7 +34,10 @@ var movement_velocity: Vector2 = Vector2(0, 0)
 var movement_strategy: UnitMovementStrategy = UnitMovementStrategy.new(self)
 
 # Resources
-var resources: Array[UnitResource]
+var resources: Array[UnitResource] = []
+
+# Abilities
+var abilities: Array[Ability] = []
 
 # Direction
 enum Direction {
@@ -168,3 +171,6 @@ func get_stats() -> StatSet:
 	
 func get_base_movement_speed() -> float:
 	return unit_data.base_movement_speed
+	
+func get_abilities() -> Array[Ability]:
+	return abilities

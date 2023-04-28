@@ -21,11 +21,15 @@ func _init() -> void:
 func _ready() -> void:
 	super()
 	resources[ResourceType.Enum.DASH_CHARGE] = DashCharge.new(stat_calculator)
+	resources[ResourceType.Enum.MANA] = Mana.new(stat_calculator)
 	init_weapon()
 	died.connect(on_player_died)
 	pass
 	
-func on_player_died(player: Unit) -> void:
+func get_abilities() -> Array[Ability]:
+	return Keybinds.get_abilities() 
+	
+func on_player_died(_player: Unit) -> void:
 	get_tree().reload_current_scene()
 	
 func on_level_change(_level: int) -> void:

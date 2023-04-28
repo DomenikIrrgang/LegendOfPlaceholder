@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://b36kjfwlo3i"]
+[gd_scene load_steps=7 format=3 uid="uid://rj7rwmclmq36"]
 
-[ext_resource type="Script" path="res://Combat/abilities/ZoneOfDoom.gd" id="1_tmdbj"]
-[ext_resource type="Script" path="res://Combat/abilities/ZoneOfDoomHitBox.gd" id="2_kto1g"]
+[ext_resource type="Script" path="res://Combat/abilities/ForceNova.gd" id="1_7nqi8"]
+[ext_resource type="Texture2D" uid="uid://b8c5qsi2p1yuq" path="res://Assets/ui/bottom_hud/force_nova_icon.png" id="2_vof3p"]
+[ext_resource type="Script" path="res://Combat/abilities/ForceFieldHitbox.gd" id="3_p5wqk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b6gxc"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_gwfnw"]
+radius = 26.0
 
-[sub_resource type="Shader" id="Shader_scdsq"]
+[sub_resource type="Shader" id="Shader_wnid5"]
 code = "shader_type canvas_item;
+
+uniform vec4 color_param: source_color;
 
 // for circles
 uniform float amplitude: hint_range(0, 2, 0.01) = 2.0;
@@ -46,7 +50,7 @@ void fragment() {
 	float ripple = sin(dist * -frequency * pi + rippleRate * TIME) * amplitude / (dist + 1.0);
 
 
-	vec4 color = vec4(1, 0.5, 0.5, 2.0 * ripple);
+	vec4 color = vec4(color_param.r, color_param.g, color_param.b, 2.0 * ripple);
 	
 	float alphaScalar = (1.0 - min(dist, 1.0)) * ns.x * 2.5; 
 
@@ -57,8 +61,9 @@ void fragment() {
     COLOR = color;
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yejg"]
-shader = SubResource("Shader_scdsq")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t682j"]
+shader = SubResource("Shader_wnid5")
+shader_parameter/color_param = Color(0, 0, 1, 1)
 shader_parameter/amplitude = 0.5
 shader_parameter/frequency = 5.0
 shader_parameter/rippleRate = 5.0
@@ -66,29 +71,29 @@ shader_parameter/waveAmplitude = 5.0
 shader_parameter/waveFrequency = 10.0
 shader_parameter/blendingAmount = 10.0
 
-[node name="ZoneOfDoom" type="Node2D"]
-script = ExtResource("1_tmdbj")
-alias = "Zone of Doom"
-tooltip = "Places a Zone that does damage."
-value = 5
-scaling_factor = 0.01
+[node name="ForceNova" type="Node2D"]
+script = ExtResource("1_7nqi8")
+alias = "Forcefield"
+tooltip = "Deals damage and knocksback enemies around the caster."
+cooldown = 30.0
+value = 30
 spell_school = 10
 target_type = 1
-resource_type = 5
-resistable = true
+resource_cost = 30
+icon = ExtResource("2_vof3p")
 
 [node name="HitBox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 2
-script = ExtResource("2_kto1g")
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_p5wqk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("CircleShape2D_b6gxc")
+shape = SubResource("CircleShape2D_gwfnw")
 
 [node name="ColorRect" type="ColorRect" parent="HitBox/CollisionShape2D"]
-material = SubResource("ShaderMaterial_3yejg")
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
+material = SubResource("ShaderMaterial_t682j")
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 color = Color(0.976471, 0.164706, 0.0745098, 1)

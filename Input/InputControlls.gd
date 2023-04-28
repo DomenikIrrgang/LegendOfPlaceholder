@@ -3,6 +3,8 @@ extends Node
 const XBOX_BUTTON_TEXTURE = {
 	JOY_BUTTON_A: InputTextures.GAMEPAD_A,
 	JOY_BUTTON_B: InputTextures.GAMEPAD_B,
+	JOY_BUTTON_X: InputTextures.GAMEPAD_X,
+	JOY_BUTTON_Y: InputTextures.GAMEPAD_Y
 }
 
 const KEY_TEXTURE = {
@@ -11,7 +13,9 @@ const KEY_TEXTURE = {
 	KEY_SHIFT: InputTextures.KEY_SHIFT,
 	KEY_R: InputTextures.KEY_R,
 	KEY_L: InputTextures.KEY_L,
-	KEY_K: InputTextures.KEY_K
+	KEY_K: InputTextures.KEY_K,
+	KEY_J: InputTextures.KEY_J,
+	KEY_I: InputTextures.KEY_I
 }
 
 const MOUSE_TEXTURE = {

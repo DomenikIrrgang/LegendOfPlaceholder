@@ -3,7 +3,7 @@ extends Node
 var calculator: CombatCalculator = CombatCalculator.new()
 
 func use_ability(ability: Ability, source: Unit) -> void:
-	if calculator.has_ability_resource(ability, source, source):
+	if ability.can_use(source) and calculator.has_ability_resource(ability, source, source):
 		increase_resource(source, ability.get_resource_type(), -calculator.get_ability_cost(ability, source, source))
 		ability.use(source)
 
@@ -12,8 +12,8 @@ func cast_ability(ability: Ability, source: Unit, target: Unit):
 	results.append(CombatResult.new(CombatResultType.Enum.ABILITY_CAST_START, [ AbilityCastStart.new(source, target, ability) ]))
 	if (calculator.ability_castable(ability, source, target)):
 		if (calculator.has_ability_resource(ability, source, target)):
-			if (ability.get_resource_type() != ResourceType.Enum.FREE and calculator.get_ability_cost(ability, source, target) > 0):
-				results.append(CombatResult.new(CombatResultType.Enum.RESOURCE_UPDATE, [ increase_resource(source, ability.get_resource_type(), -calculator.get_ability_cost(ability, source, target)) ]))
+			#if (ability.get_resource_type() != ResourceType.Enum.FREE and calculator.get_ability_cost(ability, source, target) > 0):
+			#	results.append(CombatResult.new(CombatResultType.Enum.RESOURCE_UPDATE, [ increase_resource(source, ability.get_resource_type(), -calculator.get_ability_cost(ability, source, target)) ]))
 			var ability_results = []
 			var resource_results = []
 			var result = AbilityCastResultEntry.new(source, target)

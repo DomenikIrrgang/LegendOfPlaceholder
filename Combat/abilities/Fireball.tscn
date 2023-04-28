@@ -8,7 +8,6 @@ alias = "Fireball"
 tooltip = "Sends a fireball in your facing direction."
 spell_school = 1
 resource_cost = 10
-crittable = true
 missable = true
 miss_chance = 5.0
 reflectable = true

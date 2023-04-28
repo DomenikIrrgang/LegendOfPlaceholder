@@ -1,0 +1,1 @@
+extends HitBox2D

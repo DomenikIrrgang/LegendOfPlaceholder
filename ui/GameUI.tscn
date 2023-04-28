@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b4kh3x2mugaum"]
+[gd_scene load_steps=36 format=3 uid="uid://b4kh3x2mugaum"]
 
 [ext_resource type="Script" path="res://Ui/GameUI.gd" id="1_x76ic"]
 [ext_resource type="Script" path="res://Ui/UnitFramePlayer.gd" id="6_52hwt"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Ui/SystemMessage.gd" id="10_e3ncc"]
 [ext_resource type="Script" path="res://Ui/MainHUD.gd" id="11_advoo"]
 [ext_resource type="Texture2D" uid="uid://iseefhpilikl" path="res://Assets/ui/bottom_hud/health_progress_texture.png" id="12_0viwj"]
+[ext_resource type="Script" path="res://Ui/ResourceBar.gd" id="12_3djnn"]
 [ext_resource type="Texture2D" uid="uid://dnnrkom0xsipj" path="res://Assets/ui/bottom_hud/xp_progress_texture.png" id="12_dsyyh"]
 [ext_resource type="Script" path="res://Ui/ExperienceBar.gd" id="12_gq3vu"]
 [ext_resource type="Texture2D" uid="uid://c7x7hb1xvylko" path="res://Assets/ui/bottom_hud/mana_progress_texture.png" id="12_w73u0"]
@@ -218,6 +219,7 @@ value = 100.0
 fill_mode = 3
 texture_under = ExtResource("13_t2i81")
 texture_progress = ExtResource("12_w73u0")
+script = ExtResource("12_3djnn")
 
 [node name="ExperienceBar" type="TextureProgressBar" parent="MainHUD/CenterContainer/Overlay"]
 show_behind_parent = true
@@ -258,6 +260,7 @@ offset_left = 1.0
 offset_top = -23.0
 offset_right = 37.0
 offset_bottom = 13.0
+action_name = "Ability_One"
 
 [node name="Ability2" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("22_efia7")]
 layout_mode = 0
@@ -265,6 +268,7 @@ offset_left = 50.0
 offset_top = -23.0
 offset_right = 86.0
 offset_bottom = 13.0
+action_name = "Ability_Two"
 
 [node name="Ability3" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("22_efia7")]
 layout_mode = 0

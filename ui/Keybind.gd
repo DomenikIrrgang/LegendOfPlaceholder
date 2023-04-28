@@ -5,6 +5,7 @@ extends TextureRect
 var action_name: String
 
 func _input(event) -> void:
+	print(action_name , " ", event.is_action_pressed(action_name))
 	if (event.is_action_released(action_name)):
 		scale -= Vector2(0.3, 0.3)
 		position += size * 0.15

@@ -15,7 +15,7 @@ var space_state
 func _ready() -> void:
 	super()
 	movement_strategy = UnitMovementStrategy.new(self)
-	player = get_node("../Player")
+	player = get_tree().get_first_node_in_group("player")
 	died.connect(on_mega_slime_died)
 	space_state = get_world_2d().direct_space_state
 
@@ -31,7 +31,6 @@ func _process(delta: float) -> void:
 func spawn_slime(location: Vector2 = Vector2.ZERO) -> void:
 	last_slime_spawn_time = Time.get_unix_time_from_system()
 	var slime = preload("res://Enemy/Slime.tscn").instantiate()
-	var player = get_node("../Player")
 	get_parent().add_child(slime)
 	slime.died.connect(on_slime_died)
 	var slime_position = location if location != Vector2.ZERO else player.global_position + global_position.direction_to(player.global_position).normalized() * 40

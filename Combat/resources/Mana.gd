@@ -5,6 +5,7 @@ func _init(_stat_calculator: StatCalculator) -> void:
 	super(_stat_calculator)
 	type = ResourceType.Enum.MANA
 	set_maximum_value(200)
+	set_value(get_maximum_value())
 	
 func get_maximum_value() -> int:
 	return super.get_maximum_value() + stat_calculator.get_mana()
