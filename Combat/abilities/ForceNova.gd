@@ -20,7 +20,7 @@ func _ready() -> void:
 	timer.start(0.5)
 
 func use(_source: Unit) -> void:
-	super(source)
+	super(_source)
 	source = _source
 	force_field = load("res://Combat/abilities/ForceNova.tscn").instantiate()
 	force_field.source = source
