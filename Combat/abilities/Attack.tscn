@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ll7pxsueavbo"]
+[gd_scene load_steps=3 format=3 uid="uid://ll7pxsueavbo"]
 
 [ext_resource type="Script" path="res://Combat/abilities/Attack.gd" id="1_uwywo"]
+[ext_resource type="Texture2D" uid="uid://jtgn2ueksl56" path="res://Assets/ui/bottom_hud/attack_icon.png" id="2_g7utn"]
 
 [node name="Attack" type="Node2D"]
 script = ExtResource("1_uwywo")
@@ -8,9 +9,10 @@ alias = "Attack"
 tooltip = "Physical attack against the target."
 value = 10
 scaling_factor = 0.5
-resource_type = 1
+resource_type = 5
 crittable = true
 critical_chance = 10.0
 critical_effect = 1.0
 dodgeable = true
 parriable = true
+icon = ExtResource("2_g7utn")

@@ -3,8 +3,6 @@ extends PlayerState
 func update(_delta: float) -> void:
 	if (InputControlls.get_directional_vector() != Vector2.ZERO):
 		state_machine.transition_to("Run")
-	if (Input.is_action_just_pressed("Attack")):
-		state_machine.transition_to("Attack")
 
 func enter(_data := {}) -> void:
 	player.movement_strategy = UnitMovementStrategy.new(player)

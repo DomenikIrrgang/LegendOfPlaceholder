@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 InputControlls="*res://Input/InputControlls.gd"
 GameResources="*res://Resources/GameResources.gd"
 CombatLogic="*res://Combat/CombatLogic.gd"
+Keybinds="*res://Input/Keybinds.gd"
 
 [debug]
 

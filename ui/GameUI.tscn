@@ -1,10 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://b4kh3x2mugaum"]
+[gd_scene load_steps=35 format=3 uid="uid://b4kh3x2mugaum"]
 
-[ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://Assets/ui/buttons/b_button.png" id="1_28268"]
 [ext_resource type="Script" path="res://Ui/GameUI.gd" id="1_x76ic"]
-[ext_resource type="Script" path="res://Ui/Keybind.gd" id="2_nc7tq"]
-[ext_resource type="FontFile" uid="uid://cg2cudsemqolr" path="res://Assets/fonts/Minecraft.ttf" id="3_1hx4t"]
-[ext_resource type="PackedScene" uid="uid://dlgaq1jr4o8os" path="res://Ui/unit/DashMeter.tscn" id="5_17056"]
 [ext_resource type="Script" path="res://Ui/UnitFramePlayer.gd" id="6_52hwt"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="9_x1hww"]
 [ext_resource type="Texture2D" uid="uid://7sbgo11asvra" path="res://Assets/ui/bottom_hud/health_progress_texture_under.png" id="10_dv1e0"]
@@ -14,18 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://dnnrkom0xsipj" path="res://Assets/ui/bottom_hud/xp_progress_texture.png" id="12_dsyyh"]
 [ext_resource type="Script" path="res://Ui/ExperienceBar.gd" id="12_gq3vu"]
 [ext_resource type="Texture2D" uid="uid://c7x7hb1xvylko" path="res://Assets/ui/bottom_hud/mana_progress_texture.png" id="12_w73u0"]
+[ext_resource type="Shader" path="res://Shaders/UnitResource.gdshader" id="13_bsqjr"]
 [ext_resource type="Texture2D" uid="uid://v8vt7sd8r3h4" path="res://Assets/ui/bottom_hud/resource_progress_texture_under.png" id="13_t2i81"]
 [ext_resource type="Script" path="res://Ui/TextureProgressBar.gd" id="14_1bhi6"]
 [ext_resource type="Texture2D" uid="uid://cb8r0k1s7cnmy" path="res://Assets/ui/bottom_hud/dash_progress_texture.png" id="14_oetjh"]
 [ext_resource type="Texture2D" uid="uid://b3jelvjfa2rtj" path="res://Assets/ui/bottom_hud/overlay.png" id="14_w5ov7"]
 [ext_resource type="Texture2D" uid="uid://cub6t8pg6hs5y" path="res://Assets/ui/bottom_hud/xp_progress_texture_under.png" id="15_qa8ts"]
 [ext_resource type="Texture2D" uid="uid://bcsg8qngbcxsa" path="res://Assets/ui/bottom_hud/dash_progress_texture_under.png" id="18_ee1fj"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_tf2yf"]
-font = ExtResource("3_1hx4t")
-font_size = 22
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
+[ext_resource type="PackedScene" uid="uid://cv102qedh50l3" path="res://Ui/AbilitySlot.tscn" id="22_efia7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
 font = ExtResource("9_x1hww")
@@ -119,7 +111,38 @@ shader = SubResource("Shader_s1b21")
 shader_parameter/timeScaleFactor = 0.04
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_r18re")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r0sr8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hsp2l"]
+noise = SubResource("FastNoiseLite_r0sr8")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rjt1a"]
+shader = ExtResource("13_bsqjr")
+shader_parameter/timeScaleFactor = 0.08
+shader_parameter/brightness = 0.5
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_hsp2l")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6nvuf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8a0km"]
+noise = SubResource("FastNoiseLite_6nvuf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8xx3b"]
+shader = ExtResource("13_bsqjr")
+shader_parameter/timeScaleFactor = 0.08
+shader_parameter/brightness = 0.3
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_8a0km")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ax148"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_831xi"]
+noise = SubResource("FastNoiseLite_ax148")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m5tuq"]
+shader = ExtResource("13_bsqjr")
+shader_parameter/timeScaleFactor = 0.08
+shader_parameter/brightness = 0.3
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_831xi")
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -130,66 +153,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x76ic")
 
-[node name="Dash" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1784.0
-offset_top = 22.0
-offset_right = 1892.0
-offset_bottom = 56.0
-
-[node name="Keybind" type="TextureRect" parent="Dash"]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-texture = ExtResource("1_28268")
-script = ExtResource("2_nc7tq")
-action_name = "Dash"
-
-[node name="DashLabel" type="Label" parent="Dash"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 6.0
-offset_right = 110.0
-offset_bottom = 32.0
-text = "Dash"
-label_settings = SubResource("LabelSettings_tf2yf")
-
-[node name="Attack" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1641.0
-offset_top = 22.0
-offset_right = 1749.0
-offset_bottom = 56.0
-
-[node name="Keybind" type="TextureRect" parent="Attack"]
-layout_mode = 0
-offset_right = 32.0
-offset_bottom = 32.0
-texture = ExtResource("1_28268")
-script = ExtResource("2_nc7tq")
-action_name = "Attack"
-
-[node name="AttackLabel" type="Label" parent="Attack"]
-layout_mode = 0
-offset_left = 41.0
-offset_top = 6.0
-offset_right = 111.0
-offset_bottom = 32.0
-text = "Attack"
-label_settings = SubResource("LabelSettings_tf2yf")
-
-[node name="DashMeter" parent="." instance=ExtResource("5_17056")]
-visible = false
-z_index = 0
-offset_left = -21.0
-offset_top = 900.0
-offset_right = -21.0
-offset_bottom = 900.0
-scale = Vector2(5, 5)
-
 [node name="SystemMessage" type="CenterContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 582.0
@@ -218,6 +183,7 @@ layout_mode = 2
 texture = ExtResource("14_w5ov7")
 
 [node name="ColorRect" type="ColorRect" parent="MainHUD/CenterContainer/Overlay"]
+visible = false
 show_behind_parent = true
 material = SubResource("ShaderMaterial_pwqmm")
 layout_mode = 0
@@ -242,10 +208,11 @@ script = ExtResource("6_52hwt")
 
 [node name="ResourceBar" type="TextureProgressBar" parent="MainHUD/CenterContainer/Overlay"]
 show_behind_parent = true
+material = SubResource("ShaderMaterial_8xx3b")
 layout_mode = 0
-offset_left = 741.0
+offset_left = 743.0
 offset_top = 8.0
-offset_right = 784.0
+offset_right = 786.0
 offset_bottom = 93.0
 value = 100.0
 fill_mode = 3
@@ -255,24 +222,90 @@ texture_progress = ExtResource("12_w73u0")
 [node name="ExperienceBar" type="TextureProgressBar" parent="MainHUD/CenterContainer/Overlay"]
 show_behind_parent = true
 layout_mode = 0
-offset_left = 104.0
+offset_left = 100.0
 offset_top = 35.0
-offset_right = 734.0
+offset_right = 738.0
 offset_bottom = 41.0
-value = 50.0
+value = 100.0
 texture_under = ExtResource("15_qa8ts")
 texture_progress = ExtResource("12_dsyyh")
 script = ExtResource("12_gq3vu")
 
 [node name="DashBar" type="TextureProgressBar" parent="MainHUD/CenterContainer/Overlay"]
 show_behind_parent = true
+material = SubResource("ShaderMaterial_m5tuq")
 layout_mode = 0
-offset_left = 784.0
+offset_left = 786.0
 offset_top = 8.0
-offset_right = 827.0
+offset_right = 829.0
 offset_bottom = 93.0
 value = 100.0
 fill_mode = 3
 texture_under = ExtResource("18_ee1fj")
 texture_progress = ExtResource("14_oetjh")
 script = ExtResource("14_1bhi6")
+
+[node name="AbilitySlots" type="Control" parent="MainHUD/CenterContainer/Overlay"]
+anchors_preset = 0
+offset_left = 111.0
+offset_top = 73.0
+offset_right = 398.0
+offset_bottom = 99.0
+
+[node name="Ability1" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("22_efia7")]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -23.0
+offset_right = 37.0
+offset_bottom = 13.0
+
+[node name="Ability2" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("22_efia7")]
+layout_mode = 0
+offset_left = 50.0
+offset_top = -23.0
+offset_right = 86.0
+offset_bottom = 13.0
+
+[node name="Ability3" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("22_efia7")]
+layout_mode = 0
+offset_left = 99.0
+offset_top = -23.0
+offset_right = 135.0
+offset_bottom = 13.0
+
+[node name="Ability4" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("22_efia7")]
+layout_mode = 0
+offset_left = 148.0
+offset_top = -23.0
+offset_right = 184.0
+offset_bottom = 13.0
+
+[node name="Attack" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("22_efia7")]
+layout_mode = 0
+offset_left = 197.0
+offset_top = -23.0
+offset_right = 233.0
+offset_bottom = 13.0
+action_name = "Attack"
+
+[node name="Dash" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("22_efia7")]
+layout_mode = 0
+offset_left = 246.0
+offset_top = -23.0
+offset_right = 282.0
+offset_bottom = 13.0
+action_name = "Dash"
+
+[node name="SystemSlots" type="Control" parent="MainHUD/CenterContainer/Overlay"]
+anchors_preset = 0
+offset_left = 678.0
+offset_top = 44.0
+offset_right = 735.0
+offset_bottom = 95.0
+
+[node name="Inventory" parent="MainHUD/CenterContainer/Overlay/SystemSlots" instance=ExtResource("22_efia7")]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 48.0
+offset_bottom = 42.0

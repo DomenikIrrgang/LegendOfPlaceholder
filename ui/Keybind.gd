@@ -1,3 +1,4 @@
+class_name KeybindDisplay
 extends TextureRect
 
 @export
@@ -14,6 +15,10 @@ func _input(event) -> void:
 func _ready():
 	Input.joy_connection_changed.connect(joy_connection_changed)
 	set_button_texture(InputControlls.get_button_texture(action_name))
+	
+func set_action_name(_action_name: String) -> void:
+	action_name = _action_name
+	set_button_texture(InputControlls.get_button_texture(action_name))	
 	
 func joy_connection_changed(_device_id: int, _connected: bool):
 	set_button_texture(InputControlls.get_button_texture(action_name))

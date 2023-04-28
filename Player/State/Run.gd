@@ -4,10 +4,6 @@ func update(_delta: float) -> void:
 	update_animation()
 	if (InputControlls.get_directional_vector() == Vector2.ZERO):
 		state_machine.transition_to("Idle")
-	if (Input.is_action_just_pressed("Attack")):
-		state_machine.transition_to("Attack")
-	if (Input.is_action_just_pressed("Dash")):
-		state_machine.transition_to("Dash")
 		
 func enter(_data := {}) -> void:
 	player.movement_strategy = ControlledMovementStrategy.new(player)

@@ -56,6 +56,9 @@ var resistable: bool
 @export
 var reflectable: bool
 
+@export
+var icon: Texture
+
 func _init() -> void:
 	remaining_cooldown = 0.0
 	
@@ -124,6 +127,6 @@ func get_value(_source: Unit, _target: Unit) -> int:
 	
 func get_scaling_factor(_source: Unit, _target: Unit) -> float:
 	return scaling_factor
-
-func get_animation() -> void:
+	
+func use(unit: Unit) -> void:
 	pass
