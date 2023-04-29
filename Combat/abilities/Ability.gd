@@ -134,6 +134,9 @@ func get_scaling_factor(_source: Unit, _target: Unit) -> float:
 	
 func can_use(source: Unit) -> bool:
 	return get_charges() >= 1
+	
+func can_cast(_source: Unit, _target: Unit) -> bool:
+	return true
 
 func use(_unit: Unit) -> void:
 	if get_charges() == get_max_charges():

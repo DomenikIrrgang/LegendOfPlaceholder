@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://vx05brcu0nbc"]
+
+[ext_resource type="Script" path="res://Resources/Enemies/EnemyData.gd" id="1_jewis"]
+[ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="2_n11hh"]
+
+[sub_resource type="Resource" id="Resource_t4mf3"]
+script = ExtResource("2_n11hh")
+stat = 10
+value = 500
+
+[sub_resource type="Resource" id="Resource_f5t7c"]
+script = ExtResource("2_n11hh")
+stat = 1
+value = 30
+
+[sub_resource type="Resource" id="Resource_acwj8"]
+script = ExtResource("2_n11hh")
+stat = 3
+value = -50
+
+[resource]
+script = ExtResource("1_jewis")
+experience = 0
+alias = "Healslime"
+level = 1
+base_movement_speed = 15.0
+mass = 50.0
+knockbackable = false
+stats = Array[ExtResource("2_n11hh")]([SubResource("Resource_t4mf3"), SubResource("Resource_f5t7c"), SubResource("Resource_acwj8")])

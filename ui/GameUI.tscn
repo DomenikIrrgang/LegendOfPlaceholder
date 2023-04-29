@@ -276,6 +276,7 @@ offset_left = 99.0
 offset_top = -23.0
 offset_right = 135.0
 offset_bottom = 13.0
+action_name = "Ability_Three"
 
 [node name="Ability4" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("22_efia7")]
 layout_mode = 0

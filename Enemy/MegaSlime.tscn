@@ -12,7 +12,7 @@ size = Vector2(45, 19)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vm8t"]
 size = Vector2(42, 16)
 
-[node name="MegaSlime" instance=ExtResource("1_caj56")]
+[node name="MegaSlime" groups=["boss"] instance=ExtResource("1_caj56")]
 position = Vector2(0, -13)
 motion_mode = 1
 safe_margin = 0.01

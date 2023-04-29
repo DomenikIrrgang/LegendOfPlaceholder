@@ -11,6 +11,5 @@ scaling_factor = 0.3
 spell_school = 10
 target_type = 1
 resource_type = 5
-crittable = true
 critical_chance = 5.0
 critical_effect = 1.0

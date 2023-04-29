@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfj2at05i78so"]
+
+[ext_resource type="PackedScene" uid="uid://cwlfjeoq2pkvi" path="res://Unit/Unit.tscn" id="1_hnnbv"]
+[ext_resource type="Script" path="res://Enemy/HealSlime.gd" id="2_0sso6"]
+[ext_resource type="Resource" uid="uid://vx05brcu0nbc" path="res://Resources/Enemies/HealSlime.tres" id="3_s0458"]
+[ext_resource type="PackedScene" uid="uid://bxhcqy03xm6oi" path="res://Ui/unit/UnitHpBar.tscn" id="4_13akr"]
+
+[node name="HealSlime" instance=ExtResource("1_hnnbv")]
+script = ExtResource("2_0sso6")
+unit_data = ExtResource("3_s0458")
+
+[node name="Model" parent="." index="1"]
+self_modulate = Color(0.0745098, 1, 0.0117647, 1)
+
+[node name="UnitHpBar" parent="." index="5" instance=ExtResource("4_13akr")]
+z_index = 1000
+offset_top = -11.0
+offset_bottom = -11.0

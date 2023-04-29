@@ -10,9 +10,9 @@ func _init(_unit: Unit, _unit_to_follow: Unit):
 func calculateMovementVelocity() -> Vector2:
 	var movement_velocity: Vector2
 	var movement_direction = get_direction_to_target()
-	if (get_distance_to_target() > 80):
+	if (get_distance_to_target() > 110):
 		movement_velocity = movement_direction
-	elif (get_distance_to_target() > 78):
+	elif (get_distance_to_target() > 108):
 		movement_velocity = Vector2.ZERO
 	else:
 		movement_velocity = movement_direction * -1

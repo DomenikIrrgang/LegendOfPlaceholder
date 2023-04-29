@@ -28,4 +28,4 @@ func get_maximum_value() -> int:
 	
 func on_stat_changed(stat, _value) -> void:
 	if stat == Stat.Enum.DASH_CHARGE:
-		resource_maximum_value_changed.emit(get_maximum_value(), get_maximum_value())
+		resource_maximum_value_changed.emit(self, get_maximum_value(), get_maximum_value())

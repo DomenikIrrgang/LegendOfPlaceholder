@@ -9,6 +9,7 @@ alias = "Mend"
 tooltip = "Heals the caster."
 cooldown = 30.0
 value = -40
+scaling_factor = -0.1
 spell_school = 5
 resource_cost = 30
 icon = ExtResource("2_t2kiw")

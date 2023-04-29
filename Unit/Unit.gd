@@ -65,12 +65,13 @@ func _ready() -> void:
 	movement_strategy = UnitMovementStrategy.new(self)
 	model_animation.play("Down")
 	hurt_box.got_hurt.connect(on_hurt)
-	took_damage.connect(on_took_damage)
+	CombatLogic.ability_result.connect(on_ability_result)
 	
-func on_took_damage(value: int) -> void:
-	var damage_number = DamageNumber.instantiate()
-	add_child(damage_number)
-	damage_number.show_number(value)
+func on_ability_result(result: AbilityCastResultEntry) -> void:
+	if result.target == self:
+		var damage_number = DamageNumber.instantiate()
+		add_child(damage_number)
+		damage_number.show_number(result)
 	
 func is_dead() -> bool:
 	return get_resource(ResourceType.Enum.HEALTH).get_value() == 0
@@ -85,8 +86,6 @@ func has_resource_amount(resource_type: ResourceType.Enum, amount: int) -> bool:
 	return amount <= 0 or (has_resource(resource_type) and get_resource(resource_type).get_value() >= amount)
 	
 func increase_resource_value(resource_type: ResourceType.Enum, value: int) -> int:
-	if (resource_type == ResourceType.Enum.HEALTH):
-		took_damage.emit(value)
 	if has_resource(resource_type):
 		var change = get_resource(resource_type).increase_value(value)
 		if is_dead():

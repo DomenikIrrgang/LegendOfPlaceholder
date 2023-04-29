@@ -16,7 +16,7 @@ func initialize(unit: Unit):
 	progress_bar.value = health.get_value()
 	name_label.text = unit.get_alias()
 	
-func health_changed(new_value: int, change: int) -> void:
+func health_changed(_resource: UnitResource, new_value: int, change: int, _original_change: int) -> void:
 	update_progress_bar(new_value, change)
 	
 func update_progress_bar(new_value: int, _old_value: int) -> void:
@@ -24,7 +24,7 @@ func update_progress_bar(new_value: int, _old_value: int) -> void:
 	tween.tween_property(progress_bar, 'value', new_value, animation_speed)
 	tween.play()
 	
-func max_health_changed(new_value: int, _old_value: int) -> void:
+func max_health_changed(_resource: UnitResource, new_value: int, _old_value: int) -> void:
 	progress_bar.max_value = new_value
 	
 	

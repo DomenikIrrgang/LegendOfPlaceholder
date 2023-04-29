@@ -4,7 +4,9 @@ const XBOX_BUTTON_TEXTURE = {
 	JOY_BUTTON_A: InputTextures.GAMEPAD_A,
 	JOY_BUTTON_B: InputTextures.GAMEPAD_B,
 	JOY_BUTTON_X: InputTextures.GAMEPAD_X,
-	JOY_BUTTON_Y: InputTextures.GAMEPAD_Y
+	JOY_BUTTON_Y: InputTextures.GAMEPAD_Y,
+	JOY_BUTTON_LEFT_SHOULDER: InputTextures.GAMEPAD_LB,
+	JOY_AXIS_TRIGGER_LEFT: InputTextures.GAMEPAD_LT,
 }
 
 const KEY_TEXTURE = {
@@ -15,7 +17,8 @@ const KEY_TEXTURE = {
 	KEY_L: InputTextures.KEY_L,
 	KEY_K: InputTextures.KEY_K,
 	KEY_J: InputTextures.KEY_J,
-	KEY_I: InputTextures.KEY_I
+	KEY_I: InputTextures.KEY_I,
+	KEY_O: InputTextures.KEY_O,
 }
 
 const MOUSE_TEXTURE = {
@@ -43,9 +46,12 @@ func joy_connection_changed(_device_id: int, connected: bool):
 func get_button_texture(action_name: String) -> String:
 	var input_events: Array[InputEvent] = InputMap.action_get_events(action_name)
 	for input_event in input_events:
-		if has_controller() and input_event is InputEventJoypadButton or input_event is InputEventJoypadMotion:
-			if has_controller():
+		if has_controller():
+			if input_event is InputEventJoypadButton:
 				return XBOX_BUTTON_TEXTURE[input_event.button_index]
+			if input_event is InputEventJoypadMotion:
+				print(JOY_AXIS_TRIGGER_LEFT, " ", input_event.axis)
+				return XBOX_BUTTON_TEXTURE[input_event.axis]
 		if !has_controller() and input_event is InputEventKey:
 			return KEY_TEXTURE[input_event.physical_keycode]
 		if !has_controller() and input_event is InputEventMouse:

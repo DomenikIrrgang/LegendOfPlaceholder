@@ -20,11 +20,11 @@ script = ExtResource("2_i2822")
 
 [node name="Keybind" type="TextureRect" parent="."]
 layout_mode = 1
-offset_left = 10.0
+offset_left = 8.0
 offset_top = 33.0
-offset_right = 42.0
+offset_right = 40.0
 offset_bottom = 65.0
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.65, 0.65)
 texture = ExtResource("2_0i1fd")
 script = ExtResource("3_dc4wj")
 action_name = "Dash"

@@ -10,7 +10,7 @@ func initialize(player: Player) -> void:
 	max_value = health.get_maximum_value()
 	value = health.get_value()
 
-func health_changed(new_value: int, change: int) -> void:
+func health_changed(_resource: UnitResource, new_value: int, change: int, _original_change: int) -> void:
 	update_progress_bar(new_value, change)
 	
 func update_progress_bar(new_value: int, _old_value: int) -> void:
@@ -18,5 +18,5 @@ func update_progress_bar(new_value: int, _old_value: int) -> void:
 	tween.tween_property(self, 'value', new_value, animation_speed)
 	tween.play()
 	
-func max_health_changed(new_value: int, _old_value: int) -> void:
+func max_health_changed(_resource: UnitResource, new_value: int, _old_value: int) -> void:
 	max_value = new_value

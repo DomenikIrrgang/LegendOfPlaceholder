@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Enemy/Enemy.gd" id="2_rhr6a"]
 [ext_resource type="PackedScene" uid="uid://bxhcqy03xm6oi" path="res://Ui/unit/UnitHpBar.tscn" id="3_ttyn3"]
 
-[node name="Enemy" instance=ExtResource("1_216fp")]
+[node name="Enemy" groups=["enemy"] instance=ExtResource("1_216fp")]
 script = ExtResource("2_rhr6a")
 
 [node name="Collision" parent="." index="0"]
