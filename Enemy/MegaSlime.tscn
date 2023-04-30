@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://j2cv1ftbmjnr"]
+[gd_scene load_steps=8 format=3 uid="uid://j2cv1ftbmjnr"]
 
 [ext_resource type="PackedScene" uid="uid://d2fptqxkfwipo" path="res://Enemy/Enemy.tscn" id="1_caj56"]
 [ext_resource type="Script" path="res://Enemy/MegaSlime.gd" id="2_rxbhk"]
+[ext_resource type="Resource" uid="uid://dp7afxuihduss" path="res://Resources/Enemies/MegaSlime.tres" id="3_ke8u0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cu5s6"]
 size = Vector2(38, 12)
@@ -12,11 +13,15 @@ size = Vector2(45, 19)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vm8t"]
 size = Vector2(42, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bg311"]
+size = Vector2(48, 38.5)
+
 [node name="MegaSlime" groups=["boss"] instance=ExtResource("1_caj56")]
 position = Vector2(0, -13)
 motion_mode = 1
 safe_margin = 0.01
 script = ExtResource("2_rxbhk")
+unit_data = ExtResource("3_ke8u0")
 
 [node name="Collision" parent="." index="0"]
 position = Vector2(0, 2)
@@ -25,12 +30,14 @@ shape = SubResource("RectangleShape2D_cu5s6")
 [node name="Model" parent="." index="1"]
 position = Vector2(0, -11)
 scale = Vector2(3, 3)
+script = null
 
 [node name="HurtBoxShape" parent="HurtBox2D" index="0"]
 position = Vector2(0.5, 3.5)
 shape = SubResource("RectangleShape2D_liqmg")
 
 [node name="HitBox" parent="HitBox2D" index="0"]
+visible = false
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_7vm8t")
 
@@ -38,3 +45,7 @@ shape = SubResource("RectangleShape2D_7vm8t")
 offset_top = -35.0
 offset_bottom = -35.0
 metadata/_edit_use_anchors_ = true
+
+[node name="OcclusionCollision" parent="UnitOcclusion" index="0"]
+position = Vector2(0, -9.75)
+shape = SubResource("RectangleShape2D_bg311")

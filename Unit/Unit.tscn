@@ -1,9 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://cwlfjeoq2pkvi"]
+[gd_scene load_steps=20 format=3 uid="uid://cwlfjeoq2pkvi"]
 
-[ext_resource type="Script" path="res://Unit/Unit.gd" id="1_x5av6"]
 [ext_resource type="Animation" uid="uid://ctiau02k5u1v4" path="res://Unit/Animations/Right.res" id="2_7aa67"]
 [ext_resource type="Texture2D" uid="uid://b8uqgr8axuptj" path="res://Assets/textures/slime.png" id="2_gmb67"]
-[ext_resource type="Resource" uid="uid://dp7afxuihduss" path="res://Resources/Enemies/MegaSlime.tres" id="2_iv5ls"]
 [ext_resource type="Animation" uid="uid://clhe6l4ubufhk" path="res://Unit/Animations/Down.res" id="3_3macp"]
 [ext_resource type="Animation" uid="uid://cs2st5c2f0v2i" path="res://Unit/Animations/Left.res" id="4_bbtnd"]
 [ext_resource type="Animation" uid="uid://wsvb57gm2wpm" path="res://Unit/Animations/Up.res" id="5_bd2r7"]
@@ -13,10 +11,25 @@
 [ext_resource type="Animation" uid="uid://b536o550711vi" path="res://Unit/Animations/Idle_Up.res" id="9_l4obw"]
 [ext_resource type="Script" path="res://Unit/HurtBox.gd" id="11_pfggj"]
 [ext_resource type="Script" path="res://Unit/HitBox.gd" id="12_1cggp"]
+[ext_resource type="Script" path="res://Unit/OcclusionDetection.gd" id="13_0kki7"]
 [ext_resource type="PackedScene" uid="uid://dogcnxu1drkga" path="res://Combat/abilities/Bounce.tscn" id="13_gpmh0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8s4lu"]
 size = Vector2(10, 4)
+
+[sub_resource type="GDScript" id="GDScript_su7nl"]
+script/source = "extends Sprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fe40q"]
 _data = {
@@ -36,6 +49,9 @@ size = Vector2(13.5, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjvo8"]
 size = Vector2(14, 8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xol8"]
+size = Vector2(16, 11)
+
 [node name="Unit" type="CharacterBody2D" groups=["unit"]]
 position = Vector2(0, -8)
 slide_on_ceiling = false
@@ -44,8 +60,6 @@ floor_block_on_wall = false
 platform_on_leave = 2
 platform_floor_layers = 4294901760
 safe_margin = 0.04
-script = ExtResource("1_x5av6")
-unit_data = ExtResource("2_iv5ls")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)
@@ -57,6 +71,7 @@ texture = ExtResource("2_gmb67")
 hframes = 4
 vframes = 8
 frame = 16
+script = SubResource("GDScript_su7nl")
 
 [node name="ModelAnimation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -83,3 +98,12 @@ ability_scene = ExtResource("13_gpmh0")
 [node name="HitBox" type="CollisionShape2D" parent="HitBox2D"]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_cjvo8")
+
+[node name="UnitOcclusion" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("13_0kki7")
+
+[node name="OcclusionCollision" type="CollisionShape2D" parent="UnitOcclusion"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_3xol8")

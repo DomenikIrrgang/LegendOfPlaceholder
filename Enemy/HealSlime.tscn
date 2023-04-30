@@ -12,6 +12,9 @@ unit_data = ExtResource("3_s0458")
 [node name="Model" parent="." index="1"]
 self_modulate = Color(0.0745098, 1, 0.0117647, 1)
 
+[node name="HitBox" parent="HitBox2D" index="0"]
+disabled = true
+
 [node name="UnitHpBar" parent="." index="5" instance=ExtResource("4_13akr")]
 z_index = 1000
 offset_top = -11.0

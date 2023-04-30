@@ -1,10 +1,10 @@
 class_name MegaSlime
 extends Enemy
 
-var slime_cooldown: float = 14
+var slime_cooldown: float = 14 * 10
 var last_slime_spawn_time: float = Time.get_unix_time_from_system()
 
-var heal_slime_cooldown: float = 25
+var heal_slime_cooldown: float = 25 * 10
 var last_heal_slime_spawn_time: float = Time.get_unix_time_from_system()
 
 var zone_cooldown: float = 10
@@ -41,15 +41,16 @@ func spawn_slime(location: Vector2 = Vector2.ZERO) -> void:
 	var slime = preload("res://Enemy/Slime.tscn").instantiate()
 	get_parent().add_child(slime)
 	slime.died.connect(on_slime_died)
-	var slime_position = location if location != Vector2.ZERO else player.global_position + global_position.direction_to(player.global_position).normalized() * 30
+#	var slime_position = location if location != Vector2.ZERO else player.global_position + global_position.direction_to(player.global_position).normalized() * 20
+	var slime_position = global_position + player.global_position.direction_to(global_position).normalized().rotated(0.5 * PI) * 30
 	if location == Vector2.ZERO:
 		var query = PhysicsRayQueryParameters2D.create(
 			player.global_position + player.global_position.direction_to(slime_position).normalized(),
 			slime_position)
 		query.collide_with_bodies = true
 		var result = space_state.intersect_ray(query)
-		if result:
-			slime_position = result.position + result.position.direction_to(global_position) * 12
+		#if result:
+			#slime_position = result.position + result.position.direction_to(global_position) * 12
 	slime.global_position = slime_position
 	resource_link.add_unit(slime)
 	

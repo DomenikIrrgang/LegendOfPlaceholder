@@ -31,6 +31,7 @@ func _ready() -> void:
 		ability.charges_changed.connect(update_charge_label)
 		update_charge_label(0, 0)
 		cooldown_bar.max_value = 100.0 * cooldown_scaling_factor
+		update_cooldown()
 		if (ability and ability.icon):
 			icon.texture = ability.icon
 			icon.visible = true

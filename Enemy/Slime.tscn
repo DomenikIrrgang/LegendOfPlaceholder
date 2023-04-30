@@ -22,6 +22,9 @@ unit_data = ExtResource("3_pevri")
 z_index = 1000
 shape = SubResource("RectangleShape2D_1ffdo")
 
+[node name="Model" parent="." index="1"]
+script = null
+
 [node name="HurtBox2D" parent="." index="3"]
 visible = false
 
