@@ -1,8 +1,8 @@
 class_name Dash
 extends Ability
 
-func use(unit: Unit) -> void:
-	super(unit)
+func use(unit: Unit, _target: Unit) -> void:
+	super(unit, _target)
 	unit.movement_state.transition_to("Dash")
 	
 func get_dash_resource() -> DashCharge:

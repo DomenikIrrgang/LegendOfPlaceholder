@@ -6,16 +6,35 @@ signal ability_failed_not_enough_resource(source: Unit, ability: Ability)
 signal ability_failed_cannot_use(source: Unit, ability: Ability)
 signal ability_result(result: AbilityCastResultEntry)
 
-func use_ability(ability: Ability, source: Unit) -> void:
+func can_cast_ability(source: Unit, ability: Ability) -> bool:
+	if can_use_ability(source, ability) and not source.is_casting():
+		return true
+	return false
+	
+func get_cast_time(source: Unit, ability: Ability) -> float:
+	var value = calculator.get_cast_time(ability, source)
+	return calculator.get_cast_time(ability, source)
+	
+func can_use_ability(source: Unit, ability: Ability) -> bool:
 	if ability.can_use(source):
 		if calculator.has_ability_resource(ability, source, source):
-			increase_resource(source, ability.get_resource_type(), -calculator.get_ability_cost(ability, source, source))
-			ability.use(source)
+			return true
 		else:
 			ability_failed_not_enough_resource.emit(source, ability)
 			Error.send("Not enough Resources to use that Ability.")
+			return false
 	else:
 		Error.send("Cannot use that yet.")
+		return false
+
+func use_ability(source: Unit, target: Unit, ability: Ability) -> bool:
+	if can_use_ability(source, ability):
+			increase_resource(source, ability.get_resource_type(), -ability.get_resource_cost())
+			ability.use(source, target)
+			if ability.ability_type == Ability.Type.TARGETED:
+				cast_ability(ability, source, target)
+			return true
+	return false
 
 func cast_ability(ability: Ability, source: Unit, target: Unit):
 	var results = []

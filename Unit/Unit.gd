@@ -54,6 +54,80 @@ signal direction_changed(direction: int)
 signal took_damage(value: int)
 signal died(unit: Unit)
 
+
+#Cast
+
+var casting: bool = false
+var cast_time: float = 0.0
+var current_cast: float = 0.0
+var casting_ability: Ability
+var cast_target: Unit
+var casting_enabled: bool = true
+
+signal cast_started(source: Unit, target: Unit, ability: Ability, duration: float)
+signal cast_canceled(source: Unit, target: Unit, ability: Ability)
+signal cast_interupted(source: Unit, target: Unit, ability: Ability)
+signal cast_finished(source: Unit, target: Unit, ability: Ability)
+
+func start_casting(target: Unit, ability: Ability) -> bool:
+	if CombatLogic.can_cast_ability(self, ability):
+		casting = true
+		current_cast = 0.0
+		cast_time = CombatLogic.get_cast_time(self, ability)
+		casting_ability = ability
+		cast_target = target
+		cast_started.emit(self, cast_target, casting_ability, cast_time)
+		return true
+	return false
+		
+func stop_casting() -> void:
+	if is_casting():
+		casting = false
+		cast_canceled.emit(self, cast_target, casting_ability)
+		cast_time = 0.0
+		current_cast = 0.0
+		casting_ability = null
+		cast_target = null
+		
+func interupt_casting() -> void:
+	if is_casting():
+		casting = false
+		cast_interupted.emit(self, cast_target, casting_ability)
+		cast_time = 0.0
+		current_cast = 0.0
+		casting_ability = null
+		cast_target = null
+		
+func is_casting() -> bool:
+	return casting
+	
+func is_cast_finished() -> bool:
+	return current_cast >= cast_time
+	
+func get_cast_time() -> float:
+	return cast_time
+	
+func get_current_cast_time() -> float:
+	return current_cast
+	
+func update_cast(delta: float) -> void:
+	if is_casting() and casting_enabled:
+		current_cast += delta
+		if is_cast_finished():
+			CombatLogic.use_ability(self, cast_target, casting_ability)
+			cast_time = 0.0
+			current_cast = 0.0
+			casting = false
+			cast_finished.emit(self, cast_target, casting_ability)
+			casting_ability = null
+			cast_target = null
+			
+func use_ability(target: Unit, ability: Ability) -> bool:
+	if CombatLogic.get_cast_time(self, ability) > 0.0:
+		return start_casting(target, ability)
+	else:
+		return CombatLogic.use_ability(self, target, ability)
+
 func _ready() -> void:
 	base_stats = BaseStats.new(unit_data.level)
 	for stat_assignment in unit_data.stats:
@@ -83,6 +157,8 @@ func has_resource(resource_type: ResourceType.Enum) -> bool:
 	return resources[resource_type] != null
 	
 func has_resource_amount(resource_type: ResourceType.Enum, amount: int) -> bool:
+	var resource = get_resource(resource_type)
+	var value = get_resource(resource_type).get_value()
 	return amount <= 0 or (has_resource(resource_type) and get_resource(resource_type).get_value() >= amount)
 	
 func increase_resource_value(resource_type: ResourceType.Enum, value: int) -> int:
@@ -93,8 +169,9 @@ func increase_resource_value(resource_type: ResourceType.Enum, value: int) -> in
 		return change
 	return 0
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	movement_velocity = movement_strategy.get_movement_velocity()
+	update_cast(delta)
 	update_direction()
 	
 func _physics_process(delta: float) -> void:

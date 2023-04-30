@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://ced567ap3pob1"]
+
+[ext_resource type="Script" path="res://Enemy/MegaSlime/Abilities/SummonSlime.gd" id="1_dl6hb"]
+
+[node name="SummonSlime" type="Node2D"]
+script = ExtResource("1_dl6hb")
+alias = "Summon Slime"
+tooltip = "Summons a slime into combat."
+ability_type = 1
+cooldown = 1.0
+cast_time = 3.0
+scaling_factor = 2.08165e-12
+spell_school = 7
+resource_type = 5
+crittable = false

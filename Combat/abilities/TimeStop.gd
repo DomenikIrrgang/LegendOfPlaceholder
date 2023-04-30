@@ -6,8 +6,8 @@ var time_stop_duration: float = 6.0
 var timer: Timer
 var source: Unit
 
-func use(_source: Unit) -> void:
-	super(_source)
+func use(_source: Unit, _target: Unit) -> void:
+	super(_source, _target)
 	source = _source
 	timer = Timer.new()
 	timer.one_shot = true

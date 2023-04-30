@@ -8,6 +8,7 @@ script = ExtResource("1_222xb")
 alias = "Mend"
 tooltip = "Heals the caster."
 cooldown = 30.0
+cast_time = 2.0
 value = -40
 scaling_factor = -0.1
 spell_school = 5

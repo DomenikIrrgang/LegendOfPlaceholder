@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://udjx03tle2ke"]
+
+[ext_resource type="Script" path="res://Enemy/MegaSlime/Abilities/ZoneOfDoom.gd" id="1_r3jk5"]
+
+[node name="ZoneOfDoom" type="Node2D"]
+script = ExtResource("1_r3jk5")
+alias = "Zone of Doom"
+tooltip = "Places a Zone that does damage."
+ability_type = 1
+value = 5
+scaling_factor = 0.01
+spell_school = 10
+target_type = 1
+resource_type = 5
+resistable = true

@@ -2,16 +2,19 @@ class_name BossFrame
 extends Control
 
 @onready
-var health_bar: TextureProgressBar = $CenterContainer/FrameTexture/HealthBar
+var health_bar: TextureProgressBar = $Frame/FrameTexture/HealthBar
 
 @onready
-var boss_level_label: Label = $CenterContainer/FrameTexture/CenterLevel/BossLevel
+var boss_level_label: Label = $Frame/FrameTexture/CenterLevel/BossLevel
 
 @onready
-var boss_name_label: Label = $CenterContainer/FrameTexture/CenterName/BossName
+var boss_name_label: Label = $Frame/FrameTexture/CenterName/BossName
 
 @onready
-var boss_health_label: Label = $CenterContainer/FrameTexture/HealthBar/CenterHealthText/BossHealth
+var boss_health_label: Label = $Frame/FrameTexture/HealthBar/CenterHealthText/BossHealth
+
+@onready
+var castbar: Castbar = $Castbar
 
 func _ready():
 	BossEncounter.boss_encounter_started.connect(on_encounter_started)
@@ -26,6 +29,7 @@ func on_encounter_started(boss: Unit) -> void:
 	boss_health_label.text = str(boss.get_resource(ResourceType.Enum.HEALTH).get_value()) + " / " + str(boss.get_resource(ResourceType.Enum.HEALTH).get_maximum_value())
 	boss.get_resource(ResourceType.Enum.HEALTH).resource_value_changed.connect(on_boss_health_changed)
 	boss.get_resource(ResourceType.Enum.HEALTH).resource_maximum_value_changed.connect(on_boss_max_health_changed)
+	castbar.initialize(boss)
 	visible = true
 	
 func on_boss_health_changed(resource: UnitResource, _new_value: int, _change: int, _original_change: int) -> void:

@@ -7,7 +7,9 @@
 script = ExtResource("1_g0y4g")
 alias = "TImestop"
 tooltip = "Stops the time for all non boss enemies."
+ability_type = 1
 cooldown = 25.0
+cast_time = 1.0
 scaling_factor = 2.08165e-12
 spell_school = 5
 target_type = 1

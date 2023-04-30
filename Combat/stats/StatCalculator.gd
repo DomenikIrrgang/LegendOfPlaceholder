@@ -31,7 +31,9 @@ func get_hit_chance() -> float:
 	return (unit.stats.get_stat(Stat.Enum.HIT) + unit.stats.get_stat(Stat.Enum.INTELLECT) * 0.25) / 20.0
 
 func get_haste() -> float:
-	return unit.stats.get_stat(Stat.Enum.HASTE) + unit.stats.get_stat(Stat.Enum.AGILITY) / 20.0
+	var haste_percentage = unit.stats.get_stat(Stat.Enum.HASTE) * 0.001
+	var agility_percentage = unit.stats.get_stat(Stat.Enum.AGILITY) * 0.0001
+	return haste_percentage + agility_percentage
 	
 func get_critical_chance() -> float:
 	return (unit.stats.get_stat(Stat.Enum.CRIT) + unit.stats.get_stat(Stat.Enum.INTELLECT) * 0.25) / 20.0

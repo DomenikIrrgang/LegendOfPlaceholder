@@ -1,7 +1,7 @@
 extends Ability
 
-func use(source: Unit):
-	super(source)
+func use(source: Unit, _target: Unit):
+	super(source, _target)
 	source.attack()
 	
 func can_use(source: Unit) -> bool:

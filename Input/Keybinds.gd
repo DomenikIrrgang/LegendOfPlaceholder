@@ -13,7 +13,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_type():
 		for action_name in keybinds:
 			if Input.is_action_just_pressed(action_name):
-				CombatLogic.use_ability(keybinds[action_name], (get_tree().get_first_node_in_group("player")))
+				Globals.get_player().use_ability(Globals.get_player(), keybinds[action_name])
 
 func keybind_ability(action_name: String, ability: Ability) -> void:
 	keybinds[action_name] = ability

@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b36kjfwlo3i"]
+[gd_scene load_steps=6 format=3 uid="uid://gap8ykcqc8uf"]
 
-[ext_resource type="Script" path="res://Combat/abilities/ZoneOfDoom.gd" id="1_tmdbj"]
-[ext_resource type="Script" path="res://Combat/abilities/ZoneOfDoomHitBox.gd" id="2_kto1g"]
+[ext_resource type="Script" path="res://Enemy/MegaSlime/Abilities/ZoneOfDoomVoid.gd" id="1_drxoc"]
+[ext_resource type="Script" path="res://Enemy/MegaSlime/Abilities/ZoneOfDoomHitBox.gd" id="2_5hbkj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b6gxc"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_mb1sp"]
 
 [sub_resource type="Shader" id="Shader_scdsq"]
 code = "shader_type canvas_item;
@@ -57,7 +57,7 @@ void fragment() {
     COLOR = color;
 }"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yejg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lg5rd"]
 shader = SubResource("Shader_scdsq")
 shader_parameter/amplitude = 0.5
 shader_parameter/frequency = 5.0
@@ -66,27 +66,19 @@ shader_parameter/waveAmplitude = 5.0
 shader_parameter/waveFrequency = 10.0
 shader_parameter/blendingAmount = 10.0
 
-[node name="ZoneOfDoom" type="Node2D"]
-script = ExtResource("1_tmdbj")
-alias = "Zone of Doom"
-tooltip = "Places a Zone that does damage."
-value = 5
-scaling_factor = 0.01
-spell_school = 10
-target_type = 1
-resource_type = 5
-resistable = true
+[node name="ZoneOfDoomVoid" type="Node2D"]
+script = ExtResource("1_drxoc")
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("2_kto1g")
+script = ExtResource("2_5hbkj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-shape = SubResource("CircleShape2D_b6gxc")
+shape = SubResource("CircleShape2D_mb1sp")
 
 [node name="ColorRect" type="ColorRect" parent="HitBox/CollisionShape2D"]
-material = SubResource("ShaderMaterial_3yejg")
+material = SubResource("ShaderMaterial_lg5rd")
 offset_left = -10.0
 offset_top = -10.0
 offset_right = 10.0

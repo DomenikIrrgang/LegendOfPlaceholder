@@ -7,9 +7,20 @@ var alias: String = ""
 @export
 var tooltip: String = ""
 
+enum Type {
+	TARGETED,
+	NOT_TARGETED
+}
+
+@export
+var ability_type: Ability.Type = Type.TARGETED
+
 @export
 var cooldown: float = 0.0
 var remaining_cooldown: float = 0
+
+@export
+var cast_time: float = 0.0
 
 @export
 var value: int = 0
@@ -137,8 +148,11 @@ func can_use(_source: Unit) -> bool:
 	
 func can_cast(_source: Unit, _target: Unit) -> bool:
 	return true
+	
+func get_cast_time() -> float:
+	return cast_time
 
-func use(_unit: Unit) -> void:
+func use(_source: Unit, _target: Unit) -> void:
 	if get_charges() == get_max_charges():
 		set_remaining_cooldown(get_cooldown())
 	gain_charges(-1)

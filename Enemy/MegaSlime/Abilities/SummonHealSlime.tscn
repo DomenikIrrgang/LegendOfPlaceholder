@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://5qpgax8v6olf"]
+
+[ext_resource type="Script" path="res://Enemy/MegaSlime/Abilities/SummonHealSlime.gd" id="1_dnvh3"]
+
+[node name="SummonHealSlime" type="Node2D"]
+script = ExtResource("1_dnvh3")
+alias = "Summon Healslime"
+tooltip = "Summones a healslime"
+ability_type = 1
+cast_time = 3.0
+scaling_factor = 2.08165e-12
+spell_school = 7
+crittable = false

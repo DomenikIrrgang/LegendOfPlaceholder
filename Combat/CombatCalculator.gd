@@ -53,7 +53,11 @@ func ability_castable(ability: Ability, source: Unit, target: Unit) -> bool:
 	
 func has_ability_resource(ability: Ability, source: Unit, target: Unit) -> bool:
 	return ability.get_resource_type() == ResourceType.Enum.FREE or source.has_resource_amount(ability.get_resource_type(), get_ability_cost(ability, source, target))
-	
+
+func get_cast_time(ability: Ability, source: Unit) -> float:
+	var haste_percentage = source.stat_calculator.get_haste()
+	return ability.get_cast_time() * (1.0 - haste_percentage)
+
 func random_chance(chance: float) -> bool:
 	return (randf() * 100.0) <= chance
 

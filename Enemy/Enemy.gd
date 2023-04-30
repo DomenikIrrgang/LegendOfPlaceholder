@@ -25,10 +25,12 @@ func freeze() -> void:
 	model_animation.pause()
 	hit_box.get_node("CollisionShape").disabled = true
 	phase_state_machine.enabled = false
-	movement_strategy.enabled = false	
+	movement_strategy.enabled = false
+	casting_enabled = false
 	
 func unfreeze() -> void:
 	model_animation.play()
 	hit_box.get_node("CollisionShape").disabled = false
 	phase_state_machine.enabled = true
 	movement_strategy.enabled = true
+	casting_enabled = true
