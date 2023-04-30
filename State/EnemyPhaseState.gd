@@ -19,10 +19,8 @@ func update(delta: float) -> void:
 			var chance = timer.activation_chance * delta
 			if Globals.random_chance(timer.activation_chance * delta):
 				timer.callback.call()
-				print("timer called after ", timer.time_passed, " min_time ", timer.cooldown_min, " max time ", timer.cooldown_max)
 				timer.time_passed = 0.0
 		if timer.cooldown_max <= timer.time_passed:
 			timer.callback.call()
-			print("timer called after ", timer.time_passed, " min_time ", timer.cooldown_min, " max time ", timer.cooldown_max)
 			timer.time_passed = 0.0
 			
