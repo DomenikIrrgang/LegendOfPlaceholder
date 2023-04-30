@@ -74,7 +74,6 @@ weapon_path = "res://Weapons/Sword.tscn"
 unit_data = ExtResource("2_7ky4n")
 
 [node name="Model" type="Sprite2D" parent="."]
-z_index = 1
 y_sort_enabled = true
 texture = ExtResource("2_8tpy3")
 hframes = 8

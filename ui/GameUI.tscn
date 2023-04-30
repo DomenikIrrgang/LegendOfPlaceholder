@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b4kh3x2mugaum"]
+[gd_scene load_steps=44 format=3 uid="uid://b4kh3x2mugaum"]
 
 [ext_resource type="Script" path="res://Ui/GameUI.gd" id="1_x76ic"]
 [ext_resource type="Script" path="res://Ui/UnitFramePlayer.gd" id="6_52hwt"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bfrrwosmxoqna" path="res://Assets/ui/bossframe/health_bar_under.png" id="21_stqy2"]
 [ext_resource type="Texture2D" uid="uid://b8hhyyoji6x4n" path="res://Assets/ui/bossframe/health_bar.png" id="22_2h0f6"]
 [ext_resource type="PackedScene" uid="uid://cv102qedh50l3" path="res://Ui/AbilitySlot.tscn" id="22_efia7"]
+[ext_resource type="Script" path="res://Ui/ErrorMessages.gd" id="24_xy4t1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
 font = ExtResource("9_x1hww")
@@ -388,3 +389,18 @@ offset_bottom = 19.0
 layout_mode = 2
 text = "100/100"
 label_settings = SubResource("LabelSettings_0oxxp")
+
+[node name="ErrorMessages" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("24_xy4t1")
+
+[node name="CenterContainer" type="CenterContainer" parent="ErrorMessages"]
+layout_mode = 0
+offset_top = 120.0
+offset_right = 1920.0
+offset_bottom = 432.0
+
+[node name="Container" type="VBoxContainer" parent="ErrorMessages/CenterContainer"]
+layout_mode = 2

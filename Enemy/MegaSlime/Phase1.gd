@@ -15,7 +15,7 @@ func spawn_slime() -> void:
 	var slime = preload("res://Enemy/Slime/Slime.tscn").instantiate()
 	var player = Globals.get_player()
 	var enemy = get_enemy()
-	enemy.add_child(slime)
+	enemy.get_parent().add_child(slime)
 	slime.global_position = enemy.global_position + player.global_position.direction_to(enemy.global_position).normalized().rotated(0.5 * PI) * 30
 	enemy.resource_link.add_unit(slime)
 	

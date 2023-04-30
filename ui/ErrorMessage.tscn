@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://ogjijp7in1l3"]
+
+[ext_resource type="Script" path="res://Ui/ErrorMessage.gd" id="1_v8mve"]
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="2_3hclu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rh707"]
+font = ExtResource("2_3hclu")
+font_size = 18
+font_color = Color(0.690196, 0, 0, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ut5nd"]
+resource_name = "fade"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fy71o"]
+_data = {
+"fade": SubResource("Animation_ut5nd")
+}
+
+[node name="ErrorMessage" type="Label"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1841.0
+offset_bottom = -1057.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Message"
+label_settings = SubResource("LabelSettings_rh707")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_v8mve")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fy71o")
+}

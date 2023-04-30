@@ -13,8 +13,9 @@ func use_ability(ability: Ability, source: Unit) -> void:
 			ability.use(source)
 		else:
 			ability_failed_not_enough_resource.emit(source, ability)
+			Error.send("Not enough Resources to use that Ability.")
 	else:
-		ability_failed_cannot_use.emit(source, ability)
+		Error.send("Cannot use that yet.")
 
 func cast_ability(ability: Ability, source: Unit, target: Unit):
 	var results = []
