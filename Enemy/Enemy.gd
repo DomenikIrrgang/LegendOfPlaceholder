@@ -14,3 +14,6 @@ func _ready() -> void:
 func on_died(_enemy: Unit) -> void:
 	Globals.get_player().gain_experience(unit_data.experience)
 	queue_free()
+	
+func add_timed_function(callback: Callable, cooldown_min: float, cooldown_max: float) -> float:
+	return 0.0

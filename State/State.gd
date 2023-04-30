@@ -3,6 +3,12 @@ extends Node
 
 var state_machine = null
 
+func _ready() -> void:
+	self.state_machine = get_parent()
+	
+func get_enemy() -> Enemy:
+	return owner
+
 func handle_input(_event: InputEvent) -> void:
 	pass
 

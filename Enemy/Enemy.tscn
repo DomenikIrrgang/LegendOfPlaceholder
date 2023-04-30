@@ -1,8 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2fptqxkfwipo"]
+[gd_scene load_steps=7 format=3 uid="uid://bhfcp6laa8rvu"]
 
 [ext_resource type="PackedScene" uid="uid://cwlfjeoq2pkvi" path="res://Unit/Unit.tscn" id="1_216fp"]
 [ext_resource type="Script" path="res://Enemy/Enemy.gd" id="2_rhr6a"]
 [ext_resource type="PackedScene" uid="uid://bxhcqy03xm6oi" path="res://Ui/unit/UnitHpBar.tscn" id="3_ttyn3"]
+[ext_resource type="Script" path="res://State/StateMachine.gd" id="4_ejfmg"]
+[ext_resource type="Script" path="res://State/EnemyPhaseState.gd" id="5_sgre2"]
+
+[sub_resource type="GDScript" id="GDScript_mwj27"]
+script/source = "extends Area2D
+
+@onready
+var model: Sprite2D = $\"../Model\"
+
+func _ready() -> void:
+	area_entered.connect(on_area_entered)
+	area_exited.connect(on_area_exited)
+	
+func on_area_entered(area) -> void:
+	if area.owner is Player:
+		var tween: Tween = create_tween()
+		tween.tween_property(model, \"modulate\", Color(
+			model.modulate.r,
+			model.modulate.g,
+			model.modulate.b,
+			0.5), 0.5)
+	
+func on_area_exited(area) -> void:
+	if area.owner is Player:
+		var tween: Tween = create_tween()
+		tween.tween_property(model, \"modulate\", Color(
+			model.modulate.r,
+			model.modulate.g,
+			model.modulate.b,
+			1.0), 0.5)
+"
 
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_216fp")]
 script = ExtResource("2_rhr6a")
@@ -20,3 +51,13 @@ position = Vector2(0, 4)
 z_index = 1000
 offset_top = -11.0
 offset_bottom = -11.0
+
+[node name="UnitOcclusion" parent="." index="6"]
+script = SubResource("GDScript_mwj27")
+
+[node name="PhaseState" type="Node" parent="." index="7"]
+script = ExtResource("4_ejfmg")
+initial_state = NodePath("Phase1")
+
+[node name="Phase1" type="Node" parent="PhaseState" index="0"]
+script = ExtResource("5_sgre2")

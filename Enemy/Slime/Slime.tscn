@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://darf8wynyc0xs"]
+[gd_scene load_steps=8 format=3 uid="uid://bubwr2hqxqo2r"]
 
-[ext_resource type="PackedScene" uid="uid://d2fptqxkfwipo" path="res://Enemy/Enemy.tscn" id="1_14pbx"]
-[ext_resource type="Script" path="res://Enemy/Slime.gd" id="2_1hrf6"]
-[ext_resource type="Resource" uid="uid://djsprq100uefx" path="res://Resources/Enemies/Slime.tres" id="3_pevri"]
+[ext_resource type="PackedScene" uid="uid://bhfcp6laa8rvu" path="res://Enemy/Enemy.tscn" id="1_op8x6"]
+[ext_resource type="Script" path="res://Enemy/Slime/Slime.gd" id="2_p4or3"]
+[ext_resource type="Resource" uid="uid://djsprq100uefx" path="res://Resources/Enemies/Slime.tres" id="3_hqlwp"]
+[ext_resource type="Script" path="res://Enemy/Slime/Phase1.gd" id="4_jcexq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ffdo"]
 size = Vector2(10, 4)
@@ -13,10 +14,10 @@ size = Vector2(13.5, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlujc"]
 size = Vector2(14, 8)
 
-[node name="Slime" instance=ExtResource("1_14pbx")]
+[node name="Slime" instance=ExtResource("1_op8x6")]
 safe_margin = 0.01
-script = ExtResource("2_1hrf6")
-unit_data = ExtResource("3_pevri")
+script = ExtResource("2_p4or3")
+unit_data = ExtResource("3_hqlwp")
 
 [node name="Collision" parent="." index="0"]
 z_index = 1000
@@ -36,3 +37,6 @@ visible = false
 
 [node name="HitBox" parent="HitBox2D" index="0"]
 shape = SubResource("RectangleShape2D_vlujc")
+
+[node name="Phase1" parent="PhaseState" index="0"]
+script = ExtResource("4_jcexq")

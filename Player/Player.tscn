@@ -1,10 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://c8pbg6lllwiv5"]
+[gd_scene load_steps=33 format=3 uid="uid://vpck8gxc3g0"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_hqrbj"]
 [ext_resource type="Resource" uid="uid://31rg15sio2vh" path="res://Resources/Player/PlayerData.tres" id="2_7ky4n"]
 [ext_resource type="Texture2D" uid="uid://02xo8rphiwgt" path="res://Assets/textures/player.png" id="2_8tpy3"]
 [ext_resource type="Animation" uid="uid://cocraw1jx8unp" path="res://Player/Animations/Attack_Down.res" id="3_n1sks"]
-[ext_resource type="Script" path="res://StateMachine.gd" id="4_f0hp5"]
 [ext_resource type="Animation" uid="uid://tnorjeehjxm7" path="res://Player/Animations/Attack_Left.res" id="4_ygspt"]
 [ext_resource type="Script" path="res://Player/State/IdleToRun.gd" id="5_bdqid"]
 [ext_resource type="Animation" uid="uid://cmjkity7iwddo" path="res://Player/Animations/Attack_Right.res" id="5_uevr8"]
@@ -25,6 +24,7 @@
 [ext_resource type="Animation" uid="uid://creeojfoqy7lh" path="res://Player/Animations/Left.res" id="12_8yb1c"]
 [ext_resource type="Animation" uid="uid://dv8m2ic0ifk6l" path="res://Player/Animations/Right.res" id="13_ptw37"]
 [ext_resource type="Animation" uid="uid://dcl2bnq56ks2o" path="res://Player/Animations/Up.res" id="14_ulw1v"]
+[ext_resource type="Script" path="res://State/StateMachine.gd" id="16_keps8"]
 [ext_resource type="Script" path="res://Player/State/RunToDash.gd" id="19_yoqx6"]
 [ext_resource type="Script" path="res://Player/State/DashToRun.gd" id="24_fsluq"]
 [ext_resource type="Script" path="res://Unit/HurtBox.gd" id="27_3nmce"]
@@ -97,7 +97,7 @@ libraries = {
 }
 
 [node name="MovementState" type="Node" parent="."]
-script = ExtResource("4_f0hp5")
+script = ExtResource("16_keps8")
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="MovementState"]
