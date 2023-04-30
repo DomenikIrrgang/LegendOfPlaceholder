@@ -68,6 +68,7 @@ signal cast_started(source: Unit, target: Unit, ability: Ability, duration: floa
 signal cast_canceled(source: Unit, target: Unit, ability: Ability)
 signal cast_interupted(source: Unit, target: Unit, ability: Ability)
 signal cast_finished(source: Unit, target: Unit, ability: Ability)
+signal current_cast_update(source: Unit, target: Unit, ability: Ability, current_cast: float, cast_time: float)
 
 func start_casting(target: Unit, ability: Ability) -> bool:
 	if CombatLogic.can_cast_ability(self, ability):
@@ -79,6 +80,7 @@ func start_casting(target: Unit, ability: Ability) -> bool:
 		cast_started.emit(self, cast_target, casting_ability, cast_time)
 		return true
 	return false
+	
 		
 func stop_casting() -> void:
 	if is_casting():
@@ -112,7 +114,11 @@ func get_current_cast_time() -> float:
 	
 func update_cast(delta: float) -> void:
 	if is_casting() and casting_enabled:
+		if cast_target == null:
+			stop_casting()
+			return
 		current_cast += delta
+		current_cast_update.emit(self, cast_target, casting_ability, current_cast, cast_time)
 		if is_cast_finished():
 			CombatLogic.use_ability(self, cast_target, casting_ability)
 			cast_time = 0.0

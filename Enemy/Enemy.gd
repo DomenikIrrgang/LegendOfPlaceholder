@@ -11,9 +11,13 @@ var phase_state_machine: StateMachine = $PhaseState
 @onready
 var hit_box: HitBox2D = $HitBox2D
 
+@onready
+var castbar = $Castbar
+
 func _ready() -> void:
 	super()
 	health_bar.initialize(self)
+	castbar.initialize(self)
 	movement_strategy = FollowMovementStrategy.new(self, Globals.get_player())
 	died.connect(on_died)
 	

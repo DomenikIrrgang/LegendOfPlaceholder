@@ -1,11 +1,10 @@
-class_name Castbar
 extends Control
 
 @onready
-var progress_bar: TextureProgressBar = $CenterContainer/Background/ProgressBar
+var progress_bar: TextureProgressBar = $Background/ProgressBar
 
 @onready
-var spell_name_label: Label = $CenterContainer/Background/CenterContainer/SpellName
+var spell_name_label: Label = $Background/CenterContainer/SpellName
 
 func _ready() -> void:
 	visible = false
