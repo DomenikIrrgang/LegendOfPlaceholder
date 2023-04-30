@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://cwlfjeoq2pkvi"]
+[gd_scene load_steps=21 format=3 uid="uid://cwlfjeoq2pkvi"]
 
+[ext_resource type="Script" path="res://Unit/Unit.gd" id="1_x5av6"]
 [ext_resource type="Animation" uid="uid://ctiau02k5u1v4" path="res://Unit/Animations/Right.res" id="2_7aa67"]
 [ext_resource type="Texture2D" uid="uid://b8uqgr8axuptj" path="res://Assets/textures/slime.png" id="2_gmb67"]
 [ext_resource type="Animation" uid="uid://clhe6l4ubufhk" path="res://Unit/Animations/Down.res" id="3_3macp"]
@@ -60,6 +61,7 @@ floor_block_on_wall = false
 platform_on_leave = 2
 platform_floor_layers = 4294901760
 safe_margin = 0.04
+script = ExtResource("1_x5av6")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)

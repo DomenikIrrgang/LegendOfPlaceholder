@@ -18,7 +18,7 @@ func attack(player: Player) -> AnimationPlayer:
 			animation.play("Attack_Down")
 			player.set_animation("Attack_Down")
 			position.x = 0
-			position.y = 10
+			position.y = 15
 		Unit.Direction.RIGHT:
 			animation.play("Attack_Right")
 			player.set_animation("Attack_Right")
