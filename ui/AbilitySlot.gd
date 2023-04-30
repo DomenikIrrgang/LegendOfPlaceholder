@@ -36,7 +36,7 @@ func _ready() -> void:
 			icon.texture = ability.icon
 			icon.visible = true
 			
-func update_charge_label(charges: int, change: int) -> void:
+func update_charge_label(_charges: int, _change: int) -> void:
 	if ability.get_max_charges() > 1:
 		charge_label.text = str(ability.get_charges())
 		charge_label.visible = true
@@ -49,7 +49,7 @@ func update_cooldown() -> void:
 func ability_used(_ability: Ability) -> void:
 	update_cooldown()
 	
-func remaining_cooldown_changed(remaining_cooldown: float, cooldown: float) -> void:
+func remaining_cooldown_changed(_remaining_cooldown: float, _cooldown: float) -> void:
 	update_cooldown()	
 	
 			

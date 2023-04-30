@@ -28,12 +28,12 @@ func on_encounter_started(boss: Unit) -> void:
 	boss.get_resource(ResourceType.Enum.HEALTH).resource_maximum_value_changed.connect(on_boss_max_health_changed)
 	visible = true
 	
-func on_boss_health_changed(resource: UnitResource, new_value: int, change: int, original_change: int) -> void:
+func on_boss_health_changed(resource: UnitResource, _new_value: int, _change: int, _original_change: int) -> void:
 	var tween = create_tween()
 	tween.tween_property(health_bar, "value", resource.get_value(), 0.2)
 	boss_health_label.text = str(resource.get_value()) + " / " + str(resource.get_maximum_value())	
 	
-func on_boss_max_health_changed(resource: UnitResource, new_maximum_value: int) -> void:
+func on_boss_max_health_changed(resource: UnitResource, _new_maximum_value: int) -> void:
 	health_bar.value = resource.get_maximum_value()
 	boss_health_label.text = str(resource.get_value()) + " / " + str(resource.get_maximum_value())		
 	

@@ -9,7 +9,7 @@ func _init(_resource_type: ResourceType.Enum, _units: Array[Unit]):
 		if unit.has_resource(resource_type):
 			add_unit(unit)
 
-func on_resource_changed(resource: UnitResource, new_value: int, change: int, original_change: int) -> void:
+func on_resource_changed(resource: UnitResource, _new_value: int, change: int, original_change: int) -> void:
 	if (units.size() > 1):
 		var divided: float = float(original_change) / float(units.size())
 		var split = floor(divided)

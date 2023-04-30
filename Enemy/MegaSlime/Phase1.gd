@@ -19,6 +19,6 @@ func spawn_slime() -> void:
 	slime.global_position = enemy.global_position + player.global_position.direction_to(enemy.global_position).normalized().rotated(0.5 * PI) * 30
 	enemy.resource_link.add_unit(slime)
 	
-func boss_health_changed(resource: UnitResource, new_value: int, change: int, original_change: int) -> void:
+func boss_health_changed(resource: UnitResource, _new_value: int, _change: int, _original_change: int) -> void:
 	if resource.get_percentage() <= 0.7:
 		state_machine.transition_to("Phase2")

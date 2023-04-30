@@ -16,7 +16,6 @@ func _ready() -> void:
 	timer.one_shot = true
 	timer.timeout.connect(on_field_over)
 	add_child(timer)
-	timer.timeout.connect(on_field_over)
 	timer.start(0.5)
 
 func use(_source: Unit) -> void:
@@ -27,9 +26,9 @@ func use(_source: Unit) -> void:
 	source.add_child(force_field)
 
 
-func execute(source: Unit, target: Unit) -> void:
+func execute(_source: Unit, target: Unit) -> void:
 	target.apply_pushback(
-		target.global_position - source.global_position,
+		target.global_position - _source.global_position,
 		0.5,
 		0.2
 	)

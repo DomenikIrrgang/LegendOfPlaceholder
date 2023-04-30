@@ -24,6 +24,6 @@ func get_ability_for_keybind(action_name: String) -> Ability:
 	return null
 
 func get_abilities() -> Array[Ability]:
-	var result: Array[Ability]
+	var result: Array[Ability] = []
 	result.assign(keybinds.values())
 	return result

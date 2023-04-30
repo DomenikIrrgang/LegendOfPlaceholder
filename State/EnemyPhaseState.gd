@@ -16,7 +16,6 @@ func update(delta: float) -> void:
 	for timer in timers:
 		timer.time_passed += delta
 		if timer.cooldown_min <= timer.time_passed:
-			var chance = timer.activation_chance * delta
 			if Globals.random_chance(timer.activation_chance * delta):
 				timer.callback.call()
 				timer.time_passed = 0.0

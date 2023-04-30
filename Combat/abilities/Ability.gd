@@ -132,7 +132,7 @@ func get_value(_source: Unit, _target: Unit) -> int:
 func get_scaling_factor(_source: Unit, _target: Unit) -> float:
 	return scaling_factor
 	
-func can_use(source: Unit) -> bool:
+func can_use(_source: Unit) -> bool:
 	return get_charges() >= 1
 	
 func can_cast(_source: Unit, _target: Unit) -> bool:

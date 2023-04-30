@@ -15,6 +15,6 @@ func heal_target() -> void:
 	if get_enemy().heal_target != null:
 		CombatLogic.cast_ability(mend, get_enemy(), get_enemy().heal_target)
 	else:
-		CombatLogic.cast_ability(mend, get_enemy(), get_enemy()k)
+		CombatLogic.cast_ability(mend, get_enemy(), get_enemy())
 	
 

@@ -18,8 +18,8 @@ func update(_delta: float) -> void:
 	if not get_dash_resource().resource_value_changed.is_connected(dash_charges_changed):
 		get_dash_resource().resource_value_changed.connect(dash_charges_changed)
 		
-func dash_charges_changed(_resourcce: UnitResource, value: int, change: int, _original_change: int) -> void:
-	charges_changed.emit(value, change)
+func dash_charges_changed(_resourcce: UnitResource, new_value: int, change: int, _original_change: int) -> void:
+	charges_changed.emit(new_value, change)
 	
 func can_use(unit: Unit) -> bool:
 	return super(unit) and unit.movement_state.can_transition_to_state("Dash")
