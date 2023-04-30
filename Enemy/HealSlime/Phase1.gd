@@ -12,6 +12,9 @@ func enter(_data := {}) -> void:
 	get_enemy().movement_strategy = EscapeMovementStrategy.new(get_enemy(), Globals.get_player())
 	
 func heal_target() -> void:
-	CombatLogic.cast_ability(mend, get_enemy(), get_enemy().heal_target)
+	if get_enemy().heal_target != null:
+		CombatLogic.cast_ability(mend, get_enemy(), get_enemy().heal_target)
+	else:
+		CombatLogic.cast_ability(mend, get_enemy(), get_enemy()k)
 	
 

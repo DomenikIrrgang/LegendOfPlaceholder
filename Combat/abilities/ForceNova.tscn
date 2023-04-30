@@ -75,11 +75,10 @@ shader_parameter/blendingAmount = 10.0
 script = ExtResource("1_7nqi8")
 alias = "Forcefield"
 tooltip = "Deals damage and knocksback enemies around the caster."
-cooldown = 30.0
-value = 30
+cooldown = 1.0
+value = 200
 spell_school = 10
 target_type = 1
-resource_cost = 10
 icon = ExtResource("2_vof3p")
 
 [node name="HitBox" type="Area2D" parent="."]

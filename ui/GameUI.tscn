@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b4kh3x2mugaum"]
+[gd_scene load_steps=43 format=3 uid="uid://b4kh3x2mugaum"]
 
 [ext_resource type="Script" path="res://Ui/GameUI.gd" id="1_x76ic"]
 [ext_resource type="Script" path="res://Ui/UnitFramePlayer.gd" id="6_52hwt"]
@@ -18,6 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://b3jelvjfa2rtj" path="res://Assets/ui/bottom_hud/overlay.png" id="14_w5ov7"]
 [ext_resource type="Texture2D" uid="uid://cub6t8pg6hs5y" path="res://Assets/ui/bottom_hud/xp_progress_texture_under.png" id="15_qa8ts"]
 [ext_resource type="Texture2D" uid="uid://bcsg8qngbcxsa" path="res://Assets/ui/bottom_hud/dash_progress_texture_under.png" id="18_ee1fj"]
+[ext_resource type="Texture2D" uid="uid://clb1qxxlcylap" path="res://Assets/ui/bossframe/bossframe.png" id="20_60qt7"]
+[ext_resource type="Script" path="res://Ui/Bossframe.gd" id="20_whtym"]
+[ext_resource type="Texture2D" uid="uid://bfrrwosmxoqna" path="res://Assets/ui/bossframe/health_bar_under.png" id="21_stqy2"]
+[ext_resource type="Texture2D" uid="uid://b8hhyyoji6x4n" path="res://Assets/ui/bossframe/health_bar.png" id="22_2h0f6"]
 [ext_resource type="PackedScene" uid="uid://cv102qedh50l3" path="res://Ui/AbilitySlot.tscn" id="22_efia7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
@@ -145,6 +149,17 @@ shader_parameter/timeScaleFactor = 0.08
 shader_parameter/brightness = 0.3
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_831xi")
 
+[sub_resource type="LabelSettings" id="LabelSettings_oluuq"]
+font = ExtResource("9_x1hww")
+font_size = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_m82rs"]
+font = ExtResource("9_x1hww")
+font_size = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_0oxxp"]
+font = ExtResource("9_x1hww")
+
 [node name="GameUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -155,7 +170,6 @@ grow_vertical = 2
 script = ExtResource("1_x76ic")
 
 [node name="SystemMessage" type="CenterContainer" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 582.0
@@ -314,3 +328,63 @@ offset_left = 12.0
 offset_top = 6.0
 offset_right = 48.0
 offset_bottom = 42.0
+
+[node name="Bossframe" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 3.0
+offset_right = 40.0
+offset_bottom = 43.0
+script = ExtResource("20_whtym")
+
+[node name="CenterContainer" type="CenterContainer" parent="Bossframe"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 103.0
+
+[node name="FrameTexture" type="TextureRect" parent="Bossframe/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("20_60qt7")
+
+[node name="CenterLevel" type="CenterContainer" parent="Bossframe/CenterContainer/FrameTexture"]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 33.0
+offset_right = 326.0
+offset_bottom = 73.0
+
+[node name="BossLevel" type="Label" parent="Bossframe/CenterContainer/FrameTexture/CenterLevel"]
+layout_mode = 2
+text = "60"
+label_settings = SubResource("LabelSettings_oluuq")
+
+[node name="CenterName" type="CenterContainer" parent="Bossframe/CenterContainer/FrameTexture"]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 35.0
+offset_right = 512.0
+offset_bottom = 71.0
+
+[node name="BossName" type="Label" parent="Bossframe/CenterContainer/FrameTexture/CenterName"]
+layout_mode = 2
+text = "Megaslime"
+label_settings = SubResource("LabelSettings_m82rs")
+
+[node name="HealthBar" type="TextureProgressBar" parent="Bossframe/CenterContainer/FrameTexture"]
+layout_mode = 2
+offset_left = 17.0
+offset_top = 9.0
+offset_right = 821.0
+offset_bottom = 28.0
+value = 100.0
+texture_under = ExtResource("21_stqy2")
+texture_progress = ExtResource("22_2h0f6")
+
+[node name="CenterHealthText" type="CenterContainer" parent="Bossframe/CenterContainer/FrameTexture/HealthBar"]
+layout_mode = 0
+offset_right = 804.0
+offset_bottom = 19.0
+
+[node name="BossHealth" type="Label" parent="Bossframe/CenterContainer/FrameTexture/HealthBar/CenterHealthText"]
+layout_mode = 2
+text = "100/100"
+label_settings = SubResource("LabelSettings_0oxxp")

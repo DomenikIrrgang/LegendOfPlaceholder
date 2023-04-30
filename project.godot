@@ -23,6 +23,7 @@ CombatLogic="*res://Combat/CombatLogic.gd"
 Keybinds="*res://Input/Keybinds.gd"
 AbilityCooldownSystem="*res://Combat/abilities/AbilityCooldownSystem.gd"
 Globals="*res://Global/Globals.gd"
+BossEncounter="*res://Global/BossEncounter.gd"
 
 [debug]
 
