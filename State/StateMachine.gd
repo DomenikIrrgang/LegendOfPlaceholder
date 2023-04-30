@@ -9,6 +9,8 @@ var initial_state: NodePath
 @onready
 var current_state: State = get_node(initial_state)
 
+var enabled: bool = true
+
 func _ready() -> void:
 	await owner.ready
 	for child in get_children():
@@ -16,13 +18,16 @@ func _ready() -> void:
 	current_state.enter()
 
 func _unhandled_input(event: InputEvent) -> void:
-	current_state.handle_input(event)
+	if enabled:
+		current_state.handle_input(event)
 
 func _process(delta: float) -> void:
-	current_state.update(delta)
+	if enabled:
+		current_state.update(delta)
 
 func _physics_process(delta: float) -> void:
-	current_state.physics_update(delta)
+	if enabled:
+		current_state.physics_update(delta)
 
 func has_state(state_name: String) -> bool:
 	return has_node(state_name)

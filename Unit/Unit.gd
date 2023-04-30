@@ -94,7 +94,7 @@ func increase_resource_value(resource_type: ResourceType.Enum, value: int) -> in
 	return 0
 
 func _process(_delta: float) -> void:
-	movement_velocity = movement_strategy.calculateMovementVelocity()
+	movement_velocity = movement_strategy.get_movement_velocity()
 	update_direction()
 	
 func _physics_process(delta: float) -> void:

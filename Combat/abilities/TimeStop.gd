@@ -16,10 +16,10 @@ func use(_source: Unit) -> void:
 	timer.start(time_stop_duration)
 	for enemy in Globals.get_scene_tree().get_nodes_in_group("enemy"):
 		if not enemy.is_in_group("boss"):
-			enemy.process_mode = Node.PROCESS_MODE_DISABLED	
+			enemy.freeze()
 			
 func time_stop_over() -> void:
 	source.remove_child(timer)
 	for enemy in Globals.get_scene_tree().get_nodes_in_group("enemy"):
 		if not enemy.is_in_group("boss"):
-			enemy.process_mode = Node.PROCESS_MODE_INHERIT	
+			enemy.unfreeze()

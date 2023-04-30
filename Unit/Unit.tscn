@@ -82,7 +82,7 @@ script = ExtResource("12_1cggp")
 unit = NodePath("..")
 ability_scene = ExtResource("13_gpmh0")
 
-[node name="HitBox" type="CollisionShape2D" parent="HitBox2D"]
+[node name="CollisionShape" type="CollisionShape2D" parent="HitBox2D"]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_cjvo8")
 

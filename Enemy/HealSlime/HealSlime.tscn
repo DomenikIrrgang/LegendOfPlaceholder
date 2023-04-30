@@ -7,15 +7,12 @@
 [ext_resource type="Script" path="res://State/StateMachine.gd" id="5_7xfdc"]
 [ext_resource type="Script" path="res://Enemy/HealSlime/Phase1.gd" id="6_n2gw4"]
 
-[node name="HealSlime" instance=ExtResource("1_hw64s")]
+[node name="HealSlime" groups=["enemy"] instance=ExtResource("1_hw64s")]
 script = ExtResource("2_smo5y")
 unit_data = ExtResource("3_f6lwy")
 
 [node name="Model" parent="." index="1"]
 self_modulate = Color(0.0745098, 1, 0.0117647, 1)
-
-[node name="HitBox" parent="HitBox2D" index="0"]
-disabled = true
 
 [node name="UnitHpBar" parent="." index="5" instance=ExtResource("4_eqgxc")]
 z_index = 1000
