@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjlqe12ylrpwh"]
+
+[ext_resource type="Script" path="res://Combat/abilities/Kick.gd" id="1_qna5n"]
+[ext_resource type="Texture2D" uid="uid://duve7b0ska4yq" path="res://Assets/ui/bottom_hud/kick_icon.png" id="2_kuep2"]
+
+[node name="Kick" type="Node2D"]
+script = ExtResource("1_qna5n")
+alias = "Kick"
+tooltip = "Interupts all units around you."
+ability_type = 1
+cooldown = 2.0
+scaling_factor = 2.08165e-12
+resource_type = 5
+crittable = false
+icon = ExtResource("2_kuep2")

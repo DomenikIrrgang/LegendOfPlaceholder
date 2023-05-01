@@ -92,7 +92,7 @@ func stop_casting() -> void:
 		cast_target = null
 		
 func interupt_casting() -> void:
-	if is_casting():
+	if is_casting() and casting_ability.is_interuptable():
 		casting = false
 		cast_interupted.emit(self, cast_target, casting_ability)
 		cast_time = 0.0

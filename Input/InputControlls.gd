@@ -19,6 +19,7 @@ const KEY_TEXTURE = {
 	KEY_J: InputTextures.KEY_J,
 	KEY_I: InputTextures.KEY_I,
 	KEY_O: InputTextures.KEY_O,
+	KEY_P: InputTextures.KEY_P,
 }
 
 const MOUSE_TEXTURE = {

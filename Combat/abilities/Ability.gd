@@ -23,6 +23,9 @@ var remaining_cooldown: float = 0
 var cast_time: float = 0.0
 
 @export
+var interuptable: bool = false
+
+@export
 var value: int = 0
 
 @export
@@ -151,6 +154,9 @@ func can_cast(_source: Unit, _target: Unit) -> bool:
 	
 func get_cast_time() -> float:
 	return cast_time
+	
+func is_interuptable() -> bool:
+	return interuptable
 
 func use(_source: Unit, _target: Unit) -> void:
 	if get_charges() == get_max_charges():

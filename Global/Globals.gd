@@ -21,3 +21,11 @@ func get_first_collision(world: World2D, source: Vector2, target: Vector2, exclu
 	if result:
 		return result.position - (target - source).normalized() * 3
 	return target
+	
+func get_units_around_unit(source: Unit, radius: float, execlude: Array[Unit] = []) -> Array[Unit]:
+	var result: Array[Unit] = []
+	for target in get_scene_tree().get_nodes_in_group("unit"):
+		var distance = (source.global_position - target.global_position).length()
+		if distance <= radius and target != source and not execlude.has(target):
+			result.append(target)
+	return result

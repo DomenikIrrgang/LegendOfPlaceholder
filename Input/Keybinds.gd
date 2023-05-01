@@ -8,6 +8,7 @@ func _ready() -> void:
 	keybind_ability("Ability_One", load("res://Combat/abilities/Mend.tscn").instantiate())
 	keybind_ability("Ability_Two", load("res://Combat/abilities/ForceNova.tscn").instantiate())
 	keybind_ability("Ability_Three", load("res://Combat/abilities/TimeStop.tscn").instantiate())
+	keybind_ability("Ability_Four", load("res://Combat/abilities/Kick.tscn").instantiate())
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_type():
