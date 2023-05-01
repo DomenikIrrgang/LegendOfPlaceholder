@@ -8,4 +8,5 @@ func use(source: Unit, target: Unit) -> void:
 	source.get_parent().add_child(zone)
 	zone.hitbox.unit = source
 	zone.hitbox.ability = self
-	zone.global_position = Globals.get_player().global_position + Vector2(randi_range(-15, 15), randi_range(-15, 15))
+	var position = target.global_position + Vector2(randi_range(-15, 15), randi_range(-15, 15))
+	zone.global_position = Globals.get_first_collision(source.get_world_2d(), source.global_position, position, [source, target])

@@ -37,7 +37,7 @@ func initialize(unit: Unit) -> void:
 	unit.cast_interupted.connect(on_cast_interupted)
 	unit.cast_finished.connect(on_cast_finished)
 
-func on_cast_started(source: Unit, target: Unit, ability: Ability, duration: float) -> void:
+func on_cast_started(_source: Unit, _target: Unit, ability: Ability, duration: float) -> void:
 	var tween = create_tween()
 	visible = true
 	progress_bar.value = 0
@@ -45,13 +45,13 @@ func on_cast_started(source: Unit, target: Unit, ability: Ability, duration: flo
 	tween.tween_property(progress_bar, \"value\", 1000, duration)
 	spell_name_label.text = ability.get_alias()
 	
-func on_cast_canceled(source: Unit, target: Unit, ability: Ability) -> void:
+func on_cast_canceled(_source: Unit, _target: Unit, _ability: Ability) -> void:
 	visible = false
 	
-func on_cast_interupted(source: Unit, target: Unit, ability: Ability) -> void:
+func on_cast_interupted(_source: Unit, _target: Unit, _ability: Ability) -> void:
 	visible = false
 	
-func on_cast_finished(source: Unit, target: Unit, ability: Ability) -> void:
+func on_cast_finished(_source: Unit, _target: Unit, _ability: Ability) -> void:
 	visible = false
 "
 

@@ -12,3 +12,12 @@ func random_chance(chance: float) -> bool:
 # min and max have to be between 0.0 and 1.0	
 func random_value(minimum: float, maximum: float) -> float:
 	return randf() * (maximum - minimum) + minimum
+	
+func get_first_collision(world: World2D, source: Vector2, target: Vector2, exclude: Array) -> Vector2:
+	var space_state = world.direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(source, target)
+	query.exclude = exclude
+	var result = space_state.intersect_ray(query)
+	if result:
+		return result.position - (target - source).normalized() * 3
+	return target

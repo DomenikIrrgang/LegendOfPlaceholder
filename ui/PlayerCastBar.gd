@@ -17,19 +17,19 @@ func initialize(unit: Unit) -> void:
 	unit.cast_finished.connect(on_cast_finished)
 	unit.current_cast_update.connect(on_current_cast_update)
 
-func on_cast_started(source: Unit, target: Unit, ability: Ability, duration: float) -> void:
+func on_cast_started(_source: Unit, _target: Unit, ability: Ability, duration: float) -> void:
 	visible = true
 	spell_name_label.text = ability.get_alias()
 	progress_bar.max_value = duration
 	
-func on_current_cast_update(source: Unit, target: Unit, ability: Ability, current_cast: float, cast_time: float) -> void:
+func on_current_cast_update(_source: Unit, _target: Unit, _ability: Ability, current_cast: float, _cast_time: float) -> void:
 	progress_bar.value = current_cast
 	
-func on_cast_canceled(source: Unit, target: Unit, ability: Ability) -> void:
+func on_cast_canceled(_source: Unit, _target: Unit, _ability: Ability) -> void:
 	visible = false
 	
-func on_cast_interupted(source: Unit, target: Unit, ability: Ability) -> void:
+func on_cast_interupted(_source: Unit, _target: Unit, _ability: Ability) -> void:
 	visible = false
 	
-func on_cast_finished(source: Unit, target: Unit, ability: Ability) -> void:
+func on_cast_finished(_source: Unit, _target: Unit, _ability: Ability) -> void:
 	visible = false

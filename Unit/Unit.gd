@@ -163,8 +163,6 @@ func has_resource(resource_type: ResourceType.Enum) -> bool:
 	return resources[resource_type] != null
 	
 func has_resource_amount(resource_type: ResourceType.Enum, amount: int) -> bool:
-	var resource = get_resource(resource_type)
-	var value = get_resource(resource_type).get_value()
 	return amount <= 0 or (has_resource(resource_type) and get_resource(resource_type).get_value() >= amount)
 	
 func increase_resource_value(resource_type: ResourceType.Enum, value: int) -> int:

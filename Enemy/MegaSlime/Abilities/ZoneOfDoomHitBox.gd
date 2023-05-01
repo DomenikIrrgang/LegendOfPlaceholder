@@ -21,3 +21,4 @@ func on_hit_box_left(hurt_box: HurtBox2D) -> void:
 	
 func on_timer() -> void:
 	target.got_hurt.emit(unit, ability)
+	get_parent().scale = get_parent().scale + Vector2(0.4, 0.4)

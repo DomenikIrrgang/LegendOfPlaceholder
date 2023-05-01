@@ -36,7 +36,7 @@ func update(delta: float) -> void:
 			if executed:
 				timer.time_passed = 0.0
 
-func enter(data = {}) -> void:
+func enter(_data = {}) -> void:
 	super()
 			
 func exit() -> void:

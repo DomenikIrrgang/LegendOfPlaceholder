@@ -12,7 +12,6 @@ func can_cast_ability(source: Unit, ability: Ability) -> bool:
 	return false
 	
 func get_cast_time(source: Unit, ability: Ability) -> float:
-	var value = calculator.get_cast_time(ability, source)
 	return calculator.get_cast_time(ability, source)
 	
 func can_use_ability(source: Unit, ability: Ability) -> bool:
