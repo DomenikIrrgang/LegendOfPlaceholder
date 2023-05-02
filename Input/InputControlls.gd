@@ -6,6 +6,7 @@ const XBOX_BUTTON_TEXTURE = {
 	JOY_BUTTON_X: InputTextures.GAMEPAD_X,
 	JOY_BUTTON_Y: InputTextures.GAMEPAD_Y,
 	JOY_BUTTON_LEFT_SHOULDER: InputTextures.GAMEPAD_LB,
+	JOY_BUTTON_RIGHT_SHOULDER: InputTextures.GAMEPAD_RB,
 	JOY_AXIS_TRIGGER_LEFT: InputTextures.GAMEPAD_LT,
 }
 
@@ -51,7 +52,6 @@ func get_button_texture(action_name: String) -> String:
 			if input_event is InputEventJoypadButton:
 				return XBOX_BUTTON_TEXTURE[input_event.button_index]
 			if input_event is InputEventJoypadMotion:
-				print(JOY_AXIS_TRIGGER_LEFT, " ", input_event.axis)
 				return XBOX_BUTTON_TEXTURE[input_event.axis]
 		if !has_controller() and input_event is InputEventKey:
 			return KEY_TEXTURE[input_event.physical_keycode]

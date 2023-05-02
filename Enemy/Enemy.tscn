@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhfcp6laa8rvu"]
+[gd_scene load_steps=16 format=3 uid="uid://bhfcp6laa8rvu"]
 
 [ext_resource type="PackedScene" uid="uid://cwlfjeoq2pkvi" path="res://Unit/Unit.tscn" id="1_216fp"]
 [ext_resource type="Script" path="res://Enemy/Enemy.gd" id="2_rhr6a"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Enemy/Castbar.gd" id="6_82k5s"]
 [ext_resource type="Texture2D" uid="uid://v5uxsaoa2tjb" path="res://Assets/ui/bottom_hud/castbar_background.png" id="7_ehlrv"]
 [ext_resource type="Texture2D" uid="uid://dh3uqmhjs1hp5" path="res://Assets/ui/bottom_hud/castbar_progress.png" id="8_0du3e"]
+[ext_resource type="Shader" path="res://Shaders/UnitResource.gdshader" id="8_xco4q"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="9_uki8a"]
 
 [sub_resource type="GDScript" id="GDScript_mwj27"]
@@ -38,6 +39,17 @@ func on_area_exited(area) -> void:
 			model.modulate.b,
 			1.0), 0.5)
 "
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_84kpf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v1k7r"]
+noise = SubResource("FastNoiseLite_84kpf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gtffd"]
+shader = ExtResource("8_xco4q")
+shader_parameter/timeScaleFactor = 0.04
+shader_parameter/brightness = 0.6
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_v1k7r")
 
 [sub_resource type="LabelSettings" id="LabelSettings_utwh6"]
 font = ExtResource("9_uki8a")
@@ -83,6 +95,7 @@ offset_bottom = 23.0
 texture = ExtResource("7_ehlrv")
 
 [node name="ProgressBar" type="TextureProgressBar" parent="Castbar/Background" index="0"]
+material = SubResource("ShaderMaterial_gtffd")
 layout_mode = 0
 offset_left = 3.0
 offset_top = 3.0
