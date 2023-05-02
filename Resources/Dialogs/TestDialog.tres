@@ -1,16 +1,48 @@
-[gd_resource type="Resource" script_class="Dialog" load_steps=5 format=3 uid="uid://ccrsu83lfexny"]
+[gd_resource type="Resource" script_class="Dialog" load_steps=14 format=3 uid="uid://cnvr72uega8i5"]
 
 [ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="1_d048j"]
+[ext_resource type="Resource" uid="uid://dp7afxuihduss" path="res://Resources/Enemies/MegaSlime.tres" id="2_d430w"]
 [ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="2_jm37y"]
-[ext_resource type="Resource" uid="uid://31rg15sio2vh" path="res://Resources/Player/PlayerData.tres" id="4_xj28j"]
+[ext_resource type="Resource" uid="uid://cjj0mdciybpjf" path="res://Resources/Dialogs/TestDialogYes.tres" id="3_hhx1o"]
+[ext_resource type="Script" path="res://Resources/Dialogs/ChangeDialogAction.gd" id="5_tnanq"]
+[ext_resource type="Script" path="res://Resources/Dialogs/DialogChoice.gd" id="5_y817m"]
 
-[sub_resource type="Resource" id="Resource_2chow"]
+[sub_resource type="Resource" id="Resource_1078f"]
+script = ExtResource("5_tnanq")
+dialog = ExtResource("3_hhx1o")
+
+[sub_resource type="Resource" id="Resource_lyb2q"]
+script = ExtResource("5_y817m")
+text = "Yes"
+action = SubResource("Resource_1078f")
+
+[sub_resource type="Resource" id="Resource_7kgm4"]
+script = ExtResource("2_jm37y")
+type = 0
+author = ExtResource("2_d430w")
+text = "You are right, I am just that strong!"
+choices = Array[ExtResource("5_y817m")]([])
+
+[sub_resource type="Resource" id="Resource_miqcd"]
+script = ExtResource("1_d048j")
+steps = Array[ExtResource("2_jm37y")]([SubResource("Resource_7kgm4")])
+
+[sub_resource type="Resource" id="Resource_2lq2r"]
+script = ExtResource("5_tnanq")
+dialog = SubResource("Resource_miqcd")
+
+[sub_resource type="Resource" id="Resource_hjalj"]
+script = ExtResource("5_y817m")
+text = "No"
+action = SubResource("Resource_2lq2r")
+
+[sub_resource type="Resource" id="Resource_qljtv"]
 script = ExtResource("2_jm37y")
 type = 1
-author = ExtResource("4_xj28j")
-text = "Do you want me to level up?"
-choices = Array[String](["Yes", "No"])
+author = ExtResource("2_d430w")
+text = "Will you beat me ?"
+choices = Array[ExtResource("5_y817m")]([SubResource("Resource_lyb2q"), SubResource("Resource_hjalj")])
 
 [resource]
 script = ExtResource("1_d048j")
-steps = Array[ExtResource("2_jm37y")]([SubResource("Resource_2chow")])
+steps = Array[ExtResource("2_jm37y")]([SubResource("Resource_qljtv")])

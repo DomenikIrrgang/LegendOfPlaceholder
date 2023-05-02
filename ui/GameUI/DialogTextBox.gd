@@ -20,6 +20,8 @@ enum DialogToken {
 	SPEED,
 	BOLD,
 	PAUSE,
+	KEYBIND,
+	TEXTURE
 }
 
 signal dialog_text_stream_update(dialog_step: DialogStep)
@@ -54,7 +56,3 @@ func on_write_timer() -> void:
 		
 func on_dialog_text_stream_end(dialog_step: DialogStep) -> void:
 	confirmation_box.visible = true
-	
-func parse_tokens(text: String) -> Array[DialogToken]:
-	return []
-
