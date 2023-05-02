@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Dialog" load_steps=5 format=3 uid="uid://ccrsu83lfexny"]
+
+[ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="1_d048j"]
+[ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="2_jm37y"]
+[ext_resource type="Resource" uid="uid://31rg15sio2vh" path="res://Resources/Player/PlayerData.tres" id="4_xj28j"]
+
+[sub_resource type="Resource" id="Resource_2chow"]
+script = ExtResource("2_jm37y")
+type = 1
+author = ExtResource("4_xj28j")
+text = "Do you want me to level up?"
+choices = Array[String](["Yes", "No"])
+
+[resource]
+script = ExtResource("1_d048j")
+steps = Array[ExtResource("2_jm37y")]([SubResource("Resource_2chow")])

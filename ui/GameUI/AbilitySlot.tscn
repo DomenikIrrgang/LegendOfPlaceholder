@@ -1,22 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://cv102qedh50l3"]
+[gd_scene load_steps=8 format=3 uid="uid://c4aiaw6js8fc5"]
 
-[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://Assets/ui/bottom_hud/keybind_slot.png" id="1_jo4j6"]
-[ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://Assets/ui/buttons/b_button.png" id="2_0i1fd"]
-[ext_resource type="Script" path="res://Ui/AbilitySlot.gd" id="2_i2822"]
-[ext_resource type="Script" path="res://Ui/Keybind.gd" id="3_dc4wj"]
-[ext_resource type="Texture2D" uid="uid://djuotr8lwlwh2" path="res://Assets/ui/bottom_hud/ability_cooldown_progress.aseprite.png" id="6_y0ybg"]
-[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="7_ase4p"]
+[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://Assets/ui/bottom_hud/keybind_slot.png" id="1_fygva"]
+[ext_resource type="Script" path="res://Ui/GameUI/AbilitySlot.gd" id="2_xqtsu"]
+[ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://Assets/ui/buttons/b_button.png" id="3_ca1xt"]
+[ext_resource type="Script" path="res://Ui/GameUI/Keybind.gd" id="4_sm53d"]
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="5_yadua"]
+[ext_resource type="Texture2D" uid="uid://djuotr8lwlwh2" path="res://Assets/ui/bottom_hud/ability_cooldown_progress.aseprite.png" id="6_hcelx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7ybhc"]
 line_spacing = 2.08165e-12
-font = ExtResource("7_ase4p")
+font = ExtResource("5_yadua")
 font_size = 14
 
 [node name="AbilitySlot" type="TextureRect"]
 offset_right = 36.0
 offset_bottom = 36.0
-texture = ExtResource("1_jo4j6")
-script = ExtResource("2_i2822")
+texture = ExtResource("1_fygva")
+script = ExtResource("2_xqtsu")
 
 [node name="Keybind" type="TextureRect" parent="."]
 layout_mode = 1
@@ -25,8 +25,8 @@ offset_top = 33.0
 offset_right = 40.0
 offset_bottom = 65.0
 scale = Vector2(0.65, 0.65)
-texture = ExtResource("2_0i1fd")
-script = ExtResource("3_dc4wj")
+texture = ExtResource("3_ca1xt")
+script = ExtResource("4_sm53d")
 action_name = "Dash"
 
 [node name="Icon" type="TextureRect" parent="."]
@@ -54,4 +54,4 @@ offset_bottom = 36.0
 max_value = 1000.0
 rounded = true
 fill_mode = 3
-texture_progress = ExtResource("6_y0ybg")
+texture_progress = ExtResource("6_hcelx")

@@ -1,11 +1,11 @@
 extends PlayerState
 
 func update(_delta: float) -> void:
-	if (InputControlls.get_directional_vector() != Vector2.ZERO):
+	if (player.movement_velocity != Vector2.ZERO):
 		state_machine.transition_to("Run")
 
 func enter(_data := {}) -> void:
-	player.movement_strategy = UnitMovementStrategy.new(player)
+	player.movement_strategy = ControlledMovementStrategy.new(player)
 	update_animation()
 
 func update_animation() -> void:

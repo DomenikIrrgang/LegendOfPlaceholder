@@ -4,13 +4,18 @@ extends TextureRect
 @export
 var action_name: String
 
+signal keybind_pressed()
+signal keybind_released()
+
 func _input(event) -> void:
 	if (event.is_action_released(action_name)):
 		scale -= Vector2(0.3, 0.3)
 		position += size * 0.15
+		keybind_released.emit()
 	if (event.is_action_pressed(action_name)):
 		scale += Vector2(0.3, 0.3)	
 		position -= size * 0.15
+		keybind_pressed.emit()
 
 func _ready():
 	Input.joy_connection_changed.connect(joy_connection_changed)

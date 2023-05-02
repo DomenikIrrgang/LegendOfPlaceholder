@@ -1,37 +1,37 @@
-[gd_scene load_steps=60 format=3 uid="uid://b4kh3x2mugaum"]
+[gd_scene load_steps=60 format=3 uid="uid://cgfm1ac4pe23t"]
 
-[ext_resource type="Script" path="res://Ui/GameUI.gd" id="1_x76ic"]
-[ext_resource type="Script" path="res://Ui/UnitFramePlayer.gd" id="6_52hwt"]
-[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="9_x1hww"]
-[ext_resource type="Texture2D" uid="uid://7sbgo11asvra" path="res://Assets/ui/bottom_hud/health_progress_texture_under.png" id="10_dv1e0"]
-[ext_resource type="Script" path="res://Ui/SystemMessage.gd" id="10_e3ncc"]
-[ext_resource type="Script" path="res://Ui/MainHUD.gd" id="11_advoo"]
-[ext_resource type="Texture2D" uid="uid://iseefhpilikl" path="res://Assets/ui/bottom_hud/health_progress_texture.png" id="12_0viwj"]
-[ext_resource type="Script" path="res://Ui/ResourceBar.gd" id="12_3djnn"]
-[ext_resource type="Texture2D" uid="uid://dnnrkom0xsipj" path="res://Assets/ui/bottom_hud/xp_progress_texture.png" id="12_dsyyh"]
-[ext_resource type="Script" path="res://Ui/ExperienceBar.gd" id="12_gq3vu"]
-[ext_resource type="Texture2D" uid="uid://c7x7hb1xvylko" path="res://Assets/ui/bottom_hud/mana_progress_texture.png" id="12_w73u0"]
-[ext_resource type="Shader" path="res://Shaders/UnitResource.gdshader" id="13_bsqjr"]
-[ext_resource type="Texture2D" uid="uid://v8vt7sd8r3h4" path="res://Assets/ui/bottom_hud/resource_progress_texture_under.png" id="13_t2i81"]
-[ext_resource type="Script" path="res://Ui/TextureProgressBar.gd" id="14_1bhi6"]
-[ext_resource type="Texture2D" uid="uid://cb8r0k1s7cnmy" path="res://Assets/ui/bottom_hud/dash_progress_texture.png" id="14_oetjh"]
-[ext_resource type="Texture2D" uid="uid://b3jelvjfa2rtj" path="res://Assets/ui/bottom_hud/overlay.png" id="14_w5ov7"]
-[ext_resource type="Texture2D" uid="uid://cub6t8pg6hs5y" path="res://Assets/ui/bottom_hud/xp_progress_texture_under.png" id="15_qa8ts"]
-[ext_resource type="Texture2D" uid="uid://bcsg8qngbcxsa" path="res://Assets/ui/bottom_hud/dash_progress_texture_under.png" id="18_ee1fj"]
-[ext_resource type="Texture2D" uid="uid://clb1qxxlcylap" path="res://Assets/ui/bossframe/bossframe.png" id="20_60qt7"]
-[ext_resource type="Script" path="res://Ui/Bossframe.gd" id="20_whtym"]
-[ext_resource type="Texture2D" uid="uid://bfrrwosmxoqna" path="res://Assets/ui/bossframe/health_bar_under.png" id="21_stqy2"]
-[ext_resource type="Texture2D" uid="uid://b8hhyyoji6x4n" path="res://Assets/ui/bossframe/health_bar.png" id="22_2h0f6"]
-[ext_resource type="PackedScene" uid="uid://cv102qedh50l3" path="res://Ui/AbilitySlot.tscn" id="22_efia7"]
-[ext_resource type="Script" path="res://Ui/ErrorMessages.gd" id="24_xy4t1"]
-[ext_resource type="Texture2D" uid="uid://dl0u83xiv6kk1" path="res://Assets/ui/bossframe/castbar_background.png" id="25_4e5ai"]
-[ext_resource type="Texture2D" uid="uid://v5uxsaoa2tjb" path="res://Assets/ui/bottom_hud/castbar_background.png" id="25_cy3fw"]
-[ext_resource type="Script" path="res://Ui/PlayerCastBar.gd" id="25_d4mse"]
-[ext_resource type="Texture2D" uid="uid://bpdlcf2ngcdne" path="res://Assets/ui/bossframe/castbar_progress.png" id="26_m0iih"]
-[ext_resource type="Texture2D" uid="uid://dh3uqmhjs1hp5" path="res://Assets/ui/bottom_hud/castbar_progress.png" id="26_s0ep8"]
+[ext_resource type="Script" path="res://Ui/GameUI/GameUI.gd" id="1_8sgfl"]
+[ext_resource type="Script" path="res://Ui/GameUI/SystemMessage.gd" id="2_oedgj"]
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="3_60v0h"]
+[ext_resource type="Script" path="res://Ui/GameUI/MainHUD.gd" id="4_u1bay"]
+[ext_resource type="Texture2D" uid="uid://b3jelvjfa2rtj" path="res://Assets/ui/bottom_hud/overlay.png" id="5_xupsv"]
+[ext_resource type="Shader" path="res://Shaders/UnitResource.gdshader" id="6_n321i"]
+[ext_resource type="Texture2D" uid="uid://7sbgo11asvra" path="res://Assets/ui/bottom_hud/health_progress_texture_under.png" id="7_sxmiw"]
+[ext_resource type="Texture2D" uid="uid://iseefhpilikl" path="res://Assets/ui/bottom_hud/health_progress_texture.png" id="8_ryhw0"]
+[ext_resource type="Script" path="res://Ui/GameUI/UnitFramePlayer.gd" id="9_s8mtj"]
+[ext_resource type="Texture2D" uid="uid://v8vt7sd8r3h4" path="res://Assets/ui/bottom_hud/resource_progress_texture_under.png" id="10_aygyo"]
+[ext_resource type="Texture2D" uid="uid://c7x7hb1xvylko" path="res://Assets/ui/bottom_hud/mana_progress_texture.png" id="11_qalyh"]
+[ext_resource type="Script" path="res://Ui/GameUI/ResourceBar.gd" id="12_e5p2y"]
+[ext_resource type="Texture2D" uid="uid://cub6t8pg6hs5y" path="res://Assets/ui/bottom_hud/xp_progress_texture_under.png" id="13_ycxug"]
+[ext_resource type="Texture2D" uid="uid://dnnrkom0xsipj" path="res://Assets/ui/bottom_hud/xp_progress_texture.png" id="14_h3nkr"]
+[ext_resource type="Script" path="res://Ui/GameUI/ExperienceBar.gd" id="15_ehdar"]
+[ext_resource type="Texture2D" uid="uid://bcsg8qngbcxsa" path="res://Assets/ui/bottom_hud/dash_progress_texture_under.png" id="16_74nbd"]
+[ext_resource type="Texture2D" uid="uid://cb8r0k1s7cnmy" path="res://Assets/ui/bottom_hud/dash_progress_texture.png" id="17_teodj"]
+[ext_resource type="Script" path="res://Ui/GameUI/TextureProgressBar.gd" id="18_wi2pl"]
+[ext_resource type="PackedScene" uid="uid://cv102qedh50l3" path="res://Ui/GameUI/AbilitySlot.tscn" id="19_sjki4"]
+[ext_resource type="Script" path="res://Ui/GameUI/Bossframe.gd" id="20_cn0g6"]
+[ext_resource type="Texture2D" uid="uid://clb1qxxlcylap" path="res://Assets/ui/bossframe/bossframe.png" id="21_oeymq"]
+[ext_resource type="Texture2D" uid="uid://bfrrwosmxoqna" path="res://Assets/ui/bossframe/health_bar_under.png" id="22_xauq8"]
+[ext_resource type="Texture2D" uid="uid://b8hhyyoji6x4n" path="res://Assets/ui/bossframe/health_bar.png" id="23_mqvwi"]
+[ext_resource type="Script" path="res://Ui/GameUI/PlayerCastBar.gd" id="24_vl06k"]
+[ext_resource type="Texture2D" uid="uid://dl0u83xiv6kk1" path="res://Assets/ui/bossframe/castbar_background.png" id="25_28qlq"]
+[ext_resource type="Texture2D" uid="uid://bpdlcf2ngcdne" path="res://Assets/ui/bossframe/castbar_progress.png" id="26_vjcuh"]
+[ext_resource type="Script" path="res://Ui/GameUI/ErrorMessages.gd" id="27_hnvam"]
+[ext_resource type="Texture2D" uid="uid://v5uxsaoa2tjb" path="res://Assets/ui/bottom_hud/castbar_background.png" id="28_vneq5"]
+[ext_resource type="Texture2D" uid="uid://dh3uqmhjs1hp5" path="res://Assets/ui/bottom_hud/castbar_progress.png" id="29_3nnbc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
-font = ExtResource("9_x1hww")
+font = ExtResource("3_60v0h")
 font_size = 44
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
@@ -128,7 +128,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_r18re")
 noise = SubResource("FastNoiseLite_r0sr8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rjt1a"]
-shader = ExtResource("13_bsqjr")
+shader = ExtResource("6_n321i")
 shader_parameter/timeScaleFactor = 0.08
 shader_parameter/brightness = 0.5
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_hsp2l")
@@ -139,7 +139,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_hsp2l")
 noise = SubResource("FastNoiseLite_6nvuf")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xx3b"]
-shader = ExtResource("13_bsqjr")
+shader = ExtResource("6_n321i")
 shader_parameter/timeScaleFactor = 0.08
 shader_parameter/brightness = 0.3
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_8a0km")
@@ -150,19 +150,19 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_8a0km")
 noise = SubResource("FastNoiseLite_ax148")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m5tuq"]
-shader = ExtResource("13_bsqjr")
+shader = ExtResource("6_n321i")
 shader_parameter/timeScaleFactor = 0.08
 shader_parameter/brightness = 0.3
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_831xi")
 
 [sub_resource type="LabelSettings" id="LabelSettings_oluuq"]
-font = ExtResource("9_x1hww")
+font = ExtResource("3_60v0h")
 font_size = 15
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_m82rs"]
-font = ExtResource("9_x1hww")
+font = ExtResource("3_60v0h")
 font_size = 15
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
@@ -173,13 +173,13 @@ outline_color = Color(0, 0, 0, 1)
 noise = SubResource("FastNoiseLite_nufhm")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tfdin"]
-shader = ExtResource("13_bsqjr")
+shader = ExtResource("6_n321i")
 shader_parameter/timeScaleFactor = 0.04
 shader_parameter/brightness = 0.7
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_4kr0b")
 
 [sub_resource type="LabelSettings" id="LabelSettings_0oxxp"]
-font = ExtResource("9_x1hww")
+font = ExtResource("3_60v0h")
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
@@ -189,13 +189,13 @@ outline_color = Color(0, 0, 0, 1)
 noise = SubResource("FastNoiseLite_01a23")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q26g7"]
-shader = ExtResource("13_bsqjr")
+shader = ExtResource("6_n321i")
 shader_parameter/timeScaleFactor = 0.04
 shader_parameter/brightness = 0.6
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_pjfd7")
 
 [sub_resource type="LabelSettings" id="LabelSettings_gewi7"]
-font = ExtResource("9_x1hww")
+font = ExtResource("3_60v0h")
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
@@ -205,13 +205,13 @@ outline_color = Color(0, 0, 0, 1)
 noise = SubResource("FastNoiseLite_yjm7t")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ddhjh"]
-shader = ExtResource("13_bsqjr")
+shader = ExtResource("6_n321i")
 shader_parameter/timeScaleFactor = 0.04
 shader_parameter/brightness = 0.6
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_tmcsb")
 
 [sub_resource type="LabelSettings" id="LabelSettings_vmsgq"]
-font = ExtResource("9_x1hww")
+font = ExtResource("3_60v0h")
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
@@ -222,13 +222,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_x76ic")
+script = ExtResource("1_8sgfl")
 
 [node name="SystemMessage" type="CenterContainer" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 582.0
-script = ExtResource("10_e3ncc")
+script = ExtResource("2_oedgj")
 
 [node name="Message" type="Label" parent="SystemMessage"]
 layout_mode = 2
@@ -239,7 +239,7 @@ label_settings = SubResource("LabelSettings_5a6ab")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("11_advoo")
+script = ExtResource("4_u1bay")
 
 [node name="CenterContainer" type="CenterContainer" parent="MainHUD"]
 layout_mode = 0
@@ -250,7 +250,7 @@ offset_bottom = 1080.0
 [node name="Overlay" type="TextureRect" parent="MainHUD/CenterContainer"]
 material = SubResource("ShaderMaterial_80tss")
 layout_mode = 2
-texture = ExtResource("14_w5ov7")
+texture = ExtResource("5_xupsv")
 
 [node name="ColorRect" type="ColorRect" parent="MainHUD/CenterContainer/Overlay"]
 visible = false
@@ -272,9 +272,9 @@ offset_right = 95.0
 offset_bottom = 93.0
 value = 100.0
 fill_mode = 3
-texture_under = ExtResource("10_dv1e0")
-texture_progress = ExtResource("12_0viwj")
-script = ExtResource("6_52hwt")
+texture_under = ExtResource("7_sxmiw")
+texture_progress = ExtResource("8_ryhw0")
+script = ExtResource("9_s8mtj")
 
 [node name="ResourceBar" type="TextureProgressBar" parent="MainHUD/CenterContainer/Overlay"]
 show_behind_parent = true
@@ -286,9 +286,9 @@ offset_right = 786.0
 offset_bottom = 93.0
 value = 100.0
 fill_mode = 3
-texture_under = ExtResource("13_t2i81")
-texture_progress = ExtResource("12_w73u0")
-script = ExtResource("12_3djnn")
+texture_under = ExtResource("10_aygyo")
+texture_progress = ExtResource("11_qalyh")
+script = ExtResource("12_e5p2y")
 
 [node name="ExperienceBar" type="TextureProgressBar" parent="MainHUD/CenterContainer/Overlay"]
 show_behind_parent = true
@@ -298,9 +298,9 @@ offset_top = 35.0
 offset_right = 738.0
 offset_bottom = 41.0
 value = 100.0
-texture_under = ExtResource("15_qa8ts")
-texture_progress = ExtResource("12_dsyyh")
-script = ExtResource("12_gq3vu")
+texture_under = ExtResource("13_ycxug")
+texture_progress = ExtResource("14_h3nkr")
+script = ExtResource("15_ehdar")
 
 [node name="DashBar" type="TextureProgressBar" parent="MainHUD/CenterContainer/Overlay"]
 show_behind_parent = true
@@ -312,9 +312,9 @@ offset_right = 829.0
 offset_bottom = 93.0
 value = 100.0
 fill_mode = 3
-texture_under = ExtResource("18_ee1fj")
-texture_progress = ExtResource("14_oetjh")
-script = ExtResource("14_1bhi6")
+texture_under = ExtResource("16_74nbd")
+texture_progress = ExtResource("17_teodj")
+script = ExtResource("18_wi2pl")
 
 [node name="AbilitySlots" type="Control" parent="MainHUD/CenterContainer/Overlay"]
 anchors_preset = 0
@@ -323,7 +323,7 @@ offset_top = 73.0
 offset_right = 398.0
 offset_bottom = 99.0
 
-[node name="Ability1" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("22_efia7")]
+[node name="Ability1" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("19_sjki4")]
 layout_mode = 0
 offset_left = 1.0
 offset_top = -23.0
@@ -331,7 +331,7 @@ offset_right = 37.0
 offset_bottom = 13.0
 action_name = "Ability_One"
 
-[node name="Ability2" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("22_efia7")]
+[node name="Ability2" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("19_sjki4")]
 layout_mode = 0
 offset_left = 50.0
 offset_top = -23.0
@@ -339,7 +339,7 @@ offset_right = 86.0
 offset_bottom = 13.0
 action_name = "Ability_Two"
 
-[node name="Ability3" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("22_efia7")]
+[node name="Ability3" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("19_sjki4")]
 layout_mode = 0
 offset_left = 99.0
 offset_top = -23.0
@@ -347,7 +347,7 @@ offset_right = 135.0
 offset_bottom = 13.0
 action_name = "Ability_Three"
 
-[node name="Ability4" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("22_efia7")]
+[node name="Ability4" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("19_sjki4")]
 layout_mode = 0
 offset_left = 148.0
 offset_top = -23.0
@@ -355,7 +355,7 @@ offset_right = 184.0
 offset_bottom = 13.0
 action_name = "Ability_Four"
 
-[node name="Attack" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("22_efia7")]
+[node name="Attack" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("19_sjki4")]
 layout_mode = 0
 offset_left = 197.0
 offset_top = -23.0
@@ -363,7 +363,7 @@ offset_right = 233.0
 offset_bottom = 13.0
 action_name = "Attack"
 
-[node name="Dash" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("22_efia7")]
+[node name="Dash" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("19_sjki4")]
 layout_mode = 0
 offset_left = 246.0
 offset_top = -23.0
@@ -378,7 +378,7 @@ offset_top = 44.0
 offset_right = 735.0
 offset_bottom = 95.0
 
-[node name="Inventory" parent="MainHUD/CenterContainer/Overlay/SystemSlots" instance=ExtResource("22_efia7")]
+[node name="Inventory" parent="MainHUD/CenterContainer/Overlay/SystemSlots" instance=ExtResource("19_sjki4")]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 6.0
@@ -390,7 +390,7 @@ anchors_preset = 0
 offset_top = 3.0
 offset_right = 40.0
 offset_bottom = 43.0
-script = ExtResource("20_whtym")
+script = ExtResource("20_cn0g6")
 
 [node name="Frame" type="CenterContainer" parent="Bossframe"]
 layout_mode = 0
@@ -399,7 +399,7 @@ offset_bottom = 103.0
 
 [node name="FrameTexture" type="TextureRect" parent="Bossframe/Frame"]
 layout_mode = 2
-texture = ExtResource("20_60qt7")
+texture = ExtResource("21_oeymq")
 
 [node name="CenterLevel" type="CenterContainer" parent="Bossframe/Frame/FrameTexture"]
 layout_mode = 0
@@ -433,8 +433,8 @@ offset_top = 9.0
 offset_right = 821.0
 offset_bottom = 28.0
 value = 100.0
-texture_under = ExtResource("21_stqy2")
-texture_progress = ExtResource("22_2h0f6")
+texture_under = ExtResource("22_xauq8")
+texture_progress = ExtResource("23_mqvwi")
 
 [node name="CenterHealthText" type="CenterContainer" parent="Bossframe/Frame/FrameTexture/HealthBar"]
 layout_mode = 0
@@ -450,7 +450,7 @@ label_settings = SubResource("LabelSettings_0oxxp")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("25_d4mse")
+script = ExtResource("24_vl06k")
 
 [node name="CenterContainer" type="CenterContainer" parent="Bossframe/Castbar"]
 layout_mode = 0
@@ -460,7 +460,7 @@ offset_bottom = 105.0
 
 [node name="Background" type="TextureRect" parent="Bossframe/Castbar/CenterContainer"]
 layout_mode = 2
-texture = ExtResource("25_4e5ai")
+texture = ExtResource("25_28qlq")
 
 [node name="ProgressBar" type="TextureProgressBar" parent="Bossframe/Castbar/CenterContainer/Background"]
 material = SubResource("ShaderMaterial_q26g7")
@@ -472,7 +472,7 @@ offset_bottom = 20.0
 max_value = 1.0
 step = 0.01
 value = 1.0
-texture_progress = ExtResource("26_m0iih")
+texture_progress = ExtResource("26_vjcuh")
 
 [node name="CenterContainer" type="CenterContainer" parent="Bossframe/Castbar/CenterContainer/Background"]
 layout_mode = 0
@@ -490,7 +490,7 @@ label_settings = SubResource("LabelSettings_gewi7")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("24_xy4t1")
+script = ExtResource("27_hnvam")
 
 [node name="CenterContainer" type="CenterContainer" parent="ErrorMessages"]
 layout_mode = 0
@@ -505,7 +505,7 @@ layout_mode = 2
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("25_d4mse")
+script = ExtResource("24_vl06k")
 
 [node name="CenterContainer" type="CenterContainer" parent="PlayerCastBar"]
 layout_mode = 0
@@ -515,7 +515,7 @@ offset_bottom = 990.0
 
 [node name="Background" type="TextureRect" parent="PlayerCastBar/CenterContainer"]
 layout_mode = 2
-texture = ExtResource("25_cy3fw")
+texture = ExtResource("28_vneq5")
 
 [node name="ProgressBar" type="TextureProgressBar" parent="PlayerCastBar/CenterContainer/Background"]
 material = SubResource("ShaderMaterial_ddhjh")
@@ -526,7 +526,7 @@ offset_right = 189.0
 offset_bottom = 20.0
 step = 0.01
 value = 100.0
-texture_progress = ExtResource("26_s0ep8")
+texture_progress = ExtResource("29_3nnbc")
 
 [node name="CenterContainer" type="CenterContainer" parent="PlayerCastBar/CenterContainer/Background"]
 layout_mode = 0

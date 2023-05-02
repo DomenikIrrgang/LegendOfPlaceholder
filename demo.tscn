@@ -1,12 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://clbqbv4akm6ph"]
+[gd_scene load_steps=17 format=3 uid="uid://j75buc0tbdqd"]
 
 [ext_resource type="Texture2D" uid="uid://cjj1ypedmcl6e" path="res://tilemaps/Solaria Demo Update 01.png" id="1_uiosg"]
 [ext_resource type="Script" path="res://demo.gd" id="1_x6rkb"]
 [ext_resource type="PackedScene" uid="uid://vpck8gxc3g0" path="res://Player/Player.tscn" id="3_k1eps"]
 [ext_resource type="Script" path="res://CustomCamera.gd" id="4_hmvdk"]
 [ext_resource type="Shader" path="res://Shaders/Blur.gdshader" id="5_5uuxf"]
-[ext_resource type="Script" path="res://Ui/PauseMenu.gd" id="5_hj28t"]
-[ext_resource type="PackedScene" uid="uid://b4kh3x2mugaum" path="res://Ui/GameUI.tscn" id="6_wce2l"]
+[ext_resource type="Script" path="res://Ui/GameUI/PauseMenu.gd" id="5_hj28t"]
+[ext_resource type="PackedScene" uid="uid://cgfm1ac4pe23t" path="res://Ui/GameUI/GameUI.tscn" id="6_wce2l"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="8_xa5hp"]
 [ext_resource type="PackedScene" uid="uid://1cktjqdfqqvt" path="res://Enemy/MegaSlime/MegaSlime.tscn" id="10_01rkg"]
 
@@ -1200,7 +1200,7 @@ targeted_node = NodePath("../Player")
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_yh1c6")
 
-[node name="UserInterface" type="CanvasLayer" parent="."]
+[node name="UserInterface" type="CanvasLayer" parent="." groups=["UserInterfaceCanvas"]]
 
 [node name="GameUI" parent="UserInterface" node_paths=PackedStringArray("player") instance=ExtResource("6_wce2l")]
 player = NodePath("../../Player")

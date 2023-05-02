@@ -1,6 +1,6 @@
 extends Control
 
-var ErrorMessageLabel = preload("res://Ui/ErrorMessage.tscn")
+var ErrorMessageLabel = preload("res://Ui/GameUI/ErrorMessage.tscn")
 
 @onready
 var container: Container = $CenterContainer/Container

@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://b0qvlaunub2d0"]
+
+[ext_resource type="Script" path="res://Ui/Dialog.gd" id="1_llswf"]
+[ext_resource type="Texture2D" uid="uid://cyoimb2iltyke" path="res://Assets/ui/dialog/transparent_dialog_background.png" id="2_88ymm"]
+[ext_resource type="Texture2D" uid="uid://b6hy484v3a8rc" path="res://Assets/ui/dialog/text_icon.png" id="3_doacd"]
+[ext_resource type="Script" path="res://Ui/GameUI/DialogTextBox.gd" id="4_tgu8c"]
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="5_d0jb0"]
+[ext_resource type="Shader" path="res://Shaders/Fade.gdshader" id="6_7656d"]
+[ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://Assets/ui/buttons/b_button.png" id="7_m13bb"]
+[ext_resource type="Script" path="res://Ui/GameUI/Keybind.gd" id="8_rh3fi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_15222"]
+font = ExtResource("5_d0jb0")
+
+[sub_resource type="LabelSettings" id="LabelSettings_pvluk"]
+font = ExtResource("5_d0jb0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_efyvd"]
+shader = ExtResource("6_7656d")
+
+[node name="Dialog" type="CenterContainer"]
+offset_top = 702.0
+offset_right = 1920.0
+offset_bottom = 945.0
+script = ExtResource("1_llswf")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_88ymm")
+
+[node name="Icon" type="TextureRect" parent="Background"]
+layout_mode = 2
+offset_left = 29.0
+offset_top = 18.0
+offset_right = 229.0
+offset_bottom = 218.0
+texture = ExtResource("3_doacd")
+stretch_mode = 2
+
+[node name="TextBox" type="VBoxContainer" parent="Background"]
+layout_mode = 2
+offset_left = 260.0
+offset_top = 17.0
+offset_right = 1135.0
+offset_bottom = 216.0
+script = ExtResource("4_tgu8c")
+
+[node name="Author" type="Label" parent="Background/TextBox"]
+layout_mode = 2
+text = "Megaslime:"
+label_settings = SubResource("LabelSettings_15222")
+
+[node name="Text" type="Label" parent="Background/TextBox"]
+layout_mode = 2
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+label_settings = SubResource("LabelSettings_pvluk")
+autowrap_mode = 2
+
+[node name="ConfirmationBox" type="HBoxContainer" parent="Background"]
+layout_mode = 2
+offset_left = 260.0
+offset_top = 219.0
+offset_right = 989.0
+offset_bottom = 235.0
+scale = Vector2(1.2, 1.2)
+alignment = 2
+
+[node name="Keybind" type="TextureRect" parent="Background/ConfirmationBox"]
+material = SubResource("ShaderMaterial_efyvd")
+layout_mode = 2
+texture = ExtResource("7_m13bb")
+stretch_mode = 2
+script = ExtResource("8_rh3fi")
+action_name = "Dialog_Accept"

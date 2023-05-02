@@ -10,6 +10,7 @@ func enter(_data := {}) -> void:
 	add_timed_ability(SummonSlime, Globals.get_player(), 10.0, 17.0, 20.0)
 	add_timed_ability(SummonHealSlime, Globals.get_player(), 22.0, 28.0, 20.0)
 	add_timed_ability(Zone, Globals.get_player(), 8.0, 12.0, 20.0)
+	DialogManager.show_dialog(load("res://Resources/Dialogs/TestDialog.tres"))
 
 func on_slime_died(_slime: Unit) -> void:
 	pass

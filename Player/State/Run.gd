@@ -2,7 +2,7 @@ extends PlayerState
 
 func update(_delta: float) -> void:
 	update_animation()
-	if (InputControlls.get_directional_vector() == Vector2.ZERO):
+	if (player.movement_velocity == Vector2.ZERO):
 		state_machine.transition_to("Idle")
 		
 func enter(_data := {}) -> void:

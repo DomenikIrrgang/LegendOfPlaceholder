@@ -1,14 +1,17 @@
 class_name UnitData
 extends Resource
 
-@export_category("Basic Settings")
+@export_category("UnitData - Basic Settings")
 @export
 var alias: String = ""
 
 @export
+var dialog_texture: Texture
+
+@export
 var level: int = 1
 
-@export_category("Combat Settings")
+@export_category("UnitData - Combat Settings")
 @export
 var base_movement_speed: float = 30.0
 

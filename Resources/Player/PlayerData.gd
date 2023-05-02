@@ -1,7 +1,7 @@
 class_name PlayerData
 extends UnitData
 
-@export_category("Basic Settings")
+@export_category("PlayerData - Basic Settings")
 @export
 var experience: int = 0
 
