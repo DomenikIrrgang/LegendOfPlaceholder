@@ -28,7 +28,7 @@ func on_dialog_step_finished(dialog_step: DialogStep, choice: DialogChoice) -> v
 		
 func is_dialog_over() -> bool:
 	var new_dialog_step_index = current_dialog.steps.find(current_dialog_step) + 1
-	return new_dialog_step_index >= current_dialog.steps.size() - 1
+	return new_dialog_step_index > current_dialog.steps.size() - 1
 	
 func get_next_dialog_step() -> DialogStep:
 	return current_dialog.steps[current_dialog.steps.find(current_dialog_step) + 1]
