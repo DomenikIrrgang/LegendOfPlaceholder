@@ -10,8 +10,12 @@ func enter(_data := {}) -> void:
 	
 func exit() -> void:
 	super()
+	for node in Globals.get_world().get_children():
+		if node is Slime:
+			node.queue_free()
+			get_enemy().resource_link.remove_unit(node)
 	get_enemy().get_resource(ResourceType.Enum.HEALTH).resource_value_changed.disconnect(boss_health_changed)
 	
 func boss_health_changed(resource: UnitResource, _new_value: int, _change: int, _original_change: int) -> void:
-	if resource.get_percentage() <= 0.7:
+	if resource.get_percentage() <= 0.8:
 		state_machine.transition_to("Phase2")

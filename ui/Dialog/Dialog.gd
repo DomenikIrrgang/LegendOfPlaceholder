@@ -42,7 +42,10 @@ func on_dialog_text_stream_end(dialog_step: DialogStep) -> void:
 	
 func dialog_confirmation_pressed() -> void:
 	if dialog_step_is_finished:
-		dialog_step_finished.emit(dialog_step, get_dialog_choice(selected_choice.label.text))
+		if selected_choice != null:
+			dialog_step_finished.emit(dialog_step, get_dialog_choice(selected_choice.label.text))
+		else:
+			dialog_step_finished.emit(dialog_step, null)			
 		
 func add_choice(choice: String) -> void:
 	var choice_label = load("res://Ui/SelectableLabel.tscn").instantiate()

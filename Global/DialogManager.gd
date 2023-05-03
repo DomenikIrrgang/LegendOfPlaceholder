@@ -8,10 +8,12 @@ var current_dialog_scene
 
 var world_paused: bool = false
 
+signal dialog_finished(dialog: Dialog)
+
 func show_dialog(dialog: Dialog, pause_world: bool = true) -> void:
 	var user_interface = Globals.get_user_interface()
 	current_dialog_scene = DialogScene.instantiate()
-	Globals.get_user_interface().add_child(current_dialog_scene)
+	Globals.get_dialogs_node().add_child(current_dialog_scene)
 	current_dialog_scene.dialog_step_finished.connect(on_dialog_step_finished)
 	current_dialog = dialog
 	current_dialog_step = dialog.steps[0]
@@ -42,6 +44,7 @@ func continue_dialog() -> void:
 	current_dialog_scene.show_dialog_step(current_dialog_step)
 		
 func stop_dialog() -> void:
+	dialog_finished.emit(current_dialog)
 	current_dialog_scene.queue_free()
 	current_dialog = null
 	current_dialog_step = null

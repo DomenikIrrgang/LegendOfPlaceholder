@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Cutscene" load_steps=12 format=3 uid="uid://bvuuyfhfwaua"]
+
+[ext_resource type="Script" path="res://Resources/Cutscenes/Cutscene.gd" id="1_rm8th"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/MoveCameraToUnitAction.gd" id="2_yqobg"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/CutsceneStep.gd" id="3_8whku"]
+[ext_resource type="Resource" uid="uid://dtpimkaqysn78" path="res://Resources/Dialogs/MegaSlimePhase4.tres" id="4_kuuef"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/ShowDialogAction.gd" id="5_nvesr"]
+
+[sub_resource type="Resource" id="Resource_1qkuw"]
+script = ExtResource("2_yqobg")
+unit_name = "Megaslime"
+
+[sub_resource type="Resource" id="Resource_fnpnt"]
+script = ExtResource("3_8whku")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_1qkuw")])
+
+[sub_resource type="Resource" id="Resource_2n8l5"]
+script = ExtResource("5_nvesr")
+dialog = ExtResource("4_kuuef")
+
+[sub_resource type="Resource" id="Resource_td827"]
+script = ExtResource("3_8whku")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_2n8l5")])
+
+[sub_resource type="Resource" id="Resource_uhcmx"]
+script = ExtResource("2_yqobg")
+unit_name = "Player"
+
+[sub_resource type="Resource" id="Resource_fiw6f"]
+script = ExtResource("3_8whku")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_uhcmx")])
+
+[resource]
+script = ExtResource("1_rm8th")
+name = "MegaSlimePhase4"
+steps = Array[ExtResource("3_8whku")]([SubResource("Resource_fnpnt"), SubResource("Resource_td827"), SubResource("Resource_fiw6f")])

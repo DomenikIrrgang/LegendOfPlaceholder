@@ -9,4 +9,4 @@ func use(source: Unit, target: Unit) -> void:
 	zone.hitbox.unit = source
 	zone.hitbox.ability = self
 	var position = target.global_position + Vector2(randi_range(-15, 15), randi_range(-15, 15))
-	zone.global_position = Globals.get_first_collision(source.get_world_2d(), source.global_position, position, [source, target])
+	zone.global_position = Globals.get_first_collision(source.get_world_2d(), target.global_position, position, [source, target])

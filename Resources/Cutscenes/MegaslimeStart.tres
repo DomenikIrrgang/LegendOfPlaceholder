@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="Cutscene" load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://Resources/Cutscenes/Cutscene.gd" id="1_xepxp"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/CutsceneStep.gd" id="2_mxjsl"]
+[ext_resource type="Resource" uid="uid://cnvr72uega8i5" path="res://Resources/Dialogs/MegaSlimeStart.tres" id="4_msjkm"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/MoveCameraToUnitAction.gd" id="4_rxit7"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/ShowDialogAction.gd" id="5_4h6dm"]
+
+[sub_resource type="Resource" id="Resource_mvouo"]
+script = ExtResource("4_rxit7")
+unit_name = "Player"
+
+[sub_resource type="Resource" id="Resource_m84eb"]
+script = ExtResource("2_mxjsl")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_mvouo")])
+
+[sub_resource type="Resource" id="Resource_pjh6n"]
+script = ExtResource("4_rxit7")
+unit_name = "Megaslime"
+
+[sub_resource type="Resource" id="Resource_uoxog"]
+script = ExtResource("2_mxjsl")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_pjh6n")])
+
+[sub_resource type="Resource" id="Resource_g5vd8"]
+script = ExtResource("5_4h6dm")
+dialog = ExtResource("4_msjkm")
+
+[sub_resource type="Resource" id="Resource_qj3r3"]
+script = ExtResource("2_mxjsl")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_g5vd8")])
+
+[sub_resource type="Resource" id="Resource_ocbxb"]
+script = ExtResource("4_rxit7")
+unit_name = "Player"
+
+[sub_resource type="Resource" id="Resource_jvjts"]
+script = ExtResource("2_mxjsl")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_ocbxb")])
+
+[resource]
+script = ExtResource("1_xepxp")
+name = "TestCutscene"
+steps = Array[ExtResource("2_mxjsl")]([SubResource("Resource_m84eb"), SubResource("Resource_uoxog"), SubResource("Resource_qj3r3"), SubResource("Resource_jvjts")])

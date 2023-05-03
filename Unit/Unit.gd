@@ -254,3 +254,6 @@ func get_base_movement_speed() -> float:
 	
 func get_abilities() -> Array[Ability]:
 	return abilities
+	
+func teleport(position: Vector2) -> void:
+	global_position = position

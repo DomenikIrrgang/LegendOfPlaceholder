@@ -7,6 +7,7 @@ script = ExtResource("1_r3jk5")
 alias = "Zone of Doom"
 tooltip = "Places a Zone that does damage."
 ability_type = 1
+cast_time = 1.5
 value = 5
 scaling_factor = 0.01
 spell_school = 10

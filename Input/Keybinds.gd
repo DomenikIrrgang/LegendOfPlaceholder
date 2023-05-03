@@ -11,7 +11,7 @@ func _ready() -> void:
 	keybind_ability("Ability_Four", load("res://Combat/abilities/Kick.tscn").instantiate())
 	
 func _input(event: InputEvent) -> void:
-	if not DialogManager.has_active_dialog() and event.is_action_type():
+	if not DialogManager.has_active_dialog() and not CutsceneManager.has_active_cutscene() and event.is_action_type():
 		for action_name in keybinds:
 			if Input.is_action_just_pressed(action_name):
 				Globals.get_player().use_ability(Globals.get_player(), keybinds[action_name])

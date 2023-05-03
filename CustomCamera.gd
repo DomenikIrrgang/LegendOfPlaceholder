@@ -14,3 +14,4 @@ func _process(delta: float) -> void:
 
 func reset() -> void:
 	movement_strategy = FollowUnitCamera.new(targeted_node)
+	position_smoothing_speed = 1.0

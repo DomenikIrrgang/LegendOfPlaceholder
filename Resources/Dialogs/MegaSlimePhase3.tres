@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Dialog" load_steps=5 format=3 uid="uid://dtfergnuxgjwn"]
+
+[ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="1_7qvls"]
+[ext_resource type="Resource" uid="uid://dp7afxuihduss" path="res://Resources/Enemies/MegaSlime.tres" id="2_l51tj"]
+[ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="3_biry1"]
+
+[sub_resource type="Resource" id="Resource_a1tq1"]
+script = ExtResource("3_biry1")
+type = 0
+author = ExtResource("2_l51tj")
+text = "Well done, but let's see if you can handle this!"
+
+[resource]
+script = ExtResource("1_7qvls")
+steps = Array[ExtResource("3_biry1")]([SubResource("Resource_a1tq1")])

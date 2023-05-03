@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Dialog" load_steps=5 format=3 uid="uid://cnvr72uega8i5"]
+
+[ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="1_d048j"]
+[ext_resource type="Resource" uid="uid://dp7afxuihduss" path="res://Resources/Enemies/MegaSlime.tres" id="2_d430w"]
+[ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="2_jm37y"]
+
+[sub_resource type="Resource" id="Resource_qljtv"]
+script = ExtResource("2_jm37y")
+type = 0
+author = ExtResource("2_d430w")
+text = "You will never beat me!"
+
+[resource]
+script = ExtResource("1_d048j")
+steps = Array[ExtResource("2_jm37y")]([SubResource("Resource_qljtv")])

@@ -6,8 +6,20 @@ func get_player() -> Player:
 func get_camera() -> Camera2D:
 	return get_scene_tree().get_first_node_in_group("camera")
 	
+func get_world() -> Node2D:
+	return get_scene_tree().get_first_node_in_group("world")
+	
 func get_user_interface() -> CanvasLayer:
 	return get_scene_tree().get_first_node_in_group("UserInterfaceCanvas")
+	
+func get_game_user_inteface() -> Control:
+	return get_user_interface().get_node("GameUI")
+	
+func get_dialogs_node() -> Control:
+	return get_user_interface().get_node("Dialogs")
+	
+func get_cutescene_bars() -> Control:
+	return get_user_interface().get_node("CutsceneBars")
 
 func get_scene_tree() -> SceneTree:
 	return get_tree()

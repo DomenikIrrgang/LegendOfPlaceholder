@@ -1,3 +1,4 @@
+class_name ZoneOfDoomVoid
 extends Node2D
 
 @onready

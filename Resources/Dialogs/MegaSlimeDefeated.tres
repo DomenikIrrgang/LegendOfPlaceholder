@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Dialog" load_steps=5 format=3 uid="uid://brh8tqo7j1m1d"]
+
+[ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="1_hskgg"]
+[ext_resource type="Resource" uid="uid://dp7afxuihduss" path="res://Resources/Enemies/MegaSlime.tres" id="2_poqbb"]
+[ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="3_tdp55"]
+
+[sub_resource type="Resource" id="Resource_mjwnq"]
+script = ExtResource("3_tdp55")
+type = 0
+author = ExtResource("2_poqbb")
+text = "This wasn't the last time we see each other, mark my words!"
+
+[resource]
+script = ExtResource("1_hskgg")
+steps = Array[ExtResource("3_tdp55")]([SubResource("Resource_mjwnq")])
