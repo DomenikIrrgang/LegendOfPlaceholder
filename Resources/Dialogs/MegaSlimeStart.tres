@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Dialog" load_steps=25 format=3 uid="uid://cnvr72uega8i5"]
+[gd_resource type="Resource" script_class="Dialog" load_steps=23 format=3 uid="uid://cnvr72uega8i5"]
 
 [ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="1_d048j"]
 [ext_resource type="Resource" uid="uid://dp7afxuihduss" path="res://Resources/Enemies/MegaSlime.tres" id="2_d430w"]
@@ -15,7 +15,7 @@ actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
 [sub_resource type="Resource" id="Resource_uof2b"]
 script = ExtResource("5_8c1pe")
 stat = 3
-value = -600
+value = -1600
 
 [sub_resource type="Resource" id="Resource_1w2ap"]
 script = ExtResource("5_8c1pe")
@@ -32,15 +32,10 @@ script = ExtResource("5_8c1pe")
 stat = 2
 value = 3
 
-[sub_resource type="Resource" id="Resource_be13x"]
-script = ExtResource("5_8c1pe")
-stat = 39
-value = 75
-
 [sub_resource type="Resource" id="Resource_gyqqb"]
 script = ExtResource("4_aw3g5")
 unit_name = "Player"
-stats = Array[ExtResource("5_8c1pe")]([SubResource("Resource_kda5a"), SubResource("Resource_be13x")])
+stats = Array[ExtResource("5_8c1pe")]([SubResource("Resource_kda5a")])
 
 [sub_resource type="Resource" id="Resource_ujmdu"]
 script = ExtResource("4_qkjfy")
@@ -50,7 +45,7 @@ actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([SubResourc
 [sub_resource type="Resource" id="Resource_8yc1b"]
 script = ExtResource("5_8c1pe")
 stat = 3
-value = -1100
+value = -2100
 
 [sub_resource type="Resource" id="Resource_hi5ej"]
 script = ExtResource("5_8c1pe")
@@ -72,15 +67,10 @@ script = ExtResource("5_8c1pe")
 stat = 5
 value = 250
 
-[sub_resource type="Resource" id="Resource_a8ch4"]
-script = ExtResource("5_8c1pe")
-stat = 39
-value = 150
-
 [sub_resource type="Resource" id="Resource_22s0t"]
 script = ExtResource("4_aw3g5")
 unit_name = "Player"
-stats = Array[ExtResource("5_8c1pe")]([SubResource("Resource_eam08"), SubResource("Resource_r0jgs"), SubResource("Resource_a8ch4")])
+stats = Array[ExtResource("5_8c1pe")]([SubResource("Resource_eam08"), SubResource("Resource_r0jgs")])
 
 [sub_resource type="Resource" id="Resource_84t0k"]
 script = ExtResource("4_qkjfy")
