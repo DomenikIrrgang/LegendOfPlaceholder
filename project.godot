@@ -26,6 +26,7 @@ Globals="*res://Global/Globals.gd"
 BossEncounter="*res://Global/BossEncounter.gd"
 Error="*res://Global/Error.gd"
 DialogManager="*res://Global/DialogManager.gd"
+CutsceneManager="*res://Global/CutsceneManager.gd"
 
 [debug]
 

@@ -6,7 +6,9 @@ var current_dialog: Dialog
 var current_dialog_step: DialogStep
 var current_dialog_scene
 
-func show_dialog(dialog: Dialog) -> void:
+var world_paused: bool = false
+
+func show_dialog(dialog: Dialog, pause_world: bool = true) -> void:
 	var user_interface = Globals.get_user_interface()
 	current_dialog_scene = DialogScene.instantiate()
 	Globals.get_user_interface().add_child(current_dialog_scene)
@@ -14,7 +16,9 @@ func show_dialog(dialog: Dialog) -> void:
 	current_dialog = dialog
 	current_dialog_step = dialog.steps[0]
 	current_dialog_scene.show_dialog_step(current_dialog_step)
-	Globals.pause_enemies()
+	if pause_world:
+		world_paused = true
+		Globals.pause_enemies()
 	
 func on_dialog_step_finished(dialog_step: DialogStep, choice: DialogChoice) -> void:
 	if choice != null:
@@ -41,7 +45,8 @@ func stop_dialog() -> void:
 	current_dialog_scene.queue_free()
 	current_dialog = null
 	current_dialog_step = null
-	Globals.start_enemies()
+	if world_paused:
+		Globals.start_enemies()
 		
 func change_dialog(dialog: Dialog) -> void:
 	current_dialog = dialog

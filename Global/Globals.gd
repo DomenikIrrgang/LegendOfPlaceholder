@@ -3,6 +3,9 @@ extends Node
 func get_player() -> Player:
 	return get_scene_tree().get_first_node_in_group("player")
 	
+func get_camera() -> Camera2D:
+	return get_scene_tree().get_first_node_in_group("camera")
+	
 func get_user_interface() -> CanvasLayer:
 	return get_scene_tree().get_first_node_in_group("UserInterfaceCanvas")
 
