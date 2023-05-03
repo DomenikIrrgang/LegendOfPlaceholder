@@ -18,15 +18,15 @@ func start_cutscene(cutscene: Cutscene) -> void:
 	run_cutscene_step(current_cutscene_step)
 	
 func run_cutscene_step(cutscene_step: CutsceneStep) -> void:
+	cutscene_step.cutscene_step_finished.connect(on_cutscene_step_finished)
 	cutscene_step.start()
-	cutscene_step.cutescene_step_finished.connect(on_cutscene_step_finished)
 	
 func _process(delta: float) -> void:
 	if current_cutscene_step != null:
 		current_cutscene_step.update(delta)
 	
 func on_cutscene_step_finished(cutscene_step: CutsceneStep) -> void:
-	cutscene_step.cutescene_step_finished.disconnect(on_cutscene_step_finished)
+	cutscene_step.cutscene_step_finished.disconnect(on_cutscene_step_finished)
 	if is_cutscene_over():
 		cutscene_finished.emit(current_cutscene)
 	else:

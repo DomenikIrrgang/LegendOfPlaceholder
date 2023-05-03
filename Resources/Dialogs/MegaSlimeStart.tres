@@ -1,15 +1,107 @@
-[gd_resource type="Resource" script_class="Dialog" load_steps=5 format=3 uid="uid://cnvr72uega8i5"]
+[gd_resource type="Resource" script_class="Dialog" load_steps=25 format=3 uid="uid://cnvr72uega8i5"]
 
 [ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="1_d048j"]
 [ext_resource type="Resource" uid="uid://dp7afxuihduss" path="res://Resources/Enemies/MegaSlime.tres" id="2_d430w"]
 [ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="2_jm37y"]
+[ext_resource type="Script" path="res://Resources/Dialogs/ChangStatsDialogAction.gd" id="4_aw3g5"]
+[ext_resource type="Script" path="res://Resources/Dialogs/DialogChoice.gd" id="4_qkjfy"]
+[ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="5_8c1pe"]
 
-[sub_resource type="Resource" id="Resource_qljtv"]
+[sub_resource type="Resource" id="Resource_c5fpp"]
+script = ExtResource("4_qkjfy")
+text = "Hard"
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
+
+[sub_resource type="Resource" id="Resource_uof2b"]
+script = ExtResource("5_8c1pe")
+stat = 3
+value = -600
+
+[sub_resource type="Resource" id="Resource_1w2ap"]
+script = ExtResource("5_8c1pe")
+stat = 15
+value = -75
+
+[sub_resource type="Resource" id="Resource_gg4lw"]
+script = ExtResource("4_aw3g5")
+unit_name = "Megaslime"
+stats = Array[ExtResource("5_8c1pe")]([SubResource("Resource_uof2b"), SubResource("Resource_1w2ap")])
+
+[sub_resource type="Resource" id="Resource_kda5a"]
+script = ExtResource("5_8c1pe")
+stat = 2
+value = 3
+
+[sub_resource type="Resource" id="Resource_be13x"]
+script = ExtResource("5_8c1pe")
+stat = 39
+value = 75
+
+[sub_resource type="Resource" id="Resource_gyqqb"]
+script = ExtResource("4_aw3g5")
+unit_name = "Player"
+stats = Array[ExtResource("5_8c1pe")]([SubResource("Resource_kda5a"), SubResource("Resource_be13x")])
+
+[sub_resource type="Resource" id="Resource_ujmdu"]
+script = ExtResource("4_qkjfy")
+text = "Normal"
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([SubResource("Resource_gg4lw"), SubResource("Resource_gyqqb")])
+
+[sub_resource type="Resource" id="Resource_8yc1b"]
+script = ExtResource("5_8c1pe")
+stat = 3
+value = -1100
+
+[sub_resource type="Resource" id="Resource_hi5ej"]
+script = ExtResource("5_8c1pe")
+stat = 15
+value = -150
+
+[sub_resource type="Resource" id="Resource_nybw0"]
+script = ExtResource("4_aw3g5")
+unit_name = "Megaslime"
+stats = Array[ExtResource("5_8c1pe")]([SubResource("Resource_8yc1b"), SubResource("Resource_hi5ej")])
+
+[sub_resource type="Resource" id="Resource_eam08"]
+script = ExtResource("5_8c1pe")
+stat = 2
+value = 3
+
+[sub_resource type="Resource" id="Resource_r0jgs"]
+script = ExtResource("5_8c1pe")
+stat = 5
+value = 250
+
+[sub_resource type="Resource" id="Resource_a8ch4"]
+script = ExtResource("5_8c1pe")
+stat = 39
+value = 150
+
+[sub_resource type="Resource" id="Resource_22s0t"]
+script = ExtResource("4_aw3g5")
+unit_name = "Player"
+stats = Array[ExtResource("5_8c1pe")]([SubResource("Resource_eam08"), SubResource("Resource_r0jgs"), SubResource("Resource_a8ch4")])
+
+[sub_resource type="Resource" id="Resource_84t0k"]
+script = ExtResource("4_qkjfy")
+text = "Easy"
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([SubResource("Resource_nybw0"), SubResource("Resource_22s0t")])
+
+[sub_resource type="Resource" id="Resource_kt1g1"]
+script = ExtResource("2_jm37y")
+type = 1
+author = ExtResource("2_d430w")
+text = "What difficulty do you want to fight me on?"
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
+choices = Array[ExtResource("4_qkjfy")]([SubResource("Resource_c5fpp"), SubResource("Resource_ujmdu"), SubResource("Resource_84t0k")])
+
+[sub_resource type="Resource" id="Resource_7ufma"]
 script = ExtResource("2_jm37y")
 type = 0
 author = ExtResource("2_d430w")
-text = "You will never beat me!"
+text = "Alright, let's do this!"
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
 
 [resource]
 script = ExtResource("1_d048j")
-steps = Array[ExtResource("2_jm37y")]([SubResource("Resource_qljtv")])
+steps = Array[ExtResource("2_jm37y")]([SubResource("Resource_kt1g1"), SubResource("Resource_7ufma")])

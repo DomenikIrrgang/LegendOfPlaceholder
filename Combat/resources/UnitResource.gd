@@ -73,4 +73,5 @@ func reset() -> void:
 	set_value(get_maximum_value())
 	
 func on_stat_changed(_stat: int, _value: int) -> void:
-	pass
+	if get_maximum_value() < get_value():
+		set_value(get_maximum_value())

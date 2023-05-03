@@ -38,8 +38,8 @@ func on_boss_health_changed(resource: UnitResource, _new_value: int, _change: in
 	boss_health_label.text = str(resource.get_value()) + " / " + str(resource.get_maximum_value())	
 	
 func on_boss_max_health_changed(resource: UnitResource, _new_maximum_value: int) -> void:
-	health_bar.value = resource.get_maximum_value()
-	boss_health_label.text = str(resource.get_value()) + " / " + str(resource.get_maximum_value())		
+	health_bar.max_value = resource.get_maximum_value()
+	boss_health_label.text = str(resource.get_value()) + " / " + str(resource.get_maximum_value())	
 	
 func on_encounter_ended() -> void:
 	visible = false

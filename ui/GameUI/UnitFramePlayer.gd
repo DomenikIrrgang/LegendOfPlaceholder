@@ -18,5 +18,5 @@ func update_progress_bar(new_value: int, _old_value: int) -> void:
 	tween.tween_property(self, 'value', new_value, animation_speed)
 	tween.play()
 	
-func max_health_changed(_resource: UnitResource, new_value: int, _old_value: int) -> void:
+func max_health_changed(_resource: UnitResource, new_value: int) -> void:
 	max_value = new_value
