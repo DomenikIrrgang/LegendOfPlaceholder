@@ -225,6 +225,7 @@ grow_vertical = 2
 script = ExtResource("1_8sgfl")
 
 [node name="SystemMessage" type="CenterContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 582.0

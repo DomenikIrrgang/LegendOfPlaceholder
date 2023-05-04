@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LegendOfPlaceholder"
-run/main_scene="res://demo.tscn"
+run/main_scene="res://Zones/demo.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -27,6 +27,7 @@ BossEncounter="*res://Global/BossEncounter.gd"
 Error="*res://Global/Error.gd"
 DialogManager="*res://Global/DialogManager.gd"
 CutsceneManager="*res://Global/CutsceneManager.gd"
+SceneSwitcher="*res://Global/SceneSwitcher.gd"
 
 [debug]
 
@@ -37,7 +38,7 @@ gdscript/warnings/integer_division=0
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
@@ -166,3 +167,4 @@ Dialog_Accept={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.215686, 0.215686, 0.215686, 1)
