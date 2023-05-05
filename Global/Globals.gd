@@ -1,5 +1,19 @@
 extends Node
 
+func get_unit(unit_name: String) -> Unit:
+	var scene_treer_root = get_scene_tree().root
+	var root_node = get_scene_tree().root.get_child(scene_treer_root.get_child_count() - 1)
+	var unit = root_node.find_child(unit_name)
+	if unit == null:
+		unit = get_world().get_child(0).find_child(unit_name)
+	return unit
+
+func get_loaded_scene_node() -> Node2D:
+	return get_world().get_child(0)
+	
+func get_enemies() -> Array[Node]:
+	return get_scene_tree().get_nodes_in_group("enemy")
+
 func get_player() -> Player:
 	return get_scene_tree().get_first_node_in_group("player")
 	

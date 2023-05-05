@@ -10,7 +10,7 @@ func enter(_data := {}) -> void:
 	
 func exit() -> void:
 	super()
-	for node in Globals.get_world().get_children():
+	for node in Globals.get_enemies():
 		if node is Slime:
 			node.queue_free()
 			get_enemy().resource_link.remove_unit(node)

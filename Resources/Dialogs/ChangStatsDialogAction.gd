@@ -8,7 +8,7 @@ var unit_name: String
 var stats: Array[StatAssignment]
 
 func start() -> void:
-	var unit: Unit = Globals.get_world().get_node(unit_name)
+	var unit: Unit = Globals.get_unit(unit_name)
 	for stat_assignment in stats:
 		unit.stats.increase_stat(stat_assignment.stat, stat_assignment.value)
 	dialog_action_finished.emit(self)

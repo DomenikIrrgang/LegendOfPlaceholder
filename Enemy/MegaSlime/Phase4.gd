@@ -24,7 +24,7 @@ func on_slime_died(slime: Unit) -> void:
 	
 func on_megaslime_died(mega_slime: Unit) -> void:
 	CutsceneManager.start_cutscene(load("res://Resources/Cutscenes/MegaSlimeDefeated.tres"))	
-	for node in Globals.get_world().get_children():
+	for node in Globals.get_loaded_scene_node().get_children():
 		if node is Slime or node is HealSlime or node is ZoneOfDoomVoid:
 			node.queue_free()
 	

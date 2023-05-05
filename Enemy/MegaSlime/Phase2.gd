@@ -16,7 +16,7 @@ func enter(_data := {}) -> void:
 	
 func update(_delta: float) -> void:
 	super(_delta)
-	for node in Globals.get_world().get_children():
+	for node in Globals.get_enemies():
 		if node is HealSlime and not node.died.is_connected(on_heal_slime_died):
 			node.died.connect(on_heal_slime_died)
 			
@@ -27,7 +27,7 @@ func on_heal_slime_died(heal_slime: Unit) -> void:
 	
 func exit() -> void:
 	super()
-	for node in Globals.get_world().get_children():
+	for node in Globals.get_enemies():
 		if node is HealSlime:
 			node.queue_free()
 			get_enemy().resource_link.remove_unit(node)

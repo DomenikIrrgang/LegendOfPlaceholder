@@ -7,7 +7,7 @@ var unit_name: String
 var unit: Unit
 
 func start() -> void:
-	unit = Globals.get_world().get_node(unit_name)
+	unit = Globals.get_unit(unit_name)
 	Globals.get_camera().global_position = unit.global_position
 
 func update(delta: float) -> void:
