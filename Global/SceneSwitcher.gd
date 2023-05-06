@@ -2,6 +2,8 @@ extends Node
 
 var loading_scene: bool = false
 
+signal zone_loaded(scene: Zone)
+
 func _ready():
 	var root = get_tree().root
 
@@ -22,6 +24,7 @@ func defered_load_scene(path: String, spawn_position: Vector2) -> void:
 	Globals.get_player().global_position = spawn_position
 	Globals.get_camera().global_position = spawn_position
 	Globals.get_camera().reset_smoothing()
+	zone_loaded.emit(scene_instance)
 	
 
 func on_scene_loaded() -> void:

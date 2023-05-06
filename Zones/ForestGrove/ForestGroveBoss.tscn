@@ -117,11 +117,11 @@ size = Vector2(65, 50)
 [node name="ForestGroveBoss" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("2_dvy0d")
+zone_name = "Megaslimes Lair"
 
 [node name="Background" type="TileMap" parent="."]
 y_sort_enabled = true
 rotation = -0.000297988
-scale = Vector2(1, 1)
 tile_set = ExtResource("2_2crhv")
 format = 2
 layer_0/name = "Background"
@@ -162,7 +162,6 @@ layer_0/tile_data = PackedInt32Array(851965, 524288, 2, 851966, 524288, 2, 78643
 [node name="Megaslime" parent="." instance=ExtResource("5_eywxu")]
 position = Vector2(-92, -54)
 rotation = -0.000297988
-scale = Vector2(1, 1)
 
 [node name="BossEntrance" type="Area2D" parent="."]
 position = Vector2(-39, 8)

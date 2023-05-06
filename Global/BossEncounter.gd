@@ -5,6 +5,7 @@ var boss: Unit
 
 
 signal boss_encounter_started(unit: Unit)
+signal boss_encounter_defeated(unit: Unit)
 signal boss_encounter_ended()
 
 func _process(_delta: float) -> void:
