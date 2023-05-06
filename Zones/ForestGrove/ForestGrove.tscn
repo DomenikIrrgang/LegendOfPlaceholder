@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Zones/ForestGrove/Foreground.gd" id="5_fihck"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4fud"]
-size = Vector2(14, 50)
+size = Vector2(55, 67)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rmi04"]
 texture = ExtResource("3_qa1yc")
@@ -152,7 +152,7 @@ scene = "res://Zones/ForestGrove/ForestGroveBoss.tscn"
 spawm_position = Vector2(56, -54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossEntrance"]
-position = Vector2(-316, -96)
+position = Vector2(-341.5, -97.5)
 shape = SubResource("RectangleShape2D_p4fud")
 
 [node name="Foreground" type="Node2D" parent="."]

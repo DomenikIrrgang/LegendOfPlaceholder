@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ddnsu8hllewh7"]
+[gd_scene load_steps=23 format=3 uid="uid://ddnsu8hllewh7"]
 
 [ext_resource type="Script" path="res://Zones/BaseScene.gd" id="1_3m1id"]
 [ext_resource type="Script" path="res://CustomCamera.gd" id="1_yk0hc"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Ui/GameUI/PauseMenu.gd" id="7_f4tx3"]
 [ext_resource type="Shader" path="res://Shaders/Blur.gdshader" id="8_4hluv"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="9_0jh1n"]
+[ext_resource type="Script" path="res://Ui/LoadingScreen.gd" id="10_nu1qd"]
 
 [sub_resource type="Animation" id="Animation_58ieq"]
 resource_name = "Hide"
@@ -79,6 +80,44 @@ font = ExtResource("9_0jh1n")
 font_size = 46
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Shader" id="Shader_7wgod"]
+code = "shader_type canvas_item;
+
+uniform sampler2D dissolve_pattern;
+uniform float dissolve_state: hint_range(0.0, 1.1) = 0;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	float pattern_value = texture(dissolve_pattern, UV).r;
+	COLOR.a *= step(dissolve_state, pattern_value);
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t31yl"]
+frequency = 0.1
+fractal_type = 0
+fractal_lacunarity = 5.0
+fractal_gain = 0.51
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nuijy"]
+noise = SubResource("FastNoiseLite_t31yl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkmxv"]
+shader = SubResource("Shader_7wgod")
+shader_parameter/dissolve_state = 0.0
+shader_parameter/dissolve_pattern = SubResource("NoiseTexture2D_nuijy")
+
+[sub_resource type="Gradient" id="Gradient_v61ki"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.996845, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.0946372, 0.0946372, 0.0946372, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xsawg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fxhsl"]
+color_ramp = SubResource("Gradient_v61ki")
+noise = SubResource("FastNoiseLite_xsawg")
 
 [node name="BaseScene" type="Node2D"]
 y_sort_enabled = true
@@ -162,3 +201,14 @@ offset_bottom = 1080.0
 layout_mode = 2
 text = "- PAUSE -"
 label_settings = SubResource("LabelSettings_ipaw4")
+
+[node name="LoadingScreen" type="CanvasLayer" parent="." groups=["loadingscreen"]]
+script = ExtResource("10_nu1qd")
+
+[node name="Background" type="Sprite2D" parent="LoadingScreen"]
+material = SubResource("ShaderMaterial_qkmxv")
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = SubResource("NoiseTexture2D_fxhsl")
+centered = false
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 1920, 1080)

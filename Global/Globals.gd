@@ -20,6 +20,9 @@ func get_player() -> Player:
 func get_camera() -> Camera2D:
 	return get_scene_tree().get_first_node_in_group("camera")
 	
+func get_loading_screen() -> CanvasLayer:
+	return get_scene_tree().get_first_node_in_group("loadingscreen")
+	
 func get_world() -> Node2D:
 	return get_scene_tree().get_first_node_in_group("world")
 	

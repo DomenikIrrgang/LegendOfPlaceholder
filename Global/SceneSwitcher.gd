@@ -10,6 +10,7 @@ func load_scene(path: String, spawn_position: Vector2) -> void:
 	loading_scene = true
 	
 func defered_load_scene(path: String, spawn_position: Vector2) -> void:
+	Globals.get_loading_screen().take_screenshot()
 	for child in Globals.get_world().get_children():
 		child.free()
 	var scene = ResourceLoader.load(path)
