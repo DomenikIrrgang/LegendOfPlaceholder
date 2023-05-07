@@ -19,7 +19,6 @@ func initialize(player: Player) -> void:
 	player.level_changed.connect(on_player_level_changed)
 	
 func on_zone_loaded(zone: Zone) -> void:
-	print(zone.zone_name)
 	show_system_message(zone.zone_name)
 
 func show_system_message(message: String) -> void:

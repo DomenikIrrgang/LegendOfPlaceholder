@@ -65,4 +65,34 @@ func get_directional_vector() -> Vector2:
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	)
+	
+### Rewrite
 
+signal input_event(input_state: InputState)
+
+var interceptors: Array[InputInterceptor] = [
+	PlayerControlInputInterceptor.new(),
+	DialogInputInterceptor.new(),
+	CutsceneInputInterceptor.new(),
+]
+
+var state: InputState = InputState.new()
+
+func _input(event: InputEvent) -> void:
+	if is_action(event):
+		state = calculate_input_state()
+		input_event.emit(state)
+
+func calculate_input_state() -> InputState:
+	for interceptor in interceptors:
+			state = interceptor.on_input(state)
+	return state
+		
+func is_action(event: InputEvent) -> bool:
+	for action in 	InputMap.get_actions():
+		if event.is_action(action):
+			return true
+	return false
+
+func get_state() -> InputState:
+	return calculate_input_state()

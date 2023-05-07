@@ -9,12 +9,12 @@ func _ready() -> void:
 	keybind_ability("Ability_Two", load("res://Combat/abilities/ForceNova.tscn").instantiate())
 	keybind_ability("Ability_Three", load("res://Combat/abilities/TimeStop.tscn").instantiate())
 	keybind_ability("Ability_Four", load("res://Combat/abilities/Kick.tscn").instantiate())
+	InputControlls.input_event.connect(on_input)
 	
-func _input(event: InputEvent) -> void:
-	if not DialogManager.has_active_dialog() and not CutsceneManager.has_active_cutscene() and event.is_action_type():
-		for action_name in keybinds:
-			if Input.is_action_just_pressed(action_name):
-				Globals.get_player().use_ability(Globals.get_player(), keybinds[action_name])
+func on_input(state: InputState) -> void:
+	for action in state.action_map:
+		if keybinds.has(action) and state.action_map[action] == true:
+			Globals.get_player().use_ability(Globals.get_player(), keybinds[action])
 
 func keybind_ability(action_name: String, ability: Ability) -> void:
 	keybinds[action_name] = ability

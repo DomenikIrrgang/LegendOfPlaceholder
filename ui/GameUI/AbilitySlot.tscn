@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4aiaw6js8fc5"]
+[gd_scene load_steps=8 format=3 uid="uid://cv102qedh50l3"]
 
 [ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://Assets/ui/bottom_hud/keybind_slot.png" id="1_fygva"]
 [ext_resource type="Script" path="res://Ui/GameUI/AbilitySlot.gd" id="2_xqtsu"]
