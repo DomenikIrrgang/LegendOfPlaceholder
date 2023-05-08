@@ -30,7 +30,7 @@ func on_hurt(hit_box: HitBox2D) -> void:
 			"ability": hit_box.ability,
 		})
 		got_hurt.emit(hit_box.unit, hit_box.ability)
-	
+
 func got_hurt_recently(source: Unit, ability: Ability) -> bool:
 	for hurt in hurts:
 		if hurt.source == source and hurt.ability == ability and hurt.time_passed < hurt_threshold:
