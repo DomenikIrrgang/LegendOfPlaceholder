@@ -1,0 +1,8 @@
+class_name ResultType
+enum Enum {
+	SUCCESS,
+	NOT_ENOUGH_RESOURCES,
+	NOT_READY,
+	ALREADY_CASTING,
+	START_CAST
+}

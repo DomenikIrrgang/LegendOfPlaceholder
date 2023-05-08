@@ -64,6 +64,9 @@ var casting_ability: Ability
 var cast_target: Unit
 var casting_enabled: bool = true
 
+# Combat
+var combat_logic: CombatLogic = CombatLogic.new()
+
 signal cast_started(source: Unit, target: Unit, ability: Ability, duration: float)
 signal cast_canceled(source: Unit, target: Unit, ability: Ability)
 signal cast_interupted(source: Unit, target: Unit, ability: Ability)
@@ -71,17 +74,16 @@ signal cast_finished(source: Unit, target: Unit, ability: Ability)
 signal current_cast_update(source: Unit, target: Unit, ability: Ability, current_cast: float, cast_time: float)
 
 func start_casting(target: Unit, ability: Ability) -> bool:
-	if CombatLogic.can_cast_ability(self, ability):
+	if not is_casting():
 		casting = true
 		current_cast = 0.0
-		cast_time = CombatLogic.get_cast_time(self, ability)
+		cast_time = combat_logic.get_cast_time(self, ability)
 		casting_ability = ability
 		cast_target = target
 		cast_started.emit(self, cast_target, casting_ability, cast_time)
 		return true
 	return false
 	
-		
 func stop_casting() -> void:
 	if is_casting():
 		casting = false
@@ -104,7 +106,7 @@ func is_casting() -> bool:
 	return casting
 	
 func is_cast_finished() -> bool:
-	return current_cast >= cast_time
+	return current_cast >= cast_time and is_casting()
 	
 func get_cast_time() -> float:
 	return cast_time
@@ -120,7 +122,7 @@ func update_cast(delta: float) -> void:
 		current_cast += delta
 		current_cast_update.emit(self, cast_target, casting_ability, current_cast, cast_time)
 		if is_cast_finished():
-			CombatLogic.use_ability(self, cast_target, casting_ability)
+			combat_logic.use_ability(self, cast_target, casting_ability)
 			cast_time = 0.0
 			current_cast = 0.0
 			casting = false
@@ -129,10 +131,11 @@ func update_cast(delta: float) -> void:
 			cast_target = null
 			
 func use_ability(target: Unit, ability: Ability) -> bool:
-	if CombatLogic.get_cast_time(self, ability) > 0.0:
+	var combat_logic_result = combat_logic.use_ability(self, target, ability)
+	if combat_logic_result.type == ResultType.Enum.START_CAST:
 		return start_casting(target, ability)
 	else:
-		return CombatLogic.use_ability(self, target, ability)
+		return combat_logic_result.type == ResultType.Enum.SUCCESS
 
 func _ready() -> void:
 	base_stats = BaseStats.new(unit_data.level)
@@ -145,9 +148,9 @@ func _ready() -> void:
 	movement_strategy = UnitMovementStrategy.new(self)
 	model_animation.play("Down")
 	hurt_box.got_hurt.connect(on_hurt)
-	CombatLogic.ability_result.connect(on_ability_result)
-	
-func on_ability_result(result: AbilityCastResultEntry) -> void:
+	combat_logic.ability_result.connect(on_ability_result)
+		
+func on_ability_result(result: CombatLogicResult) -> void:
 	if result.target == self:
 		var damage_number = DamageNumber.instantiate()
 		add_child(damage_number)
@@ -183,7 +186,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func on_hurt(source: Unit, ability: Ability) -> void:
-	CombatLogic.cast_ability(ability, source, self)
+	combat_logic.cast_ability(source, self, ability)
 		
 func set_level(_level: int) -> void:
 	if _level <= max_level:
@@ -255,5 +258,5 @@ func get_base_movement_speed() -> float:
 func get_abilities() -> Array[Ability]:
 	return abilities
 	
-func teleport(position: Vector2) -> void:
-	global_position = position
+func teleport(_position: Vector2) -> void:
+	global_position = _position

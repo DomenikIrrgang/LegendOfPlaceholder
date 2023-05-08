@@ -43,7 +43,7 @@ func choose(_choice: DialogChoice) -> void:
 	choice.dialog_choice_finished.connect(on_dialog_choice_finished)
 	choice.start()
 	
-func on_dialog_choice_finished(dialog_choice: DialogChoice) -> void:
+func on_dialog_choice_finished(_dialog_choice: DialogChoice) -> void:
 	choice.dialog_choice_finished.disconnect(on_dialog_choice_finished)
 	choice_finished = true
 	check_finished()

@@ -10,7 +10,7 @@ var animation: AnimationPlayer = $Animation
 func _ready() -> void:
 	animation.animation_finished.connect(on_animation_finished)
 
-func show_number(result: AbilityCastResultEntry) -> void:
+func show_number(result: CombatLogicResult) -> void:
 	match(result.hit_type):
 		HitType.Enum.LANDED, HitType.Enum.CRITICAL:
 			number_label.text = str(abs(result.value))

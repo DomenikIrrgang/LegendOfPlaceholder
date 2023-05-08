@@ -128,7 +128,7 @@ func can_be_reflected() -> bool:
 func can_be_resisted() -> bool:
 	return resistable
 	
-func get_resource_type() -> int:
+func get_resource_type() -> ResourceType.Enum:
 	return resource_type
 
 func get_resource_cost() -> int:

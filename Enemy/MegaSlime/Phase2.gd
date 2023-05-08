@@ -20,7 +20,7 @@ func update(_delta: float) -> void:
 		if node is HealSlime and not node.died.is_connected(on_heal_slime_died):
 			node.died.connect(on_heal_slime_died)
 			
-func on_heal_slime_died(heal_slime: Unit) -> void:
+func on_heal_slime_died(_heal_slime: Unit) -> void:
 	slimes_killed += 1
 	if slimes_to_kill == slimes_killed:
 		state_machine.transition_to("Phase3")

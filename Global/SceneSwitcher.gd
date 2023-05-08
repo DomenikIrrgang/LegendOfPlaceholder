@@ -4,9 +4,6 @@ var loading_scene: bool = false
 
 signal zone_loaded(scene: Zone)
 
-func _ready():
-	var root = get_tree().root
-
 func load_scene(path: String, spawn_position: Vector2) -> void:
 	call_deferred("defered_load_scene", path, spawn_position)
 	loading_scene = true

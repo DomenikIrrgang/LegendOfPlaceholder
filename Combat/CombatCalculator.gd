@@ -9,16 +9,16 @@ func get_ability_value(ability: Ability, source: Unit, target: Unit):
 		scaling_value *= source.stat_calculator.get_attack_power()
 	return ability_value + scaling_value
 
-func get_resist_amount(ability: Ability, _source: Unit, target: Unit, _value: float) -> float:
+func get_resist_amount(ability: Ability, _source: Unit, target: Unit) -> float:
 	if (ability.can_be_resisted()):
 		return target.stat_calculator.get_resistance(ability.get_spell_school()) * random_value(0.8, 1.0)
 	return 0
 	
-func get_critical_amount(ability: Ability, source: Unit, _target: Unit, value: float) -> float:
+func get_critical_effect(ability: Ability, source: Unit, _target: Unit) -> float:
 	if ability.can_crit():
-		return value * (1.5 + ability.get_critical_effect() + (source.stat_calculator.get_critical_effect() / 100.0))
+		return 1.5 + ability.get_critical_effect() + (source.stat_calculator.get_critical_effect() / 100.0)
 	else:
-		return value
+		return 1.5
 
 func get_ability_cost(ability: Ability, source: Unit, _target: Unit) -> int:
 	return ability.get_resource_cost() - source.stat_calculator.get_resource_reduction(ability.get_resource_type())

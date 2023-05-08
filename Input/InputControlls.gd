@@ -47,17 +47,17 @@ func joy_connection_changed(_device_id: int, connected: bool):
 
 func get_button_texture(action_name: String) -> String:
 	var input_events: Array[InputEvent] = InputMap.action_get_events(action_name)
-	for input_event in input_events:
+	for _input_event in input_events:
 		if has_controller():
-			if input_event is InputEventJoypadButton:
-				return XBOX_BUTTON_TEXTURE[input_event.button_index]
-			if input_event is InputEventJoypadMotion:
-				return XBOX_BUTTON_TEXTURE[input_event.axis]
-		if !has_controller() and input_event is InputEventKey:
-			var keycode = input_event.physical_keycode if input_event.physical_keycode != 0 else input_event.keycode
+			if _input_event is InputEventJoypadButton:
+				return XBOX_BUTTON_TEXTURE[_input_event.button_index]
+			if _input_event is InputEventJoypadMotion:
+				return XBOX_BUTTON_TEXTURE[_input_event.axis]
+		if !has_controller() and _input_event is InputEventKey:
+			var keycode = _input_event.physical_keycode if _input_event.physical_keycode != 0 else _input_event.keycode
 			return KEY_TEXTURE[keycode]
-		if !has_controller() and input_event is InputEventMouse:
-			return MOUSE_TEXTURE[input_event.button_index]
+		if !has_controller() and _input_event is InputEventMouse:
+			return MOUSE_TEXTURE[_input_event.button_index]
 	return InputTextures.KEY_ESCAPE
 	
 func get_directional_vector() -> Vector2:

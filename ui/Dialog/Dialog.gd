@@ -29,14 +29,14 @@ func show_dialog_step(_dialog_step: DialogStep) -> void:
 	dialog_step_is_finished = false
 	textbox.show_text(dialog_step)
 	icon.texture = dialog_step.author.dialog_texture
-	choices_container.get_children().filter(func(child: Node2D): child.queue_free())
+	choices_container.get_children().filter(func(child): child.queue_free())
 	choices_container.visible = false
 	
-func on_dialog_text_stream_end(dialog_step: DialogStep) -> void:
+func on_dialog_text_stream_end(_dialog_step: DialogStep) -> void:
 	dialog_step_is_finished = true
-	if dialog_step.type == DialogType.Enum.CHOICE:
+	if _dialog_step.type == DialogType.Enum.CHOICE:
 		choices_container.visible = true
-		for choice in dialog_step.choices:
+		for choice in _dialog_step.choices:
 			add_choice(choice.text)
 		choices_container.get_child(0).grab_focus()
 	

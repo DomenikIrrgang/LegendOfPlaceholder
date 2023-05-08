@@ -23,6 +23,6 @@ func on_cutscene_action_finished(cutescene_action: CutsceneAction) -> void:
 	if finished_actions.size() == actions.size():
 		cutscene_step_finished.emit(self)
 	
-func on_cutscene_step_finished(cutscene_step: CutsceneStep) -> void:
+func on_cutscene_step_finished(_cutscene_step: CutsceneStep) -> void:
 	for action in actions:
 		action.cutscene_action_finished.disconnect(on_cutscene_action_finished)

@@ -54,5 +54,5 @@ func on_write_timer() -> void:
 	else:
 		dialog_text_stream_update.emit(dialog_step, text_label.text)
 		
-func on_dialog_text_stream_end(dialog_step: DialogStep) -> void:
+func on_dialog_text_stream_end(_dialog_step: DialogStep) -> void:
 	confirmation_box.visible = true

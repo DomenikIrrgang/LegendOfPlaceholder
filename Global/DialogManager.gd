@@ -32,7 +32,7 @@ func _process(delta) -> void:
 	if has_active_dialog():
 		current_dialog_step.update(delta)
 	
-func on_dialog_step_finished(dialog_step: DialogStep) -> void:
+func on_dialog_step_finished(_dialog_step: DialogStep) -> void:
 	current_dialog_step.dialog_step_finished.disconnect(on_dialog_step_finished)
 	if not is_dialog_over():
 		run_dialog_step(get_next_dialog_step())
@@ -46,11 +46,11 @@ func is_dialog_over() -> bool:
 func get_next_dialog_step() -> DialogStep:
 	return current_dialog.steps[current_dialog.steps.find(current_dialog_step) + 1]
 	
-func on_dialog_started(dialog: Dialog) -> void:
+func on_dialog_started(_dialog: Dialog) -> void:
 	if not CutsceneManager.has_active_cutscene():
 		Globals.pause_enemies()
 		
-func on_dialog_finished(dialog: Dialog) -> void:
+func on_dialog_finished(_dialog: Dialog) -> void:
 	current_dialog_scene.queue_free()
 	current_dialog = null
 	current_dialog_step = null
