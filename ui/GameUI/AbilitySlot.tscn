@@ -18,22 +18,21 @@ offset_bottom = 36.0
 texture = ExtResource("1_fygva")
 script = ExtResource("2_xqtsu")
 
-[node name="Keybind" type="TextureRect" parent="."]
-layout_mode = 1
-offset_left = 8.0
-offset_top = 33.0
-offset_right = 40.0
-offset_bottom = 65.0
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("3_ca1xt")
-script = ExtResource("4_sm53d")
-action_name = "Dash"
-
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 36.0
 offset_bottom = 36.0
 expand_mode = 1
+
+[node name="CooldownBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 36.0
+offset_bottom = 36.0
+max_value = 1000.0
+value = 1000.0
+rounded = true
+fill_mode = 3
+texture_progress = ExtResource("6_hcelx")
 
 [node name="Charges" type="Label" parent="."]
 visible = false
@@ -47,11 +46,13 @@ label_settings = SubResource("LabelSettings_7ybhc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CooldownBar" type="TextureProgressBar" parent="."]
-layout_mode = 0
-offset_right = 36.0
-offset_bottom = 36.0
-max_value = 1000.0
-rounded = true
-fill_mode = 3
-texture_progress = ExtResource("6_hcelx")
+[node name="Keybind" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 33.0
+offset_right = 40.0
+offset_bottom = 65.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("3_ca1xt")
+script = ExtResource("4_sm53d")
+action_name = "Dash"
