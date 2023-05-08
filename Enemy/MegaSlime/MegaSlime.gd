@@ -7,4 +7,5 @@ func _ready() -> void:
 	super()
 	resources[ResourceType.Enum.MANA] = Mana.new(stat_calculator)
 	resource_link = ResourceLink.new(ResourceType.Enum.HEALTH, [self])
-	combat_logic.add_calculate_logic_layer(ImmuneLayer.new())
+	#combat_logic.add_calculate_logic_layer(ImmuneLayer.new())
+	pause()

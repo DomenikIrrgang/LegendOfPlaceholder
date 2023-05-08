@@ -3,7 +3,6 @@ extends Node
 var active: bool = false
 var boss: Unit
 
-
 signal boss_encounter_started(unit: Unit)
 signal boss_encounter_defeated(unit: Unit)
 signal boss_encounter_ended()

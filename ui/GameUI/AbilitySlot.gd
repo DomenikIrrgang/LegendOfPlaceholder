@@ -16,6 +16,9 @@ var cooldown_scaling_factor: float = 10.0
 @onready
 var charge_label: Label = $Charges
 
+@onready
+var cooldown_label: Label = $Cooldown
+
 var ability: Ability
 
 func _ready() -> void:
@@ -29,6 +32,7 @@ func _ready() -> void:
 		ability.used.connect(ability_used)
 		ability.remaining_cooldown_changed.connect(remaining_cooldown_changed)
 		ability.charges_changed.connect(update_charge_label)
+		cooldown_label.visible = false
 		update_charge_label(0, 0)
 		cooldown_bar.max_value = 100.0 * cooldown_scaling_factor
 		update_cooldown()
@@ -45,6 +49,11 @@ func update_charge_label(_charges: int, _change: int) -> void:
 			
 func update_cooldown() -> void:
 	cooldown_bar.value = ability.get_cooldown_progress() * cooldown_scaling_factor
+	if ability.get_remaining_cooldown() > 0.0:
+		cooldown_label.visible = true
+		cooldown_label.text = str(ceil(ability.get_remaining_cooldown()))
+	else:
+		cooldown_label.visible = false
 			
 func ability_used(_ability: Ability) -> void:
 	update_cooldown()

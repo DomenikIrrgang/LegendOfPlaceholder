@@ -35,12 +35,19 @@ fill_mode = 3
 texture_progress = ExtResource("6_hcelx")
 
 [node name="Charges" type="Label" parent="."]
-visible = false
 layout_mode = 2
-offset_left = 1.0
 offset_top = -17.0
-offset_right = 37.0
+offset_right = 36.0
 offset_bottom = 19.0
+text = "5"
+label_settings = SubResource("LabelSettings_7ybhc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cooldown" type="Label" parent="."]
+layout_mode = 2
+offset_right = 36.0
+offset_bottom = 36.0
 text = "5"
 label_settings = SubResource("LabelSettings_7ybhc")
 horizontal_alignment = 1
