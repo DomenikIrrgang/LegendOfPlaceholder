@@ -23,7 +23,7 @@ func on_input(state: InputState) -> void:
 		position = original_position
 		keybind_released.emit()
 	if (state.action_map.has(action_name) and state.action_map[action_name] == true):
-		scale += Vector2(0.3, 0.3)	
+		scale += Vector2(0.3, 0.3)
 		position -= size * 0.15
 		keybind_pressed.emit()
 	

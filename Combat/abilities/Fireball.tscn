@@ -1,6 +1,58 @@
-[gd_scene load_steps=2 format=3 uid="uid://mhpsxo2061uh"]
+[gd_scene load_steps=14 format=3 uid="uid://mhpsxo2061uh"]
 
 [ext_resource type="Script" path="res://Combat/abilities/Fireball.gd" id="1_kj4ij"]
+[ext_resource type="Shader" path="res://Shaders/Fire.gdshader" id="2_1i4x3"]
+[ext_resource type="Texture2D" uid="uid://ptj35ec4hyeo" path="res://Assets/textures/fire.jpeg" id="3_ihg8m"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dydpc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ucwxe"]
+noise = SubResource("FastNoiseLite_dydpc")
+
+[sub_resource type="Gradient" id="Gradient_eodiu"]
+offsets = PackedFloat32Array(0, 0.308772, 0.689474, 1)
+colors = PackedColorArray(0.898039, 0, 0, 1, 0.746693, 0.445387, 0.00291855, 1, 0.932976, 0.876135, 0.0370992, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3aass"]
+gradient = SubResource("Gradient_eodiu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_db3au"]
+shader = ExtResource("2_1i4x3")
+shader_parameter/scroll = Vector2(0.5, 0.5)
+shader_parameter/scroll2 = Vector2(0.5, 0.5)
+shader_parameter/noiseScale1 = Vector2(1, 1)
+shader_parameter/noiseScale2 = Vector2(1, 1)
+shader_parameter/blur = 2.774
+shader_parameter/base_intensity = 0.1
+shader_parameter/intensity_factor = 1.5
+shader_parameter/NOISE_PATTERN = SubResource("NoiseTexture2D_ucwxe")
+shader_parameter/TONE_MAPPING = SubResource("GradientTexture2D_3aass")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ryu3e"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ypl6a"]
+generate_mipmaps = false
+normalize = false
+noise = SubResource("FastNoiseLite_ryu3e")
+
+[sub_resource type="Gradient" id="Gradient_2u84p"]
+offsets = PackedFloat32Array(0, 0.285965, 0.875439, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.838043, 0.455622, 0.0620569, 1, 0.866667, 1, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_noyks"]
+gradient = SubResource("Gradient_2u84p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bl03"]
+shader = ExtResource("2_1i4x3")
+shader_parameter/scroll = Vector2(2, 2)
+shader_parameter/scroll2 = Vector2(2, 2)
+shader_parameter/noiseScale1 = Vector2(2, 2)
+shader_parameter/noiseScale2 = Vector2(2, 2)
+shader_parameter/blur = 2.694
+shader_parameter/base_intensity = 0.171
+shader_parameter/intensity_factor = 2.559
+shader_parameter/NOISE_PATTERN = SubResource("NoiseTexture2D_ypl6a")
+shader_parameter/TONE_MAPPING = SubResource("GradientTexture2D_noyks")
 
 [node name="Fireball" type="Node2D"]
 script = ExtResource("1_kj4ij")
@@ -11,3 +63,14 @@ resource_cost = 10
 missable = true
 miss_chance = 5.0
 reflectable = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_db3au")
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0.682353, 0.466667, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2bl03")
+position = Vector2(698, 5)
+texture = ExtResource("3_ihg8m")

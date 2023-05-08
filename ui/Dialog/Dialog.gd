@@ -4,7 +4,7 @@ extends CenterContainer
 var textbox = $Background/TextBox
 
 @onready
-var keybind = $Background/ConfirmationBox/Keybind
+var keybind = $Background/Keybind
 
 @onready
 var icon: TextureRect = $Background/Icon

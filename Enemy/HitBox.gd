@@ -17,4 +17,3 @@ func on_hit(_hurt_box: HurtBox2D) -> void:
 	
 func on_timer() -> void:
 	hurt_box.on_hurt(self)
-	print("timer stopped")
