@@ -41,7 +41,9 @@ func cast_ability(source: Unit, target: Unit, ability: Ability) -> CombatLogicRe
 	return combat_logic_result
 	
 func apply_combat_logic_result_hit(combat_logic_result: CombatLogicResult) -> void:
-	if combat_logic_result.type == ResultType.Enum.SUCCESS:
+	if (combat_logic_result.type == ResultType.Enum.SUCCESS and 
+		(combat_logic_result.hit_type == HitType.Enum.LANDED or 
+		combat_logic_result.hit_type == HitType.Enum.CRITICAL)):
 		combat_logic_result.target.increase_resource_value(
 			ResourceType.Enum.HEALTH,
 			-combat_logic_result.value

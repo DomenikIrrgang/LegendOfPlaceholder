@@ -10,4 +10,5 @@ func _ready() -> void:
 	area_entered.connect(on_area_entered)
 	
 func on_area_entered(area) -> void:
-	SceneSwitcher.load_scene(scene, spawm_position)
+	if area.owner is Player:
+		SceneSwitcher.load_scene(scene, spawm_position)

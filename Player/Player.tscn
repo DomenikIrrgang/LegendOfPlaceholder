@@ -70,7 +70,7 @@ platform_on_leave = 2
 platform_floor_layers = 4294901760
 safe_margin = 0.01
 script = ExtResource("1_hqrbj")
-weapon_path = "res://Weapons/Sword.tscn"
+weapon_path = "res://Weapons/FireWand.tscn"
 unit_data = ExtResource("2_7ky4n")
 
 [node name="Model" type="Sprite2D" parent="."]

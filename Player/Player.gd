@@ -68,3 +68,16 @@ func dash() -> void:
 
 func attack() -> void:
 	movement_state.transition_to("Attack")
+	
+func get_facing_direction() -> Vector2:
+	var x = 0
+	var y = 0
+	if direction == Direction.RIGHT:
+		x = 1
+	if direction == Direction.DOWN:
+		y = 1
+	if direction == Direction.LEFT:
+		x = -1
+	if direction == Direction.UP:
+		y = -1
+	return Vector2(x, y)

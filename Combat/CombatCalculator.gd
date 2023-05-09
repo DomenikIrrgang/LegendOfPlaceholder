@@ -25,7 +25,7 @@ func get_ability_cost(ability: Ability, source: Unit, _target: Unit) -> int:
 	
 func ability_missed(ability: Ability, source: Unit, target: Unit) -> bool:
 	if (ability.can_miss()):
-		return !random_chance(5.0 + target.stat_calculator.get_miss_chance() + ability.get_miss_chance() - source.stat_calculator.get_hit_chance())
+		return random_chance(5.0 + target.stat_calculator.get_miss_chance() + ability.get_miss_chance() - source.stat_calculator.get_hit_chance())
 	return false
 	
 func ability_dodged(ability: Ability, source: Unit, target: Unit) -> bool:
