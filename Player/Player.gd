@@ -34,6 +34,9 @@ func on_player_died(_player: Unit) -> void:
 		ability.reset()
 	get_tree().reload_current_scene()
 	
+func level_up() -> void:
+	gain_experience(experience_needed_for_next_level())
+	
 func on_level_change(_level: int) -> void:
 	var health = get_resource(ResourceType.Enum.HEALTH)
 	health.set_value(health.get_maximum_value())

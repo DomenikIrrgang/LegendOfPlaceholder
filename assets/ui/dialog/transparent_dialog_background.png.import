@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cyoimb2iltyke"
-path="res://.godot/imported/transparent_dialog_background.png-776820e9ccf065a694eaab6f38722f09.ctex"
+path="res://.godot/imported/transparent_dialog_background.png-feaf7df8e0a5778c215484bd9e0bc49c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ui/dialog/transparent_dialog_background.png"
-dest_files=["res://.godot/imported/transparent_dialog_background.png-776820e9ccf065a694eaab6f38722f09.ctex"]
+source_file="res://assets/ui/dialog/transparent_dialog_background.png"
+dest_files=["res://.godot/imported/transparent_dialog_background.png-feaf7df8e0a5778c215484bd9e0bc49c.ctex"]
 
 [params]
 

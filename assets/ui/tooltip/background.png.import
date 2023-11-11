@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm4nqio06yolk"
-path="res://.godot/imported/key_shift.png-f90ca6bf3e0037d4352e5fc027c83936.ctex"
+uid="uid://c5t1h65r8sqdn"
+path="res://.godot/imported/background.png-86682b1de30b64bf22b240b07a1d09da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/buttons/key_shift.png"
-dest_files=["res://.godot/imported/key_shift.png-f90ca6bf3e0037d4352e5fc027c83936.ctex"]
+source_file="res://assets/ui/tooltip/background.png"
+dest_files=["res://.godot/imported/background.png-86682b1de30b64bf22b240b07a1d09da.ctex"]
 
 [params]
 

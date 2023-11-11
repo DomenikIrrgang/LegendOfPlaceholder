@@ -4,7 +4,7 @@ extends Node
 @export
 var alias: String = ""
 
-@export
+@export_multiline
 var tooltip: String = ""
 
 enum Type {

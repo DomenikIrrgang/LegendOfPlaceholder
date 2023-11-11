@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://cv102qedh50l3"]
 
-[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://Assets/ui/bottom_hud/keybind_slot.png" id="1_fygva"]
+[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="1_fygva"]
 [ext_resource type="Script" path="res://Ui/GameUI/AbilitySlot.gd" id="2_xqtsu"]
-[ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://Assets/ui/buttons/b_button.png" id="3_ca1xt"]
+[ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://assets/ui/buttons/b_button.png" id="3_ca1xt"]
 [ext_resource type="Script" path="res://Ui/GameUI/Keybind.gd" id="4_sm53d"]
-[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="5_yadua"]
-[ext_resource type="Texture2D" uid="uid://djuotr8lwlwh2" path="res://Assets/ui/bottom_hud/ability_cooldown_progress.aseprite.png" id="6_hcelx"]
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="5_yadua"]
+[ext_resource type="Texture2D" uid="uid://djuotr8lwlwh2" path="res://assets/ui/bottom_hud/ability_cooldown_progress.aseprite.png" id="6_hcelx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7ybhc"]
 line_spacing = 2.08165e-12
@@ -63,3 +63,6 @@ scale = Vector2(0.65, 0.65)
 texture = ExtResource("3_ca1xt")
 script = ExtResource("4_sm53d")
 action_name = "Dash"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

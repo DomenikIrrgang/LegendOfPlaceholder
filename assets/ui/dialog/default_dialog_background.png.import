@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cdge8hml0jtf2"
-path="res://.godot/imported/default_dialog_background.png-8203eb1752abd77190778afff2f3ad3d.ctex"
+path="res://.godot/imported/default_dialog_background.png-fe5ade96785fb86a565dd5d699986834.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ui/dialog/default_dialog_background.png"
-dest_files=["res://.godot/imported/default_dialog_background.png-8203eb1752abd77190778afff2f3ad3d.ctex"]
+source_file="res://assets/ui/dialog/default_dialog_background.png"
+dest_files=["res://.godot/imported/default_dialog_background.png-fe5ade96785fb86a565dd5d699986834.ctex"]
 
 [params]
 

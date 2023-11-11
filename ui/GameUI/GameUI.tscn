@@ -1,34 +1,34 @@
-[gd_scene load_steps=60 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=62 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://Ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://Ui/GameUI/SystemMessage.gd" id="2_oedgj"]
-[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="3_60v0h"]
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="3_60v0h"]
 [ext_resource type="Script" path="res://Ui/GameUI/MainHUD.gd" id="4_u1bay"]
-[ext_resource type="Texture2D" uid="uid://b3jelvjfa2rtj" path="res://Assets/ui/bottom_hud/overlay.png" id="5_xupsv"]
+[ext_resource type="Texture2D" uid="uid://b3jelvjfa2rtj" path="res://assets/ui/bottom_hud/overlay.png" id="5_xupsv"]
 [ext_resource type="Shader" path="res://Shaders/UnitResource.gdshader" id="6_n321i"]
-[ext_resource type="Texture2D" uid="uid://7sbgo11asvra" path="res://Assets/ui/bottom_hud/health_progress_texture_under.png" id="7_sxmiw"]
-[ext_resource type="Texture2D" uid="uid://iseefhpilikl" path="res://Assets/ui/bottom_hud/health_progress_texture.png" id="8_ryhw0"]
+[ext_resource type="Texture2D" uid="uid://7sbgo11asvra" path="res://assets/ui/bottom_hud/health_progress_texture_under.png" id="7_sxmiw"]
+[ext_resource type="Texture2D" uid="uid://iseefhpilikl" path="res://assets/ui/bottom_hud/health_progress_texture.png" id="8_ryhw0"]
 [ext_resource type="Script" path="res://Ui/GameUI/UnitFramePlayer.gd" id="9_s8mtj"]
-[ext_resource type="Texture2D" uid="uid://v8vt7sd8r3h4" path="res://Assets/ui/bottom_hud/resource_progress_texture_under.png" id="10_aygyo"]
-[ext_resource type="Texture2D" uid="uid://c7x7hb1xvylko" path="res://Assets/ui/bottom_hud/mana_progress_texture.png" id="11_qalyh"]
+[ext_resource type="Texture2D" uid="uid://v8vt7sd8r3h4" path="res://assets/ui/bottom_hud/resource_progress_texture_under.png" id="10_aygyo"]
+[ext_resource type="Texture2D" uid="uid://c7x7hb1xvylko" path="res://assets/ui/bottom_hud/mana_progress_texture.png" id="11_qalyh"]
 [ext_resource type="Script" path="res://Ui/GameUI/ResourceBar.gd" id="12_e5p2y"]
-[ext_resource type="Texture2D" uid="uid://cub6t8pg6hs5y" path="res://Assets/ui/bottom_hud/xp_progress_texture_under.png" id="13_ycxug"]
-[ext_resource type="Texture2D" uid="uid://dnnrkom0xsipj" path="res://Assets/ui/bottom_hud/xp_progress_texture.png" id="14_h3nkr"]
+[ext_resource type="Texture2D" uid="uid://cub6t8pg6hs5y" path="res://assets/ui/bottom_hud/xp_progress_texture_under.png" id="13_ycxug"]
+[ext_resource type="Texture2D" uid="uid://dnnrkom0xsipj" path="res://assets/ui/bottom_hud/xp_progress_texture.png" id="14_h3nkr"]
 [ext_resource type="Script" path="res://Ui/GameUI/ExperienceBar.gd" id="15_ehdar"]
-[ext_resource type="Texture2D" uid="uid://bcsg8qngbcxsa" path="res://Assets/ui/bottom_hud/dash_progress_texture_under.png" id="16_74nbd"]
-[ext_resource type="Texture2D" uid="uid://cb8r0k1s7cnmy" path="res://Assets/ui/bottom_hud/dash_progress_texture.png" id="17_teodj"]
+[ext_resource type="Texture2D" uid="uid://bcsg8qngbcxsa" path="res://assets/ui/bottom_hud/dash_progress_texture_under.png" id="16_74nbd"]
+[ext_resource type="Texture2D" uid="uid://cb8r0k1s7cnmy" path="res://assets/ui/bottom_hud/dash_progress_texture.png" id="17_teodj"]
 [ext_resource type="Script" path="res://Ui/GameUI/TextureProgressBar.gd" id="18_wi2pl"]
-[ext_resource type="PackedScene" uid="uid://cv102qedh50l3" path="res://Ui/GameUI/AbilitySlot.tscn" id="19_sjki4"]
+[ext_resource type="PackedScene" uid="uid://cv102qedh50l3" path="res://ui/GameUI/AbilitySlot.tscn" id="19_sjki4"]
 [ext_resource type="Script" path="res://Ui/GameUI/Bossframe.gd" id="20_cn0g6"]
-[ext_resource type="Texture2D" uid="uid://clb1qxxlcylap" path="res://Assets/ui/bossframe/bossframe.png" id="21_oeymq"]
-[ext_resource type="Texture2D" uid="uid://bfrrwosmxoqna" path="res://Assets/ui/bossframe/health_bar_under.png" id="22_xauq8"]
-[ext_resource type="Texture2D" uid="uid://b8hhyyoji6x4n" path="res://Assets/ui/bossframe/health_bar.png" id="23_mqvwi"]
+[ext_resource type="Texture2D" uid="uid://clb1qxxlcylap" path="res://assets/ui/bossframe/bossframe.png" id="21_oeymq"]
+[ext_resource type="Texture2D" uid="uid://bfrrwosmxoqna" path="res://assets/ui/bossframe/health_bar_under.png" id="22_xauq8"]
+[ext_resource type="Texture2D" uid="uid://b8hhyyoji6x4n" path="res://assets/ui/bossframe/health_bar.png" id="23_mqvwi"]
 [ext_resource type="Script" path="res://Ui/GameUI/PlayerCastBar.gd" id="24_vl06k"]
-[ext_resource type="Texture2D" uid="uid://dl0u83xiv6kk1" path="res://Assets/ui/bossframe/castbar_background.png" id="25_28qlq"]
-[ext_resource type="Texture2D" uid="uid://bpdlcf2ngcdne" path="res://Assets/ui/bossframe/castbar_progress.png" id="26_vjcuh"]
+[ext_resource type="Texture2D" uid="uid://dl0u83xiv6kk1" path="res://assets/ui/bossframe/castbar_background.png" id="25_28qlq"]
+[ext_resource type="Texture2D" uid="uid://bpdlcf2ngcdne" path="res://assets/ui/bossframe/castbar_progress.png" id="26_vjcuh"]
 [ext_resource type="Script" path="res://Ui/GameUI/ErrorMessages.gd" id="27_hnvam"]
-[ext_resource type="Texture2D" uid="uid://v5uxsaoa2tjb" path="res://Assets/ui/bottom_hud/castbar_background.png" id="28_vneq5"]
-[ext_resource type="Texture2D" uid="uid://dh3uqmhjs1hp5" path="res://Assets/ui/bottom_hud/castbar_progress.png" id="29_3nnbc"]
+[ext_resource type="Texture2D" uid="uid://v5uxsaoa2tjb" path="res://assets/ui/bottom_hud/castbar_background.png" id="28_vneq5"]
+[ext_resource type="Texture2D" uid="uid://dh3uqmhjs1hp5" path="res://assets/ui/bottom_hud/castbar_progress.png" id="29_3nnbc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
 font = ExtResource("3_60v0h")
@@ -214,6 +214,16 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_tmcsb")
 font = ExtResource("3_60v0h")
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_sqxju"]
+default_font = ExtResource("3_60v0h")
+
+[sub_resource type="GDScript" id="GDScript_axn2g"]
+script/source = "extends Button
+
+func _on_pressed():
+	Globals.get_player().level_up()
+"
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -541,3 +551,20 @@ layout_mode = 2
 text = "Spellname
 "
 label_settings = SubResource("LabelSettings_vmsgq")
+
+[node name="TestButton" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LevelUp" type="Button" parent="TestButton"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 83.0
+offset_bottom = 37.0
+theme = SubResource("Theme_sqxju")
+text = "Level Up"
+script = SubResource("GDScript_axn2g")
+
+[connection signal="pressed" from="TestButton/LevelUp" to="TestButton/LevelUp" method="_on_pressed"]

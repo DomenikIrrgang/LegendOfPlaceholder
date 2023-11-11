@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bcsg8qngbcxsa"
-path="res://.godot/imported/dash_progress_texture_under.png-7ad202ee4b4186e566b747d436102ad0.ctex"
+path="res://.godot/imported/dash_progress_texture_under.png-de7f62a8ba23de10569436152a4f38fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ui/bottom_hud/dash_progress_texture_under.png"
-dest_files=["res://.godot/imported/dash_progress_texture_under.png-7ad202ee4b4186e566b747d436102ad0.ctex"]
+source_file="res://assets/ui/bottom_hud/dash_progress_texture_under.png"
+dest_files=["res://.godot/imported/dash_progress_texture_under.png-de7f62a8ba23de10569436152a4f38fc.ctex"]
 
 [params]
 

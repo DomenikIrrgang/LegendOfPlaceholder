@@ -3,16 +3,16 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4cidnhdwyu3a"
-path.etc2="res://.godot/imported/bar_fade.png-ce2e1f1520b418911347ab53adf53dd0.etc2.ctex"
+path.s3tc="res://.godot/imported/bar_fade.png-bccab55a536712d4eca6d0825f14af02.s3tc.ctex"
 metadata={
-"imported_formats": ["etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
-source_file="res://Assets/textures/bar_fade.png"
-dest_files=["res://.godot/imported/bar_fade.png-ce2e1f1520b418911347ab53adf53dd0.etc2.ctex"]
+source_file="res://assets/textures/bar_fade.png"
+dest_files=["res://.godot/imported/bar_fade.png-bccab55a536712d4eca6d0825f14af02.s3tc.ctex"]
 
 [params]
 

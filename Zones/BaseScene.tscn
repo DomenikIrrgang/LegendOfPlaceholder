@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://Zones/BaseScene.gd" id="1_3m1id"]
 [ext_resource type="Script" path="res://CustomCamera.gd" id="1_yk0hc"]
 [ext_resource type="PackedScene" uid="uid://vpck8gxc3g0" path="res://Player/Player.tscn" id="2_21w2i"]
-[ext_resource type="PackedScene" uid="uid://cgfm1ac4pe23t" path="res://Ui/GameUI/GameUI.tscn" id="4_i5ie3"]
+[ext_resource type="PackedScene" uid="uid://cgfm1ac4pe23t" path="res://ui/GameUI/GameUI.tscn" id="4_i5ie3"]
 [ext_resource type="Script" path="res://Dialogs.gd" id="5_3r0j6"]
 [ext_resource type="Script" path="res://CutsceneBars.gd" id="6_f08no"]
 [ext_resource type="Script" path="res://Ui/GameUI/PauseMenu.gd" id="7_f4tx3"]
 [ext_resource type="Shader" path="res://Shaders/Blur.gdshader" id="8_4hluv"]
-[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="9_0jh1n"]
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="9_0jh1n"]
 [ext_resource type="Script" path="res://Ui/LoadingScreen.gd" id="10_nu1qd"]
 
 [sub_resource type="Animation" id="Animation_58ieq"]
@@ -141,8 +141,7 @@ y_sort_enabled = true
 
 [node name="UserInterface" type="CanvasLayer" parent="." groups=["UserInterfaceCanvas"]]
 
-[node name="GameUI" parent="UserInterface" node_paths=PackedStringArray("player") instance=ExtResource("4_i5ie3")]
-player = NodePath("../../Player")
+[node name="GameUI" parent="UserInterface" instance=ExtResource("4_i5ie3")]
 
 [node name="Dialogs" type="Control" parent="UserInterface"]
 layout_mode = 3

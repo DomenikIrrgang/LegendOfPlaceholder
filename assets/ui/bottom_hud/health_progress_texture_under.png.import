@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://7sbgo11asvra"
-path="res://.godot/imported/health_progress_texture_under.png-98f94f31f72c294e15ba9105a68a07e8.ctex"
+path="res://.godot/imported/health_progress_texture_under.png-695dcf1d947f783967caf8b51f34e638.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ui/bottom_hud/health_progress_texture_under.png"
-dest_files=["res://.godot/imported/health_progress_texture_under.png-98f94f31f72c294e15ba9105a68a07e8.ctex"]
+source_file="res://assets/ui/bottom_hud/health_progress_texture_under.png"
+dest_files=["res://.godot/imported/health_progress_texture_under.png-695dcf1d947f783967caf8b51f34e638.ctex"]
 
 [params]
 
