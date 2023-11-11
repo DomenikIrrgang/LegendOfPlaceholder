@@ -1,6 +1,6 @@
 extends Control
 
-var DialogScene = preload("res://Ui/Dialog/Dialog.tscn")
+var DialogScene = preload("res://ui/Dialog/Dialog.tscn")
 
 var current_dialog: Dialog
 var current_dialog_step: DialogStep

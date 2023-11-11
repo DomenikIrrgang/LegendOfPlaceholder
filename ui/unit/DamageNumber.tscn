@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bt478kfwk2qsl"]
 
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="1_3oncc"]
-[ext_resource type="Script" path="res://Ui/unit/DamageNumber.gd" id="1_4uphf"]
+[ext_resource type="Script" path="res://ui/unit/DamageNumber.gd" id="1_4uphf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yqk6p"]
 font = ExtResource("1_3oncc")

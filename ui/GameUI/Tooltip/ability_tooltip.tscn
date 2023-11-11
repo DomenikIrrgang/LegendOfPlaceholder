@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d277cjb25ecu5"]
 
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="1_f6eet"]
-[ext_resource type="Script" path="res://ui/GameUI/Tooltip/AbilityTooltip.gd" id="2_hd7ye"]
+[ext_resource type="Script" path="res://ui/GameUI/Tooltip/AbilityTooltip.gd" id="2_bqeaq"]
 [ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="3_1v1qr"]
 [ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="4_iijj5"]
 
@@ -21,7 +21,7 @@ offset_top = 121.0
 offset_right = 500.0
 offset_bottom = 226.0
 theme = SubResource("Theme_b38k5")
-script = ExtResource("2_hd7ye")
+script = ExtResource("2_bqeaq")
 
 [node name="Background" type="NinePatchRect" parent="."]
 layout_mode = 2
@@ -90,4 +90,3 @@ layout_mode = 2
 layout_mode = 2
 text = "<AbilityDescription>"
 label_settings = ExtResource("4_iijj5")
-autowrap_mode = 3

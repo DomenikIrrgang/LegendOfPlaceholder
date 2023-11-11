@@ -1,7 +1,7 @@
 class_name Unit
 extends CharacterBody2D
 
-var DamageNumber = preload("res://Ui/unit/DamageNumber.tscn")
+var DamageNumber = preload("res://ui/unit/DamageNumber.tscn")
 
 @export
 var unit_data: UnitData

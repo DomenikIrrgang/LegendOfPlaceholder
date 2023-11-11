@@ -50,7 +50,7 @@ func dialog_confirmation_pressed() -> void:
 			dialog_step.approve()		
 		
 func add_choice(choice: String) -> void:
-	var choice_label = load("res://Ui/SelectableLabel.tscn").instantiate()
+	var choice_label = load("res://ui/SelectableLabel.tscn").instantiate()
 	choices_container.add_child(choice_label)
 	choice_label.label.text = choice
 

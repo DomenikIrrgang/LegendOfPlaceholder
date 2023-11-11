@@ -1,3 +1,4 @@
+class_name AbilitySlot
 extends TextureRect
 
 @export
@@ -21,7 +22,7 @@ var cooldown_label: Label = $Cooldown
 
 var ability: Ability
 
-var tooltip = preload("res://ui/GameUI/Tooltip/ability_tooltip.tscn")
+var tooltip = load("res://ui/GameUI/Tooltip/ability_tooltip.tscn")
 var tooltip_instance
 
 func _ready() -> void:

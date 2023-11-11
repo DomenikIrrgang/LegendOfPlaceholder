@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxhbaeh5fco2n"]
 
-[ext_resource type="Script" path="res://Ui/SelectableLabel.gd" id="1_ep7ex"]
-[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://Ui/Dialog/DialogLabelSettings.tres" id="2_o65xc"]
+[ext_resource type="Script" path="res://ui/SelectableLabel.gd" id="1_ep7ex"]
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="2_o65xc"]
 [ext_resource type="Shader" path="res://Shaders/Fade.gdshader" id="3_m1lp0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4w5bw"]

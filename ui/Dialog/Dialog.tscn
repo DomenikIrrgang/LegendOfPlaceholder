@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=3 uid="uid://dc3c26wb3jqeg"]
 
-[ext_resource type="Script" path="res://Ui/Dialog/Dialog.gd" id="1_neqgw"]
+[ext_resource type="Script" path="res://ui/Dialog/Dialog.gd" id="1_neqgw"]
 [ext_resource type="Texture2D" uid="uid://cyoimb2iltyke" path="res://Assets/ui/dialog/transparent_dialog_background.png" id="2_frrh7"]
 [ext_resource type="Texture2D" uid="uid://b6hy484v3a8rc" path="res://Assets/ui/dialog/text_icon.png" id="3_gpkyr"]
-[ext_resource type="Script" path="res://Ui/GameUI/DialogTextBox.gd" id="4_1kq6h"]
+[ext_resource type="Script" path="res://ui/GameUI/DialogTextBox.gd" id="4_1kq6h"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="5_gclol"]
-[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://Ui/Dialog/DialogLabelSettings.tres" id="6_pav4t"]
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="6_pav4t"]
 [ext_resource type="Shader" path="res://Shaders/Fade.gdshader" id="7_cnhkq"]
 [ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://Assets/ui/buttons/b_button.png" id="8_qw5wn"]
-[ext_resource type="Script" path="res://Ui/GameUI/Keybind.gd" id="9_3wf80"]
+[ext_resource type="Script" path="res://ui/GameUI/Keybind.gd" id="9_3wf80"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_15222"]
 font = ExtResource("5_gclol")

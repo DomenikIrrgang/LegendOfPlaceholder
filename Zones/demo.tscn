@@ -5,10 +5,10 @@
 [ext_resource type="Script" path="res://CustomCamera.gd" id="3_ac4ju"]
 [ext_resource type="PackedScene" uid="uid://vpck8gxc3g0" path="res://Player/Player.tscn" id="4_7fuc7"]
 [ext_resource type="PackedScene" uid="uid://1cktjqdfqqvt" path="res://Enemy/MegaSlime/MegaSlime.tscn" id="5_lkr6c"]
-[ext_resource type="PackedScene" uid="uid://cgfm1ac4pe23t" path="res://Ui/GameUI/GameUI.tscn" id="6_kt28k"]
+[ext_resource type="PackedScene" uid="uid://cgfm1ac4pe23t" path="res://ui/GameUI/GameUI.tscn" id="6_kt28k"]
 [ext_resource type="Script" path="res://Dialogs.gd" id="7_v28rf"]
 [ext_resource type="Script" path="res://CutsceneBars.gd" id="8_ks5q0"]
-[ext_resource type="Script" path="res://Ui/GameUI/PauseMenu.gd" id="9_rmwfp"]
+[ext_resource type="Script" path="res://ui/GameUI/PauseMenu.gd" id="9_rmwfp"]
 [ext_resource type="Shader" path="res://Shaders/Blur.gdshader" id="10_rihpu"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="11_ruwsu"]
 

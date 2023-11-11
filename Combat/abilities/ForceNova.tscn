@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://rj7rwmclmq36"]
 
 [ext_resource type="Script" path="res://Combat/abilities/ForceNova.gd" id="1_7nqi8"]
-[ext_resource type="Texture2D" uid="uid://b8c5qsi2p1yuq" path="res://Assets/ui/bottom_hud/force_nova_icon.png" id="2_vof3p"]
+[ext_resource type="Texture2D" uid="uid://b8c5qsi2p1yuq" path="res://assets/ui/bottom_hud/force_nova_icon.png" id="2_vof3p"]
 [ext_resource type="Script" path="res://Combat/abilities/ForceFieldHitbox.gd" id="3_p5wqk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwfnw"]
@@ -74,7 +74,8 @@ shader_parameter/blendingAmount = 10.0
 [node name="ForceNova" type="Node2D"]
 script = ExtResource("1_7nqi8")
 alias = "Forcefield"
-tooltip = "Deals damage and knocksback enemies around the caster."
+tooltip = "Deals damage and knocksback enemies
+around the caster."
 ability_type = 1
 cooldown = 25.0
 value = 30
