@@ -567,4 +567,12 @@ theme = SubResource("Theme_sqxju")
 text = "Level Up"
 script = SubResource("GDScript_axn2g")
 
+[connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/ResourceBar" to="MainHUD/CenterContainer/Overlay/ResourceBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/ResourceBar" to="MainHUD/CenterContainer/Overlay/ResourceBar" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/ExperienceBar" to="MainHUD/CenterContainer/Overlay/ExperienceBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/ExperienceBar" to="MainHUD/CenterContainer/Overlay/ExperienceBar" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/DashBar" to="MainHUD/CenterContainer/Overlay/DashBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/DashBar" to="MainHUD/CenterContainer/Overlay/DashBar" method="_on_mouse_exited"]
 [connection signal="pressed" from="TestButton/LevelUp" to="TestButton/LevelUp" method="_on_pressed"]

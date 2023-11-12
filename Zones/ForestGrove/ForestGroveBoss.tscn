@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=10 format=3 uid="uid://cno8efg6tofh5"]
 
 [ext_resource type="TileSet" uid="uid://c65yuai7jjlwb" path="res://Zones/ForestGrove/ForestGroveTileSet.tres" id="2_2crhv"]
 [ext_resource type="Script" path="res://Zones/ForestGrove/Foreground.gd" id="2_661l1"]

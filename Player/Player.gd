@@ -4,6 +4,9 @@ extends Unit
 @onready
 var movement_state: StateMachine = $MovementState
 
+@onready
+var light_box: PointLight2D = $LightBox
+
 @export
 var weapon_path: String
 
@@ -24,7 +27,13 @@ func _ready() -> void:
 	resources[ResourceType.Enum.MANA] = Mana.new(stat_calculator)
 	init_weapon()
 	died.connect(on_player_died)
-	pass
+	Globals.get_environment_light().energy_changed.connect(on_energy_changed)
+	
+func on_energy_changed(energy) -> void:
+	if energy > 0.6:
+		light_box.energy = energy - 0.6
+	else:
+		light_box.energy = 0.0
 	
 func get_abilities() -> Array[Ability]:
 	return Keybinds.get_abilities() 

@@ -20,4 +20,4 @@ func _ready() -> void:
 	main_hud.initialize(player)
 	player_castbar.initialize(player)
 	system_message.initialize(player)
-	
+

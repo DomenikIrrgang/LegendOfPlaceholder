@@ -1,8 +1,8 @@
-[gd_scene load_steps=33 format=3 uid="uid://vpck8gxc3g0"]
+[gd_scene load_steps=35 format=3 uid="uid://vpck8gxc3g0"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_hqrbj"]
 [ext_resource type="Resource" uid="uid://31rg15sio2vh" path="res://Resources/Player/PlayerData.tres" id="2_7ky4n"]
-[ext_resource type="Texture2D" uid="uid://02xo8rphiwgt" path="res://Assets/textures/player.png" id="2_8tpy3"]
+[ext_resource type="Texture2D" uid="uid://02xo8rphiwgt" path="res://assets/textures/player.png" id="2_8tpy3"]
 [ext_resource type="Animation" uid="uid://cocraw1jx8unp" path="res://Player/Animations/Attack_Down.res" id="3_n1sks"]
 [ext_resource type="Animation" uid="uid://tnorjeehjxm7" path="res://Player/Animations/Attack_Left.res" id="4_ygspt"]
 [ext_resource type="Script" path="res://Player/State/IdleToRun.gd" id="5_bdqid"]
@@ -59,6 +59,15 @@ color = Color(0.658824, 0.47451, 0.172549, 0.619608)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8yed2"]
 size = Vector2(10, 5)
+
+[sub_resource type="Gradient" id="Gradient_n0pbo"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0854e"]
+gradient = SubResource("Gradient_n0pbo")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [node name="Player" type="CharacterBody2D" groups=["player", "unit"]]
 y_sort_enabled = true
@@ -160,3 +169,7 @@ script = ExtResource("27_3nmce")
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_8yed2")
 debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+
+[node name="LightBox" type="PointLight2D" parent="."]
+energy = 0.0
+texture = SubResource("GradientTexture2D_0854e")

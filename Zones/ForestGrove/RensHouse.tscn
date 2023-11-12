@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://cex8g67gr43h7"]
+
+[ext_resource type="Script" path="res://Zones/Zone.gd" id="1_e20j1"]
+[ext_resource type="TileSet" uid="uid://c65yuai7jjlwb" path="res://Zones/ForestGrove/ForestGroveTileSet.tres" id="2_18uvt"]
+[ext_resource type="Texture2D" uid="uid://2jjwbiw0qqet" path="res://assets/environment/rens_house/wall.png" id="3_68i1m"]
+[ext_resource type="Texture2D" uid="uid://bdjvwp34k4071" path="res://assets/environment/rens_house/wood.png" id="4_eou8p"]
+
+[node name="RensHouse" type="Node2D"]
+script = ExtResource("1_e20j1")
+zone_name = "Ren's House"
+
+[node name="Background" type="TileMap" parent="."]
+y_sort_enabled = true
+rotation = -0.000297988
+tile_set = ExtResource("2_18uvt")
+format = 2
+layer_0/name = "Background"
+layer_0/z_index = -2
+layer_1/name = "Terain"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "GroundObjects"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = -1
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "ElevatedObjects"
+layer_3/enabled = true
+layer_3/modulate = Color(1, 1, 1, 1)
+layer_3/y_sort_enabled = false
+layer_3/y_sort_origin = 0
+layer_3/z_index = -1
+layer_3/tile_data = PackedInt32Array()
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("3_68i1m")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("4_eou8p")

@@ -38,5 +38,4 @@ func on_encounter_defeated() -> void:
 	show_system_message("Congratulations!")	
 	
 func on_player_level_changed(level: int) -> void:
-	print("Level Changed to", level)
 	show_system_message("You reached level " + str(level) + "!")

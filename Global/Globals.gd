@@ -17,6 +17,9 @@ func get_enemies() -> Array[Node]:
 func get_player() -> Player:
 	return get_scene_tree().get_first_node_in_group("player")
 	
+func get_environment_light() -> EnvironmentLighting:
+	return get_scene_tree().get_first_node_in_group("environmentlight")
+	
 func get_camera() -> Camera2D:
 	return get_scene_tree().get_first_node_in_group("camera")
 	

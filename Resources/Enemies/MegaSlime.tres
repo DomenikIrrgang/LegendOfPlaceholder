@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyData" load_steps=7 format=3 uid="uid://dp7afxuihduss"]
 
 [ext_resource type="Script" path="res://Resources/Enemies/EnemyData.gd" id="1_1ejyo"]
-[ext_resource type="Texture2D" uid="uid://b6hy484v3a8rc" path="res://Assets/ui/dialog/text_icon.png" id="1_vl7yq"]
+[ext_resource type="Texture2D" uid="uid://b6hy484v3a8rc" path="res://assets/ui/dialog/text_icon.png" id="1_vl7yq"]
 [ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="2_2fuk2"]
 
 [sub_resource type="Resource" id="Resource_4bl6u"]

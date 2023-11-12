@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfk21e4yhplmd"]
+[gd_scene load_steps=12 format=3 uid="uid://dfk21e4yhplmd"]
 
 [ext_resource type="Script" path="res://Combat/abilities/Projectile.gd" id="1_6hugs"]
 [ext_resource type="Shader" path="res://Shaders/Fire.gdshader" id="2_snjct"]
@@ -30,6 +30,15 @@ shader_parameter/gradient_tex = SubResource("GradientTexture2D_n0k05")
 [sub_resource type="CircleShape2D" id="CircleShape2D_ditxv"]
 radius = 6.0
 
+[sub_resource type="Gradient" id="Gradient_xl2f6"]
+offsets = PackedFloat32Array(0, 0.690141)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ym38g"]
+gradient = SubResource("Gradient_xl2f6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="FireballAnimation" type="Node2D"]
 script = ExtResource("1_6hugs")
 
@@ -54,4 +63,10 @@ collision_mask = 13
 script = ExtResource("3_d8x3v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+visible = false
 shape = SubResource("CircleShape2D_ditxv")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.628906, 0.601563)
+color = Color(1, 0.560784, 0, 1)
+texture = SubResource("GradientTexture2D_ym38g")

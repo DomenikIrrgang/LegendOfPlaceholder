@@ -3,6 +3,9 @@ extends TextureProgressBar
 
 var animation_speed: float = 0.1
 
+var tooltip = load("res://ui/GameUI/Tooltip/text_tooltip.tscn")
+var tooltip_instance
+
 func initialize(player: Player) -> void:
 	var health = player.get_resource(ResourceType.Enum.MANA)
 	health.resource_value_changed.connect(health_changed)
@@ -17,3 +20,16 @@ func health_changed(resource: UnitResource, _new_value: int, _change: int, _orig
 	
 func max_health_changed(resource: UnitResource, _new_maximum_value: int) -> void:
 	max_value = resource.get_maximum_value()
+
+
+func _on_mouse_entered():
+	if tooltip_instance == null:
+		tooltip_instance = tooltip.instantiate()
+		add_child(tooltip_instance)
+		tooltip_instance.global_position = get_parent().global_position
+	tooltip_instance.show_text(str(value) + "/" + str(max_value))
+	tooltip_instance.visible = true
+
+func _on_mouse_exited():
+	if tooltip_instance != null:
+		tooltip_instance.visible = false

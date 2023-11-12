@@ -20,11 +20,13 @@ offset_left = 215.0
 offset_top = 121.0
 offset_right = 500.0
 offset_bottom = 226.0
+mouse_filter = 1
 theme = SubResource("Theme_b38k5")
 script = ExtResource("2_bqeaq")
 
 [node name="Background" type="NinePatchRect" parent="."]
 layout_mode = 2
+mouse_filter = 1
 texture = ExtResource("3_1v1qr")
 patch_margin_left = 4
 patch_margin_top = 4
@@ -33,6 +35,7 @@ patch_margin_bottom = 4
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_oh3s5")
 
 [node name="Content" type="VBoxContainer" parent="PanelContainer"]

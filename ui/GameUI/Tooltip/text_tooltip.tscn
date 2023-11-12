@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://chnqn64383314"]
+
+[ext_resource type="Script" path="res://ui/GameUI/Tooltip/TextTooltip.gd" id="1_k0vl8"]
+[ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="2_5ab17"]
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="3_mixkw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eh80d"]
+
+[node name="TextTooltip" type="PanelContainer"]
+z_index = 5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1879.0
+offset_bottom = -1055.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_k0vl8")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+mouse_filter = 1
+texture = ExtResource("2_5ab17")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxEmpty_eh80d")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 2
+
+[node name="Tect" type="Label" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "<Text>"
+label_settings = ExtResource("3_mixkw")

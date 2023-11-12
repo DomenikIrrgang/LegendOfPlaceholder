@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ddnsu8hllewh7"]
+[gd_scene load_steps=24 format=3 uid="uid://ddnsu8hllewh7"]
 
 [ext_resource type="Script" path="res://Zones/BaseScene.gd" id="1_3m1id"]
 [ext_resource type="Script" path="res://CustomCamera.gd" id="1_yk0hc"]
@@ -10,6 +10,7 @@
 [ext_resource type="Shader" path="res://Shaders/Blur.gdshader" id="8_4hluv"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="9_0jh1n"]
 [ext_resource type="Script" path="res://ui/LoadingScreen.gd" id="10_nu1qd"]
+[ext_resource type="Script" path="res://Zones/EnvironmentLighting.gd" id="11_dggdl"]
 
 [sub_resource type="Animation" id="Animation_58ieq"]
 resource_name = "Hide"
@@ -212,3 +213,8 @@ texture = SubResource("NoiseTexture2D_fxhsl")
 centered = false
 region_enabled = true
 region_rect = Rect2(2.08165e-12, 2.08165e-12, 1920, 1080)
+
+[node name="EnvironmentLighting" type="DirectionalLight2D" parent="." groups=["environmentlight"]]
+energy = 0.0
+blend_mode = 1
+script = ExtResource("11_dggdl")

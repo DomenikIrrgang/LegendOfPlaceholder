@@ -55,7 +55,10 @@ func update_cooldown() -> void:
 	cooldown_bar.value = ability.get_cooldown_progress() * cooldown_scaling_factor
 	if ability.get_remaining_cooldown() > 0.0:
 		cooldown_label.visible = true
-		cooldown_label.text = str(ceil(ability.get_remaining_cooldown()))
+		if ability.get_remaining_cooldown() < 1.0:
+			cooldown_label.text = str(snapped(ability.get_remaining_cooldown(), 0.1))
+		else:
+			cooldown_label.text = str(floor(ability.get_remaining_cooldown()))
 	else:
 		cooldown_label.visible = false
 			
@@ -74,7 +77,7 @@ func _on_mouse_entered():
 		tooltip_instance.show_ability(ability)
 		tooltip_instance.visible = true
 
-
 func _on_mouse_exited():
 	if tooltip_instance != null:
 		tooltip_instance.visible = false
+		tooltip_instance = null
