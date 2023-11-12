@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Dialog" load_steps=7 format=3 uid="uid://7qosm2oeonvs"]
+
+[ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="1_uxrjp"]
+[ext_resource type="Resource" uid="uid://31rg15sio2vh" path="res://Resources/Player/PlayerData.tres" id="2_u2nr8"]
+[ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="3_vuwli"]
+[ext_resource type="Resource" uid="uid://vjtfqay7mifg" path="res://Resources/Npcs/Alfond.tres" id="4_aa6op"]
+
+[sub_resource type="Resource" id="Resource_b3tgw"]
+script = ExtResource("3_vuwli")
+type = 0
+author = ExtResource("2_u2nr8")
+text = "zzzZZzz...."
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
+
+[sub_resource type="Resource" id="Resource_7do5j"]
+script = ExtResource("3_vuwli")
+type = 0
+author = ExtResource("4_aa6op")
+text = "*knock* *knock* Ren, wake up! Are you really gonna miss your big day?"
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
+
+[resource]
+script = ExtResource("1_uxrjp")
+steps = Array[ExtResource("3_vuwli")]([SubResource("Resource_b3tgw"), SubResource("Resource_7do5j")])

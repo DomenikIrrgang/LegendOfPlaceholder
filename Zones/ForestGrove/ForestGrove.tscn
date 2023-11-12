@@ -125,7 +125,7 @@ fill_from = Vector2(0.5, 0.5)
 [node name="ForestGrove" type="Node2D"]
 script = ExtResource("1_axc5c")
 zone_name = "Forest Grove"
-environment_light_energy = 1.0
+environment_light_energy = 0.6
 
 [node name="Background" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -166,6 +166,17 @@ spawm_position = Vector2(56, -54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossEntrance"]
 position = Vector2(-341.5, -97.5)
+shape = SubResource("RectangleShape2D_p4fud")
+
+[node name="HouseEntrance" type="Area2D" parent="."]
+position = Vector2(-39, 8)
+collision_mask = 2
+script = ExtResource("4_10e5x")
+scene = "res://Zones/ForestGrove/RensHouse.tscn"
+spawm_position = Vector2(0, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HouseEntrance"]
+position = Vector2(144, -59)
 shape = SubResource("RectangleShape2D_p4fud")
 
 [node name="Foreground" type="Node2D" parent="."]

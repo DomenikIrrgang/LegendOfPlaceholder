@@ -7,10 +7,10 @@
 [ext_resource type="Script" path="res://State/StateMachine.gd" id="4_ejfmg"]
 [ext_resource type="Script" path="res://State/EnemyPhaseState.gd" id="5_sgre2"]
 [ext_resource type="Script" path="res://Enemy/Castbar.gd" id="6_82k5s"]
-[ext_resource type="Texture2D" uid="uid://v5uxsaoa2tjb" path="res://Assets/ui/bottom_hud/castbar_background.png" id="7_ehlrv"]
-[ext_resource type="Texture2D" uid="uid://dh3uqmhjs1hp5" path="res://Assets/ui/bottom_hud/castbar_progress.png" id="8_0du3e"]
+[ext_resource type="Texture2D" uid="uid://v5uxsaoa2tjb" path="res://assets/ui/bottom_hud/castbar_background.png" id="7_ehlrv"]
+[ext_resource type="Texture2D" uid="uid://dh3uqmhjs1hp5" path="res://assets/ui/bottom_hud/castbar_progress.png" id="8_0du3e"]
 [ext_resource type="Shader" path="res://Shaders/UnitResource.gdshader" id="8_xco4q"]
-[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="9_uki8a"]
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="9_uki8a"]
 
 [sub_resource type="GDScript" id="GDScript_mwj27"]
 script/source = "extends Area2D

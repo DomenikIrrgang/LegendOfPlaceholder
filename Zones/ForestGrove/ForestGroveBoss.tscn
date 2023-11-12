@@ -118,6 +118,7 @@ size = Vector2(65, 50)
 y_sort_enabled = true
 script = ExtResource("2_dvy0d")
 zone_name = "Megaslimes Lair"
+environment_light_energy = 0.8
 
 [node name="Background" type="TileMap" parent="."]
 y_sort_enabled = true

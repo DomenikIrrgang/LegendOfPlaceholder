@@ -10,6 +10,7 @@ type = 0
 author = ExtResource("2_llrkv")
 text = "Try to avoid these! Mwhaha!
 "
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
 
 [resource]
 script = ExtResource("1_hc7t3")

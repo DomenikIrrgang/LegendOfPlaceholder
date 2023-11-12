@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Cutscene" load_steps=10 format=3 uid="uid://cx2wmshc3a7a5"]
+
+[ext_resource type="Script" path="res://Resources/Cutscenes/Cutscene.gd" id="1_6ww1f"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/MoveCameraToUnitAction.gd" id="2_bn850"]
+[ext_resource type="Resource" uid="uid://7qosm2oeonvs" path="res://Resources/Dialogs/Prolog/RensAwakening/RensAwakening.tres" id="3_do4xs"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/ShowDialogAction.gd" id="4_34ic8"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/CutsceneStep.gd" id="5_s3mhv"]
+
+[sub_resource type="Resource" id="Resource_thi2j"]
+script = ExtResource("2_bn850")
+unit_name = "Player"
+
+[sub_resource type="Resource" id="Resource_nmii1"]
+script = ExtResource("5_s3mhv")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_thi2j")])
+
+[sub_resource type="Resource" id="Resource_lu6ov"]
+script = ExtResource("4_34ic8")
+dialog = ExtResource("3_do4xs")
+
+[sub_resource type="Resource" id="Resource_yqrmr"]
+script = ExtResource("5_s3mhv")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_lu6ov")])
+
+[resource]
+script = ExtResource("1_6ww1f")
+name = "Ren's Awakening"
+steps = Array[ExtResource("5_s3mhv")]([SubResource("Resource_nmii1"), SubResource("Resource_yqrmr")])

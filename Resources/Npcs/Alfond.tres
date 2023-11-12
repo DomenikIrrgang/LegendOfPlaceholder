@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="NpcData" load_steps=3 format=3 uid="uid://vjtfqay7mifg"]
+
+[ext_resource type="Texture2D" uid="uid://dtxw35wty86v8" path="res://assets/ui/dialog/player_dialog.png" id="1_qyapk"]
+[ext_resource type="Script" path="res://Resources/Npcs/NpcData.gd" id="1_s8tdc"]
+
+[resource]
+script = ExtResource("1_s8tdc")
+alias = "Alfond"
+dialog_texture = ExtResource("1_qyapk")
+level = 15
+base_movement_speed = 30.0
+mass = 50.0
+knockbackable = true
+stats = Array[Resource("res://Resources/StatAssignment.gd")]([])

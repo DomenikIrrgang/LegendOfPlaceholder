@@ -9,6 +9,7 @@ script = ExtResource("3_g18ru")
 type = 0
 author = ExtResource("2_k4pwt")
 text = "Now face my burning wrath!"
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
 
 [resource]
 script = ExtResource("1_2e32l")
