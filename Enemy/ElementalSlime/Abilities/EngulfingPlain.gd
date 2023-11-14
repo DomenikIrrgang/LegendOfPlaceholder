@@ -15,7 +15,7 @@ var stages = [
 var current_stages = []
 var current_stage_count: int = 0
 
-var stage_duration: float = 10.0
+var stage_duration: float = 3.0
 var break_between_stages: float = 1.0
 
 var source: Unit

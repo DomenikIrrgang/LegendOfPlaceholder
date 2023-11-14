@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://tf4e35148cv"]
+[gd_scene load_steps=13 format=3 uid="uid://tf4e35148cv"]
 
 [ext_resource type="Script" path="res://Zones/Zone.gd" id="1_axc5c"]
 [ext_resource type="TileSet" uid="uid://c65yuai7jjlwb" path="res://Zones/ForestGrove/ForestGroveTileSet.tres" id="2_tatbd"]
@@ -11,6 +11,9 @@ size = Vector2(81.5625, 77.1875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pqq8"]
 size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjt3n"]
+size = Vector2(84, 54)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rmi04"]
 texture = ExtResource("3_qa1yc")
@@ -181,6 +184,16 @@ spawm_position = Vector2(56, 117)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HouseEntrance"]
 position = Vector2(-65, 80)
 shape = SubResource("RectangleShape2D_5pqq8")
+
+[node name="ElementalSlimeArea" type="Area2D" parent="."]
+position = Vector2(-39, 8)
+collision_mask = 2
+script = ExtResource("4_10e5x")
+scene = "res://Zones/ForestGrove/ElementalSlimeArena.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ElementalSlimeArea"]
+position = Vector2(150, -59)
+shape = SubResource("RectangleShape2D_gjt3n")
 
 [node name="Foreground" type="Node2D" parent="."]
 z_index = 500

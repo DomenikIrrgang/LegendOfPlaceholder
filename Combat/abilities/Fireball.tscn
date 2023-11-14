@@ -6,7 +6,9 @@
 script = ExtResource("1_kj4ij")
 alias = "Fireball"
 tooltip = "Sends a fireball in your facing direction."
-cooldown = 1.0
+ability_type = 1
+cast_time = 2.0
+interuptable = true
 value = 21
 spell_school = 1
 resource_type = 5

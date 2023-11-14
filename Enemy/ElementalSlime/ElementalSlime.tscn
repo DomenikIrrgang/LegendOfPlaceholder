@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ctkdmqm6hhk4a"]
+[gd_scene load_steps=27 format=3 uid="uid://ctkdmqm6hhk4a"]
 
 [ext_resource type="Script" path="res://Enemy/ElementalSlime/ElementalSlime.gd" id="1_oom8b"]
 [ext_resource type="Script" path="res://Unit/HurtBox.gd" id="2_omtut"]
@@ -18,6 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://c26stcg6tajlv" path="res://Enemy/Castbar.tscn" id="15_58otq"]
 [ext_resource type="Script" path="res://State/StateMachine.gd" id="17_yr8i8"]
 [ext_resource type="Script" path="res://Enemy/ElementalSlime/Phase1.gd" id="18_ipp5x"]
+[ext_resource type="Script" path="res://State/StateTransition.gd" id="19_thvjh"]
+[ext_resource type="Script" path="res://Enemy/ElementalSlime/Phase2.gd" id="20_y847x"]
+[ext_resource type="Script" path="res://Enemy/ElementalSlime/Phase3.gd" id="21_ieyx3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh5om"]
 size = Vector2(24, 8)
@@ -114,3 +117,17 @@ initial_state = NodePath("Phase1")
 
 [node name="Phase1" type="Node" parent="PhaseState"]
 script = ExtResource("18_ipp5x")
+
+[node name="StateTransition" type="Node" parent="PhaseState/Phase1"]
+script = ExtResource("19_thvjh")
+target_state_path = NodePath("../../Phase2")
+
+[node name="Phase2" type="Node" parent="PhaseState"]
+script = ExtResource("20_y847x")
+
+[node name="StateTransition" type="Node" parent="PhaseState/Phase2"]
+script = ExtResource("19_thvjh")
+target_state_path = NodePath("../../Phase3")
+
+[node name="Phase3" type="Node" parent="PhaseState"]
+script = ExtResource("21_ieyx3")
