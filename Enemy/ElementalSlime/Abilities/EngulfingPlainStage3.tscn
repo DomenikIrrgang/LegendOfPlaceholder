@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://d32mtrovo2hkb"]
+
+[ext_resource type="Script" path="res://Enemy/ElementalSlime/Abilities/EngulfingPlainStage1.gd" id="1_3keu5"]
+[ext_resource type="Script" path="res://Combat/abilities/VoidZone.gd" id="2_uqi8t"]
+[ext_resource type="Shader" path="res://Shaders/UnitResource.gdshader" id="3_cd0yh"]
+[ext_resource type="Texture2D" uid="uid://balmafqcebef8" path="res://assets/textures/red.png" id="4_1w4ou"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2gakc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0ya0e"]
+generate_mipmaps = false
+normalize = false
+noise = SubResource("FastNoiseLite_2gakc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iebj3"]
+shader = ExtResource("3_cd0yh")
+shader_parameter/timeScaleFactor = 0.1
+shader_parameter/brightness = 0.5
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_0ya0e")
+
+[node name="EngulfingPlainStage3" type="Node2D"]
+script = ExtResource("1_3keu5")
+
+[node name="VoidZone" type="Area2D" parent="."]
+script = ExtResource("2_uqi8t")
+tick_time = 1.0
+
+[node name="CollisionU" type="CollisionPolygon2D" parent="VoidZone"]
+polygon = PackedVector2Array(-60, 90, -90, 90, -90, -90, 90, -90, 90, 90, 60, 90, 60, -60, -60, -60)
+
+[node name="CollisionBottom" type="CollisionPolygon2D" parent="VoidZone"]
+polygon = PackedVector2Array(60, 60, 60, 90, -60, 90, -60, 60)
+
+[node name="TextureLeft" type="Sprite2D" parent="VoidZone"]
+z_index = -1
+material = SubResource("ShaderMaterial_iebj3")
+position = Vector2(-75.2375, -9.53674e-07)
+scale = Vector2(1.90469, 11.25)
+texture = ExtResource("4_1w4ou")
+
+[node name="TextureRight" type="Sprite2D" parent="VoidZone"]
+z_index = -1
+material = SubResource("ShaderMaterial_iebj3")
+position = Vector2(75, -4.29153e-06)
+scale = Vector2(1.875, 11.25)
+texture = ExtResource("4_1w4ou")
+
+[node name="TextureBottom" type="Sprite2D" parent="VoidZone"]
+z_index = -1
+material = SubResource("ShaderMaterial_iebj3")
+position = Vector2(-2.86102e-06, 75)
+scale = Vector2(7.5, 1.875)
+texture = ExtResource("4_1w4ou")
+
+[node name="TextureTop" type="Sprite2D" parent="VoidZone"]
+z_index = -1
+material = SubResource("ShaderMaterial_iebj3")
+position = Vector2(-5.96046e-08, -75)
+scale = Vector2(7.5, 1.875)
+texture = ExtResource("4_1w4ou")

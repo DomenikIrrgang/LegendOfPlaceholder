@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://7unk2qgm3ifl"]
+
+[ext_resource type="Script" path="res://Enemy/ElementalSlime/Abilities/EngulfingPlainStage1.gd" id="1_ldlxb"]
+[ext_resource type="Script" path="res://Combat/abilities/VoidZone.gd" id="2_rgvf8"]
+[ext_resource type="PackedScene" uid="uid://s1djblvtvpjv" path="res://Enemy/ElementalSlime/Abilities/EngulfingPlain.tscn" id="3_3ng1v"]
+[ext_resource type="Shader" path="res://Shaders/UnitResource.gdshader" id="4_2wejv"]
+[ext_resource type="Texture2D" uid="uid://balmafqcebef8" path="res://assets/textures/red.png" id="5_aalol"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g2fxc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kfkgh"]
+generate_mipmaps = false
+normalize = false
+noise = SubResource("FastNoiseLite_g2fxc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omkek"]
+shader = ExtResource("4_2wejv")
+shader_parameter/timeScaleFactor = 0.1
+shader_parameter/brightness = 0.5
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_kfkgh")
+
+[node name="EngulfingPlainStage1" type="Node2D"]
+script = ExtResource("1_ldlxb")
+
+[node name="VoidZone" type="Area2D" parent="."]
+collision_layer = 6
+collision_mask = 15
+script = ExtResource("2_rgvf8")
+tick_time = 1.0
+ability_scene = ExtResource("3_3ng1v")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VoidZone"]
+position = Vector2(0, 0.5)
+scale = Vector2(1, 1.0125)
+polygon = PackedVector2Array(30, 30, -30, 30, -30, -30, 30, -30)
+
+[node name="Texture" type="Sprite2D" parent="VoidZone"]
+z_index = -1
+material = SubResource("ShaderMaterial_omkek")
+position = Vector2(4.17233e-07, 0.500001)
+scale = Vector2(3.75, 3.8125)
+texture = ExtResource("5_aalol")

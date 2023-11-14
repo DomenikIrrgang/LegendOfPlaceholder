@@ -3,19 +3,21 @@ extends DirectionalLight2D
 
 signal energy_changed(new_energy: float)
 
+var environment_energy: float : set = _set_environment_energy, get = _get_environment_energy
+
 var tween: Tween
 
-func _process(delta):
-	if tween.is_running():
-		on_energy_changed()
-
 func change_energy(new_energy: float, speed: float) -> void:
+	if tween != null:
+		tween.stop()
 	tween = create_tween()
-	tween.tween_property(self, "energy", new_energy, speed)
-	tween.step_finished.connect(on_energy_changed)
-	tween.finished.connect(on_energy_changed)
+	tween.tween_property(self, "environment_energy", new_energy, speed)
 	tween.play()
 	
-func on_energy_changed():
-	print("energy changed", energy)
-	energy_changed.emit(energy)
+func _set_environment_energy(new_value: float) -> void:
+	environment_energy = new_value
+	energy = environment_energy
+	energy_changed.emit(environment_energy)
+
+func _get_environment_energy() -> float:
+	return environment_energy

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cex8g67gr43h7"]
+[gd_scene load_steps=7 format=3 uid="uid://cex8g67gr43h7"]
 
 [ext_resource type="Script" path="res://Zones/ForestGrove/RensHouse.gd" id="1_a0qd4"]
 [ext_resource type="TileSet" uid="uid://c65yuai7jjlwb" path="res://Zones/ForestGrove/ForestGroveTileSet.tres" id="2_18uvt"]
 [ext_resource type="Script" path="res://Zones/ForestGrove/HouseTilemap.gd" id="3_kfc2v"]
 [ext_resource type="Script" path="res://Zones/ForestGrove/SceneSwitch.gd" id="4_r0hwq"]
+[ext_resource type="PackedScene" uid="uid://ctkdmqm6hhk4a" path="res://Enemy/ElementalSlime/ElementalSlime.tscn" id="5_w26d3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vifm"]
 size = Vector2(37.5, 18.5)
@@ -34,7 +35,11 @@ position = Vector2(-39, 8)
 collision_mask = 2
 script = ExtResource("4_r0hwq")
 scene = "res://Zones/ForestGrove/ForestGrove.tscn"
+spawm_position = Vector2(-104, 101)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HouseExit"]
 position = Vector2(95.25, 130.75)
 shape = SubResource("RectangleShape2D_6vifm")
+
+[node name="ElementalSlime" parent="." instance=ExtResource("5_w26d3")]
+position = Vector2(-73, 70)

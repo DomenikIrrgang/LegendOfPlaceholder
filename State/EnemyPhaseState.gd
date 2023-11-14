@@ -2,6 +2,7 @@ class_name EnemyPhaseState
 extends State
 
 var timers = []
+var sequences = []
 
 func add_timed_ability(ability: Ability, target, cooldown_min: float, cooldown_max: float, activation_chance: float = 100.0) -> void:
 	timers.append({
@@ -13,6 +14,19 @@ func add_timed_ability(ability: Ability, target, cooldown_min: float, cooldown_m
 		"activation_chance": activation_chance
 	})
 	get_enemy().abilities.append(ability)
+	
+func add_timed_ability_sequence(sequence: Array[TimedAbility], cooldown_min: float, cooldown_max: float, activation_chance: float = 100.0) -> void:
+	sequences.append({
+		"sequence": sequence,
+		"cooldown_min": cooldown_min,
+		"cooldown_max": cooldown_max,
+		"time_passed": 0.0,
+		"activation_chance": activation_chance,
+		"started": false,
+	})
+	
+func get_enemy() -> Enemy:
+	return owner
 
 func add_timed_function(callback: Callable, cooldown_min: float, cooldown_max: float, activation_chance: float = 100.0) -> void:
 	timers.append({
@@ -20,7 +34,8 @@ func add_timed_function(callback: Callable, cooldown_min: float, cooldown_max: f
 		"cooldown_min": cooldown_min,
 		"cooldown_max": cooldown_max,
 		"time_passed": 0.0,
-		"activation_chance": activation_chance
+		"activation_chance": activation_chance,
+		"start_timed": 0.0,
 	})
 	
 func update(delta: float) -> void:
@@ -35,6 +50,35 @@ func update(delta: float) -> void:
 			var executed = timer.callback.call()
 			if executed:
 				timer.time_passed = 0.0
+	for sequence in sequences:
+		sequence.time_passed += delta
+		if sequence.cooldown_min <= sequence.time_passed:
+			if sequence.started == false and Globals.random_chance(sequence.activation_chance * delta):
+				sequence.started = true
+				sequence.start_time = sequence.time_passed
+			if sequence.started == false and sequence.cooldown_max <= sequence.time_passed:
+				sequence.started = true
+				sequence.start_time = sequence.time_passed
+			if sequence.started == true:
+				var all_abilities_executed = true
+				for timed_ability in sequence.sequence:
+					if timed_ability.cooldown_min <= sequence.time_passed - sequence.start_time:
+						if timed_ability.executed == false and Globals.random_chance(timed_ability.activation_chance * delta):
+							print("executing ability 1")
+							get_enemy().use_ability(timed_ability.target, timed_ability.ability)
+							timed_ability.executed = true
+					if timed_ability.executed == false and timed_ability.cooldown_max <= sequence.time_passed - sequence.start_time:
+						print("executing ability 2")						
+						get_enemy().use_ability(timed_ability.target, timed_ability.ability)
+						timed_ability.executed = true
+					if timed_ability.executed == false:
+						all_abilities_executed = false
+				if all_abilities_executed:
+					sequence.started = false
+					sequence.time_passed = 0.0
+					for timed_ability in sequence.sequence:
+						timed_ability.executed = false
+					
 
 func enter(_data = {}) -> void:
 	super()
@@ -44,4 +88,5 @@ func exit() -> void:
 	get_enemy().abilities.clear()
 	get_enemy().stop_casting()
 	timers.clear()
+	sequences.clear()
 			

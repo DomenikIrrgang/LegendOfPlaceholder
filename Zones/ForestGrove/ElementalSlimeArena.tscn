@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxadckna6ucyy"]
+
+[ext_resource type="Script" path="res://Zones/ForestGrove/ElementalSlimeArena.gd" id="1_jcrvc"]
+
+[node name="ElementalSlimeArena" type="Node2D"]
+script = ExtResource("1_jcrvc")
+zone_name = "Elemental Slime Den"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Dialog" load_steps=23 format=3 uid="uid://cnvr72uega8i5"]
+[gd_resource type="Resource" script_class="Dialog" load_steps=20 format=3 uid="uid://cnvr72uega8i5"]
 
 [ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="1_d048j"]
 [ext_resource type="Resource" uid="uid://dp7afxuihduss" path="res://Resources/Enemies/MegaSlime.tres" id="2_d430w"]
@@ -50,32 +50,17 @@ value = -2100
 [sub_resource type="Resource" id="Resource_hi5ej"]
 script = ExtResource("5_8c1pe")
 stat = 15
-value = -150
+value = -180
 
 [sub_resource type="Resource" id="Resource_nybw0"]
 script = ExtResource("4_aw3g5")
 unit_name = "Megaslime"
 stats = Array[ExtResource("5_8c1pe")]([SubResource("Resource_8yc1b"), SubResource("Resource_hi5ej")])
 
-[sub_resource type="Resource" id="Resource_eam08"]
-script = ExtResource("5_8c1pe")
-stat = 2
-value = 3
-
-[sub_resource type="Resource" id="Resource_r0jgs"]
-script = ExtResource("5_8c1pe")
-stat = 5
-value = 250
-
-[sub_resource type="Resource" id="Resource_22s0t"]
-script = ExtResource("4_aw3g5")
-unit_name = "Player"
-stats = Array[ExtResource("5_8c1pe")]([SubResource("Resource_eam08"), SubResource("Resource_r0jgs")])
-
 [sub_resource type="Resource" id="Resource_84t0k"]
 script = ExtResource("4_qkjfy")
 text = "Easy"
-actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([SubResource("Resource_nybw0"), SubResource("Resource_22s0t")])
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([SubResource("Resource_nybw0")])
 
 [sub_resource type="Resource" id="Resource_kt1g1"]
 script = ExtResource("2_jm37y")

@@ -26,7 +26,7 @@ func on_died(_enemy: Unit) -> void:
 	queue_free()
 	
 func pause() -> void:
-	hit_box.get_node("CollisionShape").disabled = true
+	hit_box.get_node("CollisionShape2D").disabled = true
 	phase_state_machine.enabled = false
 	movement_strategy.enabled = false
 	casting_enabled = false
@@ -36,7 +36,7 @@ func freeze() -> void:
 	pause()
 	
 func start() -> void:
-	hit_box.get_node("CollisionShape").disabled = false
+	hit_box.get_node("CollisionShape2D").disabled = false
 	phase_state_machine.enabled = true
 	movement_strategy.enabled = true
 	casting_enabled = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=65 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" path="res://ui/GameUI/ErrorMessages.gd" id="27_hnvam"]
 [ext_resource type="Texture2D" uid="uid://v5uxsaoa2tjb" path="res://assets/ui/bottom_hud/castbar_background.png" id="28_vneq5"]
 [ext_resource type="Texture2D" uid="uid://dh3uqmhjs1hp5" path="res://assets/ui/bottom_hud/castbar_progress.png" id="29_3nnbc"]
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="30_ao71d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
 font = ExtResource("3_60v0h")
@@ -218,11 +219,33 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="Theme" id="Theme_sqxju"]
 default_font = ExtResource("3_60v0h")
 
-[sub_resource type="GDScript" id="GDScript_axn2g"]
+[sub_resource type="GDScript" id="GDScript_pwi1q"]
 script/source = "extends Button
 
 func _on_pressed():
 	Globals.get_player().level_up()
+"
+
+[sub_resource type="GDScript" id="GDScript_axn2g"]
+script/source = "extends Button
+
+func _on_pressed():
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_MAXIMIZED:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		text = \"Window\"
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+		text = \"Fullscreen\"
+"
+
+[sub_resource type="GDScript" id="GDScript_empgj"]
+script/source = "extends Label
+
+func _process(delta):
+	if Globals.get_player():
+		text = \"x: \" + str(snapped(Globals.get_player().global_position.x, 0.1)) + \" y: \" + str(snapped(Globals.get_player().global_position.y, 0.1)) 
+	else:
+		text = \"No player found.\"
 "
 
 [node name="GameUI" type="Control"]
@@ -552,20 +575,40 @@ text = "Spellname
 "
 label_settings = SubResource("LabelSettings_vmsgq")
 
-[node name="TestButton" type="Control" parent="."]
+[node name="Debug" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="LevelUp" type="Button" parent="TestButton"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Debug"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 83.0
-offset_bottom = 37.0
+offset_left = 18.0
+offset_top = 11.0
+offset_right = 99.0
+offset_bottom = 66.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Debug/VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelUp" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
 theme = SubResource("Theme_sqxju")
 text = "Level Up"
+script = SubResource("GDScript_pwi1q")
+
+[node name="WindowMode" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = SubResource("Theme_sqxju")
+text = "Fullscreen
+"
 script = SubResource("GDScript_axn2g")
+
+[node name="PlayerPosition" type="Label" parent="Debug/VBoxContainer"]
+layout_mode = 2
+label_settings = ExtResource("30_ao71d")
+script = SubResource("GDScript_empgj")
 
 [connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_exited"]
@@ -575,4 +618,5 @@ script = SubResource("GDScript_axn2g")
 [connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/ExperienceBar" to="MainHUD/CenterContainer/Overlay/ExperienceBar" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/DashBar" to="MainHUD/CenterContainer/Overlay/DashBar" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/DashBar" to="MainHUD/CenterContainer/Overlay/DashBar" method="_on_mouse_exited"]
-[connection signal="pressed" from="TestButton/LevelUp" to="TestButton/LevelUp" method="_on_pressed"]
+[connection signal="pressed" from="Debug/VBoxContainer/HBoxContainer/LevelUp" to="Debug/VBoxContainer/HBoxContainer/LevelUp" method="_on_pressed"]
+[connection signal="pressed" from="Debug/VBoxContainer/HBoxContainer/WindowMode" to="Debug/VBoxContainer/HBoxContainer/WindowMode" method="_on_pressed"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://c26stcg6tajlv"]
+
+[ext_resource type="Script" path="res://Enemy/Castbar.gd" id="1_d52af"]
+[ext_resource type="Texture2D" uid="uid://v5uxsaoa2tjb" path="res://assets/ui/bottom_hud/castbar_background.png" id="2_gd2s0"]
+[ext_resource type="Shader" path="res://Shaders/UnitResource.gdshader" id="3_mcpjg"]
+[ext_resource type="Texture2D" uid="uid://dh3uqmhjs1hp5" path="res://assets/ui/bottom_hud/castbar_progress.png" id="4_v0t72"]
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="5_kxtnx"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_84kpf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v1k7r"]
+noise = SubResource("FastNoiseLite_84kpf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gtffd"]
+shader = ExtResource("3_mcpjg")
+shader_parameter/timeScaleFactor = 0.04
+shader_parameter/brightness = 0.6
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_v1k7r")
+
+[sub_resource type="LabelSettings" id="LabelSettings_utwh6"]
+font = ExtResource("5_kxtnx")
+
+[node name="Castbar" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_top = -28.0
+offset_right = 40.0
+offset_bottom = -3.0
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_d52af")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -90.0
+offset_right = 102.0
+offset_bottom = 23.0
+texture = ExtResource("2_gd2s0")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Background"]
+material = SubResource("ShaderMaterial_gtffd")
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 189.0
+offset_bottom = 20.0
+max_value = 3.0
+step = 0.01
+texture_progress = ExtResource("4_v0t72")
+
+[node name="CenterContainer" type="CenterContainer" parent="Background"]
+layout_mode = 0
+offset_top = -15.0
+offset_right = 190.0
+offset_bottom = 40.0
+
+[node name="SpellName" type="Label" parent="Background/CenterContainer"]
+layout_mode = 2
+text = "Spellname"
+label_settings = SubResource("LabelSettings_utwh6")

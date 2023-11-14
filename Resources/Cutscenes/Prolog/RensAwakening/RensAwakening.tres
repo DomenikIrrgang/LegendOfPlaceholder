@@ -1,10 +1,29 @@
-[gd_resource type="Resource" script_class="Cutscene" load_steps=10 format=3 uid="uid://cx2wmshc3a7a5"]
+[gd_resource type="Resource" script_class="Cutscene" load_steps=17 format=3 uid="uid://cx2wmshc3a7a5"]
 
 [ext_resource type="Script" path="res://Resources/Cutscenes/Cutscene.gd" id="1_6ww1f"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/ChangeEnvironmentLightAction.gd" id="2_0ujt3"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/MoveCameraToUnitAction.gd" id="2_bn850"]
 [ext_resource type="Resource" uid="uid://7qosm2oeonvs" path="res://Resources/Dialogs/Prolog/RensAwakening/RensAwakening.tres" id="3_do4xs"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/ShowDialogAction.gd" id="4_34ic8"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/CutsceneStep.gd" id="5_s3mhv"]
+
+[sub_resource type="Resource" id="Resource_7pjms"]
+script = ExtResource("2_0ujt3")
+target_energy = 1.0
+speed = 0.0
+
+[sub_resource type="Resource" id="Resource_dqyvl"]
+script = ExtResource("5_s3mhv")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_7pjms")])
+
+[sub_resource type="Resource" id="Resource_8v6nw"]
+script = ExtResource("2_0ujt3")
+target_energy = 0.7
+speed = 5.0
+
+[sub_resource type="Resource" id="Resource_x3kej"]
+script = ExtResource("5_s3mhv")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_8v6nw")])
 
 [sub_resource type="Resource" id="Resource_thi2j"]
 script = ExtResource("2_bn850")
@@ -22,7 +41,16 @@ dialog = ExtResource("3_do4xs")
 script = ExtResource("5_s3mhv")
 actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_lu6ov")])
 
+[sub_resource type="Resource" id="Resource_fiway"]
+script = ExtResource("2_0ujt3")
+target_energy = 0.0
+speed = 2.0
+
+[sub_resource type="Resource" id="Resource_rv2sq"]
+script = ExtResource("5_s3mhv")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_fiway")])
+
 [resource]
 script = ExtResource("1_6ww1f")
 name = "Ren's Awakening"
-steps = Array[ExtResource("5_s3mhv")]([SubResource("Resource_nmii1"), SubResource("Resource_yqrmr")])
+steps = Array[ExtResource("5_s3mhv")]([SubResource("Resource_dqyvl"), SubResource("Resource_x3kej"), SubResource("Resource_nmii1"), SubResource("Resource_yqrmr"), SubResource("Resource_rv2sq")])

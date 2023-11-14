@@ -1,0 +1,116 @@
+[gd_scene load_steps=24 format=3 uid="uid://ctkdmqm6hhk4a"]
+
+[ext_resource type="Script" path="res://Enemy/ElementalSlime/ElementalSlime.gd" id="1_oom8b"]
+[ext_resource type="Script" path="res://Unit/HurtBox.gd" id="2_omtut"]
+[ext_resource type="Resource" uid="uid://byv5j8k8233hb" path="res://Resources/Enemies/ElementalSlime.tres" id="2_p1ang"]
+[ext_resource type="Script" path="res://Unit/HitBox.gd" id="3_o1oal"]
+[ext_resource type="Script" path="res://Unit/OcclusionDetection.gd" id="4_mln6f"]
+[ext_resource type="Animation" uid="uid://clhe6l4ubufhk" path="res://Unit/Animations/Down.res" id="5_mxulj"]
+[ext_resource type="Animation" uid="uid://b0spjcfavr42x" path="res://Unit/Animations/Idle_Down.res" id="6_wneid"]
+[ext_resource type="Animation" uid="uid://qaad3qvjd620" path="res://Unit/Animations/Idle_Left.res" id="7_dpbuo"]
+[ext_resource type="Animation" uid="uid://c4m0k5ea8kwyt" path="res://Unit/Animations/Idle_Right.res" id="8_8n80v"]
+[ext_resource type="Animation" uid="uid://b536o550711vi" path="res://Unit/Animations/Idle_Up.res" id="9_d8m6p"]
+[ext_resource type="Animation" uid="uid://cs2st5c2f0v2i" path="res://Unit/Animations/Left.res" id="10_8u8dq"]
+[ext_resource type="Animation" uid="uid://ctiau02k5u1v4" path="res://Unit/Animations/Right.res" id="11_6li0e"]
+[ext_resource type="Animation" uid="uid://wsvb57gm2wpm" path="res://Unit/Animations/Up.res" id="12_wta12"]
+[ext_resource type="Texture2D" uid="uid://b8uqgr8axuptj" path="res://assets/textures/slime.png" id="13_g6n26"]
+[ext_resource type="PackedScene" uid="uid://bxhcqy03xm6oi" path="res://ui/unit/UnitHpBar.tscn" id="14_afsh6"]
+[ext_resource type="PackedScene" uid="uid://c26stcg6tajlv" path="res://Enemy/Castbar.tscn" id="15_58otq"]
+[ext_resource type="Script" path="res://State/StateMachine.gd" id="17_yr8i8"]
+[ext_resource type="Script" path="res://Enemy/ElementalSlime/Phase1.gd" id="18_ipp5x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dh5om"]
+size = Vector2(24, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_neob0"]
+size = Vector2(28, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4s4dp"]
+size = Vector2(26, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0lfu4"]
+size = Vector2(28, 20)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fe40q"]
+_data = {
+"Down": ExtResource("5_mxulj"),
+"Idle_Down": ExtResource("6_wneid"),
+"Idle_Left": ExtResource("7_dpbuo"),
+"Idle_Right": ExtResource("8_8n80v"),
+"Idle_Up": ExtResource("9_d8m6p"),
+"Left": ExtResource("10_8u8dq"),
+"Right": ExtResource("11_6li0e"),
+"Up": ExtResource("12_wta12")
+}
+
+[node name="ElementalSlime" type="CharacterBody2D" groups=["boss", "enemy", "unit"]]
+script = ExtResource("1_oom8b")
+unit_data = ExtResource("2_p1ang")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_dh5om")
+
+[node name="HurtBox2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_omtut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox2D"]
+z_index = 1
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_neob0")
+
+[node name="HitBox2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_o1oal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2D"]
+z_index = 1
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_4s4dp")
+
+[node name="Occlusion" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("4_mln6f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Occlusion"]
+z_index = 1
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_0lfu4")
+
+[node name="ModelAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fe40q")
+}
+
+[node name="Model" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -5)
+scale = Vector2(2, 2.0625)
+texture = ExtResource("13_g6n26")
+hframes = 4
+vframes = 8
+frame = 16
+metadata/_edit_lock_ = true
+
+[node name="UnitHpBar" parent="." instance=ExtResource("14_afsh6")]
+offset_top = -22.0
+offset_bottom = -22.0
+
+[node name="Castbar" parent="." instance=ExtResource("15_58otq")]
+visible = true
+offset_left = -1.0
+offset_top = -38.0
+offset_right = 39.0
+offset_bottom = -13.0
+
+[node name="PhaseState" type="Node" parent="."]
+script = ExtResource("17_yr8i8")
+initial_state = NodePath("Phase1")
+
+[node name="Phase1" type="Node" parent="PhaseState"]
+script = ExtResource("18_ipp5x")

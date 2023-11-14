@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://vrcjdy2s428t"]
+
+[ext_resource type="Script" path="res://Enemy/ElementalSlime/Abilities/Firespiral.gd" id="1_takve"]
+
+[node name="Firespiral" type="Node2D"]
+script = ExtResource("1_takve")
+alias = "Firespiral"
+tooltip = "Shoots multiple Fireballs after another in a sprial motion."
+ability_type = 1
+cast_time = 5.0
+spell_school = 1
+target_type = 1
+resource_type = 5
+critical_chance = 50.0
+resistable = true

@@ -17,12 +17,12 @@ func _process(delta):
 	if duration < 0.0:
 		free()
 	
-func init_projectile(_ability: Ability, _direction: Vector2, _speed: float = speed) -> void:
+func init_projectile(source: Unit, _ability: Ability, _direction: Vector2, _speed: float = speed) -> void:
 	ability = _ability
 	direction = _direction
 	speed = _speed
 	hitbox.ability = ability
-	hitbox.unit = Globals.get_player()
+	hitbox.unit = source
 
 func _physics_process(delta: float) -> void:
 	transform.origin += direction * speed * delta

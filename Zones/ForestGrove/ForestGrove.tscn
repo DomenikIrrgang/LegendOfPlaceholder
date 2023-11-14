@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://tf4e35148cv"]
+[gd_scene load_steps=12 format=3 uid="uid://tf4e35148cv"]
 
 [ext_resource type="Script" path="res://Zones/Zone.gd" id="1_axc5c"]
 [ext_resource type="TileSet" uid="uid://c65yuai7jjlwb" path="res://Zones/ForestGrove/ForestGroveTileSet.tres" id="2_tatbd"]
@@ -7,7 +7,10 @@
 [ext_resource type="Script" path="res://Zones/ForestGrove/Foreground.gd" id="5_fihck"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4fud"]
-size = Vector2(55, 67)
+size = Vector2(81.5625, 77.1875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pqq8"]
+size = Vector2(16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rmi04"]
 texture = ExtResource("3_qa1yc")
@@ -125,7 +128,7 @@ fill_from = Vector2(0.5, 0.5)
 [node name="ForestGrove" type="Node2D"]
 script = ExtResource("1_axc5c")
 zone_name = "Forest Grove"
-environment_light_energy = 0.6
+environment_light_energy = 1.0
 
 [node name="Background" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -141,7 +144,7 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
+layer_1/tile_data = PackedInt32Array(262134, 0, 0, 262135, 0, 0, 262136, 0, 0, 262137, 0, 0, 262138, 0, 0, 327674, 0, 0, 327673, 0, 0, 327672, 0, 0, 327671, 0, 0, 327670, 0, 0, 393206, 0, 0, 393207, 0, 0, 393208, 0, 0, 393209, 655360, 0, 393210, 0, 0)
 layer_2/name = "GroundObjects"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
@@ -165,7 +168,7 @@ scene = "res://Zones/ForestGrove/ForestGroveBoss.tscn"
 spawm_position = Vector2(56, -54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossEntrance"]
-position = Vector2(-341.5, -97.5)
+position = Vector2(-314.781, -99.5938)
 shape = SubResource("RectangleShape2D_p4fud")
 
 [node name="HouseEntrance" type="Area2D" parent="."]
@@ -173,11 +176,11 @@ position = Vector2(-39, 8)
 collision_mask = 2
 script = ExtResource("4_10e5x")
 scene = "res://Zones/ForestGrove/RensHouse.tscn"
-spawm_position = Vector2(0, 2)
+spawm_position = Vector2(56, 117)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HouseEntrance"]
-position = Vector2(144, -59)
-shape = SubResource("RectangleShape2D_p4fud")
+position = Vector2(-65, 80)
+shape = SubResource("RectangleShape2D_5pqq8")
 
 [node name="Foreground" type="Node2D" parent="."]
 z_index = 500

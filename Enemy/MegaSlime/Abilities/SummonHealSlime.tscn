@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Enemy/MegaSlime/Abilities/SummonHealSlime.gd" id="1_dnvh3"]
 
 [node name="SummonHealSlime" type="Node2D"]
+visible = false
 script = ExtResource("1_dnvh3")
 alias = "Summon Healslime"
 tooltip = "Summones a healslime"

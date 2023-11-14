@@ -21,13 +21,14 @@ z_index = 1000
 shape = SubResource("RectangleShape2D_1ffdo")
 
 [node name="HurtBox2D" parent="." index="3"]
-visible = false
+visible = true
 
 [node name="HurtBoxShape" parent="HurtBox2D" index="0"]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_1crxu")
 
-[node name="HitBox2D" parent="." index="4"]
-visible = false
+[node name="OcclusionCollision" parent="UnitOcclusion" index="0"]
+position = Vector2(0, 5)
 
 [node name="Phase1" parent="PhaseState" index="0"]
 script = ExtResource("4_jcexq")
