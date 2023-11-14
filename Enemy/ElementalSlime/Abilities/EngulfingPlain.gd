@@ -5,12 +5,17 @@ var EngulfingPlainStage1 = preload("res://Enemy/ElementalSlime/Abilities/Engulfi
 var EngulfingPlainStage2 = preload("res://Enemy/ElementalSlime/Abilities/EngulfingPlainStage2.tscn")
 var EngulfingPlainStage3 = preload("res://Enemy/ElementalSlime/Abilities/EngulfingPlainStage3.tscn")
 
-var stages = [[EngulfingPlainStage1, EngulfingPlainStage3], [EngulfingPlainStage2, EngulfingPlainStage3], [EngulfingPlainStage1, EngulfingPlainStage3], [EngulfingPlainStage1, EngulfingPlainStage2]]
+var stages = [
+	[EngulfingPlainStage1, EngulfingPlainStage3],
+	[EngulfingPlainStage2, EngulfingPlainStage3],
+	[EngulfingPlainStage1, EngulfingPlainStage3],
+	[EngulfingPlainStage1, EngulfingPlainStage2]
+]
 
 var current_stages = []
 var current_stage_count: int = 0
 
-var stage_duration: float = 3.0
+var stage_duration: float = 10.0
 var break_between_stages: float = 1.0
 
 var source: Unit

@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://s1djblvtvpjv"]
 
-[ext_resource type="Script" path="res://Enemy/ElementalSlime/Abilities/EngulfingPlain.gd" id="1_mqsbf"]
+[ext_resource type="Script" path="res://Enemy/ElementalSlime/Abilities/EngulfingPlain.gd" id="1_dpffv"]
 
 [node name="EngulfingPlain" type="Node2D"]
-script = ExtResource("1_mqsbf")
+script = ExtResource("1_dpffv")
 alias = "Engulfing Plain"
-tooltip = "Engulfs the area around the caster in waves of lava."
+tooltip = "Engulfes the area around the caster in multiple waves."
 ability_type = 1
 cast_time = 3.0
 value = 50

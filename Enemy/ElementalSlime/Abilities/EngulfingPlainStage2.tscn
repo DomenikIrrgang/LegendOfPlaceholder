@@ -22,6 +22,8 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_8kqkt")
 script = ExtResource("1_lk4pf")
 
 [node name="VoidZone" type="Area2D" parent="."]
+collision_layer = 6
+collision_mask = 15
 script = ExtResource("2_lgchx")
 tick_time = 1.0
 
