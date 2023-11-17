@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://ylclcm1nc1ob"]
+
+[ext_resource type="Shader" path="res://Shaders/Greyscale.gdshader" id="1_do3fr"]
+[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="1_ijvu8"]
+[ext_resource type="Script" path="res://ui/GameUI/Inventory/InventorySlot.gd" id="2_tthv1"]
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="3_penub"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awip8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qrfly"]
+texture = ExtResource("1_ijvu8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d2mvh"]
+resource_local_to_scene = true
+shader = ExtResource("1_do3fr")
+shader_parameter/grayscale = false
+
+[node name="InventorySlot" type="Panel"]
+material = SubResource("ShaderMaterial_awip8")
+custom_minimum_size = Vector2(48, 48)
+theme_override_styles/panel = SubResource("StyleBoxTexture_qrfly")
+script = ExtResource("2_tthv1")
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_d2mvh")
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 47.0
+offset_bottom = 47.0
+
+[node name="StackSize" type="Label" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 31.0
+offset_right = 48.0
+offset_bottom = 54.0
+text = "1"
+label_settings = ExtResource("3_penub")
+horizontal_alignment = 2

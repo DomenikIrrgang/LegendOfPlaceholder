@@ -1,5 +1,8 @@
 extends Node
 
+var inventory: Inventory = Inventory.new(32)
+var bank: Inventory = Inventory.new(128)
+
 func get_unit(unit_name: String) -> Unit:
 	var scene_treer_root = get_scene_tree().root
 	var root_node = get_scene_tree().root.get_child(scene_treer_root.get_child_count() - 1)
@@ -7,6 +10,12 @@ func get_unit(unit_name: String) -> Unit:
 	if unit == null:
 		unit = get_world().get_child(0).find_child(unit_name)
 	return unit
+	
+func get_inventory() -> Inventory:
+	return inventory
+	
+func get_bank() -> Inventory:
+	return bank
 
 func get_loaded_scene_node() -> Node2D:
 	return get_world().get_child(0)

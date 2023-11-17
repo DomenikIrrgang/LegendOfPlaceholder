@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=68 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" path="res://ui/GameUI/ErrorMessages.gd" id="27_hnvam"]
 [ext_resource type="Texture2D" uid="uid://v5uxsaoa2tjb" path="res://assets/ui/bottom_hud/castbar_background.png" id="28_vneq5"]
 [ext_resource type="Texture2D" uid="uid://dh3uqmhjs1hp5" path="res://assets/ui/bottom_hud/castbar_progress.png" id="29_3nnbc"]
+[ext_resource type="PackedScene" uid="uid://nul1xl8wmrms" path="res://ui/GameUI/Inventory/inventory.tscn" id="30_6me52"]
 [ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="30_ao71d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
@@ -236,6 +237,20 @@ func _on_pressed():
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
 		text = \"Fullscreen\"
+"
+
+[sub_resource type="Theme" id="Theme_7fwd3"]
+default_font = ExtResource("3_60v0h")
+
+[sub_resource type="GDScript" id="GDScript_3g0do"]
+script/source = "extends Button
+
+var lesser_healing_potion: Item = preload(\"res://Resources/Items/HealingPotions/LesserHealingPotion.tres\")
+
+func _on_pressed():
+	var inventory = Globals.get_inventory()
+	inventory.add_item(lesser_healing_potion, 4)
+	print(\"Remainig Potion Slots \", inventory.calculate_free_amount_for_item(lesser_healing_potion))
 "
 
 [sub_resource type="GDScript" id="GDScript_empgj"]
@@ -575,6 +590,22 @@ text = "Spellname
 "
 label_settings = SubResource("LabelSettings_vmsgq")
 
+[node name="Inventory" parent="." instance=ExtResource("30_6me52")]
+layout_mode = 0
+offset_left = 1506.0
+offset_top = 842.0
+offset_right = 1762.0
+offset_bottom = 877.0
+title = "Inventory"
+
+[node name="Bank" parent="." instance=ExtResource("30_6me52")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 241.0
+offset_right = 264.0
+offset_bottom = 273.0
+title = "Bank"
+
 [node name="Debug" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -605,6 +636,13 @@ text = "Fullscreen
 "
 script = SubResource("GDScript_axn2g")
 
+[node name="AddItem" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = SubResource("Theme_7fwd3")
+text = "Add Item"
+script = SubResource("GDScript_3g0do")
+
 [node name="PlayerPosition" type="Label" parent="Debug/VBoxContainer"]
 layout_mode = 2
 label_settings = ExtResource("30_ao71d")
@@ -620,3 +658,4 @@ script = SubResource("GDScript_empgj")
 [connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/DashBar" to="MainHUD/CenterContainer/Overlay/DashBar" method="_on_mouse_exited"]
 [connection signal="pressed" from="Debug/VBoxContainer/HBoxContainer/LevelUp" to="Debug/VBoxContainer/HBoxContainer/LevelUp" method="_on_pressed"]
 [connection signal="pressed" from="Debug/VBoxContainer/HBoxContainer/WindowMode" to="Debug/VBoxContainer/HBoxContainer/WindowMode" method="_on_pressed"]
+[connection signal="pressed" from="Debug/VBoxContainer/HBoxContainer/AddItem" to="Debug/VBoxContainer/HBoxContainer/AddItem" method="_on_pressed"]

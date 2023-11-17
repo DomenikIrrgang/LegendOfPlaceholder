@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://nul1xl8wmrms"]
+
+[ext_resource type="Script" path="res://ui/GameUI/Inventory/inventory.gd" id="1_713bo"]
+[ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="1_qnmua"]
+[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="2_pvfwx"]
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="3_j45ss"]
+
+[sub_resource type="Theme" id="Theme_crbvm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2fyb2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f3wtg"]
+
+[node name="Inventory" type="PanelContainer"]
+custom_minimum_size = Vector2(256, 32)
+offset_right = 256.0
+offset_bottom = 32.0
+theme = SubResource("Theme_crbvm")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2fyb2")
+script = ExtResource("1_713bo")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_qnmua")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 4
+
+[node name="Content" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TitleBar" type="PanelContainer" parent="MarginContainer/Content"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_f3wtg")
+
+[node name="Background" type="NinePatchRect" parent="MarginContainer/Content/TitleBar"]
+layout_mode = 2
+texture = ExtResource("2_pvfwx")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Title" type="CenterContainer" parent="MarginContainer/Content/TitleBar"]
+layout_mode = 2
+
+[node name="Text" type="Label" parent="MarginContainer/Content/TitleBar/Title"]
+layout_mode = 2
+label_settings = ExtResource("3_j45ss")
+
+[node name="Slots" type="GridContainer" parent="MarginContainer/Content"]
+layout_mode = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 8
