@@ -11,4 +11,5 @@ var action_map = {
 	"Ability_Three": false,
 	"Ability_Four": false,
 	"ui_accept": false,
+	"Toggle_Inventory": false,
 }

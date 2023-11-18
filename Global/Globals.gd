@@ -43,6 +43,9 @@ func get_user_interface() -> CanvasLayer:
 	
 func get_game_user_inteface() -> Control:
 	return get_user_interface().get_node("GameUI")
+
+func get_drag_and_drop() -> DragAndDrop:
+	return get_game_user_inteface().get_node("DragAndDrop")
 	
 func get_dialogs_node() -> Control:
 	return get_user_interface().get_node("Dialogs")

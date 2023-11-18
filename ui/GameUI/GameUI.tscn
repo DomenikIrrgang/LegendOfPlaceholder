@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=73 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -20,7 +20,11 @@
 [ext_resource type="Script" path="res://ui/GameUI/TextureProgressBar.gd" id="18_wi2pl"]
 [ext_resource type="PackedScene" uid="uid://cv102qedh50l3" path="res://ui/GameUI/AbilitySlot.tscn" id="19_sjki4"]
 [ext_resource type="Script" path="res://ui/GameUI/Bossframe.gd" id="20_cn0g6"]
+[ext_resource type="Texture2D" uid="uid://cx6x6hhc36fm" path="res://assets/ui/bottom_hud/system_button.png" id="20_wubgf"]
+[ext_resource type="Texture2D" uid="uid://dq3ttuilmw23e" path="res://assets/ui/bottom_hud/inventory_icon.png" id="21_o5flv"]
 [ext_resource type="Texture2D" uid="uid://clb1qxxlcylap" path="res://assets/ui/bossframe/bossframe.png" id="21_oeymq"]
+[ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://assets/ui/buttons/b_button.png" id="22_o1px3"]
+[ext_resource type="Script" path="res://ui/GameUI/Keybind.gd" id="22_ruylf"]
 [ext_resource type="Texture2D" uid="uid://bfrrwosmxoqna" path="res://assets/ui/bossframe/health_bar_under.png" id="22_xauq8"]
 [ext_resource type="Texture2D" uid="uid://b8hhyyoji6x4n" path="res://assets/ui/bossframe/health_bar.png" id="23_mqvwi"]
 [ext_resource type="Script" path="res://ui/GameUI/PlayerCastBar.gd" id="24_vl06k"]
@@ -31,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://dh3uqmhjs1hp5" path="res://assets/ui/bottom_hud/castbar_progress.png" id="29_3nnbc"]
 [ext_resource type="PackedScene" uid="uid://nul1xl8wmrms" path="res://ui/GameUI/Inventory/inventory.tscn" id="30_6me52"]
 [ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="30_ao71d"]
+[ext_resource type="Script" path="res://ui/GameUI/DragAndDrop.gd" id="31_sah85"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
 font = ExtResource("3_60v0h")
@@ -246,11 +251,12 @@ default_font = ExtResource("3_60v0h")
 script/source = "extends Button
 
 var lesser_healing_potion: Item = preload(\"res://Resources/Items/HealingPotions/LesserHealingPotion.tres\")
+var healing_potion: Item = preload(\"res://Resources/Items/HealingPotions/HealingPotion.tres\")
 
 func _on_pressed():
 	var inventory = Globals.get_inventory()
-	inventory.add_item(lesser_healing_potion, 4)
-	print(\"Remainig Potion Slots \", inventory.calculate_free_amount_for_item(lesser_healing_potion))
+	inventory.add_item(lesser_healing_potion, 1)
+	inventory.add_item(healing_potion, 1)
 "
 
 [sub_resource type="GDScript" id="GDScript_empgj"]
@@ -422,17 +428,51 @@ action_name = "Dash"
 
 [node name="SystemSlots" type="Control" parent="MainHUD/CenterContainer/Overlay"]
 anchors_preset = 0
-offset_left = 678.0
-offset_top = 44.0
-offset_right = 735.0
-offset_bottom = 95.0
+offset_left = 442.0
+offset_top = 48.0
+offset_right = 675.0
+offset_bottom = 90.0
 
-[node name="Inventory" parent="MainHUD/CenterContainer/Overlay/SystemSlots" instance=ExtResource("19_sjki4")]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainHUD/CenterContainer/Overlay/SystemSlots"]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 6.0
-offset_right = 48.0
+offset_right = 233.0
 offset_bottom = 42.0
+alignment = 2
+
+[node name="InventoryButton" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("20_wubgf")
+
+[node name="Icon" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer/InventoryButton"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 24.0
+offset_bottom = 39.0
+texture = ExtResource("21_o5flv")
+
+[node name="KeybindDisplay" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer/InventoryButton"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 33.0
+offset_right = 35.0
+offset_bottom = 65.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("22_o1px3")
+script = ExtResource("22_ruylf")
+action_name = "Inventory_Toggle"
+
+[node name="ConsumeableSlot" type="Control" parent="MainHUD/CenterContainer/Overlay"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Inventory" parent="MainHUD/CenterContainer/Overlay/ConsumeableSlot" instance=ExtResource("19_sjki4")]
+layout_mode = 0
+offset_left = 690.0
+offset_top = 50.0
+offset_right = 726.0
+offset_bottom = 86.0
 
 [node name="Bossframe" type="Control" parent="."]
 anchors_preset = 0
@@ -591,6 +631,7 @@ text = "Spellname
 label_settings = SubResource("LabelSettings_vmsgq")
 
 [node name="Inventory" parent="." instance=ExtResource("30_6me52")]
+visible = false
 layout_mode = 0
 offset_left = 1506.0
 offset_top = 842.0
@@ -599,12 +640,27 @@ offset_bottom = 877.0
 title = "Inventory"
 
 [node name="Bank" parent="." instance=ExtResource("30_6me52")]
+visible = false
 layout_mode = 0
 offset_left = 8.0
 offset_top = 241.0
 offset_right = 264.0
 offset_bottom = 273.0
 title = "Bank"
+
+[node name="DragAndDrop" type="Control" parent="." groups=["DragAndDrop"]]
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+script = ExtResource("31_sah85")
+metadata/_edit_lock_ = true
+
+[node name="Icon" type="TextureRect" parent="DragAndDrop"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="Debug" type="Control" parent="."]
 anchors_preset = 0

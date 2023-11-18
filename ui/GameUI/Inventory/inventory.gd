@@ -18,6 +18,16 @@ var selected_item: int = -1
 
 func _ready() -> void:
 	title_label.text = title
+	Globals.get_drag_and_drop().on_stop_dragging.connect(clear_selection)
+	
+func toggle() -> void:
+	visible = !visible
+	
+func open() -> void:
+	visible = true
+	
+func close() -> void:
+	visible = false
 	
 func initialize(_inventory: Inventory) -> void:
 	inventory = _inventory
@@ -29,25 +39,39 @@ func initialize(_inventory: Inventory) -> void:
 		
 func on_slot_input(event: InputEvent, slot: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MASK_LEFT and event.is_pressed():
-		if selected_item == -1:
+		if Globals.get_drag_and_drop().is_dragging() == false:
 			pick_item(slot)
 		else:
 			drop_item(slot)
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MASK_RIGHT and event.is_pressed():
-		if inventory.slots[slot].item.useable:
-			inventory.slots[slot].item.use_effect.use(Globals.get_player())			
+		inventory.use_slot(Globals.get_player(), slot)	
 
 func pick_item(slot: int) -> void:
-	if selected_item == -1 and inventory.slots[slot].item != null:
-		selected_item = slot
+	if Globals.get_drag_and_drop().is_dragging() == false and inventory.slots[slot].item != null:
 		slots.get_child(slot).select()
+		selected_item = slot
+		Globals.get_drag_and_drop().start_dragging({
+			"inventory": inventory,
+			"inventory_slot": inventory.slots[slot],
+		}, inventory.slots[slot].item.icon)
 
 func drop_item(slot: int) -> void:
-	if selected_item != -1:
-		inventory.swap_slots(selected_item, slot)
-		clear_selection()
+	if Globals.get_drag_and_drop().is_dragging():
+		if Globals.get_drag_and_drop().data.has("inventory"):
+			var previous_inventory: Inventory = Globals.get_drag_and_drop().data.inventory
+			var inventory_slot: InventorySlot = Globals.get_drag_and_drop().data.inventory_slot
+			if inventory.slots[slot].item != null:
+				var item: Item = inventory.slots[slot].item
+				var amount: int = inventory.slots[slot].amount
+				inventory.change_slot(slot, inventory_slot.item, inventory_slot.amount)
+				previous_inventory.change_slot(inventory_slot.index, item, amount)
+			else:
+				inventory.change_slot(slot, inventory_slot.item, inventory_slot.amount)
+				previous_inventory.change_slot(inventory_slot.index, null, 0)
+			Globals.get_drag_and_drop().stop_dragging()
 		
 func clear_selection() -> void:
-	slots.get_child(selected_item).deselect()	
-	selected_item = -1
+	if selected_item != -1:
+		slots.get_child(selected_item).deselect()	
+		selected_item = -1
 	

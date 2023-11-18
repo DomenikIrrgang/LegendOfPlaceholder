@@ -1,14 +1,6 @@
 class_name Inventory
 extends Node
 
-class InventorySlot:
-	var item: Item
-	var amount: int
-	
-	func _init(_item: Item, _amount: int):
-		item = _item
-		amount = _amount
-
 var size: int
 var slots: Array[InventorySlot] = []
 
@@ -21,7 +13,7 @@ func _init(_size: int = 32):
 	size = _size
 	slots.resize(size)
 	for i in size:
-		slots[i] = InventorySlot.new(null, 0)
+		slots[i] = InventorySlot.new(null, 0, i)
 
 func can_receive_item(item: Item, amount: int) -> bool:
 	return calculate_free_amount_for_item(item) >= amount
@@ -72,6 +64,16 @@ func find_item(item: Item) -> int:
 			return i
 	return -1
 	
+func use_slot(source: Unit, slot: int) -> bool:
+	if slots[slot].item != null and slots[slot].item.useable and slots[slot].amount > 0:
+		slots[slot].item.use_effect.use(source)
+		if slots[slot].amount - 1 == 0:
+			change_slot(slot, null, 0)
+		else:
+			change_slot(slot, slots[slot].item, slots[slot].amount - 1)
+		return true
+	return false
+	
 func find_first_empty_slot() -> int:
 	for i in size:
 		if slots[i].item == null:
@@ -91,13 +93,14 @@ func add_item(item: Item, amount: int) -> bool:
 					if amount == 0:
 						break
 			# Generate new stacks for the remaining amount
-			for i in size:
-				if slots[i].item == null:
-					var amount_to_add = item.stack_amount - slots[i].amount if amount >= item.stack_amount - slots[i].amount else amount
-					change_slot(i, item, slots[i].amount + amount_to_add)
-					amount -= amount_to_add
-				if amount == 0:
-						break
+			if amount > 0:
+				for i in size:
+					if slots[i].item == null:
+						var amount_to_add = item.stack_amount - slots[i].amount if amount >= item.stack_amount - slots[i].amount else amount
+						change_slot(i, item, slots[i].amount + amount_to_add)
+						amount -= amount_to_add
+					if amount == 0:
+							break
 			return true
 	else:
 		return true
@@ -108,7 +111,7 @@ func split_item(slot1: int, slot2: int, amount1: int, amount2: int) -> bool:
 
 func swap_slots(slot1: int, slot2: int) -> bool:
 	if slot1 >= 0 and slot1 < size and slot2 >= 0 and slot2 < size and slot1 != slot2:
-		var tmp_slot = InventorySlot.new(slots[slot2].item, slots[slot2].amount)
+		var tmp_slot = InventorySlot.new(slots[slot2].item, slots[slot2].amount, 0)
 		change_slot(slot2, slots[slot1].item, slots[slot1].amount)
 		change_slot(slot1, tmp_slot.item, tmp_slot.amount)
 		return true

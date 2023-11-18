@@ -18,6 +18,7 @@ func _ready():
 	InputControlls.input_event.connect(on_input)
 	
 func on_input(state: InputState) -> void:
+	print(action_name, state.action_map.has(action_name))
 	if (state.action_map.has(action_name) and state.action_map[action_name] == false):
 		scale = original_scale
 		position = original_position
