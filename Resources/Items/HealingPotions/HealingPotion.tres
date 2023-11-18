@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://vnm5g1jhp13t"]
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://beut5msi8h8m8"]
 
 [ext_resource type="Script" path="res://Resources/Items/Item.gd" id="1_wr26y"]
 [ext_resource type="Texture2D" uid="uid://dnnj48dx2glf3" path="res://assets/ui/items/healing_potion.png" id="1_xtahb"]
 [ext_resource type="Script" path="res://Resources/Items/HealingPotions/HealingPotionEffect.gd" id="2_v46xk"]
 
-[sub_resource type="Resource" id="Resource_5nrnd"]
+[sub_resource type="Resource" id="Resource_s1b3g"]
 script = ExtResource("2_v46xk")
 value = 100
 
@@ -12,10 +12,10 @@ value = 100
 script = ExtResource("1_wr26y")
 alias = "Healing Potion"
 useable = true
-use_effect = SubResource("Resource_5nrnd")
+use_effect = SubResource("Resource_s1b3g")
 limited = true
 limit = 10
 stackable = true
 stack_amount = 5
-description = "Restores a moderate amount of health to the user."
+description = "Restores a moderate amount of health"
 icon = ExtResource("1_xtahb")

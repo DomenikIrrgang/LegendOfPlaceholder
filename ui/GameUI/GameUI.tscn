@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=78 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -27,8 +27,13 @@
 [ext_resource type="Script" path="res://ui/GameUI/Keybind.gd" id="22_ruylf"]
 [ext_resource type="Texture2D" uid="uid://bfrrwosmxoqna" path="res://assets/ui/bossframe/health_bar_under.png" id="22_xauq8"]
 [ext_resource type="Texture2D" uid="uid://b8hhyyoji6x4n" path="res://assets/ui/bossframe/health_bar.png" id="23_mqvwi"]
+[ext_resource type="Script" path="res://ui/GameUI/ConsumeableSlot.gd" id="24_4sy14"]
+[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="24_mnwe0"]
 [ext_resource type="Script" path="res://ui/GameUI/PlayerCastBar.gd" id="24_vl06k"]
 [ext_resource type="Texture2D" uid="uid://dl0u83xiv6kk1" path="res://assets/ui/bossframe/castbar_background.png" id="25_28qlq"]
+[ext_resource type="Resource" uid="uid://beut5msi8h8m8" path="res://Resources/Items/HealingPotions/HealingPotion.tres" id="25_ggroc"]
+[ext_resource type="Texture2D" uid="uid://dnnj48dx2glf3" path="res://assets/ui/items/healing_potion.png" id="25_ynpml"]
+[ext_resource type="LabelSettings" uid="uid://b304vmcf3x1f0" path="res://ui/GameUI/AbilitySlotFont.tres" id="26_aa5cb"]
 [ext_resource type="Texture2D" uid="uid://bpdlcf2ngcdne" path="res://assets/ui/bossframe/castbar_progress.png" id="26_vjcuh"]
 [ext_resource type="Script" path="res://ui/GameUI/ErrorMessages.gd" id="27_hnvam"]
 [ext_resource type="Texture2D" uid="uid://v5uxsaoa2tjb" path="res://assets/ui/bottom_hud/castbar_background.png" id="28_vneq5"]
@@ -428,14 +433,14 @@ action_name = "Dash"
 
 [node name="SystemSlots" type="Control" parent="MainHUD/CenterContainer/Overlay"]
 anchors_preset = 0
-offset_left = 442.0
-offset_top = 48.0
-offset_right = 675.0
-offset_bottom = 90.0
+offset_left = 428.0
+offset_top = 47.0
+offset_right = 681.0
+offset_bottom = 89.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainHUD/CenterContainer/Overlay/SystemSlots"]
 layout_mode = 0
-offset_right = 233.0
+offset_right = 253.0
 offset_bottom = 42.0
 alignment = 2
 
@@ -454,25 +459,55 @@ texture = ExtResource("21_o5flv")
 [node name="KeybindDisplay" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer/InventoryButton"]
 layout_mode = 0
 offset_left = 3.0
-offset_top = 33.0
+offset_top = 34.0
 offset_right = 35.0
-offset_bottom = 65.0
+offset_bottom = 66.0
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("22_o1px3")
 script = ExtResource("22_ruylf")
-action_name = "Inventory_Toggle"
+action_name = "Toggle_Inventory"
 
 [node name="ConsumeableSlot" type="Control" parent="MainHUD/CenterContainer/Overlay"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Inventory" parent="MainHUD/CenterContainer/Overlay/ConsumeableSlot" instance=ExtResource("19_sjki4")]
-layout_mode = 0
 offset_left = 690.0
 offset_top = 50.0
 offset_right = 726.0
 offset_bottom = 86.0
+script = ExtResource("24_4sy14")
+item = ExtResource("25_ggroc")
+
+[node name="Background" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/ConsumeableSlot"]
+layout_mode = 0
+offset_right = 36.0
+offset_bottom = 36.0
+texture = ExtResource("24_mnwe0")
+
+[node name="Icon" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/ConsumeableSlot"]
+layout_mode = 0
+offset_right = 36.0
+offset_bottom = 36.0
+texture = ExtResource("25_ynpml")
+
+[node name="Amount" type="Label" parent="MainHUD/CenterContainer/Overlay/ConsumeableSlot"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -7.0
+offset_right = 37.0
+offset_bottom = 11.0
+text = "5"
+label_settings = ExtResource("26_aa5cb")
+horizontal_alignment = 1
+
+[node name="KeybindDisplay" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/ConsumeableSlot"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 31.0
+offset_right = 40.0
+offset_bottom = 63.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("22_o1px3")
+script = ExtResource("22_ruylf")
+action_name = "Use_Consumeable"
 
 [node name="Bossframe" type="Control" parent="."]
 anchors_preset = 0

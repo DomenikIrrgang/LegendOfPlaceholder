@@ -9,6 +9,7 @@ var disable_actions = {
 	"Ability_Three": false,
 	"Ability_Four": false,
 	"Toggle_Inventory": false,
+	"Use_Consumeable": false,
 }
 
 func on_input(state: InputState) -> InputState:

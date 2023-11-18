@@ -12,4 +12,5 @@ var action_map = {
 	"Ability_Four": false,
 	"ui_accept": false,
 	"Toggle_Inventory": false,
+	"Use_Consumeable": false,
 }

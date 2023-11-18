@@ -24,8 +24,6 @@ func on_area_entered(hit_box) -> void:
 		
 func on_hurt(hit_box: HitBox2D) -> void:
 	if hit_box.unit != null and hit_box.unit != owner and not got_hurt_recently(hit_box.unit, hit_box.ability):
-		print(hit_box.unit)
-		print(owner)
 		hurts.append({
 			"time_passed": 0.0,
 			"source": hit_box.unit,

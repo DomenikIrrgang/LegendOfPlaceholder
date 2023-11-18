@@ -36,6 +36,5 @@ func on_hit_box_left(hurt_box: HurtBox2D) -> void:
 	
 func on_timer() -> void:
 	for target in targets:
-		print("ticking on target", target)
 		target.on_hurt(self)
 	on_void_zone_tick.emit(targets)

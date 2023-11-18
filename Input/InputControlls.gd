@@ -8,6 +8,7 @@ const XBOX_BUTTON_TEXTURE = {
 	JOY_BUTTON_LEFT_SHOULDER: InputTextures.GAMEPAD_LB,
 	JOY_BUTTON_RIGHT_SHOULDER: InputTextures.GAMEPAD_RB,
 	JOY_AXIS_TRIGGER_LEFT: InputTextures.GAMEPAD_LT,
+	JOY_AXIS_TRIGGER_RIGHT: InputTextures.GAMEPAD_RT
 }
 
 const KEY_TEXTURE = {
@@ -21,7 +22,8 @@ const KEY_TEXTURE = {
 	KEY_I: InputTextures.KEY_I,
 	KEY_O: InputTextures.KEY_O,
 	KEY_P: InputTextures.KEY_P,
-	KEY_B: InputTextures.KEY_B
+	KEY_B: InputTextures.KEY_B,
+	KEY_E: InputTextures.KEY_E,
 }
 
 const MOUSE_TEXTURE = {
@@ -90,7 +92,7 @@ func calculate_input_state() -> InputState:
 	return state
 		
 func is_action(event: InputEvent) -> bool:
-	for action in 	InputMap.get_actions():
+	for action in InputMap.get_actions():
 		if event.is_action(action):
 			return true
 	return false

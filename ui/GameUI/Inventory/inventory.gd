@@ -21,13 +21,18 @@ func _ready() -> void:
 	Globals.get_drag_and_drop().on_stop_dragging.connect(clear_selection)
 	
 func toggle() -> void:
-	visible = !visible
+	if visible:
+		close()
+	else:
+		open()
 	
 func open() -> void:
 	visible = true
 	
 func close() -> void:
 	visible = false
+	if selected_item != -1:
+		Globals.get_drag_and_drop().stop_dragging()
 	
 func initialize(_inventory: Inventory) -> void:
 	inventory = _inventory

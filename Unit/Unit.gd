@@ -186,7 +186,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func on_hurt(source: Unit, ability: Ability) -> void:
-	print("got hit from " + source.get_alias() + " with " + ability.get_alias())
 	combat_logic.cast_ability(source, self, ability)
 		
 func set_level(_level: int) -> void:

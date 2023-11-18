@@ -51,9 +51,12 @@ func get_item_amount(item: Item) -> int:
 	return amount
 	
 func change_slot(slot: int, item: Item, amount: int) -> void:
-	slots[slot].item = item
+	if amount == 0:
+		slots[slot].item = null
+	else:
+		slots[slot].item = item
 	slots[slot].amount = amount
-	slot_changed.emit(slot, item, amount)
+	slot_changed.emit(slot, slots[slot].item, amount)
 	
 func contains_item(item: Item) -> bool:
 	return find_item(item) != -1 
@@ -67,11 +70,16 @@ func find_item(item: Item) -> int:
 func use_slot(source: Unit, slot: int) -> bool:
 	if slots[slot].item != null and slots[slot].item.useable and slots[slot].amount > 0:
 		slots[slot].item.use_effect.use(source)
-		if slots[slot].amount - 1 == 0:
-			change_slot(slot, null, 0)
-		else:
-			change_slot(slot, slots[slot].item, slots[slot].amount - 1)
+		var item = slots[slot].item
+		change_slot(slot, slots[slot].item, slots[slot].amount - 1)
+		removed_item.emit(item, 1)
 		return true
+	return false
+	
+func use_item(source: Unit, item: Item) -> bool:
+	var slot: int = find_item(item)
+	if slot != -1:
+		return use_slot(source, slot)
 	return false
 	
 func find_first_empty_slot() -> int:
@@ -84,6 +92,7 @@ func add_item(item: Item, amount: int) -> bool:
 	if amount > 0:
 		if can_receive_item(item, amount):
 			# First fill up existing stacks
+			var total_amount = amount
 			if item.stackable == true:
 				for i in size:
 					if amount > 0 and slots[i].item == item and item.stack_amount > slots[i].amount:
@@ -101,8 +110,23 @@ func add_item(item: Item, amount: int) -> bool:
 						amount -= amount_to_add
 					if amount == 0:
 							break
+			received_item.emit(item, total_amount)
 			return true
 	else:
+		return true
+	return false
+	
+func remove_item(item: Item, amount: int) -> bool:
+	if amount > 0 and get_item_amount(item) >= amount:
+		var total_amount = amount
+		for i in size:
+			if total_amount > 0 and slots[i].item == item:
+				var amount_to_remove = slots[i].amount if total_amount >= slots[i].amount else total_amount
+				change_slot(i, item, slots[i].amount - amount_to_remove)
+				total_amount -= amount_to_remove
+			if total_amount == 0:
+				break
+		removed_item.emit(item, amount)
 		return true
 	return false
 

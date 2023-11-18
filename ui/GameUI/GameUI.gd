@@ -28,4 +28,3 @@ func _ready() -> void:
 	system_message.initialize(player)
 	inventory.initialize(Globals.get_inventory())
 	bank.initialize(Globals.get_bank())
-
