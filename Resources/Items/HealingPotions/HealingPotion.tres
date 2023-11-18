@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://bhowtykrt0fpx"]
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://Resources/Items/Item.gd" id="1_wr26y"]
 [ext_resource type="Texture2D" uid="uid://dnnj48dx2glf3" path="res://assets/ui/items/healing_potion.png" id="1_xtahb"]
 [ext_resource type="Resource" uid="uid://ebu22nnhv3ly" path="res://Resources/Items/ConsumeableCooldownGroup.tres" id="3_5q6ak"]
-[ext_resource type="Script" path="res://Resources/Items/HealingPotions/ResourcePotionEffect.gd" id="4_yj8ld"]
+[ext_resource type="Script" path="res://Resources/Items/ResourcePotionEffect.gd" id="4_yj8ld"]
 
 [sub_resource type="Resource" id="Resource_57378"]
 script = ExtResource("4_yj8ld")

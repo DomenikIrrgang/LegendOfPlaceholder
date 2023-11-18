@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=79 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -31,12 +31,13 @@
 [ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="24_mnwe0"]
 [ext_resource type="Script" path="res://ui/GameUI/PlayerCastBar.gd" id="24_vl06k"]
 [ext_resource type="Texture2D" uid="uid://dl0u83xiv6kk1" path="res://assets/ui/bossframe/castbar_background.png" id="25_28qlq"]
-[ext_resource type="Resource" uid="uid://bhowtykrt0fpx" path="res://Resources/Items/HealingPotions/HealingPotion.tres" id="25_ggroc"]
+[ext_resource type="Resource" path="res://Resources/Items/HealingPotions/HealingPotion.tres" id="25_ggroc"]
 [ext_resource type="Texture2D" uid="uid://dnnj48dx2glf3" path="res://assets/ui/items/healing_potion.png" id="25_ynpml"]
 [ext_resource type="LabelSettings" uid="uid://b304vmcf3x1f0" path="res://ui/GameUI/AbilitySlotFont.tres" id="26_aa5cb"]
 [ext_resource type="Texture2D" uid="uid://bpdlcf2ngcdne" path="res://assets/ui/bossframe/castbar_progress.png" id="26_vjcuh"]
 [ext_resource type="Script" path="res://ui/GameUI/ErrorMessages.gd" id="27_hnvam"]
 [ext_resource type="Texture2D" uid="uid://v5uxsaoa2tjb" path="res://assets/ui/bottom_hud/castbar_background.png" id="28_vneq5"]
+[ext_resource type="Texture2D" uid="uid://djuotr8lwlwh2" path="res://assets/ui/bottom_hud/ability_cooldown_progress.aseprite.png" id="28_yped5"]
 [ext_resource type="Texture2D" uid="uid://dh3uqmhjs1hp5" path="res://assets/ui/bottom_hud/castbar_progress.png" id="29_3nnbc"]
 [ext_resource type="PackedScene" uid="uid://nul1xl8wmrms" path="res://ui/GameUI/Inventory/inventory.tscn" id="30_6me52"]
 [ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="30_ao71d"]
@@ -257,11 +258,13 @@ script/source = "extends Button
 
 var lesser_healing_potion: Item = preload(\"res://Resources/Items/HealingPotions/LesserHealingPotion.tres\")
 var healing_potion: Item = preload(\"res://Resources/Items/HealingPotions/HealingPotion.tres\")
+var lesser_mana_potion: Item = preload(\"res://Resources/Items/ManaPotions/LesserManaPotion.tres\")
 
 func _on_pressed():
 	var inventory = Globals.get_inventory()
 	inventory.add_item(lesser_healing_potion, 1)
 	inventory.add_item(healing_potion, 1)
+	inventory.add_item(lesser_mana_potion, 1)
 "
 
 [sub_resource type="GDScript" id="GDScript_empgj"]
@@ -488,6 +491,16 @@ offset_right = 36.0
 offset_bottom = 36.0
 texture = ExtResource("25_ynpml")
 
+[node name="CooldownBar" type="TextureProgressBar" parent="MainHUD/CenterContainer/Overlay/ConsumeableSlot"]
+offset_right = 36.0
+offset_bottom = 36.0
+max_value = 1000.0
+value = 1000.0
+rounded = true
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("28_yped5")
+
 [node name="Amount" type="Label" parent="MainHUD/CenterContainer/Overlay/ConsumeableSlot"]
 layout_mode = 0
 offset_left = 1.0
@@ -497,6 +510,15 @@ offset_bottom = 11.0
 text = "5"
 label_settings = ExtResource("26_aa5cb")
 horizontal_alignment = 1
+
+[node name="CooldownText" type="Label" parent="MainHUD/CenterContainer/Overlay/ConsumeableSlot"]
+offset_left = 1.0
+offset_right = 37.0
+offset_bottom = 36.0
+text = "5"
+label_settings = ExtResource("26_aa5cb")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="KeybindDisplay" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/ConsumeableSlot"]
 layout_mode = 0

@@ -28,3 +28,11 @@ func has_cooldown() -> bool:
 
 func on_use(source: Unit) -> bool:
 	return true
+	
+func get_remaining_cooldown() -> float:
+	if is_on_cooldown():
+		return CooldownSystem.get_cooldown(cooldown_group.alias)
+	return 0.0
+	
+func get_cooldown_progress() -> float:
+	return get_remaining_cooldown() * 100.0 / cooldown_group.cooldown

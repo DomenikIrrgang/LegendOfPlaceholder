@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://bi6vdjcijdpu0"]
+
+[ext_resource type="Texture2D" uid="uid://btkbvp2nbhwag" path="res://assets/ui/items/lesser_mana_potion.png" id="1_benh5"]
+[ext_resource type="Script" path="res://Resources/Items/Item.gd" id="1_tixdp"]
+[ext_resource type="Resource" uid="uid://ebu22nnhv3ly" path="res://Resources/Items/ConsumeableCooldownGroup.tres" id="3_ga2jr"]
+[ext_resource type="Script" path="res://Resources/Items/ResourcePotionEffect.gd" id="3_qkcsu"]
+
+[sub_resource type="Resource" id="Resource_34mw0"]
+script = ExtResource("3_qkcsu")
+resource_type = 0
+value = 50
+cooldown_group = ExtResource("3_ga2jr")
+
+[resource]
+script = ExtResource("1_tixdp")
+alias = "Lesser Mana Potion"
+useable = true
+use_effect = SubResource("Resource_34mw0")
+limited = true
+limit = 20
+stackable = true
+stack_amount = 5
+description = "Restores a small amount of mana."
+icon = ExtResource("1_benh5")

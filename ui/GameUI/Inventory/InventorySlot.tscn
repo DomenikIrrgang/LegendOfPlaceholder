@@ -42,6 +42,7 @@ label_settings = ExtResource("3_penub")
 horizontal_alignment = 2
 
 [node name="CooldownBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 47.0
@@ -52,3 +53,14 @@ rounded = true
 fill_mode = 3
 nine_patch_stretch = true
 texture_progress = ExtResource("5_im24k")
+
+[node name="CooldownText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 47.0
+offset_bottom = 47.0
+text = "1"
+label_settings = ExtResource("3_penub")
+horizontal_alignment = 1
+vertical_alignment = 1
