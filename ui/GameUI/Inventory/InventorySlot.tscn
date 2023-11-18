@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ylclcm1nc1ob"]
+[gd_scene load_steps=9 format=3 uid="uid://ylclcm1nc1ob"]
 
 [ext_resource type="Shader" path="res://Shaders/Greyscale.gdshader" id="1_do3fr"]
 [ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="1_ijvu8"]
 [ext_resource type="Script" path="res://ui/GameUI/Inventory/InventorySlot.gd" id="2_tthv1"]
 [ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="3_penub"]
+[ext_resource type="Texture2D" uid="uid://djuotr8lwlwh2" path="res://assets/ui/bottom_hud/ability_cooldown_progress.aseprite.png" id="5_im24k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awip8"]
 
@@ -20,6 +21,7 @@ material = SubResource("ShaderMaterial_awip8")
 custom_minimum_size = Vector2(48, 48)
 theme_override_styles/panel = SubResource("StyleBoxTexture_qrfly")
 script = ExtResource("2_tthv1")
+metadata/_edit_lock_ = true
 
 [node name="ItemTexture" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_d2mvh")
@@ -38,3 +40,15 @@ offset_bottom = 54.0
 text = "1"
 label_settings = ExtResource("3_penub")
 horizontal_alignment = 2
+
+[node name="CooldownBar" type="TextureProgressBar" parent="."]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 47.0
+offset_bottom = 47.0
+max_value = 1000.0
+value = 1000.0
+rounded = true
+fill_mode = 3
+nine_patch_stretch = true
+texture_progress = ExtResource("5_im24k")

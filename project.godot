@@ -27,6 +27,7 @@ Error="*res://Global/Error.gd"
 DialogManager="*res://Global/DialogManager.gd"
 CutsceneManager="*res://Global/CutsceneManager.gd"
 SceneSwitcher="*res://Global/SceneSwitcher.gd"
+CooldownSystem="*res://Global/CooldownSystem.gd"
 
 [debug]
 

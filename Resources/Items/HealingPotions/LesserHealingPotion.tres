@@ -1,18 +1,21 @@
-[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://e1dox4inb86y"]
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://e1dox4inb86y"]
 
 [ext_resource type="Texture2D" uid="uid://c4blikrfvdh2v" path="res://assets/ui/items/lesser_healing_potion.png" id="1_00mxg"]
 [ext_resource type="Script" path="res://Resources/Items/Item.gd" id="1_mlqv8"]
-[ext_resource type="Script" path="res://Resources/Items/HealingPotions/HealingPotionEffect.gd" id="2_0my2r"]
+[ext_resource type="Resource" uid="uid://ebu22nnhv3ly" path="res://Resources/Items/ConsumeableCooldownGroup.tres" id="3_haltg"]
+[ext_resource type="Script" path="res://Resources/Items/HealingPotions/ResourcePotionEffect.gd" id="4_byimc"]
 
-[sub_resource type="Resource" id="Resource_fuehj"]
-script = ExtResource("2_0my2r")
+[sub_resource type="Resource" id="Resource_ruojq"]
+script = ExtResource("4_byimc")
+resource_type = 3
 value = 50
+cooldown_group = ExtResource("3_haltg")
 
 [resource]
 script = ExtResource("1_mlqv8")
 alias = "Lesser Healing Potion"
 useable = true
-use_effect = SubResource("Resource_fuehj")
+use_effect = SubResource("Resource_ruojq")
 limited = true
 limit = 15
 stackable = true

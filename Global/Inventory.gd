@@ -69,11 +69,12 @@ func find_item(item: Item) -> int:
 	
 func use_slot(source: Unit, slot: int) -> bool:
 	if slots[slot].item != null and slots[slot].item.useable and slots[slot].amount > 0:
-		slots[slot].item.use_effect.use(source)
-		var item = slots[slot].item
-		change_slot(slot, slots[slot].item, slots[slot].amount - 1)
-		removed_item.emit(item, 1)
-		return true
+		var success = slots[slot].item.use_effect.use(source)
+		if success:
+			var item = slots[slot].item
+			change_slot(slot, slots[slot].item, slots[slot].amount - 1)
+			removed_item.emit(item, 1)
+			return true
 	return false
 	
 func use_item(source: Unit, item: Item) -> bool:

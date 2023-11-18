@@ -9,6 +9,10 @@ var stack_size: Label = $StackSize
 @onready
 var item_texture: TextureRect = $ItemTexture
 
+@onready
+var cooldown_bar: TextureProgressBar = $CooldownBar
+var cooldown_scaling_factor: float = 10.0
+
 func initialize(inventory: Inventory, _index: int):
 	index = _index
 	inventory.slot_changed.connect(on_slot_changed)
