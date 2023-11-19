@@ -28,7 +28,6 @@ func _on_mouse_entered():
 	if tooltip_instance == null:
 		tooltip_instance = tooltip.instantiate()
 		add_child(tooltip_instance)
-		tooltip_instance.global_position = get_parent().global_position
 	tooltip_instance.show_text(str(value) + "/" + str(max_value))
 	tooltip_instance.visible = true
 

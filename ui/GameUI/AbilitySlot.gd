@@ -67,17 +67,16 @@ func ability_used(_ability: Ability) -> void:
 	
 func remaining_cooldown_changed(_remaining_cooldown: float, _cooldown: float) -> void:
 	update_cooldown()	
-	
-func _on_mouse_entered():
+
+func _on_mouse_inside_mouse_in():
 	if ability != null:
 		if tooltip_instance == null:
 			tooltip_instance = tooltip.instantiate()
 			add_child(tooltip_instance)
-			tooltip_instance.global_position = get_parent().global_position
 		tooltip_instance.show_ability(ability)
 		tooltip_instance.visible = true
 
-func _on_mouse_exited():
+func _on_mouse_inside_mouse_out():
 	if tooltip_instance != null:
 		tooltip_instance.visible = false
-		tooltip_instance = null
+		tooltip_instance.queue_free()

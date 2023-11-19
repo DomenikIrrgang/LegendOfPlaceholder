@@ -387,6 +387,7 @@ offset_left = 111.0
 offset_top = 73.0
 offset_right = 398.0
 offset_bottom = 99.0
+mouse_filter = 1
 
 [node name="Ability1" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("19_sjki4")]
 layout_mode = 0
@@ -394,7 +395,6 @@ offset_left = 1.0
 offset_top = -23.0
 offset_right = 37.0
 offset_bottom = 13.0
-action_name = "Ability_One"
 
 [node name="Ability2" parent="MainHUD/CenterContainer/Overlay/AbilitySlots" instance=ExtResource("19_sjki4")]
 layout_mode = 0

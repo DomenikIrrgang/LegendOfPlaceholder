@@ -57,7 +57,6 @@ vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 position = Vector2(105.882, 23.5294)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hm6xd")
 
 [connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]
