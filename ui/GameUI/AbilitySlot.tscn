@@ -51,9 +51,9 @@ vertical_alignment = 1
 [node name="Keybind" type="TextureRect" parent="."]
 layout_mode = 1
 offset_left = 8.0
-offset_top = 33.0
+offset_top = 31.0
 offset_right = 40.0
-offset_bottom = 65.0
+offset_bottom = 63.0
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("3_ca1xt")
 script = ExtResource("4_sm53d")

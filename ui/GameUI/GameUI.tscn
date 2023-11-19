@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="24_mnwe0"]
 [ext_resource type="Script" path="res://ui/GameUI/PlayerCastBar.gd" id="24_vl06k"]
 [ext_resource type="Texture2D" uid="uid://dl0u83xiv6kk1" path="res://assets/ui/bossframe/castbar_background.png" id="25_28qlq"]
-[ext_resource type="Resource" path="res://Resources/Items/HealingPotions/HealingPotion.tres" id="25_ggroc"]
+[ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/HealingPotion.tres" id="25_ggroc"]
 [ext_resource type="Texture2D" uid="uid://dnnj48dx2glf3" path="res://assets/ui/items/healing_potion.png" id="25_ynpml"]
 [ext_resource type="LabelSettings" uid="uid://b304vmcf3x1f0" path="res://ui/GameUI/AbilitySlotFont.tres" id="26_aa5cb"]
 [ext_resource type="Texture2D" uid="uid://bpdlcf2ngcdne" path="res://assets/ui/bossframe/castbar_progress.png" id="26_vjcuh"]
@@ -492,6 +492,7 @@ offset_bottom = 36.0
 texture = ExtResource("25_ynpml")
 
 [node name="CooldownBar" type="TextureProgressBar" parent="MainHUD/CenterContainer/Overlay/ConsumeableSlot"]
+layout_mode = 0
 offset_right = 36.0
 offset_bottom = 36.0
 max_value = 1000.0
@@ -512,6 +513,7 @@ label_settings = ExtResource("26_aa5cb")
 horizontal_alignment = 1
 
 [node name="CooldownText" type="Label" parent="MainHUD/CenterContainer/Overlay/ConsumeableSlot"]
+layout_mode = 0
 offset_left = 1.0
 offset_right = 37.0
 offset_bottom = 36.0

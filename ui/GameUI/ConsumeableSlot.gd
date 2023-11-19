@@ -19,6 +19,7 @@ var cooldown_scaling_factor: float = 10.0
 func _ready():
 	Globals.get_inventory().received_item.connect(inventory_changed)
 	Globals.get_inventory().removed_item.connect(inventory_changed)
+	Globals.get_inventory().slot_changed.connect(inventory_slot_changed)
 	gui_input.connect(on_input)
 	if item != null:
 		update_item(item)
@@ -26,6 +27,7 @@ func _ready():
 		icon.texture = null
 		
 func update_item(_item: Item) -> void:
+	print("updating")
 	item = _item
 	icon.texture = item.icon
 	amount.text = str(Globals.get_inventory().get_item_amount(item))
@@ -33,8 +35,10 @@ func update_item(_item: Item) -> void:
 	cooldown_bar.visible = false
 	
 func inventory_changed(_item: Item, amount: int) -> void:
-	if item == _item:
-		update_item(item)
+	update_item(item)
+	
+func inventory_slot_changed(slot: int, _item: Item, amount: int) -> void:
+	update_item(item)
 		
 func _process(delta):
 	update_cooldown()

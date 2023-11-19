@@ -68,8 +68,12 @@ func drop_item(slot: int) -> void:
 			if inventory.slots[slot].item != null:
 				var item: Item = inventory.slots[slot].item
 				var amount: int = inventory.slots[slot].amount
-				inventory.change_slot(slot, inventory_slot.item, inventory_slot.amount)
-				previous_inventory.change_slot(inventory_slot.index, item, amount)
+				if item == inventory_slot.item and item.stackable and amount + inventory_slot.amount <= item.stack_amount:
+					inventory.change_slot(slot, inventory_slot.item, inventory_slot.amount + amount)
+					previous_inventory.change_slot(inventory_slot.index, null, 0)
+				else:
+					inventory.change_slot(slot, inventory_slot.item, inventory_slot.amount)
+					previous_inventory.change_slot(inventory_slot.index, item, amount)
 			else:
 				inventory.change_slot(slot, inventory_slot.item, inventory_slot.amount)
 				previous_inventory.change_slot(inventory_slot.index, null, 0)
