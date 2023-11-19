@@ -260,11 +260,13 @@ var lesser_healing_potion: Item = preload(\"res://Resources/Items/HealingPotions
 var healing_potion: Item = preload(\"res://Resources/Items/HealingPotions/HealingPotion.tres\")
 var lesser_mana_potion: Item = preload(\"res://Resources/Items/ManaPotions/LesserManaPotion.tres\")
 
+var Drop = preload(\"res://Unit/Drops/Drop.tscn\")
+
 func _on_pressed():
 	var inventory = Globals.get_inventory()
-	inventory.add_item(lesser_healing_potion, 1)
-	inventory.add_item(healing_potion, 1)
-	inventory.add_item(lesser_mana_potion, 1)
+	var drop = Drop.instantiate()
+	Globals.get_world().add_child(drop)
+	drop.set_item(lesser_mana_potion, 1)
 "
 
 [sub_resource type="GDScript" id="GDScript_empgj"]
