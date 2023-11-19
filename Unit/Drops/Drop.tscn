@@ -8,7 +8,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a17ho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hm6xd"]
-size = Vector2(204.118, 39.4118)
+size = Vector2(223.529, 58.8235)
 
 [node name="Drop" type="Node2D"]
 z_index = 1
@@ -56,7 +56,7 @@ vertical_alignment = 1
 [node name="PickupArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
-position = Vector2(103.823, 21.4706)
+position = Vector2(105.882, 23.5294)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hm6xd")
 

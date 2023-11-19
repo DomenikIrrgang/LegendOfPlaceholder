@@ -22,6 +22,7 @@ value = 50
 [resource]
 script = ExtResource("1_31g8x")
 experience = 0
+loot_table = Array[Resource("res://Resources/Enemies/LootDrop.gd")]([])
 alias = "Elemental Slime"
 dialog_texture = ExtResource("1_w65bp")
 level = 10

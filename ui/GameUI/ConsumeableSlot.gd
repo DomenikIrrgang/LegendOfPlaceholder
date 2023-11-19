@@ -27,7 +27,6 @@ func _ready():
 		icon.texture = null
 		
 func update_item(_item: Item) -> void:
-	print("updating")
 	item = _item
 	icon.texture = item.icon
 	amount.text = str(Globals.get_inventory().get_item_amount(item))

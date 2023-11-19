@@ -1,10 +1,36 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://djsprq100uefx"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=9 format=3 uid="uid://djsprq100uefx"]
 
+[ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/HealingPotion.tres" id="1_85fkj"]
 [ext_resource type="Script" path="res://Resources/Enemies/EnemyData.gd" id="1_ov5lo"]
+[ext_resource type="Script" path="res://Resources/Enemies/LootDrop.gd" id="2_wtfeq"]
+[ext_resource type="Resource" uid="uid://0lhh7e28wyrt" path="res://Resources/Items/HealingPotions/LesserHealingPotion.tres" id="3_4hbjf"]
+[ext_resource type="Resource" uid="uid://bi6vdjcijdpu0" path="res://Resources/Items/ManaPotions/LesserManaPotion.tres" id="4_38qsg"]
+
+[sub_resource type="Resource" id="Resource_l3eyb"]
+script = ExtResource("2_wtfeq")
+item = ExtResource("1_85fkj")
+chance = 1.0
+minimum_amount = 1
+maximum_amount = 2
+
+[sub_resource type="Resource" id="Resource_mv7of"]
+script = ExtResource("2_wtfeq")
+item = ExtResource("3_4hbjf")
+chance = 1.0
+minimum_amount = 2
+maximum_amount = 3
+
+[sub_resource type="Resource" id="Resource_o3jy7"]
+script = ExtResource("2_wtfeq")
+item = ExtResource("4_38qsg")
+chance = 1.0
+minimum_amount = 1
+maximum_amount = 5
 
 [resource]
 script = ExtResource("1_ov5lo")
 experience = 0
+loot_table = Array[ExtResource("2_wtfeq")]([SubResource("Resource_l3eyb"), SubResource("Resource_mv7of"), SubResource("Resource_o3jy7")])
 alias = "Slime"
 level = 1
 base_movement_speed = 30.0
