@@ -6,7 +6,7 @@
 [ext_resource type="LabelSettings" uid="uid://b304vmcf3x1f0" path="res://ui/GameUI/AbilitySlotFont.tres" id="4_kgvjg"]
 [ext_resource type="Script" path="res://ui/GameUI/Keybind.gd" id="4_sm53d"]
 [ext_resource type="Texture2D" uid="uid://djuotr8lwlwh2" path="res://assets/ui/bottom_hud/ability_cooldown_progress.aseprite.png" id="6_hcelx"]
-[ext_resource type="Script" path="res://ui/GameUI/MouseInside.gd" id="7_khefi"]
+[ext_resource type="Script" path="res://ui/GameUI/Tooltip/AbilityTooltipComponent.gd" id="7_uvgtb"]
 
 [node name="AbilitySlot" type="TextureRect"]
 offset_right = 36.0
@@ -63,11 +63,12 @@ mouse_filter = 2
 texture = ExtResource("3_ca1xt")
 script = ExtResource("4_sm53d")
 
-[node name="MouseInside" type="Control" parent="."]
+[node name="AbilityTooltipComponent" type="Control" parent="." node_paths=PackedStringArray("ability_node")]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("7_khefi")
+offset_right = 36.0
+offset_bottom = 36.0
+script = ExtResource("7_uvgtb")
+ability_node = NodePath("..")
 
-[connection signal="mouse_in" from="MouseInside" to="." method="_on_mouse_inside_mouse_in"]
-[connection signal="mouse_out" from="MouseInside" to="." method="_on_mouse_inside_mouse_out"]
+[connection signal="mouse_in" from="AbilityTooltipComponent" to="AbilityTooltipComponent" method="_on_mouse_in"]
+[connection signal="mouse_out" from="AbilityTooltipComponent" to="AbilityTooltipComponent" method="_on_mouse_out"]

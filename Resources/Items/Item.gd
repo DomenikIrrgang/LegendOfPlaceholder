@@ -10,6 +10,9 @@ var useable: bool
 @export
 var use_effect: UseEffect
 
+@export_multiline
+var use_description: String
+
 @export
 var limited: bool = false
 
@@ -22,7 +25,7 @@ var stackable: bool = false
 @export
 var stack_amount: int = 5
 
-@export
+@export_multiline
 var description: String
 
 @export

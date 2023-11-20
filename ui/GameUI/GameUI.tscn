@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=80 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://v5uxsaoa2tjb" path="res://assets/ui/bottom_hud/castbar_background.png" id="28_vneq5"]
 [ext_resource type="Texture2D" uid="uid://djuotr8lwlwh2" path="res://assets/ui/bottom_hud/ability_cooldown_progress.aseprite.png" id="28_yped5"]
 [ext_resource type="Texture2D" uid="uid://dh3uqmhjs1hp5" path="res://assets/ui/bottom_hud/castbar_progress.png" id="29_3nnbc"]
+[ext_resource type="PackedScene" uid="uid://bt8umr5bwbj3j" path="res://ui/GameUI/Tooltip/ItemTooltipComponent.tscn" id="30_0uqif"]
 [ext_resource type="PackedScene" uid="uid://nul1xl8wmrms" path="res://ui/GameUI/Inventory/inventory.tscn" id="30_6me52"]
 [ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="30_ao71d"]
 [ext_resource type="Script" path="res://ui/GameUI/DragAndDrop.gd" id="31_sah85"]
@@ -264,9 +265,13 @@ var Drop = preload(\"res://Unit/Drops/Drop.tscn\")
 
 func _on_pressed():
 	var inventory = Globals.get_inventory()
-	var drop = Drop.instantiate()
-	Globals.get_world().add_child(drop)
-	drop.set_item(lesser_mana_potion, 1)
+	var drop1 = Drop.instantiate()
+	#var drop2 = Drop.instantiate()
+	#var drop3 = Drop.instantiate()
+	Globals.get_world().add_child(drop1)
+	#Globals.get_world().add_child(drop2)
+	#Globals.get_world().add_child(drop3)
+	drop1.set_item(lesser_mana_potion, 3)
 "
 
 [sub_resource type="GDScript" id="GDScript_empgj"]
@@ -534,6 +539,13 @@ scale = Vector2(0.65, 0.65)
 texture = ExtResource("22_o1px3")
 script = ExtResource("22_ruylf")
 action_name = "Use_Consumeable"
+
+[node name="ItemTooltipComponent" parent="MainHUD/CenterContainer/Overlay/ConsumeableSlot" node_paths=PackedStringArray("item_node") instance=ExtResource("30_0uqif")]
+offset_left = -1231.0
+offset_top = -1027.0
+offset_right = -1191.0
+offset_bottom = -987.0
+item_node = NodePath("..")
 
 [node name="Bossframe" type="Control" parent="."]
 anchors_preset = 0

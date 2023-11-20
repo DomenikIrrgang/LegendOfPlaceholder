@@ -66,4 +66,6 @@ func select() -> void:
 	item_texture.material.set_shader_parameter("grayscale", true)
 	
 func deselect() -> void:
-	item_texture.material.set_shader_parameter("grayscale", false)	
+	item_texture.material.set_shader_parameter("grayscale", false)
+	
+

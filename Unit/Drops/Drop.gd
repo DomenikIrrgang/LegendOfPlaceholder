@@ -25,6 +25,13 @@ func set_item(_item: Item, _amount: int) -> void:
 
 func _on_pickup_area_body_entered(body):
 	if body == Globals.get_player():
-		var success = Globals.get_inventory().add_item(item, amount)
-		if success:
-			queue_free()
+		var available_inventory_space = Globals.get_inventory().calculate_free_amount_for_item(item)
+		if available_inventory_space < amount:
+			var success = Globals.get_inventory().add_item(item, available_inventory_space)
+			if success:
+				amount -= available_inventory_space
+				set_item(item, amount)
+		else:
+			var success = Globals.get_inventory().add_item(item, amount)
+			if success:
+				queue_free()

@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://fk0vrywo8428"]
+
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="1_i1qbp"]
+
+[resource]
+font = ExtResource("1_i1qbp")
+font_color = Color(1, 1, 0, 1)

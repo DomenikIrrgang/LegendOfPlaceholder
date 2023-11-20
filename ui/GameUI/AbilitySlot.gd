@@ -22,9 +22,6 @@ var cooldown_label: Label = $Cooldown
 
 var ability: Ability
 
-var tooltip = load("res://ui/GameUI/Tooltip/ability_tooltip.tscn")
-var tooltip_instance
-
 func _ready() -> void:
 	ability = Keybinds.get_ability_for_keybind(action_name)
 	if action_name == "" or ability == null:
@@ -67,16 +64,3 @@ func ability_used(_ability: Ability) -> void:
 	
 func remaining_cooldown_changed(_remaining_cooldown: float, _cooldown: float) -> void:
 	update_cooldown()	
-
-func _on_mouse_inside_mouse_in():
-	if ability != null:
-		if tooltip_instance == null:
-			tooltip_instance = tooltip.instantiate()
-			add_child(tooltip_instance)
-		tooltip_instance.show_ability(ability)
-		tooltip_instance.visible = true
-
-func _on_mouse_inside_mouse_out():
-	if tooltip_instance != null:
-		tooltip_instance.visible = false
-		tooltip_instance.queue_free()
