@@ -24,6 +24,7 @@ func on_cast_started(_source: Unit, _target: Unit, _ability: Ability, duration: 
 	visible = true
 	spell_name_label.text = ability.get_alias()
 	progress_bar.max_value = duration
+	print(progress_bar.texture_over, progress_bar.texture_progress)
 	
 func on_current_cast_update(_source: Unit, _target: Unit, _ability: Ability, current_cast: float, _cast_time: float) -> void:
 	progress_bar.value = current_cast

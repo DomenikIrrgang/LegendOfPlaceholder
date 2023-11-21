@@ -19,7 +19,7 @@ func use(_source: Unit, _target: Unit) -> void:
 			enemy.freeze()
 			
 func time_stop_over() -> void:
-	source.remove_child(timer)
+	timer.queue_free()
 	for enemy in Globals.get_scene_tree().get_nodes_in_group("enemy"):
 		if not enemy.is_in_group("boss"):
 			enemy.unfreeze()

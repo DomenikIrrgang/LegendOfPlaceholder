@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ctkdmqm6hhk4a"]
+[gd_scene load_steps=25 format=3 uid="uid://ctkdmqm6hhk4a"]
 
 [ext_resource type="Script" path="res://Enemy/ElementalSlime/ElementalSlime.gd" id="1_oom8b"]
 [ext_resource type="Script" path="res://Unit/HurtBox.gd" id="2_omtut"]
@@ -14,7 +14,6 @@
 [ext_resource type="Animation" uid="uid://ctiau02k5u1v4" path="res://Unit/Animations/Right.res" id="11_6li0e"]
 [ext_resource type="Animation" uid="uid://wsvb57gm2wpm" path="res://Unit/Animations/Up.res" id="12_wta12"]
 [ext_resource type="Texture2D" uid="uid://b8uqgr8axuptj" path="res://assets/textures/slime.png" id="13_g6n26"]
-[ext_resource type="PackedScene" uid="uid://c26stcg6tajlv" path="res://Enemy/Castbar.tscn" id="15_58otq"]
 [ext_resource type="Script" path="res://State/StateMachine.gd" id="17_yr8i8"]
 [ext_resource type="Script" path="res://Enemy/ElementalSlime/Phase1.gd" id="18_ipp5x"]
 [ext_resource type="Script" path="res://State/StateTransition.gd" id="19_thvjh"]
@@ -99,13 +98,6 @@ hframes = 4
 vframes = 8
 frame = 16
 metadata/_edit_lock_ = true
-
-[node name="Castbar" parent="." instance=ExtResource("15_58otq")]
-visible = false
-offset_left = -1.0
-offset_top = -38.0
-offset_right = 39.0
-offset_bottom = -13.0
 
 [node name="PhaseState" type="Node" parent="."]
 script = ExtResource("17_yr8i8")

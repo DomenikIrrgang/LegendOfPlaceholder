@@ -34,5 +34,5 @@ func execute(_source: Unit, target: Unit) -> void:
 
 func on_field_over() -> void:
 	timer.stop()
-	remove_child(timer)
-	source.remove_child(self)
+	timer.queue_free()
+	queue_free()

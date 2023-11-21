@@ -655,7 +655,7 @@ offset_bottom = 25.0
 
 [node name="SpellName" type="Label" parent="Bossframe/Castbar/CenterContainer/Background/CenterContainer"]
 layout_mode = 2
-text = "100 / 100"
+text = "Cast"
 label_settings = SubResource("LabelSettings_gewi7")
 
 [node name="AbilityTooltipComponent" parent="Bossframe/Castbar/CenterContainer/Background" node_paths=PackedStringArray("ability_node") instance=ExtResource("38_0qeqe")]
