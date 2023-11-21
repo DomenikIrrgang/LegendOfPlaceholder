@@ -26,7 +26,7 @@ func reset_cooldown() -> void:
 func has_cooldown() -> bool:
 	return cooldown_group != null
 
-func on_use(source: Unit) -> bool:
+func on_use(_source: Unit) -> bool:
 	return true
 	
 func get_remaining_cooldown() -> float:

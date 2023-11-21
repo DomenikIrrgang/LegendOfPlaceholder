@@ -4,7 +4,7 @@ extends PanelContainer
 @onready
 var label: Label = $PanelContainer/MarginContainer/Tect
 
-func _process(delta):
+func _process(_delta: float) -> void:
 	if visible:
 		global_position = get_viewport().get_mouse_position()
 		global_position.y -= size.y

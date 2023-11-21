@@ -15,7 +15,7 @@ var hitbox: HitBox2D = $HitBox
 func _process(delta):
 	duration -= delta
 	if duration < 0.0:
-		free()
+		queue_free()
 	
 func init_projectile(source: Unit, _ability: Ability, _direction: Vector2, _speed: float = speed) -> void:
 	ability = _ability

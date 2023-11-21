@@ -275,7 +275,6 @@ var lesser_mana_potion: Item = preload(\"res://Resources/Items/ManaPotions/Lesse
 var Drop = preload(\"res://Unit/Drops/Drop.tscn\")
 
 func _on_pressed():
-	var inventory = Globals.get_inventory()
 	var drop1 = Drop.instantiate()
 	#var drop2 = Drop.instantiate()
 	#var drop3 = Drop.instantiate()
@@ -288,7 +287,7 @@ func _on_pressed():
 [sub_resource type="GDScript" id="GDScript_empgj"]
 script/source = "extends Label
 
-func _process(delta):
+func _process(_delta: float) -> void:
 	if Globals.get_player():
 		text = \"x: \" + str(snapped(Globals.get_player().global_position.x, 0.1)) + \" y: \" + str(snapped(Globals.get_player().global_position.y, 0.1)) 
 	else:

@@ -14,9 +14,6 @@ var system_message: SystemMessage = $SystemMessage
 var player_castbar: Castbar = $PlayerCastBar
 
 @onready
-var ability_tooltip: AbilityTooltip = $AbilityTooltip
-
-@onready
 var inventory: InventoryWindow = $Inventory
 
 @onready

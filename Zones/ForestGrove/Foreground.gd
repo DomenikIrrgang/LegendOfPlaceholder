@@ -13,7 +13,7 @@ func _ready() -> void:
 	trees_orignal_position = trees_tile_map.global_position
 	trees_tween = create_tween()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var movement_direction = Globals.get_player().velocity.normalized()
 	if (trees_tween != null):
 		trees_tween.stop()

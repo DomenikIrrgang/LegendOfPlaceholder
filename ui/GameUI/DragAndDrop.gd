@@ -13,7 +13,7 @@ signal on_stop_dragging()
 func _ready():
 	icon.visible = false
 
-func _process(delta):
+func _process(_delta: float):
 	if dragging:
 		icon.global_position = get_global_mouse_position()
 	

@@ -6,7 +6,7 @@ signal mouse_out
 
 var mouse_inside = false
 
-func _process(delta):
+func _process(_delta: float) -> void:
 	if get_parent().get_global_rect().has_point(get_global_mouse_position()):
 		if !mouse_inside:
 			emit_signal("mouse_in")

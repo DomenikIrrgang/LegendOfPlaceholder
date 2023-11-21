@@ -55,7 +55,7 @@ func despawn_current_stage() -> void:
 		stage.free()
 	current_stages = []
 		
-func on_void_zone_tick(hurt_boxes: Array[HurtBox2D]) -> void:
+func on_void_zone_tick(_hurt_boxes: Array[HurtBox2D]) -> void:
 	pass
 	
 func on_stage_timer() -> void:

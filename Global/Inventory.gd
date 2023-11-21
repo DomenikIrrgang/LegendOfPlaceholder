@@ -131,7 +131,7 @@ func remove_item(item: Item, amount: int) -> bool:
 		return true
 	return false
 
-func split_item(slot1: int, slot2: int, amount1: int, amount2: int) -> bool:
+func split_item(_slot1: int, _slot2: int, _amount1: int, _amount2: int) -> bool:
 	return true
 
 func swap_slots(slot1: int, slot2: int) -> bool:

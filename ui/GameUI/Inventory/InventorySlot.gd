@@ -24,11 +24,11 @@ func initialize(inventory: Inventory, _index: int):
 	update_slot(inventory.slots[index].item, inventory.slots[index].amount)
 	cooldown_bar.max_value = 100.0 * cooldown_scaling_factor
 	
-func on_slot_changed(slot: int, item: Item, amount: int) -> void:
+func on_slot_changed(slot: int, _item: Item, _amount: int) -> void:
 	if slot == index:
-		update_slot(item, amount)
+		update_slot(_item, _amount)
 	
-func _process(delta):
+func _process(_delta: float) -> void:
 	update_cooldown()
 		
 func update_cooldown() -> void:

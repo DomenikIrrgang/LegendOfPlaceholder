@@ -42,40 +42,40 @@ func initialize(_inventory: Inventory) -> void:
 		new_slot.initialize(inventory, i)
 		new_slot.gui_input.connect(on_slot_input.bind(i))
 		
-func on_slot_input(event: InputEvent, slot: int) -> void:
+func on_slot_input(event: InputEvent, _slot: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MASK_LEFT and event.is_pressed():
 		if Globals.get_drag_and_drop().is_dragging() == false:
-			pick_item(slot)
+			pick_item(_slot)
 		else:
-			drop_item(slot)
+			drop_item(_slot)
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MASK_RIGHT and event.is_pressed():
-		inventory.use_slot(Globals.get_player(), slot)	
+		inventory.use_slot(Globals.get_player(), _slot)	
 
-func pick_item(slot: int) -> void:
-	if Globals.get_drag_and_drop().is_dragging() == false and inventory.slots[slot].item != null:
-		slots.get_child(slot).select()
-		selected_item = slot
+func pick_item(_slot: int) -> void:
+	if Globals.get_drag_and_drop().is_dragging() == false and inventory.slots[_slot].item != null:
+		slots.get_child(_slot).select()
+		selected_item = _slot
 		Globals.get_drag_and_drop().start_dragging({
 			"inventory": inventory,
-			"inventory_slot": inventory.slots[slot],
-		}, inventory.slots[slot].item.icon)
+			"inventory_slot": inventory.slots[_slot],
+		}, inventory.slots[_slot].item.icon)
 
-func drop_item(slot: int) -> void:
+func drop_item(_slot: int) -> void:
 	if Globals.get_drag_and_drop().is_dragging():
 		if Globals.get_drag_and_drop().data.has("inventory"):
 			var previous_inventory: Inventory = Globals.get_drag_and_drop().data.inventory
 			var inventory_slot: InventorySlot = Globals.get_drag_and_drop().data.inventory_slot
-			if inventory.slots[slot].item != null:
-				var item: Item = inventory.slots[slot].item
-				var amount: int = inventory.slots[slot].amount
+			if inventory.slots[_slot].item != null:
+				var item: Item = inventory.slots[_slot].item
+				var amount: int = inventory.slots[_slot].amount
 				if item == inventory_slot.item and item.stackable and amount + inventory_slot.amount <= item.stack_amount:
-					inventory.change_slot(slot, inventory_slot.item, inventory_slot.amount + amount)
+					inventory.change_slot(_slot, inventory_slot.item, inventory_slot.amount + amount)
 					previous_inventory.change_slot(inventory_slot.index, null, 0)
 				else:
-					inventory.change_slot(slot, inventory_slot.item, inventory_slot.amount)
+					inventory.change_slot(_slot, inventory_slot.item, inventory_slot.amount)
 					previous_inventory.change_slot(inventory_slot.index, item, amount)
 			else:
-				inventory.change_slot(slot, inventory_slot.item, inventory_slot.amount)
+				inventory.change_slot(_slot, inventory_slot.item, inventory_slot.amount)
 				previous_inventory.change_slot(inventory_slot.index, null, 0)
 			Globals.get_drag_and_drop().stop_dragging()
 		

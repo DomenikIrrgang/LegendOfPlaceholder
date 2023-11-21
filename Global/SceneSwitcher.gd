@@ -10,8 +10,8 @@ func load_scene(path: String, spawn_position: Vector2) -> void:
 	
 func defered_load_scene(path: String, spawn_position: Vector2) -> void:
 	Globals.get_loading_screen().take_screenshot()
-	for child in Globals.get_world().get_children():
-		child.free()
+	#for child in Globals.get_world().get_children():
+		#child.queue_free()
 	var scene = ResourceLoader.load(path)
 	var scene_instance = scene.instantiate()
 	scene_instance.tree_entered.connect(on_scene_loaded)

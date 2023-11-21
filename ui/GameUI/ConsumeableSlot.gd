@@ -33,13 +33,13 @@ func update_item(_item: Item) -> void:
 	cooldown_text.visible = false
 	cooldown_bar.visible = false
 	
-func inventory_changed(_item: Item, amount: int) -> void:
+func inventory_changed(_item: Item, _amount: int) -> void:
 	update_item(item)
 	
-func inventory_slot_changed(slot: int, _item: Item, amount: int) -> void:
+func inventory_slot_changed(_slot: int, _item: Item, _amount: int) -> void:
 	update_item(item)
 		
-func _process(delta):
+func _process(_delta: float) -> void:
 	update_cooldown()
 		
 func update_cooldown() -> void:
@@ -61,9 +61,9 @@ func on_input(event: InputEvent) -> void:
 		if Globals.get_drag_and_drop().is_dragging() == true:
 			var drag_and_drop = Globals.get_drag_and_drop()
 			if drag_and_drop.data.has("inventory"):
-				var item = drag_and_drop.data.inventory_slot.item
-				if item.useable:
-					Keybinds.set_consumeable_item(item)
-					update_item(item)
+				var _item = drag_and_drop.data.inventory_slot.item
+				if _item.useable:
+					Keybinds.set_consumeable_item(_item)
+					update_item(_item)
 					Globals.get_drag_and_drop().stop_dragging()
 	

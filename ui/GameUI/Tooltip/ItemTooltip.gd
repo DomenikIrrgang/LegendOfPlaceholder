@@ -16,7 +16,7 @@ var description: Label = $MarginContainer/VBoxContainer/Description
 @onready
 var limit: Label = $MarginContainer/VBoxContainer/Limit
 
-func _process(delta):
+func _process(_delta: float) -> void:
 	visible = true
 	global_position = get_viewport().get_mouse_position()
 	if global_position.x >= get_viewport().size.x / 2:

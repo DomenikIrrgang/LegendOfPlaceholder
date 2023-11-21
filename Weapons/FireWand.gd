@@ -7,7 +7,7 @@ var Fireball = preload("res://Combat/abilities/Fireball.tscn")
 func _ready() -> void:
 	super()
 
-func attack(player: Player) -> AnimationPlayer:
+func attack(_player: Player) -> AnimationPlayer:
 	var fireball_projectile_instance = FireballProjectile.instantiate()
 	var fireball = Fireball.instantiate()
 	Globals.get_world().add_child(fireball_projectile_instance)
