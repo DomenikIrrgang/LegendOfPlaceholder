@@ -9,6 +9,9 @@ var spell_name_label: Label = $CenterContainer/Background/CenterContainer/SpellN
 
 var ability: Ability
 
+var interuptable_texture = load("res://assets/ui/bossframe/castbar_progress.png")
+var uninteruptable_texture = load("res://assets/ui/bossframe/castbar_progress_noninteruptable.png")
+
 func _ready() -> void:
 	visible = false
 
@@ -24,7 +27,10 @@ func on_cast_started(_source: Unit, _target: Unit, _ability: Ability, duration: 
 	visible = true
 	spell_name_label.text = ability.get_alias()
 	progress_bar.max_value = duration
-	print(progress_bar.texture_over, progress_bar.texture_progress)
+	if ability.is_interuptable():
+		progress_bar.texture_progress = interuptable_texture
+	else:
+		progress_bar.texture_progress = uninteruptable_texture
 	
 func on_current_cast_update(_source: Unit, _target: Unit, _ability: Ability, current_cast: float, _cast_time: float) -> void:
 	progress_bar.value = current_cast
