@@ -120,7 +120,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.0946372, 0.0946372, 0.0946372, 1, 1, 1, 
 color_ramp = SubResource("Gradient_v61ki")
 noise = SubResource("FastNoiseLite_xsawg")
 
-[node name="BaseScene" type="Node2D"]
+[node name="BaseScene" type="Node2D" groups=["base_scene"]]
 y_sort_enabled = true
 script = ExtResource("1_3m1id")
 initial_scene = "res://Zones/ForestGrove/ElementalSlimeArena.tscn"

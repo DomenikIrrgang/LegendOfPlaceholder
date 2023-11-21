@@ -17,8 +17,11 @@ var resource_type: Label = $PanelContainer/Content/Resource/ResourceUnit/Label
 var description: Label = $PanelContainer/Content/Description/Text/Label
 
 func _process(delta):
-	if visible:
-		global_position = get_viewport().get_mouse_position()
+	visible = true
+	global_position = get_viewport().get_mouse_position()
+	if global_position.x >= get_viewport().size.x / 2:
+		global_position.x -= size.x
+	if global_position.y >= get_viewport().size.y / 2:
 		global_position.y -= size.y
 
 

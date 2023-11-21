@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://c26stcg6tajlv"]
+[gd_scene load_steps=11 format=3 uid="uid://c26stcg6tajlv"]
 
 [ext_resource type="Script" path="res://Enemy/Castbar.gd" id="1_d52af"]
 [ext_resource type="Texture2D" uid="uid://v5uxsaoa2tjb" path="res://assets/ui/bottom_hud/castbar_background.png" id="2_gd2s0"]
 [ext_resource type="Shader" path="res://Shaders/UnitResource.gdshader" id="3_mcpjg"]
 [ext_resource type="Texture2D" uid="uid://dh3uqmhjs1hp5" path="res://assets/ui/bottom_hud/castbar_progress.png" id="4_v0t72"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="5_kxtnx"]
+[ext_resource type="Script" path="res://ui/GameUI/Tooltip/AbilityTooltipComponent.gd" id="6_t4qex"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_84kpf"]
 
@@ -21,19 +22,18 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_v1k7r")
 font = ExtResource("5_kxtnx")
 
 [node name="Castbar" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_top = -28.0
+offset_top = -5.0
 offset_right = 40.0
-offset_bottom = -3.0
+offset_bottom = 20.0
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_d52af")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -90.0
-offset_right = 102.0
+offset_left = -95.0
+offset_right = 97.0
 offset_bottom = 23.0
 texture = ExtResource("2_gd2s0")
 
@@ -58,3 +58,15 @@ offset_bottom = 40.0
 layout_mode = 2
 text = "Spellname"
 label_settings = SubResource("LabelSettings_utwh6")
+
+[node name="AbilityTooltipComponent" type="Control" parent="Background" node_paths=PackedStringArray("ability_node")]
+anchors_preset = 0
+offset_left = 95.0
+offset_right = 135.0
+offset_bottom = 40.0
+script = ExtResource("6_t4qex")
+ability_node = NodePath("../..")
+
+[connection signal="mouse_in" from="Background/AbilityTooltipComponent" to="Background/AbilityTooltipComponent" method="_on_mouse_in"]
+[connection signal="mouse_out" from="Background/AbilityTooltipComponent" to="Background/AbilityTooltipComponent" method="_on_mouse_out"]
+[connection signal="visibility_changed" from="Background/AbilityTooltipComponent" to="Background/AbilityTooltipComponent" method="_on_visibility_changed"]

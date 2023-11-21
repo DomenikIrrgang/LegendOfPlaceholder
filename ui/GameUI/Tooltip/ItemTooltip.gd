@@ -19,8 +19,10 @@ var limit: Label = $MarginContainer/VBoxContainer/Limit
 func _process(delta):
 	visible = true
 	global_position = get_viewport().get_mouse_position()
-	global_position.y -= size.y
-	global_position.x -= size.x
+	if global_position.x >= get_viewport().size.x / 2:
+		global_position.x -= size.x
+	if global_position.y >= get_viewport().size.y / 2:
+		global_position.y -= size.y
 
 func show_item(item: Item) -> void:
 	alias.text = item.alias

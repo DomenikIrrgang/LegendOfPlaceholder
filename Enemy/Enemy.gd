@@ -3,7 +3,12 @@ extends Unit
 
 # UI
 @onready
-var health_bar: UnitHpBar = $UnitHpBar
+var health_bar: UnitHpBar 
+var UnitHpBar = load("res://ui/unit/UnitHpBar.tscn")
+
+@onready
+var castbar
+var CastBar = load("res://Enemy/Castbar.tscn")
 
 @onready
 var phase_state_machine: StateMachine = $PhaseState
@@ -11,14 +16,18 @@ var phase_state_machine: StateMachine = $PhaseState
 @onready
 var hit_box: HitBox2D = $HitBox2D
 
-@onready
-var castbar = $Castbar
 
 var Drop = preload("res://Unit/Drops/Drop.tscn")
 
 func _ready() -> void:
 	super()
+	health_bar = UnitHpBar.instantiate()
+	add_child(health_bar)
+	health_bar.global_position.y -= model.get_rect().size.y * model.scale.y - (3 * model.scale.y)
 	health_bar.initialize(self)
+	castbar = CastBar.instantiate()
+	add_child(castbar)
+	castbar.global_position.y -= model.get_rect().size.y * model.scale.y - (3 * model.scale.y) + 9.5
 	castbar.initialize(self)
 	movement_strategy = FollowMovementStrategy.new(self, Globals.get_player())
 	died.connect(on_died)

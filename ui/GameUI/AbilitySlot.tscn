@@ -6,7 +6,7 @@
 [ext_resource type="LabelSettings" uid="uid://b304vmcf3x1f0" path="res://ui/GameUI/AbilitySlotFont.tres" id="4_kgvjg"]
 [ext_resource type="Script" path="res://ui/GameUI/Keybind.gd" id="4_sm53d"]
 [ext_resource type="Texture2D" uid="uid://djuotr8lwlwh2" path="res://assets/ui/bottom_hud/ability_cooldown_progress.aseprite.png" id="6_hcelx"]
-[ext_resource type="Script" path="res://ui/GameUI/Tooltip/AbilityTooltipComponent.gd" id="7_uvgtb"]
+[ext_resource type="PackedScene" uid="uid://cuivp4jpcyy1j" path="res://ui/GameUI/AbilityTooltipComponent.tscn" id="7_anq7x"]
 
 [node name="AbilitySlot" type="TextureRect"]
 offset_right = 36.0
@@ -63,12 +63,4 @@ mouse_filter = 2
 texture = ExtResource("3_ca1xt")
 script = ExtResource("4_sm53d")
 
-[node name="AbilityTooltipComponent" type="Control" parent="." node_paths=PackedStringArray("ability_node")]
-anchors_preset = 0
-offset_right = 36.0
-offset_bottom = 36.0
-script = ExtResource("7_uvgtb")
-ability_node = NodePath("..")
-
-[connection signal="mouse_in" from="AbilityTooltipComponent" to="AbilityTooltipComponent" method="_on_mouse_in"]
-[connection signal="mouse_out" from="AbilityTooltipComponent" to="AbilityTooltipComponent" method="_on_mouse_out"]
+[node name="AbilityTooltipComponent" parent="." instance=ExtResource("7_anq7x")]

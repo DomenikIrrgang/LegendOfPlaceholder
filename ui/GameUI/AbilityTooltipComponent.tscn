@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuivp4jpcyy1j"]
+
+[ext_resource type="Script" path="res://ui/GameUI/Tooltip/AbilityTooltipComponent.gd" id="1_037ki"]
+
+[node name="AbilityTooltipComponent" type="Control" node_paths=PackedStringArray("ability_node")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 36.0
+offset_bottom = 36.0
+script = ExtResource("1_037ki")
+ability_node = NodePath("..")
+
+[connection signal="mouse_in" from="." to="." method="_on_mouse_in"]
+[connection signal="mouse_out" from="." to="." method="_on_mouse_out"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

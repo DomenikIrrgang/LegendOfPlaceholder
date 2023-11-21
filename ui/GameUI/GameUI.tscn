@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=81 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -43,6 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://nul1xl8wmrms" path="res://ui/GameUI/Inventory/inventory.tscn" id="30_6me52"]
 [ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="30_ao71d"]
 [ext_resource type="Script" path="res://ui/GameUI/DragAndDrop.gd" id="31_sah85"]
+[ext_resource type="PackedScene" uid="uid://cuivp4jpcyy1j" path="res://ui/GameUI/AbilityTooltipComponent.tscn" id="38_0qeqe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
 font = ExtResource("3_60v0h")
@@ -236,7 +237,17 @@ default_font = ExtResource("3_60v0h")
 script/source = "extends Button
 
 func _on_pressed():
-	Globals.get_player().level_up()
+	#Globals.get_player().level_up()
+	print(getallnodes([], Globals.get_scene_tree().get_first_node_in_group(\"base_scene\")).size())
+
+func getallnodes(nodes, node):
+	nodes.append(node)
+	for n in node.get_children():
+		if n.get_child_count() > 0:
+			getallnodes(nodes, n)
+		else:
+			nodes.append(n)
+	return nodes
 "
 
 [sub_resource type="GDScript" id="GDScript_axn2g"]
@@ -647,6 +658,13 @@ offset_bottom = 25.0
 layout_mode = 2
 text = "100 / 100"
 label_settings = SubResource("LabelSettings_gewi7")
+
+[node name="AbilityTooltipComponent" parent="Bossframe/Castbar/CenterContainer/Background" node_paths=PackedStringArray("ability_node") instance=ExtResource("38_0qeqe")]
+offset_left = -816.0
+offset_top = -73.0
+offset_right = -780.0
+offset_bottom = -37.0
+ability_node = NodePath("../../..")
 
 [node name="ErrorMessages" type="Control" parent="."]
 anchors_preset = 0

@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhfcp6laa8rvu"]
+[gd_scene load_steps=8 format=3 uid="uid://bhfcp6laa8rvu"]
 
 [ext_resource type="PackedScene" uid="uid://cwlfjeoq2pkvi" path="res://Unit/Unit.tscn" id="1_216fp"]
 [ext_resource type="Script" path="res://Enemy/Enemy.gd" id="2_rhr6a"]
 [ext_resource type="Script" path="res://Enemy/HitBox.gd" id="3_0wdsd"]
-[ext_resource type="PackedScene" uid="uid://bxhcqy03xm6oi" path="res://ui/unit/UnitHpBar.tscn" id="3_ttyn3"]
 [ext_resource type="Script" path="res://State/StateMachine.gd" id="4_ejfmg"]
 [ext_resource type="Script" path="res://State/EnemyPhaseState.gd" id="5_sgre2"]
 [ext_resource type="PackedScene" uid="uid://c26stcg6tajlv" path="res://Enemy/Castbar.tscn" id="7_iqium"]
@@ -53,19 +52,14 @@ position = Vector2(-0.25, 4)
 [node name="HitBox2D" parent="." index="4"]
 script = ExtResource("3_0wdsd")
 
-[node name="UnitHpBar" parent="." index="5" instance=ExtResource("3_ttyn3")]
-z_index = 1000
-offset_top = -11.0
-offset_bottom = -11.0
-
-[node name="UnitOcclusion" parent="." index="6"]
+[node name="UnitOcclusion" parent="." index="5"]
 script = SubResource("GDScript_mwj27")
 
-[node name="PhaseState" type="Node" parent="." index="7"]
+[node name="PhaseState" type="Node" parent="." index="6"]
 script = ExtResource("4_ejfmg")
 initial_state = NodePath("Phase1")
 
 [node name="Phase1" type="Node" parent="PhaseState" index="0"]
 script = ExtResource("5_sgre2")
 
-[node name="Castbar" parent="." index="8" instance=ExtResource("7_iqium")]
+[node name="Castbar" parent="." index="7" instance=ExtResource("7_iqium")]

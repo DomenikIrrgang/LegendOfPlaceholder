@@ -12,3 +12,4 @@ script = ExtResource("1_xy6qk")
 
 [connection signal="mouse_in" from="." to="." method="_on_mouse_in"]
 [connection signal="mouse_out" from="." to="." method="_on_mouse_out"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

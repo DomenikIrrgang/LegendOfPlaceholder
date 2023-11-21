@@ -79,11 +79,6 @@ shape = SubResource("RectangleShape2D_liqmg")
 [node name="CollisionShape2D" parent="HitBox2D" index="0"]
 position = Vector2(0.5, 3)
 
-[node name="UnitHpBar" parent="." index="5"]
-offset_top = -35.0
-offset_bottom = -35.0
-metadata/_edit_use_anchors_ = true
-
 [node name="OcclusionCollision" parent="UnitOcclusion" index="0"]
 visible = false
 position = Vector2(0, -9.75)
@@ -113,7 +108,7 @@ target_state_path = NodePath("../../Phase4")
 [node name="Phase4" type="Node" parent="PhaseState" index="3"]
 script = ExtResource("8_y3hb8")
 
-[node name="Castbar" parent="." index="8"]
+[node name="Castbar" parent="." index="7"]
 offset_left = -1.0
 offset_top = -50.0
 offset_right = 39.0
