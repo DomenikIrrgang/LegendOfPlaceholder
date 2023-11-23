@@ -139,8 +139,6 @@ func use_ability(target: Unit, ability: Ability) -> bool:
 
 func _ready() -> void:
 	base_stats = BaseStats.new(unit_data.level)
-	for stat_assignment in unit_data.stats:
-		base_stats.increase_stat(stat_assignment.stat, stat_assignment.value)
 	set_stats(base_stats)
 	stat_calculator = StatCalculator.new(self)
 	resources.resize(ResourceType.Enum.size())
@@ -196,7 +194,7 @@ func set_level(_level: int) -> void:
 			unit_data.level = 1
 		else:
 			unit_data.level = max_level
-	set_stats(stats.subtract_stat_set(base_stats).add_stat_set(BaseStats.new(unit_data.level)))
+	set_stats(BaseStats.new(unit_data.level))
 	base_stats = BaseStats.new(unit_data.level)
 	level_changed.emit(unit_data.level)
 	
@@ -204,6 +202,8 @@ func set_stats(_stat_set: StatSet) -> void:
 	if stats:
 		stats.stat_changed.disconnect(on_stat_changed)
 	stats = _stat_set
+	for stat_assignment in unit_data.stats:
+		stats.increase_stat(stat_assignment.stat, stat_assignment.value)
 	stats.stat_changed.connect(on_stat_changed)
 	for stat in stats.get_stats():
 		stat_changed.emit(stat, stats.get_stat(stat))

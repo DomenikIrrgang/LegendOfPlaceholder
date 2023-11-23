@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cwlfjeoq2pkvi" path="res://Unit/Unit.tscn" id="1_hw64s"]
 [ext_resource type="Script" path="res://Enemy/HealSlime/HealSlime.gd" id="2_smo5y"]
-[ext_resource type="Resource" uid="uid://vx05brcu0nbc" path="res://Resources/Enemies/HealSlime.tres" id="3_f6lwy"]
+[ext_resource type="Resource" uid="uid://vx05brcu0nbc" path="res://Resources/Enemies/HealSlime.tres" id="3_btpce"]
 [ext_resource type="Script" path="res://State/StateMachine.gd" id="5_7xfdc"]
 [ext_resource type="Script" path="res://Enemy/HealSlime/Phase1.gd" id="6_n2gw4"]
 [ext_resource type="Script" path="res://Enemy/Castbar.gd" id="7_popxm"]
@@ -15,7 +15,7 @@ font = ExtResource("10_17g8x")
 
 [node name="HealSlime" groups=["enemy"] instance=ExtResource("1_hw64s")]
 script = ExtResource("2_smo5y")
-unit_data = ExtResource("3_f6lwy")
+unit_data = ExtResource("3_btpce")
 
 [node name="Model" parent="." index="1"]
 self_modulate = Color(0.0745098, 1, 0.0117647, 1)

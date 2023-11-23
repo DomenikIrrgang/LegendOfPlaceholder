@@ -45,10 +45,10 @@ func cast_ability(ability: Ability, source: Unit, target: Unit):
 			if (result.hit_type == HitType.Enum.LANDED || result.hit_type == HitType.Enum.CRITICAL):
 				result.ability_value = calculator.get_ability_value(ability, result.source, result.target)
 				if (result.hit_type == HitType.Enum.CRITICAL):
-					result.resist_amount = calculator.get_resist_amount(ability, result.source, result.target, result.value)		
+					result.resist_amount = calculator.get_resist_amount(ability, result.source, result.target)
 					result.value = round(calculator.get_critical_amount(ability, result.source, result.target, result.ability_value)) - result.resist_amount
 				else:
-					result.resist_amount = calculator.get_resist_amount(ability, result.source, result.target, result.value)			
+					result.resist_amount = calculator.get_resist_amount(ability, result.source, result.target)
 					result.value = round(result.ability_value - result.resist_amount)
 				increase_resource(result.target, ResourceType.Enum.HEALTH, -result.value)
 				ability.execute(result.source, result.target)

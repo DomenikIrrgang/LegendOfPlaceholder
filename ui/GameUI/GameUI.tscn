@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=82 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://cx6x6hhc36fm" path="res://assets/ui/bottom_hud/system_button.png" id="20_wubgf"]
 [ext_resource type="Texture2D" uid="uid://dq3ttuilmw23e" path="res://assets/ui/bottom_hud/inventory_icon.png" id="21_o5flv"]
 [ext_resource type="Texture2D" uid="uid://clb1qxxlcylap" path="res://assets/ui/bossframe/bossframe.png" id="21_oeymq"]
+[ext_resource type="Texture2D" uid="uid://ciej84v5wck6p" path="res://assets/ui/bottom_hud/character_icon.png" id="21_oki4j"]
 [ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://assets/ui/buttons/b_button.png" id="22_o1px3"]
 [ext_resource type="Script" path="res://ui/GameUI/Keybind.gd" id="22_ruylf"]
 [ext_resource type="Texture2D" uid="uid://bfrrwosmxoqna" path="res://assets/ui/bossframe/health_bar_under.png" id="22_xauq8"]
@@ -43,6 +44,7 @@
 [ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="30_ao71d"]
 [ext_resource type="Script" path="res://ui/GameUI/DragAndDrop.gd" id="31_sah85"]
 [ext_resource type="PackedScene" uid="uid://cuivp4jpcyy1j" path="res://ui/GameUI/AbilityTooltipComponent.tscn" id="38_0qeqe"]
+[ext_resource type="PackedScene" uid="uid://8mvr4arokyd0" path="res://ui/GameUI/CharacterSheet/CharacterSheet.tscn" id="44_lu4nk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
 font = ExtResource("3_60v0h")
@@ -236,8 +238,7 @@ default_font = ExtResource("3_60v0h")
 script/source = "extends Button
 
 func _on_pressed():
-	#Globals.get_player().level_up()
-	print(getallnodes([], Globals.get_scene_tree().get_first_node_in_group(\"base_scene\")).size())
+	Globals.get_player().level_up()
 
 func getallnodes(nodes, node):
 	nodes.append(node)
@@ -463,6 +464,29 @@ offset_right = 253.0
 offset_bottom = 42.0
 alignment = 2
 
+[node name="CharacterSheetButton" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("20_wubgf")
+
+[node name="Icon" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer/CharacterSheetButton"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 24.0
+offset_bottom = 39.0
+texture = ExtResource("21_oki4j")
+
+[node name="KeybindDisplay" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer/CharacterSheetButton"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 34.0
+offset_right = 35.0
+offset_bottom = 66.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("22_o1px3")
+script = ExtResource("22_ruylf")
+action_name = "Toggle_CharacterSheet"
+
 [node name="InventoryButton" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("20_wubgf")
@@ -671,8 +695,9 @@ script = ExtResource("27_hnvam")
 
 [node name="CenterContainer" type="CenterContainer" parent="ErrorMessages"]
 layout_mode = 0
+offset_left = 1.0
 offset_top = 120.0
-offset_right = 1920.0
+offset_right = 1921.0
 offset_bottom = 432.0
 
 [node name="Container" type="VBoxContainer" parent="ErrorMessages/CenterContainer"]
@@ -718,6 +743,14 @@ layout_mode = 2
 text = "Spellname
 "
 label_settings = SubResource("LabelSettings_vmsgq")
+
+[node name="CharacterSheet" parent="." instance=ExtResource("44_lu4nk")]
+visible = false
+layout_mode = 0
+offset_left = 211.0
+offset_top = 349.0
+offset_right = 696.0
+offset_bottom = 749.0
 
 [node name="Inventory" parent="." instance=ExtResource("30_6me52")]
 visible = false

@@ -62,7 +62,7 @@ enum Enum {
 	# Increases the chance for abilities to critically strike.
 	CRIT,
 
-	# Effects different abilities and resources. Also determines who attacks first.
+	# Effects different abilities and resources and movementspeed.
 	HASTE,
 
 	# Enhances the effect of the mastery crystal.

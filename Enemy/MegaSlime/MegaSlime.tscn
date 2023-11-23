@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bhfcp6laa8rvu" path="res://Enemy/Enemy.tscn" id="1_delku"]
 [ext_resource type="Script" path="res://Enemy/MegaSlime/MegaSlime.gd" id="2_35ve5"]
-[ext_resource type="Resource" uid="uid://dp7afxuihduss" path="res://Resources/Enemies/MegaSlime.tres" id="3_gasfo"]
+[ext_resource type="Resource" uid="uid://dp7afxuihduss" path="res://Resources/Enemies/MegaSlime.tres" id="3_uytnx"]
 [ext_resource type="Script" path="res://Enemy/MegaSlime/Phase1.gd" id="4_8dkfp"]
 [ext_resource type="Script" path="res://State/StateTransition.gd" id="5_4ygdc"]
 [ext_resource type="Script" path="res://Enemy/MegaSlime/Phase2.gd" id="6_d1bov"]
@@ -59,7 +59,7 @@ position = Vector2(0, -15)
 motion_mode = 1
 safe_margin = 0.01
 script = ExtResource("2_35ve5")
-unit_data = ExtResource("3_gasfo")
+unit_data = ExtResource("3_uytnx")
 
 [node name="Collision" parent="." index="0"]
 position = Vector2(0, 2)

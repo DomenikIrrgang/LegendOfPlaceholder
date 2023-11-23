@@ -8,6 +8,7 @@ var keybinds = {
 	"Ability_Three": use_ability(load("res://Combat/abilities/TimeStop.tscn").instantiate()),
 	"Ability_Four": use_ability(load("res://Combat/abilities/Kick.tscn").instantiate()),
 	"Toggle_Inventory": use_function(toggle_inventory),
+	"Toggle_CharacterSheet": use_function(toggle_character_sheet),
 	"Use_Consumeable": use_function(use_consumeable.bind(load("res://Resources/Items/HealingPotions/HealingPotion.tres")))
 }
 
@@ -44,6 +45,9 @@ func use_consumeable(item: Item) -> void:
 	
 func toggle_inventory() -> void:
 	Globals.get_game_user_inteface().get_node("Inventory").toggle()
+
+func toggle_character_sheet() -> void:
+	Globals.get_game_user_inteface().get_node("CharacterSheet").toggle()
 	
 func get_ability_for_keybind(action_name: String) -> Ability:
 	if keybinds.has(action_name) and keybinds[action_name].type == "Ability":

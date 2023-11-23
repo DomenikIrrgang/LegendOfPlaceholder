@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctx430i2egq4y"]
 
 [ext_resource type="Script" path="res://Combat/abilities/Mend.gd" id="1_222xb"]
-[ext_resource type="Texture2D" uid="uid://b3h0jmhqd1lk" path="res://Assets/ui/bottom_hud/mend_icon.png" id="2_t2kiw"]
+[ext_resource type="Texture2D" uid="uid://b3h0jmhqd1lk" path="res://assets/ui/bottom_hud/mend_icon.png" id="2_t2kiw"]
 
 [node name="Mend" type="Node2D"]
 script = ExtResource("1_222xb")

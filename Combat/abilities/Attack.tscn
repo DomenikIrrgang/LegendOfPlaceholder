@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ll7pxsueavbo"]
 
 [ext_resource type="Script" path="res://Combat/abilities/Attack.gd" id="1_uwywo"]
-[ext_resource type="Texture2D" uid="uid://jtgn2ueksl56" path="res://Assets/ui/bottom_hud/attack_icon.png" id="2_g7utn"]
+[ext_resource type="Texture2D" uid="uid://jtgn2ueksl56" path="res://assets/ui/bottom_hud/attack_icon.png" id="2_g7utn"]
 
 [node name="Attack" type="Node2D"]
 script = ExtResource("1_uwywo")

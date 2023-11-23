@@ -1,0 +1,636 @@
+[gd_scene load_steps=13 format=3 uid="uid://8mvr4arokyd0"]
+
+[ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="1_05wvr"]
+[ext_resource type="Script" path="res://ui/GameUI/CharacterSheet/CharacterSheet.gd" id="1_8a2in"]
+[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="2_gcp81"]
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="3_obt24"]
+[ext_resource type="Texture2D" uid="uid://02xo8rphiwgt" path="res://assets/textures/player.png" id="5_x3smo"]
+[ext_resource type="Theme" uid="uid://di064gebaua1n" path="res://ui/Themes/MainTheme.tres" id="6_osdoc"]
+[ext_resource type="PackedScene" uid="uid://dxkiafnk5madp" path="res://ui/GameUI/CharacterSheet/StatDisplay.tscn" id="7_1hgty"]
+[ext_resource type="PackedScene" uid="uid://b6lffnsfeswu4" path="res://ui/GameUI/CharacterSheet/SpelllpowerStatDisplay.tscn" id="8_n8nyj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ybof3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvelj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wrs5d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cwpi"]
+atlas = ExtResource("5_x3smo")
+region = Rect2(0, 0, 16, 16)
+
+[node name="CharacterSheet" type="PanelContainer"]
+offset_right = 672.0
+offset_bottom = 397.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ybof3")
+script = ExtResource("1_8a2in")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_05wvr")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TitleBar" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dvelj")
+
+[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/TitleBar"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TitleBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/TitleBar/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/TitleBar/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Character"
+label_settings = ExtResource("3_obt24")
+
+[node name="Content" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wrs5d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterDescription" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/CenterContainer"]
+layout_mode = 2
+label_settings = ExtResource("3_obt24")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="Gear" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+stretch_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+stretch_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+stretch_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+stretch_mode = 2
+
+[node name="TextureRect7" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+stretch_mode = 2
+
+[node name="TextureRect8" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+stretch_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/CenterContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = SubResource("AtlasTexture_4cwpi")
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+stretch_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+stretch_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+stretch_mode = 2
+
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+stretch_mode = 2
+
+[node name="TextureRect7" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+stretch_mode = 2
+
+[node name="TextureRect8" type="TextureRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+stretch_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("6_osdoc")
+horizontal_scroll_mode = 0
+
+[node name="Stats" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats"]
+layout_mode = 2
+theme_override_constants/margin_right = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer"]
+layout_mode = 2
+
+[node name="BaseStats" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/BaseStats"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dvelj")
+
+[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/BaseStats/Title"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/BaseStats/Title"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/BaseStats/Title/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/BaseStats/Title/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Base Stats"
+label_settings = ExtResource("3_obt24")
+
+[node name="StatContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/BaseStats"]
+layout_mode = 2
+
+[node name="Stamina" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/BaseStats/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 2
+
+[node name="Intellect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/BaseStats/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 1
+
+[node name="Agility" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/BaseStats/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+
+[node name="Mastery" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/BaseStats/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 35
+
+[node name="Defensive" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dvelj")
+
+[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/Title"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/Title"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/Title/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/Title/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Defensive"
+label_settings = ExtResource("3_obt24")
+
+[node name="StatContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive"]
+layout_mode = 2
+
+[node name="Defense" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 32
+
+[node name="Dodge" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 27
+
+[node name="Parry" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 28
+
+[node name="Avoidance" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 29
+
+[node name="Offensive" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dvelj")
+
+[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/Title"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/Title"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/Title/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/Title/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Offensive"
+label_settings = ExtResource("3_obt24")
+
+[node name="StatContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive"]
+layout_mode = 2
+
+[node name="Crit" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 33
+
+[node name="CriticalEffect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 36
+
+[node name="Hit" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 30
+
+[node name="Expertise" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 31
+
+[node name="Haste" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 34
+
+[node name="Resistances" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dvelj")
+
+[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances/Title"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances/Title"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances/Title/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances/Title/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Resistances"
+label_settings = ExtResource("3_obt24")
+
+[node name="StatContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances"]
+layout_mode = 2
+
+[node name="Armor" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 16
+
+[node name="FireResistance" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 17
+
+[node name="FrostResistance" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 18
+
+[node name="WindResistance" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 19
+
+[node name="EarthResistance" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 20
+
+[node name="LightResistance" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 21
+
+[node name="ShadowResistance" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 22
+
+[node name="NatureResistance" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 23
+
+[node name="WaterResistance" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 24
+
+[node name="ThunderResistance" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 25
+
+[node name="GravityResistance" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resistances/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 26
+
+[node name="AbilityPower" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dvelj")
+
+[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower/Title"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower/Title"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower/Title/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower/Title/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Ability Power
+"
+label_settings = ExtResource("3_obt24")
+
+[node name="StatContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower"]
+layout_mode = 2
+
+[node name="AttackPower" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower/StatContainer" instance=ExtResource("8_n8nyj")]
+layout_mode = 2
+stat = 4
+
+[node name="Spellpower" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower/StatContainer" instance=ExtResource("8_n8nyj")]
+layout_mode = 2
+stat = 5
+
+[node name="FireSpellpower" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower/StatContainer" instance=ExtResource("8_n8nyj")]
+layout_mode = 2
+stat = 6
+
+[node name="FrostSpellpower" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower/StatContainer" instance=ExtResource("8_n8nyj")]
+layout_mode = 2
+stat = 7
+
+[node name="WindSpellpower" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower/StatContainer" instance=ExtResource("8_n8nyj")]
+layout_mode = 2
+stat = 8
+
+[node name="EarthSpellpower" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower/StatContainer" instance=ExtResource("8_n8nyj")]
+layout_mode = 2
+stat = 9
+
+[node name="LightSpellpower" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower/StatContainer" instance=ExtResource("8_n8nyj")]
+layout_mode = 2
+stat = 10
+
+[node name="ShadowSpellpower" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower/StatContainer" instance=ExtResource("8_n8nyj")]
+layout_mode = 2
+stat = 11
+
+[node name="Naturespellpower" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower/StatContainer" instance=ExtResource("8_n8nyj")]
+layout_mode = 2
+stat = 12
+
+[node name="WaterSpellpower" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower/StatContainer" instance=ExtResource("8_n8nyj")]
+layout_mode = 2
+stat = 13
+
+[node name="ThunderSpellpower" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower/StatContainer" instance=ExtResource("8_n8nyj")]
+layout_mode = 2
+stat = 14
+
+[node name="GravitySpellpower" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/AbilityPower/StatContainer" instance=ExtResource("8_n8nyj")]
+layout_mode = 2
+stat = 15
+
+[node name="Resources" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dvelj")
+
+[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/Title"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/Title"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/Title/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/Title/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Resources"
+label_settings = ExtResource("3_obt24")
+
+[node name="StatContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources"]
+layout_mode = 2
+
+[node name="Health" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 3
+
+[node name="Mana" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 39
+
+[node name="Rage" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 37
+
+[node name="Energy" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 38
+
+[node name="ResourceCostHealth" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 42
+
+[node name="ResourceCostMana" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 41
+
+[node name="ResourceCostRage" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 43
+
+[node name="ResourceCostEnergy" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 44
+
+[node name="Misc" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dvelj")
+
+[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/Title"]
+layout_mode = 2
+texture = ExtResource("2_gcp81")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/Title"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/Title/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/Title/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Resources"
+label_settings = ExtResource("3_obt24")
+
+[node name="StatContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc"]
+layout_mode = 2
+
+[node name="DamageDone" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 45
+
+[node name="DamaeTaken" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 46
+
+[node name="HealingDone" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 47
+
+[node name="HealingTaken" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 48
+
+[node name="Movementspeed" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/StatContainer" instance=ExtResource("7_1hgty")]
+layout_mode = 2
+stat = 50

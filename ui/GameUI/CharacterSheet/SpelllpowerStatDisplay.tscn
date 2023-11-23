@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6lffnsfeswu4"]
+
+[ext_resource type="Script" path="res://ui/GameUI/CharacterSheet/SpelllpowerStatDisplay.gd" id="1_lqb36"]
+
+[node name="SpellpowerDisplay" type="HBoxContainer"]
+theme_override_constants/separation = 100
+script = ExtResource("1_lqb36")
+
+[node name="StatName" type="Label" parent="."]
+layout_mode = 2
+text = "Attackpower"
+
+[node name="StatValue" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 2

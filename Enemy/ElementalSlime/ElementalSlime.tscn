@@ -1,8 +1,8 @@
 [gd_scene load_steps=25 format=3 uid="uid://ctkdmqm6hhk4a"]
 
 [ext_resource type="Script" path="res://Enemy/ElementalSlime/ElementalSlime.gd" id="1_oom8b"]
+[ext_resource type="Resource" uid="uid://byv5j8k8233hb" path="res://Resources/Enemies/ElementalSlime.tres" id="2_oaale"]
 [ext_resource type="Script" path="res://Unit/HurtBox.gd" id="2_omtut"]
-[ext_resource type="Resource" uid="uid://byv5j8k8233hb" path="res://Resources/Enemies/ElementalSlime.tres" id="2_p1ang"]
 [ext_resource type="Script" path="res://Unit/HitBox.gd" id="3_o1oal"]
 [ext_resource type="Script" path="res://Unit/OcclusionDetection.gd" id="4_mln6f"]
 [ext_resource type="Animation" uid="uid://clhe6l4ubufhk" path="res://Unit/Animations/Down.res" id="5_mxulj"]
@@ -47,7 +47,7 @@ _data = {
 [node name="ElementalSlime" type="CharacterBody2D" groups=["boss", "enemy", "unit"]]
 position = Vector2(0, -12)
 script = ExtResource("1_oom8b")
-unit_data = ExtResource("2_p1ang")
+unit_data = ExtResource("2_oaale")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 z_index = 1

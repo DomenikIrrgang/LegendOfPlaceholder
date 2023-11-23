@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bhfcp6laa8rvu" path="res://Enemy/Enemy.tscn" id="1_op8x6"]
 [ext_resource type="Script" path="res://Enemy/Slime/Slime.gd" id="2_p4or3"]
-[ext_resource type="Resource" uid="uid://djsprq100uefx" path="res://Resources/Enemies/Slime.tres" id="3_hqlwp"]
+[ext_resource type="Resource" uid="uid://djsprq100uefx" path="res://Resources/Enemies/Slime.tres" id="3_lrlya"]
 [ext_resource type="Script" path="res://Enemy/Slime/Phase1.gd" id="4_jcexq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ffdo"]
@@ -14,7 +14,7 @@ size = Vector2(13.5, 8)
 [node name="Slime" instance=ExtResource("1_op8x6")]
 safe_margin = 0.01
 script = ExtResource("2_p4or3")
-unit_data = ExtResource("3_hqlwp")
+unit_data = ExtResource("3_lrlya")
 
 [node name="Collision" parent="." index="0"]
 z_index = 1000
