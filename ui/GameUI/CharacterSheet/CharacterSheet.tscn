@@ -242,17 +242,22 @@ layout_mode = 2
 [node name="Stamina" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/BaseStats/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 2
+text = "Increases the resistance to all spell schools by 1
+and increases health by 10."
 
 [node name="Intellect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/BaseStats/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 1
+text = "Increases spellpower, mana, hit and crit chance."
 
 [node name="Agility" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/BaseStats/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
+text = "Increases attackpower, dodge, critical effect, haste."
 
 [node name="Mastery" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/BaseStats/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 35
+text = "Enhances the effect of the mastery crystal."
 
 [node name="Defensive" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -290,10 +295,14 @@ layout_mode = 2
 [node name="Defense" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 32
+text = "Reduces the chance for abilities to crit on you
+and increases your dodge and parry."
 
 [node name="Dodge" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 27
+text = "Increases the chance to dodge an ability. Not all
+abilities can be dodged."
 
 [node name="DodgeChance" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/StatContainer"]
 layout_mode = 2
@@ -312,6 +321,8 @@ horizontal_alignment = 2
 [node name="Parry" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 28
+text = "ncreases the chance to parry an physical ability.
+If an attack has been parried, a counter attack is executed."
 
 [node name="ParryChance" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/StatContainer"]
 layout_mode = 2
@@ -330,6 +341,7 @@ horizontal_alignment = 2
 [node name="Miss" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 29
+text = "Increases the chance for an ability missing on you."
 
 [node name="MissChance" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/StatContainer"]
 layout_mode = 2
@@ -381,6 +393,7 @@ layout_mode = 2
 [node name="Crit" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 33
+text = "Increases the chance for abilities to critically strike."
 
 [node name="CritChance" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/StatContainer"]
 layout_mode = 2
@@ -399,6 +412,7 @@ horizontal_alignment = 2
 [node name="CriticalEffect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 36
+text = "Increases the effect of critical strikes."
 
 [node name="CriticalEffectMultiplier" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/StatContainer"]
 layout_mode = 2
@@ -417,6 +431,7 @@ horizontal_alignment = 2
 [node name="Hit" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 30
+text = "Increases the chance to not miss with abilities."
 
 [node name="HitChance" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/StatContainer"]
 layout_mode = 2
@@ -435,6 +450,7 @@ horizontal_alignment = 2
 [node name="Expertise" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 31
+text = "Reduces the chance that abilities are dodged or parried."
 
 [node name="ExpertiseChance" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/StatContainer"]
 layout_mode = 2
@@ -453,6 +469,8 @@ horizontal_alignment = 2
 [node name="Haste" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Offensive/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 34
+text = "Effects different abilities and resources and
+movementspeed."
 
 [node name="Resistances" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -649,34 +667,42 @@ layout_mode = 2
 [node name="Health" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 3
+text = "Increases your health resources maximum amount."
 
 [node name="Mana" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 39
+text = "Increases your maximum mana."
 
 [node name="Rage" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 37
+text = "Increases your maximum rage."
 
 [node name="Energy" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 38
+text = "Increaes your maximum energy."
 
 [node name="ResourceCostHealth" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 42
+text = "Reduces the health cost of all abilities."
 
 [node name="ResourceCostMana" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 41
+text = "Reduces the mana cost of all abilities."
 
 [node name="ResourceCostRage" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 43
+text = "Reduces the rage cost of all abilities."
 
 [node name="ResourceCostEnergy" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Resources/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 44
+text = "Reduces the energy cost of all abilities."
 
 [node name="Misc" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -714,19 +740,33 @@ layout_mode = 2
 [node name="DamageDone" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 45
+text = "Increaes your damage done."
 
 [node name="DamaeTaken" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 46
+text = "Increases your damage taken."
 
 [node name="HealingDone" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 47
+text = "Increases your healing done."
 
 [node name="HealingTaken" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 48
+text = "Increases your healing taken."
 
-[node name="Movementspeed" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/StatContainer" instance=ExtResource("7_1hgty")]
+[node name="MovementSpeed" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/StatContainer"]
 layout_mode = 2
-stat = 50
+script = ExtResource("14_og5pm")
+
+[node name="StatName" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/StatContainer/MovementSpeed"]
+layout_mode = 2
+text = "Movement Speed"
+
+[node name="StatValue" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/StatContainer/MovementSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "50.43%"
+horizontal_alignment = 2

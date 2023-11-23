@@ -27,6 +27,9 @@ visible = true
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_1crxu")
 
+[node name="CollisionShape2D" parent="HitBox2D" index="0"]
+position = Vector2(0, 5)
+
 [node name="OcclusionCollision" parent="UnitOcclusion" index="0"]
 position = Vector2(0, 5)
 

@@ -12,6 +12,9 @@ var stat_name: Label = $StatName
 @onready
 var stat_value: Label = $StatValue
 
+@export_multiline
+var text: String = ""
+
 func _ready():
 	set_stat_name()
 	set_stat_value()

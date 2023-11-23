@@ -3,7 +3,7 @@ enum Enum {
 	# Increases attackpower, dodge, critical effect, haste.
 	AGILITY,
 
-	# Increases spellpower, mana, hit and crit by 1.
+	# Increases spellpower, mana, hit and crit chance.
 	INTELLECT,
 
 	# Increases the resistance to all spell schools by 1 and increases health by 10.
@@ -41,10 +41,10 @@ enum Enum {
 	THUNDER_RESISTANCE,
 	GRAVITY_RESISTANCE,
 
-	# Increases the chance to dodge an ability. Some abilities can not be dodged tho.
+	# Increases the chance to dodge an ability. Not all abilities can be dodged.
 	DODGE,
 
-	# Increases the chance to parry an attack (physical). If an attack has been parried, a counter attack is executed.
+	# Increases the chance to parry an physical ability. If an attack has been parried, a counter attack is executed.
 	PARRY,
 
 	# Increases the chance for an ability missing on you.

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxkiafnk5madp"]
+[gd_scene load_steps=3 format=3 uid="uid://dxkiafnk5madp"]
 
 [ext_resource type="Script" path="res://ui/GameUI/CharacterSheet/StatDisplay.gd" id="1_0ycjj"]
+[ext_resource type="PackedScene" uid="uid://puhfjg08kws7" path="res://ui/GameUI/Tooltip/TextTooltipComponent.tscn" id="2_eqe1s"]
 
 [node name="StatDisplay" type="HBoxContainer"]
 theme_override_constants/separation = 100
@@ -9,6 +10,16 @@ script = ExtResource("1_0ycjj")
 [node name="StatName" type="Label" parent="."]
 layout_mode = 2
 text = "Stamina"
+
+[node name="TextTooltipCompnent" parent="StatName" node_paths=PackedStringArray("text_node") instance=ExtResource("2_eqe1s")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 274.0
+offset_right = 274.0
+offset_bottom = 26.0
+text_node = NodePath("../..")
 
 [node name="StatValue" type="Label" parent="."]
 layout_mode = 2
