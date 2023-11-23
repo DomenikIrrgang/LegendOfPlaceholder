@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlayerData" load_steps=6 format=3 uid="uid://31rg15sio2vh"]
+[gd_resource type="Resource" script_class="PlayerData" load_steps=24 format=3 uid="uid://31rg15sio2vh"]
 
 [ext_resource type="Texture2D" uid="uid://dtxw35wty86v8" path="res://assets/ui/dialog/player_dialog.png" id="1_m2r5j"]
 [ext_resource type="Script" path="res://Resources/Player/PlayerData.gd" id="1_r31r4"]
@@ -8,6 +8,96 @@
 [sub_resource type="Resource" id="Resource_y3i7k"]
 script = ExtResource("3_k6y1l")
 stat = 39
+value = 100
+
+[sub_resource type="Resource" id="Resource_p812v"]
+script = ExtResource("3_k6y1l")
+stat = 13
+value = 1
+
+[sub_resource type="Resource" id="Resource_w6n5f"]
+script = ExtResource("3_k6y1l")
+stat = 5
+value = 5
+
+[sub_resource type="Resource" id="Resource_pr318"]
+script = ExtResource("3_k6y1l")
+stat = 10
+value = 15
+
+[sub_resource type="Resource" id="Resource_6cid1"]
+script = ExtResource("3_k6y1l")
+stat = 1
+value = 500
+
+[sub_resource type="Resource" id="Resource_d4sg3"]
+script = ExtResource("3_k6y1l")
+stat = 2
+value = 10
+
+[sub_resource type="Resource" id="Resource_ku8c4"]
+script = ExtResource("3_k6y1l")
+stat = 16
+value = 20
+
+[sub_resource type="Resource" id="Resource_ev4x1"]
+script = ExtResource("3_k6y1l")
+stat = 17
+value = 100
+
+[sub_resource type="Resource" id="Resource_h3tlb"]
+script = ExtResource("3_k6y1l")
+stat = 21
+value = 400
+
+[sub_resource type="Resource" id="Resource_3jvii"]
+script = ExtResource("3_k6y1l")
+stat = 27
+value = 500
+
+[sub_resource type="Resource" id="Resource_axuse"]
+script = ExtResource("3_k6y1l")
+stat = 28
+value = 500
+
+[sub_resource type="Resource" id="Resource_me2dn"]
+script = ExtResource("3_k6y1l")
+stat = 29
+value = 500
+
+[sub_resource type="Resource" id="Resource_72l7p"]
+script = ExtResource("3_k6y1l")
+stat = 32
+value = 500
+
+[sub_resource type="Resource" id="Resource_ha6bc"]
+script = ExtResource("3_k6y1l")
+stat = 31
+value = 200
+
+[sub_resource type="Resource" id="Resource_r1y17"]
+script = ExtResource("3_k6y1l")
+stat = 34
+value = 500
+
+[sub_resource type="Resource" id="Resource_jji4m"]
+script = ExtResource("3_k6y1l")
+stat = 0
+value = 500
+
+[sub_resource type="Resource" id="Resource_jcwk0"]
+script = ExtResource("3_k6y1l")
+stat = 33
+value = 500
+
+[sub_resource type="Resource" id="Resource_isimb"]
+script = ExtResource("3_k6y1l")
+stat = 36
+value = 500
+
+[sub_resource type="Resource" id="Resource_ocfdr"]
+script = ExtResource("3_k6y1l")
+stat = 30
 value = 100
 
 [resource]
@@ -20,4 +110,4 @@ level = 1
 base_movement_speed = 50.0
 mass = 50.0
 knockbackable = true
-stats = Array[ExtResource("3_k6y1l")]([SubResource("Resource_y3i7k")])
+stats = Array[ExtResource("3_k6y1l")]([SubResource("Resource_y3i7k"), SubResource("Resource_p812v"), SubResource("Resource_w6n5f"), SubResource("Resource_pr318"), SubResource("Resource_6cid1"), SubResource("Resource_d4sg3"), SubResource("Resource_ku8c4"), SubResource("Resource_ev4x1"), SubResource("Resource_h3tlb"), SubResource("Resource_3jvii"), SubResource("Resource_axuse"), SubResource("Resource_me2dn"), SubResource("Resource_72l7p"), SubResource("Resource_ha6bc"), SubResource("Resource_r1y17"), SubResource("Resource_jji4m"), SubResource("Resource_jcwk0"), SubResource("Resource_isimb"), SubResource("Resource_ocfdr")])

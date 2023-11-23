@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=7 format=3 uid="uid://byv5j8k8233hb"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=5 format=3 uid="uid://byv5j8k8233hb"]
 
 [ext_resource type="Script" path="res://Resources/Enemies/EnemyData.gd" id="1_31g8x"]
 [ext_resource type="Texture2D" uid="uid://b6hy484v3a8rc" path="res://assets/ui/dialog/text_icon.png" id="1_w65bp"]
@@ -8,16 +8,6 @@
 script = ExtResource("3_moi3u")
 stat = 3
 value = 1900
-
-[sub_resource type="Resource" id="Resource_hhchy"]
-script = ExtResource("3_moi3u")
-stat = 5
-value = 150
-
-[sub_resource type="Resource" id="Resource_kh7uo"]
-script = ExtResource("3_moi3u")
-stat = 1
-value = 50
 
 [resource]
 script = ExtResource("1_31g8x")
@@ -29,4 +19,4 @@ level = 10
 base_movement_speed = 15.0
 mass = 200.0
 knockbackable = false
-stats = Array[ExtResource("3_moi3u")]([SubResource("Resource_65wj5"), SubResource("Resource_hhchy"), SubResource("Resource_kh7uo")])
+stats = Array[ExtResource("3_moi3u")]([SubResource("Resource_65wj5")])

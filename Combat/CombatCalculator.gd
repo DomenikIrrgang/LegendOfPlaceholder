@@ -16,7 +16,7 @@ func get_resist_amount(ability: Ability, _source: Unit, target: Unit) -> float:
 	
 func get_critical_effect(ability: Ability, source: Unit, _target: Unit) -> float:
 	if ability.can_crit():
-		return 1.5 + ability.get_critical_effect() + (source.stat_calculator.get_critical_effect() / 100.0)
+		return ability.get_critical_effect() + (source.stat_calculator.get_critical_effect())
 	else:
 		return 1.5
 
@@ -25,7 +25,7 @@ func get_ability_cost(ability: Ability, source: Unit, _target: Unit) -> int:
 	
 func ability_missed(ability: Ability, source: Unit, target: Unit) -> bool:
 	if (ability.can_miss()):
-		return random_chance(5.0 + target.stat_calculator.get_miss_chance() + ability.get_miss_chance() - source.stat_calculator.get_hit_chance())
+		return random_chance(target.stat_calculator.get_miss_chance() + ability.get_miss_chance() - source.stat_calculator.get_hit_chance())
 	return false
 	
 func ability_dodged(ability: Ability, source: Unit, target: Unit) -> bool:
@@ -40,7 +40,7 @@ func ability_parried(ability: Ability, source: Unit, target: Unit) -> bool:
 	
 func ability_crit(ability: Ability, source: Unit, target: Unit) -> bool:
 	if (ability.can_crit()):
-		return random_chance(5.0 + source.stat_calculator.get_critical_chance() + ability.get_critical_chance() - target.stat_calculator.get_critical_receive_chance())
+		return random_chance(source.stat_calculator.get_critical_chance() + ability.get_critical_chance() - target.stat_calculator.get_critical_receive_chance())
 	return false
 	
 func ability_reflect(ability: Ability, _source: Unit, target: Unit) -> bool:

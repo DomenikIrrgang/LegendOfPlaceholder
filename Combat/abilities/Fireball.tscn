@@ -14,5 +14,6 @@ scaling_factor = 0.2
 spell_school = 1
 resource_type = 5
 missable = true
+dodgeable = true
 resistable = true
 reflectable = true

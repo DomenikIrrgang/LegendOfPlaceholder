@@ -26,4 +26,4 @@ func on_stat_changed(_stat: Stat.Enum, _value: int) -> void:
 			update_stat_value(Globals.get_player().stat_calculator.get_spell_power(SpellSchool.Enum.FIRE) - Globals.get_player().stats.get_stat(SpellSchool.SPELLPOWER[SpellSchool.Enum.FIRE]))
 		else:
 			if _stat == Stat.Enum.SPELL_POWER or stat == _stat or _stat == Stat.Enum.INTELLECT:
-				update_stat_value(Globals.get_player().stat_calculator.get_spell_power(SpellSchool.Enum.FIRE))
+				update_stat_value(Globals.get_player().stat_calculator.get_spell_power(SpellSchool.get_spell_power_for_stat(stat)))

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs6nxsrq2m5l7"]
+
+[ext_resource type="Script" path="res://ui/GameUI/CharacterSheet/SpellResistanceDisplay.gd" id="1_2rm1s"]
+
+[node name="SpellResistanceDisplay" type="HBoxContainer"]
+script = ExtResource("1_2rm1s")
+
+[node name="StatName" type="Label" parent="."]
+layout_mode = 2
+text = "Attackpower"
+
+[node name="StatValue" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 2

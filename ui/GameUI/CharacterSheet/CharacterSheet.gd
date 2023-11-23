@@ -63,5 +63,5 @@ func update_stat(stat: Stat.Enum) -> void:
 func on_level_changed(_level: int) -> void:
 	update_character_description()
 	
-func on_stat_changed(stat: Stat.Enum, new_value: int) -> void:
+func on_stat_changed(stat: Stat.Enum, _new_value: int) -> void:
 	update_stat(stat)

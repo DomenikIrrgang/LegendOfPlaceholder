@@ -48,7 +48,7 @@ enum Enum {
 	PARRY,
 
 	# Increases the chance for an ability missing on you.
-	AVOIDANCE,
+	MISS,
 
 	# Increases the chance to not miss with abilities.
 	HIT,

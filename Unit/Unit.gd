@@ -212,7 +212,7 @@ func on_stat_changed(stat: int, new_value: int) -> void:
 	stat_changed.emit(stat, new_value)
 
 func get_movement_speed() -> float:
-	return stats.get_stat(Stat.Enum.MOVEMENT_SPEED) + get_base_movement_speed()
+	return stat_calculator.get_movement_speed() + get_base_movement_speed()
 	
 func update_direction() -> void:
 	var original_direction = direction

@@ -14,5 +14,6 @@ value = -40
 scaling_factor = -0.1
 spell_school = 5
 resource_cost = 30
+resistable = true
 icon = ExtResource("2_t2kiw")
 max_charges = 2

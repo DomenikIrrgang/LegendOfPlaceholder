@@ -13,7 +13,7 @@ enum Enum {
 	GRAVITY
 }
 
-const STAT = {
+const SPELLPOWER_STAT = {
 	Stat.Enum.ATTACK_POWER: Enum.PHYSICAL,
 	Stat.Enum.FIRE_SPELL_POWER: Enum.FIRE,
 	Stat.Enum.FROST_SPELL_POWER: Enum.FROST,
@@ -25,6 +25,20 @@ const STAT = {
 	Stat.Enum.WATER_SPELL_POWER: Enum.WATER,
 	Stat.Enum.THUNDER_SPELL_POWER: Enum.THUNDER,
 	Stat.Enum.GRAVITY_SPELL_POWER: Enum.GRAVITY,
+}
+
+const SPELL_RESISTANCE_STAT = {
+	Stat.Enum.ARMOR: Enum.PHYSICAL,
+	Stat.Enum.FIRE_RESISTANCE: Enum.FIRE,
+	Stat.Enum.FROST_RESISTANCE: Enum.FROST,
+	Stat.Enum.WIND_RESISTANCE: Enum.WIND,
+	Stat.Enum.EARTH_RESISTANCE: Enum.EARTH,
+	Stat.Enum.LIGHT_RESISTANCE: Enum.LIGHT,
+	Stat.Enum.SHADOW_RESISTANCE: Enum.SHADOW,
+	Stat.Enum.NATURE_RESISTANCE: Enum.NATURE,
+	Stat.Enum.WATER_RESISTANCE: Enum.WATER,
+	Stat.Enum.THUNDER_RESISTANCE: Enum.THUNDER,
+	Stat.Enum.GRAVITY_RESISTANCE: Enum.GRAVITY,
 }
 
 const RESISTANCE = {
@@ -54,3 +68,9 @@ const SPELLPOWER = {
 	Enum.THUNDER: Stat.Enum.THUNDER_SPELL_POWER,
 	Enum.GRAVITY: Stat.Enum.GRAVITY_SPELL_POWER,
 }
+
+static func get_spell_power_for_stat(stat: Stat.Enum) -> SpellSchool.Enum:
+	return SPELLPOWER_STAT[stat]
+	
+static func get_spell_resistance_for_stat(stat: Stat.Enum) -> SpellSchool.Enum:
+	return SPELL_RESISTANCE_STAT[stat]
