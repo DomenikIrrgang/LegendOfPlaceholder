@@ -5,9 +5,9 @@ extends PanelContainer
 var label: Label = $PanelContainer/MarginContainer/Tect
 
 func _process(_delta: float) -> void:
-	if visible:
-		global_position = get_viewport().get_mouse_position()
-		global_position.y -= size.y
+	visible = true
+	global_position = get_viewport().get_mouse_position()
+	global_position.y -= size.y
 
 
 func show_text(text: String) -> void:

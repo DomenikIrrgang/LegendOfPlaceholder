@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://8mvr4arokyd0"]
+[gd_scene load_steps=22 format=3 uid="uid://8mvr4arokyd0"]
 
 [ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="1_05wvr"]
 [ext_resource type="Script" path="res://ui/GameUI/CharacterSheet/CharacterSheet.gd" id="1_8a2in"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://ui/GameUI/CharacterSheet/CriticalEffectMultiplier.gd" id="12_w0fur"]
 [ext_resource type="Script" path="res://ui/GameUI/CharacterSheet/HitChance.gd" id="13_0lpx4"]
 [ext_resource type="Script" path="res://ui/GameUI/CharacterSheet/ExpertiseChance.gd" id="14_og5pm"]
+[ext_resource type="Script" path="res://ui/GameUI/CharacterSheet/MovementSpeed.gd" id="17_bux30"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ybof3"]
 
@@ -321,7 +322,7 @@ horizontal_alignment = 2
 [node name="Parry" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/StatContainer" instance=ExtResource("7_1hgty")]
 layout_mode = 2
 stat = 28
-text = "ncreases the chance to parry an physical ability.
+text = "Increases the chance to parry a physical ability.
 If an attack has been parried, a counter attack is executed."
 
 [node name="ParryChance" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Defensive/StatContainer"]
@@ -759,7 +760,7 @@ text = "Increases your healing taken."
 
 [node name="MovementSpeed" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/StatContainer"]
 layout_mode = 2
-script = ExtResource("14_og5pm")
+script = ExtResource("17_bux30")
 
 [node name="StatName" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/ScrollContainer/Stats/MarginContainer/VBoxContainer/Misc/StatContainer/MovementSpeed"]
 layout_mode = 2

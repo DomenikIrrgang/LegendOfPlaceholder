@@ -1,17 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjn0cgfmtw0o8"]
+[gd_scene load_steps=6 format=3 uid="uid://cjn0cgfmtw0o8"]
 
 [ext_resource type="PackedScene" uid="uid://cwlfjeoq2pkvi" path="res://Unit/Unit.tscn" id="1_hw64s"]
 [ext_resource type="Script" path="res://Enemy/HealSlime/HealSlime.gd" id="2_smo5y"]
 [ext_resource type="Resource" uid="uid://vx05brcu0nbc" path="res://Resources/Enemies/HealSlime.tres" id="3_btpce"]
 [ext_resource type="Script" path="res://State/StateMachine.gd" id="5_7xfdc"]
 [ext_resource type="Script" path="res://Enemy/HealSlime/Phase1.gd" id="6_n2gw4"]
-[ext_resource type="Script" path="res://Enemy/Castbar.gd" id="7_popxm"]
-[ext_resource type="Texture2D" uid="uid://v5uxsaoa2tjb" path="res://assets/ui/bottom_hud/castbar_background.png" id="8_nnv0f"]
-[ext_resource type="Texture2D" uid="uid://dh3uqmhjs1hp5" path="res://assets/ui/bottom_hud/castbar_progress.png" id="9_6f40u"]
-[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="10_17g8x"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ybgkw"]
-font = ExtResource("10_17g8x")
 
 [node name="HealSlime" groups=["enemy"] instance=ExtResource("1_hw64s")]
 script = ExtResource("2_smo5y")
@@ -21,7 +14,7 @@ unit_data = ExtResource("3_btpce")
 self_modulate = Color(0.0745098, 1, 0.0117647, 1)
 
 [node name="HurtBoxShape" parent="HurtBox2D" index="0"]
-position = Vector2(0, 3.5)
+position = Vector2(0, 3)
 
 [node name="PhaseState" type="Node" parent="." index="6"]
 script = ExtResource("5_7xfdc")
@@ -29,40 +22,3 @@ initial_state = NodePath("Phase1")
 
 [node name="Phase1" type="Node" parent="PhaseState" index="0"]
 script = ExtResource("6_n2gw4")
-
-[node name="Castbar" type="Control" parent="." index="7"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.2, 0.2)
-script = ExtResource("7_popxm")
-
-[node name="Background" type="TextureRect" parent="Castbar" index="0"]
-layout_mode = 0
-offset_left = -95.0
-offset_top = -130.0
-offset_right = 97.0
-offset_bottom = -107.0
-texture = ExtResource("8_nnv0f")
-
-[node name="ProgressBar" type="TextureProgressBar" parent="Castbar/Background" index="0"]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 189.0
-offset_bottom = 20.0
-max_value = 3.0
-step = 0.01
-texture_progress = ExtResource("9_6f40u")
-
-[node name="CenterContainer" type="CenterContainer" parent="Castbar/Background" index="1"]
-layout_mode = 0
-offset_top = -15.0
-offset_right = 190.0
-offset_bottom = 40.0
-
-[node name="SpellName" type="Label" parent="Castbar/Background/CenterContainer" index="0"]
-layout_mode = 2
-text = "Spellname"
-label_settings = SubResource("LabelSettings_ybgkw")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=83 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://iseefhpilikl" path="res://assets/ui/bottom_hud/health_progress_texture.png" id="8_ryhw0"]
 [ext_resource type="Script" path="res://ui/GameUI/UnitFramePlayer.gd" id="9_s8mtj"]
 [ext_resource type="Texture2D" uid="uid://v8vt7sd8r3h4" path="res://assets/ui/bottom_hud/resource_progress_texture_under.png" id="10_aygyo"]
+[ext_resource type="PackedScene" uid="uid://puhfjg08kws7" path="res://ui/GameUI/Tooltip/TextTooltipComponent.tscn" id="10_r0ugs"]
 [ext_resource type="Texture2D" uid="uid://c7x7hb1xvylko" path="res://assets/ui/bottom_hud/mana_progress_texture.png" id="11_qalyh"]
 [ext_resource type="Script" path="res://ui/GameUI/ResourceBar.gd" id="12_e5p2y"]
 [ext_resource type="Texture2D" uid="uid://cub6t8pg6hs5y" path="res://assets/ui/bottom_hud/xp_progress_texture_under.png" id="13_ycxug"]
@@ -356,6 +357,14 @@ texture_under = ExtResource("7_sxmiw")
 texture_progress = ExtResource("8_ryhw0")
 script = ExtResource("9_s8mtj")
 
+[node name="TextTooltipCompnent" parent="MainHUD/CenterContainer/Overlay/HealthBar" node_paths=PackedStringArray("text_node") instance=ExtResource("10_r0ugs")]
+layout_mode = 1
+offset_left = -550.0
+offset_top = -985.0
+offset_right = -636.0
+offset_bottom = -1070.0
+text_node = NodePath("..")
+
 [node name="ResourceBar" type="TextureProgressBar" parent="MainHUD/CenterContainer/Overlay"]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_8xx3b")
@@ -370,6 +379,10 @@ texture_under = ExtResource("10_aygyo")
 texture_progress = ExtResource("11_qalyh")
 script = ExtResource("12_e5p2y")
 
+[node name="TextTooltipCompnent" parent="MainHUD/CenterContainer/Overlay/ResourceBar" node_paths=PackedStringArray("text_node") instance=ExtResource("10_r0ugs")]
+layout_mode = 1
+text_node = NodePath("..")
+
 [node name="ExperienceBar" type="TextureProgressBar" parent="MainHUD/CenterContainer/Overlay"]
 show_behind_parent = true
 layout_mode = 0
@@ -381,6 +394,14 @@ value = 100.0
 texture_under = ExtResource("13_ycxug")
 texture_progress = ExtResource("14_h3nkr")
 script = ExtResource("15_ehdar")
+
+[node name="TextTooltipCompnent" parent="MainHUD/CenterContainer/Overlay/ExperienceBar" node_paths=PackedStringArray("text_node") instance=ExtResource("10_r0ugs")]
+layout_mode = 1
+offset_left = -641.0
+offset_top = -1012.0
+offset_right = -1279.0
+offset_bottom = -1018.0
+text_node = NodePath("..")
 
 [node name="DashBar" type="TextureProgressBar" parent="MainHUD/CenterContainer/Overlay"]
 show_behind_parent = true
@@ -395,6 +416,10 @@ fill_mode = 3
 texture_under = ExtResource("16_74nbd")
 texture_progress = ExtResource("17_teodj")
 script = ExtResource("18_wi2pl")
+
+[node name="TextTooltipCompnent" parent="MainHUD/CenterContainer/Overlay/DashBar" node_paths=PackedStringArray("text_node") instance=ExtResource("10_r0ugs")]
+layout_mode = 1
+text_node = NodePath("..")
 
 [node name="AbilitySlots" type="Control" parent="MainHUD/CenterContainer/Overlay"]
 anchors_preset = 0
