@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=86 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -46,6 +46,7 @@
 [ext_resource type="Script" path="res://ui/GameUI/DragAndDrop.gd" id="31_sah85"]
 [ext_resource type="PackedScene" uid="uid://cuivp4jpcyy1j" path="res://ui/GameUI/AbilityTooltipComponent.tscn" id="38_0qeqe"]
 [ext_resource type="PackedScene" uid="uid://8mvr4arokyd0" path="res://ui/GameUI/CharacterSheet/CharacterSheet.tscn" id="44_lu4nk"]
+[ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="47_1kutm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
 font = ExtResource("3_60v0h")
@@ -272,6 +273,7 @@ script/source = "extends Button
 var lesser_healing_potion: Item = preload(\"res://Resources/Items/HealingPotions/LesserHealingPotion.tres\")
 var healing_potion: Item = preload(\"res://Resources/Items/HealingPotions/HealingPotion.tres\")
 var lesser_mana_potion: Item = preload(\"res://Resources/Items/ManaPotions/LesserManaPotion.tres\")
+var fireball_tome: Item = preload(\"res://Resources/Items/Spelltomes/FireballTome.tres\")
 
 var Drop = preload(\"res://Unit/Drops/Drop.tscn\")
 
@@ -282,7 +284,7 @@ func _on_pressed():
 	Globals.get_world().add_child(drop1)
 	#Globals.get_world().add_child(drop2)
 	#Globals.get_world().add_child(drop3)
-	drop1.set_item(lesser_mana_potion, 3)
+	drop1.set_item(fireball_tome, 1)
 "
 
 [sub_resource type="GDScript" id="GDScript_empgj"]
@@ -295,11 +297,19 @@ func _process(_delta: float) -> void:
 		text = \"No player found.\"
 "
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rd0ia"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4j3gn"]
+
 [node name="GameUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -117.0
+offset_top = -52.0
+offset_right = -117.0
+offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8sgfl")
@@ -850,6 +860,315 @@ script = SubResource("GDScript_3g0do")
 layout_mode = 2
 label_settings = ExtResource("30_ao71d")
 script = SubResource("GDScript_empgj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 319.0
+offset_top = 289.0
+offset_right = 420.0
+offset_bottom = 709.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="TextureRect4" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="TextureRect5" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="TextureRect6" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="TextureRect7" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="TextureRect8" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="TextureRect9" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="TextureRect10" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="TextureRect11" type="TextureRect" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="Window" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rd0ia")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/Window"]
+layout_mode = 2
+mouse_filter = 1
+texture = ExtResource("47_1kutm")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Window"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Window/MarginContainer"]
+layout_mode = 2
+
+[node name="TitleBar" type="PanelContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4j3gn")
+
+[node name="Background" type="NinePatchRect" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/TitleBar"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/TitleBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/TitleBar/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/TitleBar/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Spellbook"
+label_settings = ExtResource("30_ao71d")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="Content" type="HBoxContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="FirstColumn" type="VBoxContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Ability" type="HBoxContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn/Ability"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="Label" type="Label" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn/Ability"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Fireball"
+label_settings = ExtResource("30_ao71d")
+vertical_alignment = 1
+
+[node name="Ability2" type="HBoxContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn/Ability2"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="Label" type="Label" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn/Ability2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Fireball"
+label_settings = ExtResource("30_ao71d")
+vertical_alignment = 1
+
+[node name="Ability3" type="HBoxContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn/Ability3"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="Label" type="Label" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn/Ability3"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Fireball"
+label_settings = ExtResource("30_ao71d")
+vertical_alignment = 1
+
+[node name="Ability4" type="HBoxContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn/Ability4"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="Label" type="Label" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn/Ability4"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Fireball"
+label_settings = ExtResource("30_ao71d")
+vertical_alignment = 1
+
+[node name="Ability5" type="HBoxContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn/Ability5"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="Label" type="Label" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn/Ability5"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Fireball"
+label_settings = ExtResource("30_ao71d")
+vertical_alignment = 1
+
+[node name="Ability6" type="HBoxContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn/Ability6"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="Label" type="Label" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/FirstColumn/Ability6"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Fireball"
+label_settings = ExtResource("30_ao71d")
+vertical_alignment = 1
+
+[node name="SecondColumn" type="VBoxContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Ability" type="HBoxContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn/Ability"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="Label" type="Label" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn/Ability"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Fireball"
+label_settings = ExtResource("30_ao71d")
+vertical_alignment = 1
+
+[node name="Ability2" type="HBoxContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn/Ability2"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="Label" type="Label" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn/Ability2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Fireball"
+label_settings = ExtResource("30_ao71d")
+vertical_alignment = 1
+
+[node name="Ability3" type="HBoxContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn/Ability3"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="Label" type="Label" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn/Ability3"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Fireball"
+label_settings = ExtResource("30_ao71d")
+vertical_alignment = 1
+
+[node name="Ability4" type="HBoxContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn/Ability4"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="Label" type="Label" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn/Ability4"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Fireball"
+label_settings = ExtResource("30_ao71d")
+vertical_alignment = 1
+
+[node name="Ability5" type="HBoxContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn/Ability5"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="Label" type="Label" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn/Ability5"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Fireball"
+label_settings = ExtResource("30_ao71d")
+vertical_alignment = 1
+
+[node name="Ability6" type="HBoxContainer" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn/Ability6"]
+layout_mode = 2
+texture = ExtResource("24_mnwe0")
+
+[node name="Label" type="Label" parent="HBoxContainer/Window/MarginContainer/VBoxContainer/MarginContainer/Content/SecondColumn/Ability6"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Fireball"
+label_settings = ExtResource("30_ao71d")
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_exited"]

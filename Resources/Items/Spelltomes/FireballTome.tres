@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://dy7tmqrhl243o"]
+
+[ext_resource type="Script" path="res://Resources/Items/Item.gd" id="1_03w1c"]
+[ext_resource type="Texture2D" uid="uid://cm6dd5rsq5ve2" path="res://assets/ui/items/fire_spelltome.png" id="1_r1odg"]
+[ext_resource type="Script" path="res://Resources/Items/Spelltomes/SpellTomeEffect.gd" id="2_7yrap"]
+[ext_resource type="PackedScene" uid="uid://mhpsxo2061uh" path="res://Combat/abilities/Fireball.tscn" id="2_im5w2"]
+[ext_resource type="Resource" uid="uid://bbgka06dmjbii" path="res://Resources/Items/Spelltomes/SpelltomeCooldownGroup.tres" id="3_hgfl0"]
+
+[sub_resource type="Resource" id="Resource_mehj2"]
+script = ExtResource("2_7yrap")
+ability = ExtResource("2_im5w2")
+cooldown_group = ExtResource("3_hgfl0")
+
+[resource]
+script = ExtResource("1_03w1c")
+alias = "Spelltome: Fireball"
+useable = true
+use_effect = SubResource("Resource_mehj2")
+use_description = "Teaches you the Fireball Ability."
+limited = false
+limit = 1
+stackable = false
+stack_amount = 1
+description = "You can feel the fire residing within."
+icon = ExtResource("1_r1odg")

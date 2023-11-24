@@ -28,6 +28,7 @@ DialogManager="*res://Global/DialogManager.gd"
 CutsceneManager="*res://Global/CutsceneManager.gd"
 SceneSwitcher="*res://Global/SceneSwitcher.gd"
 CooldownSystem="*res://Global/CooldownSystem.gd"
+Spellbook="*res://Global/Spellbook.gd"
 
 [debug]
 
