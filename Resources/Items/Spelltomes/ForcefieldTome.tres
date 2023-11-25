@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://30rl8s67arsj"]
+
+[ext_resource type="Texture2D" uid="uid://dlms2w36o7fp" path="res://assets/ui/items/gravity_spelltome.png" id="1_b72f4"]
+[ext_resource type="Script" path="res://Resources/Items/Item.gd" id="2_e8nvo"]
+[ext_resource type="PackedScene" uid="uid://rj7rwmclmq36" path="res://Combat/abilities/ForceNova.tscn" id="3_5qt8b"]
+[ext_resource type="Resource" uid="uid://bbgka06dmjbii" path="res://Resources/Items/Spelltomes/SpelltomeCooldownGroup.tres" id="4_1824s"]
+[ext_resource type="Script" path="res://Resources/Items/Spelltomes/SpellTomeEffect.gd" id="5_5m20i"]
+
+[sub_resource type="Resource" id="Resource_cv7aj"]
+script = ExtResource("5_5m20i")
+ability = ExtResource("3_5qt8b")
+cooldown_group = ExtResource("4_1824s")
+
+[resource]
+script = ExtResource("2_e8nvo")
+alias = "Spelltome: Forcefield"
+useable = true
+use_effect = SubResource("Resource_cv7aj")
+use_description = "Teaches you the Forcefield Ability."
+limited = false
+limit = 1
+stackable = false
+stack_amount = 1
+description = ""
+icon = ExtResource("1_b72f4")

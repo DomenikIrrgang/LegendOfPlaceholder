@@ -20,10 +20,18 @@ var charge_label: Label = $Charges
 @onready
 var cooldown_label: Label = $Cooldown
 
+@onready
+var highlight: NinePatchRect = $Highlight
+
 var ability: Ability
 
 func _ready() -> void:
-	ability = Keybinds.get_ability_for_keybind(action_name)
+	set_ability(Keybinds.get_ability_for_keybind(action_name))
+	Globals.get_drag_and_drop().on_start_dragging.connect(on_start_dragging)
+	Globals.get_drag_and_drop().on_stop_dragging.connect(on_stop_dragging)
+
+func set_ability(_ability: Ability) -> void:
+	ability = _ability
 	if action_name == "" or ability == null:
 		keybind.visible = false
 		icon.visible = false
@@ -40,6 +48,14 @@ func _ready() -> void:
 		if (ability and ability.icon):
 			icon.texture = ability.icon
 			icon.visible = true
+			
+func on_start_dragging() -> void:
+	var drag_and_drop = Globals.get_drag_and_drop()
+	if drag_and_drop.data.has("ability"):
+		highlight.visible = true
+					
+func on_stop_dragging() -> void:
+	highlight.visible = false
 			
 func update_charge_label(_charges: int, _change: int) -> void:
 	if ability.get_max_charges() > 1:
@@ -64,3 +80,25 @@ func ability_used(_ability: Ability) -> void:
 	
 func remaining_cooldown_changed(_remaining_cooldown: float, _cooldown: float) -> void:
 	update_cooldown()	
+
+func _on_gui_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MASK_LEFT and event.is_pressed():
+		var drag_and_drop = Globals.get_drag_and_drop()
+		if drag_and_drop.is_dragging() == true:
+			if drag_and_drop.data.has("ability"):
+				Keybinds.keybind_ability(action_name, drag_and_drop.data.ability)
+				if drag_and_drop.data.has("slot") and drag_and_drop.data.slot != null:
+					var slot = drag_and_drop.data.slot
+					Keybinds.keybind_ability(slot.action_name, ability)
+					slot.set_ability(ability)
+				set_ability(drag_and_drop.data.ability)
+				drag_and_drop.stop_dragging()
+		else:
+			if Globals.get_drag_and_drop().is_dragging() and Globals.get_drag_and_drop().data.has("ability") and Globals.get_drag_and_drop().data.ability == ability:
+				Globals.get_drag_and_drop().stop_dragging()
+			else:
+				Globals.get_drag_and_drop().stop_dragging()
+				Globals.get_drag_and_drop().start_dragging({
+						"ability": ability,
+						"slot": self
+					}, ability.icon)

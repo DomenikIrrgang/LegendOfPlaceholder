@@ -17,12 +17,16 @@ var resource_type: Label = $PanelContainer/Content/Resource/ResourceUnit/Label
 var description: Label = $PanelContainer/Content/Description/Text/Label
 
 func _process(_delta: float):
-	visible = true
+	visible = !Globals.get_drag_and_drop().is_dragging()
 	global_position = get_viewport().get_mouse_position()
 	if global_position.x >= get_viewport().size.x / 2:
-		global_position.x -= size.x
+		global_position.x -= size.x - 1
+	else:
+		global_position.x += 1
 	if global_position.y >= get_viewport().size.y / 2:
-		global_position.y -= size.y
+		global_position.y -= size.y - 1
+	else:
+		global_position.y += 1
 
 
 func show_ability(ability: Ability) -> void:

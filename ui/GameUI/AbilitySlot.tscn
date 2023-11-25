@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cv102qedh50l3"]
+[gd_scene load_steps=9 format=3 uid="uid://cv102qedh50l3"]
 
 [ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="1_fygva"]
 [ext_resource type="Script" path="res://ui/GameUI/AbilitySlot.gd" id="2_i1551"]
 [ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://assets/ui/buttons/b_button.png" id="3_ca1xt"]
 [ext_resource type="LabelSettings" uid="uid://b304vmcf3x1f0" path="res://ui/GameUI/AbilitySlotFont.tres" id="4_kgvjg"]
 [ext_resource type="Script" path="res://ui/GameUI/Keybind.gd" id="4_sm53d"]
+[ext_resource type="Texture2D" uid="uid://hvw818c7res8" path="res://assets/ui/misc/selected_border.png" id="5_tygy5"]
 [ext_resource type="Texture2D" uid="uid://djuotr8lwlwh2" path="res://assets/ui/bottom_hud/ability_cooldown_progress.aseprite.png" id="6_hcelx"]
 [ext_resource type="PackedScene" uid="uid://cuivp4jpcyy1j" path="res://ui/GameUI/AbilityTooltipComponent.tscn" id="7_anq7x"]
 
@@ -52,6 +53,19 @@ label_settings = ExtResource("4_kgvjg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Highlight" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 37.0
+offset_bottom = 37.0
+texture = ExtResource("5_tygy5")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
 [node name="Keybind" type="TextureRect" parent="."]
 layout_mode = 1
 offset_left = 8.0
@@ -64,3 +78,6 @@ texture = ExtResource("3_ca1xt")
 script = ExtResource("4_sm53d")
 
 [node name="AbilityTooltipComponent" parent="." instance=ExtResource("7_anq7x")]
+mouse_filter = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -20,7 +20,7 @@ offset_left = 215.0
 offset_top = 121.0
 offset_right = 500.0
 offset_bottom = 226.0
-mouse_filter = 1
+mouse_filter = 2
 theme = SubResource("Theme_b38k5")
 script = ExtResource("2_bqeaq")
 

@@ -16,15 +16,30 @@ var cooldown_bar: TextureProgressBar = $CooldownBar
 var cooldown_text: Label = $CooldownText
 var cooldown_scaling_factor: float = 10.0
 
+@onready
+var highlight: TextureRect = $Highlight
+
 func _ready():
 	Globals.get_inventory().received_item.connect(inventory_changed)
 	Globals.get_inventory().removed_item.connect(inventory_changed)
 	Globals.get_inventory().slot_changed.connect(inventory_slot_changed)
+	Globals.get_drag_and_drop().on_start_dragging.connect(on_start_dragging)
+	Globals.get_drag_and_drop().on_stop_dragging.connect(on_stop_dragging)
 	gui_input.connect(on_input)
 	if item != null:
 		update_item(item)
 	else:
 		icon.texture = null
+		
+func on_start_dragging() -> void:
+	var drag_and_drop = Globals.get_drag_and_drop()
+	if drag_and_drop.data.has("inventory"):
+				var _item = drag_and_drop.data.inventory_slot.item
+				if _item.useable:
+					highlight.visible = true
+					
+func on_stop_dragging() -> void:
+	highlight.visible = false
 		
 func update_item(_item: Item) -> void:
 	item = _item

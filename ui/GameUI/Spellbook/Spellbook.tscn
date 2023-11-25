@@ -1,0 +1,236 @@
+[gd_scene load_steps=10 format=3 uid="uid://clf21bsx3d6bl"]
+
+[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="1_nt2va"]
+[ext_resource type="Script" path="res://ui/GameUI/Spellbook/Spellbook.gd" id="1_oqh4l"]
+[ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="2_1rco0"]
+[ext_resource type="PackedScene" uid="uid://bgddajrumc0b0" path="res://ui/GameUI/Spellbook/SpellSchoolSelector.tscn" id="2_g8frr"]
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="3_m3mjx"]
+[ext_resource type="PackedScene" uid="uid://caa8mvsi0ethl" path="res://ui/GameUI/Spellbook/AbilityDisplay.tscn" id="5_vn02s"]
+[ext_resource type="Script" path="res://ui/GameUI/Spellbook/PageIndicator.gd" id="7_vl38n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rd0ia"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4j3gn"]
+
+[node name="Spellbook" type="HBoxContainer"]
+offset_left = 319.0
+offset_top = 289.0
+offset_right = 420.0
+offset_bottom = 709.0
+script = ExtResource("1_oqh4l")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 5
+
+[node name="SpellSchoolSelectors" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="All" parent="MarginContainer/SpellSchoolSelectors" instance=ExtResource("2_g8frr")]
+layout_mode = 2
+all = true
+selected = true
+
+[node name="Physical" parent="MarginContainer/SpellSchoolSelectors" instance=ExtResource("2_g8frr")]
+layout_mode = 2
+
+[node name="Fire" parent="MarginContainer/SpellSchoolSelectors" instance=ExtResource("2_g8frr")]
+layout_mode = 2
+spell_school = 1
+
+[node name="Frost" parent="MarginContainer/SpellSchoolSelectors" instance=ExtResource("2_g8frr")]
+layout_mode = 2
+spell_school = 2
+
+[node name="Wind" parent="MarginContainer/SpellSchoolSelectors" instance=ExtResource("2_g8frr")]
+layout_mode = 2
+spell_school = 3
+
+[node name="Earth" parent="MarginContainer/SpellSchoolSelectors" instance=ExtResource("2_g8frr")]
+layout_mode = 2
+spell_school = 4
+
+[node name="Light" parent="MarginContainer/SpellSchoolSelectors" instance=ExtResource("2_g8frr")]
+layout_mode = 2
+spell_school = 5
+
+[node name="Shadow" parent="MarginContainer/SpellSchoolSelectors" instance=ExtResource("2_g8frr")]
+layout_mode = 2
+spell_school = 6
+
+[node name="Nature" parent="MarginContainer/SpellSchoolSelectors" instance=ExtResource("2_g8frr")]
+layout_mode = 2
+spell_school = 7
+
+[node name="Water" parent="MarginContainer/SpellSchoolSelectors" instance=ExtResource("2_g8frr")]
+layout_mode = 2
+spell_school = 8
+
+[node name="Thunder" parent="MarginContainer/SpellSchoolSelectors" instance=ExtResource("2_g8frr")]
+layout_mode = 2
+spell_school = 9
+
+[node name="Gravity" parent="MarginContainer/SpellSchoolSelectors" instance=ExtResource("2_g8frr")]
+layout_mode = 2
+spell_school = 10
+
+[node name="Window" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rd0ia")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Window"]
+layout_mode = 2
+mouse_filter = 1
+texture = ExtResource("2_1rco0")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Window"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/MarginContainer"]
+layout_mode = 2
+
+[node name="TitleBar" type="PanelContainer" parent="Window/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4j3gn")
+
+[node name="Background" type="NinePatchRect" parent="Window/MarginContainer/VBoxContainer/TitleBar"]
+layout_mode = 2
+texture = ExtResource("1_nt2va")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Window/MarginContainer/VBoxContainer/TitleBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Window/MarginContainer/VBoxContainer/TitleBar/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Window/MarginContainer/VBoxContainer/TitleBar/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Spellbook"
+label_settings = ExtResource("3_m3mjx")
+
+[node name="MarginContainer" type="MarginContainer" parent="Window/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Content" type="HBoxContainer" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 433)
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="FirstColumn" type="VBoxContainer" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="AbilityDisplay" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content/FirstColumn" instance=ExtResource("5_vn02s")]
+visible = false
+layout_mode = 2
+
+[node name="AbilityDisplay2" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content/FirstColumn" instance=ExtResource("5_vn02s")]
+visible = false
+layout_mode = 2
+
+[node name="AbilityDisplay3" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content/FirstColumn" instance=ExtResource("5_vn02s")]
+visible = false
+layout_mode = 2
+
+[node name="AbilityDisplay4" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content/FirstColumn" instance=ExtResource("5_vn02s")]
+visible = false
+layout_mode = 2
+
+[node name="AbilityDisplay5" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content/FirstColumn" instance=ExtResource("5_vn02s")]
+visible = false
+layout_mode = 2
+
+[node name="AbilityDisplay6" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content/FirstColumn" instance=ExtResource("5_vn02s")]
+visible = false
+layout_mode = 2
+
+[node name="AbilityDisplay7" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content/FirstColumn" instance=ExtResource("5_vn02s")]
+visible = false
+layout_mode = 2
+
+[node name="SecondColumn" type="VBoxContainer" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="AbilityDisplay" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content/SecondColumn" instance=ExtResource("5_vn02s")]
+visible = false
+layout_mode = 2
+
+[node name="AbilityDisplay2" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content/SecondColumn" instance=ExtResource("5_vn02s")]
+visible = false
+layout_mode = 2
+
+[node name="AbilityDisplay3" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content/SecondColumn" instance=ExtResource("5_vn02s")]
+visible = false
+layout_mode = 2
+
+[node name="AbilityDisplay4" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content/SecondColumn" instance=ExtResource("5_vn02s")]
+visible = false
+layout_mode = 2
+
+[node name="AbilityDisplay5" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content/SecondColumn" instance=ExtResource("5_vn02s")]
+visible = false
+layout_mode = 2
+
+[node name="AbilityDisplay6" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content/SecondColumn" instance=ExtResource("5_vn02s")]
+visible = false
+layout_mode = 2
+
+[node name="AbilityDisplay7" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content/SecondColumn" instance=ExtResource("5_vn02s")]
+visible = false
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PageIndicator" type="HBoxContainer" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+script = ExtResource("7_vl38n")
+
+[node name="Back" type="Label" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/PageIndicator"]
+layout_mode = 2
+mouse_filter = 1
+text = "<"
+label_settings = ExtResource("3_m3mjx")
+
+[node name="PageNumber" type="Label" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/PageIndicator"]
+layout_mode = 2
+text = "1"
+label_settings = ExtResource("3_m3mjx")
+
+[node name="Forward" type="Label" parent="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/PageIndicator"]
+layout_mode = 2
+mouse_filter = 1
+text = ">"
+label_settings = ExtResource("3_m3mjx")
+
+[connection signal="gui_input" from="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/PageIndicator/Back" to="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/PageIndicator" method="_on_back_gui_input"]
+[connection signal="gui_input" from="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/PageIndicator/Forward" to="Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/PageIndicator" method="_on_forward_gui_input"]

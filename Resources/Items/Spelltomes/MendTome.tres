@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://b444o8dniqos8"]
+
+[ext_resource type="Texture2D" uid="uid://d0wbm1pacw2wk" path="res://assets/ui/items/light_spelltome.png" id="1_nsa5q"]
+[ext_resource type="Script" path="res://Resources/Items/Item.gd" id="1_wwiea"]
+[ext_resource type="PackedScene" uid="uid://ctx430i2egq4y" path="res://Combat/abilities/Mend.tscn" id="3_5ddfs"]
+[ext_resource type="Resource" uid="uid://bbgka06dmjbii" path="res://Resources/Items/Spelltomes/SpelltomeCooldownGroup.tres" id="4_66ayt"]
+[ext_resource type="Script" path="res://Resources/Items/Spelltomes/SpellTomeEffect.gd" id="5_ybxsr"]
+
+[sub_resource type="Resource" id="Resource_mywhp"]
+script = ExtResource("5_ybxsr")
+ability = ExtResource("3_5ddfs")
+cooldown_group = ExtResource("4_66ayt")
+
+[resource]
+script = ExtResource("1_wwiea")
+alias = "Spelltome: Mend"
+useable = true
+use_effect = SubResource("Resource_mywhp")
+use_description = "Teaches you the Mend Ability."
+limited = false
+limit = 1
+stackable = false
+stack_amount = 5
+description = "The light emitted from this tome makes you feel at ease."
+icon = ExtResource("1_nsa5q")

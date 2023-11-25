@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgddajrumc0b0"]
+
+[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="1_txotr"]
+[ext_resource type="Script" path="res://ui/GameUI/Spellbook/SpellSchoolSelector.gd" id="2_1x8yt"]
+[ext_resource type="Texture2D" uid="uid://cm6dd5rsq5ve2" path="res://assets/ui/items/fire_spelltome.png" id="3_orbvf"]
+[ext_resource type="PackedScene" uid="uid://puhfjg08kws7" path="res://ui/GameUI/Tooltip/TextTooltipComponent.tscn" id="4_3sfgi"]
+[ext_resource type="Texture2D" uid="uid://hvw818c7res8" path="res://assets/ui/misc/selected_border.png" id="5_xpu2d"]
+
+[node name="Physical" type="TextureRect"]
+texture = ExtResource("1_txotr")
+script = ExtResource("2_1x8yt")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+texture = ExtResource("3_orbvf")
+stretch_mode = 2
+
+[node name="TextTooltipCompnent" parent="." node_paths=PackedStringArray("text_node") instance=ExtResource("4_3sfgi")]
+layout_mode = 1
+text_node = NodePath("..")
+
+[node name="Border" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 36.0
+offset_bottom = 36.0
+mouse_filter = 2
+texture = ExtResource("5_xpu2d")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

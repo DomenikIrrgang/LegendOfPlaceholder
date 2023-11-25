@@ -11,14 +11,14 @@ func get_all_abilities() -> Array[Ability]:
 	return known_abilites
 	
 func get_abilities_by_spell_school(spell_school: SpellSchool.Enum) -> Array[Ability]:
-	var result = []
+	var result: Array[Ability]= []
 	for ability in known_abilites:
 		if ability.spell_school == spell_school:
 			result.append(ability)
 	return result
 	
 func learn_ability(ability: Ability) -> bool:
-	if !ability_known(ability):
+	if true:
 		known_abilites.append(ability)
 		new_ability_learned.emit(ability)
 		return true
