@@ -81,6 +81,7 @@ func start_casting(target: Unit, ability: Ability) -> bool:
 		casting_ability = ability
 		cast_target = target
 		cast_started.emit(self, cast_target, casting_ability, cast_time)
+		ability.on_cast_started(self, target)
 		return true
 	return false
 	
@@ -88,6 +89,7 @@ func stop_casting() -> void:
 	if is_casting():
 		casting = false
 		cast_canceled.emit(self, cast_target, casting_ability)
+		casting_ability.on_cast_stopped(self, cast_target)
 		cast_time = 0.0
 		current_cast = 0.0
 		casting_ability = null
@@ -97,6 +99,7 @@ func interupt_casting() -> void:
 	if is_casting() and casting_ability.is_interuptable():
 		casting = false
 		cast_interupted.emit(self, cast_target, casting_ability)
+		casting_ability.on_cast_interupted(self, cast_target, null)
 		cast_time = 0.0
 		current_cast = 0.0
 		casting_ability = null

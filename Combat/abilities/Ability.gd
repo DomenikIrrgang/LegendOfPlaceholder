@@ -197,3 +197,12 @@ func update(delta: float) -> void:
 		else:
 			if remaining_cooldown < 0.0:
 				set_remaining_cooldown(0.0)
+				
+func on_cast_started(_source: Unit, _target: Unit) -> void:
+	pass
+	
+func on_cast_interupted(_source: Unit, _target: Unit, _interuptor: Unit) -> void:
+	pass
+	
+func on_cast_stopped(_source: Unit, _target: Unit) -> void:
+	pass

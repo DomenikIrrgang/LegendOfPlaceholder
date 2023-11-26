@@ -135,7 +135,6 @@ targeted_node = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_21w2i")]
 position = Vector2(-60, -5)
-motion_mode = 1
 
 [node name="World" type="Node2D" parent="." groups=["world"]]
 y_sort_enabled = true

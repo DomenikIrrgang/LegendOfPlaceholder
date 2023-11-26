@@ -46,6 +46,9 @@ _data = {
 
 [node name="ElementalSlime" type="CharacterBody2D" groups=["boss", "enemy", "unit"]]
 position = Vector2(0, -12)
+motion_mode = 1
+platform_on_leave = 2
+platform_floor_layers = 4278190080
 script = ExtResource("1_oom8b")
 unit_data = ExtResource("2_oaale")
 

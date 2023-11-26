@@ -28,9 +28,11 @@ script = ExtResource("2_lgchx")
 tick_time = 1.0
 
 [node name="CollisionU" type="CollisionPolygon2D" parent="VoidZone"]
+visible = false
 polygon = PackedVector2Array(-30, 60, -60, 60, -60, -60, 60, -60, 60, 60, 30, 60, 30, -30, -30, -30)
 
 [node name="CollisionBottom" type="CollisionPolygon2D" parent="VoidZone"]
+visible = false
 polygon = PackedVector2Array(30, 30, 30, 60, -30, 60, -30, 30)
 
 [node name="TextureLeft" type="Sprite2D" parent="VoidZone"]
