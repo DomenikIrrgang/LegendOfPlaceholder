@@ -1,12 +1,6 @@
 extends Node
 
 var keybinds = {
-	"Dash": use_ability(load("res://Combat/abilities/Dash.tscn").instantiate()),
-	"Attack": use_ability(load("res://Combat/abilities/Attack.tscn").instantiate()),
-	"Ability_One": use_ability(load("res://Combat/abilities/Mend.tscn").instantiate()),
-	"Ability_Two": use_ability(load("res://Combat/abilities/ForceNova.tscn").instantiate()),
-	"Ability_Three": use_ability(load("res://Combat/abilities/TimeStop.tscn").instantiate()),
-	"Ability_Four": use_ability(load("res://Combat/abilities/Kick.tscn").instantiate()),
 	"Toggle_Inventory": use_function(toggle_inventory),
 	"Toggle_CharacterSheet": use_function(toggle_character_sheet),
 	"Toggle_Spellbook": use_function(toggle_spellbook),
