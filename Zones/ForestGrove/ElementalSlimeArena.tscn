@@ -121,6 +121,7 @@ shape = SubResource("RectangleShape2D_wk0ku")
 position = Vector2(82, -7)
 
 [node name="Foreground" type="Node2D" parent="."]
+process_mode = 4
 z_index = 500
 script = ExtResource("3_boum1")
 

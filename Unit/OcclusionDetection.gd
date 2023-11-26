@@ -3,13 +3,17 @@ extends Area2D
 @export
 var models: Array[Sprite2D]
 
+var tween: Tween
+
 func _ready() -> void:
 	area_entered.connect(on_area_entered)
 	area_exited.connect(on_area_exited)
+	tween = create_tween()
 	
 func on_area_entered(area) -> void:
 	if area.owner is Player:
-		var tween: Tween = create_tween()
+		tween.kill()
+		tween = create_tween()
 		for sprite in models:
 			tween.tween_praoperty(sprite, "modulate", Color(
 				sprite.modulate.r,
@@ -19,7 +23,8 @@ func on_area_entered(area) -> void:
 	
 func on_area_exited(area) -> void:
 	if area.owner is Player:
-		var tween: Tween = create_tween()
+		tween.kill()
+		tween = create_tween()
 		for sprite in models:
 			tween.tween_property(sprite, "modulate", Color(
 				sprite.modulate.r,

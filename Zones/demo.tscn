@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://CutsceneBars.gd" id="8_ks5q0"]
 [ext_resource type="Script" path="res://ui/GameUI/PauseMenu.gd" id="9_rmwfp"]
 [ext_resource type="Shader" path="res://Shaders/Blur.gdshader" id="10_rihpu"]
-[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://Assets/fonts/PixeloidSans-JR6qo.ttf" id="11_ruwsu"]
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="11_ruwsu"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_k4mto"]
 tile_data = PackedInt32Array(0, 327681, 3, 65536, 327681, 3, 131072, 327681, 3, 1, 327681, 3, 65537, 327681, 3, 131073, 327681, 3, 2, 327681, 3, 65538, 327681, 3, 131074, 327681, 3)

@@ -9,7 +9,7 @@ var tween: Tween
 
 func change_energy(new_energy: float, speed: float) -> void:
 	if tween != null:
-		tween.stop()
+		tween.kill()
 	tween = create_tween()
 	tween.tween_property(self, "environment_energy", new_energy, speed)
 	tween.play()

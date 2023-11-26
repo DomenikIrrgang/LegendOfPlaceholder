@@ -87,11 +87,11 @@ ability_scene = ExtResource("13_gpmh0")
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_cjvo8")
 
-[node name="UnitOcclusion" type="Area2D" parent="."]
+[node name="UnitOcclusion" type="Area2D" parent="." node_paths=PackedStringArray("models")]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("13_0kki7")
-models = Array[Sprite2D]([null])
+models = [null]
 
 [node name="OcclusionCollision" type="CollisionShape2D" parent="UnitOcclusion"]
 position = Vector2(0, 1.5)

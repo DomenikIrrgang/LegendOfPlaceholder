@@ -13,6 +13,7 @@ func _ready() -> void:
 	BossEncounter.boss_encounter_started.connect(on_encounter_started)
 	BossEncounter.boss_encounter_defeated.connect(on_encounter_defeated)
 	SceneSwitcher.zone_loaded.connect(on_zone_loaded)
+	tween = create_tween()
 
 func initialize(player: Player) -> void:
 	message_label.text = ""
@@ -22,10 +23,9 @@ func on_zone_loaded(zone: Zone) -> void:
 	show_system_message(zone.zone_name, 5.0)
 
 func show_system_message(message: String, duration: float = message_duration) -> void:
-	if tween:
-		tween.stop()
 	message_label.text = message
 	message_label.modulate.a = 1.0
+	tween.kill()
 	tween = create_tween()
 	tween.tween_property(message_label, "modulate", Color(message_label.modulate.r, message_label.modulate.g, message_label.modulate.b, 0.0), duration).set_ease(Tween.EASE_IN)
 	tween.play()

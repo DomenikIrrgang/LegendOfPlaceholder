@@ -18,7 +18,7 @@ func get_abilities_by_spell_school(spell_school: SpellSchool.Enum) -> Array[Abil
 	return result
 	
 func learn_ability(ability: Ability) -> bool:
-	if true:
+	if !ability_known(ability):
 		known_abilites.append(ability)
 		new_ability_learned.emit(ability)
 		return true

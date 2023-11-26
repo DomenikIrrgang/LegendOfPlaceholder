@@ -22,7 +22,7 @@ func level_changed(_level: int) -> void:
 func update_bar() -> void:
 	if player.get_level() < player.max_level:
 		if tween:
-			tween.stop()
+			tween.kill()
 		tween = create_tween()
 		tween.tween_property(self, "value", player.current_experience(), animation_speed)
 		tween.play()

@@ -15,8 +15,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	var movement_direction = Globals.get_player().velocity.normalized()
-	if (trees_tween != null):
-		trees_tween.stop()
+	if (trees_tween.is_running()):
+		trees_tween.kill()
 	trees_tween = create_tween()
 	trees_tween.tween_property(trees_tile_map, "position", trees_orignal_position + (movement_direction * -0.5), 0.2)
 	trees_tween.play()
