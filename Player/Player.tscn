@@ -72,12 +72,14 @@ fill_to = Vector2(0.5, 0)
 [node name="Player" type="CharacterBody2D" groups=["player", "unit"]]
 y_sort_enabled = true
 position = Vector2(0, -8)
+collision_layer = 2
+collision_mask = 7
 motion_mode = 1
 slide_on_ceiling = false
 floor_stop_on_slope = false
 floor_block_on_wall = false
 platform_on_leave = 2
-platform_floor_layers = 4294901760
+platform_floor_layers = 4278190080
 safe_margin = 0.01
 script = ExtResource("1_hqrbj")
 weapon_path = "res://Weapons/FireWand.tscn"
