@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=87 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -291,6 +291,19 @@ func _on_pressed():
 	drop1.set_item(fireball_tome, 1)
 	drop2.set_item(mend_tome, 1)
 	drop3.set_item(forcefield_tome, 1)
+"
+
+[sub_resource type="GDScript" id="GDScript_j6glr"]
+script/source = "extends Button
+
+var test_status_effect: StatusEffect = load(\"res://Resources/StatusEffects/TestEffect.tres\")
+
+func _on_pressed():
+	test_status_effect.effect.on_status_effect_applied(
+		test_status_effect,
+		Globals.get_player(),
+		Globals.get_player()		
+	)
 "
 
 [sub_resource type="GDScript" id="GDScript_empgj"]
@@ -880,6 +893,13 @@ theme = SubResource("Theme_7fwd3")
 text = "Add Item"
 script = SubResource("GDScript_3g0do")
 
+[node name="ApplyEffect" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = SubResource("Theme_7fwd3")
+text = "Add Item"
+script = SubResource("GDScript_j6glr")
+
 [node name="PlayerPosition" type="Label" parent="Debug/VBoxContainer"]
 layout_mode = 2
 label_settings = ExtResource("30_ao71d")
@@ -913,3 +933,4 @@ layout_mode = 2
 [connection signal="pressed" from="Debug/VBoxContainer/HBoxContainer/LevelUp" to="Debug/VBoxContainer/HBoxContainer/LevelUp" method="_on_pressed"]
 [connection signal="pressed" from="Debug/VBoxContainer/HBoxContainer/WindowMode" to="Debug/VBoxContainer/HBoxContainer/WindowMode" method="_on_pressed"]
 [connection signal="pressed" from="Debug/VBoxContainer/HBoxContainer/AddItem" to="Debug/VBoxContainer/HBoxContainer/AddItem" method="_on_pressed"]
+[connection signal="pressed" from="Debug/VBoxContainer/HBoxContainer/ApplyEffect" to="Debug/VBoxContainer/HBoxContainer/ApplyEffect" method="_on_pressed"]

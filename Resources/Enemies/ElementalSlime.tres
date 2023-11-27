@@ -36,7 +36,7 @@ value = 1900
 
 [resource]
 script = ExtResource("1_31g8x")
-experience = 0
+experience = 500
 loot_table = Array[ExtResource("3_l0w6a")]([SubResource("Resource_ojw2k"), SubResource("Resource_3f4up"), SubResource("Resource_yakhi")])
 alias = "Elemental Slime"
 dialog_texture = ExtResource("1_w65bp")

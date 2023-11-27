@@ -63,6 +63,8 @@ label_settings = ExtResource("4_ggvyg")
 vertical_alignment = 1
 
 [node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 position = Vector2(105.882, 23.5294)

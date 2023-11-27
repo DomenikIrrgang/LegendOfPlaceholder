@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=6 format=3 uid="uid://cwpbu0ti4828t"]
+
+[ext_resource type="Script" path="res://Resources/StatusEffects/TextureStatusEffectAnimation.gd" id="1_1c54k"]
+[ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffectScript.gd" id="1_bfc1h"]
+[ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_vj73m"]
+
+[sub_resource type="Resource" id="Resource_necm0"]
+script = ExtResource("1_1c54k")
+unit = 0
+
+[sub_resource type="Resource" id="Resource_duon7"]
+script = ExtResource("1_bfc1h")
+
+[resource]
+script = ExtResource("1_vj73m")
+alias = "TestEffect"
+type = 0
+description = "This is a test effect."
+dispellable = true
+has_duration = true
+duration = 10.0
+effect = SubResource("Resource_duon7")
+animation = SubResource("Resource_necm0")

@@ -130,6 +130,7 @@ func update_cast(delta: float) -> void:
 			current_cast = 0.0
 			casting = false
 			cast_finished.emit(self, cast_target, casting_ability)
+			casting_ability.on_cast_finished(self, cast_target)
 			casting_ability = null
 			cast_target = null
 			

@@ -206,3 +206,6 @@ func on_cast_interupted(_source: Unit, _target: Unit, _interuptor: Unit) -> void
 	
 func on_cast_stopped(_source: Unit, _target: Unit) -> void:
 	pass
+	
+func on_cast_finished(_source: Unit, _target: Unit) -> void:
+	pass
