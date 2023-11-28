@@ -3,3 +3,6 @@ extends Node
 
 func on_ability_cast(_combat_calculator: CombatCalculator, combat_logic_result: CombatLogicResult) -> CombatLogicResult:
 	return combat_logic_result
+
+func get_class_name() -> String:
+	return "LogicLayer"

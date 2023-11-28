@@ -20,6 +20,15 @@ var has_duration: bool = true
 var duration: float = 10.0
 
 @export
+var unique: bool = false
+
+@export
+var stackable: bool = false
+
+@export
+var max_stacks: int = 1
+
+@export
 var effect: StatusEffectScript
 
 @export

@@ -5,3 +5,6 @@ func on_ability_cast(combat_calculator: CombatCalculator, combat_logic_result: C
 	if combat_calculator.get_cast_time(combat_logic_result.ability, combat_logic_result.source) > 0.0 and not combat_logic_result.source.is_cast_finished():
 		combat_logic_result.type = ResultType.Enum.START_CAST
 	return combat_logic_result
+
+func get_class_name() -> String:
+	return "StartCastLayer"

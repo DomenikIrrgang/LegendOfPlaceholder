@@ -5,3 +5,6 @@ func on_ability_cast(_combat_calculator: CombatCalculator, combat_logic_result: 
 	if combat_logic_result.source.is_casting() and not combat_logic_result.source.is_cast_finished():
 		combat_logic_result.type = ResultType.Enum.ALREADY_CASTING
 	return combat_logic_result
+
+func get_class_name() -> String:
+	return "CastingLayer"

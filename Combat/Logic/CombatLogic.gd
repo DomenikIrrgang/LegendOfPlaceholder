@@ -74,3 +74,9 @@ func get_cast_time(source: Unit, ability: Ability) -> float:
 
 func add_calculate_logic_layer(layer: LogicLayer) -> void:
 	calculate_logic_layers.append(layer)
+	
+func remove_calculate_logic_layer(layer: LogicLayer) -> void:
+	for i in calculate_logic_layers.size():
+		if layer.get_class_name() == calculate_logic_layers[i].get_class_name():
+			calculate_logic_layers.remove_at(i)
+			break

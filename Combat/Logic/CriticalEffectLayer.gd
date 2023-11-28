@@ -9,3 +9,6 @@ func on_ability_cast(combat_calculator: CombatCalculator, combat_logic_result: C
 			combat_logic_result.target
 		)
 	return combat_logic_result
+
+func get_class_name() -> String:
+	return "CriticalEffectLayer"

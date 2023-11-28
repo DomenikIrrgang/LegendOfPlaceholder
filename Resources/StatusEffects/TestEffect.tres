@@ -1,15 +1,29 @@
-[gd_resource type="Resource" script_class="StatusEffect" load_steps=6 format=3 uid="uid://cwpbu0ti4828t"]
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=10 format=3 uid="uid://cwpbu0ti4828t"]
 
 [ext_resource type="Script" path="res://Resources/StatusEffects/TextureStatusEffectAnimation.gd" id="1_1c54k"]
-[ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffectScript.gd" id="1_bfc1h"]
 [ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_vj73m"]
+[ext_resource type="Texture2D" uid="uid://ptj35ec4hyeo" path="res://assets/textures/fire.jpeg" id="2_wr37h"]
+[ext_resource type="Script" path="res://Resources/StatusEffects/Effects/StatEffect.gd" id="3_46s36"]
+[ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="4_hgls5"]
 
 [sub_resource type="Resource" id="Resource_necm0"]
 script = ExtResource("1_1c54k")
-unit = 0
+unit = 2
+texture = ExtResource("2_wr37h")
 
-[sub_resource type="Resource" id="Resource_duon7"]
-script = ExtResource("1_bfc1h")
+[sub_resource type="Resource" id="Resource_8llwa"]
+script = ExtResource("4_hgls5")
+stat = 1
+value = 50
+
+[sub_resource type="Resource" id="Resource_obv7c"]
+script = ExtResource("4_hgls5")
+stat = 5
+value = 100
+
+[sub_resource type="Resource" id="Resource_061kp"]
+script = ExtResource("3_46s36")
+stats = Array[ExtResource("4_hgls5")]([SubResource("Resource_8llwa"), SubResource("Resource_obv7c")])
 
 [resource]
 script = ExtResource("1_vj73m")
@@ -18,6 +32,9 @@ type = 0
 description = "This is a test effect."
 dispellable = true
 has_duration = true
-duration = 10.0
-effect = SubResource("Resource_duon7")
+duration = 3.0
+unique = true
+stackable = false
+max_stacks = 1
+effect = SubResource("Resource_061kp")
 animation = SubResource("Resource_necm0")

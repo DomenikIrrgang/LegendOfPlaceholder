@@ -39,6 +39,109 @@ var resources: Array[UnitResource] = []
 # Abilities
 var abilities: Array[Ability] = []
 
+# Status Effects
+var status_effects: Array[Dictionary] = []
+
+signal status_effect_applied(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
+signal status_effect_refreshed(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
+signal status_effect_dispelled(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
+signal status_effect_removed(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
+signal status_effect_expired(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
+
+func update_status_effect(delta: float) -> void:
+	var i = 0
+	while i < status_effects.size():
+		var status_effect_application = status_effects[i]
+		if status_effect_application.status_effect.effect != null:
+			status_effect_application.status_effect.effect.on_status_effect_update(
+				status_effect_application.status_effect,
+				status_effect_application.stacks,
+				status_effect_application.source,
+				self,
+				delta)
+		if status_effect_application.status_effect.has_duration:
+			status_effect_application.time += delta
+			if status_effect_application.status_effect.duration <= status_effect_application.time:
+				status_effects.remove_at(i)
+				i -= 1
+				if status_effect_application.status_effect.effect != null:
+					status_effect_application.status_effect.effect.on_status_effect_expired(
+						status_effect_application.status_effect,
+						status_effect_application.stacks,
+						status_effect_application.source,
+						self)
+					status_effect_application.status_effect.effect.on_status_effect_removed(
+						status_effect_application.status_effect,
+						status_effect_application.stacks,
+						status_effect_application.source,
+						self)
+		i += 1
+						
+func apply_status_effect(status_effect: StatusEffect, source: Unit) -> void:
+	if status_effect.stackable:
+		if has_status_effect_from_source(status_effect, source):
+			var application = get_status_effect_application_from_source(status_effect, source)
+			if application.status_effect.max_stacks > application.stacks:
+				application.stacks += 1
+				if status_effect.effect != null:
+					status_effect.effect.on_status_effect_applied(status_effect, application.stacks, source, self)
+			refresh_status_effect_application(application)
+		else:
+			status_effects.append({
+				"status_effect": status_effect,
+				"source": source,
+				"time": 0.0,
+				"stacks": 1,
+			})
+			if status_effect.effect != null:
+				status_effect.effect.on_status_effect_applied(status_effect, 1, source, self)
+			status_effect_applied.emit(status_effect, 1, source, self)
+	else:
+		if status_effect.unique and has_status_effect_from_source(status_effect, source):
+			refresh_status_effect_application(get_status_effect_application_from_source(status_effect, source))
+		else:
+			status_effects.append({
+				"status_effect": status_effect,
+				"source": source,
+				"time": 0.0,
+				"stacks": 1,
+			})	
+			if status_effect.effect != null:
+				status_effect.effect.on_status_effect_applied(status_effect, 1, source, self)
+			status_effect_applied.emit(status_effect, 1, source, self)
+
+func get_status_effect_application_from_source(status_effect: StatusEffect, source: Unit) -> Dictionary:
+	for status_effect_application in status_effects:
+		if status_effect_application.status_effect == status_effect and status_effect_application.source == source:
+			return status_effect_application
+	return {}
+	
+func has_status_effect(status_effect: StatusEffect) -> bool:
+	for status_effect_application in status_effects:
+		if status_effect_application.status_effect == status_effect:
+			return true
+	return false
+	
+func has_status_effect_from_source(status_effect: StatusEffect, source: Unit) -> bool:
+	for status_effect_application in status_effects:
+		if status_effect_application.status_effect == status_effect and status_effect_application.source == source:
+			return true
+	return false
+	
+func refresh_status_effect_application(status_effect_application: Dictionary) -> void:
+	status_effect_application.time = 0.0
+	if status_effect_application.status_effect.effect != null:
+		status_effect_application.status_effect.effect.on_status_effect_refreshed(
+			status_effect_application.status_effect,
+			status_effect_application.stacks,
+			status_effect_application.source,
+			self)
+	status_effect_refreshed.emit(
+		status_effect_application.status_effect,
+		status_effect_application.stacks,
+		status_effect_application.source,
+		self)
+
 # Direction
 enum Direction {
 	UP,
@@ -181,6 +284,7 @@ func increase_resource_value(resource_type: ResourceType.Enum, value: int) -> in
 func _process(delta: float) -> void:
 	movement_velocity = movement_strategy.get_movement_velocity()
 	update_cast(delta)
+	update_status_effect(delta)
 	update_direction()
 	
 func _physics_process(delta: float) -> void:

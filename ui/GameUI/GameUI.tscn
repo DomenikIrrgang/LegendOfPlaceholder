@@ -299,11 +299,7 @@ script/source = "extends Button
 var test_status_effect: StatusEffect = load(\"res://Resources/StatusEffects/TestEffect.tres\")
 
 func _on_pressed():
-	test_status_effect.effect.on_status_effect_applied(
-		test_status_effect,
-		Globals.get_player(),
-		Globals.get_player()		
-	)
+	Globals.get_player().apply_status_effect(test_status_effect, Globals.get_player())
 "
 
 [sub_resource type="GDScript" id="GDScript_empgj"]
