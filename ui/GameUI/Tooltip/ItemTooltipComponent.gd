@@ -25,3 +25,9 @@ func _on_visibility_changed():
 	if tooltip_instance != null:
 		tooltip_instance.visible = false
 		tooltip_instance.queue_free()
+
+func _notification(what):
+	if (what == NOTIFICATION_PREDELETE):
+		if tooltip_instance != null:
+			tooltip_instance.visible = false
+			tooltip_instance.queue_free()

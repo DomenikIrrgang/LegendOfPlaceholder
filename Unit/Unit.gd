@@ -46,7 +46,6 @@ signal status_effect_applied(status_effect: StatusEffect, stacks: int, source: U
 signal status_effect_refreshed(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
 signal status_effect_dispelled(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
 signal status_effect_removed(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
-signal status_effect_expired(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
 
 func update_status_effect(delta: float) -> void:
 	var i = 0
@@ -75,6 +74,12 @@ func update_status_effect(delta: float) -> void:
 						status_effect_application.stacks,
 						status_effect_application.source,
 						self)
+					status_effect_removed.emit(
+						status_effect_application.status_effect,
+						status_effect_application.stacks,
+						status_effect_application.source,
+						self
+					)
 		i += 1
 						
 func apply_status_effect(status_effect: StatusEffect, source: Unit) -> void:

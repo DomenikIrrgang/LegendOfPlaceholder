@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=88 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -49,6 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://cuivp4jpcyy1j" path="res://ui/GameUI/AbilityTooltipComponent.tscn" id="38_0qeqe"]
 [ext_resource type="PackedScene" uid="uid://8mvr4arokyd0" path="res://ui/GameUI/CharacterSheet/CharacterSheet.tscn" id="44_lu4nk"]
 [ext_resource type="PackedScene" uid="uid://clf21bsx3d6bl" path="res://ui/GameUI/Spellbook/Spellbook.tscn" id="47_3y1gb"]
+[ext_resource type="Script" path="res://ui/GameUI/StatusEffect/StatusEffectBar.gd" id="50_4qtxk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
 font = ExtResource("3_60v0h")
@@ -819,6 +820,15 @@ text = "Spellname
 "
 label_settings = SubResource("LabelSettings_vmsgq")
 
+[node name="Bank" parent="." instance=ExtResource("30_6me52")]
+visible = false
+layout_mode = 2
+offset_left = 8.0
+offset_top = 241.0
+offset_right = 264.0
+offset_bottom = 273.0
+title = "Bank"
+
 [node name="Inventory" parent="." instance=ExtResource("30_6me52")]
 visible = false
 layout_mode = 0
@@ -827,15 +837,6 @@ offset_top = 842.0
 offset_right = 1762.0
 offset_bottom = 877.0
 title = "Inventory"
-
-[node name="Bank" parent="." instance=ExtResource("30_6me52")]
-visible = false
-layout_mode = 0
-offset_left = 8.0
-offset_top = 241.0
-offset_right = 264.0
-offset_bottom = 273.0
-title = "Bank"
 
 [node name="DragAndDrop" type="Control" parent="." groups=["DragAndDrop"]]
 z_index = 4096
@@ -893,7 +894,7 @@ script = SubResource("GDScript_3g0do")
 layout_mode = 2
 focus_mode = 0
 theme = SubResource("Theme_7fwd3")
-text = "Add Item"
+text = "Apply TestBuff"
 script = SubResource("GDScript_j6glr")
 
 [node name="PlayerPosition" type="Label" parent="Debug/VBoxContainer"]
@@ -917,6 +918,25 @@ size_flags_vertical = 0
 [node name="Spellbook" parent="Windows" groups=["Spellbook"] instance=ExtResource("47_3y1gb")]
 visible = false
 layout_mode = 2
+
+[node name="Buffs" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 652.0
+offset_top = 936.0
+offset_right = 941.0
+offset_bottom = 1002.0
+theme_override_constants/separation = 10
+script = ExtResource("50_4qtxk")
+
+[node name="Debuffs" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 991.0
+offset_top = 936.0
+offset_right = 1280.0
+offset_bottom = 1002.0
+alignment = 2
+script = ExtResource("50_4qtxk")
+status_effect_type = 1
 
 [connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_exited"]
