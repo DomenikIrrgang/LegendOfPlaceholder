@@ -11,7 +11,6 @@ func use(source: Unit, _target: Unit) -> void:
 	var zone = ZoneOfDoomVoid.instantiate()
 	source.get_parent().add_child(zone)
 	zone.hitbox.unit = source
-	zone.hitbox.ability = self
 	zone.global_position = target_position
 
 func on_cast_started(source: Unit, target: Unit) -> void:

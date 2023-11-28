@@ -1,14 +1,26 @@
-[gd_resource type="Resource" script_class="StatusEffect" load_steps=6 format=3 uid="uid://p42pgd64208i"]
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=10 format=3 uid="uid://p42pgd64208i"]
 
 [ext_resource type="PackedScene" uid="uid://s1djblvtvpjv" path="res://Enemy/ElementalSlime/Abilities/EngulfingPlain.tscn" id="1_cjs3x"]
 [ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_pdw5l"]
 [ext_resource type="Script" path="res://Resources/StatusEffects/Effects/DamageOverTimeEffect.gd" id="2_khh5j"]
 [ext_resource type="Texture2D" uid="uid://bqfmxph630j16" path="res://assets/ui/bottom_hud/engulfing_plain_icon.png" id="3_j2bq1"]
+[ext_resource type="Script" path="res://Resources/StatusEffects/Effects/StatEffect.gd" id="3_lhcoq"]
+[ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="4_dd4kw"]
 
-[sub_resource type="Resource" id="Resource_ebfew"]
+[sub_resource type="Resource" id="Resource_lvdq1"]
 script = ExtResource("2_khh5j")
 ability = ExtResource("1_cjs3x")
-tick_time = 1.0
+instant_tick = true
+tick_time = 2.0
+
+[sub_resource type="Resource" id="Resource_xvjxy"]
+script = ExtResource("4_dd4kw")
+stat = 50
+value = -15
+
+[sub_resource type="Resource" id="Resource_uod36"]
+script = ExtResource("3_lhcoq")
+stats = Array[ExtResource("4_dd4kw")]([SubResource("Resource_xvjxy")])
 
 [resource]
 script = ExtResource("1_pdw5l")
@@ -21,5 +33,5 @@ duration = 0.0
 unique = true
 stackable = false
 max_stacks = 1
-effect = SubResource("Resource_ebfew")
+effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([SubResource("Resource_lvdq1"), SubResource("Resource_uod36")])
 icon = ExtResource("3_j2bq1")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://gap8ykcqc8uf"]
+[gd_scene load_steps=7 format=3 uid="uid://gap8ykcqc8uf"]
 
 [ext_resource type="Script" path="res://Enemy/MegaSlime/Abilities/ZoneOfDoomVoid.gd" id="1_drxoc"]
-[ext_resource type="Script" path="res://Enemy/MegaSlime/Abilities/ZoneOfDoomHitBox.gd" id="2_5hbkj"]
+[ext_resource type="Script" path="res://Combat/abilities/VoidZone.gd" id="2_mvp7o"]
+[ext_resource type="Resource" uid="uid://p42pgd64208i" path="res://Resources/StatusEffects/EngulfingPlane.tres" id="3_mqjpy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mb1sp"]
 
@@ -72,7 +73,8 @@ script = ExtResource("1_drxoc")
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("2_5hbkj")
+script = ExtResource("2_mvp7o")
+status_effect = ExtResource("3_mqjpy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_mb1sp")

@@ -41,7 +41,7 @@ func get_next_cutscene_step() -> CutsceneStep:
 	return current_cutscene.steps[current_cutscene.steps.find(current_cutscene_step) + 1]
 	
 func on_cutscene_started(_cutscene: Cutscene) -> void:
-	Globals.pause_enemies()
+	Globals.pause_units()
 	Globals.get_camera().movement_strategy = ManualMovementCamera.new()
 	Globals.get_game_user_inteface().visible = false
 	Globals.get_cutescene_bars().show_black_bars()
@@ -50,7 +50,7 @@ func has_active_cutscene() -> bool:
 	return current_cutscene != null
 	
 func on_cutscene_finished(_cutscene: Cutscene) -> void:
-	Globals.start_enemies()
+	Globals.start_units()
 	Globals.get_camera().reset()
 	Globals.get_game_user_inteface().visible = true
 	Globals.get_cutescene_bars().hide_black_bars()

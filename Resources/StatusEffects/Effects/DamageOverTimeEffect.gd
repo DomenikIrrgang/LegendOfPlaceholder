@@ -5,9 +5,16 @@ extends StatusEffectScript
 var ability: PackedScene
 
 @export
+var instant_tick: bool = false
+
+@export
 var tick_time: float = 3.0
 
 var time_passed = {}
+
+func on_status_effect_applied(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit) -> void:
+	if instant_tick:
+		on_tick(status_effect, stacks, source, target)
 
 func on_status_effect_update(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit, delta: float) -> void:
 	if !time_passed.has(target.to_string()):

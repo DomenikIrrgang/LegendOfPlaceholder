@@ -69,6 +69,16 @@ func pause_enemies() -> void:
 	for enemy in enemies:
 		enemy.pause()
 
+func start_units() -> void:
+	var enemies = get_scene_tree().get_nodes_in_group("unit")
+	for enemy in enemies:
+		enemy.start()
+
+func pause_units() -> void:
+	var enemies = get_scene_tree().get_nodes_in_group("unit")
+	for enemy in enemies:
+		enemy.pause()
+
 # min and max have to be between 0.0 and 1.0	
 func random_value(minimum: float, maximum: float) -> float:
 	return randf() * (maximum - minimum) + minimum

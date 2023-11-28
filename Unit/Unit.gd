@@ -41,6 +41,7 @@ var abilities: Array[Ability] = []
 
 # Status Effects
 var status_effects: Array[Dictionary] = []
+var status_effect_updates_enabled: bool = true
 
 signal status_effect_applied(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
 signal status_effect_refreshed(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
@@ -48,60 +49,61 @@ signal status_effect_dispelled(status_effect: StatusEffect, stacks: int, source:
 signal status_effect_removed(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
 
 func update_status_effect(delta: float) -> void:
-	var i = 0
-	while i < status_effects.size():
-		var status_effect_application = status_effects[i]
-		if is_instance_valid(status_effect_application.source):
-			if status_effect_application.status_effect.effect != null:
-				status_effect_application.status_effect.effect.on_status_effect_update(
-					status_effect_application.status_effect,
-					status_effect_application.stacks,
-					status_effect_application.source,
-					self,
-					delta)
-			if status_effect_application.status_effect.has_duration:
-				status_effect_application.time += delta
-				if status_effect_application.status_effect.duration <= status_effect_application.time:
-					status_effects.remove_at(i)
-					i -= 1
-					if status_effect_application.status_effect.effect != null:
-						status_effect_application.status_effect.effect.on_status_effect_expired(
-							status_effect_application.status_effect,
-							status_effect_application.stacks,
-							status_effect_application.source,
-							self)
-						status_effect_application.status_effect.effect.on_status_effect_removed(
-							status_effect_application.status_effect,
-							status_effect_application.stacks,
-							status_effect_application.source,
-							self)
+	if status_effect_updates_enabled:
+		var i = 0
+		while i < status_effects.size():
+			var status_effect_application = status_effects[i]
+			if is_instance_valid(status_effect_application.source):
+				for effect in status_effect_application.status_effect.effects:
+					effect.on_status_effect_update(
+						status_effect_application.status_effect,
+						status_effect_application.stacks,
+						status_effect_application.source,
+						self,
+						delta)
+				if status_effect_application.status_effect.has_duration:
+					status_effect_application.time += delta
+					if status_effect_application.status_effect.duration <= status_effect_application.time:
+						status_effects.remove_at(i)
+						i -= 1
+						for effect in status_effect_application.status_effect.effects:
+							effect.on_status_effect_expired(
+								status_effect_application.status_effect,
+								status_effect_application.stacks,
+								status_effect_application.source,
+								self)
+							effect.on_status_effect_removed(
+								status_effect_application.status_effect,
+								status_effect_application.stacks,
+								status_effect_application.source,
+								self)
 						status_effect_removed.emit(
 							status_effect_application.status_effect,
 							status_effect_application.stacks,
 							status_effect_application.source,
 							self
 						)
-		else:
-			status_effects.remove_at(i)
-			i -= 1
-			if status_effect_application.status_effect.effect != null:
-				status_effect_application.status_effect.effect.on_status_effect_expired(
-					status_effect_application.status_effect,
-					status_effect_application.stacks,
-					null,
-					self)
-				status_effect_application.status_effect.effect.on_status_effect_removed(
-					status_effect_application.status_effect,
-					status_effect_application.stacks,
-					null,
-					self)
+			else:
+				status_effects.remove_at(i)
+				i -= 1
+				for effect in status_effect_application.status_effect.effects:
+					effect.on_status_effect_expired(
+						status_effect_application.status_effect,
+						status_effect_application.stacks,
+						null,
+						self)
+					effect.on_status_effect_removed(
+						status_effect_application.status_effect,
+						status_effect_application.stacks,
+						null,
+						self)
 				status_effect_removed.emit(
 					status_effect_application.status_effect,
 					status_effect_application.stacks,
 					null,
 					self
 				)
-		i += 1
+			i += 1
 						
 func apply_status_effect(status_effect: StatusEffect, source: Unit) -> void:
 	if status_effect.stackable:
@@ -109,8 +111,8 @@ func apply_status_effect(status_effect: StatusEffect, source: Unit) -> void:
 			var application = get_status_effect_application_from_source(status_effect, source)
 			if application.status_effect.max_stacks > application.stacks:
 				application.stacks += 1
-				if status_effect.effect != null:
-					status_effect.effect.on_status_effect_applied(status_effect, application.stacks, source, self)
+				for effect in status_effect.effects:
+					effect.on_status_effect_applied(status_effect, application.stacks, source, self)
 			refresh_status_effect_application(application)
 		else:
 			status_effects.append({
@@ -119,8 +121,8 @@ func apply_status_effect(status_effect: StatusEffect, source: Unit) -> void:
 				"time": 0.0,
 				"stacks": 1,
 			})
-			if status_effect.effect != null:
-				status_effect.effect.on_status_effect_applied(status_effect, 1, source, self)
+			for effect in status_effect.effects:
+				effect.on_status_effect_applied(status_effect, 1, source, self)
 			status_effect_applied.emit(status_effect, 1, source, self)
 	else:
 		if status_effect.unique and has_status_effect_from_source(status_effect, source):
@@ -132,8 +134,8 @@ func apply_status_effect(status_effect: StatusEffect, source: Unit) -> void:
 				"time": 0.0,
 				"stacks": 1,
 			})	
-			if status_effect.effect != null:
-				status_effect.effect.on_status_effect_applied(status_effect, 1, source, self)
+			for effect in status_effect.effects:
+				effect.on_status_effect_applied(status_effect, 1, source, self)
 			status_effect_applied.emit(status_effect, 1, source, self)
 
 func get_status_effect_application_from_source(status_effect: StatusEffect, source: Unit) -> Dictionary:
@@ -156,8 +158,8 @@ func has_status_effect_from_source(status_effect: StatusEffect, source: Unit) ->
 	
 func refresh_status_effect_application(status_effect_application: Dictionary) -> void:
 	status_effect_application.time = 0.0
-	if status_effect_application.status_effect.effect != null:
-		status_effect_application.status_effect.effect.on_status_effect_refreshed(
+	for effect in status_effect_application.status_effect.effects:
+		effect.on_status_effect_refreshed(
 			status_effect_application.status_effect,
 			status_effect_application.stacks,
 			status_effect_application.source,
@@ -172,8 +174,8 @@ func remove_status_effect(status_effect: StatusEffect, source: Unit) -> void:
 	if has_status_effect_from_source(status_effect, source):
 		var application = get_status_effect_application_from_source(status_effect, source)
 		status_effects.erase(application)
-		if application.status_effect.effect != null:
-			application.status_effect.effect.on_status_effect_removed(
+		for effect in application.status_effect.effects:
+			effect.on_status_effect_removed(
 				application.status_effect,
 				application.stacks,
 				null,
@@ -411,3 +413,21 @@ func get_abilities() -> Array[Ability]:
 	
 func teleport(_position: Vector2) -> void:
 	global_position = _position
+	
+func pause() -> void:
+	movement_strategy.enabled = false
+	casting_enabled = false
+	status_effect_updates_enabled = false
+	
+func freeze() -> void:
+	model_animation.pause()
+	pause()
+	
+func start() -> void:
+	movement_strategy.enabled = true
+	casting_enabled = true
+	status_effect_updates_enabled = true
+
+func unfreeze() -> void:
+	model_animation.play()
+	start()

@@ -48,14 +48,14 @@ func get_next_dialog_step() -> DialogStep:
 	
 func on_dialog_started(_dialog: Dialog) -> void:
 	if not CutsceneManager.has_active_cutscene():
-		Globals.pause_enemies()
+		Globals.pause_units()
 		
 func on_dialog_finished(_dialog: Dialog) -> void:
 	current_dialog_scene.queue_free()
 	current_dialog = null
 	current_dialog_step = null
 	if not CutsceneManager.has_active_cutscene():
-		Globals.start_enemies()
+		Globals.start_units()
 		
 func change_dialog(dialog: Dialog) -> void:
 	current_dialog = dialog

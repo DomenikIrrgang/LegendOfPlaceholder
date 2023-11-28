@@ -11,7 +11,7 @@ script = ExtResource("1_1c54k")
 unit = 2
 texture = ExtResource("2_wr37h")
 
-[sub_resource type="Resource" id="Resource_dfr5e"]
+[sub_resource type="Resource" id="Resource_csyqy"]
 script = ExtResource("3_r1uxc")
 
 [resource]
@@ -25,6 +25,6 @@ duration = 10.0
 unique = true
 stackable = false
 max_stacks = 3
-effect = SubResource("Resource_dfr5e")
+effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([SubResource("Resource_csyqy")])
 animation = SubResource("Resource_necm0")
 icon = ExtResource("5_vccm8")

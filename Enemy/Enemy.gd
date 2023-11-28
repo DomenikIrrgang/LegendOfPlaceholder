@@ -53,21 +53,11 @@ func on_died(_enemy: Unit) -> void:
 	queue_free()
 	
 func pause() -> void:
+	super()
 	hit_box.get_node("CollisionShape2D").disabled = true
 	phase_state_machine.enabled = false
-	movement_strategy.enabled = false
-	casting_enabled = false
-	
-func freeze() -> void:
-	model_animation.pause()
-	pause()
 	
 func start() -> void:
+	super()
 	hit_box.get_node("CollisionShape2D").disabled = false
 	phase_state_machine.enabled = true
-	movement_strategy.enabled = true
-	casting_enabled = true
-	
-func unfreeze() -> void:
-	model_animation.play()
-	start()

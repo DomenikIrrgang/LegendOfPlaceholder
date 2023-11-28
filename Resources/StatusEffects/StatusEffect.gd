@@ -29,7 +29,7 @@ var stackable: bool = false
 var max_stacks: int = 1
 
 @export
-var effect: StatusEffectScript
+var effects: Array[StatusEffectScript] = []
 
 @export
 var animation: StatusEffectAnimation
