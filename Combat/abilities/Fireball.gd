@@ -1,11 +1,13 @@
 extends Ability
 
 var FireballProjectile = preload("res://Combat/abilities/FireballAnimation.tscn")
+var fireball_debuff = preload("res://Resources/StatusEffects/Fireball/FireballDebuff.tres")
 
 func execute(source: Unit, target: Unit) -> void:
 	var pushback_strength = 0.1
 	var hit_direction = source.global_position.direction_to(target.global_position)
 	target.apply_pushback(hit_direction, pushback_strength, 0.3)
+	target.apply_status_effect(fireball_debuff, source)
 
 func use(source: Unit, target: Unit) -> void:
 	var fireball_projectile_instance = FireballProjectile.instantiate()

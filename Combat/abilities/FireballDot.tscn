@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://tdlhasfaakdw"]
+
+[ext_resource type="Script" path="res://Combat/abilities/Ability.gd" id="1_uosi4"]
+[ext_resource type="Texture2D" uid="uid://dsc7t67tufaph" path="res://assets/ui/bottom_hud/fireball_icon.png" id="2_fk6e2"]
+
+[node name="FireballDot" type="Node2D"]
+script = ExtResource("1_uosi4")
+alias = "Fireball"
+tooltip = "Deals fire damage over time."
+value = 1
+scaling_factor = 0.02
+spell_school = 1
+icon = ExtResource("2_fk6e2")

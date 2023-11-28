@@ -16,6 +16,12 @@ var boss_health_label: Label = $Frame/FrameTexture/HealthBar/CenterHealthText/Bo
 @onready
 var castbar: Castbar = $Castbar
 
+@onready
+var buffs: StatusEffectBar = $Buffs
+
+@onready
+var debuffs: StatusEffectBar = $Debuffs
+
 var tween: Tween
 
 func _ready():
@@ -33,6 +39,8 @@ func on_encounter_started(boss: Unit) -> void:
 	boss.get_resource(ResourceType.Enum.HEALTH).resource_value_changed.connect(on_boss_health_changed)
 	boss.get_resource(ResourceType.Enum.HEALTH).resource_maximum_value_changed.connect(on_boss_max_health_changed)
 	castbar.initialize(boss)
+	buffs.initialize(boss)
+	debuffs.initialize(boss)
 	visible = true
 	
 func on_boss_health_changed(resource: UnitResource, _new_value: int, _change: int, _original_change: int) -> void:

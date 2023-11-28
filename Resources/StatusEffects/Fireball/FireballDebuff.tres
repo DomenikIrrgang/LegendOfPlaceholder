@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=6 format=3 uid="uid://66vtr0ha8ysc"]
+
+[ext_resource type="PackedScene" uid="uid://tdlhasfaakdw" path="res://Combat/abilities/FireballDot.tscn" id="1_1k1gf"]
+[ext_resource type="Texture2D" uid="uid://dsc7t67tufaph" path="res://assets/ui/bottom_hud/fireball_icon.png" id="1_pfe1c"]
+[ext_resource type="Script" path="res://Resources/StatusEffects/Effects/DamageOverTimeEffect.gd" id="1_sv8qe"]
+[ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_wp8m3"]
+
+[sub_resource type="Resource" id="Resource_6vf11"]
+script = ExtResource("1_sv8qe")
+ability = ExtResource("1_1k1gf")
+tick_time = 1.0
+
+[resource]
+script = ExtResource("1_wp8m3")
+alias = "Fireball"
+type = 1
+description = "Deals periodic damage."
+dispellable = false
+has_duration = true
+duration = 9.0
+unique = false
+stackable = true
+max_stacks = 3
+effect = SubResource("Resource_6vf11")
+icon = ExtResource("1_pfe1c")

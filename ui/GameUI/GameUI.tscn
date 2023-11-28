@@ -763,6 +763,28 @@ offset_right = -780.0
 offset_bottom = -37.0
 ability_node = NodePath("../../..")
 
+[node name="Buffs" type="HBoxContainer" parent="Bossframe"]
+layout_mode = 2
+offset_left = 541.0
+offset_top = 73.0
+offset_right = 577.0
+offset_bottom = 109.0
+theme_override_constants/separation = 10
+script = ExtResource("50_4qtxk")
+duration_position = 1
+
+[node name="Debuffs" type="HBoxContainer" parent="Bossframe"]
+layout_mode = 2
+offset_left = 1341.0
+offset_top = 73.0
+offset_right = 1377.0
+offset_bottom = 109.0
+theme_override_constants/separation = 10
+alignment = 2
+script = ExtResource("50_4qtxk")
+status_effect_type = 1
+duration_position = 1
+
 [node name="ErrorMessages" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0

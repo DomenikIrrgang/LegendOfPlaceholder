@@ -51,35 +51,56 @@ func update_status_effect(delta: float) -> void:
 	var i = 0
 	while i < status_effects.size():
 		var status_effect_application = status_effects[i]
-		if status_effect_application.status_effect.effect != null:
-			status_effect_application.status_effect.effect.on_status_effect_update(
-				status_effect_application.status_effect,
-				status_effect_application.stacks,
-				status_effect_application.source,
-				self,
-				delta)
-		if status_effect_application.status_effect.has_duration:
-			status_effect_application.time += delta
-			if status_effect_application.status_effect.duration <= status_effect_application.time:
-				status_effects.remove_at(i)
-				i -= 1
-				if status_effect_application.status_effect.effect != null:
-					status_effect_application.status_effect.effect.on_status_effect_expired(
-						status_effect_application.status_effect,
-						status_effect_application.stacks,
-						status_effect_application.source,
-						self)
-					status_effect_application.status_effect.effect.on_status_effect_removed(
-						status_effect_application.status_effect,
-						status_effect_application.stacks,
-						status_effect_application.source,
-						self)
-					status_effect_removed.emit(
-						status_effect_application.status_effect,
-						status_effect_application.stacks,
-						status_effect_application.source,
-						self
-					)
+		if is_instance_valid(status_effect_application.source):
+			if status_effect_application.status_effect.effect != null:
+				status_effect_application.status_effect.effect.on_status_effect_update(
+					status_effect_application.status_effect,
+					status_effect_application.stacks,
+					status_effect_application.source,
+					self,
+					delta)
+			if status_effect_application.status_effect.has_duration:
+				status_effect_application.time += delta
+				if status_effect_application.status_effect.duration <= status_effect_application.time:
+					status_effects.remove_at(i)
+					i -= 1
+					if status_effect_application.status_effect.effect != null:
+						status_effect_application.status_effect.effect.on_status_effect_expired(
+							status_effect_application.status_effect,
+							status_effect_application.stacks,
+							status_effect_application.source,
+							self)
+						status_effect_application.status_effect.effect.on_status_effect_removed(
+							status_effect_application.status_effect,
+							status_effect_application.stacks,
+							status_effect_application.source,
+							self)
+						status_effect_removed.emit(
+							status_effect_application.status_effect,
+							status_effect_application.stacks,
+							status_effect_application.source,
+							self
+						)
+		else:
+			status_effects.remove_at(i)
+			i -= 1
+			if status_effect_application.status_effect.effect != null:
+				status_effect_application.status_effect.effect.on_status_effect_expired(
+					status_effect_application.status_effect,
+					status_effect_application.stacks,
+					null,
+					self)
+				status_effect_application.status_effect.effect.on_status_effect_removed(
+					status_effect_application.status_effect,
+					status_effect_application.stacks,
+					null,
+					self)
+				status_effect_removed.emit(
+					status_effect_application.status_effect,
+					status_effect_application.stacks,
+					null,
+					self
+				)
 		i += 1
 						
 func apply_status_effect(status_effect: StatusEffect, source: Unit) -> void:
@@ -93,7 +114,7 @@ func apply_status_effect(status_effect: StatusEffect, source: Unit) -> void:
 			refresh_status_effect_application(application)
 		else:
 			status_effects.append({
-				"status_effect": status_effect,
+				"status_effect": status_effect.duplicate(true),
 				"source": source,
 				"time": 0.0,
 				"stacks": 1,
@@ -106,7 +127,7 @@ func apply_status_effect(status_effect: StatusEffect, source: Unit) -> void:
 			refresh_status_effect_application(get_status_effect_application_from_source(status_effect, source))
 		else:
 			status_effects.append({
-				"status_effect": status_effect,
+				"status_effect": status_effect.duplicate(true),
 				"source": source,
 				"time": 0.0,
 				"stacks": 1,
@@ -117,19 +138,19 @@ func apply_status_effect(status_effect: StatusEffect, source: Unit) -> void:
 
 func get_status_effect_application_from_source(status_effect: StatusEffect, source: Unit) -> Dictionary:
 	for status_effect_application in status_effects:
-		if status_effect_application.status_effect == status_effect and status_effect_application.source == source:
+		if status_effect_application.status_effect.alias == status_effect.alias and status_effect_application.status_effect.type == status_effect.type and status_effect_application.source == source:
 			return status_effect_application
 	return {}
 	
 func has_status_effect(status_effect: StatusEffect) -> bool:
 	for status_effect_application in status_effects:
-		if status_effect_application.status_effect == status_effect:
+		if status_effect_application.status_effect.alias == status_effect.alias and status_effect_application.status_effect.type == status_effect.type:
 			return true
 	return false
 	
 func has_status_effect_from_source(status_effect: StatusEffect, source: Unit) -> bool:
 	for status_effect_application in status_effects:
-		if status_effect_application.status_effect == status_effect and status_effect_application.source == source:
+		if status_effect_application.status_effect.alias == status_effect.alias and status_effect_application.status_effect.type == status_effect.type and status_effect_application.source == source:
 			return true
 	return false
 	

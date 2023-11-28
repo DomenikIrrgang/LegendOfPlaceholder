@@ -13,12 +13,16 @@ var icon: TextureRect = $Display/CenterContainer/Icon
 @onready
 var stacks: Label = $Display/Stacks
 
-func set_status_effect_application(_status_effect_application: Dictionary) -> void:
+func set_status_effect_application(_status_effect_application: Dictionary, duration_position: StatusEffectDurationPosition.Enum) -> void:
 	status_effect_application = _status_effect_application
 	icon.texture = status_effect_application.status_effect.icon
 	duration.visible = status_effect_application.status_effect.has_duration
 	stacks.visible = status_effect_application.status_effect.stackable
 	stacks.text = str(status_effect_application.stacks)
+	if duration_position == StatusEffectDurationPosition.Enum.TOP:
+		move_child(duration, 0)
+	else:
+		move_child(duration, 2)
 	
 func _process(_delta: float) -> void:
 	var _duration = get_remaining_duration()

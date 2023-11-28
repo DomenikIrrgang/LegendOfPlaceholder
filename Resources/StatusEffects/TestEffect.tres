@@ -15,12 +15,12 @@ texture = ExtResource("2_wr37h")
 [sub_resource type="Resource" id="Resource_8llwa"]
 script = ExtResource("4_hgls5")
 stat = 1
-value = 50
+value = 2
 
 [sub_resource type="Resource" id="Resource_obv7c"]
 script = ExtResource("4_hgls5")
 stat = 5
-value = 1000
+value = 5000
 
 [sub_resource type="Resource" id="Resource_061kp"]
 script = ExtResource("3_46s36")
@@ -29,14 +29,14 @@ stats = Array[ExtResource("4_hgls5")]([SubResource("Resource_8llwa"), SubResourc
 [resource]
 script = ExtResource("1_vj73m")
 alias = "TestEffect"
-type = 1
+type = 0
 description = "This is a test effect."
 dispellable = true
 has_duration = true
 duration = 10.0
 unique = false
 stackable = true
-max_stacks = 99
+max_stacks = 3
 effect = SubResource("Resource_061kp")
 animation = SubResource("Resource_necm0")
 icon = ExtResource("5_vccm8")
