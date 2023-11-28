@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://olcsggna3b3u"]
+[gd_scene load_steps=7 format=3 uid="uid://olcsggna3b3u"]
 
 [ext_resource type="Script" path="res://ui/GameUI/StatusEffect/StatusEffectDisplay.gd" id="1_pne0f"]
 [ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="3_xrf5m"]
 [ext_resource type="Texture2D" uid="uid://cdge8hml0jtf2" path="res://assets/ui/dialog/default_dialog_background.png" id="4_r2kfp"]
 [ext_resource type="Texture2D" uid="uid://cm6dd5rsq5ve2" path="res://assets/ui/items/fire_spelltome.png" id="5_1r0d3"]
 [ext_resource type="LabelSettings" uid="uid://b304vmcf3x1f0" path="res://ui/GameUI/AbilitySlotFont.tres" id="5_h17sy"]
+[ext_resource type="PackedScene" uid="uid://c50k0lctehvfh" path="res://ui/GameUI/Tooltip/StatusEffectTooltipComponent.tscn" id="6_ngi4t"]
 
 [node name="StatusEffectDisplay" type="VBoxContainer"]
 alignment = 2
@@ -51,3 +52,6 @@ text = "1"
 label_settings = ExtResource("5_h17sy")
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="StatusEffectTooltipComponent" parent="." instance=ExtResource("6_ngi4t")]
+layout_mode = 2

@@ -1,9 +1,9 @@
 class_name EngulfingPlain
 extends Ability
 
-var EngulfingPlainStage1 = preload("res://Enemy/ElementalSlime/Abilities/EngulfingPlainStage1.tscn")
-var EngulfingPlainStage2 = preload("res://Enemy/ElementalSlime/Abilities/EngulfingPlainStage2.tscn")
-var EngulfingPlainStage3 = preload("res://Enemy/ElementalSlime/Abilities/EngulfingPlainStage3.tscn")
+var EngulfingPlainStage1 = load("res://Enemy/ElementalSlime/Abilities/EngulfingPlainStage1.tscn")
+var EngulfingPlainStage2 = load("res://Enemy/ElementalSlime/Abilities/EngulfingPlainStage2.tscn")
+var EngulfingPlainStage3 = load("res://Enemy/ElementalSlime/Abilities/EngulfingPlainStage3.tscn")
 
 var EngulfingPlainDebuff = load("res://Resources/StatusEffects/EngulfingPlane.tres")
 

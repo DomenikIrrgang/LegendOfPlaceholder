@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_72tgq")
 alias = "Spelltome"
-cooldown = 0.0
+cooldown = 3.0

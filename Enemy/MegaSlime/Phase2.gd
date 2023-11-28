@@ -2,6 +2,7 @@ extends EnemyPhaseState
 
 var SummonHealSlime = preload("res://Enemy/MegaSlime/Abilities/SummonHealSlime.tscn").instantiate()
 var Zone = preload("res://Enemy/MegaSlime/Abilities/ZoneOfDoom.tscn").instantiate()
+var Immune = load("res://Resources/StatusEffects/TestEffect.tres")
 
 var slimes_killed: int = 0
 var slimes_to_kill = 4
@@ -12,7 +13,8 @@ func enter(_data := {}) -> void:
 	add_timed_ability(SummonHealSlime, Globals.get_player(), 11.0, 13.0, 20.0)
 	add_timed_ability(Zone, Globals.get_player(), 2.5, 3.5, 20.0)
 	Globals.get_player().teleport(Vector2(-525.5334, -75.98621))
-	CutsceneManager.start_cutscene(load("res://Resources/Cutscenes/MegaSlimePhase2.tres"))	
+	CutsceneManager.start_cutscene(load("res://Resources/Cutscenes/MegaSlimePhase2.tres"))
+	get_enemy().apply_status_effect(Immune, get_enemy())
 	
 func update(_delta: float) -> void:
 	super(_delta)
@@ -27,6 +29,7 @@ func on_heal_slime_died(_heal_slime: Unit) -> void:
 	
 func exit() -> void:
 	super()
+	get_enemy().remove_status_effect(Immune, get_enemy())
 	for node in Globals.get_enemies():
 		if node is HealSlime:
 			node.queue_free()

@@ -4,6 +4,9 @@ extends VBoxContainer
 @export
 var status_effect_application: Dictionary
 
+@export
+var status_effect: StatusEffect
+
 @onready
 var duration: Label = $Duration
 
@@ -18,6 +21,7 @@ func set_status_effect_application(_status_effect_application: Dictionary, durat
 	icon.texture = status_effect_application.status_effect.icon
 	stacks.visible = status_effect_application.status_effect.stackable
 	stacks.text = str(status_effect_application.stacks)
+	status_effect = status_effect_application.status_effect
 	if duration_position == StatusEffectDurationPosition.Enum.TOP:
 		move_child(duration, 0)
 	else:

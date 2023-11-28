@@ -46,7 +46,7 @@
 [ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="30_ao71d"]
 [ext_resource type="Script" path="res://ui/GameUI/DragAndDrop.gd" id="31_sah85"]
 [ext_resource type="Texture2D" uid="uid://hvw818c7res8" path="res://assets/ui/misc/selected_border.png" id="34_q40sq"]
-[ext_resource type="PackedScene" uid="uid://cuivp4jpcyy1j" path="res://ui/GameUI/AbilityTooltipComponent.tscn" id="38_0qeqe"]
+[ext_resource type="PackedScene" uid="uid://cuivp4jpcyy1j" path="res://ui/GameUI/Tooltip/AbilityTooltipComponent.tscn" id="38_0qeqe"]
 [ext_resource type="PackedScene" uid="uid://8mvr4arokyd0" path="res://ui/GameUI/CharacterSheet/CharacterSheet.tscn" id="44_lu4nk"]
 [ext_resource type="PackedScene" uid="uid://clf21bsx3d6bl" path="res://ui/GameUI/Spellbook/Spellbook.tscn" id="47_3y1gb"]
 [ext_resource type="Script" path="res://ui/GameUI/StatusEffect/StatusEffectBar.gd" id="50_4qtxk"]

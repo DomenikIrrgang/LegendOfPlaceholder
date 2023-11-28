@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c50k0lctehvfh"]
+
+[ext_resource type="Script" path="res://ui/GameUI/Tooltip/StatusEffectTooltipComponent.gd" id="1_nr47j"]
+
+[node name="StatusEffectTooltipComponent" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_nr47j")
+
+[connection signal="mouse_in" from="." to="." method="_on_mouse_in"]
+[connection signal="mouse_out" from="." to="." method="_on_mouse_out"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

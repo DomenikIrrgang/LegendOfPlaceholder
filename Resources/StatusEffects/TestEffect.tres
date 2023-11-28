@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="StatusEffect" load_steps=11 format=3 uid="uid://cwpbu0ti4828t"]
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=8 format=3 uid="uid://cwpbu0ti4828t"]
 
 [ext_resource type="Script" path="res://Resources/StatusEffects/TextureStatusEffectAnimation.gd" id="1_1c54k"]
 [ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_vj73m"]
 [ext_resource type="Texture2D" uid="uid://ptj35ec4hyeo" path="res://assets/textures/fire.jpeg" id="2_wr37h"]
-[ext_resource type="Script" path="res://Resources/StatusEffects/Effects/StatEffect.gd" id="3_46s36"]
-[ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="4_hgls5"]
+[ext_resource type="Script" path="res://Resources/StatusEffects/Effects/ImmuneEffect.gd" id="3_r1uxc"]
 [ext_resource type="Texture2D" uid="uid://dnnj48dx2glf3" path="res://assets/ui/items/healing_potion.png" id="5_vccm8"]
 
 [sub_resource type="Resource" id="Resource_necm0"]
@@ -12,31 +11,20 @@ script = ExtResource("1_1c54k")
 unit = 2
 texture = ExtResource("2_wr37h")
 
-[sub_resource type="Resource" id="Resource_8llwa"]
-script = ExtResource("4_hgls5")
-stat = 1
-value = 2
-
-[sub_resource type="Resource" id="Resource_obv7c"]
-script = ExtResource("4_hgls5")
-stat = 5
-value = 5000
-
-[sub_resource type="Resource" id="Resource_061kp"]
-script = ExtResource("3_46s36")
-stats = Array[ExtResource("4_hgls5")]([SubResource("Resource_8llwa"), SubResource("Resource_obv7c")])
+[sub_resource type="Resource" id="Resource_dfr5e"]
+script = ExtResource("3_r1uxc")
 
 [resource]
 script = ExtResource("1_vj73m")
-alias = "TestEffect"
+alias = "Immune"
 type = 0
-description = "This is a test effect."
-dispellable = true
-has_duration = true
+description = "Immune to all abilities."
+dispellable = false
+has_duration = false
 duration = 10.0
-unique = false
-stackable = true
+unique = true
+stackable = false
 max_stacks = 3
-effect = SubResource("Resource_061kp")
+effect = SubResource("Resource_dfr5e")
 animation = SubResource("Resource_necm0")
 icon = ExtResource("5_vccm8")

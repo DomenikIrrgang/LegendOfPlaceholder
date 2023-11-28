@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd6gm72loeyvc"]
+
+[ext_resource type="Script" path="res://ui/GameUI/Tooltip/StatusEffectTooltip.gd" id="1_kmcna"]
+[ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="2_x655p"]
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="3_47gf1"]
+
+[node name="StatusEffectTooltip" type="PanelContainer"]
+script = ExtResource("1_kmcna")
+
+[node name="PanelContainer" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_x655p")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Content" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TopLine" type="BoxContainer" parent="MarginContainer/Content"]
+layout_mode = 2
+
+[node name="StatusEffectName" type="VBoxContainer" parent="MarginContainer/Content/TopLine"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Content/TopLine/StatusEffectName"]
+layout_mode = 2
+text = "<StatusEffect>"
+label_settings = ExtResource("3_47gf1")
+
+[node name="Type" type="VBoxContainer" parent="MarginContainer/Content/TopLine"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Content/TopLine/Type"]
+layout_mode = 2
+text = "<Type>"
+label_settings = ExtResource("3_47gf1")
+horizontal_alignment = 2
+
+[node name="Description" type="MarginContainer" parent="MarginContainer/Content"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Text" type="VBoxContainer" parent="MarginContainer/Content/Description"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Content/Description/Text"]
+layout_mode = 2
+text = "<StatusEffectDescription>"
+label_settings = ExtResource("3_47gf1")
