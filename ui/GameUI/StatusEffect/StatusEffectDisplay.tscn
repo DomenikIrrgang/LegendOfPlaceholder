@@ -7,6 +7,7 @@
 [ext_resource type="LabelSettings" uid="uid://b304vmcf3x1f0" path="res://ui/GameUI/AbilitySlotFont.tres" id="5_h17sy"]
 
 [node name="StatusEffectDisplay" type="VBoxContainer"]
+alignment = 2
 script = ExtResource("1_pne0f")
 
 [node name="Duration" type="Label" parent="."]

@@ -168,6 +168,23 @@ func refresh_status_effect_application(status_effect_application: Dictionary) ->
 		status_effect_application.source,
 		self)
 
+func remove_status_effect(status_effect: StatusEffect, source: Unit) -> void:
+	if has_status_effect_from_source(status_effect, source):
+		var application = get_status_effect_application_from_source(status_effect, source)
+		status_effects.erase(application)
+		if application.status_effect.effect != null:
+			application.status_effect.effect.on_status_effect_removed(
+				application.status_effect,
+				application.stacks,
+				null,
+				self)
+		status_effect_removed.emit(
+			application.status_effect,
+			application.stacks,
+			null,
+			self)
+	
+	
 # Direction
 enum Direction {
 	UP,

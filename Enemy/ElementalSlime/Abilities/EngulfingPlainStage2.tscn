@@ -1,13 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bm4cm882prra3"]
+[gd_scene load_steps=9 format=3 uid="uid://bm4cm882prra3"]
 
 [ext_resource type="Script" path="res://Enemy/ElementalSlime/Abilities/EngulfingPlainStage1.gd" id="1_lk4pf"]
 [ext_resource type="Script" path="res://Combat/abilities/VoidZone.gd" id="2_lgchx"]
 [ext_resource type="Shader" path="res://Shaders/UnitResource.gdshader" id="3_08bce"]
+[ext_resource type="Resource" uid="uid://p42pgd64208i" path="res://Resources/StatusEffects/EngulfingPlane.tres" id="3_bsiuc"]
 [ext_resource type="Texture2D" uid="uid://balmafqcebef8" path="res://assets/textures/red.png" id="4_lhnkl"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_k3f8f"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8kqkt"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_idk2h"]
 generate_mipmaps = false
 normalize = false
 noise = SubResource("FastNoiseLite_k3f8f")
@@ -16,7 +17,7 @@ noise = SubResource("FastNoiseLite_k3f8f")
 shader = ExtResource("3_08bce")
 shader_parameter/timeScaleFactor = 0.1
 shader_parameter/brightness = 0.5
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_8kqkt")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_idk2h")
 
 [node name="EngulfingPlainStage2" type="Node2D"]
 script = ExtResource("1_lk4pf")
@@ -25,7 +26,7 @@ script = ExtResource("1_lk4pf")
 collision_layer = 6
 collision_mask = 15
 script = ExtResource("2_lgchx")
-tick_time = 1.0
+status_effect = ExtResource("3_bsiuc")
 
 [node name="CollisionU" type="CollisionPolygon2D" parent="VoidZone"]
 visible = false

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=6 format=3 uid="uid://p42pgd64208i"]
+
+[ext_resource type="PackedScene" uid="uid://s1djblvtvpjv" path="res://Enemy/ElementalSlime/Abilities/EngulfingPlain.tscn" id="1_cjs3x"]
+[ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_pdw5l"]
+[ext_resource type="Script" path="res://Resources/StatusEffects/Effects/DamageOverTimeEffect.gd" id="2_khh5j"]
+[ext_resource type="Texture2D" uid="uid://bqfmxph630j16" path="res://assets/ui/bottom_hud/engulfing_plain_icon.png" id="3_j2bq1"]
+
+[sub_resource type="Resource" id="Resource_ebfew"]
+script = ExtResource("2_khh5j")
+ability = ExtResource("1_cjs3x")
+tick_time = 1.0
+
+[resource]
+script = ExtResource("1_pdw5l")
+alias = "Engulfing Plane"
+type = 1
+description = "Taking peroid fire damage."
+dispellable = false
+has_duration = false
+duration = 0.0
+unique = true
+stackable = false
+max_stacks = 1
+effect = SubResource("Resource_ebfew")
+icon = ExtResource("3_j2bq1")

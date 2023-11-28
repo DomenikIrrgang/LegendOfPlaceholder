@@ -5,6 +5,8 @@ var EngulfingPlainStage1 = preload("res://Enemy/ElementalSlime/Abilities/Engulfi
 var EngulfingPlainStage2 = preload("res://Enemy/ElementalSlime/Abilities/EngulfingPlainStage2.tscn")
 var EngulfingPlainStage3 = preload("res://Enemy/ElementalSlime/Abilities/EngulfingPlainStage3.tscn")
 
+var EngulfingPlainDebuff = load("res://Resources/StatusEffects/EngulfingPlane.tres")
+
 var stages = [
 	[EngulfingPlainStage1, EngulfingPlainStage3],
 	[EngulfingPlainStage2, EngulfingPlainStage3],
@@ -52,10 +54,9 @@ func spawn_stage(stage) -> void:
 		var stage_instance = ability.instantiate()
 		source.add_child(stage_instance)
 		stage_instance.void_zone.unit = source
-		stage_instance.void_zone.ability = self
 		stage_instance.void_zone.set_active(false)
+		stage_instance.void_zone.status_effect = EngulfingPlainDebuff
 		stage_instance.global_position = source.global_position
-		stage_instance.void_zone.on_void_zone_tick.connect(on_void_zone_tick)
 		current_stages.append(stage_instance)
 		
 func despawn_current_stage() -> void:
@@ -63,9 +64,6 @@ func despawn_current_stage() -> void:
 		stage.free()
 	current_stages = []
 		
-func on_void_zone_tick(_hurt_boxes: Array[HurtBox2D]) -> void:
-	pass
-	
 func on_stage_timer() -> void:
 	despawn_current_stage()
 	on_break_timer()
