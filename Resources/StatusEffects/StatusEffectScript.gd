@@ -4,6 +4,12 @@ extends Resource
 func on_status_effect_applied(status_effect: StatusEffect, stacks: int, _source: Unit, _target: Unit) -> void:
 	pass
 	
+func on_status_effect_stack_applied(status_effect: StatusEffect, stacks: int, _source: Unit, _target: Unit) -> void:
+	pass
+	
+func on_status_effect_stack_removed(status_effect: StatusEffect, stacks: int, _source: Unit, _target: Unit) -> void:
+	pass
+	
 func on_status_effect_dispelled(status_effect: StatusEffect, stacks: int, _source: Unit, _target: Unit) -> void:
 	pass
 	

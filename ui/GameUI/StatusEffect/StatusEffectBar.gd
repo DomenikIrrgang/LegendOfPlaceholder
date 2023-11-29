@@ -19,11 +19,17 @@ func initialize(_unit: Unit) -> void:
 		unit.status_effect_removed.disconnect(sync_status_effects)
 		unit.status_effect_refreshed.disconnect(sync_status_effects)
 		unit.status_effect_dispelled.disconnect(sync_status_effects)
+		unit.status_effect_stack_applied.disconnect(sync_status_effects)
+		unit.status_effect_stack_removed.disconnect(sync_status_effects)
 	unit = _unit
 	unit.status_effect_applied.connect(sync_status_effects)
 	unit.status_effect_removed.connect(sync_status_effects)
 	unit.status_effect_refreshed.connect(sync_status_effects)
 	unit.status_effect_dispelled.connect(sync_status_effects)
+	unit.status_effect_dispelled.connect(sync_status_effects)
+	unit.status_effect_dispelled.connect(sync_status_effects)
+	unit.status_effect_stack_applied.connect(sync_status_effects)
+	unit.status_effect_stack_removed.connect(sync_status_effects)
 	
 func sync_status_effects(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit) -> void:
 	for display in get_children():

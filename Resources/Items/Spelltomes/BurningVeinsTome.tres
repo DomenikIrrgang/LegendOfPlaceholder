@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://1dht423wf6t6"]
+
+[ext_resource type="Texture2D" uid="uid://cm6dd5rsq5ve2" path="res://assets/ui/items/fire_spelltome.png" id="1_oxv1c"]
+[ext_resource type="Script" path="res://Resources/Items/Item.gd" id="1_rx7c4"]
+[ext_resource type="PackedScene" uid="uid://c1y0c1fk60ylj" path="res://Combat/abilities/BurningVeins.tscn" id="2_qs281"]
+[ext_resource type="Resource" uid="uid://bbgka06dmjbii" path="res://Resources/Items/Spelltomes/SpelltomeCooldownGroup.tres" id="3_mdwo6"]
+[ext_resource type="Script" path="res://Resources/Items/Spelltomes/SpellTomeEffect.gd" id="4_1fiww"]
+
+[sub_resource type="Resource" id="Resource_74ge5"]
+script = ExtResource("4_1fiww")
+ability = ExtResource("2_qs281")
+cooldown_group = ExtResource("3_mdwo6")
+
+[resource]
+script = ExtResource("1_rx7c4")
+alias = "Spelltome: Burning Veins"
+useable = true
+use_effect = SubResource("Resource_74ge5")
+use_description = "Teaches you the Burning Veins Ability."
+limited = false
+limit = 1
+stackable = false
+stack_amount = 5
+description = "You are becoming hot-blodded..."
+icon = ExtResource("1_oxv1c")

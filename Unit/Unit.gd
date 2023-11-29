@@ -47,6 +47,8 @@ signal status_effect_applied(status_effect: StatusEffect, stacks: int, source: U
 signal status_effect_refreshed(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
 signal status_effect_dispelled(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
 signal status_effect_removed(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
+signal status_effect_stack_applied(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
+signal status_effect_stack_removed(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit)
 
 func update_status_effect(delta: float) -> void:
 	if status_effect_updates_enabled:
@@ -105,25 +107,31 @@ func update_status_effect(delta: float) -> void:
 				)
 			i += 1
 						
-func apply_status_effect(status_effect: StatusEffect, source: Unit) -> void:
+func apply_status_effect(status_effect: StatusEffect, source: Unit, stacks: int = 1) -> void:
 	if status_effect.stackable:
 		if has_status_effect_from_source(status_effect, source):
 			var application = get_status_effect_application_from_source(status_effect, source)
 			if application.status_effect.max_stacks > application.stacks:
 				application.stacks += 1
 				for effect in status_effect.effects:
-					effect.on_status_effect_applied(status_effect, application.stacks, source, self)
+					effect.on_status_effect_stack_applied(status_effect, stacks, source, self)
+				status_effect_stack_applied.emit(
+					application.status_effect,
+					application.stacks,
+					application.source,
+					self
+				)
 			refresh_status_effect_application(application)
 		else:
 			status_effects.append({
 				"status_effect": status_effect.duplicate(true),
 				"source": source,
 				"time": 0.0,
-				"stacks": 1,
+				"stacks": stacks,
 			})
 			for effect in status_effect.effects:
-				effect.on_status_effect_applied(status_effect, 1, source, self)
-			status_effect_applied.emit(status_effect, 1, source, self)
+				effect.on_status_effect_applied(status_effect, stacks, source, self)
+			status_effect_applied.emit(status_effect, stacks, source, self)
 	else:
 		if status_effect.unique and has_status_effect_from_source(status_effect, source):
 			refresh_status_effect_application(get_status_effect_application_from_source(status_effect, source))
@@ -132,11 +140,11 @@ func apply_status_effect(status_effect: StatusEffect, source: Unit) -> void:
 				"status_effect": status_effect.duplicate(true),
 				"source": source,
 				"time": 0.0,
-				"stacks": 1,
+				"stacks": stacks,
 			})	
 			for effect in status_effect.effects:
-				effect.on_status_effect_applied(status_effect, 1, source, self)
-			status_effect_applied.emit(status_effect, 1, source, self)
+				effect.on_status_effect_applied(status_effect, stacks, source, self)
+			status_effect_applied.emit(status_effect, stacks, source, self)
 
 func get_status_effect_application_from_source(status_effect: StatusEffect, source: Unit) -> Dictionary:
 	for status_effect_application in status_effects:
@@ -149,6 +157,12 @@ func has_status_effect(status_effect: StatusEffect) -> bool:
 		if status_effect_application.status_effect.alias == status_effect.alias and status_effect_application.status_effect.type == status_effect.type:
 			return true
 	return false
+	
+func get_status_effect_application(status_effect: StatusEffect) -> Dictionary:
+	for status_effect_application in status_effects:
+		if status_effect_application.status_effect.alias == status_effect.alias and status_effect_application.status_effect.type == status_effect.type:
+			return status_effect_application
+	return {}
 	
 func has_status_effect_from_source(status_effect: StatusEffect, source: Unit) -> bool:
 	for status_effect_application in status_effects:
@@ -178,14 +192,34 @@ func remove_status_effect(status_effect: StatusEffect, source: Unit) -> void:
 			effect.on_status_effect_removed(
 				application.status_effect,
 				application.stacks,
-				null,
+				source,
 				self)
 		status_effect_removed.emit(
 			application.status_effect,
 			application.stacks,
-			null,
+			source,
 			self)
-	
+			
+func remove_status_effect_stack(status_effect: StatusEffect, stacks: int = 1) -> void:
+	if has_status_effect(status_effect):
+		var application = get_status_effect_application(status_effect)
+		if application.stacks > stacks:
+			application.stacks -= stacks
+			for effect in application.status_effect.effects:
+				effect.on_status_effect_stack_removed(
+					application.status_effect,
+					stacks,
+					application.source,
+					self
+				)
+			status_effect_stack_removed.emit(
+				application.status_effect,
+				application.stacks,
+				application.source,
+				self
+			)
+		else:
+			remove_status_effect(status_effect, application.source)
 	
 # Direction
 enum Direction {
@@ -215,6 +249,9 @@ var casting_enabled: bool = true
 # Combat
 var combat_logic: CombatLogic = CombatLogic.new()
 
+signal combat_logic_result(result: CombatLogicResult)
+
+# Casts
 signal cast_started(source: Unit, target: Unit, ability: Ability, duration: float)
 signal cast_canceled(source: Unit, target: Unit, ability: Ability)
 signal cast_interupted(source: Unit, target: Unit, ability: Ability)
@@ -305,6 +342,12 @@ func on_ability_result(result: CombatLogicResult) -> void:
 		var damage_number = DamageNumber.instantiate()
 		add_child(damage_number)
 		damage_number.show_number(result)
+		if result.source != self:
+			result.source.combat_logic_result.emit(result)
+	if result.source == self:
+		if result.target != self:
+			result.target.combat_logic_result.emit(result)
+	combat_logic_result.emit(result)
 	
 func is_dead() -> bool:
 	return get_resource(ResourceType.Enum.HEALTH).get_value() == 0

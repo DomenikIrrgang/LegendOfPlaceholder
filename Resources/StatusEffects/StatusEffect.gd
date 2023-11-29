@@ -7,7 +7,7 @@ var alias: String = ""
 @export
 var type: StatusEffectType.Enum = StatusEffectType.Enum.BUFF
 
-@export
+@export_multiline
 var description: String = ""
 
 @export

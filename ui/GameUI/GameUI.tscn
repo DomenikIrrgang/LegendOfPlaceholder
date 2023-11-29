@@ -279,6 +279,7 @@ var lesser_mana_potion: Item = preload(\"res://Resources/Items/ManaPotions/Lesse
 var fireball_tome: Item = preload(\"res://Resources/Items/Spelltomes/FireballTome.tres\")
 var mend_tome: Item = preload(\"res://Resources/Items/Spelltomes/MendTome.tres\")
 var forcefield_tome: Item = preload(\"res://Resources/Items/Spelltomes/ForcefieldTome.tres\")
+var burning_veins: Item = preload(\"res://Resources/Items/Spelltomes/BurningVeinsTome.tres\")
 
 var Drop = preload(\"res://Unit/Drops/Drop.tscn\")
 
@@ -291,7 +292,7 @@ func _on_pressed():
 	Globals.get_world().add_child(drop3)
 	drop1.set_item(fireball_tome, 1)
 	drop2.set_item(mend_tome, 1)
-	drop3.set_item(forcefield_tome, 1)
+	drop3.set_item(burning_veins, 1)
 "
 
 [sub_resource type="GDScript" id="GDScript_j6glr"]

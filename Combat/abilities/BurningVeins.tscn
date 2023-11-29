@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1y0c1fk60ylj"]
+
+[ext_resource type="Script" path="res://Combat/abilities/BurningVeins.gd" id="1_dpnax"]
+[ext_resource type="Texture2D" uid="uid://dsc7t67tufaph" path="res://assets/ui/bottom_hud/fireball_icon.png" id="2_usrsl"]
+
+[node name="BurningVeins" type="Node2D"]
+script = ExtResource("1_dpnax")
+alias = "Burning Veins"
+tooltip = "Applies 5 Stacks of Burning Veins. Each Stack increaes your crit by 267.
+ When you land a critical strike a stack is removed."
+ability_type = 1
+cooldown = 30.0
+scaling_factor = 0.0
+spell_school = 1
+resource_cost = 20
+crittable = false
+icon = ExtResource("2_usrsl")
