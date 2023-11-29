@@ -320,11 +320,11 @@ func update_cast(delta: float) -> void:
 			cast_target = null
 			
 func use_ability(target: Unit, ability: Ability) -> bool:
-	var combat_logic_result = combat_logic.use_ability(self, target, ability)
-	if combat_logic_result.type == ResultType.Enum.START_CAST:
+	var result = combat_logic.use_ability(self, target, ability)
+	if result.type == ResultType.Enum.START_CAST:
 		return start_casting(target, ability)
 	else:
-		return combat_logic_result.type == ResultType.Enum.SUCCESS
+		return result.type == ResultType.Enum.SUCCESS
 
 func _ready() -> void:
 	base_stats = BaseStats.new(unit_data.level)

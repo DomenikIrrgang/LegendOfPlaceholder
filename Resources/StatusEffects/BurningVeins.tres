@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="StatusEffect" load_steps=8 format=3 uid="uid://cb7sedauy7sl5"]
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=9 format=3 uid="uid://cb7sedauy7sl5"]
 
 [ext_resource type="Script" path="res://Resources/StatusEffects/Effects/StatEffect.gd" id="1_l8yyi"]
 [ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_l71da"]
 [ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="2_fsfrl"]
 [ext_resource type="Script" path="res://Resources/StatusEffects/Effects/RemoveStackOnHitType.gd" id="3_j153k"]
+[ext_resource type="Texture2D" uid="uid://bctb0s1bw0700" path="res://assets/ui/bottom_hud/burning_veins_icon.png" id="4_whw3l"]
 
 [sub_resource type="Resource" id="Resource_wleo4"]
 script = ExtResource("2_fsfrl")
@@ -22,7 +23,7 @@ hit_type = 4
 script = ExtResource("1_l71da")
 alias = "Burning Veins"
 type = 0
-description = "Increases your critical chance by 20% per stack.
+description = "Increases your crit by 267 per stack.
 Each time you land a critical strike one stack will be removed."
 dispellable = false
 has_duration = true
@@ -31,3 +32,4 @@ unique = false
 stackable = true
 max_stacks = 5
 effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([SubResource("Resource_v2nqc"), SubResource("Resource_j71le")])
+icon = ExtResource("4_whw3l")

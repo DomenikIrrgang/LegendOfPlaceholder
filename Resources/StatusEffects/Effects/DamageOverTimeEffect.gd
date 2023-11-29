@@ -24,7 +24,7 @@ func on_status_effect_update(status_effect: StatusEffect, stacks: int, source: U
 		on_tick(status_effect, stacks, source, target)
 		time_passed[target.to_string()] = 0.0
 		
-func on_tick(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit) -> void:
+func on_tick(_status_effect: StatusEffect, stacks: int, source: Unit, target: Unit) -> void:
 	var ability_instance = ability.instantiate()
 	ability_instance.value = ability_instance.value * stacks
 	target.combat_logic.cast_ability(source, target, ability_instance)

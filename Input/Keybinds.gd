@@ -9,6 +9,7 @@ var keybinds = {
 
 func _ready() -> void:
 	InputControlls.input_event.connect(on_input)
+	Spellbook.learn_ability(load("res://Combat/abilities/BurningVeins.tscn").instantiate())
 	init_ability("Dash", load("res://Combat/abilities/Dash.tscn").instantiate())
 	init_ability("Attack", load("res://Combat/abilities/Attack.tscn").instantiate())
 	init_ability("Ability_One", load("res://Combat/abilities/Mend.tscn").instantiate())

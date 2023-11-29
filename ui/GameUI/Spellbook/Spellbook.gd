@@ -40,11 +40,11 @@ func open() -> void:
 	visible = true
 	update_abilities(current_page, spell_school)
 		
-func on_spell_school_selected(spell_school: SpellSchool.Enum) -> void:
-	update_abilities(0, spell_school)
+func on_spell_school_selected(_spell_school: SpellSchool.Enum) -> void:
+	update_abilities(0, _spell_school)
 	page_indicator.set_page_number(0, get_maximum_page())
 	for selector in spell_school_selectors:
-		if selector.spell_school == spell_school:
+		if selector.spell_school == _spell_school:
 			selector.set_selected(true)
 		else:
 			selector.set_selected(false)

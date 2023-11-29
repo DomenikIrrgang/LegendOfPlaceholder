@@ -21,6 +21,6 @@ has_duration = true
 duration = 9.0
 unique = false
 stackable = true
-max_stacks = 3
+max_stacks = 5
 effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([SubResource("Resource_4afkk")])
 icon = ExtResource("1_pfe1c")

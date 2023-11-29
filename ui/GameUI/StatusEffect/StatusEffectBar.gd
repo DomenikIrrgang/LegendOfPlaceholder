@@ -22,16 +22,15 @@ func initialize(_unit: Unit) -> void:
 		unit.status_effect_stack_applied.disconnect(sync_status_effects)
 		unit.status_effect_stack_removed.disconnect(sync_status_effects)
 	unit = _unit
-	unit.status_effect_applied.connect(sync_status_effects)
-	unit.status_effect_removed.connect(sync_status_effects)
-	unit.status_effect_refreshed.connect(sync_status_effects)
-	unit.status_effect_dispelled.connect(sync_status_effects)
-	unit.status_effect_dispelled.connect(sync_status_effects)
-	unit.status_effect_dispelled.connect(sync_status_effects)
-	unit.status_effect_stack_applied.connect(sync_status_effects)
-	unit.status_effect_stack_removed.connect(sync_status_effects)
+	if !unit.status_effect_applied.is_connected(sync_status_effects):
+		unit.status_effect_applied.connect(sync_status_effects)
+		unit.status_effect_removed.connect(sync_status_effects)
+		unit.status_effect_refreshed.connect(sync_status_effects)
+		unit.status_effect_dispelled.connect(sync_status_effects)
+		unit.status_effect_stack_applied.connect(sync_status_effects)
+		unit.status_effect_stack_removed.connect(sync_status_effects)
 	
-func sync_status_effects(status_effect: StatusEffect, stacks: int, source: Unit, target: Unit) -> void:
+func sync_status_effects(_status_effect: StatusEffect, _stacks: int, _source: Unit, _target: Unit) -> void:
 	for display in get_children():
 		display.queue_free()
 	for status_effect_application in unit.status_effects:
