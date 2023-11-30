@@ -708,15 +708,34 @@ value = 100.0
 texture_under = ExtResource("22_xauq8")
 texture_progress = ExtResource("23_mqvwi")
 
+[node name="BossHealth" type="HBoxContainer" parent="Bossframe/Frame/FrameTexture/HealthBar"]
+layout_mode = 2
+offset_left = 1.0
+offset_right = 805.0
+offset_bottom = 23.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Bossframe/Frame/FrameTexture/HealthBar/BossHealth"]
+layout_mode = 2
+text = "100/100"
+label_settings = SubResource("LabelSettings_0oxxp")
+
+[node name="BossHealthPercenate" type="HBoxContainer" parent="Bossframe/Frame/FrameTexture/HealthBar"]
+layout_mode = 2
+offset_left = 1.0
+offset_right = 798.0
+offset_bottom = 23.0
+alignment = 2
+
+[node name="Label" type="Label" parent="Bossframe/Frame/FrameTexture/HealthBar/BossHealthPercenate"]
+layout_mode = 2
+text = "100%"
+label_settings = SubResource("LabelSettings_0oxxp")
+
 [node name="CenterHealthText" type="CenterContainer" parent="Bossframe/Frame/FrameTexture/HealthBar"]
 layout_mode = 0
 offset_right = 804.0
 offset_bottom = 19.0
-
-[node name="BossHealth" type="Label" parent="Bossframe/Frame/FrameTexture/HealthBar/CenterHealthText"]
-layout_mode = 2
-text = "100/100"
-label_settings = SubResource("LabelSettings_0oxxp")
 
 [node name="Castbar" type="Control" parent="Bossframe"]
 anchors_preset = 0
