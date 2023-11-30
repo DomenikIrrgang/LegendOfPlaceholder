@@ -22,13 +22,13 @@ hit_type = 4
 [resource]
 script = ExtResource("1_l71da")
 alias = "Burning Veins"
-type = 0
+type = null
 description = "Increases your crit by 267 per stack.
 Each time you land a critical strike one stack will be removed."
-dispellable = false
-has_duration = true
+dispellable = null
+has_duration = null
 duration = 20.0
-unique = false
+unique = null
 stackable = true
 max_stacks = 5
 effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([SubResource("Resource_v2nqc"), SubResource("Resource_j71le")])

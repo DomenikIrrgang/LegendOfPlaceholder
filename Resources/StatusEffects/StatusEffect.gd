@@ -36,3 +36,4 @@ var animation: StatusEffectAnimation
 
 @export
 var icon: Texture
+

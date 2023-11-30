@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="StatusEffect" load_steps=8 format=3 uid="uid://cwpbu0ti4828t"]
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=12 format=3 uid="uid://cwpbu0ti4828t"]
 
 [ext_resource type="Script" path="res://Resources/StatusEffects/TextureStatusEffectAnimation.gd" id="1_1c54k"]
 [ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_vj73m"]
 [ext_resource type="Texture2D" uid="uid://ptj35ec4hyeo" path="res://assets/textures/fire.jpeg" id="2_wr37h"]
 [ext_resource type="Script" path="res://Resources/StatusEffects/Effects/ImmuneEffect.gd" id="3_r1uxc"]
+[ext_resource type="Script" path="res://Resources/StatusEffects/Effects/StatModifierEffect.gd" id="4_uw281"]
+[ext_resource type="Script" path="res://Resources/StatModifierAssignment.gd" id="5_bsowi"]
 [ext_resource type="Texture2D" uid="uid://dnnj48dx2glf3" path="res://assets/ui/items/healing_potion.png" id="5_vccm8"]
 
 [sub_resource type="Resource" id="Resource_necm0"]
@@ -14,17 +16,26 @@ texture = ExtResource("2_wr37h")
 [sub_resource type="Resource" id="Resource_csyqy"]
 script = ExtResource("3_r1uxc")
 
+[sub_resource type="Resource" id="Resource_ycs52"]
+script = ExtResource("5_bsowi")
+stat = 0
+value = 5.0
+
+[sub_resource type="Resource" id="Resource_pu1fr"]
+script = ExtResource("4_uw281")
+stats = Array[ExtResource("5_bsowi")]([SubResource("Resource_ycs52")])
+
 [resource]
 script = ExtResource("1_vj73m")
 alias = "Immune"
 type = 0
 description = "Immune to all abilities."
 dispellable = false
-has_duration = false
-duration = 10.0
-unique = true
-stackable = false
+has_duration = true
+duration = 5.0
+unique = false
+stackable = true
 max_stacks = 3
-effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([SubResource("Resource_csyqy")])
+effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([SubResource("Resource_csyqy"), SubResource("Resource_pu1fr")])
 animation = SubResource("Resource_necm0")
 icon = ExtResource("5_vccm8")
