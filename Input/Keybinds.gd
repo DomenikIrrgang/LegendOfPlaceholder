@@ -10,6 +10,7 @@ var keybinds = {
 func _ready() -> void:
 	InputControlls.input_event.connect(on_input)
 	Spellbook.learn_ability(load("res://Combat/abilities/BurningVeins.tscn").instantiate())
+	Spellbook.learn_ability(load("res://Combat/abilities/InnerFlame.tscn").instantiate())
 	init_ability("Dash", load("res://Combat/abilities/Dash.tscn").instantiate())
 	init_ability("Attack", load("res://Combat/abilities/Attack.tscn").instantiate())
 	init_ability("Ability_One", load("res://Combat/abilities/Mend.tscn").instantiate())
@@ -27,7 +28,15 @@ func on_input(state: InputState) -> void:
 			keybinds[action].callback.call()
 
 func keybind_ability(action_name: String, ability: Ability) -> void:
+	if keybinds.has(action_name):
+		keybinds[action_name].ability.on_unassign(Globals.get_player())		
 	keybinds[action_name] = use_ability(ability)
+	ability.on_assign(Globals.get_player())
+	
+func swap_keybound_abilities(action_name_one: String, action_name_two: String) -> void:
+	var tmp = keybinds[action_name_one]
+	keybinds[action_name_one] = keybinds[action_name_two]
+	keybinds[action_name_two] = tmp
 	
 func use_ability(ability: Ability):
 	return {

@@ -7,6 +7,7 @@ var use_logic_layers: Array[LogicLayer] = [
 	CooldownLayer.new(),
 	ResourceCostLayer.new(),
 	ResourceCheckLayer.new(),
+	PassiveLayer.new(),
 	FailureLayer.new(),
 ]
 

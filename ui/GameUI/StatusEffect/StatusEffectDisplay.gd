@@ -17,15 +17,16 @@ var icon: TextureRect = $Display/CenterContainer/Icon
 var stacks: Label = $Display/Stacks
 
 func set_status_effect_application(_status_effect_application: Dictionary, duration_position: StatusEffectDurationPosition.Enum) -> void:
-	status_effect_application = _status_effect_application
-	icon.texture = status_effect_application.status_effect.icon
-	stacks.visible = status_effect_application.status_effect.stackable
-	stacks.text = str(status_effect_application.stacks)
-	status_effect = status_effect_application.status_effect
-	if duration_position == StatusEffectDurationPosition.Enum.TOP:
-		move_child(duration, 0)
-	else:
-		move_child(duration, 2)
+	if icon:
+		status_effect_application = _status_effect_application
+		icon.texture = status_effect_application.status_effect.icon
+		stacks.visible = status_effect_application.status_effect.stackable
+		stacks.text = str(status_effect_application.stacks)
+		status_effect = status_effect_application.status_effect
+		if duration_position == StatusEffectDurationPosition.Enum.TOP:
+			move_child(duration, 0)
+		else:
+			move_child(duration, 2)
 	
 func _process(_delta: float) -> void:
 	if status_effect_application.status_effect.has_duration:

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bucimjpxhw6v7"]
+
+[ext_resource type="Script" path="res://Combat/abilities/InnerFlame.gd" id="1_hlbow"]
+[ext_resource type="Texture2D" uid="uid://dsc7t67tufaph" path="res://assets/ui/bottom_hud/fireball_icon.png" id="2_rjjm1"]
+
+[node name="InnerFlame" type="Node2D"]
+script = ExtResource("1_hlbow")
+alias = "Inner Flame"
+tooltip = "Every time you land a critical strike the cooldown
+of all your abilities is reduced by 0.5 seconds."
+ability_type = 2
+scaling_factor = 0.0
+spell_school = 1
+resource_type = 5
+crittable = false
+icon = ExtResource("2_rjjm1")

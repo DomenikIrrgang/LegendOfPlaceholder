@@ -9,7 +9,8 @@ var tooltip: String = ""
 
 enum Type {
 	TARGETED,
-	NOT_TARGETED
+	NOT_TARGETED,
+	PASSIVE
 }
 
 @export
@@ -208,4 +209,10 @@ func on_cast_stopped(_source: Unit, _target: Unit) -> void:
 	pass
 	
 func on_cast_finished(_source: Unit, _target: Unit) -> void:
+	pass
+
+func on_assign(_unit: Unit) -> void:
+	pass
+	
+func on_unassign(_unit: Unit) -> void:
 	pass
