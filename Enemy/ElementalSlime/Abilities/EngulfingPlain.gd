@@ -83,3 +83,9 @@ func on_cast_started(_source: Unit, _target: Unit) -> void:
 	source = _source
 	target = _target
 	spawn_stage(stages[0])
+	
+func on_cast_stopped(_source: Unit, _target: Unit) -> void:
+	despawn_current_stage()
+	stage_timer.stop()
+	active_timer.stop()
+	break_timer.stop()

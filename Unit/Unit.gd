@@ -464,12 +464,14 @@ func pause() -> void:
 	
 func freeze() -> void:
 	model_animation.pause()
-	pause()
+	movement_strategy.enabled = false
+	casting_enabled = false
 	
 func start() -> void:
-	movement_strategy.enabled = true
-	casting_enabled = true
-	status_effect_updates_enabled = true
+	if model_animation.is_playing():
+		movement_strategy.enabled = true
+		casting_enabled = true
+		status_effect_updates_enabled = true
 
 func unfreeze() -> void:
 	model_animation.play()

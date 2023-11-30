@@ -26,6 +26,7 @@ func on_status_effect_update(status_effect: StatusEffect, stacks: int, source: U
 		
 func on_tick(_status_effect: StatusEffect, stacks: int, source: Unit, target: Unit) -> void:
 	var ability_instance = ability.instantiate()
-	ability_instance.value = ability_instance.value * stacks
+	ability_instance.value *= stacks
+	ability_instance.scaling_factor *= stacks
 	target.combat_logic.cast_ability(source, target, ability_instance)
 	ability_instance.queue_free()

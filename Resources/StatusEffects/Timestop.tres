@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=5 format=3 uid="uid://c6fgth3my7h3n"]
+
+[ext_resource type="Script" path="res://Resources/StatusEffects/Effects/TimestopEffect.gd" id="1_2ebwg"]
+[ext_resource type="Texture2D" uid="uid://bbgn8gl16wp8y" path="res://assets/ui/bottom_hud/hourglass_icon.png" id="1_lwjbs"]
+[ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_w3kg1"]
+
+[sub_resource type="Resource" id="Resource_b4e08"]
+script = ExtResource("1_2ebwg")
+
+[resource]
+script = ExtResource("1_w3kg1")
+alias = "Timestop"
+type = 1
+description = "Unit is frozen in time."
+dispellable = false
+has_duration = true
+duration = 6.0
+unique = true
+stackable = false
+max_stacks = 1
+effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([SubResource("Resource_b4e08")])
+icon = ExtResource("1_lwjbs")
