@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_qubfb"]
 [ext_resource type="Script" path="res://Resources/StatusEffects/Effects/CooldownReductionOnHitType.gd" id="1_wcmso"]
-[ext_resource type="Texture2D" uid="uid://dsc7t67tufaph" path="res://assets/ui/bottom_hud/fireball_icon.png" id="1_yle5p"]
+[ext_resource type="Texture2D" uid="uid://brpedb2kjpxu7" path="res://assets/ui/bottom_hud/inner_fire_icon.png" id="2_ovnxi"]
 
 [sub_resource type="Resource" id="Resource_jwmny"]
 script = ExtResource("1_wcmso")
@@ -21,4 +21,4 @@ unique = true
 stackable = false
 max_stacks = 1
 effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([SubResource("Resource_jwmny")])
-icon = ExtResource("1_yle5p")
+icon = ExtResource("2_ovnxi")
