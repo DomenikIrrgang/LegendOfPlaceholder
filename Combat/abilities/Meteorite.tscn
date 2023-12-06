@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwje8nhhtmceo"]
+
+[ext_resource type="Script" path="res://Combat/abilities/Meteorite.gd" id="1_u0r5q"]
+[ext_resource type="Resource" uid="uid://i3lebv5qo1p3" path="res://Resources/StatusEffects/Meteorite.tres" id="2_bxode"]
+[ext_resource type="Texture2D" uid="uid://lqjny376f8rt" path="res://assets/ui/bottom_hud/meteorite_icon.png" id="6_w3rx2"]
+
+[node name="Meteor" type="Node2D"]
+script = ExtResource("1_u0r5q")
+alias = "Meteorite"
+tooltip = "Everytime you land a critical strike you receive Meteor stack.
+Casting this ability will unleash all stacks dealing
+fire damage based on the amount of stacks used."
+ability_types = Array[int]([3])
+cooldown = 25.0
+cast_time = 1.5
+interuptable = true
+value = 20
+spell_school = 1
+resource_cost = 20
+status_effects = Array[Resource("res://Resources/StatusEffects/StatusEffect.gd")]([ExtResource("2_bxode")])
+icon = ExtResource("6_w3rx2")

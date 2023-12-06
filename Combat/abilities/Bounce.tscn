@@ -6,6 +6,7 @@
 script = ExtResource("1_c41s2")
 alias = "Bounce"
 tooltip = "On contact knocks away the target."
+ability_types = Array[int]([3, 1])
 value = 10
 scaling_factor = 0.3
 spell_school = 10

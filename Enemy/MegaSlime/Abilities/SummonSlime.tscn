@@ -6,7 +6,7 @@
 script = ExtResource("1_dl6hb")
 alias = "Summon Slime"
 tooltip = "Summons a slime into combat."
-ability_type = 1
+ability_types = Array[int]([3])
 cooldown = 1.0
 cast_time = 3.0
 scaling_factor = 2.08165e-12

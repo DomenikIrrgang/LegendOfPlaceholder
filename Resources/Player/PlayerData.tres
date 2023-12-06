@@ -23,7 +23,7 @@ value = 5
 [sub_resource type="Resource" id="Resource_js2f1"]
 script = ExtResource("3_k6y1l")
 stat = 33
-value = 1500
+value = 0
 
 [resource]
 script = ExtResource("1_r31r4")

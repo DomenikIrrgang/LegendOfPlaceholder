@@ -17,6 +17,7 @@ var icon: TextureRect = $Display/CenterContainer/Icon
 var stacks: Label = $Display/Stacks
 
 func set_status_effect_application(_status_effect_application: Dictionary, duration_position: StatusEffectDurationPosition.Enum) -> void:
+	status_effect_application = _status_effect_application
 	if icon:
 		status_effect_application = _status_effect_application
 		icon.texture = status_effect_application.status_effect.icon

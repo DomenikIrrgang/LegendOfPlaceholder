@@ -7,7 +7,7 @@ var use_logic_layers: Array[LogicLayer] = [
 	CooldownLayer.new(),
 	ResourceCostLayer.new(),
 	ResourceCheckLayer.new(),
-	PassiveLayer.new(),
+	AbilityCastableLayer.new(),
 	FailureLayer.new(),
 ]
 
@@ -30,7 +30,7 @@ func use_ability(source: Unit, target: Unit, ability: Ability) -> CombatLogicRes
 	if combat_logic_result.type == ResultType.Enum.SUCCESS:
 		apply_combat_logic_result_use(combat_logic_result)
 		combat_logic_result.ability.use(source, target)
-		if combat_logic_result.ability.ability_type == Ability.Type.TARGETED:
+		if combat_logic_result.ability.ability_types.has(Ability.Type.TARGETED):
 			combat_logic_result = cast_ability(source, target, ability)
 	return combat_logic_result
 	

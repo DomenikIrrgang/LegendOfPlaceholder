@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=3 format=3 uid="uid://dm16x3ptfp6o8"]
+
+[ext_resource type="Texture2D" uid="uid://lqjny376f8rt" path="res://assets/ui/bottom_hud/meteorite_icon.png" id="1_nkxky"]
+[ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="2_cyl1c"]
+
+[resource]
+script = ExtResource("2_cyl1c")
+alias = "Meteorite Charge"
+type = 0
+description = "Charge of Meteor. Deals damage when unleashed."
+dispellable = false
+has_duration = true
+duration = 10.0
+unique = false
+stackable = true
+max_stacks = 5
+effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([])
+icon = ExtResource("1_nkxky")

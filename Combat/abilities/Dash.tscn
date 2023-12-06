@@ -8,7 +8,7 @@ script = ExtResource("1_m2evi")
 alias = "Dash"
 tooltip = "The unit dashes forward.
 Uses up one charge."
-ability_type = 1
+ability_types = Array[int]([1, 3])
 spell_school = 10
 resource_cost = 10000
 resource_type = 4

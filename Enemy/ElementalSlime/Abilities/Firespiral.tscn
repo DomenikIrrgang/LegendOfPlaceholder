@@ -6,7 +6,7 @@
 script = ExtResource("1_takve")
 alias = "Firespiral"
 tooltip = "Shoots multiple Fireballs after another in a sprial motion."
-ability_type = 1
+ability_types = Array[int]([3])
 cast_time = 5.0
 spell_school = 1
 target_type = 1

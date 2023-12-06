@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://bti8o33jt4wh8"]
 
 [ext_resource type="Script" path="res://Combat/abilities/TimeStop.gd" id="1_g0y4g"]
-[ext_resource type="Texture2D" uid="uid://bbgn8gl16wp8y" path="res://Assets/ui/bottom_hud/hourglass_icon.png" id="2_t83dl"]
+[ext_resource type="Texture2D" uid="uid://bbgn8gl16wp8y" path="res://assets/ui/bottom_hud/hourglass_icon.png" id="2_t83dl"]
 
 [node name="TimeStop" type="Node2D"]
 script = ExtResource("1_g0y4g")
 alias = "TImestop"
 tooltip = "Stops the time for all non boss enemies."
-ability_type = 1
+ability_types = Array[int]([3])
 cooldown = 25.0
 cast_time = 1.0
 scaling_factor = 2.08165e-12

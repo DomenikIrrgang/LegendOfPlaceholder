@@ -10,11 +10,12 @@ var tooltip: String = ""
 enum Type {
 	TARGETED,
 	NOT_TARGETED,
-	PASSIVE
+	PASSIVE,
+	CASTABLE
 }
 
 @export
-var ability_type: Ability.Type = Type.TARGETED
+var ability_types: Array[Ability.Type] = []
 
 @export
 var cooldown: float = 0.0
@@ -70,6 +71,9 @@ var resistable: bool = false
 
 @export
 var reflectable: bool = false
+
+@export
+var status_effects: Array[StatusEffect] = []
 
 @export
 var icon: Texture
@@ -211,8 +215,10 @@ func on_cast_stopped(_source: Unit, _target: Unit) -> void:
 func on_cast_finished(_source: Unit, _target: Unit) -> void:
 	pass
 
-func on_assign(_unit: Unit) -> void:
-	pass
+func on_assign(unit: Unit) -> void:
+	for status_effect in status_effects:
+		unit.apply_status_effect(status_effect, unit)
 	
-func on_unassign(_unit: Unit) -> void:
-	pass
+func on_unassign(unit: Unit) -> void:
+	for status_effect in status_effects:
+		unit.remove_status_effect(status_effect, unit)

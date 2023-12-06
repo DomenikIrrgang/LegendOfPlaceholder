@@ -158,6 +158,12 @@ func has_status_effect(status_effect: StatusEffect) -> bool:
 			return true
 	return false
 	
+func get_status_effect_stacks(status_effect: StatusEffect) -> int:
+	for status_effect_application in status_effects:
+		if status_effect_application.status_effect.alias == status_effect.alias and status_effect_application.status_effect.type == status_effect.type:
+			return status_effect_application.stacks
+	return 0
+	
 func get_status_effect_application(status_effect: StatusEffect) -> Dictionary:
 	for status_effect_application in status_effects:
 		if status_effect_application.status_effect.alias == status_effect.alias and status_effect_application.status_effect.type == status_effect.type:

@@ -28,6 +28,8 @@ func _ready() -> void:
 	init_weapon()
 	died.connect(on_player_died)
 	Globals.get_environment_light().energy_changed.connect(on_energy_changed)
+	for ability in get_abilities():
+		ability.on_assign(self)
 	
 func on_energy_changed(energy) -> void:
 	if energy > 0.6:
@@ -41,6 +43,7 @@ func get_abilities() -> Array[Ability]:
 func on_player_died(_player: Unit) -> void:
 	for ability in get_abilities():
 		ability.reset()
+		ability.on_unassign(self)
 	get_tree().reload_current_scene()
 	
 func level_up() -> void:

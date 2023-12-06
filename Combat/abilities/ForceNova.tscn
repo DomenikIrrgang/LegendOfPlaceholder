@@ -76,7 +76,7 @@ script = ExtResource("1_7nqi8")
 alias = "Forcefield"
 tooltip = "Deals damage and knocksback enemies
 around the caster."
-ability_type = 1
+ability_types = Array[int]([1, 3])
 cooldown = 25.0
 value = 30
 spell_school = 10

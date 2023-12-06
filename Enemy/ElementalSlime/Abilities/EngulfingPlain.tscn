@@ -6,7 +6,7 @@
 script = ExtResource("1_sjex2")
 alias = "Engulfing Plain"
 tooltip = "Engulfes the surrounding area in flames."
-ability_type = 1
+ability_types = Array[int]([3])
 cast_time = 3.0
 value = 50
 spell_school = 1

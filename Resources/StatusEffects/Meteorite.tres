@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=6 format=3 uid="uid://i3lebv5qo1p3"]
+
+[ext_resource type="Script" path="res://Resources/StatusEffects/Effects/GainStackOnHitType.gd" id="1_me7h0"]
+[ext_resource type="Resource" uid="uid://dm16x3ptfp6o8" path="res://Resources/StatusEffects/MeteoriteCharge.tres" id="2_wptq0"]
+[ext_resource type="Texture2D" uid="uid://lqjny376f8rt" path="res://assets/ui/bottom_hud/meteorite_icon.png" id="3_sgsl0"]
+[ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="4_lg3qi"]
+
+[sub_resource type="Resource" id="Resource_jqhlc"]
+script = ExtResource("1_me7h0")
+status_effect = ExtResource("2_wptq0")
+hit_type = 4
+
+[resource]
+script = ExtResource("4_lg3qi")
+alias = "Meteorite"
+type = 0
+description = "Each time you land a critical strike you will gain a stack of \"Meteor Charge\"."
+dispellable = false
+has_duration = false
+duration = 10.0
+unique = true
+stackable = false
+max_stacks = 1
+effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([SubResource("Resource_jqhlc")])
+icon = ExtResource("3_sgsl0")
