@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://x253ak7tg4p"]
+
+[ext_resource type="Script" path="res://Enemy/Visjala/Abilities/HoingSpit.gd" id="1_0i1bx"]
+
+[node name="HoingSpit" type="Node2D"]
+script = ExtResource("1_0i1bx")
+alias = "Honing Spit"
+tooltip = "Spits a poison that follows the target."
+ability_types = Array[int]([3])
+cast_time = 2.0
+value = 25
+spell_school = 7
+resource_type = 5
+crittable = false

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1i6bv2pytr15"]
+
+[ext_resource type="Script" path="res://Enemy/Visjala/Abilities/ConfusionPoison.gd" id="1_myqho"]
+[ext_resource type="Resource" uid="uid://cfi85y5sb6d0k" path="res://Resources/StatusEffects/ConfusionPoison.tres" id="2_e4v4q"]
+
+[node name="ConfusionPoison" type="Node2D"]
+script = ExtResource("1_myqho")
+alias = "Confusion Poison"
+tooltip = "Infects targets with a poison that will invert their movement."
+ability_types = Array[int]([3])
+cooldown = 12.0
+cast_time = 3.0
+spell_school = 7
+resource_type = 5
+status_effects = Array[Resource("res://Resources/StatusEffects/StatusEffect.gd")]([ExtResource("2_e4v4q")])

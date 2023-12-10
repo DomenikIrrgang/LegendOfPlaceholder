@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4nhe0dk0em26"]
+
+[ext_resource type="Script" path="res://Enemy/Visjala/Abilities/PoisonBoltNova.gd" id="1_cpwgy"]
+
+[node name="PoisonBoltNova" type="Node2D"]
+script = ExtResource("1_cpwgy")
+alias = "Poisonbolt Nova"
+tooltip = "Shoots multiple Poisonbolts in different directions at the same time.
+"
+ability_types = Array[int]([3])
+cast_time = 1.5
+spell_school = 7
+target_type = 1
+resource_type = 5

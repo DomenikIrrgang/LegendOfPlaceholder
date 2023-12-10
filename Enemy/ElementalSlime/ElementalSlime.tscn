@@ -101,7 +101,7 @@ scale = Vector2(2, 2.0625)
 texture = ExtResource("13_g6n26")
 hframes = 4
 vframes = 8
-frame = 16
+frame = 18
 metadata/_edit_lock_ = true
 
 [node name="PhaseState" type="Node" parent="."]

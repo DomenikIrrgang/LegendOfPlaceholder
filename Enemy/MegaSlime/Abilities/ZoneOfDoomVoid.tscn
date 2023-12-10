@@ -6,7 +6,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mb1sp"]
 
-[sub_resource type="Shader" id="Shader_scdsq"]
+[sub_resource type="Shader" id="Shader_5856u"]
 code = "shader_type canvas_item;
 
 // for circles
@@ -59,7 +59,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lg5rd"]
-shader = SubResource("Shader_scdsq")
+shader = SubResource("Shader_5856u")
 shader_parameter/amplitude = 0.5
 shader_parameter/frequency = 5.0
 shader_parameter/rippleRate = 5.0
@@ -86,3 +86,4 @@ offset_top = -10.0
 offset_right = 10.0
 offset_bottom = 10.0
 color = Color(0.980392, 0.164706, 0.0745098, 1)
+metadata/_edit_use_anchors_ = true

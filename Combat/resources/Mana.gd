@@ -1,8 +1,8 @@
 class_name Mana
 extends UnitResource
 
-func _init(_stat_calculator: StatCalculator) -> void:
-	super(_stat_calculator)
+func _init(_unit: Unit) -> void:
+	super(_unit)
 	type = ResourceType.Enum.MANA
 	set_maximum_value(200)
 	set_value(get_maximum_value())

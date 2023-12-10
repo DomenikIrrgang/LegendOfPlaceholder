@@ -57,7 +57,6 @@ script = SubResource("GDScript_mwj27")
 
 [node name="PhaseState" type="Node" parent="." index="6"]
 script = ExtResource("4_ejfmg")
-initial_state = NodePath("Phase1")
 
 [node name="Phase1" type="Node" parent="PhaseState" index="0"]
 script = ExtResource("5_sgre2")

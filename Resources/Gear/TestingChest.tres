@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="Gear" load_steps=12 format=3 uid="uid://buup0hsxwytjq"]
+
+[ext_resource type="Script" path="res://Resources/Gear/StatGearEffect.gd" id="1_bl7vp"]
+[ext_resource type="Script" path="res://Resources/Gear/Gear.gd" id="1_p3esi"]
+[ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="2_dwcym"]
+[ext_resource type="Texture2D" uid="uid://cfln5j2nbb8am" path="res://assets/ui/bottom_hud/dash_icon.png" id="3_3fu6o"]
+[ext_resource type="Script" path="res://Resources/Gear/OnEquipApplyStatusEffect.gd" id="3_b5n10"]
+[ext_resource type="Resource" uid="uid://cwpbu0ti4828t" path="res://Resources/StatusEffects/TestEffect.tres" id="4_46hkv"]
+
+[sub_resource type="Resource" id="Resource_tsi8p"]
+script = ExtResource("2_dwcym")
+stat = 33
+value = 700
+
+[sub_resource type="Resource" id="Resource_5cxf6"]
+script = ExtResource("2_dwcym")
+stat = 1
+value = 200
+
+[sub_resource type="Resource" id="Resource_nf45j"]
+script = ExtResource("2_dwcym")
+stat = 34
+value = 500
+
+[sub_resource type="Resource" id="Resource_27tpv"]
+script = ExtResource("1_bl7vp")
+stats = Array[ExtResource("2_dwcym")]([SubResource("Resource_tsi8p"), SubResource("Resource_5cxf6"), SubResource("Resource_nf45j")])
+
+[sub_resource type="Resource" id="Resource_yf3tg"]
+script = ExtResource("3_b5n10")
+status_effects = Array[Resource("res://Resources/StatusEffects/StatusEffect.gd")]([ExtResource("4_46hkv")])
+tooltip = "Makes you immune to all effects."
+
+[resource]
+script = ExtResource("1_p3esi")
+slot = 4
+gear_effects = Array[Resource("res://Resources/Gear/GearEffect.gd")]([SubResource("Resource_27tpv"), SubResource("Resource_yf3tg")])
+alias = "Testing Chest"
+useable = false
+use_description = ""
+limited = false
+limit = 1
+stackable = false
+stack_amount = 5
+description = ""
+icon = ExtResource("3_3fu6o")

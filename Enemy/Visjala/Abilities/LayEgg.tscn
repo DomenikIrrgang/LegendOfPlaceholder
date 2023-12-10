@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://u2lr6kxnby32"]
+
+[ext_resource type="Script" path="res://Enemy/Visjala/Abilities/LayEgg.gd" id="1_3y2r4"]
+
+[node name="SpawnSmallSnake" type="Node2D"]
+script = ExtResource("1_3y2r4")
+alias = "Lay Egg"
+tooltip = "Lays an egg that spawns a snake on death."
+ability_types = Array[int]([3])
+cast_time = 1.5

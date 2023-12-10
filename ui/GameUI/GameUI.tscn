@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=90 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -22,7 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://cv102qedh50l3" path="res://ui/GameUI/AbilitySlot.tscn" id="19_sjki4"]
 [ext_resource type="Script" path="res://ui/GameUI/Bossframe.gd" id="20_cn0g6"]
 [ext_resource type="Texture2D" uid="uid://cx6x6hhc36fm" path="res://assets/ui/bottom_hud/system_button.png" id="20_wubgf"]
-[ext_resource type="Texture2D" uid="uid://dq3ttuilmw23e" path="res://assets/ui/bottom_hud/inventory_icon.png" id="21_o5flv"]
 [ext_resource type="Texture2D" uid="uid://clb1qxxlcylap" path="res://assets/ui/bossframe/bossframe.png" id="21_oeymq"]
 [ext_resource type="Texture2D" uid="uid://ciej84v5wck6p" path="res://assets/ui/bottom_hud/character_icon.png" id="21_oki4j"]
 [ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://assets/ui/buttons/b_button.png" id="22_o1px3"]
@@ -34,9 +33,12 @@
 [ext_resource type="Script" path="res://ui/GameUI/PlayerCastBar.gd" id="24_vl06k"]
 [ext_resource type="Texture2D" uid="uid://dl0u83xiv6kk1" path="res://assets/ui/bossframe/castbar_background.png" id="25_28qlq"]
 [ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/HealingPotion.tres" id="25_ggroc"]
+[ext_resource type="Texture2D" uid="uid://cxc4a52dgwh5v" path="res://assets/ui/bottom_hud/spellbook_closed.png" id="25_vw1gr"]
 [ext_resource type="Texture2D" uid="uid://dnnj48dx2glf3" path="res://assets/ui/items/healing_potion.png" id="25_ynpml"]
-[ext_resource type="Texture2D" uid="uid://cm6dd5rsq5ve2" path="res://assets/ui/items/fire_spelltome.png" id="26_1yjnk"]
 [ext_resource type="LabelSettings" uid="uid://b304vmcf3x1f0" path="res://ui/GameUI/AbilitySlotFont.tres" id="26_aa5cb"]
+[ext_resource type="Texture2D" uid="uid://f45aqipga0s2" path="res://assets/ui/bottom_hud/closed_bag.png" id="26_k67v7"]
+[ext_resource type="Script" path="res://ui/GameUI/SpellbookButton.gd" id="26_p7vp2"]
+[ext_resource type="Script" path="res://ui/GameUI/InventoryButton.gd" id="26_r0vun"]
 [ext_resource type="Script" path="res://ui/GameUI/ErrorMessages.gd" id="27_hnvam"]
 [ext_resource type="Texture2D" uid="uid://v5uxsaoa2tjb" path="res://assets/ui/bottom_hud/castbar_background.png" id="28_vneq5"]
 [ext_resource type="Texture2D" uid="uid://djuotr8lwlwh2" path="res://assets/ui/bottom_hud/ability_cooldown_progress.aseprite.png" id="28_yped5"]
@@ -280,6 +282,11 @@ var fireball_tome: Item = preload(\"res://Resources/Items/Spelltomes/FireballTom
 var mend_tome: Item = preload(\"res://Resources/Items/Spelltomes/MendTome.tres\")
 var forcefield_tome: Item = preload(\"res://Resources/Items/Spelltomes/ForcefieldTome.tres\")
 var burning_veins: Item = preload(\"res://Resources/Items/Spelltomes/BurningVeinsTome.tres\")
+var runesmiths_shirt: Item = preload(\"res://Resources/Gear/RunesmithsShirt.tres\")
+var testing_chest: Item = preload(\"res://Resources/Gear/TestingChest.tres\")
+var mana_crystal: Item = preload(\"res://Resources/Gear/ManaCrystal.tres\")
+var rage_crystal: Item = preload(\"res://Resources/Gear/RageCrystal.tres\")
+var energy_crystal: Item = preload(\"res://Resources/Gear/EnergyCrystal.tres\")
 
 var Drop = preload(\"res://Unit/Drops/Drop.tscn\")
 
@@ -290,9 +297,9 @@ func _on_pressed():
 	Globals.get_world().add_child(drop1)
 	Globals.get_world().add_child(drop2)
 	Globals.get_world().add_child(drop3)
-	drop1.set_item(fireball_tome, 1)
-	drop2.set_item(mend_tome, 1)
-	drop3.set_item(burning_veins, 1)
+	drop1.set_item(energy_crystal, 1)
+	drop2.set_item(rage_crystal, 1)
+	drop3.set_item(testing_chest, 1)
 "
 
 [sub_resource type="GDScript" id="GDScript_j6glr"]
@@ -538,11 +545,12 @@ texture = ExtResource("20_wubgf")
 [node name="Icon" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer/SpellbookButton"]
 layout_mode = 0
 offset_left = 3.0
-offset_top = 9.0
-offset_right = 39.0
-offset_bottom = 45.0
+offset_top = 3.0
+offset_right = 38.0
+offset_bottom = 63.0
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("26_1yjnk")
+texture = ExtResource("25_vw1gr")
+script = ExtResource("26_p7vp2")
 
 [node name="KeybindDisplay" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer/SpellbookButton"]
 layout_mode = 0
@@ -562,10 +570,10 @@ texture = ExtResource("20_wubgf")
 [node name="Icon" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer/InventoryButton"]
 layout_mode = 0
 offset_left = 3.0
-offset_top = 3.0
 offset_right = 24.0
-offset_bottom = 39.0
-texture = ExtResource("21_o5flv")
+offset_bottom = 36.0
+texture = ExtResource("26_k67v7")
+script = ExtResource("26_r0vun")
 
 [node name="KeybindDisplay" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer/InventoryButton"]
 layout_mode = 0

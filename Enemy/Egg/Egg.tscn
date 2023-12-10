@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://ckep7sj7r1nle"]
+
+[ext_resource type="Script" path="res://Enemy/Egg/Egg.gd" id="1_e2umy"]
+[ext_resource type="Resource" uid="uid://cjxv6a0fxbc7r" path="res://Resources/Enemies/Egg.tres" id="2_kixiy"]
+[ext_resource type="Texture2D" uid="uid://caoy55m8woyho" path="res://assets/enemies/egg.png" id="2_rg1w7"]
+[ext_resource type="Script" path="res://Unit/HurtBox.gd" id="3_7ihm4"]
+[ext_resource type="Script" path="res://Unit/HitBox.gd" id="4_yqf2u"]
+[ext_resource type="Script" path="res://Enemy/Egg/Idle.gd" id="6_lkwma"]
+[ext_resource type="Script" path="res://State/StateMachine.gd" id="6_uygfi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30yrk"]
+size = Vector2(10, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2tci"]
+size = Vector2(10, 10.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efc88"]
+size = Vector2(10, 11)
+
+[node name="Egg" type="CharacterBody2D"]
+script = ExtResource("1_e2umy")
+unit_data = ExtResource("2_kixiy")
+
+[node name="Model" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("2_rg1w7")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_30yrk")
+
+[node name="HurtBox2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_7ihm4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox2D"]
+z_index = 1
+position = Vector2(0, -5.75)
+shape = SubResource("RectangleShape2D_j2tci")
+
+[node name="HitBox2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("4_yqf2u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2D"]
+z_index = 1
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_efc88")
+
+[node name="PhaseState" type="Node" parent="."]
+script = ExtResource("6_uygfi")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="PhaseState"]
+script = ExtResource("6_lkwma")
+
+[node name="ModelAnimation" type="AnimationPlayer" parent="."]

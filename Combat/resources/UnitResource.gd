@@ -5,12 +5,14 @@ var value: int = 50
 var maximum_value: int = 100
 var type: int = ResourceType.Enum.HEALTH
 var stat_calculator: StatCalculator
+var unit: Unit
 
 signal resource_value_changed(resource: UnitResource, new_value: int, change: int, original_change: int)
 signal resource_maximum_value_changed(resource: UnitResource, new_maximum_value: int)
 
-func _init(_stat_calculator: StatCalculator) -> void:
-	stat_calculator = _stat_calculator
+func _init(_unit: Unit) -> void:
+	unit = _unit
+	stat_calculator = unit.stat_calculator
 	stat_calculator.get_unit().stat_changed.connect(on_stat_changed)
 	
 func update(_delta: float) -> void:

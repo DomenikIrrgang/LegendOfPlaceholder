@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dochbapid1f5n"]
+
+[ext_resource type="Script" path="res://ui/GameUI/CharacterSheet/GearSlot.gd" id="1_3ap1d"]
+[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="2_k6fc0"]
+[ext_resource type="Texture2D" uid="uid://jtgn2ueksl56" path="res://assets/ui/bottom_hud/attack_icon.png" id="3_pjaoa"]
+[ext_resource type="Texture2D" uid="uid://hvw818c7res8" path="res://assets/ui/misc/selected_border.png" id="4_vdds8"]
+[ext_resource type="PackedScene" uid="uid://puhfjg08kws7" path="res://ui/GameUI/Tooltip/TextTooltipComponent.tscn" id="5_c2e6v"]
+[ext_resource type="PackedScene" uid="uid://bt8umr5bwbj3j" path="res://ui/GameUI/Tooltip/ItemTooltipComponent.tscn" id="6_ni6at"]
+
+[node name="GearSlot" type="CenterContainer"]
+custom_minimum_size = Vector2(45, 45)
+script = ExtResource("1_3ap1d")
+slot = 4
+
+[node name="Background" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+texture = ExtResource("2_k6fc0")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("3_pjaoa")
+
+[node name="Highlight" type="NinePatchRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+texture = ExtResource("4_vdds8")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="TextTooltipCompnent" parent="." node_paths=PackedStringArray("text_node") instance=ExtResource("5_c2e6v")]
+visible = false
+layout_mode = 2
+text_node = NodePath("..")
+
+[node name="ItemTooltipComponent" parent="." node_paths=PackedStringArray("item_node") instance=ExtResource("6_ni6at")]
+layout_mode = 2
+item_node = NodePath("..")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

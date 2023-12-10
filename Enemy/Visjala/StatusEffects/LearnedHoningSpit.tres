@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3 uid="uid://o70qyrh6es5l"]
+
+[ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_7ieia"]
+
+[resource]
+script = ExtResource("1_7ieia")
+alias = "Honing Spit"
+type = 0
+description = "Able to use Honing Spit."
+dispellable = false
+has_duration = false
+duration = 10.0
+unique = false
+stackable = false
+max_stacks = 1
+effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([])

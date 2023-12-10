@@ -9,6 +9,9 @@ var stats_container: Container = $MarginContainer/VBoxContainer/Content/VBoxCont
 @onready
 var character_description: Label = $MarginContainer/VBoxContainer/Content/VBoxContainer/CenterContainer/CharacterDescription
 
+@onready
+var left_gear_slots = $MarginContainer/VBoxContainer/Content/VBoxContainer/HBoxContainer/Gear/LeftSlots
+
 var stat_labels = {}
 
 func _ready():

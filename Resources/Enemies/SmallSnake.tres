@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://dji65kpkl8u7h"]
+
+[ext_resource type="Script" path="res://Resources/Enemies/EnemyData.gd" id="1_l00m0"]
+
+[resource]
+script = ExtResource("1_l00m0")
+experience = 0
+loot_table = Array[Resource("res://Resources/Enemies/LootDrop.gd")]([])
+alias = "Small Snake"
+level = 5
+base_movement_speed = 30.0
+mass = 50.0
+knockbackable = true
+stats = Array[Resource("res://Resources/StatAssignment.gd")]([])

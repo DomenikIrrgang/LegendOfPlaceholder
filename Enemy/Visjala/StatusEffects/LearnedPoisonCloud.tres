@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3 uid="uid://7knusefcbymu"]
+
+[ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_bbrq5"]
+
+[resource]
+script = ExtResource("1_bbrq5")
+alias = "Poison Cloud"
+type = 0
+description = "Able to use Poiuson Cloud."
+dispellable = false
+has_duration = false
+duration = 10.0
+unique = false
+stackable = false
+max_stacks = 1
+effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([])

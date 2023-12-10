@@ -99,6 +99,8 @@ func get_alias() -> String:
 func reset() -> void:
 	remaining_cooldown = 0
 	charges = max_charges
+	charges_changed.emit(charges, charges)
+	remaining_cooldown_changed.emit(remaining_cooldown, cooldown)
 	
 func get_tooltip() -> String:
 	return tooltip

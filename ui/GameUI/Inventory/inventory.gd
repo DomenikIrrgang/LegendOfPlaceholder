@@ -1,6 +1,11 @@
 class_name InventoryWindow
 extends PanelContainer
 
+static var Events = {
+	Opened = "InventoryWindowOpened",
+	Closed = "InventoryWindowClosed"
+}
+
 @export
 var title: String
 
@@ -28,11 +33,17 @@ func toggle() -> void:
 	
 func open() -> void:
 	visible = true
+	EventBus.emit_event(InventoryWindow.Events.Opened, {
+		"Window" = self
+	})
 	
 func close() -> void:
 	visible = false
 	if selected_item != -1:
 		Globals.get_drag_and_drop().stop_dragging()
+	EventBus.emit_event(InventoryWindow.Events.Closed, {
+		"Window" = self
+	})	
 	
 func initialize(_inventory: Inventory) -> void:
 	inventory = _inventory
@@ -49,7 +60,16 @@ func on_slot_input(event: InputEvent, _slot: int) -> void:
 		else:
 			drop_item(_slot)
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MASK_RIGHT and event.is_pressed():
-		inventory.use_slot(Globals.get_player(), _slot)	
+		if inventory.slots[_slot].item is Gear:
+			var gear = inventory.slots[_slot].item
+			var equiped_gear = Globals.get_player().gear_slots[gear.slot]
+			if equiped_gear != null:
+				inventory.change_slot(_slot, equiped_gear, 1)
+			else:
+				inventory.change_slot(_slot, null, 0)
+			Globals.get_player().equip_gear_in_slot(gear.slot, gear)
+		else:
+			inventory.use_slot(Globals.get_player(), _slot)
 
 func pick_item(_slot: int) -> void:
 	if Globals.get_drag_and_drop().is_dragging() == false and inventory.slots[_slot].item != null:
@@ -77,6 +97,17 @@ func drop_item(_slot: int) -> void:
 			else:
 				inventory.change_slot(_slot, inventory_slot.item, inventory_slot.amount)
 				previous_inventory.change_slot(inventory_slot.index, null, 0)
+			Globals.get_drag_and_drop().stop_dragging()
+		if Globals.get_drag_and_drop().data.has("gear"):
+			var gear = Globals.get_drag_and_drop().data.gear
+			if inventory.slots[_slot].item == null:
+				Globals.get_player().unequip_gear_in_slot(gear.slot)
+				inventory.change_slot(_slot, gear, 1)
+			else:
+				var inventory_gear = inventory.slots[_slot].item
+				if inventory_gear is Gear and inventory_gear.slot == gear.slot:
+					Globals.get_player().equip_gear_in_slot(gear.slot, inventory_gear)
+					inventory.change_slot(_slot, gear, 1)
 			Globals.get_drag_and_drop().stop_dragging()
 		
 func clear_selection() -> void:

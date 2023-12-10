@@ -36,6 +36,46 @@ var movement_strategy: UnitMovementStrategy = UnitMovementStrategy.new(self)
 # Resources
 var resources: Array[UnitResource] = []
 
+signal unit_resource_added(resource: ResourceType.Enum)
+signal unit_resource_removed(resource: ResourceType.Enum)
+
+func get_secondary_resource_type() -> ResourceType.Enum:
+	for resource in resources:
+		if resource != null and (resource.type != ResourceType.Enum.HEALTH and resource.type != ResourceType.Enum.DASH_CHARGE):
+			return resource.type
+	return ResourceType.Enum.FREE
+
+func add_resource(resource: UnitResource) -> void:
+	resources[resource.type] = resource
+	unit_resource_added.emit(resource.type)
+	
+func remove_resource(resource: ResourceType.Enum) -> void:
+	resources[resource] = null
+	unit_resource_removed.emit(resource)
+
+func get_resource(resource_type: ResourceType.Enum) -> UnitResource:
+	return resources[resource_type]
+	
+func has_resource(resource_type: ResourceType.Enum) -> bool:
+	return resources[resource_type] != null
+	
+func has_resource_amount(resource_type: ResourceType.Enum, amount: int) -> bool:
+	return amount <= 0 or (has_resource(resource_type) and get_resource(resource_type).get_value() >= amount)
+	
+func increase_resource_value(resource_type: ResourceType.Enum, value: int) -> int:
+	if has_resource(resource_type):
+		var change = get_resource(resource_type).increase_value(value)
+		if is_dead():
+			died.emit(self)
+		return change
+	return 0
+	
+func kill() -> void:
+	increase_resource_value(ResourceType.Enum.HEALTH, -get_resource(ResourceType.Enum.HEALTH).get_value())
+	
+func is_dead() -> bool:
+	return get_resource(ResourceType.Enum.HEALTH).get_value() == 0
+
 # Abilities
 var abilities: Array[Ability] = []
 
@@ -337,7 +377,7 @@ func _ready() -> void:
 	set_stats(base_stats)
 	stat_calculator = StatCalculator.new(self)
 	resources.resize(ResourceType.Enum.size())
-	resources[ResourceType.Enum.HEALTH] = Health.new(stat_calculator)
+	resources[ResourceType.Enum.HEALTH] = Health.new(self)
 	movement_strategy = UnitMovementStrategy.new(self)
 	model_animation.play("Down")
 	hurt_box.got_hurt.connect(on_hurt)
@@ -354,29 +394,12 @@ func on_ability_result(result: CombatLogicResult) -> void:
 		if result.target != self:
 			result.target.combat_logic_result.emit(result)
 	combat_logic_result.emit(result)
-	
-func is_dead() -> bool:
-	return get_resource(ResourceType.Enum.HEALTH).get_value() == 0
-	
-func get_resource(resource_type: ResourceType.Enum) -> UnitResource:
-	return resources[resource_type]
-	
-func has_resource(resource_type: ResourceType.Enum) -> bool:
-	return resources[resource_type] != null
-	
-func has_resource_amount(resource_type: ResourceType.Enum, amount: int) -> bool:
-	return amount <= 0 or (has_resource(resource_type) and get_resource(resource_type).get_value() >= amount)
-	
-func increase_resource_value(resource_type: ResourceType.Enum, value: int) -> int:
-	if has_resource(resource_type):
-		var change = get_resource(resource_type).increase_value(value)
-		if is_dead():
-			died.emit(self)
-		return change
-	return 0
 
 func _process(delta: float) -> void:
 	movement_velocity = movement_strategy.get_movement_velocity()
+	for resource in resources:
+		if resource != null:
+			resource.update(delta)
 	update_cast(delta)
 	update_status_effect(delta)
 	update_direction()
@@ -389,6 +412,8 @@ func on_hurt(source: Unit, ability: Ability) -> void:
 	combat_logic.cast_ability(source, self, ability)
 		
 func set_level(_level: int) -> void:
+	var base_stats_for_new_level = BaseStats.new(_level)
+	var base_stats_for_previous_level = BaseStats.new(unit_data.level)
 	if _level <= max_level:
 		unit_data.level = _level
 	else:
@@ -396,7 +421,8 @@ func set_level(_level: int) -> void:
 			unit_data.level = 1
 		else:
 			unit_data.level = max_level
-	set_stats(BaseStats.new(unit_data.level))
+	var stat_increase = base_stats_for_new_level.subtract_stat_set(base_stats_for_previous_level)
+	stats.increase_by_stat_set(stat_increase)
 	base_stats = BaseStats.new(unit_data.level)
 	level_changed.emit(unit_data.level)
 	
@@ -434,13 +460,17 @@ func update_direction() -> void:
 func set_animation(animation_name: String) -> void:
 	model_animation.play(animation_name)
 	
+var pushback_tween
+	
 func apply_pushback(pushback_direction: Vector2, pushback_strength: float, pushback_duration: float) -> void:
 	if unit_data.knockbackable and Time.get_unix_time_from_system() - last_pushback > pushback_cooldown:
-		var tween = create_tween()
+		if pushback_tween != null:
+			pushback_tween.kill()
+		pushback_tween = create_tween()
 		last_pushback = Time.get_unix_time_from_system()
 		pushback_velocity = pushback_direction.normalized() * (pushback_strength * 700) * (100.0 / unit_data.mass)
-		tween.tween_property(self, "pushback_velocity", Vector2(0, 0), pushback_duration).set_ease(Tween.EASE_IN)
-		tween.play()
+		pushback_tween.tween_property(self, "pushback_velocity", Vector2(0, 0), pushback_duration).set_ease(Tween.EASE_IN)
+		pushback_tween.play()
 	
 func get_alias() -> String:
 	return unit_data.alias

@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://c65yuai7jjlwb" path="res://Zones/ForestGrove/ForestGroveTileSet.tres" id="2_18uvt"]
 [ext_resource type="Script" path="res://Zones/ForestGrove/HouseTilemap.gd" id="3_kfc2v"]
 [ext_resource type="Script" path="res://Zones/ForestGrove/SceneSwitch.gd" id="4_r0hwq"]
-[ext_resource type="PackedScene" uid="uid://ctkdmqm6hhk4a" path="res://Enemy/ElementalSlime/ElementalSlime.tscn" id="5_w26d3"]
+[ext_resource type="PackedScene" uid="uid://b2wmh85pw78ib" path="res://Enemy/Visjala/Visjala.tscn" id="5_qjpm2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vifm"]
 size = Vector2(37.5, 18.5)
@@ -41,5 +41,5 @@ spawm_position = Vector2(-104, 101)
 position = Vector2(95.25, 130.75)
 shape = SubResource("RectangleShape2D_6vifm")
 
-[node name="ElementalSlime" parent="." instance=ExtResource("5_w26d3")]
-position = Vector2(-73, 70)
+[node name="Visjala" parent="." instance=ExtResource("5_qjpm2")]
+position = Vector2(-89, 65)

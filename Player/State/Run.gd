@@ -6,7 +6,7 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Idle")
 		
 func enter(_data := {}) -> void:
-	player.movement_strategy = ControlledMovementStrategy.new(player)
+	player.movement_strategy = player.running_movement_strategy
 	
 func update_animation() -> void:
 	match (player.direction):

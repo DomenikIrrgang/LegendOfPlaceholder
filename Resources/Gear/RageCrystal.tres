@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Gear" load_steps=5 format=3 uid="uid://ddtneygn8e46h"]
+
+[ext_resource type="Script" path="res://Resources/Gear/Gear.gd" id="1_4e6hl"]
+[ext_resource type="Script" path="res://Resources/Gear/ResourceCrystalEffect.gd" id="1_lht8b"]
+[ext_resource type="Texture2D" uid="uid://c6enguo2w2rbx" path="res://assets/ui/bottom_hud/rage_crystal.png" id="2_cqhwa"]
+
+[sub_resource type="Resource" id="Resource_a1h3y"]
+script = ExtResource("1_lht8b")
+resource = 1
+tooltip = "Grants you a rage resource."
+
+[resource]
+script = ExtResource("1_4e6hl")
+slot = 12
+gear_effects = Array[Resource("res://Resources/Gear/GearEffect.gd")]([SubResource("Resource_a1h3y")])
+alias = "Rage Crystal"
+useable = false
+use_description = ""
+limited = false
+limit = 1
+stackable = false
+stack_amount = 5
+description = ""
+icon = ExtResource("2_cqhwa")

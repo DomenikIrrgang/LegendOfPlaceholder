@@ -30,6 +30,8 @@ SceneSwitcher="*res://Global/SceneSwitcher.gd"
 CooldownSystem="*res://Global/CooldownSystem.gd"
 Spellbook="*res://Global/Spellbook.gd"
 CombatUtil="*res://Global/CombatUtil.gd"
+GearManager="*res://Global/GearManager.gd"
+EventBus="*res://Global/EventBus.gd"
 
 [debug]
 

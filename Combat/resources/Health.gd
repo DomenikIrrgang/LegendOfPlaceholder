@@ -1,8 +1,8 @@
 class_name Health
 extends UnitResource
 
-func _init(_stat_calculator: StatCalculator) -> void:
-	super(_stat_calculator)
+func _init(_unit: Unit) -> void:
+	super(_unit)
 	set_maximum_value(100)
 	set_value(get_maximum_value())
 	

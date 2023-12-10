@@ -1,7 +1,7 @@
 class_name State
 extends Node
 
-var state_machine = null
+var state_machine: StateMachine = null
 
 func _ready() -> void:
 	self.state_machine = get_parent()

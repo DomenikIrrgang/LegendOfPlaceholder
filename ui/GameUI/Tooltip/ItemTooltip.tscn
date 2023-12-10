@@ -43,6 +43,24 @@ layout_mode = 2
 text = "Limit: 10"
 label_settings = ExtResource("2_dqthv")
 
+[node name="Slot" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Head"
+label_settings = ExtResource("2_dqthv")
+
+[node name="Stats" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "+5 Stamina
++3 Agility
++4 Movementspeed"
+label_settings = ExtResource("2_dqthv")
+
+[node name="EquipDescription" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "On Equip: Your abilities have a 5% chance
+to heal you for 5."
+label_settings = ExtResource("5_8fdef")
+
 [node name="Cooldown" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Cooldown: 90 seconds"

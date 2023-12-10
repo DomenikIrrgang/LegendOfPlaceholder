@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=4 format=3 uid="uid://cfi85y5sb6d0k"]
+
+[ext_resource type="Script" path="res://Resources/StatusEffects/Effects/InvertedMovementEfrfect.gd" id="1_cpgkp"]
+[ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_yf1yr"]
+
+[sub_resource type="Resource" id="Resource_asfni"]
+script = ExtResource("1_cpgkp")
+
+[resource]
+script = ExtResource("1_yf1yr")
+alias = "Confusion Poison"
+type = 1
+description = "This units controls are inverted."
+dispellable = false
+has_duration = true
+duration = 8.0
+unique = false
+stackable = false
+max_stacks = 1
+effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([SubResource("Resource_asfni")])

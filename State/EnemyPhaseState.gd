@@ -88,4 +88,8 @@ func exit() -> void:
 	get_enemy().stop_casting()
 	timers.clear()
 	sequences.clear()
-			
+
+func spawn_enemy(enemy: Enemy, position: Vector2) -> Enemy:
+	get_enemy().get_parent().add_child(enemy)
+	enemy.global_position = position
+	return enemy

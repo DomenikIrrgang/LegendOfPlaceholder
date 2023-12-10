@@ -15,6 +15,12 @@ func get_health() -> int:
 func get_mana() -> int:
 	return unit.stats.get_stat(Stat.Enum.MANA) + unit.stats.get_stat(Stat.Enum.INTELLECT) * 10
 	
+func get_rage() -> int:
+	return unit.stats.get_stat(Stat.Enum.RAGE)
+	
+func get_energy() -> int:
+	return unit.stats.get_stat(Stat.Enum.ENERGY)
+	
 func get_dodge_chance() -> float:
 	return 5.0 + (unit.stats.get_stat(Stat.Enum.DODGE) + unit.stats.get_stat(Stat.Enum.DEFENSE) * 0.25 + unit.stats.get_stat(Stat.Enum.AGILITY) * 0.25) / 20.0
 	

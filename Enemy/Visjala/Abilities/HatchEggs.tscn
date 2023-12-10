@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckndplqxtx4mn"]
+
+[ext_resource type="Script" path="res://Enemy/Visjala/Abilities/HatchEggs.gd" id="1_hl5h7"]
+
+[node name="HatchEggs" type="Node2D"]
+script = ExtResource("1_hl5h7")
+alias = "Hatch Eggs"
+tooltip = "Hatches all eggs."
+ability_types = Array[int]([3])
+cast_time = 3.0
+resource_type = 5

@@ -33,6 +33,11 @@ func remove_stat_modifier(stat_modifier: StatModifier) -> void:
 func increase_stat(stat: Stat.Enum, value: int) -> void:
 	set_stat(stat, get_stat(stat) + value)
 	
+func increase_by_stat_set(stat_set: StatSet) -> StatSet:
+	for stat in stat_set.get_stats():
+		set_stat(stat, get_stat(stat) + stat_set.get_stat(stat))
+	return self
+	
 func subtract_stat_set(stat_set: StatSet) -> StatSet:
 	var result = StatSet.new()
 	for stat in get_stats():

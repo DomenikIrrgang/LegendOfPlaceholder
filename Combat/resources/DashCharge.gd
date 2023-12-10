@@ -4,8 +4,8 @@ extends UnitResource
 var scaling_factor: int = 10000
 var regeneration_rate: float = 0.4 * scaling_factor
 
-func _init(_stat_calculator: StatCalculator) -> void:
-	super(_stat_calculator)
+func _init(_unit: Unit) -> void:
+	super(_unit)
 	type = ResourceType.Enum.DASH_CHARGE
 	set_maximum_value(3 * scaling_factor)
 	set_value(get_maximum_value())

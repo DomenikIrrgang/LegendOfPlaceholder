@@ -1,0 +1,214 @@
+[gd_scene load_steps=18 format=3 uid="uid://b2wmh85pw78ib"]
+
+[ext_resource type="Script" path="res://Enemy/Visjala/Visjala.gd" id="1_nt4c1"]
+[ext_resource type="Resource" uid="uid://dgw6ivp3fei2h" path="res://Resources/Enemies/Visjala.tres" id="2_aj5on"]
+[ext_resource type="Texture2D" uid="uid://gsvk2j4vt5xd" path="res://assets/enemies/visjala.png" id="2_h0rgp"]
+[ext_resource type="Script" path="res://Unit/HurtBox.gd" id="4_lvxac"]
+[ext_resource type="Script" path="res://Unit/HitBox.gd" id="5_xvcwc"]
+[ext_resource type="Script" path="res://State/StateMachine.gd" id="6_gwchu"]
+[ext_resource type="Script" path="res://Enemy/Visjala/Phase1.gd" id="7_8xyap"]
+[ext_resource type="Script" path="res://State/StateTransition.gd" id="8_gy2fm"]
+[ext_resource type="Script" path="res://Enemy/Visjala/HatchingPhase.gd" id="9_4wedn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hfkkb"]
+radius = 4.0
+height = 32.0
+
+[sub_resource type="Animation" id="Animation_u6w47"]
+resource_name = "Casting"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Model:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_hxqqn"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.00217629, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_hvsia"]
+resource_name = "Left"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.4001, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23, 10, 24, 25, 26, 27, 28, 29]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_wbgvd"]
+resource_name = "Right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iep5h"]
+_data = {
+"Casting": SubResource("Animation_u6w47"),
+"Idle": SubResource("Animation_hxqqn"),
+"Left": SubResource("Animation_hvsia"),
+"Right": SubResource("Animation_wbgvd")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6yxic"]
+size = Vector2(32, 26.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mji0q"]
+size = Vector2(26, 8)
+
+[node name="Visjala" type="CharacterBody2D" groups=["boss", "enemy", "unit"]]
+y_sort_enabled = true
+motion_mode = 1
+script = ExtResource("1_nt4c1")
+unit_data = ExtResource("2_aj5on")
+
+[node name="Model" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -24)
+scale = Vector2(3, 3)
+texture = ExtResource("2_h0rgp")
+hframes = 10
+vframes = 5
+frame = 10
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hfkkb")
+
+[node name="ModelAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iep5h")
+}
+
+[node name="HurtBox2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("4_lvxac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox2D"]
+z_index = 1
+position = Vector2(-1, -13.75)
+shape = SubResource("RectangleShape2D_6yxic")
+
+[node name="HitBox2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("5_xvcwc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2D"]
+z_index = 1
+position = Vector2(-2, -4)
+shape = SubResource("RectangleShape2D_mji0q")
+
+[node name="PhaseState" type="Node" parent="."]
+script = ExtResource("6_gwchu")
+initial_state = NodePath("Phase1")
+
+[node name="Phase1" type="Node" parent="PhaseState"]
+script = ExtResource("7_8xyap")
+
+[node name="TransitionToHatch1" type="Node" parent="PhaseState/Phase1"]
+script = ExtResource("8_gy2fm")
+target_state_path = NodePath("../../HatchingPhase1")
+
+[node name="TransitionToHatch2" type="Node" parent="PhaseState/Phase1"]
+script = ExtResource("8_gy2fm")
+target_state_path = NodePath("../../HatchingPhase2")
+
+[node name="TransitionToHatch3" type="Node" parent="PhaseState/Phase1"]
+script = ExtResource("8_gy2fm")
+target_state_path = NodePath("../../HatchingPhase3")
+
+[node name="HatchingPhase1" type="Node" parent="PhaseState"]
+script = ExtResource("9_4wedn")
+
+[node name="TransitionToPhase1" type="Node" parent="PhaseState/HatchingPhase1"]
+script = ExtResource("8_gy2fm")
+target_state_path = NodePath("../../Phase1")
+
+[node name="HatchingPhase2" type="Node" parent="PhaseState"]
+script = ExtResource("9_4wedn")
+
+[node name="TransitionToPhase1" type="Node" parent="PhaseState/HatchingPhase2"]
+script = ExtResource("8_gy2fm")
+target_state_path = NodePath("../../Phase1")
+
+[node name="HatchingPhase3" type="Node" parent="PhaseState"]
+script = ExtResource("9_4wedn")
+
+[node name="TransitionToPhase1" type="Node" parent="PhaseState/HatchingPhase3"]
+script = ExtResource("8_gy2fm")
+target_state_path = NodePath("../../Phase1")

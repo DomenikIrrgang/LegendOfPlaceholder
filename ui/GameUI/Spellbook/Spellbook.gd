@@ -1,4 +1,10 @@
+class_name SpellbookWindow
 extends HBoxContainer
+
+static var Events = {
+	Opened = "SpellbookWindowOpened",
+	Closed = "SpellbookWindowClosed"
+}
 
 @onready
 var first_column: Array[Node] = $Window/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Content/FirstColumn.get_children()
@@ -35,10 +41,16 @@ func close() -> void:
 	if Globals.get_drag_and_drop().is_dragging() and Globals.get_drag_and_drop().data.has("ability"):
 		Globals.get_drag_and_drop().stop_dragging()
 	visible = false
+	EventBus.emit_event(Events.Closed, {
+		"Window" = self
+	})
 	
 func open() -> void:
 	visible = true
 	update_abilities(current_page, spell_school)
+	EventBus.emit_event(Events.Opened, {
+		"Window" = self
+	})
 		
 func on_spell_school_selected(_spell_school: SpellSchool.Enum) -> void:
 	update_abilities(0, _spell_school)

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://xgidirj04glo"]
+
+[ext_resource type="Script" path="res://Combat/abilities/Projectile.gd" id="1_sfkne"]
+[ext_resource type="Script" path="res://Unit/HitBox.gd" id="2_dl01e"]
+[ext_resource type="Texture2D" uid="uid://dllfp8mpgwd1q" path="res://assets/textures/poisonbolt.png" id="2_vb2hu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_coaup"]
+size = Vector2(2, 16)
+
+[node name="PoisonBoltProjectile" type="Node2D"]
+script = ExtResource("1_sfkne")
+speed = 500.0
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("2_dl01e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_coaup")
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("2_vb2hu")

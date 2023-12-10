@@ -7,6 +7,9 @@ var zone_active: bool = true
 @export
 var status_effect: StatusEffect
 
+@export
+var remove_status_effect_on_leave: bool = true
+
 var targets: Array[HurtBox2D] = []
 
 signal on_void_zone_enter(hurt_box: HurtBox2D)
@@ -40,4 +43,5 @@ func on_hit_box_left(hurt_box: HurtBox2D) -> void:
 	if zone_active:
 		targets.erase(hurt_box)
 		on_void_zone_left.emit(hurt_box)
-		hurt_box.owner.remove_status_effect(status_effect, unit)
+		if remove_status_effect_on_leave:
+			hurt_box.owner.remove_status_effect(status_effect, unit)

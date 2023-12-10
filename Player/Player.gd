@@ -15,7 +15,40 @@ var weapon: Weapon
 # Experience
 signal experience_changed(change: int)
 
+# Gear
+var gear_slots: Array[Gear] = []
+
+# Movement
+var running_movement_strategy: UnitMovementStrategy
+
+signal gear_slot_changed(slot: Gear.Slot, gear: Gear)
+
+func equip_gear(gear: Gear) -> bool:
+	return equip_gear_in_slot(gear.slot, gear)
+
+func equip_gear_in_slot(slot: Gear.Slot, gear: Gear) -> bool:
+	if gear.slot == slot:
+		if gear_slots[slot] != null:
+			unequip_gear_in_slot(slot)
+		gear_slots[slot] = gear
+		for gear_effect in gear.gear_effects:
+			gear_effect.on_gear_equipped(gear, self)
+		gear_slot_changed.emit(slot, gear)
+		return true
+	return false
+	
+func unequip_gear_in_slot(slot: Gear.Slot) -> bool:
+	if gear_slots[slot] != null:
+		for gear_effect in gear_slots[slot].gear_effects:
+			gear_effect.on_gear_unequipped(gear_slots[slot], self)
+		gear_slots[slot] = null
+		gear_slot_changed.emit(slot, null)
+		return true
+	return false
+
 func _init() -> void:
+	running_movement_strategy = ControlledMovementStrategy.new(self)
+	gear_slots.resize(Gear.Slot.keys().size())
 	unit_data = GameResources.player_data
 	unit_data.experience = 0
 	unit_data.level = 1
@@ -23,13 +56,16 @@ func _init() -> void:
 
 func _ready() -> void:
 	super()
-	resources[ResourceType.Enum.DASH_CHARGE] = DashCharge.new(stat_calculator)
-	resources[ResourceType.Enum.MANA] = Mana.new(stat_calculator)
+	resources[ResourceType.Enum.DASH_CHARGE] = DashCharge.new(self)
 	init_weapon()
 	died.connect(on_player_died)
 	Globals.get_environment_light().energy_changed.connect(on_energy_changed)
 	for ability in get_abilities():
 		ability.on_assign(self)
+	equip_gear(load("res://Resources/Gear/RunesmithHeadband.tres"))
+	equip_gear(load("res://Resources/Gear/RunesmithsPants.tres"))
+	equip_gear(load("res://Resources/Gear/RunesmithsShirt.tres"))
+	equip_gear(load("res://Resources/Gear/ManaCrystal.tres"))
 	
 func on_energy_changed(energy) -> void:
 	if energy > 0.6:
@@ -41,10 +77,20 @@ func get_abilities() -> Array[Ability]:
 	return Keybinds.get_abilities() 
 	
 func on_player_died(_player: Unit) -> void:
+	respawn()
+	
+func respawn() -> void:
+	for resource in resources:
+		if resource != null:
+			resource.reset()
 	for ability in get_abilities():
 		ability.reset()
-		ability.on_unassign(self)
-	get_tree().reload_current_scene()
+	if pushback_tween != null:
+		pushback_tween.pause()	
+		pushback_tween.kill()
+	last_pushback = Time.get_unix_time_from_system()
+	pushback_velocity = Vector2(0.0, 0.0)
+	SceneSwitcher.load_scene("res://Zones/ForestGrove/VisjalasDen.tscn", Vector2(0, 0))
 	
 func level_up() -> void:
 	gain_experience(experience_needed_for_next_level())

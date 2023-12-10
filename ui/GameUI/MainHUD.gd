@@ -15,6 +15,5 @@ var dash_bar: DashBar = $CenterContainer/Overlay/DashBar
 
 func initialize(player: Player) -> void:
 	health_bar.initialize(player)
-	resource_bar.initialize(player)
 	experience_bar.initialize(player)
 	dash_bar.initialize(player)

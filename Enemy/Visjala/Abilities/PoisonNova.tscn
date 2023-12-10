@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://li3hot2txhbc"]
+
+[ext_resource type="Script" path="res://Enemy/Visjala/Abilities/PoisonNova.gd" id="1_pja1q"]
+
+[node name="PoisonNova" type="Node2D"]
+script = ExtResource("1_pja1q")
