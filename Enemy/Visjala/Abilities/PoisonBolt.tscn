@@ -8,7 +8,6 @@ alias = "Poisonbolt"
 tooltip = "Spits out a poison projectile to the target."
 ability_types = Array[int]([3])
 cast_time = 1.5
-interuptable = true
 value = 20
 spell_school = 7
 resource_type = 5

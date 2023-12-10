@@ -73,17 +73,17 @@ func exit() -> void:
 	get_enemy().apply_status_effect(ImmuneEffect, get_enemy())
 
 func boss_health_changed(resource: UnitResource, _new_value: int, _change: int, _original_change: int) -> void:
-	if resource.get_percentage() <= 0.75 and !hatching_phase_1_entered:
+	if resource.get_percentage() <= 0.90 and !hatching_phase_1_entered:
 		hatching_phase_1_entered = true
 		state_machine.transition_to("HatchingPhase1", {
 			ability_unlocks = ability_unlocks
 		})
-	if resource.get_percentage() <= 0.50 and !hatching_phase_2_entered:
+	if resource.get_percentage() <= 0.60 and !hatching_phase_2_entered:
 		hatching_phase_2_entered = true
 		state_machine.transition_to("HatchingPhase1", {
 			ability_unlocks = ability_unlocks
 		})
-	if resource.get_percentage() <= 0.25 and !hatching_phase_3_entered:
+	if resource.get_percentage() <= 0.30 and !hatching_phase_3_entered:
 		hatching_phase_3_entered = true
 		state_machine.transition_to("HatchingPhase1", {
 			ability_unlocks = ability_unlocks
