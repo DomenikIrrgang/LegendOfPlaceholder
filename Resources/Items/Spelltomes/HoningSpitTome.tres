@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://clo2p6nhv5uj8"]
+
+[ext_resource type="Script" path="res://Resources/Items/Item.gd" id="1_8vaqg"]
+[ext_resource type="Texture2D" uid="uid://cmf8odpi145n5" path="res://assets/ui/items/nature_spelltome.png" id="1_sd7rf"]
+[ext_resource type="PackedScene" uid="uid://x253ak7tg4p" path="res://Enemy/Visjala/Abilities/HoingSpit.tscn" id="2_c7b6t"]
+[ext_resource type="Resource" uid="uid://bbgka06dmjbii" path="res://Resources/Items/Spelltomes/SpelltomeCooldownGroup.tres" id="3_704tt"]
+[ext_resource type="Script" path="res://Resources/Items/Spelltomes/SpellTomeEffect.gd" id="4_xtxae"]
+
+[sub_resource type="Resource" id="Resource_lft5p"]
+script = ExtResource("4_xtxae")
+ability = ExtResource("2_c7b6t")
+cooldown_group = ExtResource("3_704tt")
+
+[resource]
+script = ExtResource("1_8vaqg")
+alias = "Spelltome: Honing Spit"
+useable = true
+use_effect = SubResource("Resource_lft5p")
+use_description = "Teaches you the Honing Spit Ability."
+limited = false
+limit = 1
+stackable = false
+stack_amount = 5
+description = ""
+icon = ExtResource("1_sd7rf")

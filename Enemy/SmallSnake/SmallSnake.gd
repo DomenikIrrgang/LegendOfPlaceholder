@@ -2,7 +2,7 @@ class_name SmallSnake
 extends Enemy
 
 @onready
-var phase1: EnemyPhaseState = $StateMachine/Phase1
+var phase1: EnemyPhaseState = $PhaseState/Phase1
 
 func _process(delta: float) -> void:
 	super(delta)

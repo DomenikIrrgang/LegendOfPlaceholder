@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="StatusEffect" load_steps=5 format=3 uid="uid://d3sr7vq6ewbmj"]
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=6 format=3 uid="uid://d3sr7vq6ewbmj"]
 
 [ext_resource type="Script" path="res://Resources/StatusEffects/Effects/DamageOverTimeEffect.gd" id="1_54xn7"]
 [ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_85pno"]
 [ext_resource type="PackedScene" uid="uid://dbo543pwgw42d" path="res://Enemy/Visjala/Abilities/VisjalasVenom.tscn" id="1_pivdg"]
+[ext_resource type="Texture2D" uid="uid://dps11vl673jx8" path="res://assets/ui/bottom_hud/vasjalas_venom.png" id="3_e8xb2"]
 
 [sub_resource type="Resource" id="Resource_otxmi"]
 script = ExtResource("1_54xn7")
@@ -22,3 +23,4 @@ unique = false
 stackable = true
 max_stacks = 99
 effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([SubResource("Resource_otxmi")])
+icon = ExtResource("3_e8xb2")

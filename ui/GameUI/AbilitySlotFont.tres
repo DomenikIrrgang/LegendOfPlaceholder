@@ -6,3 +6,5 @@
 line_spacing = 2.08165e-12
 font = ExtResource("1_4rlwg")
 font_size = 14
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)

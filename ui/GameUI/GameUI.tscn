@@ -287,6 +287,7 @@ var testing_chest: Item = preload(\"res://Resources/Gear/TestingChest.tres\")
 var mana_crystal: Item = preload(\"res://Resources/Gear/ManaCrystal.tres\")
 var rage_crystal: Item = preload(\"res://Resources/Gear/RageCrystal.tres\")
 var energy_crystal: Item = preload(\"res://Resources/Gear/EnergyCrystal.tres\")
+var honing_spit: Item = preload(\"res://Resources/Items/Spelltomes/HoningSpitTome.tres\")
 
 var Drop = preload(\"res://Unit/Drops/Drop.tscn\")
 
@@ -299,7 +300,7 @@ func _on_pressed():
 	Globals.get_world().add_child(drop3)
 	drop1.set_item(energy_crystal, 1)
 	drop2.set_item(rage_crystal, 1)
-	drop3.set_item(testing_chest, 1)
+	drop3.set_item(honing_spit, 1)
 "
 
 [sub_resource type="GDScript" id="GDScript_j6glr"]

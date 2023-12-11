@@ -84,6 +84,9 @@ visible = false
 position = Vector2(0, -9.75)
 shape = SubResource("RectangleShape2D_bg311")
 
+[node name="PhaseState" parent="." index="6"]
+initial_state = NodePath("Phase1")
+
 [node name="Phase1" parent="PhaseState" index="0"]
 script = ExtResource("4_8dkfp")
 

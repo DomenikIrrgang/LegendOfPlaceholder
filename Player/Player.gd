@@ -67,6 +67,12 @@ func _ready() -> void:
 	equip_gear(load("res://Resources/Gear/RunesmithsShirt.tres"))
 	equip_gear(load("res://Resources/Gear/ManaCrystal.tres"))
 	
+	
+func start() -> void:
+	super()
+	if model_animation.is_playing():
+		running_movement_strategy.enabled = true
+		
 func on_energy_changed(energy) -> void:
 	if energy > 0.6:
 		light_box.energy = energy - 0.6

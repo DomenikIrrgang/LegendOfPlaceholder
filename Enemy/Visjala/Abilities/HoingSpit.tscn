@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://x253ak7tg4p"]
+[gd_scene load_steps=3 format=3 uid="uid://x253ak7tg4p"]
 
 [ext_resource type="Script" path="res://Enemy/Visjala/Abilities/HoingSpit.gd" id="1_0i1bx"]
+[ext_resource type="Texture2D" uid="uid://dllfp8mpgwd1q" path="res://assets/textures/poisonbolt.png" id="2_goo5n"]
 
 [node name="HoingSpit" type="Node2D"]
 script = ExtResource("1_0i1bx")
@@ -12,3 +13,4 @@ value = 25
 spell_school = 7
 resource_type = 5
 crittable = false
+icon = ExtResource("2_goo5n")

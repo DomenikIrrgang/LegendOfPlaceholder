@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3 uid="uid://o70qyrh6es5l"]
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=3 format=3 uid="uid://o70qyrh6es5l"]
 
 [ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_7ieia"]
+[ext_resource type="Texture2D" uid="uid://dllfp8mpgwd1q" path="res://assets/textures/poisonbolt.png" id="1_k1ywa"]
 
 [resource]
 script = ExtResource("1_7ieia")
@@ -14,3 +15,4 @@ unique = false
 stackable = false
 max_stacks = 1
 effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([])
+icon = ExtResource("1_k1ywa")

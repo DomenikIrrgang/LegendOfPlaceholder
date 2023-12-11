@@ -104,3 +104,12 @@ func spawn_unit(unit: Unit, position: Vector2) -> Unit:
 	Globals.get_world().add_child(unit)
 	unit.global_position = position
 	return unit
+
+func get_closest_enemy() -> Enemy:
+	var enemy: Enemy
+	for node in get_scene_tree().get_nodes_in_group("enemy"):
+		if enemy == null:
+			enemy = node
+		if get_player().global_position.distance_to(node.global_position) < get_player().global_position.distance_to(enemy.global_position):
+			enemy = node
+	return enemy

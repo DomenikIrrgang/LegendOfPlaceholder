@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="StatusEffect" load_steps=2 format=3 uid="uid://nvmaguf1bh4w"]
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=3 format=3 uid="uid://nvmaguf1bh4w"]
 
 [ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_e3g44"]
+[ext_resource type="Texture2D" uid="uid://cch4d8syt5wqr" path="res://assets/ui/bottom_hud/confusion_poison.png" id="1_kigb7"]
 
 [resource]
 script = ExtResource("1_e3g44")
@@ -14,3 +15,4 @@ unique = false
 stackable = false
 max_stacks = 1
 effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([])
+icon = ExtResource("1_kigb7")

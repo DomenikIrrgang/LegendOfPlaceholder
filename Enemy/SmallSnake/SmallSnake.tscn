@@ -127,7 +127,7 @@ size = Vector2(12, 11.25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7f1ux"]
 size = Vector2(11, 14)
 
-[node name="SmallSnake" type="CharacterBody2D"]
+[node name="SmallSnake" type="CharacterBody2D" groups=["enemy", "unit"]]
 script = ExtResource("1_ly7vs")
 unit_data = ExtResource("2_7j62d")
 
@@ -171,9 +171,9 @@ z_index = 1
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_7f1ux")
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="PhaseState" type="Node" parent="."]
 script = ExtResource("7_48lk4")
 initial_state = NodePath("Phase1")
 
-[node name="Phase1" type="Node" parent="StateMachine"]
+[node name="Phase1" type="Node" parent="PhaseState"]
 script = ExtResource("6_1fvl2")
