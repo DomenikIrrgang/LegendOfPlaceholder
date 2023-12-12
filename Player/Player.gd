@@ -2,9 +2,6 @@ class_name Player
 extends Unit
 
 @onready
-var movement_state: StateMachine = $MovementState
-
-@onready
 var light_box: PointLight2D = $LightBox
 
 @export
@@ -17,9 +14,6 @@ signal experience_changed(change: int)
 
 # Gear
 var gear_slots: Array[Gear] = []
-
-# Movement
-var running_movement_strategy: UnitMovementStrategy
 
 signal gear_slot_changed(slot: Gear.Slot, gear: Gear)
 
@@ -47,7 +41,6 @@ func unequip_gear_in_slot(slot: Gear.Slot) -> bool:
 	return false
 
 func _init() -> void:
-	running_movement_strategy = ControlledMovementStrategy.new(self)
 	gear_slots.resize(Gear.Slot.keys().size())
 	unit_data = GameResources.player_data
 	unit_data.experience = 0
@@ -66,12 +59,6 @@ func _ready() -> void:
 	equip_gear(load("res://Resources/Gear/RunesmithsPants.tres"))
 	equip_gear(load("res://Resources/Gear/RunesmithsShirt.tres"))
 	equip_gear(load("res://Resources/Gear/ManaCrystal.tres"))
-	
-	
-func start() -> void:
-	super()
-	if model_animation.is_playing():
-		running_movement_strategy.enabled = true
 		
 func on_energy_changed(energy) -> void:
 	if energy > 0.6:
@@ -131,10 +118,10 @@ func init_weapon() -> void:
 	add_child(weapon)
 	
 func dash() -> void:
-	movement_state.transition_to("Dash")
+	state.transition_to("Dash")
 
 func attack() -> void:
-	movement_state.transition_to("Attack")
+	state.transition_to("Attack")
 	
 func get_facing_direction() -> Vector2:
 	var x = 0

@@ -21,16 +21,22 @@ var Drop = preload("res://Unit/Drops/Drop.tscn")
 
 func _ready() -> void:
 	super()
+	movement_strategy = UnitMovementStrategy.new(self)
+	init_health_bar()
+	init_cast_bar()
+	died.connect(on_died)
+	
+func init_health_bar() -> void:
 	health_bar = UnitHpBar.instantiate()
 	add_child(health_bar)
 	health_bar.global_position.y -= model.get_rect().size.y * model.scale.y - (3 * model.scale.y)
 	health_bar.initialize(self)
+	
+func init_cast_bar() -> void:
 	castbar = CastBar.instantiate()
 	add_child(castbar)
 	castbar.global_position.y -= model.get_rect().size.y * model.scale.y - (3 * model.scale.y) + 9.5
 	castbar.initialize(self)
-	movement_strategy = FollowMovementStrategy.new(self, Globals.get_player())
-	died.connect(on_died)
 	
 func on_died(_enemy: Unit) -> void:
 	died.disconnect(on_died)

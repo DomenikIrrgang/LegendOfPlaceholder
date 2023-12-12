@@ -32,6 +32,7 @@ var pushback_cooldown: float = 0.3
 
 var movement_velocity: Vector2 = Vector2(0, 0)
 var movement_strategy: UnitMovementStrategy = UnitMovementStrategy.new(self)
+var movement_modifiers: Array[MovementModifier] = []
 
 # Resources
 var resources: Array[UnitResource] = []
@@ -78,6 +79,11 @@ func is_dead() -> bool:
 
 # Abilities
 var abilities: Array[Ability] = []
+
+# State
+
+@onready
+var state: StateMachine = $State
 
 # Status Effects
 var status_effects: Array[Dictionary] = []
@@ -279,12 +285,15 @@ var direction: int = Direction.DOWN
 
 signal direction_changed(direction: int)
 
+
+# Combat
+var combat_logic: CombatLogic = CombatLogic.new()
+
 signal took_damage(value: int)
 signal died(unit: Unit)
-
+signal combat_logic_result(result: CombatLogicResult)
 
 #Cast
-
 var casting: bool = false
 var cast_time: float = 0.0
 var current_cast: float = 0.0
@@ -292,12 +301,6 @@ var casting_ability: Ability
 var cast_target: Unit
 var casting_enabled: bool = true
 
-# Combat
-var combat_logic: CombatLogic = CombatLogic.new()
-
-signal combat_logic_result(result: CombatLogicResult)
-
-# Casts
 signal cast_started(source: Unit, target: Unit, ability: Ability, duration: float)
 signal cast_canceled(source: Unit, target: Unit, ability: Ability)
 signal cast_interupted(source: Unit, target: Unit, ability: Ability)
@@ -380,7 +383,8 @@ func _ready() -> void:
 	resources[ResourceType.Enum.HEALTH] = Health.new(self)
 	movement_strategy = UnitMovementStrategy.new(self)
 	model_animation.play("Down")
-	hurt_box.got_hurt.connect(on_hurt)
+	if hurt_box != null:
+		hurt_box.got_hurt.connect(on_hurt)
 	combat_logic.ability_result.connect(on_ability_result)
 		
 func on_ability_result(result: CombatLogicResult) -> void:
@@ -397,6 +401,8 @@ func on_ability_result(result: CombatLogicResult) -> void:
 
 func _process(delta: float) -> void:
 	movement_velocity = movement_strategy.get_movement_velocity()
+	for movement_modifier in movement_modifiers:
+		movement_velocity = movement_modifier.modify_movement_speed(self, movement_velocity)
 	for resource in resources:
 		if resource != null:
 			resource.update(delta)
@@ -493,21 +499,17 @@ func get_abilities() -> Array[Ability]:
 func teleport(_position: Vector2) -> void:
 	global_position = _position
 	
+func start() -> void:
+	if state != null:
+		state.transition_to(state.previous_state.name)
+	
 func pause() -> void:
-	movement_strategy.enabled = false
-	casting_enabled = false
-	status_effect_updates_enabled = false
+	if state != null:
+		state.transition_to("Disabled")
 	
 func freeze() -> void:
 	model_animation.pause()
-	movement_strategy.enabled = false
-	casting_enabled = false
-	
-func start() -> void:
-	if model_animation.is_playing():
-		movement_strategy.enabled = true
-		casting_enabled = true
-		status_effect_updates_enabled = true
+	pause()
 
 func unfreeze() -> void:
 	model_animation.play()

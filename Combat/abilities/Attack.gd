@@ -5,5 +5,5 @@ func use(source: Unit, _target: Unit):
 	source.attack()
 	
 func can_use(source: Unit) -> bool:
-	return super(source) and source.movement_state.can_transition_to_state("Attack")
+	return super(source) and source.state.can_transition_to_state("Attack")
 	

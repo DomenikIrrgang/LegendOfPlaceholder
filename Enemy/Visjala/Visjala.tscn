@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b2wmh85pw78ib"]
+[gd_scene load_steps=19 format=3 uid="uid://b2wmh85pw78ib"]
 
 [ext_resource type="Script" path="res://Enemy/Visjala/Visjala.gd" id="1_nt4c1"]
 [ext_resource type="Resource" uid="uid://dgw6ivp3fei2h" path="res://Resources/Enemies/Visjala.tres" id="2_aj5on"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Enemy/Visjala/Phase1.gd" id="7_8xyap"]
 [ext_resource type="Script" path="res://State/StateTransition.gd" id="8_gy2fm"]
 [ext_resource type="Script" path="res://Enemy/Visjala/HatchingPhase.gd" id="9_4wedn"]
+[ext_resource type="Script" path="res://Unit/Sate/StateComponent.gd" id="10_41tpv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hfkkb"]
 radius = 4.0
@@ -212,3 +213,6 @@ script = ExtResource("9_4wedn")
 [node name="TransitionToPhase1" type="Node" parent="PhaseState/HatchingPhase3"]
 script = ExtResource("8_gy2fm")
 target_state_path = NodePath("../../Phase1")
+
+[node name="StateComponent" type="Node" parent="."]
+script = ExtResource("10_41tpv")

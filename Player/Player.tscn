@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://vpck8gxc3g0"]
+[gd_scene load_steps=37 format=3 uid="uid://vpck8gxc3g0"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_hqrbj"]
 [ext_resource type="Resource" uid="uid://31rg15sio2vh" path="res://Resources/Player/PlayerData.tres" id="2_7ky4n"]
@@ -26,8 +26,10 @@
 [ext_resource type="Animation" uid="uid://dcl2bnq56ks2o" path="res://Player/Animations/Up.res" id="14_ulw1v"]
 [ext_resource type="Script" path="res://State/StateMachine.gd" id="16_1g42y"]
 [ext_resource type="Script" path="res://Player/State/RunToDash.gd" id="19_yoqx6"]
+[ext_resource type="Script" path="res://State/StateTransition.gd" id="20_ftpep"]
 [ext_resource type="Script" path="res://Player/State/DashToRun.gd" id="24_fsluq"]
 [ext_resource type="Script" path="res://Unit/HurtBox.gd" id="27_3nmce"]
+[ext_resource type="Script" path="res://Player/Disabled.gd" id="29_4b2cp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5l03r"]
 size = Vector2(8, 5)
@@ -106,49 +108,84 @@ libraries = {
 "": SubResource("AnimationLibrary_6j1ms")
 }
 
-[node name="MovementState" type="Node" parent="."]
+[node name="State" type="Node" parent="."]
 script = ExtResource("16_1g42y")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="MovementState"]
+[node name="Idle" type="Node" parent="State"]
 script = ExtResource("5_wtyg5")
 
-[node name="IdleToRun" type="Node" parent="MovementState/Idle"]
+[node name="IdleToRun" type="Node" parent="State/Idle"]
 script = ExtResource("5_bdqid")
 target_state_path = NodePath("../../Run")
 
-[node name="IdleToAttack" type="Node" parent="MovementState/Idle"]
+[node name="IdleToAttack" type="Node" parent="State/Idle"]
 script = ExtResource("6_dyfbh")
 target_state_path = NodePath("../../Attack")
 
-[node name="Run" type="Node" parent="MovementState"]
+[node name="IdleToDisabled" type="Node" parent="State/Idle"]
+script = ExtResource("20_ftpep")
+target_state_path = NodePath("../../Disabled")
+
+[node name="Run" type="Node" parent="State"]
 script = ExtResource("6_k0odg")
 
-[node name="RunToIdle" type="Node" parent="MovementState/Run"]
+[node name="RunToIdle" type="Node" parent="State/Run"]
 script = ExtResource("7_oemwf")
 target_state_path = NodePath("../../Idle")
 
-[node name="RunToAttack" type="Node" parent="MovementState/Run"]
+[node name="RunToAttack" type="Node" parent="State/Run"]
 script = ExtResource("9_yea6i")
 target_state_path = NodePath("../../Attack")
 
-[node name="RunToDash" type="Node" parent="MovementState/Run"]
+[node name="RunToDash" type="Node" parent="State/Run"]
 script = ExtResource("19_yoqx6")
 target_state_path = NodePath("../../Dash")
 
-[node name="Dash" type="Node" parent="MovementState"]
+[node name="RunToDisabled" type="Node" parent="State/Run"]
+script = ExtResource("20_ftpep")
+target_state_path = NodePath("../../Disabled")
+
+[node name="Dash" type="Node" parent="State"]
 script = ExtResource("8_atsjb")
 
-[node name="DashToRun" type="Node" parent="MovementState/Dash"]
+[node name="DashToRun" type="Node" parent="State/Dash"]
 script = ExtResource("24_fsluq")
 target_state_path = NodePath("../../Run")
 
-[node name="Attack" type="Node" parent="MovementState"]
+[node name="DashToDisabled" type="Node" parent="State/Dash"]
+script = ExtResource("20_ftpep")
+target_state_path = NodePath("../../Disabled")
+
+[node name="Attack" type="Node" parent="State"]
 script = ExtResource("9_lq2tq")
 
-[node name="AttackToIdle" type="Node" parent="MovementState/Attack"]
+[node name="AttackToIdle" type="Node" parent="State/Attack"]
 script = ExtResource("10_dn0on")
 target_state_path = NodePath("../../Idle")
+
+[node name="AttackToDisabled" type="Node" parent="State/Attack"]
+script = ExtResource("20_ftpep")
+target_state_path = NodePath("../../Disabled")
+
+[node name="Disabled" type="Node" parent="State"]
+script = ExtResource("29_4b2cp")
+
+[node name="DisabledToIdle" type="Node" parent="State/Disabled"]
+script = ExtResource("20_ftpep")
+target_state_path = NodePath("../../Idle")
+
+[node name="DisabledToRun" type="Node" parent="State/Disabled"]
+script = ExtResource("20_ftpep")
+target_state_path = NodePath("../../Run")
+
+[node name="DisabledToDash" type="Node" parent="State/Disabled"]
+script = ExtResource("20_ftpep")
+target_state_path = NodePath("../../Dash")
+
+[node name="DisabledToAttack" type="Node" parent="State/Disabled"]
+script = ExtResource("20_ftpep")
+target_state_path = NodePath("../../Attack")
 
 [node name="Dust" type="GPUParticles2D" parent="."]
 y_sort_enabled = true

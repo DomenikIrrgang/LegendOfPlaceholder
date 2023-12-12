@@ -3,7 +3,7 @@ extends Ability
 
 func use(unit: Unit, _target: Unit) -> void:
 	super(unit, _target)
-	unit.movement_state.transition_to("Dash")
+	unit.state.transition_to("Dash")
 	
 func get_dash_resource() -> DashCharge:
 	return Globals.get_player().get_resource(ResourceType.Enum.DASH_CHARGE)
@@ -22,4 +22,4 @@ func dash_charges_changed(_resourcce: UnitResource, new_value: int, change: int,
 	charges_changed.emit(new_value, change)
 	
 func can_use(unit: Unit) -> bool:
-	return super(unit) and unit.movement_state.can_transition_to_state("Dash")
+	return super(unit) and unit.state.can_transition_to_state("Dash")

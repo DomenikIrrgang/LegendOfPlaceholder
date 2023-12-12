@@ -2,15 +2,17 @@ extends PlayerState
 
 var movement_strategy: UnitMovementStrategy
 
-func update(_delta: float) -> void:
-	if (player.movement_velocity != Vector2.ZERO):
-		state_machine.transition_to("Run")
-
 func enter(_data := {}) -> void:
 	if movement_strategy == null:
-		movement_strategy = ControlledMovementStrategy.new(player)
+		movement_strategy = UnitMovementStrategy.new(player)
 	player.movement_strategy = movement_strategy
+	player.casting_enabled = false
+	player.status_effect_updates_enabled = false
 	update_animation()
+	
+func exit() -> void:
+	player.casting_enabled = true
+	player.status_effect_updates_enabled = true
 
 func update_animation() -> void:
 	match (player.direction):

@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://yuovoi5jc36s"]
+
+[ext_resource type="Script" path="res://Unit/Sate/StateComponent.gd" id="1_yhm0m"]
+[ext_resource type="PackedScene" uid="uid://46cy8v4ytecn" path="res://Unit/Sate/IdleState.tscn" id="2_mer7s"]
+[ext_resource type="Script" path="res://State/StateTransition.gd" id="3_5oujt"]
+[ext_resource type="Script" path="res://Unit/Sate/Moving.gd" id="4_gy23f"]
+[ext_resource type="Script" path="res://Unit/Sate/Disabled.gd" id="5_f2lxa"]
+[ext_resource type="Script" path="res://Unit/Sate/Dead.gd" id="6_n4uel"]
+[ext_resource type="Script" path="res://Unit/Sate/Casting.gd" id="7_x84px"]
+
+[node name="UnitStateComponent" type="Node"]
+script = ExtResource("1_yhm0m")
+initial_state = NodePath("Idle")
+
+[node name="Idle" parent="." instance=ExtResource("2_mer7s")]
+
+[node name="IdleToMoving" type="Node" parent="Idle"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Moving")
+
+[node name="IdleToDisabled" type="Node" parent="Idle"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Disabled")
+
+[node name="IdleToCasting" type="Node" parent="Idle"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Casting")
+
+[node name="IdleToDead" type="Node" parent="Idle"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Dead")
+
+[node name="Moving" type="Node" parent="."]
+script = ExtResource("4_gy23f")
+
+[node name="MovingToIdle" type="Node" parent="Moving"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Idle")
+
+[node name="MovingToDisabled" type="Node" parent="Moving"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Disabled")
+
+[node name="MovingToDead" type="Node" parent="Moving"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Dead")
+
+[node name="Disabled" type="Node" parent="."]
+script = ExtResource("5_f2lxa")
+
+[node name="DisabledToIdle" type="Node" parent="Disabled"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Idle")
+
+[node name="DisabledToMoving" type="Node" parent="Disabled"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Moving")
+
+[node name="DisabledToDead" type="Node" parent="Disabled"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Dead")
+
+[node name="Dead" type="Node" parent="."]
+script = ExtResource("6_n4uel")
+
+[node name="DeadToIdle" type="Node" parent="Dead"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Idle")
+
+[node name="DeadToDisabled" type="Node" parent="Dead"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Disabled")
+
+[node name="Casting" type="Node" parent="."]
+script = ExtResource("7_x84px")
+
+[node name="CastingToIdle" type="Node" parent="Casting"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Idle")
+
+[node name="CastingToMoving" type="Node" parent="Casting"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Moving")
+
+[node name="CastingToDisabled" type="Node" parent="Casting"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Disabled")

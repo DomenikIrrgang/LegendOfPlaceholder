@@ -1,0 +1,59 @@
+[gd_scene load_steps=17 format=3 uid="uid://c8w44vy7nuhp5"]
+
+[ext_resource type="Script" path="res://Enemy/MegaSlime/MegaSlime.gd" id="1_rmbnq"]
+[ext_resource type="Resource" uid="uid://dp7afxuihduss" path="res://Resources/Enemies/MegaSlime.tres" id="2_y3xs1"]
+[ext_resource type="PackedScene" uid="uid://yuovoi5jc36s" path="res://Unit/Sate/UnitStateComponent.tscn" id="3_1ita6"]
+[ext_resource type="Texture2D" uid="uid://b8uqgr8axuptj" path="res://assets/textures/slime.png" id="10_1jqcx"]
+[ext_resource type="Animation" uid="uid://b0spjcfavr42x" path="res://Unit/Animations/Idle_Down.res" id="11_hdx15"]
+[ext_resource type="Animation" uid="uid://qaad3qvjd620" path="res://Unit/Animations/Idle_Left.res" id="12_omhyl"]
+[ext_resource type="Animation" uid="uid://clhe6l4ubufhk" path="res://Unit/Animations/Down.res" id="13_7ujhs"]
+[ext_resource type="PackedScene" uid="uid://4sxh5p642go4" path="res://Unit/HurtboxComponent.tscn" id="13_d4cwa"]
+[ext_resource type="Animation" uid="uid://c4m0k5ea8kwyt" path="res://Unit/Animations/Idle_Right.res" id="14_68tfx"]
+[ext_resource type="Script" path="res://Enemy/HitBox.gd" id="14_jxr7f"]
+[ext_resource type="Animation" uid="uid://b536o550711vi" path="res://Unit/Animations/Idle_Up.res" id="15_kkylg"]
+[ext_resource type="Animation" uid="uid://wsvb57gm2wpm" path="res://Unit/Animations/Up.res" id="16_b2nky"]
+[ext_resource type="Animation" uid="uid://ctiau02k5u1v4" path="res://Unit/Animations/Right.res" id="17_21ech"]
+[ext_resource type="Animation" uid="uid://cs2st5c2f0v2i" path="res://Unit/Animations/Left.res" id="18_bc5lp"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q5hg1"]
+_data = {
+"Idle_Down": ExtResource("11_hdx15"),
+"Idle_Left": ExtResource("12_omhyl"),
+"Idle_Right": ExtResource("14_68tfx"),
+"Idle_Up": ExtResource("15_kkylg"),
+"Moving_Down": ExtResource("13_7ujhs"),
+"Moving_Left": ExtResource("18_bc5lp"),
+"Moving_Up": ExtResource("16_b2nky"),
+"Moving_right": ExtResource("17_21ech")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7h663"]
+radius = 3.0
+height = 10.0
+
+[node name="NewMegaSlime" type="CharacterBody2D"]
+script = ExtResource("1_rmbnq")
+unit_data = ExtResource("2_y3xs1")
+
+[node name="UnitStateComponent" parent="." instance=ExtResource("3_1ita6")]
+
+[node name="Model" type="Sprite2D" parent="."]
+texture = ExtResource("10_1jqcx")
+hframes = 4
+vframes = 8
+frame = 16
+
+[node name="ModelAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"UnitAnimations": SubResource("AnimationLibrary_q5hg1")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_7h663")
+
+[node name="HurtboxComponent" parent="." instance=ExtResource("13_d4cwa")]
+
+[node name="EnemyHitboxComponent" type="Area2D" parent="."]
+script = ExtResource("14_jxr7f")
