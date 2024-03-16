@@ -4,6 +4,9 @@ extends Unit
 @onready
 var light_box: PointLight2D = $LightBox
 
+@onready
+var interaction: Area2D = $InteractionArea
+
 @export
 var weapon_path: String
 

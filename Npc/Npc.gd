@@ -1,9 +1,11 @@
 class_name Npc
 extends Unit
 
-@onready
 var castbar
 var CastBar = load("res://Enemy/Castbar.tscn")
+
+@onready
+var interaction_area: Area2D = $Interactable
 
 func _ready() -> void:
 	super()
@@ -15,11 +17,13 @@ func _ready() -> void:
 	remove_child(model_animation)
 	model_instance.model_animation.reparent(self)
 	model_instance.model.reparent(self)
+	if model_instance.collision != null:
+		model_instance.collision.reparent(self)
+	if model_instance.interaction != null:
+		model_instance.interaction.reparent(interaction_area)
 	model = model_instance.model
 	model_animation = model_instance.model_animation
-	model_animation.play("PlayerAnimations/Idle_Down")
-	for node in get_children():
-		print(node.name)
+	model_animation.play(model_instance.get_idle_down_animation())
 	
 func init_cast_bar() -> void:
 	castbar = CastBar.instantiate()

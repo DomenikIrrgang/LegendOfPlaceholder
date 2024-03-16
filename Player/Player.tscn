@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://vpck8gxc3g0"]
+[gd_scene load_steps=39 format=3 uid="uid://vpck8gxc3g0"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_hqrbj"]
 [ext_resource type="Resource" uid="uid://31rg15sio2vh" path="res://Resources/Player/PlayerData.tres" id="2_7ky4n"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" path="res://Player/State/DashToRun.gd" id="24_fsluq"]
 [ext_resource type="Script" path="res://Unit/HurtBox.gd" id="27_3nmce"]
 [ext_resource type="Script" path="res://Player/Disabled.gd" id="29_4b2cp"]
+[ext_resource type="Script" path="res://Player/PlayerInteractionArea.gd" id="31_kxxqh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5l03r"]
 size = Vector2(8, 5)
@@ -69,6 +70,9 @@ fill_to = Vector2(0.5, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8yed2"]
 size = Vector2(8, 5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2alrt"]
+size = Vector2(12, 9)
+
 [node name="Player" type="CharacterBody2D" groups=["player", "unit"]]
 y_sort_enabled = true
 collision_layer = 2
@@ -86,17 +90,17 @@ unit_data = ExtResource("2_7ky4n")
 
 [node name="Model" type="Sprite2D" parent="."]
 y_sort_enabled = true
+position = Vector2(0, -8)
 texture = ExtResource("2_8tpy3")
 hframes = 8
 vframes = 16
 frame = 65
 region_enabled = true
 region_rect = Rect2(0, 0, 128, 256)
-metadata/_edit_lock_ = true
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 z_index = 1000
-position = Vector2(0, 5.5)
+position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_5l03r")
 
 [node name="ModelAnimation" type="AnimationPlayer" parent="."]
@@ -186,7 +190,6 @@ target_state_path = NodePath("../../Attack")
 [node name="Dust" type="GPUParticles2D" parent="."]
 y_sort_enabled = true
 use_parent_material = true
-position = Vector2(0, 8)
 emitting = false
 amount = 25
 process_material = SubResource("ParticleProcessMaterial_qjaa5")
@@ -196,10 +199,12 @@ fixed_fps = 60
 trail_lifetime = 0.1
 
 [node name="LightBox" type="PointLight2D" parent="."]
+position = Vector2(0, -8)
 energy = 0.0
 texture = SubResource("GradientTexture2D_0854e")
 
 [node name="HurtBox2D" type="Area2D" parent="."]
+position = Vector2(0, -8)
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("27_3nmce")
@@ -208,3 +213,12 @@ script = ExtResource("27_3nmce")
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_8yed2")
 debug_color = Color(0.988235, 0, 0.286275, 0.419608)
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 40
+script = ExtResource("31_kxxqh")
+
+[node name="Interaction" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_2alrt")

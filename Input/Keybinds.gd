@@ -4,7 +4,8 @@ var keybinds = {
 	"Toggle_Inventory": use_function(toggle_inventory),
 	"Toggle_CharacterSheet": use_function(toggle_character_sheet),
 	"Toggle_Spellbook": use_function(toggle_spellbook),
-	"Use_Consumeable": use_function(use_consumeable.bind(load("res://Resources/Items/HealingPotions/HealingPotion.tres")))
+	"Use_Consumeable": use_function(use_consumeable.bind(load("res://Resources/Items/HealingPotions/HealingPotion.tres"))),
+	"Interact": use_function(interact)
 }
 
 func _ready() -> void:
@@ -22,6 +23,10 @@ func _ready() -> void:
 func init_ability(action_name: String, ability: Ability) -> void:
 	Spellbook.learn_ability(ability)
 	keybind_ability(action_name, ability)
+	
+func interact() -> void:
+	if Globals.get_player().interaction.has_interactable_in_range():
+		Globals.get_player().interaction.closest_interactable.interact()
 	
 func on_input(state: InputState) -> void:
 	for action in state.action_map:

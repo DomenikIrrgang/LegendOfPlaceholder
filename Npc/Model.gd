@@ -7,10 +7,34 @@ var model: Sprite2D = $Model
 @onready
 var model_animation: AnimationPlayer = $ModelAnimation
 
-func play(animation_name: String) -> void:
-	print("starting animation", animation_name)
-	assert(model_animation.has_animation(animation_name), "Model does not have animation '" + animation_name + "'")
-	model_animation.play(animation_name)
+@onready
+var collision: CollisionShape2D = $Collision
+
+@onready
+var interaction: CollisionShape2D = $Interaction
 	
-func stop() -> void:
-	model_animation.stop()
+func get_idle_down_animation() -> String:
+	return "PlayerAnimations/Idle_Down"
+	
+func get_idle_up_animation() -> String:
+	return "PlayerAnimations/Idle_Down"
+	
+func get_idle_left_animation() -> String:
+	return "PlayerAnimations/Idle_Down"
+	
+func get_idle_right_animation() -> String:
+	return "PlayerAnimations/Idle_Down"
+	
+func get_down_animation() -> String:
+	return "PlayerAnimations/Idle_Down"
+	
+func get_up_animation() -> String:
+	return "PlayerAnimations/Idle_Down"
+	
+func get_left_animation() -> String:
+	return "PlayerAnimations/Idle_Down"
+	
+func get_right_animation() -> String:
+	return "PlayerAnimations/Idle_Down"
+
+

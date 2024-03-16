@@ -15,4 +15,5 @@ var action_map = {
 	"Toggle_CharacterSheet": false,
 	"Use_Consumeable": false,
 	"Toggle_Spellbook": false,
+	"Interact": false,
 }

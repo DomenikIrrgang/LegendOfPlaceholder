@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxnkwps61uq0g"]
+[gd_scene load_steps=7 format=3 uid="uid://dxnkwps61uq0g"]
 
 [ext_resource type="Script" path="res://Npc/Npc.gd" id="1_chys3"]
 [ext_resource type="Resource" uid="uid://vjtfqay7mifg" path="res://Resources/Npcs/Alfond.tres" id="2_r8hg6"]
 [ext_resource type="Animation" uid="uid://cocraw1jx8unp" path="res://Player/Animations/Attack_Down.res" id="3_35rog"]
 [ext_resource type="Animation" uid="uid://drmbw8xnxdov1" path="res://Player/Animations/Idle_Down.res" id="4_3o5er"]
+[ext_resource type="Script" path="res://Npc/InteractionArea.gd" id="5_m4s0h"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_txdty"]
 _data = {
@@ -12,6 +13,12 @@ _data = {
 }
 
 [node name="Npc" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 32
+collision_mask = 0
+motion_mode = 1
+platform_on_leave = 2
+platform_floor_layers = 4278190080
 script = ExtResource("1_chys3")
 unit_data = ExtResource("2_r8hg6")
 
@@ -21,3 +28,8 @@ unit_data = ExtResource("2_r8hg6")
 libraries = {
 "Animations": SubResource("AnimationLibrary_txdty")
 }
+
+[node name="Interactable" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("5_m4s0h")

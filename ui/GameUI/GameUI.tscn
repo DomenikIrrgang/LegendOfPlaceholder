@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=92 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -52,6 +52,7 @@
 [ext_resource type="PackedScene" uid="uid://8mvr4arokyd0" path="res://ui/GameUI/CharacterSheet/CharacterSheet.tscn" id="44_lu4nk"]
 [ext_resource type="PackedScene" uid="uid://clf21bsx3d6bl" path="res://ui/GameUI/Spellbook/Spellbook.tscn" id="47_3y1gb"]
 [ext_resource type="Script" path="res://ui/GameUI/StatusEffect/StatusEffectBar.gd" id="50_4qtxk"]
+[ext_resource type="Script" path="res://ui/GameUI/Interactable.gd" id="53_gchnq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
 font = ExtResource("3_60v0h")
@@ -321,6 +322,12 @@ func _process(_delta: float) -> void:
 	else:
 		text = \"No player found.\"
 "
+
+[sub_resource type="LabelSettings" id="LabelSettings_uc4gr"]
+font = ExtResource("3_60v0h")
+font_size = 20
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -988,6 +995,21 @@ offset_bottom = 1002.0
 alignment = 2
 script = ExtResource("50_4qtxk")
 status_effect_type = 1
+
+[node name="Interactable" type="CenterContainer" parent="."]
+layout_mode = 1
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+script = ExtResource("53_gchnq")
+
+[node name="Text" type="Label" parent="Interactable"]
+layout_mode = 2
+text = "Interact"
+label_settings = SubResource("LabelSettings_uc4gr")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_exited"]

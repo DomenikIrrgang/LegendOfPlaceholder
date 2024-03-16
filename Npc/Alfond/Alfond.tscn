@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkhwsj6cq1b3l"]
+[gd_scene load_steps=7 format=3 uid="uid://bkhwsj6cq1b3l"]
 
 [ext_resource type="Script" path="res://Npc/Model.gd" id="1_6ny36"]
 [ext_resource type="Texture2D" uid="uid://02xo8rphiwgt" path="res://assets/textures/player.png" id="2_xqtxo"]
@@ -10,13 +10,17 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53rd5"]
-size = Vector2(12, 10)
+size = Vector2(12, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fdvk"]
+size = Vector2(38, 24)
 
 [node name="Alfond" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_6ny36")
 
 [node name="Model" type="Sprite2D" parent="."]
+y_sort_enabled = true
 position = Vector2(0, -8)
 texture = ExtResource("2_xqtxo")
 hframes = 8
@@ -28,5 +32,9 @@ libraries = {
 }
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_53rd5")
+
+[node name="Interaction" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_3fdvk")

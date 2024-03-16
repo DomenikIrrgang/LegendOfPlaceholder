@@ -21,7 +21,7 @@
 [ext_resource type="Script" path="res://Enemy/ElementalSlime/Phase3.gd" id="21_ieyx3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh5om"]
-size = Vector2(24, 8)
+size = Vector2(30, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_neob0"]
 size = Vector2(28, 19)
@@ -56,10 +56,11 @@ unit_data = ExtResource("2_oaale")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(0, 5)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_dh5om")
 
 [node name="HurtBox2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("2_omtut")
@@ -70,6 +71,7 @@ position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_neob0")
 
 [node name="HitBox2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("3_o1oal")
@@ -80,6 +82,7 @@ position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_4s4dp")
 
 [node name="Occlusion" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("4_mln6f")
@@ -102,7 +105,6 @@ texture = ExtResource("13_g6n26")
 hframes = 4
 vframes = 8
 frame = 18
-metadata/_edit_lock_ = true
 
 [node name="PhaseState" type="Node" parent="."]
 script = ExtResource("17_yr8i8")
