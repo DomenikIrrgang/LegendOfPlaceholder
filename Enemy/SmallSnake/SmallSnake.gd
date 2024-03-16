@@ -4,6 +4,10 @@ extends Enemy
 @onready
 var phase1: EnemyPhaseState = $PhaseState/Phase1
 
+func _ready() -> void:
+	super()
+	movement_strategy = FollowMovementStrategy.new(self, Globals.get_player())
+
 func _process(delta: float) -> void:
 	super(delta)
 	if movement_velocity.x == 0:

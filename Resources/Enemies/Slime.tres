@@ -8,6 +8,7 @@ experience = 0
 loot_table = Array[Resource("res://Resources/Enemies/LootDrop.gd")]([])
 alias = "Slime"
 level = 1
+is_friendly = false
 base_movement_speed = 30.0
 mass = 50.0
 knockbackable = true

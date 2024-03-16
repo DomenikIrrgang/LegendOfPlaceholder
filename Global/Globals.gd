@@ -8,6 +8,7 @@ func get_unit(unit_name: String) -> Unit:
 	var root_node = get_scene_tree().root.get_child(scene_treer_root.get_child_count() - 1)
 	var unit = root_node.find_child(unit_name)
 	if unit == null:
+		var base_world = get_world().get_child(0).get_children()
 		unit = get_world().get_child(0).find_child(unit_name)
 	return unit
 	

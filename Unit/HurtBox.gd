@@ -29,7 +29,8 @@ func on_hurt(hit_box: HitBox2D) -> void:
 			"source": hit_box.unit,
 			"ability": hit_box.ability,
 		})
-		got_hurt.emit(hit_box.unit, hit_box.ability)
+		#got_hurt.emit(hit_box.unit, hit_box.ability)
+		owner.on_hurt(hit_box.unit, hit_box.ability)
 
 func got_hurt_recently(source: Unit, ability: Ability) -> bool:
 	for hurt in hurts:

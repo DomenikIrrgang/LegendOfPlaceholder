@@ -7,5 +7,5 @@ var zone_name: String
 @export
 var environment_light_energy: float
 
-func _ready():
+func _ready() -> void:
 	Globals.get_environment_light().change_energy(environment_light_energy, 0.0)

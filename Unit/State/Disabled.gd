@@ -1,8 +1,13 @@
 extends UnitState
 
+var movement_strategy: UnitMovementStrategy
+
 func enter(_data := {}) -> void:
 	unit.casting_enabled = false
 	unit.status_effect_updates_enabled = false
+	if movement_strategy == null:
+		movement_strategy = UnitMovementStrategy.new(unit)
+	unit.movement_strategy = movement_strategy
 	update_animation()
 	
 func exit() -> void:

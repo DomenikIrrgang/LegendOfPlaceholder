@@ -60,10 +60,8 @@ func on_died(_enemy: Unit) -> void:
 	
 func pause() -> void:
 	super()
-	hit_box.get_node("CollisionShape2D").disabled = true
 	phase_state_machine.enabled = false
 	
 func start() -> void:
 	super()
-	hit_box.get_node("CollisionShape2D").disabled = false
 	phase_state_machine.enabled = true

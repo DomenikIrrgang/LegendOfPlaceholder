@@ -8,11 +8,8 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Idle")
 		
 func enter(_data := {}) -> void:
-	print("entered running state")
 	if movement_strategy == null:
 		movement_strategy = ControlledMovementStrategy.new(Globals.get_player())
-	print("movement_strategy_enabled ", movement_strategy.enabled)
-	print("movement_strategy", movement_strategy)
 	player.movement_strategy = movement_strategy
 	
 func update_animation() -> void:

@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://yuovoi5jc36s"]
 
-[ext_resource type="Script" path="res://Unit/Sate/StateComponent.gd" id="1_yhm0m"]
-[ext_resource type="PackedScene" uid="uid://46cy8v4ytecn" path="res://Unit/Sate/IdleState.tscn" id="2_mer7s"]
+[ext_resource type="Script" path="res://Unit/State/StateComponent.gd" id="1_yhm0m"]
+[ext_resource type="PackedScene" uid="uid://46cy8v4ytecn" path="res://Unit/State/IdleState.tscn" id="2_mer7s"]
 [ext_resource type="Script" path="res://State/StateTransition.gd" id="3_5oujt"]
-[ext_resource type="Script" path="res://Unit/Sate/Moving.gd" id="4_gy23f"]
-[ext_resource type="Script" path="res://Unit/Sate/Disabled.gd" id="5_f2lxa"]
-[ext_resource type="Script" path="res://Unit/Sate/Dead.gd" id="6_n4uel"]
-[ext_resource type="Script" path="res://Unit/Sate/Casting.gd" id="7_x84px"]
+[ext_resource type="Script" path="res://Unit/State/Moving.gd" id="4_gy23f"]
+[ext_resource type="Script" path="res://Unit/State/Disabled.gd" id="5_f2lxa"]
+[ext_resource type="Script" path="res://Unit/State/Dead.gd" id="6_n4uel"]
+[ext_resource type="Script" path="res://Unit/State/Casting.gd" id="7_x84px"]
 
 [node name="UnitStateComponent" type="Node"]
 script = ExtResource("1_yhm0m")

@@ -14,6 +14,7 @@ experience = 50
 loot_table = Array[Resource("res://Resources/Enemies/LootDrop.gd")]([])
 alias = "Visjala"
 level = 5
+is_friendly = false
 base_movement_speed = 30.0
 mass = 50.0
 knockbackable = false

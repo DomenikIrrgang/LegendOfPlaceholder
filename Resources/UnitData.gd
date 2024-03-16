@@ -11,6 +11,9 @@ var dialog_texture: Texture
 @export
 var level: int = 1
 
+@export
+var is_friendly: bool = false
+
 @export_category("UnitData - Combat Settings")
 @export
 var base_movement_speed: float = 30.0

@@ -10,10 +10,7 @@ var unit_data: UnitData
 var model: Sprite2D = $Model
 
 @onready
-var model_animation: AnimationPlayer = $ModelAnimation
-
-@onready
-var hurt_box: HurtBox2D = $HurtBox2D
+var model_animation = $ModelAnimation
 
 # Base Stats
 var max_level: int = 60
@@ -383,8 +380,6 @@ func _ready() -> void:
 	resources[ResourceType.Enum.HEALTH] = Health.new(self)
 	movement_strategy = UnitMovementStrategy.new(self)
 	model_animation.play("Down")
-	if hurt_box != null:
-		hurt_box.got_hurt.connect(on_hurt)
 	combat_logic.ability_result.connect(on_ability_result)
 		
 func on_ability_result(result: CombatLogicResult) -> void:

@@ -128,6 +128,8 @@ size = Vector2(12, 11.25)
 size = Vector2(11, 14)
 
 [node name="SmallSnake" type="CharacterBody2D" groups=["enemy", "unit"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_ly7vs")
 unit_data = ExtResource("2_7j62d")
 

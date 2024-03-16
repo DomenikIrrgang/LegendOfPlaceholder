@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkhwsj6cq1b3l"]
+
+[ext_resource type="Script" path="res://Npc/Model.gd" id="1_6ny36"]
+[ext_resource type="Texture2D" uid="uid://02xo8rphiwgt" path="res://assets/textures/player.png" id="2_xqtxo"]
+[ext_resource type="Animation" uid="uid://drmbw8xnxdov1" path="res://Player/Animations/Idle_Down.res" id="3_8nh1x"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ml1xt"]
+_data = {
+"Idle_Down": ExtResource("3_8nh1x")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53rd5"]
+size = Vector2(12, 10)
+
+[node name="Alfond" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_6ny36")
+
+[node name="Model" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_xqtxo")
+hframes = 8
+vframes = 16
+
+[node name="ModelAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"PlayerAnimations": SubResource("AnimationLibrary_ml1xt")
+}
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_53rd5")

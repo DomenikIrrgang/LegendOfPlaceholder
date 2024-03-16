@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://Enemy/Visjala/Phase1.gd" id="7_8xyap"]
 [ext_resource type="Script" path="res://State/StateTransition.gd" id="8_gy2fm"]
 [ext_resource type="Script" path="res://Enemy/Visjala/HatchingPhase.gd" id="9_4wedn"]
-[ext_resource type="Script" path="res://Unit/Sate/StateComponent.gd" id="10_41tpv"]
+[ext_resource type="Script" path="res://Unit/State/StateComponent.gd" id="10_41tpv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hfkkb"]
 radius = 4.0
@@ -131,7 +131,11 @@ size = Vector2(26, 8)
 
 [node name="Visjala" type="CharacterBody2D" groups=["boss", "enemy", "unit"]]
 y_sort_enabled = true
+collision_layer = 4
+collision_mask = 0
 motion_mode = 1
+platform_on_leave = 2
+platform_floor_layers = 4278190080
 script = ExtResource("1_nt4c1")
 unit_data = ExtResource("2_aj5on")
 
@@ -166,7 +170,7 @@ shape = SubResource("RectangleShape2D_6yxic")
 
 [node name="HitBox2D" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 15
 script = ExtResource("5_xvcwc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2D"]

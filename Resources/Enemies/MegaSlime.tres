@@ -31,6 +31,7 @@ loot_table = Array[Resource("res://Resources/Enemies/LootDrop.gd")]([])
 alias = "Megaslime"
 dialog_texture = ExtResource("1_vl7yq")
 level = 5
+is_friendly = false
 base_movement_speed = 15.0
 mass = 200.0
 knockbackable = false

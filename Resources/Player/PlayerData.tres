@@ -32,6 +32,7 @@ unit_class = ExtResource("2_6r1x2")
 alias = "Ren"
 dialog_texture = ExtResource("1_m2r5j")
 level = 1
+is_friendly = false
 base_movement_speed = 50.0
 mass = 50.0
 knockbackable = true

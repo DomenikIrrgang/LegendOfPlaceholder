@@ -12,7 +12,7 @@ config_version=5
 
 config/name="LegendOfPlaceholder"
 run/main_scene="res://Zones/BaseScene.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -188,6 +188,7 @@ Toggle_Spellbook={
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Object"
 2d_physics/layer_5="Projectile"
+2d_physics/layer_6="Npc"
 
 [rendering]
 

@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="NpcData" load_steps=3 format=3 uid="uid://vjtfqay7mifg"]
+[gd_resource type="Resource" script_class="NpcData" load_steps=4 format=3 uid="uid://vjtfqay7mifg"]
 
 [ext_resource type="Texture2D" uid="uid://dtxw35wty86v8" path="res://assets/ui/dialog/player_dialog.png" id="1_qyapk"]
 [ext_resource type="Script" path="res://Resources/Npcs/NpcData.gd" id="1_s8tdc"]
+[ext_resource type="PackedScene" uid="uid://bkhwsj6cq1b3l" path="res://Npc/Alfond/Alfond.tscn" id="2_jyq13"]
 
 [resource]
 script = ExtResource("1_s8tdc")
+model = ExtResource("2_jyq13")
 alias = "Alfond"
 dialog_texture = ExtResource("1_qyapk")
 level = 15
+is_friendly = true
 base_movement_speed = 30.0
 mass = 50.0
 knockbackable = true

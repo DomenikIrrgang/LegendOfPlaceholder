@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkhwsj6cq1b3l"]
+
+[ext_resource type="Script" path="res://Npc/Alfond/Alfond.gd" id="1_ijoq5"]
+[ext_resource type="Resource" uid="uid://vjtfqay7mifg" path="res://Resources/Npcs/Alfond.tres" id="2_kkim2"]
+[ext_resource type="Texture2D" uid="uid://02xo8rphiwgt" path="res://assets/textures/player.png" id="2_xqtxo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53rd5"]
+size = Vector2(12, 10)
+
+[node name="Alfond" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 32
+collision_mask = 0
+motion_mode = 1
+platform_on_leave = 2
+platform_floor_layers = 4278190080
+script = ExtResource("1_ijoq5")
+unit_data = ExtResource("2_kkim2")
+
+[node name="Model" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_xqtxo")
+hframes = 8
+vframes = 16
+
+[node name="ModelAnimation" type="AnimationPlayer" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_53rd5")

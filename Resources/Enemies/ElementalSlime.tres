@@ -54,6 +54,7 @@ loot_table = Array[ExtResource("3_l0w6a")]([SubResource("Resource_ojw2k"), SubRe
 alias = "Elemental Slime"
 dialog_texture = ExtResource("1_w65bp")
 level = 10
+is_friendly = false
 base_movement_speed = 15.0
 mass = 200.0
 knockbackable = false

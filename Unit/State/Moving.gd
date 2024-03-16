@@ -4,6 +4,9 @@ var movement_strategy: UnitMovementStrategy
 
 func enter(_data := {}) -> void:
 	unit.stop_casting()
+	if movement_strategy == null:
+		movement_strategy = UnitMovementStrategy.new(unit)
+	unit.movement_strategy = movement_strategy
 
 func update(_delta: float) -> void:
 	update_animation()
