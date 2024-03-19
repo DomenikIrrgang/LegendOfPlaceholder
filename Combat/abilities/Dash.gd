@@ -23,3 +23,9 @@ func dash_charges_changed(_resourcce: UnitResource, new_value: int, change: int,
 	
 func can_use(unit: Unit) -> bool:
 	return super(unit) and unit.state.can_transition_to_state("Dash")
+
+func get_remaining_cooldown() -> float:
+	return 0
+
+func get_cooldown_progress() -> float:
+	return 0

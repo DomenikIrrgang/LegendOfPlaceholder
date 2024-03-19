@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Quest" load_steps=17 format=3 uid="uid://bua2ijg7n471w"]
+[gd_resource type="Resource" script_class="Quest" load_steps=19 format=3 uid="uid://bua2ijg7n471w"]
 
 [ext_resource type="Script" path="res://Resources/Quests/Quest.gd" id="1_yolvk"]
 [ext_resource type="Script" path="res://Resources/Quests/CollectItemQuestObjective.gd" id="2_1mlvp"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Resources/Quests/ItemQuestReward.gd" id="5_a4ll5"]
 [ext_resource type="Script" path="res://Resources/Quests/ReachLevelQuestObjective.gd" id="5_b77c1"]
 [ext_resource type="Script" path="res://Resources/Quests/ExperienceReward.gd" id="6_uwows"]
+[ext_resource type="Resource" uid="uid://clo2p6nhv5uj8" path="res://Resources/Items/Spelltomes/HoningSpitTome.tres" id="9_yq6ti"]
 
 [sub_resource type="Resource" id="Resource_ta8fs"]
 script = ExtResource("2_1mlvp")
@@ -42,12 +43,17 @@ amount = 1
 script = ExtResource("6_uwows")
 amount = 250
 
+[sub_resource type="Resource" id="Resource_iyw7y"]
+script = ExtResource("5_a4ll5")
+item = ExtResource("9_yq6ti")
+amount = 1
+
 [resource]
 script = ExtResource("1_yolvk")
 name = "A friendly Gesture"
 description = "Alfond has been attacked by Monsters and badly injured. Bring him a healing potion to recover from his injuries."
-recommended_level = 1
+recommended_level = 2
 turnin_type = 1
 objectives = Array[Resource("res://Resources/Quests/QuestObjective.gd")]([SubResource("Resource_ta8fs"), SubResource("Resource_06o5p"), SubResource("Resource_natdr"), SubResource("Resource_88ofr")])
-rewards = Array[Resource("res://Resources/Quests/QuestReward.gd")]([SubResource("Resource_ljumv"), SubResource("Resource_6ifky")])
+rewards = Array[Resource("res://Resources/Quests/QuestReward.gd")]([SubResource("Resource_ljumv"), SubResource("Resource_6ifky"), SubResource("Resource_iyw7y")])
 requirements = Array[Resource("res://Resources/Quests/QuestRequirement.gd")]([SubResource("Resource_8t4xi")])

@@ -1052,9 +1052,9 @@ vertical_alignment = 1
 
 [node name="InteractionPrompt" type="CenterContainer" parent="."]
 layout_mode = 2
-offset_top = 735.0
+offset_top = 759.0
 offset_right = 1920.0
-offset_bottom = 935.0
+offset_bottom = 959.0
 mouse_filter = 2
 script = ExtResource("54_w3j3o")
 
