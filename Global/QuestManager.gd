@@ -13,13 +13,14 @@ func accept_quest(quest: Quest) -> bool:
 	if can_accept_quest(quest):
 		quests.append(quest)
 		for objective in quest.objectives:
+			objective.init()
 			objective.objective_progress_changed.connect(on_objective_progress_changed.bind(quest))
 		quest_accepted.emit(quest)
 		return true
 	return false
 	
-func on_objective_progress_changed(quest: Quest, objective: QuestObjective) -> void:
-	print(quest, objective, objective.get_progress_string())
+func on_objective_progress_changed(objective: QuestObjective, quest: Quest) -> void:
+	objective_progress_changed.emit(quest, objective)
 	
 func get_active_quests() -> Array[Quest]:
 	return quests
@@ -29,16 +30,24 @@ func complete_quest(quest: Quest) -> bool:
 		quests.erase(quest)
 		for reward in quest.rewards:
 			reward.reward()
+		for objective in quest.objectives:
+			objective.quest_complete()
 		completed_quests.append(quest)
 		quest_completed.emit(quest)
 		return true
 	return false
 	
+func quest_objectives_completed(quest: Quest) -> bool:
+	for objective in quest.objectives:
+		if not objective.is_completed():
+			return false
+	return true
+
 func can_complete_quest(quest: Quest) -> bool:
 	for reward in quest.rewards:
 		if not reward.can_reward():
 			return false
-	return is_on_quest(quest)
+	return is_on_quest(quest) and quest_objectives_completed(quest)
 	
 func is_on_quest(quest: Quest) -> bool:
 	return quests.has(quest)

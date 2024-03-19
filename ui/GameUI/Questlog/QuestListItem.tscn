@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://yixh5v4opcyx"]
+
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="1_7kmos"]
+[ext_resource type="Script" path="res://ui/GameUI/Questlog/QuestListItem.gd" id="1_nmbop"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mlpwb"]
+
+[node name="QuestListItem" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxEmpty_mlpwb")
+script = ExtResource("1_nmbop")
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+layout_mode = 2
+focus_mode = 2
+color = Color(1, 1, 1, 0.207843)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Name" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "[2] A friendly Gesture"
+label_settings = ExtResource("1_7kmos")
+vertical_alignment = 1

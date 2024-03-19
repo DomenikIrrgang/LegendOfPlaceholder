@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=12 format=3 uid="uid://j32bp3npa3l4"]
+
+[ext_resource type="Script" path="res://Resources/Quests/Quest.gd" id="1_2leee"]
+[ext_resource type="Resource" uid="uid://bua2ijg7n471w" path="res://Resources/Quests/TestQuest.tres" id="1_ao2tb"]
+[ext_resource type="Resource" uid="uid://dy2pbsdtaks1h" path="res://Resources/Gear/RunesmithsShirt.tres" id="1_ouirp"]
+[ext_resource type="Script" path="res://Resources/Quests/CompletedQuestRequirement.gd" id="2_ofdnr"]
+[ext_resource type="Script" path="res://Resources/Quests/ItemQuestReward.gd" id="2_u3ncr"]
+[ext_resource type="Resource" uid="uid://dribn3a0vyi3v" path="res://Resources/Gear/RunesmithHeadband.tres" id="3_wnkny"]
+[ext_resource type="Resource" uid="uid://bcwti7dwmsujv" path="res://Resources/Gear/RunesmithsPants.tres" id="4_bpskg"]
+
+[sub_resource type="Resource" id="Resource_2wuhd"]
+script = ExtResource("2_ofdnr")
+quests = Array[ExtResource("1_2leee")]([ExtResource("1_ao2tb")])
+
+[sub_resource type="Resource" id="Resource_a6oo5"]
+script = ExtResource("2_u3ncr")
+item = ExtResource("1_ouirp")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_rcc18"]
+script = ExtResource("2_u3ncr")
+item = ExtResource("3_wnkny")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_800uq"]
+script = ExtResource("2_u3ncr")
+item = ExtResource("4_bpskg")
+amount = 1
+
+[resource]
+script = ExtResource("1_2leee")
+name = "Test Quest"
+description = "Find Alfond to receive your starting gear."
+recommended_level = 1
+turnin_type = 1
+objectives = Array[Resource("res://Resources/Quests/QuestObjective.gd")]([])
+rewards = Array[Resource("res://Resources/Quests/QuestReward.gd")]([SubResource("Resource_a6oo5"), SubResource("Resource_rcc18"), SubResource("Resource_800uq")])
+requirements = Array[Resource("res://Resources/Quests/QuestRequirement.gd")]([SubResource("Resource_2wuhd")])

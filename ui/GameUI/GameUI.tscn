@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=98 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cx6x6hhc36fm" path="res://assets/ui/bottom_hud/system_button.png" id="20_wubgf"]
 [ext_resource type="Texture2D" uid="uid://clb1qxxlcylap" path="res://assets/ui/bossframe/bossframe.png" id="21_oeymq"]
 [ext_resource type="Texture2D" uid="uid://ciej84v5wck6p" path="res://assets/ui/bottom_hud/character_icon.png" id="21_oki4j"]
+[ext_resource type="Texture2D" uid="uid://b1ssxle6u6qmj" path="res://assets/ui/quest/accept_quest.png" id="22_nsanx"]
 [ext_resource type="Texture2D" uid="uid://bjunfmcm6kkb3" path="res://assets/ui/buttons/b_button.png" id="22_o1px3"]
 [ext_resource type="Script" path="res://ui/GameUI/Keybind.gd" id="22_ruylf"]
 [ext_resource type="Texture2D" uid="uid://bfrrwosmxoqna" path="res://assets/ui/bossframe/health_bar_under.png" id="22_xauq8"]
@@ -52,6 +53,7 @@
 [ext_resource type="PackedScene" uid="uid://8mvr4arokyd0" path="res://ui/GameUI/CharacterSheet/CharacterSheet.tscn" id="44_lu4nk"]
 [ext_resource type="PackedScene" uid="uid://clf21bsx3d6bl" path="res://ui/GameUI/Spellbook/Spellbook.tscn" id="47_3y1gb"]
 [ext_resource type="Script" path="res://ui/GameUI/StatusEffect/StatusEffectBar.gd" id="50_4qtxk"]
+[ext_resource type="PackedScene" uid="uid://dfy4f1jtgdm5d" path="res://ui/GameUI/Questlog/Questlog.tscn" id="53_7nktq"]
 [ext_resource type="Script" path="res://ui/GameUI/Interactable.gd" id="53_gchnq"]
 [ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="54_cq3xn"]
 [ext_resource type="Script" path="res://ui/GameUI/InteractionPrompt.gd" id="54_w3j3o"]
@@ -355,6 +357,7 @@ script = ExtResource("2_oedgj")
 layout_mode = 2
 text = "SystemMessage"
 label_settings = SubResource("LabelSettings_5a6ab")
+horizontal_alignment = 1
 
 [node name="MainHUD" type="Control" parent="."]
 anchors_preset = 0
@@ -528,6 +531,31 @@ layout_mode = 0
 offset_right = 253.0
 offset_bottom = 42.0
 alignment = 2
+
+[node name="QuestLogBUtton" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("20_wubgf")
+
+[node name="Icon" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer/QuestLogBUtton"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 3.0
+offset_right = 29.0
+offset_bottom = 36.0
+texture = ExtResource("22_nsanx")
+stretch_mode = 2
+script = ExtResource("26_r0vun")
+
+[node name="KeybindDisplay" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer/QuestLogBUtton"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 34.0
+offset_right = 35.0
+offset_bottom = 66.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("22_o1px3")
+script = ExtResource("22_ruylf")
+action_name = "Toggle_Questlog"
 
 [node name="CharacterSheetButton" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer"]
 layout_mode = 2
@@ -981,6 +1009,10 @@ layout_mode = 2
 size_flags_vertical = 0
 
 [node name="Spellbook" parent="Windows" groups=["Spellbook"] instance=ExtResource("47_3y1gb")]
+visible = false
+layout_mode = 2
+
+[node name="Questlog" parent="Windows" groups=["Questlog"] instance=ExtResource("53_7nktq")]
 visible = false
 layout_mode = 2
 

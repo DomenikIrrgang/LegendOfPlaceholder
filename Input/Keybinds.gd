@@ -1,6 +1,7 @@
 extends Node
 
 var keybinds = {
+	"Toggle_Questlog": use_function(toggle_questlog),
 	"Toggle_Inventory": use_function(toggle_inventory),
 	"Toggle_CharacterSheet": use_function(toggle_character_sheet),
 	"Toggle_Spellbook": use_function(toggle_spellbook),
@@ -66,6 +67,9 @@ func use_consumeable(item: Item) -> void:
 	
 func toggle_inventory() -> void:
 	Globals.get_game_user_inteface().get_node("Inventory").toggle()
+	
+func toggle_questlog() -> void:
+	Globals.get_scene_tree().get_first_node_in_group("Questlog").toggle()
 
 func toggle_character_sheet() -> void:
 	Globals.get_scene_tree().get_first_node_in_group("CharacterSheet").toggle()

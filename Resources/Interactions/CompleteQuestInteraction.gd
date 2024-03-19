@@ -9,7 +9,7 @@ func start() -> void:
 		QuestManager.complete_quest(quest)
 
 func get_icon() -> Texture:
-	if QuestManager.can_complete_quest(quest):
+	if QuestManager.quest_objectives_completed(quest):
 		return load("res://assets/ui/quest/complete_quest.png")
 	else:
 		return load("res://assets/ui/quest/potential_turn_in.png")

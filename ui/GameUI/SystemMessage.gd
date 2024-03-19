@@ -12,6 +12,9 @@ var tween: Tween
 func _ready() -> void:
 	BossEncounter.boss_encounter_started.connect(on_encounter_started)
 	BossEncounter.boss_encounter_defeated.connect(on_encounter_defeated)
+	QuestManager.quest_accepted.connect(func(quest: Quest):
+		show_system_message("Accepted Quest:\n" + quest.name)
+	)
 	SceneSwitcher.zone_loaded.connect(on_zone_loaded)
 	tween = create_tween()
 

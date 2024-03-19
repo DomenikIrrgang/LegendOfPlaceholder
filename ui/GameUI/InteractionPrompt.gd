@@ -25,6 +25,7 @@ func _ready():
 func on_interaction_prompt_requested(unit_data: UnitData, _interactions: Array[Interaction]) -> void:
 	InputControlls.input_event.connect(on_input)
 	interactions = _interactions
+	selected_option = 0
 	unit_name_label.text = unit_data.alias
 	unit_icon.texture = unit_data.interaction_texture
 	for interaction in interactions:
@@ -38,9 +39,9 @@ func on_input(state: InputState) -> void:
 	if state.action_map.has("ui_accept") and state.action_map["ui_accept"] == true:
 		do_selected_interaction()
 	if state.action_map.has("up") and state.action_map["up"] == true:
-		select_option(selected_option + 1 if selected_option < interaction_menu.get_child_count() - 1 else 0)
-	if state.action_map.has("down") and state.action_map["down"] == true:
 		select_option(selected_option - 1 if selected_option > 0 else interaction_menu.get_child_count() - 1)
+	if state.action_map.has("down") and state.action_map["down"] == true:
+		select_option(selected_option + 1 if selected_option < interaction_menu.get_child_count() - 1 else 0)
 		
 func do_selected_interaction() -> void:
 	InteractionManager.select_interaction(interactions[selected_option])

@@ -17,6 +17,7 @@ const KEY_B = BASE_PATH + "key_b.png"
 const KEY_E = BASE_PATH + "key_e.png"
 const KEY_C = BASE_PATH + "key_c.png"
 const KEY_V = BASE_PATH + "key_v.png"
+const KEY_X = BASE_PATH + "key_v.png"
 
 const LEFT_MOUSE = BASE_PATH + "left_mouse_button.png"
 const RIGHT_MOUSE = BASE_PATH + "right_mouse_button.png"

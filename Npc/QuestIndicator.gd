@@ -14,6 +14,7 @@ func _ready() -> void:
 	QuestManager.quest_accepted.connect(func(quest: Quest): update())
 	QuestManager.quest_completed.connect(func(quest: Quest): update())
 	QuestManager.quest_abandoned.connect(func(quest: Quest): update())
+	QuestManager.objective_progress_changed.connect(func(quest: Quest, objective: QuestObjective): update())
 	
 func update() -> void:
 	visible = true
@@ -60,11 +61,10 @@ func can_potentially_turn_in_quest() -> bool:
 	
 func can_turn_in_quest() -> bool:
 	var interactions = owner.unit_data.interactions.filter(func(interaction: Interaction):
-		if interaction is CompleteQuestInteraction:
+		if (interaction is CompleteQuestInteraction and
+		QuestManager.is_on_quest(interaction.quest) and
+		QuestManager.quest_objectives_completed(interaction.quest)):
 			return true
 		return false
 	)
-	for interaction in interactions:
-		if QuestManager.can_complete_quest(interaction.quest):
-			return true
-	return false
+	return interactions.size() > 0

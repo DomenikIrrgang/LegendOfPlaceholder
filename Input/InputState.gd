@@ -13,6 +13,7 @@ var action_map = {
 	"ui_accept": false,
 	"Toggle_Inventory": false,
 	"Toggle_CharacterSheet": false,
+	"Toggle_Questlog": false,
 	"Use_Consumeable": false,
 	"Toggle_Spellbook": false,
 	"Interact": false,

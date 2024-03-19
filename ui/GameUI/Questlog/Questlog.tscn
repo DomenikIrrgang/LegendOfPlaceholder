@@ -1,0 +1,188 @@
+[gd_scene load_steps=11 format=3 uid="uid://dfy4f1jtgdm5d"]
+
+[ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="1_5v1sk"]
+[ext_resource type="Script" path="res://ui/GameUI/Questlog/Questlog.gd" id="1_jthpe"]
+[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="2_68buq"]
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="3_mos0f"]
+[ext_resource type="Theme" uid="uid://di064gebaua1n" path="res://ui/Themes/MainTheme.tres" id="4_j1fe8"]
+[ext_resource type="Script" path="res://ui/GameUI/Questlog/QuestInformation.gd" id="5_vevst"]
+[ext_resource type="Script" path="res://ui/GameUI/Questlog/QuestList.gd" id="6_eyuot"]
+[ext_resource type="PackedScene" uid="uid://yixh5v4opcyx" path="res://ui/GameUI/Questlog/QuestListItem.tscn" id="7_okhrp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kekr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4cm0e"]
+
+[node name="Questlog" type="PanelContainer"]
+custom_minimum_size = Vector2(350, 500)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3kekr")
+script = ExtResource("1_jthpe")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_5v1sk")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TitleBar" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4cm0e")
+
+[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/TitleBar"]
+layout_mode = 2
+texture = ExtResource("2_68buq")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TitleBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/TitleBar/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/TitleBar/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Questlog"
+label_settings = ExtResource("3_mos0f")
+
+[node name="Content" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="QuestListScroll" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Content"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("4_j1fe8")
+horizontal_scroll_mode = 0
+script = ExtResource("6_eyuot")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/QuestListScroll"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="QuestList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestListScroll/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="QuestListItem" parent="MarginContainer/VBoxContainer/Content/QuestListScroll/MarginContainer/QuestList" instance=ExtResource("7_okhrp")]
+layout_mode = 2
+
+[node name="Seperator" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content"]
+layout_mode = 2
+texture = ExtResource("2_68buq")
+patch_margin_left = 2
+patch_margin_top = 4
+patch_margin_bottom = 4
+
+[node name="QuestInformation" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Content"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("4_j1fe8")
+horizontal_scroll_mode = 0
+script = ExtResource("5_vevst")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="QuestDescription" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Titel" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription"]
+layout_mode = 2
+text = "A firiendly Gesture"
+label_settings = ExtResource("3_mos0f")
+vertical_alignment = 1
+
+[node name="ObjectivesContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription"]
+layout_mode = 2
+
+[node name="ObjectivesLabel" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription/ObjectivesContainer"]
+layout_mode = 2
+text = "Objectives:"
+label_settings = ExtResource("3_mos0f")
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription/ObjectivesContainer"]
+layout_mode = 2
+
+[node name="Objective" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription/ObjectivesContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reach Level 3/3
+Collect Testing Chest 0/1"
+label_settings = ExtResource("3_mos0f")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="DescirptionContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription"]
+layout_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription/DescirptionContainer"]
+layout_mode = 2
+text = "Description:"
+label_settings = ExtResource("3_mos0f")
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription/DescirptionContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.
+"
+label_settings = ExtResource("3_mos0f")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="RewardsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="RewardsLabel" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription/RewardsContainer"]
+layout_mode = 2
+text = "Rewards:"
+label_settings = ExtResource("3_mos0f")
+vertical_alignment = 1
+
+[node name="Rewards" type="FlowContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription/RewardsContainer"]
+layout_mode = 2
+
+[node name="NoActiveQuests" type="Label" parent="MarginContainer/VBoxContainer/Content"]
+visible = false
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "No active quests."
+label_settings = ExtResource("3_mos0f")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
