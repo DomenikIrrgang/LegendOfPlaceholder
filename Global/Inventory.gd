@@ -43,6 +43,9 @@ func get_free_slot_amount() -> int:
 			amount += 1
 	return amount
 	
+func has_item_amount(item: Item, amount: int) -> bool:
+	return get_item_amount(item) >= amount
+	
 func get_item_amount(item: Item) -> int:
 	var amount: int = 0
 	for i in size:

@@ -1,39 +1,63 @@
-[gd_resource type="Resource" script_class="NpcData" load_steps=13 format=3 uid="uid://vjtfqay7mifg"]
+[gd_resource type="Resource" script_class="NpcData" load_steps=20 format=3 uid="uid://vjtfqay7mifg"]
 
+[ext_resource type="Script" path="res://addons/pandora/model/entity.gd" id="1_1oqtd"]
 [ext_resource type="Texture2D" uid="uid://dtxw35wty86v8" path="res://assets/ui/dialog/player_dialog.png" id="1_qyapk"]
 [ext_resource type="Script" path="res://Resources/Npcs/NpcData.gd" id="1_s8tdc"]
 [ext_resource type="PackedScene" uid="uid://bkhwsj6cq1b3l" path="res://Npc/Alfond/Alfond.tscn" id="2_jyq13"]
-[ext_resource type="Script" path="res://Resources/Interactions/StartDialog.gd" id="3_hflnn"]
-[ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="3_uabsu"]
-[ext_resource type="Script" path="res://Resources/Interactions/Interaction.gd" id="4_8xwc0"]
-[ext_resource type="Resource" uid="uid://31rg15sio2vh" path="res://Resources/Player/PlayerData.tres" id="4_jryol"]
-[ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="5_j4c65"]
+[ext_resource type="Texture2D" uid="uid://eei3t6d1xjue" path="res://assets/ui/dialog/player_dialog_100x100.png" id="3_n5ih5"]
+[ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="4_wcysn"]
+[ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="5_us0de"]
+[ext_resource type="Script" path="res://Resources/Conditions/PlayerLevelCondition.gd" id="6_bmxnm"]
+[ext_resource type="Script" path="res://Resources/Interactions/StartDialog.gd" id="6_ske37"]
+[ext_resource type="Resource" uid="uid://bua2ijg7n471w" path="res://Resources/Quests/TestQuest.tres" id="7_d5hxd"]
+[ext_resource type="Script" path="res://Resources/Interactions/StartQuestInteraction.gd" id="8_yx13m"]
+[ext_resource type="Script" path="res://Resources/Interactions/CompleteQuestInteraction.gd" id="10_88c3n"]
 
-[sub_resource type="Resource" id="Resource_gfmay"]
-script = ExtResource("5_j4c65")
+[sub_resource type="Resource" id="Resource_m7kk5"]
+script = ExtResource("1_1oqtd")
+_id = "19"
+
+[sub_resource type="Resource" id="Resource_4do0c"]
+script = ExtResource("6_bmxnm")
+level = 2
+
+[sub_resource type="Resource" id="Resource_7nfbh"]
+script = ExtResource("8_yx13m")
+quest = ExtResource("7_d5hxd")
+visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_4do0c")])
+
+[sub_resource type="Resource" id="Resource_uiu3x"]
+script = ExtResource("10_88c3n")
+quest = ExtResource("7_d5hxd")
+visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+
+[sub_resource type="Resource" id="Resource_gd1yx"]
+script = ExtResource("5_us0de")
 type = 0
-author = ExtResource("4_jryol")
+author = 1
 text = "Hello there!"
 actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
 
-[sub_resource type="Resource" id="Resource_2tieh"]
-script = ExtResource("3_uabsu")
-steps = Array[ExtResource("5_j4c65")]([SubResource("Resource_gfmay")])
+[sub_resource type="Resource" id="Resource_4e1pp"]
+script = ExtResource("4_wcysn")
+steps = Array[ExtResource("5_us0de")]([SubResource("Resource_gd1yx")])
 
-[sub_resource type="Resource" id="Resource_3m5ny"]
-script = ExtResource("3_hflnn")
-dialog = SubResource("Resource_2tieh")
-
-[sub_resource type="Resource" id="Resource_viwcd"]
-script = ExtResource("4_8xwc0")
-type = SubResource("Resource_3m5ny")
+[sub_resource type="Resource" id="Resource_cfnf5"]
+script = ExtResource("6_ske37")
+dialog = SubResource("Resource_4e1pp")
+visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 
 [resource]
 script = ExtResource("1_s8tdc")
 model = ExtResource("2_jyq13")
-interactions = Array[ExtResource("4_8xwc0")]([SubResource("Resource_viwcd")])
+data = SubResource("Resource_m7kk5")
+interactions = Array[Resource("res://Resources/Interactions/Interaction.gd")]([SubResource("Resource_7nfbh"), SubResource("Resource_uiu3x"), SubResource("Resource_cfnf5")])
 alias = "Alfond"
 dialog_texture = ExtResource("1_qyapk")
+interaction_texture = ExtResource("3_n5ih5")
 level = 15
 is_friendly = true
 base_movement_speed = 30.0

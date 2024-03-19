@@ -9,6 +9,9 @@ var alias: String = ""
 var dialog_texture: Texture
 
 @export
+var interaction_texture: Texture
+
+@export
 var level: int = 1
 
 @export

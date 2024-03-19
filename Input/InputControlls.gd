@@ -78,6 +78,7 @@ signal input_event(input_state: InputState)
 var interceptors: Array[InputInterceptor] = [
 	PlayerControlInputInterceptor.new(),
 	InteractableInRangeInterceptor.new(),
+	InteractionPromptInterceptor.new(),
 	DialogInputInterceptor.new(),
 	CutsceneInputInterceptor.new(),
 ]

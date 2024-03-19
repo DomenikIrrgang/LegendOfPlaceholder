@@ -9,6 +9,7 @@ shader = ExtResource("3_m1lp0")
 shader_parameter/speed = 2.0
 shader_parameter/min_value = 0.15
 shader_parameter/max_value = 0.3
+shader_parameter/enabled = 0.0
 
 [node name="SelectableLabel" type="Control"]
 custom_minimum_size = Vector2(240, 40)

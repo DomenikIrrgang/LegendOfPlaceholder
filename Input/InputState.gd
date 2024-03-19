@@ -16,4 +16,8 @@ var action_map = {
 	"Use_Consumeable": false,
 	"Toggle_Spellbook": false,
 	"Interact": false,
+	"up": false,
+	"down": false,
+	"left": false,
+	"right": false,
 }

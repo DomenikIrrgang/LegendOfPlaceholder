@@ -136,7 +136,6 @@ size = Vector2(46, 37)
 y_sort_enabled = true
 script = ExtResource("1_axc5c")
 zone_name = "Forest Grove"
-environment_light_energy = 0.9
 
 [node name="Background" type="TileMap" parent="."]
 y_sort_enabled = true

@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="Dialog" load_steps=20 format=3 uid="uid://cnvr72uega8i5"]
+[gd_resource type="Resource" script_class="Dialog" load_steps=19 format=3 uid="uid://cnvr72uega8i5"]
 
 [ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="1_d048j"]
-[ext_resource type="Resource" uid="uid://dp7afxuihduss" path="res://Resources/Enemies/MegaSlime.tres" id="2_d430w"]
 [ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="2_jm37y"]
 [ext_resource type="Script" path="res://Resources/Dialogs/ChangStatsDialogAction.gd" id="4_aw3g5"]
 [ext_resource type="Script" path="res://Resources/Dialogs/DialogChoice.gd" id="4_qkjfy"]
@@ -65,7 +64,7 @@ actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([SubResourc
 [sub_resource type="Resource" id="Resource_kt1g1"]
 script = ExtResource("2_jm37y")
 type = 1
-author = ExtResource("2_d430w")
+author = 2
 text = "What difficulty do you want to fight me on?"
 actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
 choices = Array[ExtResource("4_qkjfy")]([SubResource("Resource_c5fpp"), SubResource("Resource_ujmdu"), SubResource("Resource_84t0k")])
@@ -73,7 +72,7 @@ choices = Array[ExtResource("4_qkjfy")]([SubResource("Resource_c5fpp"), SubResou
 [sub_resource type="Resource" id="Resource_7ufma"]
 script = ExtResource("2_jm37y")
 type = 0
-author = ExtResource("2_d430w")
+author = 2
 text = "Alright, let's do this!"
 actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
 

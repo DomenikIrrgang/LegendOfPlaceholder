@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=96 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -53,6 +53,9 @@
 [ext_resource type="PackedScene" uid="uid://clf21bsx3d6bl" path="res://ui/GameUI/Spellbook/Spellbook.tscn" id="47_3y1gb"]
 [ext_resource type="Script" path="res://ui/GameUI/StatusEffect/StatusEffectBar.gd" id="50_4qtxk"]
 [ext_resource type="Script" path="res://ui/GameUI/Interactable.gd" id="53_gchnq"]
+[ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="54_cq3xn"]
+[ext_resource type="Script" path="res://ui/GameUI/InteractionPrompt.gd" id="54_w3j3o"]
+[ext_resource type="Texture2D" uid="uid://eei3t6d1xjue" path="res://assets/ui/dialog/player_dialog_100x100.png" id="55_fnv2a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
 font = ExtResource("3_60v0h")
@@ -329,6 +332,8 @@ font_size = 20
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hkqp6"]
+
 [node name="GameUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -337,6 +342,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8sgfl")
+metadata/_edit_lock_ = true
 
 [node name="SystemMessage" type="CenterContainer" parent="."]
 visible = false
@@ -967,6 +973,7 @@ offset_top = 247.0
 offset_right = 1291.0
 offset_bottom = 784.0
 theme_override_constants/separation = 50
+metadata/_edit_lock_ = true
 
 [node name="CharacterSheet" parent="Windows" groups=["CharacterSheet"] instance=ExtResource("44_lu4nk")]
 visible = false
@@ -1010,6 +1017,58 @@ text = "Interact"
 label_settings = SubResource("LabelSettings_uc4gr")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="InteractionPrompt" type="CenterContainer" parent="."]
+layout_mode = 2
+offset_top = 735.0
+offset_right = 1920.0
+offset_bottom = 935.0
+mouse_filter = 2
+script = ExtResource("54_w3j3o")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InteractionPrompt"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Portrait" type="VBoxContainer" parent="InteractionPrompt/HBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="UnitName" type="Label" parent="InteractionPrompt/HBoxContainer/Portrait"]
+layout_mode = 2
+text = "<Unit Name>"
+label_settings = SubResource("LabelSettings_vmsgq")
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="InteractionPrompt/HBoxContainer/Portrait"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxEmpty_hkqp6")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="InteractionPrompt/HBoxContainer/Portrait/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("54_cq3xn")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="InteractionPrompt/HBoxContainer/Portrait/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Icon" type="TextureRect" parent="InteractionPrompt/HBoxContainer/Portrait/PanelContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("55_fnv2a")
+stretch_mode = 2
+
+[node name="InteractionMenue" type="VBoxContainer" parent="InteractionPrompt/HBoxContainer"]
+layout_mode = 2
+alignment = 2
 
 [connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_exited"]

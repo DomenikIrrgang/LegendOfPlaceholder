@@ -36,7 +36,7 @@ func _ready() -> void:
 
 func show_text(_dialog_step: DialogStep) -> void:
 	dialog_step = _dialog_step
-	author_label.text = dialog_step.author.alias
+	author_label.text = Units.get_unit_data(dialog_step.author).alias
 	if not streaming_text:
 		text_label.text = dialog_step.text
 		dialog_text_stream_end.emit(dialog_step)

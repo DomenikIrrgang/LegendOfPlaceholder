@@ -1,4 +1,3 @@
-class_name Npc
 extends Unit
 
 var castbar
@@ -6,6 +5,9 @@ var CastBar = load("res://Enemy/Castbar.tscn")
 
 @onready
 var interaction_area: Area2D = $Interactable
+
+@onready
+var quest_indicator: Sprite2D = $QuestIndicator
 
 func _ready() -> void:
 	super()
@@ -24,6 +26,8 @@ func _ready() -> void:
 	model = model_instance.model
 	model_animation = model_instance.model_animation
 	model_animation.play(model_instance.get_idle_down_animation())
+	quest_indicator.position.y = -model.get_rect().size.y - 6
+	quest_indicator.update()
 	
 func init_cast_bar() -> void:
 	castbar = CastBar.instantiate()

@@ -27,8 +27,10 @@ func _ready() -> void:
 func show_dialog_step(_dialog_step: DialogStep) -> void:
 	dialog_step = _dialog_step
 	dialog_step_is_finished = false
+	dialog_step.approved = false
+	dialog_step.finished_actions = []
 	textbox.show_text(dialog_step)
-	icon.texture = dialog_step.author.dialog_texture
+	icon.texture = Units.get_unit_data(dialog_step.author).dialog_texture
 	choices_container.get_children().filter(func(child): child.queue_free())
 	choices_container.visible = false
 	
@@ -47,7 +49,7 @@ func dialog_confirmation_pressed() -> void:
 			dialog_step.approve()
 			selected_choice = null
 		else:
-			dialog_step.approve()		
+			dialog_step.approve()
 		
 func add_choice(choice: String) -> void:
 	var choice_label = load("res://ui/SelectableLabel.tscn").instantiate()

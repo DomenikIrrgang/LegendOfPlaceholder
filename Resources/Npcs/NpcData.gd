@@ -5,4 +5,7 @@ extends UnitData
 var model: PackedScene
 
 @export
+var data: PandoraEntity
+
+@export
 var interactions: Array[Interaction] = []

@@ -3,6 +3,7 @@ shader_type canvas_item;
 uniform float speed = 2.0;
 uniform float min_value = 0.1;
 uniform float max_value = 0.5;
+uniform float enabled = 0;
 
 void fragment() {
 	vec4 original_color = texture(TEXTURE, UV);
@@ -13,5 +14,5 @@ void fragment() {
 	if (original_color.a == 0.0) {
 		alpha = 0.0;
 	}
-	COLOR = vec4(original_color.r, original_color.g, original_color.b, alpha);
+	COLOR = vec4(original_color.r, original_color.g, original_color.b, max(alpha, enabled));
 }

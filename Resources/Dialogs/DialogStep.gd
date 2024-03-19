@@ -6,7 +6,7 @@ extends Resource
 var type: DialogType.Enum
 
 @export
-var author: UnitData
+var author: Units.Enum
 
 @export_multiline
 var text: String

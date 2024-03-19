@@ -1,0 +1,65 @@
+{
+	"_entity_data": {
+		"_categories": [
+			{
+				"_category_id": "",
+				"_icon_color": "ffffff00",
+				"_icon_path": "res://addons/pandora/icons/Folder.svg",
+				"_id": "1",
+				"_index": 0,
+				"_name": "Unit"
+			},
+			{
+				"_category_id": "1",
+				"_icon_color": "ffffff00",
+				"_id": "10",
+				"_index": 0,
+				"_name": "Player"
+			},
+			{
+				"_category_id": "1",
+				"_icon_color": "ffffff00",
+				"_id": "17",
+				"_index": 0,
+				"_name": "Npc"
+			}
+		],
+		"_entities": [
+			{
+				"_category_id": "10",
+				"_icon_color": "ffffff00",
+				"_id": "16",
+				"_index": 0,
+				"_name": "PlayerEntity"
+			},
+			{
+				"_category_id": "17",
+				"_icon_color": "ffffff00",
+				"_id": "19",
+				"_index": 0,
+				"_name": "Alfond"
+			}
+		],
+		"_properties": [
+			{
+				"_category_id": "10",
+				"_default_value": 0,
+				"_id": "15",
+				"_name": "experience",
+				"_type": "int"
+			},
+			{
+				"_category_id": "17",
+				"_default_value": null,
+				"_id": "18",
+				"_name": "model",
+				"_type": "resource"
+			}
+		]
+	},
+	"_id_generator": {
+		"_ids_by_context": {
+			"default": 26
+		}
+	}
+}
