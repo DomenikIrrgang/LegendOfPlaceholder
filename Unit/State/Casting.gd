@@ -1,6 +1,7 @@
 extends UnitState
 
 func enter(_data := {}) -> void:
+	super()
 	update_animation()
 	
 func update(_delta: float) -> void:

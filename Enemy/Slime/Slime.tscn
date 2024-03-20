@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bubwr2hqxqo2r"]
+[gd_scene load_steps=8 format=3 uid="uid://bubwr2hqxqo2r"]
 
 [ext_resource type="PackedScene" uid="uid://bhfcp6laa8rvu" path="res://Enemy/Enemy.tscn" id="1_op8x6"]
 [ext_resource type="Script" path="res://Enemy/Slime/Slime.gd" id="2_p4or3"]
 [ext_resource type="Resource" uid="uid://djsprq100uefx" path="res://Resources/Enemies/Slime.tres" id="3_lrlya"]
 [ext_resource type="Script" path="res://Enemy/Slime/Phase1.gd" id="4_jcexq"]
+[ext_resource type="PackedScene" uid="uid://yuovoi5jc36s" path="res://Unit/State/UnitStateComponent.tscn" id="5_byi05"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ffdo"]
 size = Vector2(10, 4)
@@ -12,6 +13,9 @@ size = Vector2(10, 4)
 size = Vector2(13.5, 8)
 
 [node name="Slime" instance=ExtResource("1_op8x6")]
+collision_layer = 4
+motion_mode = 1
+platform_floor_layers = 0
 safe_margin = 0.01
 script = ExtResource("2_p4or3")
 unit_data = ExtResource("3_lrlya")
@@ -38,3 +42,5 @@ initial_state = NodePath("Phase1")
 
 [node name="Phase1" parent="PhaseState" index="0"]
 script = ExtResource("4_jcexq")
+
+[node name="State" parent="." index="8" instance=ExtResource("5_byi05")]

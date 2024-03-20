@@ -24,6 +24,7 @@ func use(_source: Unit, _target: Unit) -> void:
 	force_field = load("res://Combat/abilities/ForceNova.tscn").instantiate()
 	force_field.source = source
 	source.add_child(force_field)
+	force_field.global_position = source.model.global_position
 
 func execute(_source: Unit, target: Unit) -> void:
 	target.apply_pushback(

@@ -7,3 +7,6 @@ func _ready() -> void:
 	await owner.ready
 	player = self.get_parent().get_parent() as Player
 	assert(player != null)
+
+func get_unpause_state() -> String:
+	return name

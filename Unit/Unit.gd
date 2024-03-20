@@ -10,7 +10,7 @@ var unit_data: UnitData
 var model: Sprite2D = $Model
 
 @onready
-var model_animation = $ModelAnimation
+var model_animation: AnimationPlayer = $ModelAnimation
 
 # Base Stats
 var max_level: int = 60
@@ -458,8 +458,11 @@ func update_direction() -> void:
 	if (original_direction != direction):
 		direction_changed.emit(direction)
 	
-func set_animation(animation_name: String) -> void:
-	model_animation.play(animation_name)
+func set_animation(animation_name: String) -> bool:
+	if model_animation.has_animation(animation_name):
+		model_animation.play(animation_name)
+		return true
+	return false
 	
 var pushback_tween
 	
@@ -503,9 +506,9 @@ func pause() -> void:
 		state.transition_to("Disabled")
 	
 func freeze() -> void:
-	model_animation.pause()
-	pause()
+	if state != null:
+		state.transition_to("Timefrozen")
 
 func unfreeze() -> void:
-	model_animation.play()
-	start()
+	if state != null:
+		state.transition_to(state.current_state.get_unpause_state())

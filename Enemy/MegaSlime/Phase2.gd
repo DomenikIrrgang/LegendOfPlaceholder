@@ -5,7 +5,7 @@ var Zone = preload("res://Enemy/MegaSlime/Abilities/ZoneOfDoom.tscn").instantiat
 var Immune = load("res://Resources/StatusEffects/TestEffect.tres")
 
 var slimes_killed: int = 0
-var slimes_to_kill = 4
+var slimes_to_kill = 1
 
 func enter(_data := {}) -> void:
 	super(_data)

@@ -10,4 +10,4 @@ func _ready() -> void:
 	print("megaslime ready")
 
 func _init():
-	print("mega sliem cvreated")
+	print("mega sliem created")

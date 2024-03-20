@@ -9,3 +9,6 @@ func start() -> void:
 
 func get_alias() -> String:
 	return "Talk"
+
+func get_icon() -> Texture:
+	return load("res://assets/ui/quest/talk.png")

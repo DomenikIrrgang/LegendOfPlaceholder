@@ -1,6 +1,5 @@
 extends TextureRect
 
-
 func _ready():
 	EventBus.on_event.connect(on_event)
 	

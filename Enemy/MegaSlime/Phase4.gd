@@ -6,13 +6,13 @@ var Zone = preload("res://Enemy/MegaSlime/Abilities/ZoneOfDoom.tscn").instantiat
 
 func enter(_data := {}) -> void:
 	super(_data)
-	owner.get_node("UnitStateComponent/Moving").movement_strategy = FollowMovementStrategy.new(owner, Globals.get_player())
-	owner.get_node("UnitStateComponent/Idle").movement_strategy = FollowMovementStrategy.new(owner, Globals.get_player())
+	owner.get_node("State/Moving").movement_strategy = FollowMovementStrategy.new(owner, Globals.get_player())
+	owner.get_node("State/Idle").movement_strategy = FollowMovementStrategy.new(owner, Globals.get_player())
 	add_timed_ability(SummonSlime, Globals.get_player(), 10.0, 17.0, 20.0)
 	add_timed_ability(SummonHealSlime, Globals.get_player(), 22.0, 28.0, 20.0)
 	add_timed_ability(Zone, Globals.get_player(), 8.0, 12.0, 20.0)
 	get_enemy().died.connect(on_megaslime_died)
-	CutsceneManager.start_cutscene(load("res://Resources/Cutscenes/MegaSlimePhase4.tres"))	
+	CutsceneManager.start_cutscene(load("res://Resources/Cutscenes/MegaSlimePhase4.tres"))
 	
 func update(delta: float) -> void:
 	super(delta)

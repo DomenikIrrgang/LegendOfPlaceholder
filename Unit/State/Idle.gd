@@ -1,11 +1,7 @@
 extends UnitState
 
-var movement_strategy: UnitMovementStrategy
-
 func enter(_data := {}) -> void:
-	if movement_strategy == null:
-		movement_strategy = UnitMovementStrategy.new(unit)
-	unit.movement_strategy = movement_strategy
+	super()
 	update_animation()
 	
 func update(_delta: float) -> void:
@@ -15,12 +11,16 @@ func update(_delta: float) -> void:
 		state_machine.transition_to("Casting")
 
 func update_animation() -> void:
+	var set_animation = false
 	match (unit.direction):
 		Unit.Direction.LEFT:
-			unit.set_animation("UnitAnimations/Idle_Left")
+			set_animation = unit.set_animation("UnitAnimations/Idle_Left")
 		Unit.Direction.RIGHT:
-			unit.set_animation("UnitAnimations/Idle_Right")
+			set_animation = unit.set_animation("UnitAnimations/Idle_Right")
 		Unit.Direction.DOWN:
-			unit.set_animation("UnitAnimations/Idle_Down")
+			set_animation = unit.set_animation("UnitAnimations/Idle_Down")
 		Unit.Direction.UP:
-			unit.set_animation("UnitAnimations/Idle_Up")
+			set_animation = unit.set_animation("UnitAnimations/Idle_Up")
+	if set_animation == false:
+		unit.set_animation("Idle")
+	

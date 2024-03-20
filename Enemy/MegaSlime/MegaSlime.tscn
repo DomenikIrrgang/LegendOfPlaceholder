@@ -52,14 +52,13 @@ height = 38.0
 y_sort_enabled = true
 position = Vector2(0, -24)
 collision_layer = 4
-collision_mask = 0
 motion_mode = 1
 platform_on_leave = 2
 platform_floor_layers = 4278190080
 script = ExtResource("1_rmbnq")
 unit_data = ExtResource("2_y3xs1")
 
-[node name="UnitStateComponent" parent="." instance=ExtResource("3_1ita6")]
+[node name="State" parent="." instance=ExtResource("3_1ita6")]
 
 [node name="Model" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -70,6 +69,7 @@ vframes = 8
 frame = 16
 
 [node name="UnitOcclusionComponent" type="Area2D" parent="Model"]
+visible = false
 collision_layer = 6
 collision_mask = 15
 script = ExtResource("5_xua1c")
@@ -85,18 +85,22 @@ libraries = {
 }
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 15)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_7h663")
 
 [node name="HurtboxComponent" parent="." instance=ExtResource("13_d4cwa")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+visible = false
 position = Vector2(0.5, 12)
 shape = SubResource("RectangleShape2D_7qlc8")
 metadata/_edit_lock_ = true
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("unit")]
+visible = false
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("14_jxr7f")

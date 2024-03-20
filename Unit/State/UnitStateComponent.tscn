@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://yuovoi5jc36s"]
+[gd_scene load_steps=9 format=3 uid="uid://yuovoi5jc36s"]
 
 [ext_resource type="Script" path="res://Unit/State/StateComponent.gd" id="1_yhm0m"]
 [ext_resource type="PackedScene" uid="uid://46cy8v4ytecn" path="res://Unit/State/IdleState.tscn" id="2_mer7s"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Unit/State/Disabled.gd" id="5_f2lxa"]
 [ext_resource type="Script" path="res://Unit/State/Dead.gd" id="6_n4uel"]
 [ext_resource type="Script" path="res://Unit/State/Casting.gd" id="7_x84px"]
+[ext_resource type="Script" path="res://Unit/State/Timefrozen.gd" id="8_1csii"]
 
 [node name="UnitStateComponent" type="Node"]
 script = ExtResource("1_yhm0m")
@@ -30,6 +31,10 @@ target_state_path = NodePath("../../Casting")
 script = ExtResource("3_5oujt")
 target_state_path = NodePath("../../Dead")
 
+[node name="IdleToTimefrozen" type="Node" parent="Idle"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Timefrozen")
+
 [node name="Moving" type="Node" parent="."]
 script = ExtResource("4_gy23f")
 
@@ -45,6 +50,10 @@ target_state_path = NodePath("../../Disabled")
 script = ExtResource("3_5oujt")
 target_state_path = NodePath("../../Dead")
 
+[node name="MovingToTimefrozen" type="Node" parent="Moving"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Timefrozen")
+
 [node name="Disabled" type="Node" parent="."]
 script = ExtResource("5_f2lxa")
 
@@ -59,6 +68,14 @@ target_state_path = NodePath("../../Moving")
 [node name="DisabledToDead" type="Node" parent="Disabled"]
 script = ExtResource("3_5oujt")
 target_state_path = NodePath("../../Dead")
+
+[node name="DisabledToTimefrozen" type="Node" parent="Disabled"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Timefrozen")
+
+[node name="DisabledToCasting" type="Node" parent="Disabled"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Casting")
 
 [node name="Dead" type="Node" parent="."]
 script = ExtResource("6_n4uel")
@@ -85,3 +102,30 @@ target_state_path = NodePath("../../Moving")
 [node name="CastingToDisabled" type="Node" parent="Casting"]
 script = ExtResource("3_5oujt")
 target_state_path = NodePath("../../Disabled")
+
+[node name="CastingToTimefrozen" type="Node" parent="Casting"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Timefrozen")
+
+[node name="Timefrozen" type="Node" parent="."]
+script = ExtResource("8_1csii")
+
+[node name="TimefrozenToIdle" type="Node" parent="Timefrozen"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Idle")
+
+[node name="TimefrozenToMoving" type="Node" parent="Timefrozen"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Moving")
+
+[node name="TimefrozenToDisabled" type="Node" parent="Timefrozen"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Disabled")
+
+[node name="TimefrozenToDead" type="Node" parent="Timefrozen"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Dead")
+
+[node name="TimefrozenToCasting" type="Node" parent="Timefrozen"]
+script = ExtResource("3_5oujt")
+target_state_path = NodePath("../../Casting")

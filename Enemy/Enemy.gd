@@ -65,3 +65,11 @@ func pause() -> void:
 func start() -> void:
 	super()
 	phase_state_machine.enabled = true
+	
+func freeze() -> void:
+	super()
+	phase_state_machine.enabled = false
+	
+func unfreeze() -> void:
+	super()
+	phase_state_machine.enabled = true

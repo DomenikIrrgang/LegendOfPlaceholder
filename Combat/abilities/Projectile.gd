@@ -40,7 +40,7 @@ func init_honing_projectile(source: Unit, _ability: Ability, _target: Unit, _spe
 	speed = _speed
 	hitbox.ability = ability
 	hitbox.unit = source
-	rotation = texture_direction.angle_to(global_position.direction_to(target.global_position))
+	rotation = texture_direction.angle_to(global_position.direction_to(target.model.global_position))
 	honing = true
 
 func _physics_process(delta: float) -> void:
