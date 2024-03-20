@@ -81,7 +81,7 @@ script = ExtResource("6_eyuot")
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/QuestListScroll"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_right = 0
 
 [node name="QuestList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestListScroll/MarginContainer"]
 layout_mode = 2

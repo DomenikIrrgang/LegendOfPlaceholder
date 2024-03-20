@@ -15,6 +15,9 @@ func _ready() -> void:
 	QuestManager.quest_accepted.connect(func(quest: Quest):
 		show_system_message("Accepted Quest:\n" + quest.name)
 	)
+	QuestManager.quest_completed.connect(func(quest: Quest):
+		show_system_message("Completed Quest:\n" + quest.name)
+	)
 	SceneSwitcher.zone_loaded.connect(on_zone_loaded)
 	tween = create_tween()
 

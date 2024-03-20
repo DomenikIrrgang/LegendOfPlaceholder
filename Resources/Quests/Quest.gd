@@ -25,4 +25,4 @@ var objectives: Array[QuestObjective] = []
 var rewards: Array[QuestReward] = []
 
 @export
-var requirements: Array[QuestRequirement] = []
+var requirements: Array[Condition] = []

@@ -58,9 +58,6 @@ func _ready() -> void:
 	Globals.get_environment_light().energy_changed.connect(on_energy_changed)
 	for ability in get_abilities():
 		ability.on_assign(self)
-	equip_gear(load("res://Resources/Gear/RunesmithHeadband.tres"))
-	equip_gear(load("res://Resources/Gear/RunesmithsPants.tres"))
-	equip_gear(load("res://Resources/Gear/RunesmithsShirt.tres"))
 	equip_gear(load("res://Resources/Gear/ManaCrystal.tres"))
 		
 func on_energy_changed(energy) -> void:
@@ -76,6 +73,7 @@ func on_player_died(_player: Unit) -> void:
 	respawn()
 	
 func respawn() -> void:
+	alive = true
 	for resource in resources:
 		if resource != null:
 			resource.reset()

@@ -6,6 +6,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mlpwb"]
 
 [node name="QuestListItem" type="PanelContainer"]
+custom_minimum_size = Vector2(180, 0)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_mlpwb")
 script = ExtResource("1_nmbop")
 

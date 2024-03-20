@@ -1,26 +1,36 @@
-[gd_resource type="Resource" script_class="NpcData" load_steps=23 format=3 uid="uid://vjtfqay7mifg"]
+[gd_resource type="Resource" script_class="NpcData" load_steps=35 format=3 uid="uid://vjtfqay7mifg"]
 
 [ext_resource type="Script" path="res://addons/pandora/model/entity.gd" id="1_1oqtd"]
 [ext_resource type="Texture2D" uid="uid://dtxw35wty86v8" path="res://assets/ui/dialog/player_dialog.png" id="1_qyapk"]
 [ext_resource type="Script" path="res://Resources/Npcs/NpcData.gd" id="1_s8tdc"]
 [ext_resource type="PackedScene" uid="uid://bkhwsj6cq1b3l" path="res://Npc/Alfond/Alfond.tscn" id="2_jyq13"]
 [ext_resource type="Texture2D" uid="uid://eei3t6d1xjue" path="res://assets/ui/dialog/player_dialog_100x100.png" id="3_n5ih5"]
-[ext_resource type="Resource" uid="uid://j32bp3npa3l4" path="res://Resources/Quests/TestQuestTwo.tres" id="4_gguoy"]
+[ext_resource type="Resource" uid="uid://j32bp3npa3l4" path="res://Resources/Quests/SlimeHunt.tres" id="4_jv3uw"]
 [ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="4_wcysn"]
 [ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="5_us0de"]
 [ext_resource type="Script" path="res://Resources/Conditions/PlayerLevelCondition.gd" id="6_bmxnm"]
+[ext_resource type="Resource" uid="uid://bua2ijg7n471w" path="res://Resources/Quests/AFriendlyGesture.tres" id="6_jsg72"]
 [ext_resource type="Script" path="res://Resources/Interactions/StartDialog.gd" id="6_ske37"]
-[ext_resource type="Resource" uid="uid://bua2ijg7n471w" path="res://Resources/Quests/TestQuest.tres" id="7_d5hxd"]
 [ext_resource type="Script" path="res://Resources/Interactions/CompleteQuestInteraction.gd" id="7_o1pmh"]
 [ext_resource type="Script" path="res://Resources/Interactions/StartQuestInteraction.gd" id="8_yx13m"]
+[ext_resource type="Script" path="res://Resources/Dialogs/SetFlagDialogAction.gd" id="10_n75wu"]
+[ext_resource type="Script" path="res://Resources/Conditions/IsOnQuestCondition.gd" id="11_1qc3v"]
+[ext_resource type="Script" path="res://Resources/Conditions/FlagValueCondition.gd" id="12_osdw3"]
+[ext_resource type="Resource" uid="uid://b2q8uivlvjjdx" path="res://Resources/Quests/DangerInTheWoods.tres" id="13_ud60j"]
 
 [sub_resource type="Resource" id="Resource_m7kk5"]
 script = ExtResource("1_1oqtd")
 _id = "19"
 
+[sub_resource type="Resource" id="Resource_xyujb"]
+script = ExtResource("8_yx13m")
+quest = ExtResource("13_ud60j")
+visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+
 [sub_resource type="Resource" id="Resource_jqshq"]
 script = ExtResource("8_yx13m")
-quest = ExtResource("4_gguoy")
+quest = ExtResource("4_jv3uw")
 visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 
@@ -30,20 +40,58 @@ level = 2
 
 [sub_resource type="Resource" id="Resource_7nfbh"]
 script = ExtResource("8_yx13m")
-quest = ExtResource("7_d5hxd")
+quest = ExtResource("6_jsg72")
 visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_4do0c")])
 
 [sub_resource type="Resource" id="Resource_uiu3x"]
 script = ExtResource("7_o1pmh")
-quest = ExtResource("7_d5hxd")
+quest = ExtResource("6_jsg72")
 visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 
 [sub_resource type="Resource" id="Resource_vr5qj"]
 script = ExtResource("7_o1pmh")
-quest = ExtResource("4_gguoy")
+quest = ExtResource("4_jv3uw")
 visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+
+[sub_resource type="Resource" id="Resource_sq6v8"]
+script = ExtResource("7_o1pmh")
+quest = ExtResource("13_ud60j")
+visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+
+[sub_resource type="Resource" id="Resource_36m1e"]
+script = ExtResource("10_n75wu")
+flag = 0
+flag_value = true
+
+[sub_resource type="Resource" id="Resource_ioknx"]
+script = ExtResource("5_us0de")
+type = 0
+author = 1
+text = "This place is called the Dark Forest. Lately it has been plagued buy even more powerful monsters. You should consider wearing some extra armor to protect yourself. Take this is, it's dangerous outside!"
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([SubResource("Resource_36m1e")])
+
+[sub_resource type="Resource" id="Resource_hqfyg"]
+script = ExtResource("4_wcysn")
+steps = Array[ExtResource("5_us0de")]([SubResource("Resource_ioknx")])
+
+[sub_resource type="Resource" id="Resource_xrvar"]
+script = ExtResource("11_1qc3v")
+quest = ExtResource("13_ud60j")
+
+[sub_resource type="Resource" id="Resource_2fvf8"]
+script = ExtResource("12_osdw3")
+flag = 0
+flag_value = false
+
+[sub_resource type="Resource" id="Resource_c405h"]
+script = ExtResource("6_ske37")
+dialog = SubResource("Resource_hqfyg")
+alias = "What happened here?"
+visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_xrvar"), SubResource("Resource_2fvf8")])
 useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 
 [sub_resource type="Resource" id="Resource_gd1yx"]
@@ -60,6 +108,7 @@ steps = Array[ExtResource("5_us0de")]([SubResource("Resource_gd1yx")])
 [sub_resource type="Resource" id="Resource_cfnf5"]
 script = ExtResource("6_ske37")
 dialog = SubResource("Resource_4e1pp")
+alias = "Talk"
 visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 
@@ -67,7 +116,7 @@ useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")](
 script = ExtResource("1_s8tdc")
 model = ExtResource("2_jyq13")
 data = SubResource("Resource_m7kk5")
-interactions = Array[Resource("res://Resources/Interactions/Interaction.gd")]([SubResource("Resource_jqshq"), SubResource("Resource_7nfbh"), SubResource("Resource_uiu3x"), SubResource("Resource_vr5qj"), SubResource("Resource_cfnf5")])
+interactions = Array[Resource("res://Resources/Interactions/Interaction.gd")]([SubResource("Resource_xyujb"), SubResource("Resource_jqshq"), SubResource("Resource_7nfbh"), SubResource("Resource_uiu3x"), SubResource("Resource_vr5qj"), SubResource("Resource_sq6v8"), SubResource("Resource_c405h"), SubResource("Resource_cfnf5")])
 alias = "Alfond"
 dialog_texture = ExtResource("1_qyapk")
 interaction_texture = ExtResource("3_n5ih5")

@@ -61,10 +61,17 @@ func has_resource_amount(resource_type: ResourceType.Enum, amount: int) -> bool:
 	return amount <= 0 or (has_resource(resource_type) and get_resource(resource_type).get_value() >= amount)
 	
 func increase_resource_value(resource_type: ResourceType.Enum, value: int) -> int:
-	if has_resource(resource_type):
+	if has_resource(resource_type) and not is_dead():
 		var change = get_resource(resource_type).increase_value(value)
-		if is_dead():
+		if resource_type == ResourceType.Enum.HEALTH  and get_resource(ResourceType.Enum.HEALTH).get_value() == 0 and not is_dead():
+			alive = false
 			died.emit(self)
+			EventBus.emit_event(
+				"UNIT_DIED",
+				{
+					unit = self
+				}
+			)
 		return change
 	return 0
 	
@@ -72,7 +79,7 @@ func kill() -> void:
 	increase_resource_value(ResourceType.Enum.HEALTH, -get_resource(ResourceType.Enum.HEALTH).get_value())
 	
 func is_dead() -> bool:
-	return get_resource(ResourceType.Enum.HEALTH).get_value() == 0
+	return not alive
 
 # Abilities
 var abilities: Array[Ability] = []
@@ -81,6 +88,8 @@ var abilities: Array[Ability] = []
 
 @onready
 var state: StateMachine = $State
+
+var alive: bool = true
 
 # Status Effects
 var status_effects: Array[Dictionary] = []

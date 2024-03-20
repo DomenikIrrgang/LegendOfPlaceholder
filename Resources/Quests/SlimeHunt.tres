@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=12 format=3 uid="uid://j32bp3npa3l4"]
+
+[ext_resource type="Script" path="res://Resources/Quests/KillUnitsObjective.gd" id="1_x1ta7"]
+[ext_resource type="Resource" uid="uid://djsprq100uefx" path="res://Resources/Enemies/Slime.tres" id="2_cmwr8"]
+[ext_resource type="Resource" uid="uid://dp7afxuihduss" path="res://Resources/Enemies/MegaSlime.tres" id="3_6kw6l"]
+[ext_resource type="Script" path="res://Resources/Quests/ItemQuestReward.gd" id="3_gejht"]
+[ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/HealingPotion.tres" id="4_p04j7"]
+[ext_resource type="Script" path="res://Resources/Quests/Quest.gd" id="6_7asfw"]
+[ext_resource type="Resource" uid="uid://bi6vdjcijdpu0" path="res://Resources/Items/ManaPotions/LesserManaPotion.tres" id="6_31yqs"]
+
+[sub_resource type="Resource" id="Resource_xejf0"]
+script = ExtResource("1_x1ta7")
+unit_data = ExtResource("2_cmwr8")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_ehhom"]
+script = ExtResource("1_x1ta7")
+unit_data = ExtResource("3_6kw6l")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_a6oo5"]
+script = ExtResource("3_gejht")
+item = ExtResource("4_p04j7")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_rcc18"]
+script = ExtResource("3_gejht")
+item = ExtResource("6_31yqs")
+amount = 5
+
+[resource]
+script = ExtResource("6_7asfw")
+name = "Slime Hunt"
+description = "Since that earthquake the forest has been plagued with never seens slimes before. Can you find their leaders and exterminate them ?"
+recommended_level = 1
+turnin_type = 1
+objectives = Array[Resource("res://Resources/Quests/QuestObjective.gd")]([SubResource("Resource_xejf0"), SubResource("Resource_ehhom")])
+rewards = Array[Resource("res://Resources/Quests/QuestReward.gd")]([SubResource("Resource_a6oo5"), SubResource("Resource_rcc18")])
+requirements = Array[Resource("res://Resources/Conditions/Condition.gd")]([])

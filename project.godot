@@ -35,6 +35,7 @@ EventBus="*res://Global/EventBus.gd"
 Pandora="*res://addons/pandora/api.gd"
 QuestManager="*res://Global/QuestManager.gd"
 InteractionManager="*res://Global/InteractionManager.gd"
+GameStateManager="*res://GameState/GameStateManager.gd"
 
 [debug]
 
