@@ -84,7 +84,7 @@ func respawn() -> void:
 		pushback_tween.kill()
 	last_pushback = Time.get_unix_time_from_system()
 	pushback_velocity = Vector2(0.0, 0.0)
-	SceneSwitcher.load_scene("res://Zones/ForestGrove/VisjalasDen.tscn", Vector2(0, 0))
+	SceneSwitcher.load_scene("res://Zones/ForestGrove/ForestGrove.tscn", Vector2(0, 0))
 	
 func level_up() -> void:
 	gain_experience(experience_needed_for_next_level())

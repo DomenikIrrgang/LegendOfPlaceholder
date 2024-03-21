@@ -1,12 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://crmcrr3bd66q2"]
+[gd_scene load_steps=6 format=3 uid="uid://sqyhodn2nxno"]
 
-[ext_resource type="Script" path="res://ui/GameUI/ErrorMessage.gd" id="1_v8mve"]
-[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="2_3hclu"]
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="1_7ytbv"]
+[ext_resource type="Script" path="res://ui/GameUI/ErrorMessage.gd" id="2_1bphv"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_rh707"]
-font = ExtResource("2_3hclu")
+[sub_resource type="LabelSettings" id="LabelSettings_ytwje"]
+font = ExtResource("1_7ytbv")
 font_size = 18
-font_color = Color(0.690196, 0, 0, 1)
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
@@ -31,19 +30,19 @@ _data = {
 "fade": SubResource("Animation_ut5nd")
 }
 
-[node name="ErrorMessage" type="Label"]
+[node name="Message" type="Label"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1841.0
+offset_right = -1831.0
 offset_bottom = -1057.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Message"
-label_settings = SubResource("LabelSettings_rh707")
+label_settings = SubResource("LabelSettings_ytwje")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("1_v8mve")
+script = ExtResource("2_1bphv")
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {

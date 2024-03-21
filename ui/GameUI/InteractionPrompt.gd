@@ -32,6 +32,11 @@ func on_interaction_prompt_requested(unit_data: UnitData, _interactions: Array[I
 		var interaction_option: InteractionOption = InteractionOptionComponent.instantiate()
 		interaction_menu.add_child(interaction_option)
 		interaction_option.init(interaction)
+		interaction_option.gui_input.connect(func(event: InputEvent):
+			if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MASK_LEFT and event.is_pressed():
+				select_option(interactions.find(interaction))
+				do_selected_interaction()
+		)
 	select_option(interaction_menu.get_child_count() - 1)
 	visible = true
 	

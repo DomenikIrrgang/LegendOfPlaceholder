@@ -29,4 +29,4 @@ func is_completed() -> bool:
 	return progress == amount
 	
 func get_progess_string() -> String:
-	return str(progress) + "/" + str(amount) + " " + unit_data.alias + ("s" if amount > 1 else "") + " killed"
+	return str(min(progress, amount)) + "/" + str(amount) + " " + unit_data.alias + ("s" if amount > 1 else "") + " killed"

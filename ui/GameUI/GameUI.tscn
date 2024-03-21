@@ -1,8 +1,9 @@
-[gd_scene load_steps=98 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=100 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="3_60v0h"]
+[ext_resource type="Script" path="res://ui/GameUI/Messages.gd" id="4_gsrev"]
 [ext_resource type="Script" path="res://ui/GameUI/MainHUD.gd" id="4_u1bay"]
 [ext_resource type="Texture2D" uid="uid://b3jelvjfa2rtj" path="res://assets/ui/bottom_hud/overlay.png" id="5_xupsv"]
 [ext_resource type="Shader" path="res://Shaders/UnitResource.gdshader" id="6_n321i"]
@@ -58,6 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="54_cq3xn"]
 [ext_resource type="Script" path="res://ui/GameUI/InteractionPrompt.gd" id="54_w3j3o"]
 [ext_resource type="Texture2D" uid="uid://eei3t6d1xjue" path="res://assets/ui/dialog/player_dialog_100x100.png" id="55_fnv2a"]
+[ext_resource type="Script" path="res://ui/GameUI/InventoryChange/InventoryChange.gd" id="59_guo78"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
 font = ExtResource("3_60v0h")
@@ -305,7 +307,7 @@ func _on_pressed():
 	Globals.get_world().add_child(drop2)
 	Globals.get_world().add_child(drop3)
 	drop1.set_item(energy_crystal, 1)
-	drop2.set_item(rage_crystal, 1)
+	drop2.set_item(forcefield_tome, 1)
 	drop3.set_item(testing_chest, 1)
 "
 
@@ -347,17 +349,37 @@ script = ExtResource("1_8sgfl")
 metadata/_edit_lock_ = true
 
 [node name="SystemMessage" type="CenterContainer" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1920.0
-offset_bottom = 582.0
+offset_bottom = 473.0
 script = ExtResource("2_oedgj")
+metadata/_edit_lock_ = true
 
 [node name="Message" type="Label" parent="SystemMessage"]
 layout_mode = 2
 text = "SystemMessage"
 label_settings = SubResource("LabelSettings_5a6ab")
 horizontal_alignment = 1
+
+[node name="Messages" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 301.0
+offset_right = 1920.0
+offset_bottom = 672.0
+
+[node name="Messages" type="CenterContainer" parent="Messages"]
+layout_mode = 2
+script = ExtResource("4_gsrev")
+
+[node name="Container" type="VBoxContainer" parent="Messages/Messages"]
+layout_mode = 2
+
+[node name="ErrorMessages" type="CenterContainer" parent="Messages"]
+layout_mode = 2
+script = ExtResource("27_hnvam")
+
+[node name="Container" type="VBoxContainer" parent="Messages/ErrorMessages"]
+layout_mode = 2
 
 [node name="MainHUD" type="Control" parent="."]
 anchors_preset = 0
@@ -854,22 +876,6 @@ script = ExtResource("50_4qtxk")
 status_effect_type = 1
 duration_position = 1
 
-[node name="ErrorMessages" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("27_hnvam")
-
-[node name="CenterContainer" type="CenterContainer" parent="ErrorMessages"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 120.0
-offset_right = 1921.0
-offset_bottom = 432.0
-
-[node name="Container" type="VBoxContainer" parent="ErrorMessages/CenterContainer"]
-layout_mode = 2
-
 [node name="PlayerCastBar" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -919,15 +925,6 @@ offset_top = 241.0
 offset_right = 264.0
 offset_bottom = 273.0
 title = "Bank"
-
-[node name="Inventory" parent="." instance=ExtResource("30_6me52")]
-visible = false
-layout_mode = 0
-offset_left = 1506.0
-offset_top = 842.0
-offset_right = 1762.0
-offset_bottom = 877.0
-title = "Inventory"
 
 [node name="DragAndDrop" type="Control" parent="." groups=["DragAndDrop"]]
 z_index = 4096
@@ -1100,6 +1097,24 @@ stretch_mode = 2
 [node name="InteractionMenue" type="VBoxContainer" parent="InteractionPrompt/HBoxContainer"]
 layout_mode = 2
 alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1312.0
+offset_top = 96.0
+offset_right = 1907.0
+offset_bottom = 1071.0
+alignment = 2
+
+[node name="InventoryChange" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 2
+script = ExtResource("59_guo78")
+
+[node name="Inventory" parent="VBoxContainer" groups=["Inventory"] instance=ExtResource("30_6me52")]
+layout_mode = 2
+size_flags_horizontal = 8
+title = "Inventory"
 
 [connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_exited"]

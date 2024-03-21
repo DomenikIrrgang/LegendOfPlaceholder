@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cevqggusarb67"]
+
+[ext_resource type="Script" path="res://ui/GameUI/InventoryChange/InventoryChangeItem.gd" id="1_bdwoh"]
+[ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="2_xebib"]
+[ext_resource type="Texture2D" uid="uid://dnnj48dx2glf3" path="res://assets/ui/items/healing_potion.png" id="3_prk73"]
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="4_4mymc"]
+
+[node name="InventoryChangeItem" type="PanelContainer"]
+size_flags_horizontal = 8
+script = ExtResource("1_bdwoh")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+mouse_filter = 1
+texture = ExtResource("2_xebib")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_prk73")
+
+[node name="Text" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "3x Healing Potion"
+label_settings = ExtResource("4_4mymc")
+horizontal_alignment = 2

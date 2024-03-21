@@ -21,7 +21,6 @@ func _ready() -> void:
 	quest_list.quest_selected.connect(select_quest)
 	
 func update_quest_log() -> void:
-	print("updating quest log")
 	if QuestManager.get_active_quests().size() == 0:
 		quest_information.visible = false
 		quest_list.visible = false

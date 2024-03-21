@@ -66,7 +66,7 @@ func use_consumeable(item: Item) -> void:
 	Globals.get_inventory().use_item(Globals.get_player(), item)
 	
 func toggle_inventory() -> void:
-	Globals.get_game_user_inteface().get_node("Inventory").toggle()
+	Globals.get_scene_tree().get_first_node_in_group("Inventory").toggle()
 	
 func toggle_questlog() -> void:
 	Globals.get_scene_tree().get_first_node_in_group("Questlog").toggle()

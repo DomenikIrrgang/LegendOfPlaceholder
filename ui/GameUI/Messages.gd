@@ -1,14 +1,15 @@
-extends Control
+extends CenterContainer
 
-var ErrorMessageLabel = preload("res://ui/GameUI/ErrorMessage.tscn")
+var ErrorMessageLabel = preload("res://ui/GameUI/Message.tscn")
 
 @onready
 var container: Container = $Container
 
 func _ready() -> void:
-	Error.receive.connect(on_error)
+	QuestManager.objective_progress_changed.connect(on_objective_progress_changed)
 	
-func on_error(message: String) -> void:
+func on_objective_progress_changed(quest: Quest, objective: QuestObjective) -> void:
+	var message = objective.get_progess_string()
 	var error_message: ErrorMessage = has_error_message(message)
 	if error_message == null:
 		error_message = ErrorMessageLabel.instantiate()
