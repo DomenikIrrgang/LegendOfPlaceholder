@@ -13,7 +13,7 @@ _data = {
 size = Vector2(12, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3fdvk"]
-size = Vector2(38, 24)
+size = Vector2(6, 4.55238)
 
 [node name="Alfond" type="Node2D"]
 y_sort_enabled = true
@@ -36,5 +36,6 @@ position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_53rd5")
 
 [node name="Interaction" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(0, -0.995473)
+scale = Vector2(0.899761, 0.876673)
 shape = SubResource("RectangleShape2D_3fdvk")

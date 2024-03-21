@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=101 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -60,6 +60,7 @@
 [ext_resource type="Script" path="res://ui/GameUI/InteractionPrompt.gd" id="54_w3j3o"]
 [ext_resource type="Texture2D" uid="uid://eei3t6d1xjue" path="res://assets/ui/dialog/player_dialog_100x100.png" id="55_fnv2a"]
 [ext_resource type="Script" path="res://ui/GameUI/InventoryChange/InventoryChange.gd" id="59_guo78"]
+[ext_resource type="Script" path="res://ui/GameUI/QuestObjectiveTracker/QuestObjectiveTracker.gd" id="61_hoquh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
 font = ExtResource("3_60v0h")
@@ -1098,7 +1099,7 @@ stretch_mode = 2
 layout_mode = 2
 alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Inventory" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 1312.0
 offset_top = 96.0
@@ -1106,15 +1107,28 @@ offset_right = 1907.0
 offset_bottom = 1071.0
 alignment = 2
 
-[node name="InventoryChange" type="VBoxContainer" parent="VBoxContainer"]
+[node name="InventoryChange" type="VBoxContainer" parent="Inventory"]
 layout_mode = 2
 alignment = 2
 script = ExtResource("59_guo78")
 
-[node name="Inventory" parent="VBoxContainer" groups=["Inventory"] instance=ExtResource("30_6me52")]
+[node name="Inventory" parent="Inventory" groups=["Inventory"] instance=ExtResource("30_6me52")]
 layout_mode = 2
 size_flags_horizontal = 8
 title = "Inventory"
+
+[node name="QuestObjectiveTracker" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 1290.0
+offset_top = 230.0
+offset_right = 1899.0
+offset_bottom = 1079.0
+mouse_filter = 2
+script = ExtResource("61_hoquh")
+
+[node name="Quests" type="VBoxContainer" parent="QuestObjectiveTracker"]
+layout_mode = 2
+theme_override_constants/separation = 15
 
 [connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_exited"]

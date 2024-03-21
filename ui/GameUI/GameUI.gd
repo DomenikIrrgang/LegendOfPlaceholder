@@ -14,7 +14,7 @@ var system_message: SystemMessage = $SystemMessage
 var player_castbar: Castbar = $PlayerCastBar
 
 @onready
-var inventory: InventoryWindow = $VBoxContainer/Inventory
+var inventory: InventoryWindow = $Inventory/Inventory
 
 @onready
 var bank: InventoryWindow = $Bank

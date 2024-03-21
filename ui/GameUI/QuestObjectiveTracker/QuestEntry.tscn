@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://d101h0o51owud"]
+
+[ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="1_0yy7t"]
+[ext_resource type="Script" path="res://ui/GameUI/QuestObjectiveTracker/QuestEntry.gd" id="1_eqpf0"]
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="2_o15w1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vmsgq"]
+font = ExtResource("2_o15w1")
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Quest" type="VBoxContainer"]
+theme_override_constants/separation = 10
+script = ExtResource("1_eqpf0")
+
+[node name="Quest" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Quest"]
+layout_mode = 2
+mouse_filter = 1
+texture = ExtResource("1_0yy7t")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Margins" type="MarginContainer" parent="Quest"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="QuestName" type="Label" parent="Quest/Margins"]
+layout_mode = 2
+text = "[1] A friendly Gesture"
+label_settings = SubResource("LabelSettings_vmsgq")
+horizontal_alignment = 1
+
+[node name="Objectives" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Objective" type="Label" parent="Objectives"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "0/1 Healing Potion
+0/1 Manapotion"
+label_settings = SubResource("LabelSettings_vmsgq")
+horizontal_alignment = 2

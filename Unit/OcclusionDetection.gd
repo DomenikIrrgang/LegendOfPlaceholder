@@ -15,7 +15,7 @@ func on_area_entered(area) -> void:
 		tween.kill()
 		tween = create_tween()
 		for sprite in models:
-			tween.tween_praoperty(sprite, "modulate", Color(
+			tween.tween_property(sprite, "modulate", Color(
 				sprite.modulate.r,
 				sprite.modulate.g,
 				sprite.modulate.b,
