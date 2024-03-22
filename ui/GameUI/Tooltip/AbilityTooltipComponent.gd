@@ -10,7 +10,7 @@ var tooltip_instance
 func _on_mouse_in():
 	if ability_node == null:
 		ability_node = get_parent()
-	if ability_node and ability_node.is_visible_in_tree():
+	if ability_node and ability_node.ability != null and ability_node.is_visible_in_tree():
 		var ability = ability_node.ability
 		if tooltip_instance == null:
 			tooltip_instance = tooltip.instantiate()

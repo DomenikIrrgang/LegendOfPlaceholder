@@ -1,4 +1,4 @@
 class_name GameState
 extends Node
 
-var flags = {}
+var flags: Dictionary = {}

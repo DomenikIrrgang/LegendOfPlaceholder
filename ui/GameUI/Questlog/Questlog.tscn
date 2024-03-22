@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfy4f1jtgdm5d"]
+[gd_scene load_steps=10 format=3 uid="uid://dfy4f1jtgdm5d"]
 
 [ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="1_5v1sk"]
 [ext_resource type="Script" path="res://ui/GameUI/Questlog/Questlog.gd" id="1_jthpe"]
@@ -7,7 +7,6 @@
 [ext_resource type="Theme" uid="uid://di064gebaua1n" path="res://ui/Themes/MainTheme.tres" id="4_j1fe8"]
 [ext_resource type="Script" path="res://ui/GameUI/Questlog/QuestInformation.gd" id="5_vevst"]
 [ext_resource type="Script" path="res://ui/GameUI/Questlog/QuestList.gd" id="6_eyuot"]
-[ext_resource type="PackedScene" uid="uid://yixh5v4opcyx" path="res://ui/GameUI/Questlog/QuestListItem.tscn" id="7_okhrp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kekr"]
 
@@ -88,9 +87,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 5
-
-[node name="QuestListItem" parent="MarginContainer/VBoxContainer/Content/QuestListScroll/MarginContainer/QuestList" instance=ExtResource("7_okhrp")]
-layout_mode = 2
 
 [node name="Seperator" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content"]
 layout_mode = 2

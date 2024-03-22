@@ -4,6 +4,23 @@ var loading_scene: bool = false
 
 signal zone_loaded(scene: Zone)
 
+func _ready() -> void:
+	SaveFileManager.save_file_loaded.connect(on_load)
+	SaveFileManager.save_file_saving.connect(on_save)
+	
+func on_save(save_file: Dictionary) -> void:
+	save_file.current_scene = Globals.get_world().get_children()[0].scene_file_path
+	save_file.player_position = {
+		x = Globals.get_player().global_position.x,
+		y = Globals.get_player().global_position.y
+	}
+	
+func on_load(save_file: Dictionary) -> void:
+	load_scene(
+		save_file.current_scene,
+		Vector2(save_file.player_position.x, save_file.player_position.y)
+	)
+	
 func load_scene(path: String, spawn_position: Vector2) -> void:
 	call_deferred("defered_load_scene", path, spawn_position)
 	loading_scene = true
@@ -24,7 +41,6 @@ func defered_load_scene(path: String, spawn_position: Vector2) -> void:
 	Globals.get_camera().reset_smoothing()
 	zone_loaded.emit(scene_instance)
 	
-
 func on_scene_loaded() -> void:
 	loading_scene = false
 	

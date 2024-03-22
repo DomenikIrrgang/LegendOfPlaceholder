@@ -6,6 +6,7 @@ var initial_scene: String
 
 func _ready():
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+	SaveFileManager.load_save_file()
 	SceneSwitcher.load_scene(initial_scene, Vector2(0, 0))
 	
 func _input(event) -> void:

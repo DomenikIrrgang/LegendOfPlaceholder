@@ -3,6 +3,36 @@ extends Node
 var inventory: Inventory = Inventory.new(32)
 var bank: Inventory = Inventory.new(128)
 
+func _ready() -> void:
+	SaveFileManager.save_file_saving.connect(on_save)
+	SaveFileManager.save_file_loaded.connect(on_load)
+	SaveFileManager.save_file_start_loading.connect(reset)
+	
+func reset() -> void:
+	inventory.empty()
+	bank.empty()
+	
+func on_save(save_file: Dictionary) -> void:
+	save_file.inventory = get_inventory_save(inventory)
+	save_file.bank = get_inventory_save(bank)
+	
+func get_inventory_save(_inventory: Inventory) -> Array:
+	return _inventory.slots.map(func(slot: InventorySlot):
+		return {
+			item = SaveFileManager.get_resource_uid(slot.item) if slot.item != null else null,
+			amount = slot.amount
+		}
+	)
+	
+func on_load(save_file: Dictionary) -> void:
+	load_inventory(inventory, save_file.inventory)
+	load_inventory(bank, save_file.bank)
+
+func load_inventory(_inventory: Inventory, data: Array):
+	for index in range(data.size()):
+		if data[index].item != null:
+			_inventory.change_slot(index, SaveFileManager.get_resource_from_uid(data[index].item), data[index].amount)
+	
 func get_unit(unit_name: String) -> Unit:
 	var scene_treer_root = get_scene_tree().root
 	var root_node = get_scene_tree().root.get_child(scene_treer_root.get_child_count() - 1)

@@ -29,12 +29,19 @@ func _ready() -> void:
 	set_ability(Keybinds.get_ability_for_keybind(action_name))
 	Globals.get_drag_and_drop().on_start_dragging.connect(on_start_dragging)
 	Globals.get_drag_and_drop().on_stop_dragging.connect(on_stop_dragging)
+	Keybinds.keybind_changed.connect(func(_action_name: String, _ability: Ability):
+		if action_name == _action_name:
+			set_ability(_ability)
+	)
 
 func set_ability(_ability: Ability) -> void:
 	ability = _ability
 	if action_name == "" or ability == null:
 		keybind.visible = false
 		icon.visible = false
+		charge_label.visible = false
+		cooldown_label.visible = false
+		cooldown_bar.value = 0
 	else:
 		keybind.visible = true
 		keybind.set_action_name(action_name)
@@ -58,22 +65,25 @@ func on_stop_dragging() -> void:
 	highlight.visible = false
 			
 func update_charge_label(_charges: int, _change: int) -> void:
-	if ability.get_max_charges() > 1:
-		charge_label.text = str(ability.get_charges())
-		charge_label.visible = true
-	else:
-		charge_label.visible = false
+	if ability != null:
+		if ability.get_max_charges() > 1:
+			charge_label.text = str(ability.get_charges())
+			charge_label.visible = true
+		else:
+			charge_label.visible = false
+		
 			
 func update_cooldown() -> void:
-	cooldown_bar.value = ability.get_cooldown_progress() * cooldown_scaling_factor
-	if ability.get_remaining_cooldown() > 0.0:
-		cooldown_label.visible = true
-		if ability.get_remaining_cooldown() < 1.0:
-			cooldown_label.text = str(snapped(ability.get_remaining_cooldown(), 0.1))
+	if ability != null:
+		cooldown_bar.value = ability.get_cooldown_progress() * cooldown_scaling_factor
+		if ability.get_remaining_cooldown() > 0.0:
+			cooldown_label.visible = true
+			if ability.get_remaining_cooldown() < 1.0:
+				cooldown_label.text = str(snapped(ability.get_remaining_cooldown(), 0.1))
+			else:
+				cooldown_label.text = str(floor(ability.get_remaining_cooldown()))
 		else:
-			cooldown_label.text = str(floor(ability.get_remaining_cooldown()))
-	else:
-		cooldown_label.visible = false
+			cooldown_label.visible = false
 			
 func ability_used(_ability: Ability) -> void:
 	update_cooldown()
@@ -98,8 +108,9 @@ func _on_gui_input(event):
 			if Globals.get_drag_and_drop().is_dragging() and Globals.get_drag_and_drop().data.has("ability") and Globals.get_drag_and_drop().data.ability == ability:
 				Globals.get_drag_and_drop().stop_dragging()
 			else:
-				Globals.get_drag_and_drop().stop_dragging()
-				Globals.get_drag_and_drop().start_dragging({
-						"ability": ability,
-						"slot": self
-					}, ability.icon)
+				if ability != null:
+					Globals.get_drag_and_drop().stop_dragging()
+					Globals.get_drag_and_drop().start_dragging({
+							"ability": ability,
+							"slot": self
+						}, ability.icon)

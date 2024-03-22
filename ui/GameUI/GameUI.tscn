@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=102 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -318,7 +318,16 @@ script/source = "extends Button
 var test_status_effect: StatusEffect = load(\"res://Resources/StatusEffects/TestEffect.tres\")
 
 func _on_pressed():
-	Globals.get_player().apply_status_effect(test_status_effect, Globals.get_player())
+	SaveFileManager.save_to_save_file()
+
+"
+
+[sub_resource type="GDScript" id="GDScript_jvssh"]
+script/source = "extends Button
+
+func _on_pressed():
+	SaveFileManager.load_save_file()
+
 "
 
 [sub_resource type="GDScript" id="GDScript_empgj"]
@@ -979,12 +988,20 @@ theme = SubResource("Theme_7fwd3")
 text = "Add Item"
 script = SubResource("GDScript_3g0do")
 
-[node name="ApplyEffect" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
+[node name="Save" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme = SubResource("Theme_7fwd3")
-text = "Apply TestBuff"
+text = "Save"
 script = SubResource("GDScript_j6glr")
+
+[node name="Load" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme = SubResource("Theme_7fwd3")
+text = "Load
+"
+script = SubResource("GDScript_jvssh")
 
 [node name="PlayerPosition" type="Label" parent="Debug/VBoxContainer"]
 layout_mode = 2
@@ -1141,4 +1158,5 @@ theme_override_constants/separation = 15
 [connection signal="pressed" from="Debug/VBoxContainer/HBoxContainer/LevelUp" to="Debug/VBoxContainer/HBoxContainer/LevelUp" method="_on_pressed"]
 [connection signal="pressed" from="Debug/VBoxContainer/HBoxContainer/WindowMode" to="Debug/VBoxContainer/HBoxContainer/WindowMode" method="_on_pressed"]
 [connection signal="pressed" from="Debug/VBoxContainer/HBoxContainer/AddItem" to="Debug/VBoxContainer/HBoxContainer/AddItem" method="_on_pressed"]
-[connection signal="pressed" from="Debug/VBoxContainer/HBoxContainer/ApplyEffect" to="Debug/VBoxContainer/HBoxContainer/ApplyEffect" method="_on_pressed"]
+[connection signal="pressed" from="Debug/VBoxContainer/HBoxContainer/Save" to="Debug/VBoxContainer/HBoxContainer/Save" method="_on_pressed"]
+[connection signal="pressed" from="Debug/VBoxContainer/HBoxContainer/Load" to="Debug/VBoxContainer/HBoxContainer/Load" method="_on_pressed"]

@@ -12,6 +12,7 @@ signal quest_selected(quest: Quest)
 
 func _ready():
 	update_quest_list()
+	SaveFileManager.save_file_loaded.connect(func(save_file: Dictionary): update_quest_list())
 	QuestManager.quest_accepted.connect(func(quest: Quest): update_quest_list())
 	QuestManager.quest_completed.connect(func(quest: Quest): update_quest_list())
 	QuestManager.quest_abandoned.connect(func(quest: Quest): update_quest_list())
@@ -26,10 +27,11 @@ func update_quest_list() -> void:
 	if quest_list.get_child_count() > 0 and selected_quest == null:
 		select_quest_list_item(quest_list.get_child(0).quest)
 	else:
-		if not QuestManager.is_on_quest(selected_quest) and QuestManager.get_active_quests().size() > 0:
-			select_quest_list_item(QuestManager.get_active_quests()[0])
-		else:
-			select_quest_list_item(selected_quest)
+		if QuestManager.get_active_quests().size() > 0:
+			if not QuestManager.is_on_quest(selected_quest):
+				select_quest_list_item(QuestManager.get_active_quests()[0])
+			else:
+				select_quest_list_item(selected_quest)
  		
 func is_quest_selected() -> bool:
 	for child in quest_list.get_children():

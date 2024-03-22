@@ -14,6 +14,10 @@ func _init(_size: int = 32):
 	slots.resize(size)
 	for i in size:
 		slots[i] = InventorySlot.new(null, 0, i)
+		
+func empty() -> void:
+	for slot in range(slots.size()):
+		change_slot(slot, null, 0)
 
 func can_receive_item(item: Item, amount: int) -> bool:
 	return calculate_free_amount_for_item(item) >= amount
@@ -62,7 +66,7 @@ func change_slot(slot: int, item: Item, amount: int) -> void:
 	slot_changed.emit(slot, slots[slot].item, amount)
 	
 func contains_item(item: Item) -> bool:
-	return find_item(item) != -1 
+	return find_item(item) != -1
 	
 func find_item(item: Item) -> int:
 	for i in size:

@@ -1,5 +1,7 @@
 extends Node
 
+signal keybind_changed(action_name: String, ability: Ability)
+
 var keybinds = {
 	"Toggle_Questlog": use_function(toggle_questlog),
 	"Toggle_Inventory": use_function(toggle_inventory),
@@ -11,15 +13,6 @@ var keybinds = {
 
 func _ready() -> void:
 	InputControlls.input_event.connect(on_input)
-	Spellbook.learn_ability(load("res://Combat/abilities/BurningVeins.tscn").instantiate())
-	Spellbook.learn_ability(load("res://Combat/abilities/InnerFlame.tscn").instantiate())
-	Spellbook.learn_ability(load("res://Combat/abilities/Meteorite.tscn").instantiate())
-	init_ability("Dash", load("res://Combat/abilities/Dash.tscn").instantiate())
-	init_ability("Attack", load("res://Combat/abilities/Attack.tscn").instantiate())
-	init_ability("Ability_One", load("res://Combat/abilities/Mend.tscn").instantiate())
-	init_ability("Ability_Two", load("res://Combat/abilities/ForceNova.tscn").instantiate())
-	init_ability("Ability_Three", load("res://Combat/abilities/TimeStop.tscn").instantiate())
-	init_ability("Ability_Four", load("res://Combat/abilities/Kick.tscn").instantiate())
 	
 func init_ability(action_name: String, ability: Ability) -> void:
 	Spellbook.learn_ability(ability)
@@ -39,11 +32,16 @@ func keybind_ability(action_name: String, ability: Ability) -> void:
 		keybinds[action_name].ability.on_unassign(Globals.get_player())		
 	keybinds[action_name] = use_ability(ability)
 	ability.on_assign(Globals.get_player())
+	keybind_changed.emit(action_name, ability)
 	
 func swap_keybound_abilities(action_name_one: String, action_name_two: String) -> void:
-	var tmp = keybinds[action_name_one]
-	keybinds[action_name_one] = keybinds[action_name_two]
-	keybinds[action_name_two] = tmp
+	var tmp
+	if keybinds.has(action_name_one):
+		tmp = keybinds[action_name_one]
+	if keybinds.has(action_name_two):
+		keybinds[action_name_one] = keybinds[action_name_two]
+	if tmp != null:
+		keybinds[action_name_two] = tmp
 	
 func use_ability(ability: Ability):
 	return {
