@@ -14,17 +14,32 @@ func reset() -> void:
 	known_abilities = []
 	var attack = load("res://Combat/abilities/Attack.tscn").instantiate()
 	var dash = load("res://Combat/abilities/Dash.tscn").instantiate()
+	Keybinds.keybind_ability("Attack", attack)
+	Keybinds.keybind_ability("Dash", dash)
 	learn_ability(attack)
 	learn_ability(dash)
-	Keybinds.keybind_ability("Attack", attack)
-	Keybinds.keybind_ability("Dash", dash)	
 	known_abilities_changed.emit()
 	
 func on_save(save_file: Dictionary) -> void:
-	pass
+	save_file.known_abilities = []
+	for ability in known_abilities:
+		save_file.known_abilities.append(
+			SaveFileManager.get_node_uid(ability)
+		)
 	
 func on_load(save_file: Dictionary) -> void:
-	pass
+	for abiity in save_file.known_abilities:
+		var ability_instance = SaveFileManager.get_resource_from_uid(abiity).instantiate()
+		if not ability_known(ability_instance):
+			learn_ability(ability_instance)
+	for keybind in save_file.keybinds:
+		if keybind != null:
+			for ability in known_abilities:
+				if SaveFileManager.get_node_uid(ability) == keybind.ability:
+					if not Keybinds.is_ability_keybound(ability):
+						Keybinds.keybind_ability(keybind.keybind, ability)
+					else:
+						Keybinds.swap_keybound_abilities(keybind.keybind, Keybinds.get_keybind_for_ability(ability))
 
 func set_abilities(abilities: Array[Ability]) -> void:
 	known_abilities = abilities

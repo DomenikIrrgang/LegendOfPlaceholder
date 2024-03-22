@@ -11,8 +11,8 @@ func save_file_exists() -> bool:
 	return FileAccess.file_exists(SAVE_FILE_PATH)
 
 func load_save_file() -> void:
+	save_file_start_loading.emit()
 	if save_file_exists():
-		save_file_start_loading.emit()
 		var save_file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
 		var line = save_file.get_line()
 		var data: Dictionary = JSON.parse_string(line)
@@ -31,3 +31,6 @@ func get_resource_uid(resource: Resource) -> String:
 	
 func get_resource_from_uid(uid: String) -> Resource:
 	return ResourceLoader.load(ResourceUID.get_id_path(int(uid)))
+	
+func get_node_uid(node: Node) -> String:
+	return str(ResourceLoader.get_resource_uid(node.scene_file_path))

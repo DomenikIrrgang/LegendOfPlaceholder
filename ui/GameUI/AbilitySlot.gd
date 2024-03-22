@@ -99,7 +99,6 @@ func _on_gui_input(event):
 				if drag_and_drop.data.has("slot") and drag_and_drop.data.slot != null:
 					var slot = drag_and_drop.data.slot
 					Keybinds.swap_keybound_abilities(action_name, slot.action_name)
-					slot.set_ability(ability)
 				else:
 					Keybinds.keybind_ability(action_name, drag_and_drop.data.ability)
 				set_ability(drag_and_drop.data.ability)

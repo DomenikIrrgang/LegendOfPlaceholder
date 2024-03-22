@@ -11,8 +11,46 @@ var keybinds = {
 	"Interact": use_function(interact)
 }
 
+var ability_keybinds = ["Ability_One", "Ability_Two", "Ability_Three", "Ability_Four", "Attack", "Dash"]
+
 func _ready() -> void:
 	InputControlls.input_event.connect(on_input)
+	Spellbook.new_ability_learned.connect(on_new_ability_learned)
+	SaveFileManager.save_file_saving.connect(on_save)
+	SaveFileManager.save_file_start_loading.connect(reset)
+	
+func on_save(save_file: Dictionary) -> void:
+	save_file.keybinds = ability_keybinds.map(func(keybind: String):
+		if keybinds.has(keybind):
+			return {
+				"keybind": keybind,
+				"ability": SaveFileManager.get_node_uid(keybinds[keybind].ability)
+			}
+	)
+	
+func reset() -> void:
+	for keybind in ability_keybinds:
+		keybinds.erase(keybind)
+		keybind_changed.emit(keybind, null)
+	
+func on_new_ability_learned(ability: Ability) -> void:
+	if not is_ability_keybound(ability):
+		for ability_keybind in ability_keybinds:
+			if not keybinds.has(ability_keybind):
+				keybind_ability(ability_keybind, ability)
+				break
+			
+func is_ability_keybound(ability: Ability) -> bool:
+	for ability_keybind in ability_keybinds:
+		if keybinds.has(ability_keybind) and keybinds[ability_keybind].ability == ability:
+			return true
+	return false
+	
+func get_keybind_for_ability(ability: Ability) -> String:
+	for ability_keybind in ability_keybinds:
+		if keybinds.has(ability_keybind) and keybinds[ability_keybind].ability == ability:
+			return ability_keybind
+	return ""
 	
 func init_ability(action_name: String, ability: Ability) -> void:
 	Spellbook.learn_ability(ability)
@@ -40,8 +78,16 @@ func swap_keybound_abilities(action_name_one: String, action_name_two: String) -
 		tmp = keybinds[action_name_one]
 	if keybinds.has(action_name_two):
 		keybinds[action_name_one] = keybinds[action_name_two]
+		keybind_changed.emit(action_name_one, keybinds[action_name_one].ability)
+	else:
+		keybinds.erase(action_name_one)
+		keybind_changed.emit(action_name_one, null)
 	if tmp != null:
 		keybinds[action_name_two] = tmp
+		keybind_changed.emit(action_name_two, keybinds[action_name_two].ability)
+	else:
+		keybinds.erase(action_name_two)
+		keybind_changed.emit(action_name_two, null)
 	
 func use_ability(ability: Ability):
 	return {
