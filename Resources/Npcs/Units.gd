@@ -6,7 +6,8 @@ enum Enum {
 	ALFOND,
 	MEGA_SLIME,
 	ELEMENTAL_SLIME,
-	VISJALA
+	VISJALA,
+	SAVE_CRYSTAL
 }
 
 const data = {
@@ -14,7 +15,8 @@ const data = {
 	Units.Enum.ALFOND: preload("res://Resources/Npcs/Alfond.tres"),
 	Units.Enum.MEGA_SLIME: preload("res://Resources/Enemies/MegaSlime.tres"),
 	Units.Enum.ELEMENTAL_SLIME: preload("res://Resources/Enemies/ElementalSlime.tres"),
-	Units.Enum.VISJALA: preload("res://Resources/Enemies/Visjala.tres")
+	Units.Enum.VISJALA: preload("res://Resources/Enemies/Visjala.tres"),
+	Units.Enum.SAVE_CRYSTAL: preload("res://Resources/Npcs/SaveCrystal.tres"),
 }
 
 static func get_unit_data(unit: Units.Enum) -> UnitData:

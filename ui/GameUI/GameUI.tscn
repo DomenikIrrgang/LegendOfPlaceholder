@@ -1130,6 +1130,7 @@ alignment = 2
 script = ExtResource("59_guo78")
 
 [node name="Inventory" parent="Inventory" groups=["Inventory"] instance=ExtResource("30_6me52")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 title = "Inventory"

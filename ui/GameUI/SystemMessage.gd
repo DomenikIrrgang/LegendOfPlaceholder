@@ -19,6 +19,7 @@ func _ready() -> void:
 		show_system_message("Completed Quest:\n" + quest.name)
 	)
 	SceneSwitcher.zone_loaded.connect(on_zone_loaded)
+	SaveFileManager.save_file_saved.connect(func(): show_system_message("Game Saved!"))
 	tween = create_tween()
 
 func initialize(player: Player) -> void:

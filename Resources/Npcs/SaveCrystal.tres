@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="NpcData" load_steps=5 format=3 uid="uid://dlgtcoiv8c6ws"]
+
+[ext_resource type="Script" path="res://Resources/Npcs/NpcData.gd" id="1_cck2v"]
+[ext_resource type="PackedScene" uid="uid://cwly64gqr1f58" path="res://Npc/SaveCrystal/SaveCrystal.tscn" id="1_tijwh"]
+[ext_resource type="Script" path="res://Resources/Interactions/SaveGameInteraction.gd" id="1_y5d63"]
+
+[sub_resource type="Resource" id="Resource_ax2ai"]
+script = ExtResource("1_y5d63")
+visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+
+[resource]
+script = ExtResource("1_cck2v")
+model = ExtResource("1_tijwh")
+interactions = Array[Resource("res://Resources/Interactions/Interaction.gd")]([SubResource("Resource_ax2ai")])
+alias = "Save Crystal"
+level = 1
+is_friendly = true
+base_movement_speed = 30.0
+mass = 50.0
+knockbackable = true
+stats = Array[Resource("res://Resources/StatAssignment.gd")]([])

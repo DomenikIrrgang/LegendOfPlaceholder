@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="NpcData" load_steps=35 format=3 uid="uid://vjtfqay7mifg"]
+[gd_resource type="Resource" script_class="NpcData" load_steps=33 format=3 uid="uid://vjtfqay7mifg"]
 
-[ext_resource type="Script" path="res://addons/pandora/model/entity.gd" id="1_1oqtd"]
 [ext_resource type="Texture2D" uid="uid://dtxw35wty86v8" path="res://assets/ui/dialog/player_dialog.png" id="1_qyapk"]
 [ext_resource type="Script" path="res://Resources/Npcs/NpcData.gd" id="1_s8tdc"]
 [ext_resource type="PackedScene" uid="uid://bkhwsj6cq1b3l" path="res://Npc/Alfond/Alfond.tscn" id="2_jyq13"]
@@ -17,10 +16,6 @@
 [ext_resource type="Script" path="res://Resources/Conditions/IsOnQuestCondition.gd" id="11_1qc3v"]
 [ext_resource type="Script" path="res://Resources/Conditions/FlagValueCondition.gd" id="12_osdw3"]
 [ext_resource type="Resource" uid="uid://b2q8uivlvjjdx" path="res://Resources/Quests/DangerInTheWoods.tres" id="13_ud60j"]
-
-[sub_resource type="Resource" id="Resource_m7kk5"]
-script = ExtResource("1_1oqtd")
-_id = "19"
 
 [sub_resource type="Resource" id="Resource_xyujb"]
 script = ExtResource("8_yx13m")
@@ -115,7 +110,6 @@ useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")](
 [resource]
 script = ExtResource("1_s8tdc")
 model = ExtResource("2_jyq13")
-data = SubResource("Resource_m7kk5")
 interactions = Array[Resource("res://Resources/Interactions/Interaction.gd")]([SubResource("Resource_xyujb"), SubResource("Resource_jqshq"), SubResource("Resource_7nfbh"), SubResource("Resource_uiu3x"), SubResource("Resource_vr5qj"), SubResource("Resource_sq6v8"), SubResource("Resource_c405h"), SubResource("Resource_cfnf5")])
 alias = "Alfond"
 dialog_texture = ExtResource("1_qyapk")

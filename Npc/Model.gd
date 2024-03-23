@@ -13,6 +13,9 @@ var collision: CollisionShape2D = $Collision
 @onready
 var interaction: CollisionShape2D = $Interaction
 	
+func get_model_height() -> int:
+	return model.get_rect().size.y
+	
 func get_idle_down_animation() -> String:
 	return "PlayerAnimations/Idle_Down"
 	

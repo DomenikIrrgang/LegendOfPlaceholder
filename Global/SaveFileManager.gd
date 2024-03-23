@@ -1,6 +1,7 @@
 extends Node
 
 signal save_file_saving(save_file: Dictionary)
+signal save_file_saved()
 
 signal save_file_start_loading()
 signal save_file_loaded(save_file: Dictionary)
@@ -25,6 +26,7 @@ func save_to_save_file() -> void:
 	save_file_saving.emit(save_data)
 	save_file.store_line(JSON.stringify(save_data))
 	save_file.close()
+	save_file_saved.emit()
 	
 func get_resource_uid(resource: Resource) -> String:
 	return str(ResourceLoader.get_resource_uid(resource.resource_path))
