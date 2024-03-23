@@ -54,19 +54,17 @@ func on_gear_slot_input(event: InputEvent) -> void:
 			equip_gear()
 			
 func pick_gear() -> void:
-	var drag_and_drop = Globals.get_drag_and_drop()
 	if Globals.get_player().gear_slots[slot] != null:
-		var gear = Globals.get_player().gear_slots[slot]
+		var _gear = Globals.get_player().gear_slots[slot]
 		Globals.get_drag_and_drop().start_dragging({
-			"gear": gear,
-		}, gear.icon)
+			"gear": _gear,
+		}, _gear.icon)
 	
 func equip_gear() -> void:
 	var drag_and_drop = Globals.get_drag_and_drop()
 	if drag_and_drop.data.has("inventory"):
 		var inventory = drag_and_drop.data.inventory
 		var inventory_slot = drag_and_drop.data.inventory_slot
-		var item = inventory_slot.item
 		if item is Gear and item.slot == slot:
 			var previous_gear: Gear = null
 			if Globals.get_player().gear_slots[slot] != null:

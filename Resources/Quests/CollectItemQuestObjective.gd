@@ -15,7 +15,7 @@ func reset() -> void:
 	Globals.get_inventory().received_item.disconnect(on_inventory_updated)
 	Globals.get_inventory().removed_item.disconnect(on_inventory_updated)
 
-func on_inventory_updated(_item: Item, amount: int) -> void:
+func on_inventory_updated(_item: Item, _amount: int) -> void:
 	if item == _item:
 		objective_progress_changed.emit(self)
 		

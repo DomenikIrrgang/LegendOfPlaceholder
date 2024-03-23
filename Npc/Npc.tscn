@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxnkwps61uq0g"]
+[gd_scene load_steps=12 format=3 uid="uid://dxnkwps61uq0g"]
 
 [ext_resource type="Script" path="res://Npc/Npc.gd" id="1_chys3"]
 [ext_resource type="Resource" uid="uid://vjtfqay7mifg" path="res://Resources/Npcs/Alfond.tres" id="2_r8hg6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Npc/InteractionArea.gd" id="5_m4s0h"]
 [ext_resource type="Texture2D" uid="uid://b1ssxle6u6qmj" path="res://assets/ui/quest/accept_quest.png" id="6_p0fq0"]
 [ext_resource type="Script" path="res://Npc/QuestIndicator.gd" id="7_7a6pr"]
+[ext_resource type="PackedScene" uid="uid://yuovoi5jc36s" path="res://Unit/State/UnitStateComponent.tscn" id="8_1l3oj"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_txdty"]
 _data = {
@@ -69,3 +70,5 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_ffrod")
 }
+
+[node name="State" parent="." instance=ExtResource("8_1l3oj")]

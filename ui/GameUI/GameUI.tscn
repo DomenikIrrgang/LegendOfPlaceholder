@@ -1055,6 +1055,7 @@ script = ExtResource("50_4qtxk")
 status_effect_type = 1
 
 [node name="Interactable" type="CenterContainer" parent="."]
+visible = false
 layout_mode = 1
 offset_left = -50.0
 offset_top = -10.0

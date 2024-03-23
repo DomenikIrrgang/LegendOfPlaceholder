@@ -48,9 +48,9 @@ func sync_status_effects(_status_effect: StatusEffect, _stacks: int, _source: Un
 			index += 1
 		status_effect_index += 1
 		
-func get_status_effect_type_count(unit: Unit, type: StatusEffectType.Enum) -> int:
+func get_status_effect_type_count(_unit: Unit, type: StatusEffectType.Enum) -> int:
 	var count = 0
-	for status_effect_application in unit.status_effects:
+	for status_effect_application in _unit.status_effects:
 		if status_effect_application.status_effect.type == type:
 			count +=1
 	return count

@@ -8,7 +8,7 @@ func _init(_unit: Unit) -> void:
 	value = 0
 	unit.combat_logic_result.connect(on_combat_logic_result)
 
-func on_combat_logic_result(result: CombatLogicResult) -> void:
+func on_combat_logic_result(_result: CombatLogicResult) -> void:
 	increase_value(2)
 
 func reset() -> void:

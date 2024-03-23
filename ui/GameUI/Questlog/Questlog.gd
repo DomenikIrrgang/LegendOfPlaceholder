@@ -14,11 +14,11 @@ var seperator: NinePatchRect = $MarginContainer/VBoxContainer/Content/Seperator
 
 func _ready() -> void:
 	update_quest_log()
-	SaveFileManager.save_file_loaded.connect(func(save_file: Dictionary): update_quest_log())
-	QuestManager.quest_accepted.connect(func(quest: Quest): update_quest_log())
-	QuestManager.quest_completed.connect(func(quest: Quest): update_quest_log())
-	QuestManager.quest_abandoned.connect(func(quest: Quest): update_quest_log())
-	QuestManager.objective_progress_changed.connect(func(quest: Quest, objective: QuestObjective): select_quest(quest_list.get_selected_quest()))
+	SaveFileManager.save_file_loaded.connect(func(_save_file: Dictionary): update_quest_log())
+	QuestManager.quest_accepted.connect(func(_quest: Quest): update_quest_log())
+	QuestManager.quest_completed.connect(func(_quest: Quest): update_quest_log())
+	QuestManager.quest_abandoned.connect(func(_quest: Quest): update_quest_log())
+	QuestManager.objective_progress_changed.connect(func(_quest: Quest, _objective: QuestObjective): select_quest(quest_list.get_selected_quest()))
 	quest_list.quest_selected.connect(select_quest)
 	
 func update_quest_log() -> void:

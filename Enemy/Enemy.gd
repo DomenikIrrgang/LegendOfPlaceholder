@@ -4,7 +4,7 @@ extends Unit
 # UI
 @onready
 var health_bar: UnitHpBar 
-var UnitHpBar = load("res://ui/unit/UnitHpBar.tscn")
+var UnitHpBarComponent = load("res://ui/unit/UnitHpBar.tscn")
 
 @onready
 var castbar
@@ -27,7 +27,7 @@ func _ready() -> void:
 	died.connect(on_died)
 	
 func init_health_bar() -> void:
-	health_bar = UnitHpBar.instantiate()
+	health_bar = UnitHpBarComponent.instantiate()
 	add_child(health_bar)
 	health_bar.global_position.y -= model.get_rect().size.y * model.scale.y - (3 * model.scale.y)
 	health_bar.initialize(self)

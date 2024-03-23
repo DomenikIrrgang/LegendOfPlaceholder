@@ -42,13 +42,13 @@ func get_texture_for_resource_type(resource_type: ResourceType.Enum):
 		ResourceType.Enum.ENERGY:
 			return load("res://assets/ui/bottom_hud/energy_progress_texture.png")
 
-func resource_value_changed(resource: UnitResource, _new_value: int, _change: int, _original_change: int) -> void:
+func resource_value_changed(_resource: UnitResource, _new_value: int, _change: int, _original_change: int) -> void:
 	tween.kill()
 	tween = create_tween()
-	tween.tween_property(self, 'value', resource.get_value(), animation_speed)
+	tween.tween_property(self, 'value', _resource.get_value(), animation_speed)
 	tween.play()
-	text = str(resource.get_value(),) + "/" + str(max_value)	
+	text = str(_resource.get_value(),) + "/" + str(max_value)	
 	
-func resource_max_value_changed(resource: UnitResource, _new_maximum_value: int) -> void:
-	max_value = resource.get_maximum_value()
+func resource_max_value_changed(_resource: UnitResource, _new_maximum_value: int) -> void:
+	max_value = _resource.get_maximum_value()
 	text = str(value) + "/" + str(max_value)

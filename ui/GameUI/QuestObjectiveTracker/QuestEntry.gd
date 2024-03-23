@@ -19,12 +19,12 @@ func set_quest(_quest: Quest) -> void:
 	name_label.text = "[" + str(quest.recommended_level) + "] " + quest.name
 	update_objectives(quest)
 		
-func update_objectives(quest: Quest) -> void:
+func update_objectives(_quest: Quest) -> void:
 	objective_label.text = ""
-	for objective in quest.objectives:
+	for objective in _quest.objectives:
 		objective_label.text += objective.get_progess_string() + "\n"
 		
-func on_objective_progress_changed(_quest: Quest, objective: QuestObjective) -> void:
+func on_objective_progress_changed(_quest: Quest, _objective: QuestObjective) -> void:
 	if quest == _quest:
 		update_objectives(quest)
 		

@@ -8,6 +8,8 @@ func _init(_unit: Unit) -> void:
 	set_value(get_maximum_value())
 	
 func get_maximum_value() -> int:
+	var inherited = super.get_maximum_value() + stat_calculator.get_mana()
+	var stat  = stat_calculator.get_mana()
 	return super.get_maximum_value() + stat_calculator.get_mana()
 	
 func on_stat_changed(stat, _value) -> void:

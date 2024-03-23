@@ -29,10 +29,16 @@ func save_to_save_file() -> void:
 	save_file_saved.emit()
 	
 func get_resource_uid(resource: Resource) -> String:
+	var id = str(ResourceLoader.get_resource_uid(resource.resource_path))
+	print("got resource uid ", id)
 	return str(ResourceLoader.get_resource_uid(resource.resource_path))
 	
 func get_resource_from_uid(uid: String) -> Resource:
+	var path = ResourceLoader.load(ResourceUID.get_id_path(int(uid)))
+	print(uid, " ", path.resource_path)
 	return ResourceLoader.load(ResourceUID.get_id_path(int(uid)))
 	
 func get_node_uid(node: Node) -> String:
+	var path = str(ResourceLoader.get_resource_uid(node.scene_file_path))
+	print("got node uid for ", node.scene_file_path, " uid ", path)
 	return str(ResourceLoader.get_resource_uid(node.scene_file_path))

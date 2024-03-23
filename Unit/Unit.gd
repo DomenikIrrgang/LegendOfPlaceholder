@@ -1,7 +1,7 @@
 class_name Unit
 extends CharacterBody2D
 
-var DamageNumber = preload("res://ui/unit/DamageNumber.tscn")
+var DamageNumberComponent = preload("res://ui/unit/DamageNumber.tscn")
 
 @export
 var unit_data: UnitData
@@ -37,11 +37,19 @@ var resources: Array[UnitResource] = []
 signal unit_resource_added(resource: ResourceType.Enum)
 signal unit_resource_removed(resource: ResourceType.Enum)
 
+func get_resources() -> Array[UnitResource]:
+	return resources
+
 func get_secondary_resource_type() -> ResourceType.Enum:
 	for resource in resources:
 		if resource != null and (resource.type != ResourceType.Enum.HEALTH and resource.type != ResourceType.Enum.DASH_CHARGE):
-			return resource.type
+			return resource.type as ResourceType.Enum
 	return ResourceType.Enum.FREE
+	
+func reset_resources() -> void:
+	for resource in resources:
+		if resource != null:
+			resource.reset()
 
 func add_resource(resource: UnitResource) -> void:
 	resources[resource.type] = resource
@@ -388,12 +396,13 @@ func _ready() -> void:
 	resources.resize(ResourceType.Enum.size())
 	resources[ResourceType.Enum.HEALTH] = Health.new(self)
 	movement_strategy = UnitMovementStrategy.new(self)
-	model_animation.play("Down")
+	if model_animation.has_animation("Down"):
+		model_animation.play("Down")
 	combat_logic.ability_result.connect(on_ability_result)
 		
 func on_ability_result(result: CombatLogicResult) -> void:
 	if result.target == self:
-		var damage_number = DamageNumber.instantiate()
+		var damage_number = DamageNumberComponent.instantiate()
 		add_child(damage_number)
 		damage_number.show_number(result)
 		if result.source != self:

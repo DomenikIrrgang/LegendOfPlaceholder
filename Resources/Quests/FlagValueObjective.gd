@@ -16,7 +16,7 @@ func init() -> void:
 func reset() -> void:
 	GameStateManager.flag_changed.disconnect(on_flag_changed)
 
-func on_flag_changed(_flag: GameFlag.Enum, value: bool) -> void:
+func on_flag_changed(_flag: GameFlag.Enum, _value: bool) -> void:
 	if flag == _flag:
 		objective_progress_changed.emit(self)
 

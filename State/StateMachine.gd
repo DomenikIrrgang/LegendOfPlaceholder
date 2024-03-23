@@ -14,7 +14,6 @@ var previous_state: State
 
 func _ready() -> void:
 	await owner.ready
-	var children = get_children()
 	current_state = get_child(0)
 	for child in get_children():
 		child.set_state_machine(self)

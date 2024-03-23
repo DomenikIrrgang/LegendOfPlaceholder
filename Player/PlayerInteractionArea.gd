@@ -34,5 +34,5 @@ func get_closest_interactable() -> Interactable:
 			closest = interactable
 	return closest
 
-func _process(delta) -> void:
+func _process(_delta: float) -> void:
 	update_closest_interactable_in_range() 

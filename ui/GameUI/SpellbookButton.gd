@@ -3,7 +3,7 @@ extends TextureRect
 func _ready():
 	EventBus.on_event.connect(on_event)
 	
-func on_event(event: String, data: Dictionary) -> void:
+func on_event(event: String, _data: Dictionary) -> void:
 	if event == SpellbookWindow.Events.Opened:
 		texture = load("res://assets/ui/bottom_hud/spellbook_open.png")
 	if event == SpellbookWindow.Events.Closed:

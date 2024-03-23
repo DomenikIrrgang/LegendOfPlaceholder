@@ -45,9 +45,12 @@ func set_ability(_ability: Ability) -> void:
 	else:
 		keybind.visible = true
 		keybind.set_action_name(action_name)
-		ability.used.connect(ability_used)
-		ability.remaining_cooldown_changed.connect(remaining_cooldown_changed)
-		ability.charges_changed.connect(update_charge_label)
+		if not ability.used.is_connected(ability_used):
+			ability.used.connect(ability_used)
+		if not ability.remaining_cooldown_changed.is_connected(remaining_cooldown_changed):
+			ability.remaining_cooldown_changed.connect(remaining_cooldown_changed)
+		if not ability.charges_changed.is_connected(update_charge_label):
+			ability.charges_changed.connect(update_charge_label)
 		cooldown_label.visible = false
 		update_charge_label(0, 0)
 		cooldown_bar.max_value = 100.0 * cooldown_scaling_factor
