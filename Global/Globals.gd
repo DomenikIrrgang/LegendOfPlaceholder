@@ -11,10 +11,20 @@ func _ready() -> void:
 func reset() -> void:
 	inventory.empty()
 	bank.empty()
+	get_player().set_level(1)
+	get_player().set_experience(0)
 	
 func on_save(save_file: Dictionary) -> void:
 	save_file.inventory = get_inventory_save(inventory)
 	save_file.bank = get_inventory_save(bank)
+	save_file.player = {
+		experience = get_player().get_total_experience()
+	}
+	
+func on_load(save_file: Dictionary) -> void:
+	get_player().gain_experience(save_file.player.experience)
+	load_inventory(inventory, save_file.inventory)
+	load_inventory(bank, save_file.bank)
 	
 func get_inventory_save(_inventory: Inventory) -> Array:
 	return _inventory.slots.map(func(slot: InventorySlot):
@@ -23,10 +33,6 @@ func get_inventory_save(_inventory: Inventory) -> Array:
 			amount = slot.amount
 		}
 	)
-	
-func on_load(save_file: Dictionary) -> void:
-	load_inventory(inventory, save_file.inventory)
-	load_inventory(bank, save_file.bank)
 
 func load_inventory(_inventory: Inventory, data: Array):
 	for index in range(data.size()):

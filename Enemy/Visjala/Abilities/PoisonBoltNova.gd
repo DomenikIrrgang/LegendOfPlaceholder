@@ -18,4 +18,4 @@ func shoot_poison_bolt(source: Unit, direction: Vector2) -> void:
 	var poison_projectile_instance = PoisonBoltProjectile.instantiate()
 	Globals.get_world().add_child(poison_projectile_instance)
 	poison_projectile_instance.init_projectile(source, poison_bolt, (direction).normalized(), 350.0)
-	poison_projectile_instance.global_position = source.model.global_position
+	poison_projectile_instance.global_position = source.get_center()

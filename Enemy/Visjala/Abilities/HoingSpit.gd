@@ -17,4 +17,4 @@ func use(source: Unit, target: Unit) -> void:
 		var poison_projectile_instance = PoisonBoltProjectile.instantiate()
 		Globals.get_world().add_child(poison_projectile_instance)
 		poison_projectile_instance.init_honing_projectile(source, self, target, 80.0)
-		poison_projectile_instance.global_position = source.model.global_position
+		poison_projectile_instance.global_position = source.get_center()

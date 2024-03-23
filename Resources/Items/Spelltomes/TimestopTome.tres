@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://bh7e8ddcf8rpu"]
+
+[ext_resource type="Script" path="res://Resources/Items/Item.gd" id="1_qu23j"]
+[ext_resource type="Texture2D" uid="uid://dlms2w36o7fp" path="res://assets/ui/items/gravity_spelltome.png" id="1_rjk3k"]
+[ext_resource type="PackedScene" uid="uid://bti8o33jt4wh8" path="res://Combat/abilities/TimeStop.tscn" id="2_35a8g"]
+[ext_resource type="Resource" uid="uid://bbgka06dmjbii" path="res://Resources/Items/Spelltomes/SpelltomeCooldownGroup.tres" id="3_64tur"]
+[ext_resource type="Script" path="res://Resources/Items/Spelltomes/SpellTomeEffect.gd" id="4_fxy58"]
+
+[sub_resource type="Resource" id="Resource_yudkt"]
+script = ExtResource("4_fxy58")
+ability = ExtResource("2_35a8g")
+cooldown_group = ExtResource("3_64tur")
+
+[resource]
+script = ExtResource("1_qu23j")
+alias = "Spelltome: Timestop"
+useable = true
+use_effect = SubResource("Resource_yudkt")
+use_description = "Teaches you the Timestop Ability."
+limited = false
+limit = 1
+stackable = false
+stack_amount = 5
+description = "You can see an inscription that reads: Julius Novachrono\""
+icon = ExtResource("1_rjk3k")

@@ -23,10 +23,10 @@ func use(source: Unit, target: Unit) -> void:
 	if source == target:
 		target_position = Globals.get_player().get_facing_direction()
 	else:
-		target_position = target.model.global_position - source.model.global_position
+		target_position = target.get_center() - source.get_center()
 	var stacks = source.get_status_effect_stacks(MeteoriteCharge)
 	value = base_value * stacks
 	scaling_factor = base_scaling_factor * stacks
 	source.remove_status_effect(MeteoriteCharge, source)
 	porjectile.init_projectile(source, self, (target_position).normalized(), 100.0)
-	porjectile.global_position = source.model.global_position
+	porjectile.global_position = source.get_center()

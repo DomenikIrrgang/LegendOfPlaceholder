@@ -967,6 +967,7 @@ offset_bottom = 66.0
 layout_mode = 2
 
 [node name="LevelUp" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 theme = SubResource("Theme_sqxju")
@@ -982,6 +983,7 @@ text = "Fullscreen
 script = SubResource("GDScript_axn2g")
 
 [node name="AddItem" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 theme = SubResource("Theme_7fwd3")
@@ -989,6 +991,7 @@ text = "Add Item"
 script = SubResource("GDScript_3g0do")
 
 [node name="Save" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 theme = SubResource("Theme_7fwd3")
@@ -996,6 +999,7 @@ text = "Save"
 script = SubResource("GDScript_j6glr")
 
 [node name="Load" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 theme = SubResource("Theme_7fwd3")
@@ -1004,6 +1008,7 @@ text = "Load
 script = SubResource("GDScript_jvssh")
 
 [node name="PlayerPosition" type="Label" parent="Debug/VBoxContainer"]
+visible = false
 layout_mode = 2
 label_settings = ExtResource("30_ao71d")
 script = SubResource("GDScript_empgj")
@@ -1064,35 +1069,39 @@ label_settings = SubResource("LabelSettings_uc4gr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="InteractionPrompt" type="CenterContainer" parent="."]
+[node name="InteractionPrompt" type="VBoxContainer" parent="."]
 layout_mode = 2
-offset_top = 759.0
+offset_top = 611.0
 offset_right = 1920.0
-offset_bottom = 959.0
+offset_bottom = 942.0
 mouse_filter = 2
+alignment = 2
 script = ExtResource("54_w3j3o")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InteractionPrompt"]
+[node name="VBoxContainer" type="CenterContainer" parent="InteractionPrompt"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InteractionPrompt/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Portrait" type="VBoxContainer" parent="InteractionPrompt/HBoxContainer"]
+[node name="Portrait" type="VBoxContainer" parent="InteractionPrompt/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 alignment = 2
 
-[node name="UnitName" type="Label" parent="InteractionPrompt/HBoxContainer/Portrait"]
+[node name="UnitName" type="Label" parent="InteractionPrompt/VBoxContainer/HBoxContainer/Portrait"]
 layout_mode = 2
 text = "<Unit Name>"
 label_settings = SubResource("LabelSettings_vmsgq")
 horizontal_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="InteractionPrompt/HBoxContainer/Portrait"]
+[node name="PanelContainer" type="PanelContainer" parent="InteractionPrompt/VBoxContainer/HBoxContainer/Portrait"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxEmpty_hkqp6")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="InteractionPrompt/HBoxContainer/Portrait/PanelContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="InteractionPrompt/VBoxContainer/HBoxContainer/Portrait/PanelContainer"]
 layout_mode = 2
 texture = ExtResource("54_cq3xn")
 patch_margin_left = 5
@@ -1100,19 +1109,19 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="InteractionPrompt/HBoxContainer/Portrait/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="InteractionPrompt/VBoxContainer/HBoxContainer/Portrait/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Icon" type="TextureRect" parent="InteractionPrompt/HBoxContainer/Portrait/PanelContainer/MarginContainer"]
+[node name="Icon" type="TextureRect" parent="InteractionPrompt/VBoxContainer/HBoxContainer/Portrait/PanelContainer/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("55_fnv2a")
 stretch_mode = 2
 
-[node name="InteractionMenue" type="VBoxContainer" parent="InteractionPrompt/HBoxContainer"]
+[node name="InteractionMenue" type="VBoxContainer" parent="InteractionPrompt/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 alignment = 2
 

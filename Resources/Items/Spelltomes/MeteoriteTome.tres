@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://br2041q0wjtfb"]
+
+[ext_resource type="Texture2D" uid="uid://cm6dd5rsq5ve2" path="res://assets/ui/items/fire_spelltome.png" id="1_7fvb0"]
+[ext_resource type="Script" path="res://Resources/Items/Item.gd" id="1_x6pn3"]
+[ext_resource type="PackedScene" uid="uid://cwje8nhhtmceo" path="res://Combat/abilities/Meteorite.tscn" id="3_sstl7"]
+[ext_resource type="Resource" uid="uid://bbgka06dmjbii" path="res://Resources/Items/Spelltomes/SpelltomeCooldownGroup.tres" id="4_achip"]
+[ext_resource type="Script" path="res://Resources/Items/Spelltomes/SpellTomeEffect.gd" id="5_4vjxc"]
+
+[sub_resource type="Resource" id="Resource_fxx77"]
+script = ExtResource("5_4vjxc")
+ability = ExtResource("3_sstl7")
+cooldown_group = ExtResource("4_achip")
+
+[resource]
+script = ExtResource("1_x6pn3")
+alias = "Spelltome: Meteorite"
+useable = true
+use_effect = SubResource("Resource_fxx77")
+use_description = "Teaches you the Meteorite Ability."
+limited = false
+limit = 1
+stackable = false
+stack_amount = 5
+description = ""
+icon = ExtResource("1_7fvb0")

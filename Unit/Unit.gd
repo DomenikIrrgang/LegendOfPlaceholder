@@ -420,6 +420,9 @@ func _physics_process(delta: float) -> void:
 	
 func on_hurt(source: Unit, ability: Ability) -> void:
 	combat_logic.cast_ability(source, self, ability)
+	
+func get_center() -> Vector2:
+	return model.global_position + model.offset
 		
 func set_level(_level: int) -> void:
 	var base_stats_for_new_level = BaseStats.new(_level)

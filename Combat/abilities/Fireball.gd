@@ -16,6 +16,6 @@ func use(source: Unit, target: Unit) -> void:
 	if source == target:
 		target_position = Globals.get_player().get_facing_direction()
 	else:
-		target_position = target.model.global_position - source.model.global_position
+		target_position = target.get_center() - source.get_center()
 	fireball_projectile_instance.init_projectile(source, self, (target_position).normalized(), 100.0)
-	fireball_projectile_instance.global_position = source.model.global_position
+	fireball_projectile_instance.global_position = source.get_center()

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://bq6n6bcdrm7w"]
+
+[ext_resource type="Script" path="res://Resources/Items/Item.gd" id="1_q8e1u"]
+[ext_resource type="Texture2D" uid="uid://bv6wfeioo72li" path="res://assets/ui/items/physical_spelltome.png" id="1_r4hj8"]
+[ext_resource type="PackedScene" uid="uid://bjlqe12ylrpwh" path="res://Combat/abilities/Kick.tscn" id="3_dh1aw"]
+[ext_resource type="Resource" uid="uid://bbgka06dmjbii" path="res://Resources/Items/Spelltomes/SpelltomeCooldownGroup.tres" id="4_m5kj4"]
+[ext_resource type="Script" path="res://Resources/Items/Spelltomes/SpellTomeEffect.gd" id="5_ub7lf"]
+
+[sub_resource type="Resource" id="Resource_nohoy"]
+script = ExtResource("5_ub7lf")
+ability = ExtResource("3_dh1aw")
+cooldown_group = ExtResource("4_m5kj4")
+
+[resource]
+script = ExtResource("1_q8e1u")
+alias = "Spelltome: Kick"
+useable = true
+use_effect = SubResource("Resource_nohoy")
+use_description = "Teaches you the Kick Ability."
+limited = false
+limit = 1
+stackable = false
+stack_amount = 5
+description = ""
+icon = ExtResource("1_r4hj8")

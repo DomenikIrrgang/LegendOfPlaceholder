@@ -1,20 +1,11 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=15 format=3 uid="uid://byv5j8k8233hb"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=11 format=3 uid="uid://byv5j8k8233hb"]
 
 [ext_resource type="Script" path="res://Resources/Enemies/EnemyData.gd" id="1_31g8x"]
 [ext_resource type="Texture2D" uid="uid://b6hy484v3a8rc" path="res://assets/ui/dialog/text_icon.png" id="1_w65bp"]
-[ext_resource type="Resource" uid="uid://dy7tmqrhl243o" path="res://Resources/Items/Spelltomes/FireballTome.tres" id="2_6le6m"]
 [ext_resource type="Script" path="res://Resources/Enemies/LootDrop.gd" id="3_l0w6a"]
 [ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="3_moi3u"]
 [ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/HealingPotion.tres" id="4_mp4b6"]
 [ext_resource type="Resource" uid="uid://bi6vdjcijdpu0" path="res://Resources/Items/ManaPotions/LesserManaPotion.tres" id="5_kc1r1"]
-[ext_resource type="Resource" uid="uid://1dht423wf6t6" path="res://Resources/Items/Spelltomes/BurningVeinsTome.tres" id="6_f4ovd"]
-
-[sub_resource type="Resource" id="Resource_ojw2k"]
-script = ExtResource("3_l0w6a")
-item = ExtResource("2_6le6m")
-chance = 1.0
-minimum_amount = 1
-maximum_amount = 1
 
 [sub_resource type="Resource" id="Resource_3f4up"]
 script = ExtResource("3_l0w6a")
@@ -30,13 +21,6 @@ chance = 1.0
 minimum_amount = 4
 maximum_amount = 4
 
-[sub_resource type="Resource" id="Resource_wuf0r"]
-script = ExtResource("3_l0w6a")
-item = ExtResource("6_f4ovd")
-chance = 1.0
-minimum_amount = 1
-maximum_amount = 1
-
 [sub_resource type="Resource" id="Resource_65wj5"]
 script = ExtResource("3_moi3u")
 stat = 3
@@ -50,7 +34,7 @@ value = 20
 [resource]
 script = ExtResource("1_31g8x")
 experience = 500
-loot_table = Array[ExtResource("3_l0w6a")]([SubResource("Resource_ojw2k"), SubResource("Resource_3f4up"), SubResource("Resource_yakhi"), SubResource("Resource_wuf0r")])
+loot_table = Array[ExtResource("3_l0w6a")]([SubResource("Resource_3f4up"), SubResource("Resource_yakhi")])
 alias = "Elemental Slime"
 dialog_texture = ExtResource("1_w65bp")
 level = 10

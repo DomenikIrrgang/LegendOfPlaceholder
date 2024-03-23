@@ -26,8 +26,8 @@ func _on_timer_timeout():
 	var fireball_projectile_instance = FireballProjectile.instantiate()
 	var fireball = Fireball.instantiate()
 	Globals.get_world().add_child(fireball_projectile_instance)
-	fireball_projectile_instance.init_projectile(source, fireball, (target.model.global_position - source.model.global_position).normalized(), 100.0)
-	fireball_projectile_instance.global_position = source.model.global_position
+	fireball_projectile_instance.init_projectile(source, fireball, (target.get_center() - source.get_center()).normalized(), 100.0)
+	fireball_projectile_instance.global_position = source.get_center()
 	fireballs_fired += 1
 	if fireballs_fired >= fireballs_max:
 		timer.stop()

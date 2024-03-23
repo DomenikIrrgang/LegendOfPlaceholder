@@ -84,7 +84,7 @@ func respawn() -> void:
 		pushback_tween.kill()
 	last_pushback = Time.get_unix_time_from_system()
 	pushback_velocity = Vector2(0.0, 0.0)
-	SceneSwitcher.load_scene("res://Zones/ForestGrove/ForestGrove.tscn", Vector2(0, 0))
+	SaveFileManager.load_save_file()
 	
 func level_up() -> void:
 	gain_experience(experience_needed_for_next_level())
@@ -96,6 +96,12 @@ func on_level_change(_level: int) -> void:
 func _process(delta: float) -> void:
 	super(delta)
 	get_resource(ResourceType.Enum.DASH_CHARGE).update(delta)
+	
+func get_total_experience() -> int:
+	return unit_data.experience
+	
+func set_experience(value: int) -> void:
+	unit_data.experience = value
 
 func gain_experience(amount: int) -> void:
 	if (get_level() < max_level):

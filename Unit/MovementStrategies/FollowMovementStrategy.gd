@@ -17,7 +17,7 @@ func calculateMovementVelocity() -> Vector2:
 	return movement_velocity
 	
 func get_distance_to_target() -> float:
-	return unit.model.global_position.distance_to(unit_to_follow.model.global_position)
+	return unit.get_center().distance_to(unit_to_follow.get_center())
 	
 func get_direction_to_target() -> Vector2:
-	return (unit_to_follow.model.global_position - unit.model.global_position).normalized()
+	return (unit_to_follow.get_center() - unit.get_center()).normalized()

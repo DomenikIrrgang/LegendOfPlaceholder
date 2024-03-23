@@ -90,9 +90,8 @@ weapon_path = "res://Weapons/FireWand.tscn"
 unit_data = ExtResource("2_7ky4n")
 
 [node name="Model" type="Sprite2D" parent="."]
-y_sort_enabled = true
-position = Vector2(0, -8)
 texture = ExtResource("2_8tpy3")
+offset = Vector2(0, -8)
 hframes = 8
 vframes = 16
 frame = 65

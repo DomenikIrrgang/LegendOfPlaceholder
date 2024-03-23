@@ -30,7 +30,7 @@ func update_closest_interactable_in_range() -> void:
 func get_closest_interactable() -> Interactable:
 	var closest = null
 	for interactable in interactables_in_range:
-		if closest == null or owner.model.global_position.distance_to(interactable.owner.model.global_position) < owner.model.global_position.distance_to(closest.owner.model.global_position):
+		if closest == null or owner.get_center().distance_to(interactable.owner.get_center()) < owner.get_center().distance_to(closest.owner.get_center()):
 			closest = interactable
 	return closest
 

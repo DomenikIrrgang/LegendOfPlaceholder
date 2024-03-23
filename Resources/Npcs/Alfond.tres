@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="NpcData" load_steps=33 format=3 uid="uid://vjtfqay7mifg"]
+[gd_resource type="Resource" script_class="NpcData" load_steps=39 format=3 uid="uid://vjtfqay7mifg"]
 
 [ext_resource type="Texture2D" uid="uid://dtxw35wty86v8" path="res://assets/ui/dialog/player_dialog.png" id="1_qyapk"]
 [ext_resource type="Script" path="res://Resources/Npcs/NpcData.gd" id="1_s8tdc"]
 [ext_resource type="PackedScene" uid="uid://bkhwsj6cq1b3l" path="res://Npc/Alfond/Alfond.tscn" id="2_jyq13"]
+[ext_resource type="Resource" uid="uid://b8sib7px37sjg" path="res://Resources/Quests/EggParty.tres" id="3_2d1w1"]
+[ext_resource type="Resource" uid="uid://ce6wwfe3u7old" path="res://Resources/Quests/TheWizardKing.tres" id="3_i6s1u"]
 [ext_resource type="Texture2D" uid="uid://eei3t6d1xjue" path="res://assets/ui/dialog/player_dialog_100x100.png" id="3_n5ih5"]
-[ext_resource type="Resource" uid="uid://j32bp3npa3l4" path="res://Resources/Quests/SlimeHunt.tres" id="4_jv3uw"]
 [ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="4_wcysn"]
 [ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="5_us0de"]
 [ext_resource type="Script" path="res://Resources/Conditions/PlayerLevelCondition.gd" id="6_bmxnm"]
 [ext_resource type="Resource" uid="uid://bua2ijg7n471w" path="res://Resources/Quests/AFriendlyGesture.tres" id="6_jsg72"]
+[ext_resource type="Resource" uid="uid://j32bp3npa3l4" path="res://Resources/Quests/TheSlimeKing.tres" id="6_lt10b"]
 [ext_resource type="Script" path="res://Resources/Interactions/StartDialog.gd" id="6_ske37"]
 [ext_resource type="Script" path="res://Resources/Interactions/CompleteQuestInteraction.gd" id="7_o1pmh"]
 [ext_resource type="Script" path="res://Resources/Interactions/StartQuestInteraction.gd" id="8_yx13m"]
@@ -16,6 +18,18 @@
 [ext_resource type="Script" path="res://Resources/Conditions/IsOnQuestCondition.gd" id="11_1qc3v"]
 [ext_resource type="Script" path="res://Resources/Conditions/FlagValueCondition.gd" id="12_osdw3"]
 [ext_resource type="Resource" uid="uid://b2q8uivlvjjdx" path="res://Resources/Quests/DangerInTheWoods.tres" id="13_ud60j"]
+
+[sub_resource type="Resource" id="Resource_gqap4"]
+script = ExtResource("8_yx13m")
+quest = ExtResource("3_2d1w1")
+visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+
+[sub_resource type="Resource" id="Resource_xx3ys"]
+script = ExtResource("8_yx13m")
+quest = ExtResource("3_i6s1u")
+visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 
 [sub_resource type="Resource" id="Resource_xyujb"]
 script = ExtResource("8_yx13m")
@@ -25,7 +39,7 @@ useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")](
 
 [sub_resource type="Resource" id="Resource_jqshq"]
 script = ExtResource("8_yx13m")
-quest = ExtResource("4_jv3uw")
+quest = ExtResource("6_lt10b")
 visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 
@@ -45,15 +59,27 @@ quest = ExtResource("6_jsg72")
 visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 
+[sub_resource type="Resource" id="Resource_q52p4"]
+script = ExtResource("7_o1pmh")
+quest = ExtResource("3_2d1w1")
+visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+
 [sub_resource type="Resource" id="Resource_vr5qj"]
 script = ExtResource("7_o1pmh")
-quest = ExtResource("4_jv3uw")
+quest = ExtResource("6_lt10b")
 visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 
 [sub_resource type="Resource" id="Resource_sq6v8"]
 script = ExtResource("7_o1pmh")
 quest = ExtResource("13_ud60j")
+visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+
+[sub_resource type="Resource" id="Resource_c5rql"]
+script = ExtResource("7_o1pmh")
+quest = ExtResource("3_i6s1u")
 visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 
@@ -110,7 +136,7 @@ useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")](
 [resource]
 script = ExtResource("1_s8tdc")
 model = ExtResource("2_jyq13")
-interactions = Array[Resource("res://Resources/Interactions/Interaction.gd")]([SubResource("Resource_xyujb"), SubResource("Resource_jqshq"), SubResource("Resource_7nfbh"), SubResource("Resource_uiu3x"), SubResource("Resource_vr5qj"), SubResource("Resource_sq6v8"), SubResource("Resource_c405h"), SubResource("Resource_cfnf5")])
+interactions = Array[Resource("res://Resources/Interactions/Interaction.gd")]([SubResource("Resource_gqap4"), SubResource("Resource_xx3ys"), SubResource("Resource_xyujb"), SubResource("Resource_jqshq"), SubResource("Resource_7nfbh"), SubResource("Resource_uiu3x"), SubResource("Resource_q52p4"), SubResource("Resource_vr5qj"), SubResource("Resource_sq6v8"), SubResource("Resource_c5rql"), SubResource("Resource_c405h"), SubResource("Resource_cfnf5")])
 alias = "Alfond"
 dialog_texture = ExtResource("1_qyapk")
 interaction_texture = ExtResource("3_n5ih5")

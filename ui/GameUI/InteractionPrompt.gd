@@ -1,16 +1,13 @@
-extends CenterContainer
+extends VBoxContainer
 
 @onready
-var unit_name_label: Label = $HBoxContainer/Portrait/UnitName
+var unit_name_label: Label = $VBoxContainer/HBoxContainer/Portrait/UnitName
 
 @onready
-var unit_icon: TextureRect = $HBoxContainer/Portrait/PanelContainer/MarginContainer/Icon
+var unit_icon: TextureRect = $VBoxContainer/HBoxContainer/Portrait/PanelContainer/MarginContainer/Icon
 
 @onready
-var option: InteractionOption = $HBoxContainer/InteractionMenue/InteractionOption
-
-@onready
-var interaction_menu: Container = $HBoxContainer/InteractionMenue
+var interaction_menu: Container = $VBoxContainer/HBoxContainer/InteractionMenue
 
 var InteractionOptionComponent = preload("res://ui/GameUI/InteractionMenu/InteractionOption.tscn")
 

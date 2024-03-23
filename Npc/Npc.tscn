@@ -59,6 +59,7 @@ collision_mask = 2
 script = ExtResource("5_m4s0h")
 
 [node name="QuestIndicator" type="Sprite2D" parent="."]
+z_index = 1
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_p0fq0")
 script = ExtResource("7_7a6pr")

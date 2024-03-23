@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://dujjey8vdpgho"]
+
+[ext_resource type="Texture2D" uid="uid://cm6dd5rsq5ve2" path="res://assets/ui/items/fire_spelltome.png" id="1_ltvns"]
+[ext_resource type="Script" path="res://Resources/Items/Item.gd" id="2_r3phg"]
+[ext_resource type="PackedScene" uid="uid://bucimjpxhw6v7" path="res://Combat/abilities/InnerFlame.tscn" id="3_yo6wq"]
+[ext_resource type="Resource" uid="uid://bbgka06dmjbii" path="res://Resources/Items/Spelltomes/SpelltomeCooldownGroup.tres" id="4_fs0tc"]
+[ext_resource type="Script" path="res://Resources/Items/Spelltomes/SpellTomeEffect.gd" id="5_8i3rl"]
+
+[sub_resource type="Resource" id="Resource_ac6rf"]
+script = ExtResource("5_8i3rl")
+ability = ExtResource("3_yo6wq")
+cooldown_group = ExtResource("4_fs0tc")
+
+[resource]
+script = ExtResource("2_r3phg")
+alias = "Spelltome: Inner Flame"
+useable = true
+use_effect = SubResource("Resource_ac6rf")
+use_description = "Teaches you the Inner Flame Ability."
+limited = false
+limit = 1
+stackable = false
+stack_amount = 5
+description = ""
+icon = ExtResource("1_ltvns")

@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=10 format=3 uid="uid://ce6wwfe3u7old"]
+
+[ext_resource type="Script" path="res://Resources/Quests/KillUnitsObjective.gd" id="1_0wcv2"]
+[ext_resource type="Resource" uid="uid://byv5j8k8233hb" path="res://Resources/Enemies/ElementalSlime.tres" id="2_ha5uh"]
+[ext_resource type="Resource" uid="uid://bh7e8ddcf8rpu" path="res://Resources/Items/Spelltomes/TimestopTome.tres" id="3_xhxfh"]
+[ext_resource type="Script" path="res://Resources/Quests/ItemQuestReward.gd" id="4_b0koh"]
+[ext_resource type="Resource" uid="uid://dujjey8vdpgho" path="res://Resources/Items/Spelltomes/InnerFlameTome.tres" id="5_ju7bi"]
+[ext_resource type="Script" path="res://Resources/Quests/Quest.gd" id="6_oaeok"]
+
+[sub_resource type="Resource" id="Resource_dtmpq"]
+script = ExtResource("1_0wcv2")
+unit_data = ExtResource("2_ha5uh")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_q8j34"]
+script = ExtResource("4_b0koh")
+item = ExtResource("3_xhxfh")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_ng0b4"]
+script = ExtResource("4_b0koh")
+item = ExtResource("5_ju7bi")
+amount = 1
+
+[resource]
+script = ExtResource("6_oaeok")
+name = "The Wizard King"
+description = "A wizard has been setting parts of the forest on fire. Find him and eliminate him.
+"
+recommended_level = 1
+turnin_type = 1
+objectives = Array[Resource("res://Resources/Quests/QuestObjective.gd")]([SubResource("Resource_dtmpq")])
+rewards = Array[Resource("res://Resources/Quests/QuestReward.gd")]([SubResource("Resource_q8j34"), SubResource("Resource_ng0b4")])
+requirements = Array[Resource("res://Resources/Conditions/Condition.gd")]([])

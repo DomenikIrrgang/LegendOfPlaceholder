@@ -21,8 +21,8 @@ script = ExtResource("1_6ny36")
 
 [node name="Model" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, -8)
 texture = ExtResource("2_xqtxo")
+offset = Vector2(0, -8)
 hframes = 8
 vframes = 16
 

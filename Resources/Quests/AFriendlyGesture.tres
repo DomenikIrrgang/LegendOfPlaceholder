@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/HealingPotion.tres" id="1_yofoy"]
 [ext_resource type="Script" path="res://Resources/Quests/CollectItemQuestObjective.gd" id="2_jceya"]
-[ext_resource type="Resource" uid="uid://bmuldcmdv7w23" path="res://Resources/Gear/EnergyCrystal.tres" id="5_klkrg"]
+[ext_resource type="Resource" uid="uid://b444o8dniqos8" path="res://Resources/Items/Spelltomes/MendTome.tres" id="3_myh2j"]
 [ext_resource type="Script" path="res://Resources/Quests/ItemQuestReward.gd" id="6_oam7t"]
 [ext_resource type="Script" path="res://Resources/Quests/ExperienceReward.gd" id="7_pf1yh"]
 [ext_resource type="Script" path="res://Resources/Quests/Quest.gd" id="8_dstii"]
@@ -14,12 +14,12 @@ amount = 1
 
 [sub_resource type="Resource" id="Resource_ljumv"]
 script = ExtResource("6_oam7t")
-item = ExtResource("5_klkrg")
+item = ExtResource("3_myh2j")
 amount = 1
 
 [sub_resource type="Resource" id="Resource_6ifky"]
 script = ExtResource("7_pf1yh")
-amount = 250
+amount = 1500
 
 [resource]
 script = ExtResource("8_dstii")

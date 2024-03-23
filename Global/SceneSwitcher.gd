@@ -9,7 +9,7 @@ func _ready() -> void:
 	SaveFileManager.save_file_saving.connect(on_save)
 	
 func on_save(save_file: Dictionary) -> void:
-	save_file.current_scene = Globals.get_world().get_children()[0].scene_file_path
+	save_file.current_scene = Globals.get_world().get_children()[0].scene_file_path if Globals.get_world().get_children().size() > 0 else "res://Zones/ForestGrove/ForestGrove.tscn"
 	save_file.player_position = {
 		x = Globals.get_player().global_position.x,
 		y = Globals.get_player().global_position.y
