@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://bcwti7dwmsujv" path="res://Resources/Gear/RunesmithSet/RunesmithsPants.tres" id="2_iktuk"]
 [ext_resource type="Script" path="res://Resources/Quests/ItemQuestReward.gd" id="3_cymbs"]
 [ext_resource type="Resource" uid="uid://dy2pbsdtaks1h" path="res://Resources/Gear/RunesmithSet/RunesmithsShirt.tres" id="4_ofqmd"]
-[ext_resource type="Resource" uid="uid://dribn3a0vyi3v" path="res://Resources/Gear/RunesmithSet/RunesmithHeadband.tres" id="5_ckln7"]
+[ext_resource type="Resource" uid="uid://dribn3a0vyi3v" path="res://Resources/Gear/RunesmithSet/RunesmithsHeadband.tres" id="5_ckln7"]
 [ext_resource type="Resource" uid="uid://bq6n6bcdrm7w" path="res://Resources/Items/Spelltomes/KickTome.tres" id="6_myteo"]
 [ext_resource type="Resource" uid="uid://30rl8s67arsj" path="res://Resources/Items/Spelltomes/ForcefieldTome.tres" id="7_6tjlp"]
 [ext_resource type="Resource" uid="uid://buwphdeqkddc6" path="res://Resources/Gear/ResourceCrystals/ManaCrystal.tres" id="8_xy55p"]
