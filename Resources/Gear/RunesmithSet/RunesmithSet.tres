@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GearSet" load_steps=3 format=3 uid="uid://chjssyudcahpy"]
+
+[ext_resource type="Script" path="res://Resources/Gear/GearSet.gd" id="1_0f27d"]
+[ext_resource type="Resource" uid="uid://cnyropmguftat" path="res://Resources/Gear/RunesmithSet/TwoPiece.tres" id="2_jodcs"]
+
+[resource]
+script = ExtResource("1_0f27d")
+alias = "Runesmith Apprentice"
+set_pieces = Array[int]([0, 1, 2])
+set_bonuses = Array[Resource("res://Resources/Gear/SetBonus.gd")]([ExtResource("2_jodcs")])

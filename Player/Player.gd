@@ -22,6 +22,9 @@ signal gear_slot_changed(slot: Gear.Slot, gear: Gear)
 
 func equip_gear(gear: Gear) -> bool:
 	return equip_gear_in_slot(gear.slot, gear)
+	
+func has_gear_equipped(gear: Gear) -> bool:
+	return gear_slots[gear.slot] != null and gear_slots[gear.slot] == gear
 
 func equip_gear_in_slot(slot: Gear.Slot, gear: Gear) -> bool:
 	if gear.slot == slot:
@@ -58,7 +61,6 @@ func _ready() -> void:
 	Globals.get_environment_light().energy_changed.connect(on_energy_changed)
 	for ability in get_abilities():
 		ability.on_assign(self)
-	equip_gear(load("res://Resources/Gear/ManaCrystal.tres"))
 		
 func on_energy_changed(energy) -> void:
 	if energy > 0.6:

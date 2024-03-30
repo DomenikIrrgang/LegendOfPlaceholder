@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Gear" load_steps=5 format=3 uid="uid://buwphdeqkddc6"]
 
 [ext_resource type="Script" path="res://Resources/Gear/Gear.gd" id="1_3iusg"]
-[ext_resource type="Script" path="res://Resources/Gear/ResourceCrystalEffect.gd" id="1_ne7qn"]
+[ext_resource type="Script" path="res://Resources/Gear/ResourceCrystals/ResourceCrystalEffect.gd" id="1_ne7qn"]
 [ext_resource type="Texture2D" uid="uid://bysqswru45dv4" path="res://assets/ui/bottom_hud/mana_crystal.png" id="2_6ki23"]
 
 [sub_resource type="Resource" id="Resource_mdtm6"]

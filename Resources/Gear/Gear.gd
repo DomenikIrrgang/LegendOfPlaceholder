@@ -23,3 +23,6 @@ var slot: Slot
 
 @export
 var gear_effects: Array[GearEffect] = []
+
+@export
+var gear_set: GearSet
