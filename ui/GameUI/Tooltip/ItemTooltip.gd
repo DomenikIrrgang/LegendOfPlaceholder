@@ -25,6 +25,24 @@ var equip_description: Label = $MarginContainer/VBoxContainer/EquipDescription
 @onready
 var stats: Label = $MarginContainer/VBoxContainer/Stats
 
+@onready
+var set_container: Container = $MarginContainer/VBoxContainer/Set
+
+@onready
+var set_name: Label = $MarginContainer/VBoxContainer/Set/VBoxContainer/SetName
+
+@onready
+var set_piece_names: Container = $MarginContainer/VBoxContainer/Set/VBoxContainer/Pieces/VBoxContainer
+
+@onready
+var bonuses: Container = $MarginContainer/VBoxContainer/Set/VBoxContainer/Bonuses
+
+var ActiveSetPieceName = preload("res://ui/GameUI/Tooltip/SetPieceActive.tscn")
+var InactiveSetPieceName = preload("res://ui/GameUI/Tooltip/SetPieceInactive.tscn")
+
+var ActiveBonus = preload("res://ui/GameUI/Tooltip/BonusActive.tscn")
+var InactiveBonus = preload("res://ui/GameUI/Tooltip/BonusInactive.tscn")
+
 func _process(_delta: float) -> void:
 	visible = true
 	global_position = get_viewport().get_mouse_position()
@@ -60,6 +78,32 @@ func show_item(item: Item) -> void:
 		equip_description.text = ""
 		equip_description.visible = false
 		stats.visible = false
+		if item.gear_set != null:
+			set_container.visible = true
+			set_name.text = item.gear_set.alias
+			for set_piece_name in set_piece_names.get_children():
+				set_piece_name.queue_free()
+			for set_piece in item.gear_set.set_pieces:
+				var gear = Equipment.get_gear_data(set_piece)
+				var label
+				if Globals.get_player().has_gear_equipped(gear):
+					label = ActiveSetPieceName.instantiate()
+				else:
+					label = InactiveSetPieceName.instantiate()
+				label.text = gear.alias
+				set_piece_names.add_child(label)
+			for bonus in bonuses.get_children():
+				bonus.queue_free()
+			for bonus in item.gear_set.get_ordered_bonuses():
+				var label
+				if item.gear_set.is_bonus_completed(bonus):
+					label = ActiveBonus.instantiate()
+				else:
+					label = InactiveBonus.instantiate()
+				label.text = "Set (" + str(bonus.required_pieces) + ") " + bonus.description
+				bonuses.add_child(label)
+		else:
+			set_container.visible = false
 		for gear_effect in item.gear_effects:
 			if gear_effect is StatGearEffect:
 				for stat_assignment in gear_effect.stats:
@@ -72,3 +116,4 @@ func show_item(item: Item) -> void:
 		slot.visible = false
 		stats.visible = false
 		equip_description.visible = false
+		set_container.visible = false

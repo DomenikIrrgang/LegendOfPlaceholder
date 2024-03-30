@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dena53oj8sw3d"]
+
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="1_pys5i"]
+
+[node name="SetPieceActive" type="Label"]
+text = "Runesmith Headband"
+label_settings = ExtResource("1_pys5i")

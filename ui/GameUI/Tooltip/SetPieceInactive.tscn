@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvuliodvpjkcy"]
+
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="1_dlxpa"]
+
+[node name="SetPieceInactive" type="Label"]
+self_modulate = Color(1, 1, 1, 0.266667)
+text = "Runesmith Pants"
+label_settings = ExtResource("1_dlxpa")

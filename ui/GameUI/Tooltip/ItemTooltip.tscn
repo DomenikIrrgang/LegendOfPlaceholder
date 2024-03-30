@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ck7d82wvtcek3"]
+[gd_scene load_steps=9 format=3 uid="uid://ck7d82wvtcek3"]
 
 [ext_resource type="Script" path="res://ui/GameUI/Tooltip/ItemTooltip.gd" id="1_5s5tx"]
 [ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="1_diu66"]
@@ -6,6 +6,8 @@
 [ext_resource type="LabelSettings" uid="uid://fk0vrywo8428" path="res://ui/GameUI/Tooltip/TooltipHeading.tres" id="3_5ejxt"]
 [ext_resource type="LabelSettings" uid="uid://wxtgli4abuyl" path="res://ui/GameUI/Tooltip/TooltipUseDescription.tres" id="5_8fdef"]
 [ext_resource type="LabelSettings" uid="uid://bs3ljhjhjtijl" path="res://ui/GameUI/Tooltip/TooltipDescription.tres" id="6_aqshy"]
+[ext_resource type="PackedScene" uid="uid://bkyohbja1fb7d" path="res://ui/GameUI/Tooltip/BonusActive.tscn" id="7_pau2u"]
+[ext_resource type="PackedScene" uid="uid://c4ry8b2xcg8hn" path="res://ui/GameUI/Tooltip/BonusInactive.tscn" id="8_o7e42"]
 
 [node name="ItemTooltip" type="PanelContainer"]
 z_index = 2
@@ -76,3 +78,35 @@ layout_mode = 2
 text = "\"Even small things amount to great
 outcomes.\""
 label_settings = ExtResource("6_aqshy")
+
+[node name="Set" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Set"]
+layout_mode = 2
+
+[node name="SetName" type="Label" parent="MarginContainer/VBoxContainer/Set/VBoxContainer"]
+layout_mode = 2
+text = "Set: Runesmith Apprentice"
+label_settings = ExtResource("5_8fdef")
+
+[node name="Pieces" type="MarginContainer" parent="MarginContainer/VBoxContainer/Set/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Set/VBoxContainer/Pieces"]
+layout_mode = 2
+
+[node name="Bonuses" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Set/VBoxContainer"]
+layout_mode = 2
+
+[node name="Bonus1" parent="MarginContainer/VBoxContainer/Set/VBoxContainer/Bonuses" instance=ExtResource("7_pau2u")]
+layout_mode = 2
+
+[node name="Bonus2" parent="MarginContainer/VBoxContainer/Set/VBoxContainer/Bonuses" instance=ExtResource("8_o7e42")]
+layout_mode = 2

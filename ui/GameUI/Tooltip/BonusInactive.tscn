@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4ry8b2xcg8hn"]
+
+[ext_resource type="LabelSettings" uid="uid://wxtgli4abuyl" path="res://ui/GameUI/Tooltip/TooltipUseDescription.tres" id="1_susds"]
+
+[node name="Bonus2" type="Label"]
+self_modulate = Color(1, 1, 1, 0.301961)
+text = "Set (3): Increaes Intellect by 15."
+label_settings = ExtResource("1_susds")

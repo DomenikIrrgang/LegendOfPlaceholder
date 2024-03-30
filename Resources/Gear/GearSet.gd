@@ -16,6 +16,11 @@ func get_completed_bonuses() -> Array[SetBonus]:
 		if is_bonus_completed(bonus):
 			result.append(bonus)
 	return result
+	
+func get_ordered_bonuses() -> Array[SetBonus]:
+	var result = set_bonuses.duplicate()
+	result.sort_custom(func(bonus_one: SetBonus, bonus_two: SetBonus): return bonus_one.required_pieces < bonus_two.required_pieces)
+	return result
 		
 func is_bonus_completed(bonus) -> bool:
 	return set_bonuses.has(bonus) and bonus.required_pieces <= get_number_of_set_pieces()
