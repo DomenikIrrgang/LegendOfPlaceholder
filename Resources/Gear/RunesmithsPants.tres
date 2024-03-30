@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Gear" load_steps=8 format=3 uid="uid://bcwti7dwmsujv"]
+
+[ext_resource type="Script" path="res://Resources/Gear/StatGearEffect.gd" id="1_3tjbc"]
+[ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="2_tfssy"]
+[ext_resource type="Texture2D" uid="uid://jtgn2ueksl56" path="res://assets/ui/bottom_hud/attack_icon.png" id="3_sfn4x"]
+[ext_resource type="Script" path="res://Resources/Gear/Gear.gd" id="4_25kyt"]
+
+[sub_resource type="Resource" id="Resource_uypc7"]
+script = ExtResource("2_tfssy")
+stat = 1
+value = 2
+
+[sub_resource type="Resource" id="Resource_odi5v"]
+script = ExtResource("2_tfssy")
+stat = 2
+value = 1
+
+[sub_resource type="Resource" id="Resource_q6iis"]
+script = ExtResource("1_3tjbc")
+stats = Array[ExtResource("2_tfssy")]([SubResource("Resource_uypc7"), SubResource("Resource_odi5v")])
+
+[resource]
+script = ExtResource("4_25kyt")
+slot = 8
+gear_effects = Array[Resource("res://Resources/Gear/GearEffect.gd")]([SubResource("Resource_q6iis")])
+alias = "Runesmiths Pants"
+useable = false
+use_description = ""
+limited = false
+limit = 1
+stackable = false
+stack_amount = 5
+description = ""
+icon = ExtResource("3_sfn4x")

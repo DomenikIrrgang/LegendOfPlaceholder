@@ -291,7 +291,11 @@ var fireball_tome: Item = preload(\"res://Resources/Items/Spelltomes/FireballTom
 var mend_tome: Item = preload(\"res://Resources/Items/Spelltomes/MendTome.tres\")
 var forcefield_tome: Item = preload(\"res://Resources/Items/Spelltomes/ForcefieldTome.tres\")
 var burning_veins: Item = preload(\"res://Resources/Items/Spelltomes/BurningVeinsTome.tres\")
+var runesmiths_shirt: Item = preload(\"res://Resources/Gear/RunesmithsShirt.tres\")
 var testing_chest: Item = preload(\"res://Resources/Gear/TestingChest.tres\")
+var mana_crystal: Item = preload(\"res://Resources/Gear/ManaCrystal.tres\")
+var rage_crystal: Item = preload(\"res://Resources/Gear/RageCrystal.tres\")
+var energy_crystal: Item = preload(\"res://Resources/Gear/EnergyCrystal.tres\")
 var honing_spit: Item = preload(\"res://Resources/Items/Spelltomes/HoningSpitTome.tres\")
 
 var Drop = preload(\"res://Unit/Drops/Drop.tscn\")
@@ -303,7 +307,7 @@ func _on_pressed():
 	Globals.get_world().add_child(drop1)
 	Globals.get_world().add_child(drop2)
 	Globals.get_world().add_child(drop3)
-	drop1.set_item(lesser_mana_potion, 1)
+	drop1.set_item(energy_crystal, 1)
 	drop2.set_item(forcefield_tome, 1)
 	drop3.set_item(testing_chest, 1)
 "
