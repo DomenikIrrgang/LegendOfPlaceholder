@@ -19,6 +19,8 @@ signal experience_changed(change: int)
 var gear_slots: Array[Gear] = []
 
 signal gear_slot_changed(slot: Gear.Slot, gear: Gear)
+signal unequipped_gear(gear: Gear)
+signal equipped_gear(gear: Gear)
 
 func equip_gear(gear: Gear) -> bool:
 	return equip_gear_in_slot(gear.slot, gear)
@@ -33,6 +35,7 @@ func equip_gear_in_slot(slot: Gear.Slot, gear: Gear) -> bool:
 		gear_slots[slot] = gear
 		for gear_effect in gear.gear_effects:
 			gear_effect.on_gear_equipped(gear, self)
+		equipped_gear.emit(gear)
 		gear_slot_changed.emit(slot, gear)
 		return true
 	return false
@@ -41,8 +44,10 @@ func unequip_gear_in_slot(slot: Gear.Slot) -> bool:
 	if gear_slots[slot] != null:
 		for gear_effect in gear_slots[slot].gear_effects:
 			gear_effect.on_gear_unequipped(gear_slots[slot], self)
+		var tmp_gear = gear_slots[slot]
 		gear_slots[slot] = null
 		gear_slot_changed.emit(slot, null)
+		unequipped_gear.emit(tmp_gear)
 		return true
 	return false
 

@@ -1,27 +1,42 @@
-[gd_resource type="Resource" script_class="GearSet" load_steps=8 format=3 uid="uid://b0guwsg1304u2"]
+[gd_resource type="Resource" script_class="GearSet" load_steps=11 format=3 uid="uid://b0guwsg1304u2"]
 
 [ext_resource type="Script" path="res://Resources/Gear/GearSet.gd" id="1_vgl5l"]
 [ext_resource type="Script" path="res://Resources/Gear/StatGearEffect.gd" id="2_b823d"]
 [ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="3_tjfdp"]
-[ext_resource type="Script" path="res://Resources/Gear/SetBonus.gd" id="4_dymoe"]
+[ext_resource type="Script" path="res://Resources/Gear/PartialSetBonus.gd" id="4_ggyfk"]
 
-[sub_resource type="Resource" id="Resource_v26tw"]
+[sub_resource type="Resource" id="Resource_y3n70"]
 script = ExtResource("3_tjfdp")
 stat = 1
 value = 10
 
-[sub_resource type="Resource" id="Resource_tjtfp"]
+[sub_resource type="Resource" id="Resource_hn5dj"]
 script = ExtResource("2_b823d")
-stats = Array[ExtResource("3_tjfdp")]([SubResource("Resource_v26tw")])
+stats = Array[ExtResource("3_tjfdp")]([SubResource("Resource_y3n70")])
 
-[sub_resource type="Resource" id="Resource_r5rlb"]
-script = ExtResource("4_dymoe")
-description = "Increaes Intellect by 10."
+[sub_resource type="Resource" id="Resource_khewr"]
+script = ExtResource("4_ggyfk")
+description = "Increases your intellect by 10."
 required_pieces = 2
-gear_effects = Array[Resource("res://Resources/Gear/GearEffect.gd")]([SubResource("Resource_tjtfp")])
+gear_effects = Array[Resource("res://Resources/Gear/GearEffect.gd")]([SubResource("Resource_hn5dj")])
+
+[sub_resource type="Resource" id="Resource_abcnd"]
+script = ExtResource("3_tjfdp")
+stat = 1
+value = 15
+
+[sub_resource type="Resource" id="Resource_mltyt"]
+script = ExtResource("2_b823d")
+stats = Array[ExtResource("3_tjfdp")]([SubResource("Resource_abcnd")])
+
+[sub_resource type="Resource" id="Resource_yfsdb"]
+script = ExtResource("4_ggyfk")
+description = "Increases your intellect by 15."
+required_pieces = 3
+gear_effects = Array[Resource("res://Resources/Gear/GearEffect.gd")]([SubResource("Resource_mltyt")])
 
 [resource]
 script = ExtResource("1_vgl5l")
 alias = "Runesmith Apprentice"
 set_pieces = Array[int]([0, 1, 2])
-set_bonuses = Array[ExtResource("4_dymoe")]([SubResource("Resource_r5rlb")])
+set_bonuses = Array[Resource("res://Resources/Gear/SetBonus.gd")]([SubResource("Resource_khewr"), SubResource("Resource_yfsdb")])

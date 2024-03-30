@@ -26,6 +26,6 @@ func get_set_bonuses() -> Array[SetBonus]:
 func get_number_of_set_pieces() -> int:
 	var result = 0
 	for set_piece in set_pieces:
-		if not Globals.get_player().has_gear_equipped(Equipment.get_gear_data(set_piece)):
+		if Globals.get_player().has_gear_equipped(Equipment.get_gear_data(set_piece)):
 			result += 1
 	return result

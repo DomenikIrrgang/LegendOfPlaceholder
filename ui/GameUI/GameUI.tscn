@@ -299,16 +299,12 @@ var honing_spit: Item = preload(\"res://Resources/Items/Spelltomes/HoningSpitTom
 
 var Drop = preload(\"res://Unit/Drops/Drop.tscn\")
 
+var test_set: GearSet = preload(\"res://Resources/Gear/RunesmithSet/RunesmithSet.tres\")
+
 func _on_pressed():
-	var drop1 = Drop.instantiate()
-	var drop2 = Drop.instantiate()
-	var drop3 = Drop.instantiate()
-	Globals.get_world().add_child(drop1)
-	Globals.get_world().add_child(drop2)
-	Globals.get_world().add_child(drop3)
-	drop1.set_item(energy_crystal, 1)
-	drop2.set_item(forcefield_tome, 1)
-	drop3.set_item(testing_chest, 1)
+	print(test_set.set_bonuses[0])
+	print(test_set.set_bonuses[0].required_pieces)
+	print(test_set.set_bonuses[1].required_pieces)
 "
 
 [sub_resource type="GDScript" id="GDScript_j6glr"]
