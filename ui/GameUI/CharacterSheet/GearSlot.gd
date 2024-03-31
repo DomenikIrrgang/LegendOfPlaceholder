@@ -65,10 +65,11 @@ func equip_gear() -> void:
 	if drag_and_drop.data.has("inventory"):
 		var inventory = drag_and_drop.data.inventory
 		var inventory_slot = drag_and_drop.data.inventory_slot
-		if item is Gear and item.slot == slot:
+		var inventory_gear = inventory_slot.item
+		if inventory_gear is Gear and inventory_gear.slot == slot:
 			var previous_gear: Gear = null
 			if Globals.get_player().gear_slots[slot] != null:
 				previous_gear = Globals.get_player().gear_slots[slot]
-			Globals.get_player().equip_gear_in_slot(slot, item)
+			Globals.get_player().equip_gear_in_slot(slot, inventory_gear)
 			inventory.change_slot(inventory_slot.index, previous_gear, 1)
 	drag_and_drop.stop_dragging()
