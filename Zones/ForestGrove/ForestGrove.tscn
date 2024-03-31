@@ -162,8 +162,8 @@ shape = SubResource("RectangleShape2D_p4fud")
 position = Vector2(-39, 8)
 collision_mask = 2
 script = ExtResource("4_10e5x")
-scene = "res://Zones/ForestGrove/RensHouse.tscn"
-spawm_position = Vector2(56, 117)
+scene = "res://Zones/ForestGrove/RemsHouse/RensHouse.tscn"
+spawm_position = Vector2(56, 127.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HouseEntrance"]
 position = Vector2(-65, 80)

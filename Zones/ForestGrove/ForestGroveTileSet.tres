@@ -52,6 +52,12 @@ texture = ExtResource("1_xt00x")
 12:0/0 = 0
 12:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 12:0/0/physics_layer_0/angular_velocity = 0.0
+13:0/0 = 0
+13:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+13:0/0/physics_layer_0/angular_velocity = 0.0
+14:0/0 = 0
+14:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+14:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kn8kf"]
 texture = ExtResource("1_uoe6v")

@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://cex8g67gr43h7"]
+
+[ext_resource type="Script" path="res://Zones/ForestGrove/RemsHouse/RensHouse.gd" id="1_ocifb"]
+[ext_resource type="TileSet" uid="uid://c65yuai7jjlwb" path="res://Zones/ForestGrove/ForestGroveTileSet.tres" id="2_7djdw"]
+[ext_resource type="Script" path="res://Zones/ForestGrove/RemsHouse/HouseTilemap.gd" id="3_msjc4"]
+[ext_resource type="Script" path="res://Zones/Triggers/ChangeSceneTrigger.gd" id="4_508uv"]
+[ext_resource type="Texture2D" uid="uid://bqxmb2iloh01i" path="res://assets/environment/runesmithing/furnace.png" id="5_v6x8x"]
+[ext_resource type="Script" path="res://Resources/Conditions/FlagValueCondition.gd" id="5_yr2uk"]
+[ext_resource type="PackedScene" uid="uid://dxnkwps61uq0g" path="res://Npc/Npc.tscn" id="6_j6bf1"]
+[ext_resource type="Script" path="res://Zones/Triggers/CutsceneTrigger.gd" id="8_wcthc"]
+[ext_resource type="Resource" uid="uid://bbvdyoem4obpd" path="res://Resources/Cutscenes/Prolog/RensAwakening/LeaveHouseAttempt.tres" id="9_00tc1"]
+
+[sub_resource type="Resource" id="Resource_wvoua"]
+script = ExtResource("5_yr2uk")
+flag = 0
+flag_value = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vifm"]
+size = Vector2(16, 11)
+
+[sub_resource type="Resource" id="Resource_m3jyq"]
+script = ExtResource("5_yr2uk")
+flag = 0
+flag_value = false
+
+[node name="RensHouse" type="Node2D"]
+script = ExtResource("1_ocifb")
+zone_name = "Ren's House"
+
+[node name="Background" type="TileMap" parent="."]
+y_sort_enabled = true
+rotation = -0.000297988
+tile_set = ExtResource("2_7djdw")
+format = 2
+layer_0/name = "Background"
+layer_0/z_index = -2
+layer_0/tile_data = PackedInt32Array(65538, 720896, 0, 65537, 720896, 0, 65536, 720896, 0, 131071, 720896, 0, 131072, 720896, 0, 131073, 720896, 0, 131074, 720896, 0, 196607, 720896, 0, 65539, 720896, 0, 131075, 720896, 0, 196610, 720896, 0, 196611, 720896, 0, 262147, 720896, 0, 262148, 720896, 0, 196612, 720896, 0, 262146, 720896, 0, 262145, 720896, 0, 196609, 720896, 0, 196608, 720896, 0, 262144, 720896, 0, 327679, 720896, 0, 262143, 720896, 0, 131079, 720896, 0, 196615, 720896, 0, 65543, 720896, 0, 196614, 720896, 0, 196613, 720896, 0, 262151, 720896, 0, 262150, 720896, 0, 327686, 720896, 0, 327687, 720896, 0, 458759, 720896, 0, 458758, 720896, 0, 458757, 720896, 0, 458756, 720896, 0, 458755, 720896, 0, 458754, 720896, 0, 458753, 720896, 0, 458752, 720896, 0, 393216, 720896, 0, 458751, 720896, 0, 393215, 720896, 0, 524287, 720896, 0, 393217, 720896, 0, 393218, 720896, 0, 327682, 720896, 0, 327681, 720896, 0, 327680, 720896, 0, 393219, 720896, 0, 393220, 720896, 0, 393221, 720896, 0, 393222, 720896, 0, 327685, 720896, 0, 327684, 720896, 0, 327683, 720896, 0, 262149, 720896, 0, 393223, 720896, 0, 65544, 720896, 0, 131080, 720896, 0, 196616, 720896, 0, 262152, 720896, 0, 327688, 720896, 0, 393224, 720896, 0, 458760, 720896, 0, 524291, 720896, 0, 0, 720896, 0, 131078, 786432, 0, 131077, 786432, 0, 131076, 786432, 0, 65540, 786432, 0, 65541, 786432, 0, 65542, 786432, 0)
+layer_1/name = "Walls"
+layer_1/y_sort_enabled = true
+layer_1/z_index = -1
+layer_1/tile_data = PackedInt32Array(8, 0, 0, 7, 0, 0, 3, 0, 0, 2, 0, 0, -65527, 0, 0, 9, 0, 0, 65545, 0, 0, 131081, 0, 0, 196617, 0, 0, 262153, 0, 0, 327689, 0, 0, 393225, 0, 0, 458761, 0, 0, 524297, 0, 0, 524296, 0, 0, 524295, 0, 0, 524294, 0, 0, 524293, 0, 0, 524292, 0, 0, 524290, 0, 0, 524289, 0, 0, 524288, 0, 0, 589823, 0, 0, 1, 0, 0, 65534, 0, 0, -65533, 0, 0, -65528, 0, 0, -65529, 0, 0, -65532, 0, 0, -65535, 0, 0, -65534, 0, 0, -2, 0, 0, 4, 0, 0, 5, 0, 0, -65531, 0, 0, 589822, 0, 0, 524286, 0, 0, 458750, 0, 0, 393214, 0, 0, 327678, 0, 0, 262142, 0, 0, 196606, 0, 0, 131070, 0, 0, 6, 0, 0, -65530, 0, 0, -65536, 0, 0, -1, 0, 0, 65535, 0, 0, 0, 851968, 0)
+script = ExtResource("3_msjc4")
+
+[node name="HouseExit" type="Area2D" parent="."]
+position = Vector2(-39, 8)
+collision_mask = 2
+script = ExtResource("4_508uv")
+scene = "res://Zones/ForestGrove/ForestGrove.tscn"
+spawm_position = Vector2(-104, 105)
+conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_wvoua")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HouseExit"]
+position = Vector2(95.25, 134)
+shape = SubResource("RectangleShape2D_6vifm")
+
+[node name="Furnace" type="Sprite2D" parent="."]
+position = Vector2(89, 5)
+texture = ExtResource("5_v6x8x")
+
+[node name="Alfond" parent="." instance=ExtResource("6_j6bf1")]
+position = Vector2(55, 27)
+
+[node name="RemsRoomStairs" type="Area2D" parent="."]
+position = Vector2(9, 1)
+collision_mask = 2
+script = ExtResource("4_508uv")
+scene = "res://Zones/ForestGrove/RemsHouse/RemsRoom.tscn"
+spawm_position = Vector2(47.6, 65.9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RemsRoomStairs"]
+position = Vector2(-1, 4.5)
+shape = SubResource("RectangleShape2D_6vifm")
+metadata/_edit_lock_ = true
+
+[node name="LeaveHouseAttempt" type="Area2D" parent="."]
+position = Vector2(56, 131)
+collision_mask = 2
+script = ExtResource("8_wcthc")
+cutscene = ExtResource("9_00tc1")
+conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_m3jyq")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeaveHouseAttempt"]
+shape = SubResource("RectangleShape2D_6vifm")
+metadata/_edit_lock_ = true

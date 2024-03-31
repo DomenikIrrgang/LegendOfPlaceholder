@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="LegendOfPlaceholder"
+config/name="Rinia: Return of Duland"
 run/main_scene="res://Zones/BaseScene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
@@ -209,6 +209,7 @@ Toggle_Questlog={
 2d_physics/layer_4="Object"
 2d_physics/layer_5="Projectile"
 2d_physics/layer_6="Npc"
+2d_physics/layer_7="Trigger"
 
 [rendering]
 

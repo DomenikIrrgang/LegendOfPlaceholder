@@ -986,7 +986,6 @@ text = "Add Item"
 script = SubResource("GDScript_3g0do")
 
 [node name="Save" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 focus_mode = 0
 theme = SubResource("Theme_7fwd3")
@@ -1003,7 +1002,6 @@ text = "Load
 script = SubResource("GDScript_jvssh")
 
 [node name="PlayerPosition" type="Label" parent="Debug/VBoxContainer"]
-visible = false
 layout_mode = 2
 label_settings = ExtResource("30_ao71d")
 script = SubResource("GDScript_empgj")

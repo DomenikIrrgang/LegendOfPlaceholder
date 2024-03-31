@@ -123,7 +123,7 @@ noise = SubResource("FastNoiseLite_xsawg")
 [node name="BaseScene" type="Node2D" groups=["base_scene"]]
 y_sort_enabled = true
 script = ExtResource("1_3m1id")
-initial_scene = "res://Zones/ForestGrove/ForestGrove.tscn"
+initial_scene = "res://Zones/ForestGrove/RemsHouse/RensHouse.tscn"
 
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("targeted_node") groups=["camera"]]
 position = Vector2(-60, 0)
@@ -134,7 +134,6 @@ script = ExtResource("1_yk0hc")
 targeted_node = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_21w2i")]
-position = Vector2(-60, -5)
 
 [node name="World" type="Node2D" parent="." groups=["world"]]
 y_sort_enabled = true

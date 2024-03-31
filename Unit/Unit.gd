@@ -485,6 +485,12 @@ func set_animation(animation_name: String) -> bool:
 		return true
 	return false
 	
+func pause_animation() -> void:
+	model_animation.pause()
+	
+func start_animation() -> void:
+	model_animation.play()
+	
 var pushback_tween
 	
 func apply_pushback(pushback_direction: Vector2, pushback_strength: float, pushback_duration: float) -> void:
@@ -496,6 +502,9 @@ func apply_pushback(pushback_direction: Vector2, pushback_strength: float, pushb
 		pushback_velocity = pushback_direction.normalized() * (pushback_strength * 700) * (100.0 / unit_data.mass)
 		pushback_tween.tween_property(self, "pushback_velocity", Vector2(0, 0), pushback_duration).set_ease(Tween.EASE_IN)
 		pushback_tween.play()
+		
+func walk_to_position(path: Array[Vector2]) -> void:
+	movement_strategy = PathMovementStrategy.new(self, path)
 	
 func get_alias() -> String:
 	return unit_data.alias

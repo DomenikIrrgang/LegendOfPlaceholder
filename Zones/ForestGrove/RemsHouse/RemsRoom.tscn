@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://yayxbc8kgco7"]
+
+[ext_resource type="Script" path="res://Zones/ForestGrove/RemsHouse/RemsRoom.gd" id="1_jjlax"]
+[ext_resource type="TileSet" uid="uid://c65yuai7jjlwb" path="res://Zones/ForestGrove/ForestGroveTileSet.tres" id="1_m1irm"]
+[ext_resource type="Script" path="res://Zones/ForestGrove/RemsHouse/HouseTilemap.gd" id="2_bo4t0"]
+[ext_resource type="Script" path="res://Zones/ForestGrove/SceneSwitch.gd" id="3_3e1cn"]
+[ext_resource type="Script" path="res://Zones/Triggers/CutsceneTrigger.gd" id="5_v7phc"]
+[ext_resource type="Resource" uid="uid://cx2wmshc3a7a5" path="res://Resources/Cutscenes/Prolog/RensAwakening/RensAwakening.tres" id="6_m7myb"]
+[ext_resource type="Script" path="res://Resources/Conditions/FlagValueCondition.gd" id="7_ij5m0"]
+[ext_resource type="Texture2D" uid="uid://dq6datm3y1cn1" path="res://assets/environment/rens_house/rems_bed.png" id="8_qogxw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgj5c"]
+size = Vector2(16, 10)
+
+[sub_resource type="Resource" id="Resource_1ow3v"]
+script = ExtResource("7_ij5m0")
+flag = 1
+flag_value = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tet83"]
+size = Vector2(25, 40)
+
+[node name="RemsRoom" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_jjlax")
+
+[node name="Background" type="TileMap" parent="."]
+y_sort_enabled = true
+position = Vector2(7, 2)
+rotation = -0.000297988
+tile_set = ExtResource("1_m1irm")
+format = 2
+layer_0/name = "Background"
+layer_0/z_index = -2
+layer_0/tile_data = PackedInt32Array(262146, 720896, 0, 196610, 720896, 0, 196611, 720896, 0, 196612, 720896, 0, 196609, 720896, 0, 196608, 720896, 0, 262143, 720896, 0, 196607, 720896, 0, 131071, 720896, 0, 65535, 720896, 0, -1, 720896, 0, -65536, 720896, 0, -65535, 720896, 0, -65534, 720896, 0, -65533, 720896, 0, -65532, 720896, 0, 4, 720896, 0, 65540, 720896, 0, 131076, 720896, 0, 131075, 720896, 0, 131074, 720896, 0, 131073, 720896, 0, 131072, 720896, 0, 65536, 720896, 0, 0, 720896, 0, 1, 720896, 0, 2, 720896, 0, 3, 720896, 0, 65539, 720896, 0, 65538, 720896, 0, 65537, 720896, 0)
+layer_1/name = "Walls"
+layer_1/y_sort_enabled = true
+layer_1/z_index = -1
+layer_1/tile_data = PackedInt32Array(-2, 0, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -65531, 0, 0, 5, 0, 0, 65541, 0, 0, 131077, 0, 0, 65534, 0, 0, 131070, 0, 0, 196606, 0, 0, 262142, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 196613, 0, 0, 262145, 0, 0, 262146, 917504, 0)
+script = ExtResource("2_bo4t0")
+
+[node name="StairsDown" type="Area2D" parent="."]
+position = Vector2(48, 76)
+collision_mask = 2
+script = ExtResource("3_3e1cn")
+scene = "res://Zones/ForestGrove/RemsHouse/RensHouse.tscn"
+spawm_position = Vector2(7.7, 22.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StairsDown"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_fgj5c")
+metadata/_edit_lock_ = true
+
+[node name="CutsceneTrigger" type="Area2D" parent="."]
+visible = false
+position = Vector2(-3, 4)
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("5_v7phc")
+cutscene = ExtResource("6_m7myb")
+conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_1ow3v")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CutsceneTrigger"]
+shape = SubResource("RectangleShape2D_tet83")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+metadata/_edit_lock_ = true
+
+[node name="Bed" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(8, 0)
+
+[node name="BottomPart" type="Sprite2D" parent="Bed"]
+y_sort_enabled = true
+position = Vector2(-8, 8)
+texture = ExtResource("8_qogxw")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="TopPartOver" type="Sprite2D" parent="Bed"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-8, -8)
+texture = ExtResource("8_qogxw")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="TopPartUnder" type="Sprite2D" parent="Bed"]
+y_sort_enabled = true
+position = Vector2(-8, -8)
+texture = ExtResource("8_qogxw")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
