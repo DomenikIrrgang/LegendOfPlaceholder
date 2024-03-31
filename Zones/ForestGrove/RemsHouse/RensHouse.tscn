@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cex8g67gr43h7"]
+[gd_scene load_steps=35 format=3 uid="uid://cex8g67gr43h7"]
 
 [ext_resource type="Script" path="res://Zones/ForestGrove/RemsHouse/RensHouse.gd" id="1_ocifb"]
 [ext_resource type="TileSet" uid="uid://c65yuai7jjlwb" path="res://Zones/ForestGrove/ForestGroveTileSet.tres" id="2_7djdw"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://bbvdyoem4obpd" path="res://Resources/Cutscenes/Prolog/RensAwakening/LeaveHouseAttempt.tres" id="9_00tc1"]
 [ext_resource type="Resource" uid="uid://cvc7cc2apejso" path="res://Resources/Cutscenes/Prolog/RensAwakening/LeaveHouseAttemptBeforeBackpack.tres" id="10_cpkm7"]
 [ext_resource type="Resource" uid="uid://b5kc6posj5evn" path="res://Resources/Npcs/Backpack.tres" id="11_gndy3"]
+[ext_resource type="Script" path="res://Zones/ForestGrove/RemsHouse/PulsingLight.gd" id="12_33j3e"]
 
 [sub_resource type="Resource" id="Resource_wvoua"]
 script = ExtResource("5_yr2uk")
@@ -45,6 +46,108 @@ script = ExtResource("5_yr2uk")
 flag = 3
 flag_value = true
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4etr"]
+atlas = ExtResource("5_v6x8x")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlph1"]
+atlas = ExtResource("5_v6x8x")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83xf8"]
+atlas = ExtResource("5_v6x8x")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btb5o"]
+atlas = ExtResource("5_v6x8x")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1rvd"]
+atlas = ExtResource("5_v6x8x")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_al5pq"]
+atlas = ExtResource("5_v6x8x")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmic2"]
+atlas = ExtResource("5_v6x8x")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc344"]
+atlas = ExtResource("5_v6x8x")
+region = Rect2(224, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13244"]
+atlas = ExtResource("5_v6x8x")
+region = Rect2(256, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly4al"]
+atlas = ExtResource("5_v6x8x")
+region = Rect2(288, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o8c54"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4etr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlph1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83xf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btb5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1rvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_al5pq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmic2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mc344")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13244")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ly4al")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v188q"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 14.0
+emission_ring_radius = 4.0
+emission_ring_inner_radius = 2.0
+inherit_velocity_ratio = 1.0
+gravity = Vector3(0, -5, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v086i"]
+size = Vector2(28, 17)
+
+[sub_resource type="Gradient" id="Gradient_i3dkf"]
+offsets = PackedFloat32Array(0, 0.845304)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ki3a"]
+gradient = SubResource("Gradient_i3dkf")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="RensHouse" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_ocifb")
@@ -57,11 +160,11 @@ tile_set = ExtResource("2_7djdw")
 format = 2
 layer_0/name = "Background"
 layer_0/z_index = -2
-layer_0/tile_data = PackedInt32Array(65538, 720896, 0, 65537, 720896, 0, 65536, 720896, 0, 131071, 720896, 0, 131072, 720896, 0, 131073, 720896, 0, 131074, 720896, 0, 196607, 720896, 0, 65539, 720896, 0, 131075, 720896, 0, 196610, 720896, 0, 196611, 720896, 0, 262147, 720896, 0, 262148, 720896, 0, 196612, 720896, 0, 262146, 720896, 0, 262145, 720896, 0, 196609, 720896, 0, 196608, 720896, 0, 262144, 720896, 0, 327679, 720896, 0, 262143, 720896, 0, 131079, 720896, 0, 196615, 720896, 0, 65543, 720896, 0, 196614, 720896, 0, 196613, 720896, 0, 262151, 720896, 0, 262150, 720896, 0, 327686, 720896, 0, 327687, 720896, 0, 458759, 720896, 0, 458758, 720896, 0, 458757, 720896, 0, 458756, 720896, 0, 458755, 720896, 0, 458754, 720896, 0, 458753, 720896, 0, 458752, 720896, 0, 393216, 720896, 0, 458751, 720896, 0, 393215, 720896, 0, 524287, 720896, 0, 393217, 720896, 0, 393218, 720896, 0, 327682, 720896, 0, 327681, 720896, 0, 327680, 720896, 0, 393219, 720896, 0, 393220, 720896, 0, 393221, 720896, 0, 393222, 720896, 0, 327685, 720896, 0, 327684, 720896, 0, 327683, 720896, 0, 262149, 720896, 0, 393223, 720896, 0, 65544, 720896, 0, 131080, 720896, 0, 196616, 720896, 0, 262152, 720896, 0, 327688, 720896, 0, 393224, 720896, 0, 458760, 720896, 0, 524291, 720896, 0, 0, 720896, 0, 131078, 786432, 0, 131077, 786432, 0, 131076, 786432, 0, 65540, 786432, 0, 65541, 786432, 0, 65542, 786432, 0)
+layer_0/tile_data = PackedInt32Array(65538, 720896, 0, 65537, 720896, 0, 65536, 720896, 0, 131071, 720896, 0, 131072, 720896, 0, 131073, 720896, 0, 131074, 720896, 0, 196607, 720896, 0, 65539, 720896, 0, 131075, 720896, 0, 196610, 720896, 0, 196611, 720896, 0, 262147, 720896, 0, 262148, 720896, 0, 196612, 720896, 0, 262146, 720896, 0, 262145, 720896, 0, 196609, 720896, 0, 196608, 720896, 0, 262144, 720896, 0, 327679, 720896, 0, 262143, 720896, 0, 131079, 720896, 0, 196615, 720896, 0, 65543, 720896, 0, 196614, 720896, 0, 196613, 720896, 0, 262151, 720896, 0, 262150, 720896, 0, 327686, 720896, 0, 327687, 720896, 0, 458759, 720896, 0, 458758, 720896, 0, 458757, 720896, 0, 458756, 720896, 0, 458755, 720896, 0, 458754, 720896, 0, 458753, 720896, 0, 458752, 720896, 0, 393216, 720896, 0, 458751, 720896, 0, 393215, 720896, 0, 524287, 720896, 0, 393217, 720896, 0, 393218, 720896, 0, 327682, 720896, 0, 327681, 720896, 0, 327680, 720896, 0, 393219, 720896, 0, 393220, 720896, 0, 393221, 720896, 0, 393222, 720896, 0, 327685, 720896, 0, 327684, 720896, 0, 327683, 720896, 0, 262149, 720896, 0, 393223, 720896, 0, 65544, 720896, 0, 131080, 720896, 0, 196616, 720896, 0, 262152, 720896, 0, 327688, 720896, 0, 393224, 720896, 0, 458760, 720896, 0, 524291, 720896, 0, 0, 720896, 0, 131078, 1507328, 0, 131077, 1441792, 0, 131076, 1376256, 0, 65540, 1179648, 0, 65541, 1245184, 0, 65542, 1310720, 0, 65535, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, 2, 0, 0, 1, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, -65528, 0, 0, -65529, 0, 0, -65530, 0, 0, -65531, 0, 0, -65532, 0, 0, -65533, 0, 0)
 layer_1/name = "Walls"
 layer_1/y_sort_enabled = true
 layer_1/z_index = -1
-layer_1/tile_data = PackedInt32Array(8, 0, 0, 7, 0, 0, 3, 0, 0, 2, 0, 0, -65527, 0, 0, 9, 0, 0, 65545, 0, 0, 131081, 0, 0, 196617, 0, 0, 262153, 0, 0, 327689, 0, 0, 393225, 0, 0, 458761, 0, 0, 524297, 0, 0, 524296, 0, 0, 524295, 0, 0, 524294, 0, 0, 524293, 0, 0, 524292, 0, 0, 524290, 0, 0, 524289, 0, 0, 524288, 0, 0, 589823, 0, 0, 1, 0, 0, 65534, 0, 0, -65533, 0, 0, -65528, 0, 0, -65529, 0, 0, -65532, 0, 0, -65535, 0, 0, -65534, 0, 0, -2, 0, 0, 4, 0, 0, 5, 0, 0, -65531, 0, 0, 589822, 0, 0, 524286, 0, 0, 458750, 0, 0, 393214, 0, 0, 327678, 0, 0, 262142, 0, 0, 196606, 0, 0, 131070, 0, 0, 6, 0, 0, -65530, 0, 0, -65536, 0, 0, -1, 0, 0, 65535, 0, 0, 0, 851968, 0)
+layer_1/tile_data = PackedInt32Array(0, 851968, 0, 458754, 458752, 0, 458753, 458752, 0, 458752, 458752, 0, 458756, 458752, 0, 458757, 458752, 0, 458758, 458752, 0, 458759, 458752, 0, 458760, 393216, 0, 524287, 131072, 0, 458751, 65536, 0, 393215, 65536, 0, 327679, 65536, 0, 262143, 65536, 0, 196607, 65536, 0, 131071, 65536, 0, 393224, 262144, 0, 327688, 262144, 0, 262152, 262144, 0, 196616, 262144, 0, 131080, 262144, 0, 65544, 262144, 0, 5, 458752, 0, 524290, 262144, 0, 524292, 65536, 0, -1, 196608, 0, -65528, 327680, 0, 65535, 131072, 0, 8, 393216, 0, -65529, 524288, 0, -65530, 524288, 0, -65531, 524288, 0, -65532, 524288, 0, -65533, 524288, 0, -65534, 524288, 0, -65535, 524288, 0, -65536, 524288, 0, 7, 458752, 0, 6, 458752, 0, 4, 458752, 0, 3, 458752, 0, 2, 458752, 0, 1, 458752, 0)
 script = ExtResource("3_msjc4")
 
 [node name="HouseExit" type="Area2D" parent="."]
@@ -75,10 +178,6 @@ conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubReso
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HouseExit"]
 shape = SubResource("RectangleShape2D_6vifm")
 metadata/_edit_lock_ = true
-
-[node name="Furnace" type="Sprite2D" parent="."]
-position = Vector2(89, 5)
-texture = ExtResource("5_v6x8x")
 
 [node name="Alfond" parent="." instance=ExtResource("6_j6bf1")]
 position = Vector2(55, 27)
@@ -122,3 +221,44 @@ metadata/_edit_lock_ = true
 position = Vector2(-7, 51)
 despawn_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_1mbtu")])
 unit_data = ExtResource("11_gndy3")
+
+[node name="Furnace" type="RigidBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(88, 3)
+collision_mask = 46
+gravity_scale = 0.0
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Furnace"]
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_o8c54")
+autoplay = "default"
+frame_progress = 0.82758
+metadata/_edit_lock_ = true
+
+[node name="Smoke" type="GPUParticles2D" parent="Furnace"]
+self_modulate = Color(0.768627, 0.298039, 0.247059, 1)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -15)
+amount = 6
+process_material = SubResource("ParticleProcessMaterial_v188q")
+lifetime = 2.0
+fixed_fps = 60
+trail_lifetime = 3.0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Furnace"]
+visible = false
+position = Vector2(0, 13.5)
+shape = SubResource("RectangleShape2D_v086i")
+metadata/_edit_lock_ = true
+
+[node name="FireLight" type="PointLight2D" parent="Furnace"]
+position = Vector2(0, 17)
+color = Color(0.643137, 0.0313726, 0.215686, 1)
+texture = SubResource("GradientTexture2D_5ki3a")
+script = ExtResource("12_33j3e")
+max_energy = 1.3
+min_energy = 0.9
+min_size = 0.9
+speed = 0.7
