@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Cutscene" load_steps=20 format=3 uid="uid://dun0v2ids3fgu"]
+[gd_resource type="Resource" script_class="Cutscene" load_steps=23 format=3 uid="uid://dun0v2ids3fgu"]
 
 [ext_resource type="Script" path="res://Resources/Cutscenes/Cutscene.gd" id="1_t0e3o"]
 [ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="2_p0s3m"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Resources/Cutscenes/MoveUnitAction.gd" id="5_ejqew"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/CutsceneStep.gd" id="6_nncfm"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/DespawnUnitAction.gd" id="7_ut3cd"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/SetFlagCutsceneAction.gd" id="8_2lnmb"]
 
 [sub_resource type="Resource" id="Resource_23wlu"]
 script = ExtResource("3_1r7q2")
@@ -69,7 +70,16 @@ unit_name = "Alfond"
 script = ExtResource("6_nncfm")
 actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_c2lyp")])
 
+[sub_resource type="Resource" id="Resource_3xos8"]
+script = ExtResource("8_2lnmb")
+flag = 2
+value = true
+
+[sub_resource type="Resource" id="Resource_v7m56"]
+script = ExtResource("6_nncfm")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_3xos8")])
+
 [resource]
 script = ExtResource("1_t0e3o")
 name = "Aflond Intro"
-steps = Array[ExtResource("6_nncfm")]([SubResource("Resource_i5l01"), SubResource("Resource_fawma"), SubResource("Resource_8hd7n"), SubResource("Resource_vw7kx")])
+steps = Array[ExtResource("6_nncfm")]([SubResource("Resource_i5l01"), SubResource("Resource_fawma"), SubResource("Resource_8hd7n"), SubResource("Resource_vw7kx"), SubResource("Resource_v7m56")])

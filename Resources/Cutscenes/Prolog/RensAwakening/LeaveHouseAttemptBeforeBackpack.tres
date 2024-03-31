@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="Cutscene" load_steps=13 format=3 uid="uid://cvc7cc2apejso"]
+
+[ext_resource type="Script" path="res://Resources/Cutscenes/Cutscene.gd" id="1_ws6yl"]
+[ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="2_uwweo"]
+[ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="3_icb0q"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/ShowDialogAction.gd" id="4_uvw8b"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/CutsceneStep.gd" id="5_0fkg5"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/MoveUnitAction.gd" id="6_upo46"]
+
+[sub_resource type="Resource" id="Resource_u01yt"]
+script = ExtResource("3_icb0q")
+type = 0
+author = 0
+text = "I should get my backback first."
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
+
+[sub_resource type="Resource" id="Resource_wtthd"]
+script = ExtResource("2_uwweo")
+steps = Array[ExtResource("3_icb0q")]([SubResource("Resource_u01yt")])
+
+[sub_resource type="Resource" id="Resource_edhtd"]
+script = ExtResource("4_uvw8b")
+dialog = SubResource("Resource_wtthd")
+
+[sub_resource type="Resource" id="Resource_w3xul"]
+script = ExtResource("5_0fkg5")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_edhtd")])
+
+[sub_resource type="Resource" id="Resource_d0uf4"]
+script = ExtResource("6_upo46")
+unit_name = "Player"
+path = Array[Vector2]([Vector2(0, -10)])
+relative_path = true
+
+[sub_resource type="Resource" id="Resource_6ivr8"]
+script = ExtResource("5_0fkg5")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_d0uf4")])
+
+[resource]
+script = ExtResource("1_ws6yl")
+name = "Leave House Attempt Before Backpack"
+steps = Array[ExtResource("5_0fkg5")]([SubResource("Resource_w3xul"), SubResource("Resource_6ivr8")])

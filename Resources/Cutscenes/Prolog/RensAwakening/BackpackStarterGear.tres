@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="Cutscene" load_steps=23 format=3 uid="uid://dib152fkq6ndt"]
+
+[ext_resource type="Script" path="res://Resources/Cutscenes/Cutscene.gd" id="1_hxjl4"]
+[ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="2_vjf68"]
+[ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="3_8doqx"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/ShowDialogAction.gd" id="4_tggwc"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/CutsceneStep.gd" id="5_jiy0i"]
+[ext_resource type="Resource" uid="uid://bcwti7dwmsujv" path="res://Resources/Gear/RunesmithSet/RunesmithsPants.tres" id="6_poih8"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/CreateItemCutsceneAction.gd" id="7_40r80"]
+[ext_resource type="Resource" uid="uid://dy2pbsdtaks1h" path="res://Resources/Gear/RunesmithSet/RunesmithsShirt.tres" id="8_bait8"]
+[ext_resource type="Resource" uid="uid://dribn3a0vyi3v" path="res://Resources/Gear/RunesmithSet/RunesmithsHeadband.tres" id="9_13rja"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/SetFlagCutsceneAction.gd" id="10_lvuj6"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/DespawnUnitAction.gd" id="11_ad7wh"]
+
+[sub_resource type="Resource" id="Resource_hocds"]
+script = ExtResource("3_8doqx")
+type = 0
+author = 0
+text = "My father left me new clothing for my birthday!"
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
+
+[sub_resource type="Resource" id="Resource_fyaxd"]
+script = ExtResource("2_vjf68")
+steps = Array[ExtResource("3_8doqx")]([SubResource("Resource_hocds")])
+
+[sub_resource type="Resource" id="Resource_pte7y"]
+script = ExtResource("4_tggwc")
+dialog = SubResource("Resource_fyaxd")
+
+[sub_resource type="Resource" id="Resource_tfbqa"]
+script = ExtResource("5_jiy0i")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_pte7y")])
+
+[sub_resource type="Resource" id="Resource_6khg2"]
+script = ExtResource("7_40r80")
+item = ExtResource("6_poih8")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_qd1td"]
+script = ExtResource("7_40r80")
+item = ExtResource("8_bait8")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_s44no"]
+script = ExtResource("7_40r80")
+item = ExtResource("9_13rja")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_cg2gy"]
+script = ExtResource("10_lvuj6")
+flag = 3
+value = true
+
+[sub_resource type="Resource" id="Resource_pnrrg"]
+script = ExtResource("5_jiy0i")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_6khg2"), SubResource("Resource_qd1td"), SubResource("Resource_s44no"), SubResource("Resource_cg2gy")])
+
+[sub_resource type="Resource" id="Resource_y4ify"]
+script = ExtResource("11_ad7wh")
+unit_name = "Backpack"
+
+[sub_resource type="Resource" id="Resource_2jr00"]
+script = ExtResource("5_jiy0i")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_y4ify")])
+
+[resource]
+script = ExtResource("1_hxjl4")
+name = "Backpack Startergear"
+steps = Array[ExtResource("5_jiy0i")]([SubResource("Resource_tfbqa"), SubResource("Resource_pnrrg"), SubResource("Resource_2jr00")])

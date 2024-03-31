@@ -1,5 +1,11 @@
 extends Unit
 
+@export
+var spawn_conditions: Array[Condition] = []
+
+@export
+var despawn_conditions: Array[Condition] = []
+
 var castbar
 var CastBar = load("res://Enemy/Castbar.tscn")
 
@@ -30,6 +36,20 @@ func _ready() -> void:
 	model_animation.play(model_instance.get_idle_down_animation())
 	quest_indicator.position.y = -model.get_rect().size.y - 6
 	quest_indicator.update()
+	if not spawn_conditions_fulfilled() or despawn_conditions_fulfilled():
+		queue_free()
+	
+func spawn_conditions_fulfilled() -> bool:
+	for condition in spawn_conditions:
+		if not condition.is_fulfilled():
+			return false
+	return true
+	
+func despawn_conditions_fulfilled() -> bool:
+	for condition in despawn_conditions:
+		if not condition.is_fulfilled():
+			return false
+	return despawn_conditions.size() != 0
 	
 func init_cast_bar() -> void:
 	castbar = CastBar.instantiate()

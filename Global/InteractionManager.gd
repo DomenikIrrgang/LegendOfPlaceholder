@@ -6,14 +6,15 @@ signal interaction_prompt_stopped()
 var interaction_prompt_active = false
 
 func prompt_interactions(unit_data: UnitData, interactions: Array[Interaction]) -> void:
-	interaction_prompt_active = true
 	var interactions_to_prompt = interactions.filter(func (interaction: Interaction): return interaction.is_visible())
 	if interactions_to_prompt.size() > 1:
+		interaction_prompt_active = true
 		interaction_prompt_requested.emit(
 			unit_data,
 			interactions_to_prompt
 		)
-	else:
+	elif interactions_to_prompt.size() == 1:
+		interaction_prompt_active = true
 		select_interaction(interactions_to_prompt[0])
 	
 func select_interaction(interaction: Interaction) -> void:

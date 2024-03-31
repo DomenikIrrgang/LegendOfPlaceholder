@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cex8g67gr43h7"]
+[gd_scene load_steps=19 format=3 uid="uid://cex8g67gr43h7"]
 
 [ext_resource type="Script" path="res://Zones/ForestGrove/RemsHouse/RensHouse.gd" id="1_ocifb"]
 [ext_resource type="TileSet" uid="uid://c65yuai7jjlwb" path="res://Zones/ForestGrove/ForestGroveTileSet.tres" id="2_7djdw"]
@@ -9,19 +9,41 @@
 [ext_resource type="PackedScene" uid="uid://dxnkwps61uq0g" path="res://Npc/Npc.tscn" id="6_j6bf1"]
 [ext_resource type="Script" path="res://Zones/Triggers/CutsceneTrigger.gd" id="8_wcthc"]
 [ext_resource type="Resource" uid="uid://bbvdyoem4obpd" path="res://Resources/Cutscenes/Prolog/RensAwakening/LeaveHouseAttempt.tres" id="9_00tc1"]
+[ext_resource type="Resource" uid="uid://cvc7cc2apejso" path="res://Resources/Cutscenes/Prolog/RensAwakening/LeaveHouseAttemptBeforeBackpack.tres" id="10_cpkm7"]
+[ext_resource type="Resource" uid="uid://b5kc6posj5evn" path="res://Resources/Npcs/Backpack.tres" id="11_gndy3"]
 
 [sub_resource type="Resource" id="Resource_wvoua"]
 script = ExtResource("5_yr2uk")
-flag = 0
+flag = 3
 flag_value = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vifm"]
-size = Vector2(16, 11)
+size = Vector2(11, 7.5)
+
+[sub_resource type="Resource" id="Resource_cs7en"]
+script = ExtResource("5_yr2uk")
+flag = 2
+flag_value = true
 
 [sub_resource type="Resource" id="Resource_m3jyq"]
 script = ExtResource("5_yr2uk")
-flag = 0
+flag = 2
 flag_value = false
+
+[sub_resource type="Resource" id="Resource_cjx18"]
+script = ExtResource("5_yr2uk")
+flag = 2
+flag_value = true
+
+[sub_resource type="Resource" id="Resource_ybiaj"]
+script = ExtResource("5_yr2uk")
+flag = 3
+flag_value = false
+
+[sub_resource type="Resource" id="Resource_1mbtu"]
+script = ExtResource("5_yr2uk")
+flag = 3
+flag_value = true
 
 [node name="RensHouse" type="Node2D"]
 y_sort_enabled = true
@@ -60,6 +82,7 @@ texture = ExtResource("5_v6x8x")
 
 [node name="Alfond" parent="." instance=ExtResource("6_j6bf1")]
 position = Vector2(55, 27)
+despawn_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_cs7en")])
 
 [node name="RemsRoomStairs" type="Area2D" parent="."]
 position = Vector2(9, 1)
@@ -73,13 +96,29 @@ position = Vector2(-1, 4.5)
 shape = SubResource("RectangleShape2D_6vifm")
 metadata/_edit_lock_ = true
 
-[node name="LeaveHouseAttempt" type="Area2D" parent="."]
-position = Vector2(56, 131)
+[node name="LeaveHouseAttemptBeforeAlfond" type="Area2D" parent="."]
+position = Vector2(56, 134)
 collision_mask = 2
 script = ExtResource("8_wcthc")
 cutscene = ExtResource("9_00tc1")
 conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_m3jyq")])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeaveHouseAttempt"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeaveHouseAttemptBeforeAlfond"]
 shape = SubResource("RectangleShape2D_6vifm")
 metadata/_edit_lock_ = true
+
+[node name="LeaveHouseAttemptBeforeBackpack" type="Area2D" parent="."]
+position = Vector2(56, 134)
+collision_mask = 2
+script = ExtResource("8_wcthc")
+cutscene = ExtResource("10_cpkm7")
+conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_cjx18"), SubResource("Resource_ybiaj")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeaveHouseAttemptBeforeBackpack"]
+shape = SubResource("RectangleShape2D_6vifm")
+metadata/_edit_lock_ = true
+
+[node name="Backpack" parent="." instance=ExtResource("6_j6bf1")]
+position = Vector2(-7, 51)
+despawn_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_1mbtu")])
+unit_data = ExtResource("11_gndy3")

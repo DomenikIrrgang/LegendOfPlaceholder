@@ -469,18 +469,23 @@ func get_movement_speed() -> float:
 	
 func update_direction() -> void:
 	var original_direction = direction
-	if (movement_velocity.y != 0):
-		if (movement_velocity.y > 0):
-			direction = Direction.DOWN
-		else:
-			direction = Direction.UP
-	if (movement_velocity.x != 0):
-		if (movement_velocity.x > 0):
-			direction = Direction.RIGHT
-		else:
-			direction = Direction.LEFT
+	var abs_x = abs(movement_velocity.x)
+	var abs_y = abs(movement_velocity.y)
+	if abs_x >= abs_y:
+		if (movement_velocity.x != 0):
+			if (movement_velocity.x > 0):
+				direction = Direction.RIGHT
+			else:
+				direction = Direction.LEFT
+	else:
+		if (movement_velocity.y != 0):
+			if (movement_velocity.y > 0):
+				direction = Direction.DOWN
+			else:
+				direction = Direction.UP
 	if (original_direction != direction):
 		direction_changed.emit(direction)
+	
 	
 func set_animation(animation_name: String) -> bool:
 	print("setting animation ", animation_name)

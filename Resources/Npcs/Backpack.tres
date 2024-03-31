@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="NpcData" load_steps=10 format=3 uid="uid://b5kc6posj5evn"]
+
+[ext_resource type="Texture2D" uid="uid://f45aqipga0s2" path="res://assets/ui/bottom_hud/closed_bag.png" id="1_rhk0u"]
+[ext_resource type="Script" path="res://Resources/Npcs/NpcData.gd" id="1_y2yra"]
+[ext_resource type="Resource" uid="uid://dib152fkq6ndt" path="res://Resources/Cutscenes/Prolog/RensAwakening/BackpackStarterGear.tres" id="2_m1lgb"]
+[ext_resource type="Script" path="res://Resources/Conditions/FlagValueCondition.gd" id="4_8hdjv"]
+[ext_resource type="Script" path="res://Resources/Interactions/StartCutsceneInteraction.gd" id="4_ulc4j"]
+[ext_resource type="PackedScene" uid="uid://6h04efjjt2o" path="res://Npc/Backpack/Backpack.tscn" id="6_bvg2o"]
+
+[sub_resource type="Resource" id="Resource_0g2xi"]
+script = ExtResource("4_8hdjv")
+flag = 2
+flag_value = true
+
+[sub_resource type="Resource" id="Resource_5xqf7"]
+script = ExtResource("4_8hdjv")
+flag = 3
+flag_value = false
+
+[sub_resource type="Resource" id="Resource_tgnul"]
+script = ExtResource("4_ulc4j")
+cutscene = ExtResource("2_m1lgb")
+alias = "Talk"
+visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_0g2xi"), SubResource("Resource_5xqf7")])
+useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+
+[resource]
+script = ExtResource("1_y2yra")
+model = ExtResource("6_bvg2o")
+interactions = Array[Resource("res://Resources/Interactions/Interaction.gd")]([SubResource("Resource_tgnul")])
+alias = "Backpack"
+dialog_texture = ExtResource("1_rhk0u")
+interaction_texture = ExtResource("1_rhk0u")
+level = 1
+is_friendly = true
+base_movement_speed = 30.0
+mass = 50.0
+knockbackable = false
+stats = Array[Resource("res://Resources/StatAssignment.gd")]([])
