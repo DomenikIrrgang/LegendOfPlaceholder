@@ -1,12 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkhwsj6cq1b3l"]
+[gd_scene load_steps=14 format=3 uid="uid://bkhwsj6cq1b3l"]
 
 [ext_resource type="Script" path="res://Npc/Model.gd" id="1_6ny36"]
 [ext_resource type="Texture2D" uid="uid://02xo8rphiwgt" path="res://assets/textures/player.png" id="2_xqtxo"]
 [ext_resource type="Animation" uid="uid://drmbw8xnxdov1" path="res://Player/Animations/Idle_Down.res" id="3_8nh1x"]
+[ext_resource type="Animation" uid="uid://dcl2bnq56ks2o" path="res://Player/Animations/Up.res" id="4_r1maw"]
+[ext_resource type="Animation" uid="uid://dv8m2ic0ifk6l" path="res://Player/Animations/Right.res" id="5_s3gm2"]
+[ext_resource type="Animation" uid="uid://creeojfoqy7lh" path="res://Player/Animations/Left.res" id="6_ftxg5"]
+[ext_resource type="Animation" uid="uid://b1bay6a3pan1y" path="res://Player/Animations/Down.res" id="7_uwxkj"]
+[ext_resource type="Animation" uid="uid://qrtlju45g7xq" path="res://Player/Animations/Idle_Left.res" id="8_sp1qv"]
+[ext_resource type="Animation" uid="uid://cwb7mnrchs1c1" path="res://Player/Animations/Idle_Right.res" id="9_bmlb6"]
+[ext_resource type="Animation" uid="uid://6fije23hdpvk" path="res://Player/Animations/Idle_Up.res" id="10_olgp4"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ml1xt"]
 _data = {
-"Idle_Down": ExtResource("3_8nh1x")
+"Down": ExtResource("7_uwxkj"),
+"Idle_Down": ExtResource("3_8nh1x"),
+"Idle_Left": ExtResource("8_sp1qv"),
+"Idle_Right": ExtResource("9_bmlb6"),
+"Idle_Up": ExtResource("10_olgp4"),
+"Left": ExtResource("6_ftxg5"),
+"Right": ExtResource("5_s3gm2"),
+"Up": ExtResource("4_r1maw")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53rd5"]

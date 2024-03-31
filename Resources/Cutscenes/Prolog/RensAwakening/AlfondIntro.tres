@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="Cutscene" load_steps=20 format=3 uid="uid://dun0v2ids3fgu"]
+
+[ext_resource type="Script" path="res://Resources/Cutscenes/Cutscene.gd" id="1_t0e3o"]
+[ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="2_p0s3m"]
+[ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="3_1r7q2"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/ShowDialogAction.gd" id="4_vkhhc"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/MoveUnitAction.gd" id="5_ejqew"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/CutsceneStep.gd" id="6_nncfm"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/DespawnUnitAction.gd" id="7_ut3cd"]
+
+[sub_resource type="Resource" id="Resource_23wlu"]
+script = ExtResource("3_1r7q2")
+type = 0
+author = 1
+text = " Happy birthday son! "
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
+
+[sub_resource type="Resource" id="Resource_k2l1a"]
+script = ExtResource("3_1r7q2")
+type = 0
+author = 1
+text = "Today marks the start of your journey to become a master runesmith. I tought you all I can. Now it is time for you to travel across the land and learn from other runesmiths. "
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
+
+[sub_resource type="Resource" id="Resource_fdydl"]
+script = ExtResource("3_1r7q2")
+type = 0
+author = 1
+text = "I packed some things for you that will help you on your journey. Go and pick up your backbag and let's meet outside."
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
+
+[sub_resource type="Resource" id="Resource_7muwf"]
+script = ExtResource("2_p0s3m")
+steps = Array[ExtResource("3_1r7q2")]([SubResource("Resource_23wlu"), SubResource("Resource_k2l1a"), SubResource("Resource_fdydl")])
+
+[sub_resource type="Resource" id="Resource_hl6n1"]
+script = ExtResource("4_vkhhc")
+dialog = SubResource("Resource_7muwf")
+
+[sub_resource type="Resource" id="Resource_i5l01"]
+script = ExtResource("6_nncfm")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_hl6n1")])
+
+[sub_resource type="Resource" id="Resource_efxov"]
+script = ExtResource("5_ejqew")
+unit_name = "Player"
+path = Array[Vector2]([Vector2(-20, 0), Vector2(-19, 0)])
+relative_path = true
+
+[sub_resource type="Resource" id="Resource_fawma"]
+script = ExtResource("6_nncfm")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_efxov")])
+
+[sub_resource type="Resource" id="Resource_sst0w"]
+script = ExtResource("5_ejqew")
+unit_name = "Alfond"
+path = Array[Vector2]([Vector2(56, 142)])
+relative_path = false
+
+[sub_resource type="Resource" id="Resource_8hd7n"]
+script = ExtResource("6_nncfm")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_sst0w")])
+
+[sub_resource type="Resource" id="Resource_c2lyp"]
+script = ExtResource("7_ut3cd")
+unit_name = "Alfond"
+
+[sub_resource type="Resource" id="Resource_vw7kx"]
+script = ExtResource("6_nncfm")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_c2lyp")])
+
+[resource]
+script = ExtResource("1_t0e3o")
+name = "Aflond Intro"
+steps = Array[ExtResource("6_nncfm")]([SubResource("Resource_i5l01"), SubResource("Resource_fawma"), SubResource("Resource_8hd7n"), SubResource("Resource_vw7kx")])

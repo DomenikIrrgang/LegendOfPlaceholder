@@ -37,7 +37,7 @@ _data = {
 "Bounce": SubResource("Animation_7ebim")
 }
 
-[node name="Npc" type="CharacterBody2D"]
+[node name="Npc" type="CharacterBody2D" groups=["npc", "unit"]]
 y_sort_enabled = true
 collision_layer = 32
 collision_mask = 0

@@ -1,6 +1,5 @@
 extends Node
 
-
 signal cutscene_started(cutscene: Cutscene)
 signal cutscene_finished(cutscene: Cutscene)
 

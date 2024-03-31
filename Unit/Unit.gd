@@ -28,7 +28,10 @@ var last_pushback: float = 0.0
 var pushback_cooldown: float = 0.3
 
 var movement_velocity: Vector2 = Vector2(0, 0)
-var movement_strategy: UnitMovementStrategy = UnitMovementStrategy.new(self)
+var movement_strategy: UnitMovementStrategy :
+	set(value):
+		movement_strategy = value
+	
 var movement_modifiers: Array[MovementModifier] = []
 
 # Resources
@@ -391,11 +394,11 @@ func use_ability(target: Unit, ability: Ability) -> bool:
 
 func _ready() -> void:
 	base_stats = BaseStats.new(unit_data.level)
+	movement_strategy = UnitMovementStrategy.new(self)
 	set_stats(base_stats)
 	stat_calculator = StatCalculator.new(self)
 	resources.resize(ResourceType.Enum.size())
 	resources[ResourceType.Enum.HEALTH] = Health.new(self)
-	movement_strategy = UnitMovementStrategy.new(self)
 	if model_animation.has_animation("Down"):
 		model_animation.play("Down")
 	combat_logic.ability_result.connect(on_ability_result)
@@ -480,6 +483,7 @@ func update_direction() -> void:
 		direction_changed.emit(direction)
 	
 func set_animation(animation_name: String) -> bool:
+	print("setting animation ", animation_name)
 	if model_animation.has_animation(animation_name):
 		model_animation.play(animation_name)
 		return true

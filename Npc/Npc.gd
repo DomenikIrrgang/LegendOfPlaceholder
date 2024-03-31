@@ -9,11 +9,13 @@ var interaction_area: Area2D = $Interactable
 @onready
 var quest_indicator: Sprite2D = $QuestIndicator
 
+var model_instance: Model
+
 func _ready() -> void:
 	super()
 	movement_strategy = UnitMovementStrategy.new(self)
 	init_cast_bar()
-	var model_instance = unit_data.model.instantiate()
+	model_instance = unit_data.model.instantiate()
 	add_child(model_instance)
 	remove_child(model)
 	remove_child(model_animation)

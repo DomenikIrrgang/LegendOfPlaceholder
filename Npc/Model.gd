@@ -20,24 +20,24 @@ func get_idle_down_animation() -> String:
 	return "PlayerAnimations/Idle_Down"
 	
 func get_idle_up_animation() -> String:
-	return "PlayerAnimations/Idle_Down"
+	return "PlayerAnimations/Idle_Up"
 	
 func get_idle_left_animation() -> String:
-	return "PlayerAnimations/Idle_Down"
+	return "PlayerAnimations/Idle_left"
 	
 func get_idle_right_animation() -> String:
-	return "PlayerAnimations/Idle_Down"
+	return "PlayerAnimations/Idle_Right"
 	
 func get_down_animation() -> String:
-	return "PlayerAnimations/Idle_Down"
+	return "PlayerAnimations/Down"
 	
 func get_up_animation() -> String:
-	return "PlayerAnimations/Idle_Down"
+	return "PlayerAnimations/Up"
 	
 func get_left_animation() -> String:
-	return "PlayerAnimations/Idle_Down"
+	return "PlayerAnimations/Left"
 	
 func get_right_animation() -> String:
-	return "PlayerAnimations/Idle_Down"
+	return "PlayerAnimations/Right"
 
 

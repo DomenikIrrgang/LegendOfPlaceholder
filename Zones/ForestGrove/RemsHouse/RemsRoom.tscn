@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://yayxbc8kgco7"]
+[gd_scene load_steps=13 format=3 uid="uid://yayxbc8kgco7"]
 
 [ext_resource type="Script" path="res://Zones/ForestGrove/RemsHouse/RemsRoom.gd" id="1_jjlax"]
 [ext_resource type="TileSet" uid="uid://c65yuai7jjlwb" path="res://Zones/ForestGrove/ForestGroveTileSet.tres" id="1_m1irm"]
@@ -19,6 +19,9 @@ flag_value = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tet83"]
 size = Vector2(25, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3vge"]
+size = Vector2(14, 5.5)
 
 [node name="RemsRoom" type="Node2D"]
 y_sort_enabled = true
@@ -65,9 +68,10 @@ shape = SubResource("RectangleShape2D_tet83")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 metadata/_edit_lock_ = true
 
-[node name="Bed" type="Node2D" parent="."]
+[node name="Bed" type="RigidBody2D" parent="."]
 y_sort_enabled = true
 position = Vector2(8, 0)
+gravity_scale = 0.0
 
 [node name="BottomPart" type="Sprite2D" parent="Bed"]
 y_sort_enabled = true
@@ -90,3 +94,11 @@ position = Vector2(-8, -8)
 texture = ExtResource("8_qogxw")
 region_enabled = true
 region_rect = Rect2(32, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed"]
+position = Vector2(-8.5, 6.5)
+shape = SubResource("RectangleShape2D_p3vge")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bed"]
+position = Vector2(-8, -9.75)
+shape = SubResource("RectangleShape2D_p3vge")

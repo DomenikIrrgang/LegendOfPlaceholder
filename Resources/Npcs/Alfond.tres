@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="NpcData" load_steps=39 format=3 uid="uid://vjtfqay7mifg"]
+[gd_resource type="Resource" script_class="NpcData" load_steps=40 format=3 uid="uid://vjtfqay7mifg"]
 
 [ext_resource type="Texture2D" uid="uid://dtxw35wty86v8" path="res://assets/ui/dialog/player_dialog.png" id="1_qyapk"]
 [ext_resource type="Script" path="res://Resources/Npcs/NpcData.gd" id="1_s8tdc"]
@@ -18,6 +18,8 @@
 [ext_resource type="Script" path="res://Resources/Conditions/IsOnQuestCondition.gd" id="11_1qc3v"]
 [ext_resource type="Script" path="res://Resources/Conditions/FlagValueCondition.gd" id="12_osdw3"]
 [ext_resource type="Resource" uid="uid://b2q8uivlvjjdx" path="res://Resources/Quests/DangerInTheWoods.tres" id="13_ud60j"]
+[ext_resource type="Script" path="res://Resources/Interactions/StartCutsceneInteraction.gd" id="17_aqu3i"]
+[ext_resource type="Resource" uid="uid://dun0v2ids3fgu" path="res://Resources/Cutscenes/Prolog/RensAwakening/AlfondIntro.tres" id="17_dkr7t"]
 
 [sub_resource type="Resource" id="Resource_gqap4"]
 script = ExtResource("8_yx13m")
@@ -115,28 +117,22 @@ alias = "What happened here?"
 visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_xrvar"), SubResource("Resource_2fvf8")])
 useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 
-[sub_resource type="Resource" id="Resource_gd1yx"]
-script = ExtResource("5_us0de")
-type = 0
-author = 1
-text = "Hello there!"
-actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
+[sub_resource type="Resource" id="Resource_aheaa"]
+script = ExtResource("12_osdw3")
+flag = 2
+flag_value = false
 
-[sub_resource type="Resource" id="Resource_4e1pp"]
-script = ExtResource("4_wcysn")
-steps = Array[ExtResource("5_us0de")]([SubResource("Resource_gd1yx")])
-
-[sub_resource type="Resource" id="Resource_cfnf5"]
-script = ExtResource("6_ske37")
-dialog = SubResource("Resource_4e1pp")
+[sub_resource type="Resource" id="Resource_1xyel"]
+script = ExtResource("17_aqu3i")
+cutscene = ExtResource("17_dkr7t")
 alias = "Talk"
-visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_aheaa")])
 useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 
 [resource]
 script = ExtResource("1_s8tdc")
 model = ExtResource("2_jyq13")
-interactions = Array[Resource("res://Resources/Interactions/Interaction.gd")]([SubResource("Resource_gqap4"), SubResource("Resource_xx3ys"), SubResource("Resource_xyujb"), SubResource("Resource_jqshq"), SubResource("Resource_7nfbh"), SubResource("Resource_uiu3x"), SubResource("Resource_q52p4"), SubResource("Resource_vr5qj"), SubResource("Resource_sq6v8"), SubResource("Resource_c5rql"), SubResource("Resource_c405h"), SubResource("Resource_cfnf5")])
+interactions = Array[Resource("res://Resources/Interactions/Interaction.gd")]([SubResource("Resource_gqap4"), SubResource("Resource_xx3ys"), SubResource("Resource_xyujb"), SubResource("Resource_jqshq"), SubResource("Resource_7nfbh"), SubResource("Resource_uiu3x"), SubResource("Resource_q52p4"), SubResource("Resource_vr5qj"), SubResource("Resource_sq6v8"), SubResource("Resource_c5rql"), SubResource("Resource_c405h"), SubResource("Resource_1xyel")])
 alias = "Alfond"
 dialog_texture = ExtResource("1_qyapk")
 interaction_texture = ExtResource("3_n5ih5")

@@ -24,6 +24,7 @@ flag = 0
 flag_value = false
 
 [node name="RensHouse" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_ocifb")
 zone_name = "Ren's House"
 
@@ -42,7 +43,7 @@ layer_1/tile_data = PackedInt32Array(8, 0, 0, 7, 0, 0, 3, 0, 0, 2, 0, 0, -65527,
 script = ExtResource("3_msjc4")
 
 [node name="HouseExit" type="Area2D" parent="."]
-position = Vector2(-39, 8)
+position = Vector2(56, 142)
 collision_mask = 2
 script = ExtResource("4_508uv")
 scene = "res://Zones/ForestGrove/ForestGrove.tscn"
@@ -50,8 +51,8 @@ spawm_position = Vector2(-104, 105)
 conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_wvoua")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HouseExit"]
-position = Vector2(95.25, 134)
 shape = SubResource("RectangleShape2D_6vifm")
+metadata/_edit_lock_ = true
 
 [node name="Furnace" type="Sprite2D" parent="."]
 position = Vector2(89, 5)

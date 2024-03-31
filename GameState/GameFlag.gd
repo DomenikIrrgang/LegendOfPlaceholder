@@ -4,4 +4,5 @@ extends Node
 enum Enum {
 	QUEST_TALKED_TO_ALFOND,
 	INTRO_PLAYED,
+	INTRO_TALKED_TO_ALFOND,
 }
