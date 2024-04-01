@@ -35,10 +35,14 @@ func _physics_process(delta: float) -> void:
 func has_state(state_name: String) -> bool:
 	return has_node(state_name)
 	
+func is_in_state(state_name: String) -> bool:
+	return current_state.name == state_name
+	
 func can_transition_to_state(target_state_name: String) -> bool:
 	return current_state.can_transition_to_state(get_node(target_state_name))
 
 func transition_to(target_state_name: String, data: Dictionary = {}) -> void:
+	print("new state ", target_state_name)
 	assert(has_state(target_state_name), "State does not exist.")
 	if not current_state.can_transition_to_state(get_node(target_state_name)):
 		return

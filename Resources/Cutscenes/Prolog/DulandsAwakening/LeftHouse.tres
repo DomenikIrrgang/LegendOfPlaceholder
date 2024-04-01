@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Cutscene" load_steps=31 format=3 uid="uid://bcl22i2ywe2ub"]
+[gd_resource type="Resource" script_class="Cutscene" load_steps=36 format=3 uid="uid://bcl22i2ywe2ub"]
 
 [ext_resource type="Script" path="res://Resources/Cutscenes/Cutscene.gd" id="1_xuq7r"]
 [ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="2_itf3u"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Resources/Cutscenes/ShowDialogAction.gd" id="4_hvcww"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/ShakeCameraAction.gd" id="7_k8bx5"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/ChangeEnvironmentLightAction.gd" id="8_3ff3a"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/DespawnUnitAction.gd" id="9_ei2p8"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/SetFlagCutsceneAction.gd" id="9_supcw"]
 
 [sub_resource type="Resource" id="Resource_rvdxj"]
@@ -86,7 +87,7 @@ actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubRes
 script = ExtResource("3_6j8hw")
 type = 0
 author = 1
-text = ".. What was that ?"
+text = ".. What was that ? Lets head back in for now..."
 actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
 
 [sub_resource type="Resource" id="Resource_edah4"]
@@ -101,6 +102,24 @@ dialog = SubResource("Resource_edah4")
 script = ExtResource("3_smtr8")
 actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_6hevw")])
 
+[sub_resource type="Resource" id="Resource_gasjh"]
+script = ExtResource("2_rfea7")
+unit_name = "Alfond"
+path = Array[Vector2]([Vector2(-102.3, 103.3), Vector2(-102.3, 93.3)])
+relative_path = false
+
+[sub_resource type="Resource" id="Resource_3ibdo"]
+script = ExtResource("3_smtr8")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_gasjh")])
+
+[sub_resource type="Resource" id="Resource_fbw3b"]
+script = ExtResource("9_ei2p8")
+unit_name = "Alfond"
+
+[sub_resource type="Resource" id="Resource_ysfvw"]
+script = ExtResource("3_smtr8")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_fbw3b")])
+
 [sub_resource type="Resource" id="Resource_010lf"]
 script = ExtResource("9_supcw")
 flag = 4
@@ -113,4 +132,4 @@ actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubRes
 [resource]
 script = ExtResource("1_xuq7r")
 name = "Left House"
-steps = Array[ExtResource("3_smtr8")]([SubResource("Resource_3yfeu"), SubResource("Resource_326se"), SubResource("Resource_ii2t7"), SubResource("Resource_nubmx"), SubResource("Resource_ktqnf"), SubResource("Resource_7iv60"), SubResource("Resource_li8pq")])
+steps = Array[ExtResource("3_smtr8")]([SubResource("Resource_3yfeu"), SubResource("Resource_326se"), SubResource("Resource_ii2t7"), SubResource("Resource_nubmx"), SubResource("Resource_ktqnf"), SubResource("Resource_7iv60"), SubResource("Resource_3ibdo"), SubResource("Resource_ysfvw"), SubResource("Resource_li8pq")])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cex8g67gr43h7"]
+[gd_scene load_steps=42 format=3 uid="uid://cex8g67gr43h7"]
 
 [ext_resource type="Script" path="res://Zones/ForestGrove/RemsHouse/RensHouse.gd" id="1_ocifb"]
 [ext_resource type="TileSet" uid="uid://c65yuai7jjlwb" path="res://Zones/ForestGrove/ForestGroveTileSet.tres" id="2_7djdw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bqxmb2iloh01i" path="res://assets/environment/runesmithing/furnace.png" id="5_v6x8x"]
 [ext_resource type="Script" path="res://Resources/Conditions/FlagValueCondition.gd" id="5_yr2uk"]
 [ext_resource type="PackedScene" uid="uid://dxnkwps61uq0g" path="res://Npc/Npc.tscn" id="6_j6bf1"]
+[ext_resource type="Script" path="res://Resources/Conditions/SpawnCondition.gd" id="7_40obl"]
 [ext_resource type="Script" path="res://Zones/Triggers/CutsceneTrigger.gd" id="8_wcthc"]
 [ext_resource type="Resource" uid="uid://bbvdyoem4obpd" path="res://Resources/Cutscenes/Prolog/RensAwakening/LeaveHouseAttempt.tres" id="9_00tc1"]
 [ext_resource type="Resource" uid="uid://cvc7cc2apejso" path="res://Resources/Cutscenes/Prolog/RensAwakening/LeaveHouseAttemptBeforeBackpack.tres" id="10_cpkm7"]
@@ -23,10 +24,23 @@ flag_value = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6vifm"]
 size = Vector2(11, 7.5)
 
-[sub_resource type="Resource" id="Resource_cs7en"]
+[sub_resource type="Resource" id="Resource_8ptvf"]
 script = ExtResource("5_yr2uk")
 flag = 2
+flag_value = false
+
+[sub_resource type="Resource" id="Resource_wekgb"]
+script = ExtResource("7_40obl")
+conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_8ptvf")])
+
+[sub_resource type="Resource" id="Resource_eleho"]
+script = ExtResource("5_yr2uk")
+flag = 4
 flag_value = true
+
+[sub_resource type="Resource" id="Resource_jhsky"]
+script = ExtResource("7_40obl")
+conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_eleho")])
 
 [sub_resource type="Resource" id="Resource_m3jyq"]
 script = ExtResource("5_yr2uk")
@@ -150,6 +164,9 @@ height = 32
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrw24"]
+size = Vector2(21, 39)
+
 [node name="RensHouse" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_ocifb")
@@ -183,7 +200,7 @@ metadata/_edit_lock_ = true
 
 [node name="Alfond" parent="." instance=ExtResource("6_j6bf1")]
 position = Vector2(55, 27)
-despawn_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_cs7en")])
+spawn_conditions = Array[ExtResource("7_40obl")]([SubResource("Resource_wekgb"), SubResource("Resource_jhsky")])
 
 [node name="RemsRoomStairs" type="Area2D" parent="."]
 position = Vector2(24, 9)
@@ -268,6 +285,16 @@ speed = 0.7
 position = Vector2(2, 125)
 unit_data = ExtResource("13_ypu5u")
 
-[node name="Table" type="Sprite2D" parent="."]
-position = Vector2(132, 71)
+[node name="Table" type="RigidBody2D" parent="."]
+position = Vector2(131, 74)
+disable_mode = 1
+collision_layer = 8
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Texture" type="Sprite2D" parent="Table"]
 texture = ExtResource("14_ohxik")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table"]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_hrw24")

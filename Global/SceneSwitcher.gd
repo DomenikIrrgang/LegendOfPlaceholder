@@ -26,7 +26,7 @@ func on_load(save_file: Dictionary) -> void:
 func load_scene(path: String, spawn_position: Vector2) -> void:
 	call_deferred("defered_load_scene", path, spawn_position)
 	loading_scene = true
-	
+		
 func defered_load_scene(path: String, spawn_position: Vector2) -> void:
 	Globals.get_loading_screen().take_screenshot()
 	for child in Globals.get_world().get_children():

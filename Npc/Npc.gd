@@ -1,7 +1,7 @@
 extends Unit
 
 @export
-var spawn_conditions: Array[Condition] = []
+var spawn_conditions: Array[SpawnCondition] = []
 
 @export
 var despawn_conditions: Array[Condition] = []
@@ -41,9 +41,9 @@ func _ready() -> void:
 	
 func spawn_conditions_fulfilled() -> bool:
 	for condition in spawn_conditions:
-		if not condition.is_fulfilled():
-			return false
-	return true
+		if condition.is_fulfilled():
+			return true
+	return spawn_conditions.size() == 0
 	
 func despawn_conditions_fulfilled() -> bool:
 	for condition in despawn_conditions:

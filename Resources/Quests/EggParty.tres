@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Quest" load_steps=8 format=3 uid="uid://b8sib7px37sjg"]
+[gd_resource type="Resource" script_class="Quest" load_steps=10 format=3 uid="uid://b8sib7px37sjg"]
 
 [ext_resource type="Script" path="res://Resources/Quests/KillUnitsObjective.gd" id="1_3erx6"]
 [ext_resource type="Script" path="res://Resources/Quests/Quest.gd" id="1_qeh3f"]
 [ext_resource type="Resource" uid="uid://dgw6ivp3fei2h" path="res://Resources/Enemies/Visjala.tres" id="2_ec2wj"]
+[ext_resource type="Script" path="res://Resources/Conditions/FlagValueCondition.gd" id="3_114e4"]
 [ext_resource type="Resource" uid="uid://1dht423wf6t6" path="res://Resources/Items/Spelltomes/BurningVeinsTome.tres" id="3_epqgs"]
 [ext_resource type="Script" path="res://Resources/Quests/ItemQuestReward.gd" id="4_164tq"]
 
@@ -10,6 +11,11 @@
 script = ExtResource("1_3erx6")
 unit_data = ExtResource("2_ec2wj")
 amount = 1
+
+[sub_resource type="Resource" id="Resource_xg368"]
+script = ExtResource("3_114e4")
+flag = 4
+flag_value = true
 
 [sub_resource type="Resource" id="Resource_rfjv8"]
 script = ExtResource("4_164tq")
@@ -24,4 +30,4 @@ recommended_level = 1
 turnin_type = 0
 objectives = Array[Resource("res://Resources/Quests/QuestObjective.gd")]([SubResource("Resource_pt3pv")])
 rewards = Array[Resource("res://Resources/Quests/QuestReward.gd")]([SubResource("Resource_rfjv8")])
-requirements = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+requirements = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_xg368")])

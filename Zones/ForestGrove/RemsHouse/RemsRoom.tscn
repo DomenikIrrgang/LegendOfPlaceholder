@@ -26,6 +26,7 @@ size = Vector2(14, 5.5)
 [node name="RemsRoom" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_jjlax")
+zone_name = "Ren's Room"
 
 [node name="Background" type="TileMap" parent="."]
 y_sort_enabled = true

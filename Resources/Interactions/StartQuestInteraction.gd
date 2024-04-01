@@ -21,4 +21,4 @@ func is_useable() -> bool:
 	return QuestManager.quest_requirements_fulfilled(quest)
 	
 func is_visible() -> bool:
-	return not QuestManager.has_completed_quest(quest) and not QuestManager.is_on_quest(quest)
+	return super() and not QuestManager.has_completed_quest(quest) and not QuestManager.is_on_quest(quest)

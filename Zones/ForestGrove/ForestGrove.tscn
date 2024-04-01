@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://tf4e35148cv"]
+[gd_scene load_steps=23 format=3 uid="uid://tf4e35148cv"]
 
 [ext_resource type="Script" path="res://Zones/Zone.gd" id="1_axc5c"]
 [ext_resource type="TileSet" uid="uid://c65yuai7jjlwb" path="res://Zones/ForestGrove/ForestGroveTileSet.tres" id="2_tatbd"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dxnkwps61uq0g" path="res://Npc/Npc.tscn" id="6_5eqvf"]
 [ext_resource type="Texture2D" uid="uid://bqxmb2iloh01i" path="res://assets/environment/runesmithing/furnace.png" id="7_j8jex"]
 [ext_resource type="Resource" uid="uid://dlgtcoiv8c6ws" path="res://Resources/Npcs/SaveCrystal.tres" id="7_sqbm7"]
+[ext_resource type="Script" path="res://Resources/Conditions/SpawnCondition.gd" id="8_ctvw7"]
 [ext_resource type="Script" path="res://Zones/Triggers/CutsceneTrigger.gd" id="9_e4grt"]
 [ext_resource type="Resource" uid="uid://bcl22i2ywe2ub" path="res://Resources/Cutscenes/Prolog/DulandsAwakening/LeftHouse.tres" id="10_4fers"]
 [ext_resource type="Script" path="res://Resources/Conditions/FlagValueCondition.gd" id="11_4giss"]
@@ -128,6 +129,15 @@ sources/0 = SubResource("TileSetAtlasSource_rmi04")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8asmw"]
 size = Vector2(46, 37)
 
+[sub_resource type="Resource" id="Resource_py04k"]
+script = ExtResource("11_4giss")
+flag = 4
+flag_value = false
+
+[sub_resource type="Resource" id="Resource_842nw"]
+script = ExtResource("8_ctvw7")
+conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_py04k")])
+
 [sub_resource type="Resource" id="Resource_x0ls3"]
 script = ExtResource("11_4giss")
 flag = 4
@@ -222,6 +232,7 @@ metadata/_edit_lock_ = true
 
 [node name="Alfond" parent="." instance=ExtResource("6_5eqvf")]
 position = Vector2(-123, 103)
+spawn_conditions = Array[ExtResource("8_ctvw7")]([SubResource("Resource_842nw")])
 
 [node name="SaveCrystalMegaSlime" parent="." instance=ExtResource("6_5eqvf")]
 position = Vector2(-287, -96)

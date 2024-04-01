@@ -202,6 +202,7 @@ text = "- PAUSE -"
 label_settings = SubResource("LabelSettings_ipaw4")
 
 [node name="LoadingScreen" type="CanvasLayer" parent="." groups=["loadingscreen"]]
+visible = false
 script = ExtResource("10_nu1qd")
 
 [node name="Background" type="Sprite2D" parent="LoadingScreen"]

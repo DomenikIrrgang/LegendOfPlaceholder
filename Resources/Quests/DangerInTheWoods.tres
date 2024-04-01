@@ -1,11 +1,8 @@
-[gd_resource type="Resource" script_class="Quest" load_steps=17 format=3 uid="uid://b2q8uivlvjjdx"]
+[gd_resource type="Resource" script_class="Quest" load_steps=11 format=3 uid="uid://b2q8uivlvjjdx"]
 
 [ext_resource type="Script" path="res://Resources/Quests/FlagValueObjective.gd" id="1_fg6n6"]
 [ext_resource type="Script" path="res://Resources/Quests/Quest.gd" id="1_qb7w6"]
-[ext_resource type="Resource" uid="uid://bcwti7dwmsujv" path="res://Resources/Gear/RunesmithSet/RunesmithsPants.tres" id="2_iktuk"]
 [ext_resource type="Script" path="res://Resources/Quests/ItemQuestReward.gd" id="3_cymbs"]
-[ext_resource type="Resource" uid="uid://dy2pbsdtaks1h" path="res://Resources/Gear/RunesmithSet/RunesmithsShirt.tres" id="4_ofqmd"]
-[ext_resource type="Resource" uid="uid://dribn3a0vyi3v" path="res://Resources/Gear/RunesmithSet/RunesmithsHeadband.tres" id="5_ckln7"]
 [ext_resource type="Resource" uid="uid://bq6n6bcdrm7w" path="res://Resources/Items/Spelltomes/KickTome.tres" id="6_myteo"]
 [ext_resource type="Resource" uid="uid://30rl8s67arsj" path="res://Resources/Items/Spelltomes/ForcefieldTome.tres" id="7_6tjlp"]
 [ext_resource type="Resource" uid="uid://buwphdeqkddc6" path="res://Resources/Gear/ResourceCrystals/ManaCrystal.tres" id="8_xy55p"]
@@ -15,21 +12,6 @@ script = ExtResource("1_fg6n6")
 flag = 0
 flag_value = true
 progress_string = "Talk to Alfond"
-
-[sub_resource type="Resource" id="Resource_dk4d2"]
-script = ExtResource("3_cymbs")
-item = ExtResource("2_iktuk")
-amount = 1
-
-[sub_resource type="Resource" id="Resource_q84cd"]
-script = ExtResource("3_cymbs")
-item = ExtResource("4_ofqmd")
-amount = 1
-
-[sub_resource type="Resource" id="Resource_j5ce3"]
-script = ExtResource("3_cymbs")
-item = ExtResource("5_ckln7")
-amount = 1
 
 [sub_resource type="Resource" id="Resource_paibe"]
 script = ExtResource("3_cymbs")
@@ -53,5 +35,5 @@ description = "Talk to Alfond to find out more about what has happened in the wo
 recommended_level = 1
 turnin_type = 1
 objectives = Array[Resource("res://Resources/Quests/QuestObjective.gd")]([SubResource("Resource_4kcl3")])
-rewards = Array[Resource("res://Resources/Quests/QuestReward.gd")]([SubResource("Resource_dk4d2"), SubResource("Resource_q84cd"), SubResource("Resource_j5ce3"), SubResource("Resource_paibe"), SubResource("Resource_jigc6"), SubResource("Resource_gt5bc")])
+rewards = Array[Resource("res://Resources/Quests/QuestReward.gd")]([SubResource("Resource_paibe"), SubResource("Resource_jigc6"), SubResource("Resource_gt5bc")])
 requirements = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
