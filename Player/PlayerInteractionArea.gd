@@ -30,7 +30,8 @@ func update_closest_interactable_in_range() -> void:
 func get_closest_interactable() -> Interactable:
 	var closest = null
 	for interactable in interactables_in_range:
-		if closest == null or owner.get_center().distance_to(interactable.owner.get_center()) < owner.get_center().distance_to(closest.owner.get_center()):
+		print("number of interactions ", InteractionManager.get_interactions_to_prompt(interactable.get_interactions()).size())
+		if (closest == null or owner.get_center().distance_to(interactable.owner.get_center()) < owner.get_center().distance_to(closest.owner.get_center())) and InteractionManager.get_interactions_to_prompt(interactable.get_interactions()).size() > 0:
 			closest = interactable
 	return closest
 
