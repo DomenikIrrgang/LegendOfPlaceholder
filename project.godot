@@ -13,7 +13,7 @@ config_version=5
 config/name="Rinia: Return of Duland"
 run/main_scene="res://Zones/BaseScene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/ui/bottom_hud/spellbook_closed.png"
 
 [autoload]
 

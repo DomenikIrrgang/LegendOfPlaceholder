@@ -20,4 +20,5 @@ func enter(_data := {}) -> void:
 
 func boss_health_changed(resource: UnitResource, _new_value: int, _change: int, _original_change: int) -> void:
 	if resource.get_percentage() <= 0.50:
+		EngulfingPlain.stop()
 		state_machine.transition_to("Phase3")

@@ -105,29 +105,6 @@ quest = ExtResource("3_i6s1u")
 visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 
-[sub_resource type="Resource" id="Resource_umkba"]
-script = ExtResource("5_us0de")
-type = 0
-author = 1
-text = "I wonder what that earthquake was, go and checkout the forest."
-actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
-
-[sub_resource type="Resource" id="Resource_tmgpd"]
-script = ExtResource("4_wcysn")
-steps = Array[ExtResource("5_us0de")]([SubResource("Resource_umkba")])
-
-[sub_resource type="Resource" id="Resource_tvodo"]
-script = ExtResource("12_osdw3")
-flag = 4
-flag_value = true
-
-[sub_resource type="Resource" id="Resource_uep26"]
-script = ExtResource("6_ske37")
-dialog = SubResource("Resource_tmgpd")
-alias = "Talk"
-visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_tvodo")])
-useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
-
 [sub_resource type="Resource" id="Resource_36m1e"]
 script = ExtResource("10_n75wu")
 flag = 0
@@ -160,6 +137,29 @@ alias = "What happened here?"
 visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_xrvar"), SubResource("Resource_2fvf8")])
 useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
 
+[sub_resource type="Resource" id="Resource_umkba"]
+script = ExtResource("5_us0de")
+type = 0
+author = 1
+text = "I wonder what that earthquake was, go and checkout the forest."
+actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
+
+[sub_resource type="Resource" id="Resource_tmgpd"]
+script = ExtResource("4_wcysn")
+steps = Array[ExtResource("5_us0de")]([SubResource("Resource_umkba")])
+
+[sub_resource type="Resource" id="Resource_tvodo"]
+script = ExtResource("12_osdw3")
+flag = 4
+flag_value = true
+
+[sub_resource type="Resource" id="Resource_uep26"]
+script = ExtResource("6_ske37")
+dialog = SubResource("Resource_tmgpd")
+alias = "Talk"
+visible_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_tvodo")])
+useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+
 [sub_resource type="Resource" id="Resource_aheaa"]
 script = ExtResource("12_osdw3")
 flag = 2
@@ -175,7 +175,7 @@ useable_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")](
 [resource]
 script = ExtResource("1_s8tdc")
 model = ExtResource("2_jyq13")
-interactions = Array[Resource("res://Resources/Interactions/Interaction.gd")]([SubResource("Resource_gqap4"), SubResource("Resource_xx3ys"), SubResource("Resource_xyujb"), SubResource("Resource_jqshq"), SubResource("Resource_7nfbh"), SubResource("Resource_uiu3x"), SubResource("Resource_q52p4"), SubResource("Resource_vr5qj"), SubResource("Resource_sq6v8"), SubResource("Resource_c5rql"), SubResource("Resource_uep26"), SubResource("Resource_c405h"), SubResource("Resource_1xyel")])
+interactions = Array[Resource("res://Resources/Interactions/Interaction.gd")]([SubResource("Resource_gqap4"), SubResource("Resource_xx3ys"), SubResource("Resource_xyujb"), SubResource("Resource_jqshq"), SubResource("Resource_7nfbh"), SubResource("Resource_uiu3x"), SubResource("Resource_q52p4"), SubResource("Resource_vr5qj"), SubResource("Resource_sq6v8"), SubResource("Resource_c5rql"), SubResource("Resource_c405h"), SubResource("Resource_uep26"), SubResource("Resource_1xyel")])
 alias = "Alfond"
 dialog_texture = ExtResource("1_qyapk")
 interaction_texture = ExtResource("3_n5ih5")

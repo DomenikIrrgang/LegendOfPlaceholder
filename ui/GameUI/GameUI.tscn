@@ -986,6 +986,7 @@ text = "Add Item"
 script = SubResource("GDScript_3g0do")
 
 [node name="Save" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 theme = SubResource("Theme_7fwd3")

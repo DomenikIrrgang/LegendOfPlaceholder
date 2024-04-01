@@ -12,6 +12,7 @@ value = 3000
 script = ExtResource("1_q8bqv")
 experience = 50
 loot_table = Array[Resource("res://Resources/Enemies/LootDrop.gd")]([])
+death_flags = Array[int]([7])
 alias = "Visjala"
 level = 5
 is_friendly = false

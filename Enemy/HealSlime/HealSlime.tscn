@@ -15,7 +15,10 @@ unit_data = ExtResource("3_btpce")
 self_modulate = Color(0.0745098, 1, 0.0117647, 1)
 
 [node name="HurtBoxShape" parent="HurtBox2D" index="0"]
-position = Vector2(0, 3)
+position = Vector2(0.5, 1)
+
+[node name="CollisionShape2D" parent="HitBox2D" index="0"]
+position = Vector2(-0.5, 2.5)
 
 [node name="UnitOcclusion" parent="." index="5" node_paths=PackedStringArray("models")]
 models = [null]

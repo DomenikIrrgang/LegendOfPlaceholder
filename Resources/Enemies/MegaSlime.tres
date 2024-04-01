@@ -28,6 +28,7 @@ value = 0
 script = ExtResource("1_1ejyo")
 experience = 20
 loot_table = Array[Resource("res://Resources/Enemies/LootDrop.gd")]([])
+death_flags = Array[int]([6])
 alias = "Megaslime"
 dialog_texture = ExtResource("1_vl7yq")
 level = 5

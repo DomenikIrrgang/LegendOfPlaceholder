@@ -41,6 +41,8 @@ func init_cast_bar() -> void:
 func on_died(_enemy: Unit) -> void:
 	died.disconnect(on_died)
 	Globals.get_player().gain_experience(unit_data.experience)
+	for flag in unit_data.death_flags:
+		GameStateManager.set_flag(flag, true)
 	var loot_table = unit_data.loot_table
 	var i = 0
 	for loot_drop in loot_table:

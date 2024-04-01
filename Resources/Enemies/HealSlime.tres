@@ -22,6 +22,7 @@ value = -50
 script = ExtResource("1_jewis")
 experience = 0
 loot_table = Array[Resource("res://Resources/Enemies/LootDrop.gd")]([])
+death_flags = Array[int]([])
 alias = "Healslime"
 level = 1
 is_friendly = false

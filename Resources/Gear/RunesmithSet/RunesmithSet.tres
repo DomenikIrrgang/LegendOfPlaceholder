@@ -1,37 +1,49 @@
-[gd_resource type="Resource" script_class="GearSet" load_steps=12 format=3 uid="uid://b0guwsg1304u2"]
+[gd_resource type="Resource" script_class="GearSet" load_steps=13 format=3 uid="uid://b0guwsg1304u2"]
 
 [ext_resource type="Script" path="res://Resources/Gear/GearSet.gd" id="1_vgl5l"]
 [ext_resource type="Script" path="res://Resources/Gear/StatGearEffect.gd" id="2_b823d"]
 [ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="3_tjfdp"]
 [ext_resource type="Script" path="res://Resources/Gear/PartialSetBonus.gd" id="4_ggyfk"]
-[ext_resource type="PackedScene" uid="uid://ctx430i2egq4y" path="res://Combat/abilities/Mend.tscn" id="5_ufp40"]
-[ext_resource type="Script" path="res://Resources/Gear/AbilityGearEffect.gd" id="6_msnms"]
 
 [sub_resource type="Resource" id="Resource_y3n70"]
 script = ExtResource("3_tjfdp")
 stat = 1
-value = 10
+value = 5
+
+[sub_resource type="Resource" id="Resource_mbbu3"]
+script = ExtResource("3_tjfdp")
+stat = 0
+value = 5
 
 [sub_resource type="Resource" id="Resource_hn5dj"]
 script = ExtResource("2_b823d")
-stats = Array[ExtResource("3_tjfdp")]([SubResource("Resource_y3n70")])
+stats = Array[ExtResource("3_tjfdp")]([SubResource("Resource_y3n70"), SubResource("Resource_mbbu3")])
 
 [sub_resource type="Resource" id="Resource_khewr"]
 script = ExtResource("4_ggyfk")
-description = "Increases your intellect by 10."
+description = "Increases your intellect and agility by 5."
 required_pieces = 2
 gear_effects = Array[Resource("res://Resources/Gear/GearEffect.gd")]([SubResource("Resource_hn5dj")])
 
-[sub_resource type="Resource" id="Resource_sffvw"]
-script = ExtResource("6_msnms")
-ability = ExtResource("5_ufp40")
-tooltip = ""
+[sub_resource type="Resource" id="Resource_3adhd"]
+script = ExtResource("3_tjfdp")
+stat = 0
+value = 10
+
+[sub_resource type="Resource" id="Resource_qoeqj"]
+script = ExtResource("3_tjfdp")
+stat = 1
+value = 10
+
+[sub_resource type="Resource" id="Resource_v6gii"]
+script = ExtResource("2_b823d")
+stats = Array[ExtResource("3_tjfdp")]([SubResource("Resource_3adhd"), SubResource("Resource_qoeqj")])
 
 [sub_resource type="Resource" id="Resource_yfsdb"]
 script = ExtResource("4_ggyfk")
-description = "Allows you to use the Mend Ability."
+description = "Increases your intellect and agility by 10."
 required_pieces = 3
-gear_effects = Array[Resource("res://Resources/Gear/GearEffect.gd")]([SubResource("Resource_sffvw")])
+gear_effects = Array[Resource("res://Resources/Gear/GearEffect.gd")]([SubResource("Resource_v6gii")])
 
 [resource]
 script = ExtResource("1_vgl5l")

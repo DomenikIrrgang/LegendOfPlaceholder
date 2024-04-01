@@ -11,15 +11,15 @@
 script = ExtResource("3_l0w6a")
 item = ExtResource("4_mp4b6")
 chance = 1.0
-minimum_amount = 1
-maximum_amount = 10
+minimum_amount = 2
+maximum_amount = 3
 
 [sub_resource type="Resource" id="Resource_yakhi"]
 script = ExtResource("3_l0w6a")
 item = ExtResource("5_kc1r1")
 chance = 1.0
-minimum_amount = 4
-maximum_amount = 4
+minimum_amount = 2
+maximum_amount = 3
 
 [sub_resource type="Resource" id="Resource_65wj5"]
 script = ExtResource("3_moi3u")
@@ -35,6 +35,7 @@ value = 20
 script = ExtResource("1_31g8x")
 experience = 500
 loot_table = Array[ExtResource("3_l0w6a")]([SubResource("Resource_3f4up"), SubResource("Resource_yakhi")])
+death_flags = Array[int]([5])
 alias = "Elemental Slime"
 dialog_texture = ExtResource("1_w65bp")
 level = 10
