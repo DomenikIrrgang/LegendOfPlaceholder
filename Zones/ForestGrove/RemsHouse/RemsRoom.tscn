@@ -47,7 +47,7 @@ position = Vector2(48, 76)
 collision_mask = 2
 script = ExtResource("3_3e1cn")
 scene = "res://Zones/ForestGrove/RemsHouse/RensHouse.tscn"
-spawm_position = Vector2(7.7, 22.8)
+spawm_position = Vector2(24.4, 22.8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StairsDown"]
 position = Vector2(-1, 1)
