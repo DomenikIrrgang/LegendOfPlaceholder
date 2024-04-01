@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="Gear" load_steps=13 format=3 uid="uid://cpxxyonmf508"]
+
+[ext_resource type="Script" path="res://Resources/Gear/Gear.gd" id="1_4ihsc"]
+[ext_resource type="Script" path="res://Resources/Gear/StatGearEffect.gd" id="1_ke1rr"]
+[ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="2_bt3ee"]
+[ext_resource type="Script" path="res://Resources/Gear/Weapons/SetWeaponGearEffect.gd" id="3_kb5uh"]
+[ext_resource type="PackedScene" uid="uid://clwi01qnfntlw" path="res://Weapons/FireWand.tscn" id="4_mjlsq"]
+[ext_resource type="PackedScene" uid="uid://bkgg1j8y2q2yj" path="res://Combat/abilities/Shoot.tscn" id="5_55p47"]
+[ext_resource type="Script" path="res://Resources/Gear/AbilityGearEffect.gd" id="5_l1vyp"]
+[ext_resource type="Texture2D" uid="uid://dsc7t67tufaph" path="res://assets/ui/bottom_hud/fireball_icon.png" id="6_2budu"]
+
+[sub_resource type="Resource" id="Resource_sxfnk"]
+script = ExtResource("2_bt3ee")
+stat = 1
+value = 3
+
+[sub_resource type="Resource" id="Resource_dl05n"]
+script = ExtResource("1_ke1rr")
+stats = Array[ExtResource("2_bt3ee")]([SubResource("Resource_sxfnk")])
+
+[sub_resource type="Resource" id="Resource_o0wby"]
+script = ExtResource("3_kb5uh")
+weapon = ExtResource("4_mjlsq")
+
+[sub_resource type="Resource" id="Resource_stxoc"]
+script = ExtResource("5_l1vyp")
+ability = ExtResource("5_55p47")
+tooltip = "Allows you to shoot a wand."
+
+[resource]
+script = ExtResource("1_4ihsc")
+slot = 11
+gear_effects = Array[Resource("res://Resources/Gear/GearEffect.gd")]([SubResource("Resource_dl05n"), SubResource("Resource_o0wby"), SubResource("Resource_stxoc")])
+alias = "Fire Wand"
+useable = false
+use_description = ""
+limited = false
+limit = 1
+stackable = false
+stack_amount = 5
+description = ""
+icon = ExtResource("6_2budu")

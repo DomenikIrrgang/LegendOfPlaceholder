@@ -16,7 +16,7 @@
 size = Vector2(81.5625, 77.1875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pqq8"]
-size = Vector2(16, 16)
+size = Vector2(12, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gjt3n"]
 size = Vector2(84, 54)
@@ -171,14 +171,14 @@ position = Vector2(-314.781, -99.5938)
 shape = SubResource("RectangleShape2D_p4fud")
 
 [node name="HouseEntrance" type="Area2D" parent="."]
-position = Vector2(-39, 8)
+position = Vector2(-38, 8)
 collision_mask = 2
 script = ExtResource("4_10e5x")
 scene = "res://Zones/ForestGrove/RemsHouse/RensHouse.tscn"
 spawm_position = Vector2(56, 127.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HouseEntrance"]
-position = Vector2(-65, 80)
+position = Vector2(-65, 78)
 shape = SubResource("RectangleShape2D_5pqq8")
 
 [node name="ElementalSlimeArea" type="Area2D" parent="."]

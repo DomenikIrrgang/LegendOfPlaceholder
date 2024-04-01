@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkgg1j8y2q2yj"]
+
+[ext_resource type="Script" path="res://Combat/abilities/Shoot.gd" id="1_5i3c6"]
+[ext_resource type="Texture2D" uid="uid://dsc7t67tufaph" path="res://assets/ui/bottom_hud/fireball_icon.png" id="2_tsk7b"]
+
+[node name="Shoot" type="Node2D"]
+script = ExtResource("1_5i3c6")
+alias = "Shoot"
+tooltip = "Shoots a wand."
+ability_types = Array[int]([3])
+cooldown = 1.0
+spell_school = 1
+resource_type = 5
+icon = ExtResource("2_tsk7b")

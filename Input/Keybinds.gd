@@ -16,6 +16,7 @@ var ability_keybinds = ["Ability_One", "Ability_Two", "Ability_Three", "Ability_
 func _ready() -> void:
 	InputControlls.input_event.connect(on_input)
 	Spellbook.new_ability_learned.connect(on_new_ability_learned)
+	Spellbook.known_abilities_changed.connect(on_known_abilities_changed)
 	SaveFileManager.save_file_saving.connect(on_save)
 	SaveFileManager.save_file_start_loading.connect(reset)
 	
@@ -32,6 +33,12 @@ func reset() -> void:
 	for keybind in ability_keybinds:
 		keybinds.erase(keybind)
 		keybind_changed.emit(keybind, null)
+		
+func  on_known_abilities_changed() -> void:
+	for ability_keybind in ability_keybinds:
+		if keybinds.has(ability_keybind) and not Spellbook.ability_known(keybinds[ability_keybind].ability):
+			keybinds.erase(ability_keybind)
+			keybind_changed.emit(ability_keybind, null)
 	
 func on_new_ability_learned(ability: Ability) -> void:
 	if not is_ability_keybound(ability):

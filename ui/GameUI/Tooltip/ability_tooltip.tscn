@@ -16,10 +16,11 @@ content_margin_bottom = 4.0
 
 [node name="AbilityTooltip" type="PanelContainer"]
 z_index = 5
+custom_minimum_size = Vector2(0, 5)
 offset_left = 215.0
 offset_top = 121.0
 offset_right = 500.0
-offset_bottom = 226.0
+offset_bottom = 193.0
 mouse_filter = 2
 theme = SubResource("Theme_b38k5")
 script = ExtResource("2_bqeaq")
@@ -63,33 +64,39 @@ text = "<SpellSchool>"
 label_settings = ExtResource("4_iijj5")
 horizontal_alignment = 2
 
-[node name="Resource" type="HBoxContainer" parent="PanelContainer/Content"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="Resource" type="HBoxContainer" parent="PanelContainer/Content/VBoxContainer"]
+visible = false
 layout_mode = 2
 
-[node name="ResourceCost" type="VBoxContainer" parent="PanelContainer/Content/Resource"]
+[node name="ResourceCost" type="VBoxContainer" parent="PanelContainer/Content/VBoxContainer/Resource"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Content/Resource/ResourceCost"]
+[node name="Label" type="Label" parent="PanelContainer/Content/VBoxContainer/Resource/ResourceCost"]
 layout_mode = 2
 text = "<ResourceAmount>"
 label_settings = ExtResource("4_iijj5")
 
-[node name="ResourceUnit" type="VBoxContainer" parent="PanelContainer/Content/Resource"]
+[node name="ResourceUnit" type="VBoxContainer" parent="PanelContainer/Content/VBoxContainer/Resource"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Content/Resource/ResourceUnit"]
+[node name="Label" type="Label" parent="PanelContainer/Content/VBoxContainer/Resource/ResourceUnit"]
 layout_mode = 2
 text = "<AbilityCost>"
 label_settings = ExtResource("4_iijj5")
 
-[node name="Description" type="MarginContainer" parent="PanelContainer/Content"]
+[node name="Description" type="MarginContainer" parent="PanelContainer/Content/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 20
 
-[node name="Text" type="VBoxContainer" parent="PanelContainer/Content/Description"]
+[node name="Text" type="VBoxContainer" parent="PanelContainer/Content/VBoxContainer/Description"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Content/Description/Text"]
+[node name="Label" type="Label" parent="PanelContainer/Content/VBoxContainer/Description/Text"]
 layout_mode = 2
 text = "<AbilityDescription>"
 label_settings = ExtResource("4_iijj5")

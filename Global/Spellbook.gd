@@ -12,11 +12,8 @@ func _ready() -> void:
 	
 func reset() -> void:
 	known_abilities = []
-	var attack = load("res://Combat/abilities/Attack.tscn").instantiate()
 	var dash = load("res://Combat/abilities/Dash.tscn").instantiate()
-	Keybinds.keybind_ability("Attack", attack)
 	Keybinds.keybind_ability("Dash", dash)
-	learn_ability(attack)
 	learn_ability(dash)
 	known_abilities_changed.emit()
 	
@@ -60,6 +57,15 @@ func learn_ability(ability: Ability) -> bool:
 		new_ability_learned.emit(ability)
 		return true
 	Error.send("Ability already known.")
+	return false
+	
+func unlearn_ability(_ability: Ability) -> bool:
+	if ability_known(_ability):
+		for ability in known_abilities:
+			if ability.get_alias() == _ability.get_alias():
+				known_abilities.erase(ability)
+				known_abilities_changed.emit()
+				return true
 	return false
 	
 func ability_known(_ability: Ability) -> bool:

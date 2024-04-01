@@ -8,13 +8,16 @@ var alias: Label = $PanelContainer/Content/TopLine/AbilityName/Label
 var spell_school: Label = $PanelContainer/Content/TopLine/SpellSchool/Label
 
 @onready
-var cost: Label = $PanelContainer/Content/Resource/ResourceCost/Label
+var cost: Label = $PanelContainer/Content/VBoxContainer/Resource/ResourceCost/Label
 
 @onready
-var resource_type: Label = $PanelContainer/Content/Resource/ResourceUnit/Label
+var resource_cost: Container = $PanelContainer/Content/VBoxContainer/Resource
 
 @onready
-var description: Label = $PanelContainer/Content/Description/Text/Label
+var resource_type: Label = $PanelContainer/Content/VBoxContainer/Resource/ResourceUnit/Label
+
+@onready
+var description: Label = $PanelContainer/Content/VBoxContainer/Description/Text/Label
 
 func _process(_delta: float):
 	visible = !Globals.get_drag_and_drop().is_dragging()
@@ -33,6 +36,7 @@ func show_ability(ability: Ability) -> void:
 	alias.text = ability.get_alias()
 	spell_school.text = SpellSchool.Enum.keys()[ability.get_spell_school()].capitalize()
 	cost.text = str(ability.get_resource_cost())
+	resource_cost.visible = ability.get_resource_type() != ResourceType.Enum.FREE and ability.get_resource_type() != ResourceType.Enum.DASH_CHARGE and ability.get_resource_cost() != 0
 	resource_type.text = ResourceType.Enum.keys()[ability.get_resource_type()].capitalize()
 	description.text = ability.get_tooltip()
 	

@@ -10,7 +10,7 @@ func _ready() -> void:
 	animation.animation_started.connect(on_animation_started)
 
 func attack(_player: Player) -> AnimationPlayer:
-	return
+	return animation
 
 func on_animation_finished(_animation_name: String) -> void:
 	visible = false

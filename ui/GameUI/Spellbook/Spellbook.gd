@@ -23,6 +23,7 @@ var current_page: int = 0
 
 func _ready():
 	Spellbook.new_ability_learned.connect(on_new_ability_learned)
+	Spellbook.known_abilities_changed.connect(func(): on_new_ability_learned(null))
 	for selector in spell_school_selectors:
 		selector.spell_school_selected.connect(on_spell_school_selected)
 	page_indicator.page_changed.connect(on_page_changed)

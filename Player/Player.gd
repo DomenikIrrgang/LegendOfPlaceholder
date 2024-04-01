@@ -7,9 +7,6 @@ var light_box: PointLight2D = $LightBox
 @onready
 var interaction: Area2D = $InteractionArea
 
-@export
-var weapon_path: String
-
 var weapon: Weapon
 
 # Experience
@@ -61,7 +58,6 @@ func _init() -> void:
 func _ready() -> void:
 	super()
 	resources[ResourceType.Enum.DASH_CHARGE] = DashCharge.new(self)
-	init_weapon()
 	died.connect(on_player_died)
 	Globals.get_environment_light().energy_changed.connect(on_energy_changed)
 	for ability in get_abilities():
@@ -91,6 +87,7 @@ func respawn() -> void:
 		pushback_tween.kill()
 	last_pushback = Time.get_unix_time_from_system()
 	pushback_velocity = Vector2(0.0, 0.0)
+	state.transition_to("Idle")
 	SaveFileManager.load_save_file()
 	
 func level_up() -> void:
@@ -126,10 +123,14 @@ func experience_needed_for_next_level() -> int:
 func experience_needed_for_level(_level: int) -> int:
 	return _level * _level * 100
 	
-func init_weapon() -> void:
-	var weapon_scene: PackedScene = load(weapon_path)
-	weapon = weapon_scene.instantiate()
-	add_child(weapon)
+func set_weapon(_weapon: Weapon) -> void:
+	if weapon != null:
+		remove_child(weapon)
+		weapon.queue_free()
+		weapon = null
+	if _weapon != null:
+		weapon = _weapon
+		add_child(weapon)
 	
 func dash() -> void:
 	state.transition_to("Dash")

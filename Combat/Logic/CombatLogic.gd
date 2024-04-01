@@ -32,6 +32,7 @@ func use_ability(source: Unit, target: Unit, ability: Ability) -> CombatLogicRes
 		combat_logic_result.ability.use(source, target)
 		if combat_logic_result.ability.ability_types.has(Ability.Type.TARGETED):
 			combat_logic_result = cast_ability(source, target, ability)
+	print(ResultType.Enum.keys()[combat_logic_result.type])
 	return combat_logic_result
 	
 func cast_ability(source: Unit, target: Unit, ability: Ability) -> CombatLogicResult:

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Cutscene" load_steps=23 format=3 uid="uid://dib152fkq6ndt"]
+[gd_resource type="Resource" script_class="Cutscene" load_steps=27 format=3 uid="uid://dib152fkq6ndt"]
 
 [ext_resource type="Script" path="res://Resources/Cutscenes/Cutscene.gd" id="1_hxjl4"]
 [ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="2_vjf68"]
@@ -10,6 +10,8 @@
 [ext_resource type="Resource" uid="uid://dy2pbsdtaks1h" path="res://Resources/Gear/RunesmithSet/RunesmithsShirt.tres" id="8_bait8"]
 [ext_resource type="Resource" uid="uid://dribn3a0vyi3v" path="res://Resources/Gear/RunesmithSet/RunesmithsHeadband.tres" id="9_13rja"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/SetFlagCutsceneAction.gd" id="10_lvuj6"]
+[ext_resource type="Resource" uid="uid://cpxxyonmf508" path="res://Resources/Gear/Weapons/Wand.tres" id="10_r0l53"]
+[ext_resource type="Resource" uid="uid://bktcvwul60867" path="res://Resources/Gear/Weapons/Sword.tres" id="10_w5k21"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/DespawnUnitAction.gd" id="11_ad7wh"]
 
 [sub_resource type="Resource" id="Resource_hocds"]
@@ -46,6 +48,16 @@ script = ExtResource("7_40r80")
 item = ExtResource("9_13rja")
 amount = 1
 
+[sub_resource type="Resource" id="Resource_ip2im"]
+script = ExtResource("7_40r80")
+item = ExtResource("10_r0l53")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_s7b5n"]
+script = ExtResource("7_40r80")
+item = ExtResource("10_w5k21")
+amount = 1
+
 [sub_resource type="Resource" id="Resource_cg2gy"]
 script = ExtResource("10_lvuj6")
 flag = 3
@@ -53,7 +65,7 @@ value = true
 
 [sub_resource type="Resource" id="Resource_pnrrg"]
 script = ExtResource("5_jiy0i")
-actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_6khg2"), SubResource("Resource_qd1td"), SubResource("Resource_s44no"), SubResource("Resource_cg2gy")])
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_6khg2"), SubResource("Resource_qd1td"), SubResource("Resource_s44no"), SubResource("Resource_ip2im"), SubResource("Resource_s7b5n"), SubResource("Resource_cg2gy")])
 
 [sub_resource type="Resource" id="Resource_y4ify"]
 script = ExtResource("11_ad7wh")
