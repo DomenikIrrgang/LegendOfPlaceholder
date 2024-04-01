@@ -16,6 +16,8 @@ func _ready() -> void:
 	QuestManager.quest_completed.connect(func(_quest: Quest): update())
 	QuestManager.quest_abandoned.connect(func(_quest: Quest): update())
 	QuestManager.objective_progress_changed.connect(func(_quest: Quest, _objective: QuestObjective): update())
+	CutsceneManager.cutscene_started.connect(func(cutscene: Cutscene): visible = false)
+	CutsceneManager.cutscene_finished.connect(func(cutscene: Cutscene): update())
 
 func update() -> void:
 	visible = true

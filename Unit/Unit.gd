@@ -488,7 +488,6 @@ func update_direction() -> void:
 	
 	
 func set_animation(animation_name: String) -> bool:
-	print("setting animation ", animation_name)
 	if model_animation.has_animation(animation_name):
 		model_animation.play(animation_name)
 		return true

@@ -14,8 +14,9 @@ func has_interactable_in_range() -> bool:
 	return interactables_in_range.size() > 0
 	
 func on_area_entered(interactable: Interactable) -> void:
-	interactables_in_range.append(interactable)
-	update_closest_interactable_in_range() 
+	if interactable.is_interactable():
+		interactables_in_range.append(interactable)
+		update_closest_interactable_in_range()
 
 func on_area_exited(interactable: Interactable) -> void:
 	interactables_in_range.erase(interactable)
@@ -30,8 +31,7 @@ func update_closest_interactable_in_range() -> void:
 func get_closest_interactable() -> Interactable:
 	var closest = null
 	for interactable in interactables_in_range:
-		print("number of interactions ", InteractionManager.get_interactions_to_prompt(interactable.get_interactions()).size())
-		if (closest == null or owner.get_center().distance_to(interactable.owner.get_center()) < owner.get_center().distance_to(closest.owner.get_center())) and InteractionManager.get_interactions_to_prompt(interactable.get_interactions()).size() > 0:
+		if (closest == null or owner.get_center().distance_to(interactable.owner.get_center()) < owner.get_center().distance_to(closest.owner.get_center())) and interactable.is_interactable():
 			closest = interactable
 	return closest
 

@@ -219,7 +219,7 @@ shape = SubResource("RectangleShape2D_6vifm")
 metadata/_edit_lock_ = true
 
 [node name="Backpack" parent="." instance=ExtResource("6_j6bf1")]
-position = Vector2(-7, 51)
+position = Vector2(-4, 14)
 despawn_conditions = Array[Resource("res://Resources/Conditions/Condition.gd")]([SubResource("Resource_1mbtu")])
 unit_data = ExtResource("11_gndy3")
 
@@ -269,5 +269,5 @@ position = Vector2(2, 125)
 unit_data = ExtResource("13_ypu5u")
 
 [node name="Table" type="Sprite2D" parent="."]
-position = Vector2(134, 94)
+position = Vector2(132, 71)
 texture = ExtResource("14_ohxik")

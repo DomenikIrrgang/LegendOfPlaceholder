@@ -1,27 +1,26 @@
 [gd_scene load_steps=5 format=3 uid="uid://6h04efjjt2o"]
 
 [ext_resource type="Script" path="res://Npc/Model.gd" id="1_qgyth"]
-[ext_resource type="Texture2D" uid="uid://f45aqipga0s2" path="res://assets/ui/bottom_hud/closed_bag.png" id="2_qpfcm"]
+[ext_resource type="Texture2D" uid="uid://cwn4kpp70onjb" path="res://assets/environment/rens_house/backpack.png" id="2_cybcs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4gbu"]
-size = Vector2(8.5, 11)
+size = Vector2(14, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5763"]
-size = Vector2(11, 13)
+size = Vector2(14.5, 6)
 
 [node name="Backpack" type="Node2D"]
 script = ExtResource("1_qgyth")
 
 [node name="Model" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_qpfcm")
+texture = ExtResource("2_cybcs")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0.75, 2.5)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_q4gbu")
 
 [node name="Interaction" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 2.5)
+position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_l5763")
 
 [node name="ModelAnimation" type="AnimationPlayer" parent="."]

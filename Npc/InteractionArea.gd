@@ -9,3 +9,7 @@ func get_interactions() -> Array[Interaction]:
 	
 func get_unit_data() -> UnitData:
 	return owner.unit_data
+	
+func is_interactable() -> bool:
+	return InteractionManager.get_interactions_to_prompt(get_interactions()).size() > 0
+	
