@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="Item" load_steps=14 format=3 uid="uid://bacrhq44n1x5s"]
+
+[ext_resource type="Texture2D" uid="uid://f45aqipga0s2" path="res://assets/ui/bottom_hud/closed_bag.png" id="1_ggqdm"]
+[ext_resource type="Script" path="res://Resources/Items/Item.gd" id="1_ji2we"]
+[ext_resource type="Resource" uid="uid://bcwti7dwmsujv" path="res://Resources/Gear/RunesmithSet/RunesmithsPants.tres" id="2_gkgag"]
+[ext_resource type="Script" path="res://Resources/Enemies/LootDrop.gd" id="3_07cxd"]
+[ext_resource type="Script" path="res://Resources/Items/CooldownGroup.gd" id="3_puhgg"]
+[ext_resource type="Resource" uid="uid://dy2pbsdtaks1h" path="res://Resources/Gear/RunesmithSet/RunesmithsShirt.tres" id="4_5sfsy"]
+[ext_resource type="Resource" uid="uid://dribn3a0vyi3v" path="res://Resources/Gear/RunesmithSet/RunesmithsHeadband.tres" id="5_rk7nc"]
+[ext_resource type="Script" path="res://Resources/Items/Containers/ContainerUseEffect.gd" id="6_8ungl"]
+
+[sub_resource type="Resource" id="Resource_682io"]
+script = ExtResource("3_puhgg")
+alias = "AdventurersKit"
+cooldown = 3.0
+
+[sub_resource type="Resource" id="Resource_2v14e"]
+script = ExtResource("3_07cxd")
+item = ExtResource("2_gkgag")
+chance = 1.0
+minimum_amount = 1
+maximum_amount = 1
+
+[sub_resource type="Resource" id="Resource_4x4o8"]
+script = ExtResource("3_07cxd")
+item = ExtResource("4_5sfsy")
+chance = 1.0
+minimum_amount = 1
+maximum_amount = 1
+
+[sub_resource type="Resource" id="Resource_6brhj"]
+script = ExtResource("3_07cxd")
+item = ExtResource("5_rk7nc")
+chance = 1.0
+minimum_amount = 1
+maximum_amount = 1
+
+[sub_resource type="Resource" id="Resource_vl115"]
+script = ExtResource("6_8ungl")
+loot_table = Array[ExtResource("3_07cxd")]([SubResource("Resource_2v14e"), SubResource("Resource_4x4o8"), SubResource("Resource_6brhj")])
+cooldown_group = SubResource("Resource_682io")
+
+[resource]
+script = ExtResource("1_ji2we")
+alias = "Adventurers Kit"
+useable = true
+use_effect = SubResource("Resource_vl115")
+use_description = "Opens the Adventurers Kit your father left you."
+limited = false
+limit = 1
+stackable = false
+stack_amount = 1
+description = ""
+icon = ExtResource("1_ggqdm")

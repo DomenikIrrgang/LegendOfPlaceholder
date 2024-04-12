@@ -22,6 +22,18 @@ func empty() -> void:
 func can_receive_item(item: Item, amount: int) -> bool:
 	return calculate_free_amount_for_item(item) >= amount
 	
+func get_slots_needed_for_item_amount(item: Item, amount: int) -> int:
+	var amount_needed = amount
+	var item_amount = get_item_amount(item)
+	var existing_slots = slots_with_item(item) * (item.stack_amount if item.stackable else 1) - item_amount
+	amount_needed -= existing_slots
+	if amount_needed > 0:
+		if item.stackable:
+			return amount_needed / item.stack_amount
+		else:
+			return amount_needed
+	return 0
+	
 func calculate_free_amount_for_item(item: Item) -> int:
 	var item_amount = get_item_amount(item)
 	var free_slots =  get_free_slot_amount() * (item.stack_amount if item.stackable else 1)
@@ -113,7 +125,8 @@ func add_item(item: Item, amount: int) -> bool:
 			if amount > 0:
 				for i in size:
 					if slots[i].item == null:
-						var amount_to_add = item.stack_amount - slots[i].amount if amount >= item.stack_amount - slots[i].amount else amount
+						var stack_amount = item.stack_amount if item.stackable else 1
+						var amount_to_add = stack_amount - slots[i].amount if amount >= stack_amount - slots[i].amount else amount
 						change_slot(i, item, slots[i].amount + amount_to_add)
 						amount -= amount_to_add
 					if amount == 0:
