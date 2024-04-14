@@ -37,6 +37,7 @@ QuestManager="*res://Global/QuestManager.gd"
 InteractionManager="*res://Global/InteractionManager.gd"
 GameStateManager="*res://GameState/GameStateManager.gd"
 SaveFileManager="*res://Global/SaveFileManager.gd"
+SoundManager="*res://Global/SoundManager.gd"
 
 [debug]
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Cutscene" load_steps=36 format=3 uid="uid://bcl22i2ywe2ub"]
+[gd_resource type="Resource" script_class="Cutscene" load_steps=39 format=3 uid="uid://bcl22i2ywe2ub"]
 
 [ext_resource type="Script" path="res://Resources/Cutscenes/Cutscene.gd" id="1_xuq7r"]
 [ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="2_itf3u"]
@@ -8,8 +8,10 @@
 [ext_resource type="Script" path="res://Resources/Cutscenes/ShowDialogAction.gd" id="4_hvcww"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/ShakeCameraAction.gd" id="7_k8bx5"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/ChangeEnvironmentLightAction.gd" id="8_3ff3a"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/SoundAction.gd" id="9_6rqjn"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/DespawnUnitAction.gd" id="9_ei2p8"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/SetFlagCutsceneAction.gd" id="9_supcw"]
+[ext_resource type="AudioStream" uid="uid://cbl56my50d2b6" path="res://assets/sound/effects/earthquake.wav" id="10_ujb00"]
 
 [sub_resource type="Resource" id="Resource_rvdxj"]
 script = ExtResource("3_6j8hw")
@@ -79,9 +81,15 @@ script = ExtResource("8_3ff3a")
 target_energy = 0.95
 speed = 3.0
 
+[sub_resource type="Resource" id="Resource_oh0pu"]
+script = ExtResource("9_6rqjn")
+channel = 0
+sound_file = ExtResource("10_ujb00")
+duration = 3000.0
+
 [sub_resource type="Resource" id="Resource_ktqnf"]
 script = ExtResource("3_smtr8")
-actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_dm8qx"), SubResource("Resource_mfjy5")])
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_dm8qx"), SubResource("Resource_mfjy5"), SubResource("Resource_oh0pu")])
 
 [sub_resource type="Resource" id="Resource_b1wq2"]
 script = ExtResource("3_6j8hw")

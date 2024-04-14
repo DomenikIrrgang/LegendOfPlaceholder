@@ -68,6 +68,12 @@ func get_environment_light() -> EnvironmentLighting:
 func get_camera() -> Camera2D:
 	return get_scene_tree().get_first_node_in_group("camera")
 	
+func get_background_music_player() -> AudioStreamPlayer:
+	return get_scene_tree().get_first_node_in_group("BackgroundMusic")
+	
+func get_sound_effects_player() -> AudioStreamPlayer:
+	return get_scene_tree().get_first_node_in_group("SoundEffects")
+	
 func get_loading_screen() -> CanvasLayer:
 	return get_scene_tree().get_first_node_in_group("loadingscreen")
 	
