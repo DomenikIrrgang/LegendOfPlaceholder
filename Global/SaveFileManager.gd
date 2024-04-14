@@ -7,6 +7,8 @@ signal save_file_start_loading()
 signal save_file_loaded(save_file: Dictionary)
 
 const SAVE_FILE_PATH: String = "user://savegame.save"
+const SAVE_FILE_PASSWORD: String = "8Mp7vF0TzAYD2WhsNnhWs9p3ZHZGdktH"
+const USE_ENCRYPTION: bool = false
 
 func save_file_exists() -> bool:
 	return FileAccess.file_exists(SAVE_FILE_PATH)
@@ -14,14 +16,22 @@ func save_file_exists() -> bool:
 func load_save_file() -> void:
 	save_file_start_loading.emit()
 	if save_file_exists():
-		var save_file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
+		var save_file: FileAccess
+		if USE_ENCRYPTION:
+			save_file = FileAccess.open_encrypted_with_pass(SAVE_FILE_PATH, FileAccess.READ, SAVE_FILE_PASSWORD)
+		else:
+			save_file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
 		var line = save_file.get_line()
 		var data: Dictionary = JSON.parse_string(line)
 		save_file.close()
 		save_file_loaded.emit(data)
 	
 func save_to_save_file() -> void:
-	var save_file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+	var save_file: FileAccess
+	if USE_ENCRYPTION:
+		save_file = FileAccess.open_encrypted_with_pass(SAVE_FILE_PATH, FileAccess.WRITE, SAVE_FILE_PASSWORD)
+	else:
+		save_file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 	var save_data = {}
 	save_file_saving.emit(save_data)
 	save_file.store_line(JSON.stringify(save_data))
