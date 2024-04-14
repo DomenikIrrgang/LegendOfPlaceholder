@@ -130,7 +130,6 @@ initial_scene = "res://Zones/ForestGrove/RemsHouse/RensHouse.tscn"
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("targeted_node") groups=["camera"]]
 position = Vector2(-60, 0)
 zoom = Vector2(6, 6)
-position_smoothing_enabled = true
 position_smoothing_speed = 1.0
 script = ExtResource("1_yk0hc")
 targeted_node = NodePath("../Player")
