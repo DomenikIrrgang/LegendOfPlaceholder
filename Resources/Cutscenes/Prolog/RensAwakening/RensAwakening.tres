@@ -1,13 +1,26 @@
-[gd_resource type="Resource" script_class="Cutscene" load_steps=23 format=3 uid="uid://cx2wmshc3a7a5"]
+[gd_resource type="Resource" script_class="Cutscene" load_steps=29 format=3 uid="uid://cx2wmshc3a7a5"]
 
 [ext_resource type="Script" path="res://Resources/Cutscenes/Cutscene.gd" id="1_6ww1f"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/ChangeEnvironmentLightAction.gd" id="2_0ujt3"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/SoundAction.gd" id="2_26ate"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/MoveCameraToUnitAction.gd" id="2_bn850"]
 [ext_resource type="Resource" uid="uid://7qosm2oeonvs" path="res://Resources/Dialogs/Prolog/RensAwakening/RensAwakening.tres" id="3_do4xs"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/ChangeUnitAnimationStateAction.gd" id="3_h2xex"]
+[ext_resource type="AudioStream" uid="uid://bjdcuyu40edgm" path="res://assets/sound/background/sleep_melody.mp3" id="3_tyxuo"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/ShowDialogAction.gd" id="4_34ic8"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/CutsceneStep.gd" id="5_s3mhv"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/SetFlagCutsceneAction.gd" id="7_odeb4"]
+[ext_resource type="AudioStream" uid="uid://dn6oxk6pus1yq" path="res://assets/sound/background/opening.wav" id="11_khbfk"]
+
+[sub_resource type="Resource" id="Resource_gq1jl"]
+script = ExtResource("2_26ate")
+channel = 1
+sound_file = ExtResource("3_tyxuo")
+duration = 0.0
+
+[sub_resource type="Resource" id="Resource_23tke"]
+script = ExtResource("5_s3mhv")
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_gq1jl")])
 
 [sub_resource type="Resource" id="Resource_7pjms"]
 script = ExtResource("2_0ujt3")
@@ -67,11 +80,17 @@ script = ExtResource("3_h2xex")
 unit_name = "Player"
 enabled = true
 
+[sub_resource type="Resource" id="Resource_ptwk6"]
+script = ExtResource("2_26ate")
+channel = 1
+sound_file = ExtResource("11_khbfk")
+duration = 0.0
+
 [sub_resource type="Resource" id="Resource_w0noj"]
 script = ExtResource("5_s3mhv")
-actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_dgal3"), SubResource("Resource_y78v4")])
+actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_dgal3"), SubResource("Resource_y78v4"), SubResource("Resource_ptwk6")])
 
 [resource]
 script = ExtResource("1_6ww1f")
 name = "Ren's Awakening"
-steps = Array[ExtResource("5_s3mhv")]([SubResource("Resource_dqyvl"), SubResource("Resource_x3kej"), SubResource("Resource_nmii1"), SubResource("Resource_yqrmr"), SubResource("Resource_rv2sq"), SubResource("Resource_w0noj")])
+steps = Array[ExtResource("5_s3mhv")]([SubResource("Resource_23tke"), SubResource("Resource_dqyvl"), SubResource("Resource_x3kej"), SubResource("Resource_nmii1"), SubResource("Resource_yqrmr"), SubResource("Resource_rv2sq"), SubResource("Resource_w0noj")])

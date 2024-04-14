@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ddnsu8hllewh7"]
+[gd_scene load_steps=26 format=3 uid="uid://ddnsu8hllewh7"]
 
 [ext_resource type="Script" path="res://Zones/BaseScene.gd" id="1_3m1id"]
 [ext_resource type="Script" path="res://CustomCamera.gd" id="1_yk0hc"]
@@ -11,8 +11,8 @@
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="9_0jh1n"]
 [ext_resource type="Script" path="res://ui/LoadingScreen.gd" id="10_nu1qd"]
 [ext_resource type="Script" path="res://Zones/EnvironmentLighting.gd" id="11_dggdl"]
-
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_0vh6a"]
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="11_uxh6b"]
+[ext_resource type="Script" path="res://ui/PauseMenu/BusVolumeSetting.gd" id="11_x3djv"]
 
 [sub_resource type="Animation" id="Animation_58ieq"]
 resource_name = "Hide"
@@ -144,13 +144,6 @@ energy = 0.0
 blend_mode = 1
 script = ExtResource("11_dggdl")
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." groups=["BackgroundMusic"]]
-
-[node name="SoundEffects" type="AudioStreamPlayer" parent="." groups=["SoundEffects"]]
-stream = SubResource("AudioStreamPolyphonic_0vh6a")
-autoplay = true
-max_polyphony = 32
-
 [node name="UserInterface" type="CanvasLayer" parent="." groups=["UserInterfaceCanvas"]]
 
 [node name="GameUI" parent="UserInterface" node_paths=PackedStringArray("player") instance=ExtResource("4_i5ie3")]
@@ -209,10 +202,66 @@ layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="Pause" type="Label" parent="UserInterface/PauseMenu/ColorRect/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/PauseMenu/ColorRect/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Pause" type="Label" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "- PAUSE -"
 label_settings = SubResource("LabelSettings_ipaw4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MasterVolumeLabel" type="Label" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+label_settings = ExtResource("11_uxh6b")
+horizontal_alignment = 1
+
+[node name="MasterVolume" type="HSlider" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("11_x3djv")
+bus_name = "Master"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackgroundMusicVolume2" type="Label" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Background Music"
+label_settings = ExtResource("11_uxh6b")
+horizontal_alignment = 1
+
+[node name="BackgroundMusicVolume" type="HSlider" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("11_x3djv")
+bus_name = "BackgroundMusic"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SoundEffectVolume2" type="Label" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Sound Effects"
+label_settings = ExtResource("11_uxh6b")
+horizontal_alignment = 1
+
+[node name="SoundEffectVolume" type="HSlider" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("11_x3djv")
+bus_name = "SoundEffect"
 
 [node name="LoadingScreen" type="CanvasLayer" parent="." groups=["loadingscreen"]]
 visible = false
