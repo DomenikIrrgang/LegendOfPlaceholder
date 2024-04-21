@@ -263,6 +263,38 @@ step = 0.01
 script = ExtResource("11_x3djv")
 bus_name = "SoundEffect"
 
+[node name="VBoxContainer4" type="VBoxContainer" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SoundEffectVolume2" type="Label" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Background Music Channel 1"
+label_settings = ExtResource("11_uxh6b")
+horizontal_alignment = 1
+
+[node name="SoundEffectVolume" type="HSlider" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer4"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("11_x3djv")
+bus_name = "BackgroundMusicChannel1"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SoundEffectVolume2" type="Label" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer5"]
+layout_mode = 2
+text = "Background Music Channel 2"
+label_settings = ExtResource("11_uxh6b")
+horizontal_alignment = 1
+
+[node name="SoundEffectVolume" type="HSlider" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer5"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("11_x3djv")
+bus_name = "BackgroundMusicChannel2"
+
 [node name="LoadingScreen" type="CanvasLayer" parent="." groups=["loadingscreen"]]
 visible = false
 script = ExtResource("10_nu1qd")

@@ -978,7 +978,6 @@ text = "Fullscreen
 script = SubResource("GDScript_axn2g")
 
 [node name="AddItem" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 focus_mode = 0
 theme = SubResource("Theme_7fwd3")

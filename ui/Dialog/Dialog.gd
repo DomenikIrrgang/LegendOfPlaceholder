@@ -30,6 +30,9 @@ func show_dialog_step(_dialog_step: DialogStep) -> void:
 	dialog_step.approved = false
 	dialog_step.finished_actions = []
 	textbox.show_text(dialog_step)
+	var voices = DisplayServer.tts_get_voices_for_language("en")
+	var voice_id = voices[0]
+	DisplayServer.tts_speak(dialog_step.text, voice_id, 20)
 	icon.texture = Units.get_unit_data(dialog_step.author).dialog_texture
 	choices_container.get_children().filter(func(child): child.queue_free())
 	choices_container.visible = false
@@ -44,6 +47,7 @@ func on_dialog_text_stream_end(_dialog_step: DialogStep) -> void:
 	
 func dialog_confirmation_pressed() -> void:
 	if dialog_step_is_finished:
+		DisplayServer.tts_stop()
 		if selected_choice != null:
 			dialog_step.choose(get_dialog_choice(selected_choice.label.text))
 			dialog_step.approve()

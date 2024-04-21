@@ -32,23 +32,36 @@ func _ready():
 	sound_effect_player.max_polyphony = 32
 	sound_effect_player.bus = "SoundEffect"
 	sound_effect_player.play()
-	var background_music_player = AudioStreamPlayer.new()
-	add_child(background_music_player)
-	background_music_player.max_polyphony = 1
-	background_music_player.bus = "BackgroundMusic"
-	background_music_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	channels = {
-		Channel.SOUND_EFFECT: create_channel_dict(sound_effect_player),
-		Channel.BACKGROUND_MUSIC: create_channel_dict(background_music_player)
+		Channel.SOUND_EFFECT: create_channel_dict([sound_effect_player]),
+		Channel.BACKGROUND_MUSIC: create_channel_dict([
+			create_audio_stream_player("BackgroundMusicChannel1"),
+			create_audio_stream_player("BackgroundMusicChannel2")
+		])
 	}
 	
-func create_channel_dict(player: AudioStreamPlayer) -> Dictionary:
+func create_audio_stream_player(bus: String) -> AudioStreamPlayer:
+	var audio_stream_player = AudioStreamPlayer.new()
+	add_child(audio_stream_player)
+	audio_stream_player.max_polyphony = 1
+	audio_stream_player.bus = bus
+	audio_stream_player.process_mode = Node.PROCESS_MODE_ALWAYS
+	return audio_stream_player
+	
+func create_channel_dict(players: Array[AudioStreamPlayer]) -> Dictionary:
 	return {
-		"player": player,
+		"players": players,
+		"current_player_id": 0
 	}
+	
+func get_current_channel_player(channel: Channel) -> AudioStreamPlayer:
+	return channels[channel].players[channels[channel].current_player_id]
+	
+func set_current_channel_player(channel: Channel, player_id: int) -> void:
+	channels[channel].current_player_id = player_id
 	
 func play_sound(channel: Channel, audio_stream: AudioStream, duration: float = 0.0) -> void:
-	var player: AudioStreamPlayer = channels[channel].player
+	var player: AudioStreamPlayer = get_current_channel_player(channel)
 	match channel:
 		Channel.SOUND_EFFECT:
 			if player.has_stream_playback():
@@ -61,6 +74,23 @@ func play_sound(channel: Channel, audio_stream: AudioStream, duration: float = 0
 						duration
 					))
 		Channel.BACKGROUND_MUSIC:
+			var fade_out_tween = create_tween()
+			fade_out_tween.tween_method(
+				func(volume_linear: float):
+					AudioServer.set_bus_volume_db(AudioServer.get_bus_index(player.bus), linear_to_db(volume_linear)),
+				1.0,
+				0.0,
+				1.0)
+			fade_out_tween.finished.connect(func():
+				player.stop()
+				fade_out_tween.kill())
+			fade_out_tween.play()
+			
+			set_current_channel_player(
+				channel,
+				channels[channel].current_player_id + 1 if channels[channel].current_player_id < channels[channel].players.size() - 1 else 0
+			)
+			player = get_current_channel_player(channel)
 			player.stream = audio_stream
 			if audio_stream is AudioStreamMP3:
 				player.stream.set_loop(true)
@@ -68,6 +98,16 @@ func play_sound(channel: Channel, audio_stream: AudioStream, duration: float = 0
 				player.stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
 				player.stream.loop_end = audio_stream.mix_rate * 60.0
 			player.play()
+			var fade_in_tween = create_tween()
+			fade_in_tween.tween_method(
+				func(volume_linear: float):
+					AudioServer.set_bus_volume_db(AudioServer.get_bus_index(player.bus), linear_to_db(volume_linear)),
+				0.0,
+				1.0,
+				1.0)
+			fade_in_tween.finished.connect(func():
+				fade_in_tween.kill())
+			fade_in_tween.play()
 
 func set_volume(channel: Channel, volume: float) -> void:
 	if volume >= MIN_VOLUME and volume <= MAX_VOLUME:
