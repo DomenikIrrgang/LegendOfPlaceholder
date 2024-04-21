@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://tf4e35148cv"]
+[gd_scene load_steps=24 format=3 uid="uid://tf4e35148cv"]
 
 [ext_resource type="Script" path="res://Zones/ForestGrove/ForestGrove.gd" id="1_vt33n"]
+[ext_resource type="AudioStream" uid="uid://dn6oxk6pus1yq" path="res://assets/sound/background/opening.wav" id="2_axjit"]
 [ext_resource type="TileSet" uid="uid://c65yuai7jjlwb" path="res://Zones/ForestGrove/ForestGroveTileSet.tres" id="2_tatbd"]
 [ext_resource type="Texture2D" uid="uid://duu83c3mt1053" path="res://tilemaps/forest_grove.png" id="3_qa1yc"]
 [ext_resource type="Script" path="res://Zones/ForestGrove/SceneSwitch.gd" id="4_10e5x"]
@@ -150,6 +151,7 @@ y_sort_enabled = true
 script = ExtResource("1_vt33n")
 zone_name = "Forest Grove"
 environment_light_energy = 0.75
+background_music = ExtResource("2_axjit")
 
 [node name="Background" type="TileMap" parent="."]
 y_sort_enabled = true

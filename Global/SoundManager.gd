@@ -1,12 +1,19 @@
 extends Node
 
+var channels: Dictionary
+var timed_streams: Array[TimedStream] = []
+
+enum Channel {
+	MASTER,
+	SOUND_EFFECT,
+	BACKGROUND_MUSIC,
+	DIALOG
+}
+
 const MIN_VOLUME: float = 0.0
 const MAX_VOLUME: float = 1.0
 
-enum Channel {
-	SOUND_EFFECT,
-	BACKGROUND_MUSIC
-}
+signal channel_volume_changed(channel: Channel, volume: float)
 
 class TimedStream:
 	var channel: Channel
@@ -34,21 +41,18 @@ class TimedStream:
 	func stop():
 		SoundManager.get_current_channel_player(channel).get_stream_playback().stop_stream(stream_id)
 
-var channels: Dictionary
-var timed_streams: Array[TimedStream] = []
-
 func _ready():
-	var sound_effect_player = AudioStreamPlayer.new()
-	add_child(sound_effect_player)
-	sound_effect_player.stream = AudioStreamPolyphonic.new()
-	sound_effect_player.max_polyphony = 32
-	sound_effect_player.bus = "SoundEffect"
-	sound_effect_player.play()
 	channels = {
-		Channel.SOUND_EFFECT: create_channel_dict([sound_effect_player]),
-		Channel.BACKGROUND_MUSIC: create_channel_dict([
+		Channel.MASTER: create_channel_dict("Master", []),
+		Channel.SOUND_EFFECT: create_channel_dict("SoundEffect", [
+			create_polyphnic_audio_stream("SoundEffect", 32)
+		]),
+		Channel.BACKGROUND_MUSIC: create_channel_dict("BackgroundMusic", [
 			create_audio_stream_player("BackgroundMusicChannel1"),
 			create_audio_stream_player("BackgroundMusicChannel2")
+		]),
+		Channel.DIALOG: create_channel_dict("Dialog", [
+			create_polyphnic_audio_stream("Dialog", 8)
 		])
 	}
 	
@@ -60,10 +64,21 @@ func create_audio_stream_player(bus: String) -> AudioStreamPlayer:
 	audio_stream_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	return audio_stream_player
 	
-func create_channel_dict(players: Array[AudioStreamPlayer]) -> Dictionary:
+func create_polyphnic_audio_stream(bus: String, polyphony: int) -> AudioStreamPlayer:
+	var audio_stream = AudioStreamPlayer.new()
+	add_child(audio_stream)
+	audio_stream.stream = AudioStreamPolyphonic.new()
+	audio_stream.max_polyphony = polyphony
+	audio_stream.bus = bus
+	audio_stream.play()
+	return audio_stream
+	
+func create_channel_dict(bus: String, players: Array[AudioStreamPlayer]) -> Dictionary:
 	return {
 		"players": players,
-		"current_player_id": 0
+		"current_player_id": 0,
+		"volume": 1.0,
+		"bus": bus
 	}
 	
 func get_current_channel_player(channel: Channel) -> AudioStreamPlayer:
@@ -94,7 +109,7 @@ func play_sound(channel: Channel, audio_stream: AudioStream, duration: float = 0
 			var fade_out_tween = create_tween()
 			fade_out_tween.tween_method(
 				func(volume_linear: float):
-					set_volume(player.bus, volume_linear),
+					set_bus_volume(player.bus, volume_linear),
 				1.0,
 				0.0,
 				2.0)
@@ -117,17 +132,35 @@ func play_sound(channel: Channel, audio_stream: AudioStream, duration: float = 0
 			var fade_in_tween = create_tween()
 			fade_in_tween.tween_method(
 				func(volume_linear: float):
-					set_volume(player.bus, volume_linear),
+					set_bus_volume(player.bus, volume_linear),
 				0.0,
 				1.0,
 				2.0)
 			fade_in_tween.finished.connect(func():
 				fade_in_tween.kill())
 			fade_in_tween.play()
-
-func set_volume(bus: String, volume: float) -> void:
+			
+func set_bus_volume(bus: String, volume: float) -> void:
 	if volume >= MIN_VOLUME and volume <= MAX_VOLUME:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), linear_to_db(volume))
+
+func set_channel_volume(channel: Channel, volume: float) -> void:
+	if volume >= MIN_VOLUME and volume <= MAX_VOLUME:
+		set_bus_volume(channels[channel].bus, volume)
+		channels[channel].volume = volume
+		channel_volume_changed.emit(channel, volume)
+		
+func get_channel_volume(channel: Channel) -> float:
+	return channels[channel].volume
+
+func play_tts(text: String) -> void:
+	if DisplayServer.tts_is_speaking():
+		DisplayServer.tts_stop()
+	var voices = DisplayServer.tts_get_voices_for_language("en")
+	var voice_id = voices[0]
+	DisplayServer.tts_speak(text, voice_id, int(
+		min(channels[Channel.MASTER].volume, channels[Channel.DIALOG].volume) * 100
+	))
 		
 func get_volume(bus: String) -> float:
 	return AudioServer.get_bus_volume_db(AudioServer.get_bus_index(bus))
