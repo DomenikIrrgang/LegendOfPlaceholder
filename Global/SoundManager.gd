@@ -13,12 +13,25 @@ class TimedStream:
 	var stream_id: int
 	var start_time: float
 	var duration: float
+	var ease_out_time: float
 	
-	func _init(_channel: Channel, _stream_id: int, _start_time: float, _duration: float):
+	func _init(_channel: Channel, _stream_id: int, _start_time: float, _duration: float, _ease_out_time: float = 1000.0):
 		channel = _channel
 		stream_id = _stream_id
 		start_time = _start_time
 		duration = _duration
+		ease_out_time = _ease_out_time
+		
+	func get_remaining_time() -> float:
+		return start_time + duration - Time.get_ticks_msec()
+		
+	func update(delta: float):
+		print("remaining time ", get_remaining_time())
+		if get_remaining_time() < ease_out_time:
+			print("reducing volume ", get_remaining_time() / ease_out_time)
+			SoundManager.get_current_channel_player(channel).get_stream_playback().set_stream_volume(stream_id, linear_to_db(
+				get_remaining_time() / ease_out_time
+			))
 
 var channels: Dictionary
 var timed_streams: Array[TimedStream] = []
@@ -66,12 +79,15 @@ func play_sound(channel: Channel, audio_stream: AudioStream, duration: float = 0
 		Channel.SOUND_EFFECT:
 			if player.has_stream_playback():
 				var stream_id: int = player.get_stream_playback().play_stream(audio_stream)
+				if duration == 0.0 and audio_stream.get_length() != 0.0:
+					duration = audio_stream.get_length() * 1000
 				if duration != 0.0:
 					timed_streams.append(TimedStream.new(
 						channel,
 						stream_id,
 						Time.get_ticks_msec(),
-						duration
+						duration,
+						1000.0
 					))
 		Channel.BACKGROUND_MUSIC:
 			var fade_out_tween = create_tween()
@@ -117,8 +133,9 @@ func set_volume(channel: Channel, volume: float) -> void:
 func get_volume(channel: Channel) -> float:
 	return channels[channel].player.volume_db
 	
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	for timed_stream in timed_streams:
+		timed_stream.update(delta)
 		if timed_stream.start_time + timed_stream.duration <= Time.get_ticks_msec():
-			channels[timed_stream.channel].player.get_stream_playback().stop_stream(timed_stream.stream_id)
+			get_current_channel_player(timed_stream.channel).get_stream_playback().stop_stream(timed_stream.stream_id)
 			timed_streams.erase(timed_stream)
