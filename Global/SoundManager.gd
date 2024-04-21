@@ -32,7 +32,7 @@ class TimedStream:
 	func get_remaining_time() -> float:
 		return start_time + duration - Time.get_ticks_msec()
 		
-	func update(delta: float):
+	func update(_delta: float):
 		if get_remaining_time() < ease_out_time:
 			SoundManager.get_current_channel_player(channel).get_stream_playback().set_stream_volume(stream_id, linear_to_db(
 				get_remaining_time() / ease_out_time
@@ -55,6 +55,21 @@ func _ready():
 			create_polyphnic_audio_stream("Dialog", 8)
 		])
 	}
+	SaveFileManager.save_file_loaded.connect(on_save_file_loaded)
+	SaveFileManager.save_file_saving.connect(on_save_file_saving)
+	
+func on_save_file_loaded(save_file: Dictionary) -> void:
+	for channel in save_file.sound_settings.channels:
+		set_channel_volume(int(channel), save_file.sound_settings.channels[channel].volume)
+	
+func on_save_file_saving(save_file: Dictionary) -> void:
+	save_file.sound_settings = {
+		channels = {}
+	}
+	for channel in channels.keys():
+		save_file.sound_settings.channels[channel] = {
+			"volume": get_channel_volume(channel)
+		}
 	
 func create_audio_stream_player(bus: String) -> AudioStreamPlayer:
 	var audio_stream_player = AudioStreamPlayer.new()
@@ -77,7 +92,7 @@ func create_channel_dict(bus: String, players: Array[AudioStreamPlayer]) -> Dict
 	return {
 		"players": players,
 		"current_player_id": 0,
-		"volume": 1.0,
+		"volume": 0.5,
 		"bus": bus
 	}
 	
@@ -88,6 +103,7 @@ func set_current_channel_player(channel: Channel, player_id: int) -> void:
 	channels[channel].current_player_id = player_id
 	
 func play_sound(channel: Channel, audio_stream: AudioStream, duration: float = 0.0) -> void:
+	print("starting to play on channel ", channel)
 	var player: AudioStreamPlayer = get_current_channel_player(channel)
 	match channel:
 		Channel.SOUND_EFFECT:

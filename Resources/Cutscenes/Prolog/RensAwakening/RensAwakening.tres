@@ -14,7 +14,7 @@
 
 [sub_resource type="Resource" id="Resource_gq1jl"]
 script = ExtResource("2_26ate")
-channel = 1
+channel = 2
 sound_file = ExtResource("3_tyxuo")
 duration = 0.0
 
@@ -82,7 +82,7 @@ enabled = true
 
 [sub_resource type="Resource" id="Resource_ptwk6"]
 script = ExtResource("2_26ate")
-channel = 1
+channel = 2
 sound_file = ExtResource("11_khbfk")
 duration = 0.0
 
