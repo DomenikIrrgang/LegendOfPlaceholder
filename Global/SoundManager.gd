@@ -1,7 +1,7 @@
 extends Node
 
-const MIN_VOLUME: float = -70.0
-const MAX_VOLUME: float = 10.0
+const MIN_VOLUME: float = 0.0
+const MAX_VOLUME: float = 1.0
 
 enum Channel {
 	SOUND_EFFECT,
@@ -26,17 +26,16 @@ class TimedStream:
 		return start_time + duration - Time.get_ticks_msec()
 		
 	func update(delta: float):
-		print("remaining time ", get_remaining_time())
 		if get_remaining_time() < ease_out_time:
-			print("reducing volume ", get_remaining_time() / ease_out_time)
 			SoundManager.get_current_channel_player(channel).get_stream_playback().set_stream_volume(stream_id, linear_to_db(
 				get_remaining_time() / ease_out_time
 			))
+			
+	func stop():
+		SoundManager.get_current_channel_player(channel).get_stream_playback().stop_stream(stream_id)
 
 var channels: Dictionary
 var timed_streams: Array[TimedStream] = []
-
-signal channel_volume_changed(channel: Channel, volume: float)
 
 func _ready():
 	var sound_effect_player = AudioStreamPlayer.new()
@@ -90,18 +89,19 @@ func play_sound(channel: Channel, audio_stream: AudioStream, duration: float = 0
 						1000.0
 					))
 		Channel.BACKGROUND_MUSIC:
+			if audio_stream == player.stream:
+				return
 			var fade_out_tween = create_tween()
 			fade_out_tween.tween_method(
 				func(volume_linear: float):
-					AudioServer.set_bus_volume_db(AudioServer.get_bus_index(player.bus), linear_to_db(volume_linear)),
+					set_volume(player.bus, volume_linear),
 				1.0,
 				0.0,
-				1.0)
+				2.0)
 			fade_out_tween.finished.connect(func():
 				player.stop()
 				fade_out_tween.kill())
 			fade_out_tween.play()
-			
 			set_current_channel_player(
 				channel,
 				channels[channel].current_player_id + 1 if channels[channel].current_player_id < channels[channel].players.size() - 1 else 0
@@ -112,30 +112,29 @@ func play_sound(channel: Channel, audio_stream: AudioStream, duration: float = 0
 				player.stream.set_loop(true)
 			elif audio_stream is AudioStreamWAV:
 				player.stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
-				player.stream.loop_end = audio_stream.mix_rate * 60.0
+				player.stream.loop_end = audio_stream.mix_rate * audio_stream.get_length()
 			player.play()
 			var fade_in_tween = create_tween()
 			fade_in_tween.tween_method(
 				func(volume_linear: float):
-					AudioServer.set_bus_volume_db(AudioServer.get_bus_index(player.bus), linear_to_db(volume_linear)),
+					set_volume(player.bus, volume_linear),
 				0.0,
 				1.0,
-				1.0)
+				2.0)
 			fade_in_tween.finished.connect(func():
 				fade_in_tween.kill())
 			fade_in_tween.play()
 
-func set_volume(channel: Channel, volume: float) -> void:
+func set_volume(bus: String, volume: float) -> void:
 	if volume >= MIN_VOLUME and volume <= MAX_VOLUME:
-		channels[channel].player.volume_db = volume
-		channel_volume_changed.emit(channel, volume)
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), linear_to_db(volume))
 		
-func get_volume(channel: Channel) -> float:
-	return channels[channel].player.volume_db
+func get_volume(bus: String) -> float:
+	return AudioServer.get_bus_volume_db(AudioServer.get_bus_index(bus))
 	
 func _process(delta: float) -> void:
 	for timed_stream in timed_streams:
 		timed_stream.update(delta)
-		if timed_stream.start_time + timed_stream.duration <= Time.get_ticks_msec():
-			get_current_channel_player(timed_stream.channel).get_stream_playback().stop_stream(timed_stream.stream_id)
+		if timed_stream.get_remaining_time() <= 0.0:
+			timed_stream.stop()
 			timed_streams.erase(timed_stream)

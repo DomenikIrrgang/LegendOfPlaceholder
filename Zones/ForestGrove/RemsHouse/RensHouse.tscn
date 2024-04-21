@@ -1,7 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://cex8g67gr43h7"]
+[gd_scene load_steps=43 format=3 uid="uid://cex8g67gr43h7"]
 
 [ext_resource type="Script" path="res://Zones/ForestGrove/RemsHouse/RensHouse.gd" id="1_ocifb"]
 [ext_resource type="TileSet" uid="uid://c65yuai7jjlwb" path="res://Zones/ForestGrove/ForestGroveTileSet.tres" id="2_7djdw"]
+[ext_resource type="AudioStream" uid="uid://dn6oxk6pus1yq" path="res://assets/sound/background/opening.wav" id="2_fi4qo"]
 [ext_resource type="Script" path="res://Zones/ForestGrove/RemsHouse/HouseTilemap.gd" id="3_msjc4"]
 [ext_resource type="Script" path="res://Zones/Triggers/ChangeSceneTrigger.gd" id="4_508uv"]
 [ext_resource type="Texture2D" uid="uid://bqxmb2iloh01i" path="res://assets/environment/runesmithing/furnace.png" id="5_v6x8x"]
@@ -171,6 +172,7 @@ size = Vector2(21, 39)
 y_sort_enabled = true
 script = ExtResource("1_ocifb")
 zone_name = "Ren's House"
+background_music = ExtResource("2_fi4qo")
 
 [node name="Background" type="TileMap" parent="."]
 y_sort_enabled = true
