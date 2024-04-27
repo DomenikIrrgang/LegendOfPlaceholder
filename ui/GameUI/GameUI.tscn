@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=103 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -61,6 +61,7 @@
 [ext_resource type="Texture2D" uid="uid://eei3t6d1xjue" path="res://assets/ui/dialog/player_dialog_100x100.png" id="55_fnv2a"]
 [ext_resource type="Script" path="res://ui/GameUI/InventoryChange/InventoryChange.gd" id="59_guo78"]
 [ext_resource type="Script" path="res://ui/GameUI/QuestObjectiveTracker/QuestObjectiveTracker.gd" id="61_hoquh"]
+[ext_resource type="PackedScene" uid="uid://cbo2sfnlbakrj" path="res://ui/GameUI/QuestPrompt/QuesTPrompt.tscn" id="62_lavu2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
 font = ExtResource("3_60v0h")
@@ -1149,6 +1150,9 @@ script = ExtResource("61_hoquh")
 [node name="Quests" type="VBoxContainer" parent="QuestObjectiveTracker"]
 layout_mode = 2
 theme_override_constants/separation = 15
+
+[node name="QuestPrompt" parent="." instance=ExtResource("62_lavu2")]
+layout_mode = 0
 
 [connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_exited"]

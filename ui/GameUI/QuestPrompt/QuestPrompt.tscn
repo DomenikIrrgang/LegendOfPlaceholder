@@ -1,0 +1,155 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbo2sfnlbakrj"]
+
+[ext_resource type="Script" path="res://ui/GameUI/QuestPrompt/QuestPrompt.gd" id="1_hk187"]
+[ext_resource type="Texture2D" uid="uid://btedi6j1d0nqk" path="res://assets/ui/quest/quest_scroll_stick_top.png" id="2_3yu73"]
+[ext_resource type="Texture2D" uid="uid://dhn16psatlrok" path="res://assets/ui/quest/quest_scroll_stick_middle.png" id="3_ws8vg"]
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="4_2exvr"]
+[ext_resource type="PackedScene" uid="uid://bn1eil66gypev" path="res://ui/GameUI/Questlog/RewardPanel.tscn" id="5_x7y2f"]
+[ext_resource type="Texture2D" uid="uid://djcwiew2hl6g" path="res://assets/ui/quest/button_texture.png" id="6_j1jis"]
+[ext_resource type="Texture2D" uid="uid://1q0pft353k2j" path="res://assets/ui/quest/quest_scroll_stick_bottom.png" id="6_shcbg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hkvj8"]
+
+[sub_resource type="GDScript" id="GDScript_4h23a"]
+script/source = "extends PanelContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	resized.connect(on_resize)
+	set_size(Vector2(10,10))
+	
+func on_resize() -> void:
+	print(\"resized\")
+"
+
+[node name="QuestPrompt" type="CenterContainer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_hk187")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ScrollTop" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_3yu73")
+
+[node name="ScrollMiddle" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_hkvj8")
+script = SubResource("GDScript_4h23a")
+
+[node name="Background" type="NinePatchRect" parent="VBoxContainer/ScrollMiddle"]
+layout_mode = 2
+texture = ExtResource("3_ws8vg")
+patch_margin_left = 150
+patch_margin_top = 20
+patch_margin_right = 150
+patch_margin_bottom = 20
+
+[node name="Margin" type="MarginContainer" parent="VBoxContainer/ScrollMiddle"]
+layout_mode = 2
+theme_override_constants/margin_left = 110
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 110
+theme_override_constants/margin_bottom = 20
+
+[node name="Spacing" type="VBoxContainer" parent="VBoxContainer/ScrollMiddle/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 70
+
+[node name="QuestInfo" type="VBoxContainer" parent="VBoxContainer/ScrollMiddle/Margin/Spacing"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="QuestName" type="Label" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/QuestInfo"]
+self_modulate = Color(0.266667, 0.266667, 0.266667, 1)
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "A friendly Gesture"
+label_settings = ExtResource("4_2exvr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="QuestDescription" type="Label" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/QuestInfo"]
+self_modulate = Color(0.345098, 0.345098, 0.345098, 1)
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.
+Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.
+Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.
+"
+label_settings = ExtResource("4_2exvr")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="RewardsContainer" type="VBoxContainer" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/QuestInfo"]
+layout_mode = 2
+
+[node name="RewardsLabel" type="Label" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/QuestInfo/RewardsContainer"]
+self_modulate = Color(0.278431, 0.278431, 0.278431, 1)
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "Rewards:"
+label_settings = ExtResource("4_2exvr")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/QuestInfo/RewardsContainer"]
+layout_mode = 2
+
+[node name="RewardPanel" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/QuestInfo/RewardsContainer/HFlowContainer" instance=ExtResource("5_x7y2f")]
+layout_mode = 2
+
+[node name="RewardPanel2" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/QuestInfo/RewardsContainer/HFlowContainer" instance=ExtResource("5_x7y2f")]
+layout_mode = 2
+
+[node name="RewardPanel3" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/QuestInfo/RewardsContainer/HFlowContainer" instance=ExtResource("5_x7y2f")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollMiddle/Margin/Spacing"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Accept2" type="TextureButton" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_j1jis")
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/VBoxContainer/CenterContainer/HBoxContainer/Accept2"]
+self_modulate = Color(0.266667, 0.266667, 0.266667, 1)
+offset_right = 130.0
+offset_bottom = 60.0
+text = "Decline"
+label_settings = ExtResource("4_2exvr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Accept" type="TextureButton" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_j1jis")
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/VBoxContainer/CenterContainer/HBoxContainer/Accept"]
+self_modulate = Color(0.266667, 0.266667, 0.266667, 1)
+offset_right = 130.0
+offset_bottom = 60.0
+text = "Accept"
+label_settings = ExtResource("4_2exvr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ScrollBottom" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_shcbg")

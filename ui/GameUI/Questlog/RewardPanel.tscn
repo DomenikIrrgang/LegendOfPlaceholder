@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bn1eil66gypev"]
 
-[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="1_qf7uq"]
+[ext_resource type="Texture2D" uid="uid://xx54djuob4gt" path="res://assets/ui/quest/reward_background.png" id="1_3l0x1"]
 [ext_resource type="Script" path="res://ui/GameUI/Questlog/RewardPanel.gd" id="2_d2pee"]
 [ext_resource type="Shader" path="res://Shaders/Greyscale.gdshader" id="3_f0xua"]
 [ext_resource type="Texture2D" uid="uid://dnnj48dx2glf3" path="res://assets/ui/items/healing_potion.png" id="4_p782k"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bt8umr5bwbj3j" path="res://ui/GameUI/Tooltip/ItemTooltipComponent.tscn" id="6_5tn2r"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dqn0b"]
-texture = ExtResource("1_qf7uq")
+texture = ExtResource("1_3l0x1")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fewj8"]
 resource_local_to_scene = true
