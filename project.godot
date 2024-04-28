@@ -39,7 +39,6 @@ Spellbook="*res://Global/Spellbook.gd"
 CombatUtil="*res://Global/CombatUtil.gd"
 GearManager="*res://Global/GearManager.gd"
 EventBus="*res://Global/EventBus.gd"
-Pandora="*res://addons/pandora/api.gd"
 QuestManager="*res://Global/QuestManager.gd"
 InteractionManager="*res://Global/InteractionManager.gd"
 GameStateManager="*res://GameState/GameStateManager.gd"
@@ -61,10 +60,6 @@ window/stretch/mode="canvas_items"
 [editor]
 
 export/convert_text_resources_to_binary=false
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/pandora/plugin.cfg")
 
 [input]
 

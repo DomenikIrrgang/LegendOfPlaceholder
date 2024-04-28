@@ -18,6 +18,7 @@ font = ExtResource("1_d40p0")
 script = ExtResource("1_46vi5")
 
 [node name="BaseScene" parent="." instance=ExtResource("2_y0fhv")]
+z_index = -4000
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

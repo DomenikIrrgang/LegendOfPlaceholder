@@ -29,6 +29,9 @@ func _ready() -> void:
 
 func save_file_exists() -> bool:
 	return FileAccess.file_exists(SAVE_FILE_PATH)
+	
+func is_game_state_loaded() -> bool:
+	return loaded_game_state_index != -1
 
 func load_save_file() -> Dictionary:
 	save_file_start_loading.emit()

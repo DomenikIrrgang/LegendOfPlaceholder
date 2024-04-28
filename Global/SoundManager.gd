@@ -106,7 +106,6 @@ func set_current_channel_player(channel: Channel, player_id: int) -> void:
 	channels[channel].current_player_id = player_id
 	
 func play_sound(channel: Channel, audio_stream: AudioStream, duration: float = 0.0) -> void:
-	print("starting to play on channel ", channel)
 	var player: AudioStreamPlayer = get_current_channel_player(channel)
 	match channel:
 		Channel.SOUND_EFFECT:
