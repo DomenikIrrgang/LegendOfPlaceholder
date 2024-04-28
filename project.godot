@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Rinia: Return of Duland"
-config/version="0.0.3-pre-alpha"
+config/version="0.0.3"
 run/main_scene="res://MainMenue/GodotSplashscreen.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
