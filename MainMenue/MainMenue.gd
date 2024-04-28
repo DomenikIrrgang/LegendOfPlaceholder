@@ -4,7 +4,7 @@ extends Node2D
 var version: Label = $CanvasLayer/HBoxContainer/MarginContainer/Version
 
 func _ready():
-	version.text = ProjectSettings.get_setting("application/config/version")
+	version.text = "version " + ProjectSettings.get_setting("application/config/version")
 	Globals.get_user_interface().visible = false
 	SceneSwitcher.load_scene("res://Zones/ForestGrove/ElementalSlimeArena.tscn", Vector2(18, 52))
 	Globals.get_player().pause()

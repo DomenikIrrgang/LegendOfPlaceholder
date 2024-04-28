@@ -10,6 +10,6 @@ func _ready():
 		Globals.get_user_interface().visible = true
 	
 func _input(event) -> void:
-	if (event.is_action_released("pause") and SaveFileManager.is_game_state_loaded()):
+	if (event.is_action_released("pause") and SaveFileManager.is_game_state_loaded()) and Globals.get_player().alive:
 		get_tree().paused = true
 		$UserInterface/PauseMenu.visible = true

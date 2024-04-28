@@ -4,6 +4,7 @@ var active_bonuses: Array[SetBonus] = []
 
 func _ready() -> void:
 	SaveFileManager.game_state_start_loading.connect(reset)
+	SaveFileManager.game_state_start_unloading.connect(reset)
 	SaveFileManager.game_state_saving.connect(on_save)
 	SaveFileManager.game_state_loaded.connect(on_load)
 	

@@ -73,7 +73,7 @@ func get_abilities() -> Array[Ability]:
 	return Keybinds.get_abilities() 
 	
 func on_player_died(_player: Unit) -> void:
-	respawn()
+	Globals.get_tree().paused = true
 	
 func respawn() -> void:
 	alive = true

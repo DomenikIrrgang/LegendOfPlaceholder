@@ -8,6 +8,7 @@ signal save_file_loaded(save_file: Dictionary)
 signal game_state_saving(game_state: Dictionary)
 signal game_state_saved()
 signal game_state_start_loading()
+signal game_state_start_unloading()
 signal game_state_loaded(game_state: Dictionary)
 
 
@@ -29,6 +30,10 @@ func _ready() -> void:
 
 func save_file_exists() -> bool:
 	return FileAccess.file_exists(SAVE_FILE_PATH)
+	
+func unload_game_state() -> void:
+	loaded_game_state_index = -1
+	game_state_start_unloading.emit()
 	
 func is_game_state_loaded() -> bool:
 	return loaded_game_state_index != -1

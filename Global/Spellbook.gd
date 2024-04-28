@@ -9,12 +9,10 @@ func _ready() -> void:
 	SaveFileManager.game_state_loaded.connect(on_load)
 	SaveFileManager.game_state_saving.connect(on_save)
 	SaveFileManager.game_state_start_loading.connect(reset)
+	SaveFileManager.game_state_start_unloading.connect(reset)
 	
 func reset() -> void:
 	known_abilities = []
-	var dash = load("res://Combat/abilities/Dash.tscn").instantiate()
-	Keybinds.keybind_ability("Dash", dash)
-	learn_ability(dash)
 	known_abilities_changed.emit()
 	
 func on_save(game_state: Dictionary) -> void:

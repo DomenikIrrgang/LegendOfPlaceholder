@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ddnsu8hllewh7"]
+[gd_scene load_steps=31 format=3 uid="uid://ddnsu8hllewh7"]
 
 [ext_resource type="Script" path="res://Zones/BaseScene.gd" id="1_3m1id"]
 [ext_resource type="Script" path="res://CustomCamera.gd" id="1_yk0hc"]
@@ -13,6 +13,10 @@
 [ext_resource type="Script" path="res://Zones/EnvironmentLighting.gd" id="11_dggdl"]
 [ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="11_uxh6b"]
 [ext_resource type="Script" path="res://ui/PauseMenu/BusVolumeSetting.gd" id="11_x3djv"]
+[ext_resource type="Script" path="res://ui/DeathScreen/DeathScreen.gd" id="13_agrxk"]
+[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="13_rrogc"]
+[ext_resource type="Script" path="res://ui/DeathScreen/Respawn.gd" id="14_5yh4g"]
+[ext_resource type="Script" path="res://ui/DeathScreen/MainMenue.gd" id="15_jpvca"]
 
 [sub_resource type="Animation" id="Animation_58ieq"]
 resource_name = "Hide"
@@ -83,6 +87,13 @@ font = ExtResource("9_0jh1n")
 font_size = 46
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3s4qu"]
+texture = ExtResource("13_rrogc")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
 
 [sub_resource type="Shader" id="Shader_7wgod"]
 code = "shader_type canvas_item;
@@ -278,8 +289,48 @@ step = 0.01
 script = ExtResource("11_x3djv")
 channel = 3
 
-[node name="LoadingScreen" type="CanvasLayer" parent="." groups=["loadingscreen"]]
+[node name="DeathScreen" type="Control" parent="UserInterface"]
+process_mode = 3
 visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("13_agrxk")
+
+[node name="ColorRect" type="ColorRect" parent="UserInterface/DeathScreen"]
+material = SubResource("ShaderMaterial_aq4yp")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="CenterContainer" type="CenterContainer" parent="UserInterface/DeathScreen/ColorRect"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/DeathScreen/ColorRect/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Death" type="Label" parent="UserInterface/DeathScreen/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "- YOU DIED -"
+label_settings = SubResource("LabelSettings_ipaw4")
+
+[node name="Respawn" type="Button" parent="UserInterface/DeathScreen/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_3s4qu")
+text = "Respawn"
+script = ExtResource("14_5yh4g")
+
+[node name="MainMenue" type="Button" parent="UserInterface/DeathScreen/ColorRect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_3s4qu")
+text = "Return to Mainmenu"
+script = ExtResource("15_jpvca")
+
+[node name="LoadingScreen" type="CanvasLayer" parent="." groups=["loadingscreen"]]
 script = ExtResource("10_nu1qd")
 
 [node name="Background" type="Sprite2D" parent="LoadingScreen"]
@@ -289,3 +340,6 @@ texture = SubResource("NoiseTexture2D_fxhsl")
 centered = false
 region_enabled = true
 region_rect = Rect2(2.08165e-12, 2.08165e-12, 1920, 1080)
+
+[connection signal="pressed" from="UserInterface/DeathScreen/ColorRect/CenterContainer/VBoxContainer/Respawn" to="UserInterface/DeathScreen/ColorRect/CenterContainer/VBoxContainer/Respawn" method="_on_pressed"]
+[connection signal="pressed" from="UserInterface/DeathScreen/ColorRect/CenterContainer/VBoxContainer/MainMenue" to="UserInterface/DeathScreen/ColorRect/CenterContainer/VBoxContainer/MainMenue" method="_on_pressed"]
