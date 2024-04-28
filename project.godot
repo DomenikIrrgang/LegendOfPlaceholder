@@ -11,8 +11,11 @@ config_version=5
 [application]
 
 config/name="Rinia: Return of Duland"
-run/main_scene="res://Zones/BaseScene.tscn"
+config/version="0.0.3-pre-alpha"
+run/main_scene="res://MainMenue/GodotSplashscreen.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 config/icon="res://assets/ui/bottom_hud/spellbook_closed.png"
 
 [audio]
@@ -40,8 +43,8 @@ Pandora="*res://addons/pandora/api.gd"
 QuestManager="*res://Global/QuestManager.gd"
 InteractionManager="*res://Global/InteractionManager.gd"
 GameStateManager="*res://GameState/GameStateManager.gd"
-SaveFileManager="*res://Global/SaveFileManager.gd"
 SoundManager="*res://Global/SoundManager.gd"
+SaveFileManager="*res://Global/SaveFileManager.gd"
 
 [debug]
 
@@ -52,6 +55,7 @@ gdscript/warnings/narrowing_conversion=0
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [editor]

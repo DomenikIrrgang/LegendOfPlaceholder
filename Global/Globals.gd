@@ -4,9 +4,9 @@ var inventory: Inventory = Inventory.new(32)
 var bank: Inventory = Inventory.new(128)
 
 func _ready() -> void:
-	SaveFileManager.save_file_saving.connect(on_save)
-	SaveFileManager.save_file_loaded.connect(on_load)
-	SaveFileManager.save_file_start_loading.connect(reset)
+	SaveFileManager.game_state_saving.connect(on_save)
+	SaveFileManager.game_state_loaded.connect(on_load)
+	SaveFileManager.game_state_start_loading.connect(reset)
 	
 func reset() -> void:
 	inventory.empty()
@@ -14,17 +14,17 @@ func reset() -> void:
 	get_player().set_level(1)
 	get_player().set_experience(0)
 	
-func on_save(save_file: Dictionary) -> void:
-	save_file.inventory = get_inventory_save(inventory)
-	save_file.bank = get_inventory_save(bank)
-	save_file.player = {
+func on_save(game_state: Dictionary) -> void:
+	game_state.inventory = get_inventory_save(inventory)
+	game_state.bank = get_inventory_save(bank)
+	game_state.player = {
 		experience = get_player().get_total_experience()
 	}
 	
-func on_load(save_file: Dictionary) -> void:
-	get_player().gain_experience(save_file.player.experience)
-	load_inventory(inventory, save_file.inventory)
-	load_inventory(bank, save_file.bank)
+func on_load(game_state: Dictionary) -> void:
+	get_player().gain_experience(game_state.player.experience)
+	load_inventory(inventory, game_state.inventory)
+	load_inventory(bank, game_state.bank)
 	
 func get_inventory_save(_inventory: Inventory) -> Array:
 	return _inventory.slots.map(func(slot: InventorySlot):

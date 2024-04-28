@@ -61,7 +61,7 @@
 [ext_resource type="Texture2D" uid="uid://eei3t6d1xjue" path="res://assets/ui/dialog/player_dialog_100x100.png" id="55_fnv2a"]
 [ext_resource type="Script" path="res://ui/GameUI/InventoryChange/InventoryChange.gd" id="59_guo78"]
 [ext_resource type="Script" path="res://ui/GameUI/QuestObjectiveTracker/QuestObjectiveTracker.gd" id="61_hoquh"]
-[ext_resource type="PackedScene" uid="uid://cbo2sfnlbakrj" path="res://ui/GameUI/QuestPrompt/QuesTPrompt.tscn" id="62_lavu2"]
+[ext_resource type="PackedScene" uid="uid://cbo2sfnlbakrj" path="res://ui/GameUI/QuestPrompt/QuestPrompt.tscn" id="62_lavu2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
 font = ExtResource("3_60v0h")
@@ -264,8 +264,7 @@ func getallnodes(nodes, node):
 			getallnodes(nodes, n)
 		else:
 			nodes.append(n)
-	return nodes
-"
+	return nodes"
 
 [sub_resource type="GDScript" id="GDScript_axn2g"]
 script/source = "extends Button
@@ -285,33 +284,12 @@ default_font = ExtResource("3_60v0h")
 [sub_resource type="GDScript" id="GDScript_3g0do"]
 script/source = "extends Button
 
-var lesser_healing_potion: Item = preload(\"res://Resources/Items/HealingPotions/LesserHealingPotion.tres\")
-var healing_potion: Item = preload(\"res://Resources/Items/HealingPotions/HealingPotion.tres\")
-var lesser_mana_potion: Item = preload(\"res://Resources/Items/ManaPotions/LesserManaPotion.tres\")
-var fireball_tome: Item = preload(\"res://Resources/Items/Spelltomes/FireballTome.tres\")
-var mend_tome: Item = preload(\"res://Resources/Items/Spelltomes/MendTome.tres\")
-var forcefield_tome: Item = preload(\"res://Resources/Items/Spelltomes/ForcefieldTome.tres\")
-var burning_veins: Item = preload(\"res://Resources/Items/Spelltomes/BurningVeinsTome.tres\")
-var testing_chest: Item = preload(\"res://Resources/Gear/Testing/TestingChest.tres\")
-var mana_crystal: Item = preload(\"res://Resources/Gear/ResourceCrystals/ManaCrystal.tres\")
-var rage_crystal: Item = preload(\"res://Resources/Gear/ResourceCrystals/RageCrystal.tres\")
-var energy_crystal: Item = preload(\"res://Resources/Gear/ResourceCrystals/EnergyCrystal.tres\")
-var honing_spit: Item = preload(\"res://Resources/Items/Spelltomes/HoningSpitTome.tres\")
-
-var Drop = preload(\"res://Unit/Drops/Drop.tscn\")
-
-var test_set: GearSet = preload(\"res://Resources/Gear/RunesmithSet/RunesmithSet.tres\")
-
 func _on_pressed():
-	print(test_set.set_bonuses[0])
-	print(test_set.set_bonuses[0].required_pieces)
-	print(test_set.set_bonuses[1].required_pieces)
+	pass
 "
 
 [sub_resource type="GDScript" id="GDScript_j6glr"]
 script/source = "extends Button
-
-var test_status_effect: StatusEffect = load(\"res://Resources/StatusEffects/TestEffect.tres\")
 
 func _on_pressed():
 	SaveFileManager.save_to_save_file()
@@ -322,7 +300,7 @@ func _on_pressed():
 script/source = "extends Button
 
 func _on_pressed():
-	SaveFileManager.load_save_file()
+	SaveFileManager.load_game_state(SaveFileManager.loaded_game_state_index)
 
 "
 
@@ -971,6 +949,7 @@ text = "Level Up"
 script = SubResource("GDScript_pwi1q")
 
 [node name="WindowMode" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 theme = SubResource("Theme_sqxju")
@@ -979,6 +958,7 @@ text = "Fullscreen
 script = SubResource("GDScript_axn2g")
 
 [node name="AddItem" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 theme = SubResource("Theme_7fwd3")
@@ -994,6 +974,7 @@ text = "Save"
 script = SubResource("GDScript_j6glr")
 
 [node name="Load" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 theme = SubResource("Theme_7fwd3")
@@ -1002,6 +983,7 @@ text = "Load
 script = SubResource("GDScript_jvssh")
 
 [node name="PlayerPosition" type="Label" parent="Debug/VBoxContainer"]
+visible = false
 layout_mode = 2
 label_settings = ExtResource("30_ao71d")
 script = SubResource("GDScript_empgj")
@@ -1152,6 +1134,7 @@ layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="QuestPrompt" parent="." instance=ExtResource("62_lavu2")]
+visible = false
 layout_mode = 0
 
 [connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_entered"]

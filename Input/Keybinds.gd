@@ -17,11 +17,11 @@ func _ready() -> void:
 	InputControlls.input_event.connect(on_input)
 	Spellbook.new_ability_learned.connect(on_new_ability_learned)
 	Spellbook.known_abilities_changed.connect(on_known_abilities_changed)
-	SaveFileManager.save_file_saving.connect(on_save)
-	SaveFileManager.save_file_start_loading.connect(reset)
+	SaveFileManager.game_state_saving.connect(on_save)
+	SaveFileManager.game_state_start_loading.connect(reset)
 	
-func on_save(save_file: Dictionary) -> void:
-	save_file.keybinds = ability_keybinds.map(func(keybind: String):
+func on_save(game_state: Dictionary) -> void:
+	game_state.keybinds = ability_keybinds.map(func(keybind: String):
 		if keybinds.has(keybind):
 			return {
 				"keybind": keybind,

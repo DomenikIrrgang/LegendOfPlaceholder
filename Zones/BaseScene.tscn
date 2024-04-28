@@ -279,7 +279,6 @@ script = ExtResource("11_x3djv")
 channel = 3
 
 [node name="LoadingScreen" type="CanvasLayer" parent="." groups=["loadingscreen"]]
-visible = false
 script = ExtResource("10_nu1qd")
 
 [node name="Background" type="Sprite2D" parent="LoadingScreen"]

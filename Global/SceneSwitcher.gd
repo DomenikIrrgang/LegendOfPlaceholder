@@ -2,25 +2,32 @@ extends Node
 
 var loading_scene: bool = false
 
-var starting_zone: String = "res://Zones/ForestGrove/RemsHouse/RemsRoom.tscn"
+const STARTING_ZONE: String = "res://Zones/ForestGrove/RemsHouse/RemsRoom.tscn"
 
 signal zone_loaded(scene: Zone)
 
 func _ready() -> void:
-	SaveFileManager.save_file_loaded.connect(on_load)
-	SaveFileManager.save_file_saving.connect(on_save)
+	SaveFileManager.game_state_loaded.connect(on_load)
+	SaveFileManager.game_state_saving.connect(on_save)
 	
-func on_save(save_file: Dictionary) -> void:
-	save_file.current_scene = Globals.get_world().get_children()[0].scene_file_path if Globals.get_world().get_children().size() > 0 else starting_zone
-	save_file.player_position = {
-		x = Globals.get_player().global_position.x,
-		y = Globals.get_player().global_position.y
-	}
+func on_save(game_state: Dictionary) -> void:
+	if SaveFileManager.is_first_game_state_save():
+		game_state.current_scene = STARTING_ZONE
+		game_state.player_position = {
+			x = 0.0,
+			y = 0.0
+		}
+	else:
+		game_state.current_scene = Globals.get_world().get_children()[0].scene_file_path if Globals.get_world().get_children().size() > 0 else STARTING_ZONE
+		game_state.player_position = {
+			x = Globals.get_player().global_position.x,
+			y = Globals.get_player().global_position.y
+		}
 	
-func on_load(save_file: Dictionary) -> void:
+func on_load(game_state: Dictionary) -> void:
 	load_scene(
-		save_file.current_scene,
-		Vector2(save_file.player_position.x, save_file.player_position.y)
+		game_state.current_scene,
+		Vector2(game_state.player_position.x, game_state.player_position.y)
 	)
 	
 func load_scene(path: String, spawn_position: Vector2) -> void:
@@ -28,6 +35,7 @@ func load_scene(path: String, spawn_position: Vector2) -> void:
 	loading_scene = true
 		
 func defered_load_scene(path: String, spawn_position: Vector2) -> void:
+	await get_tree().process_frame
 	Globals.get_loading_screen().take_screenshot()
 	for child in Globals.get_world().get_children():
 		child.queue_free()

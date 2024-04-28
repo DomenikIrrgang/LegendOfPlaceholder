@@ -2,6 +2,7 @@ extends Node
 
 var channels: Dictionary
 var timed_streams: Array[TimedStream] = []
+var tts_enabled: bool = false
 
 enum Channel {
 	MASTER,
@@ -61,10 +62,12 @@ func _ready():
 func on_save_file_loaded(save_file: Dictionary) -> void:
 	for channel in save_file.sound_settings.channels:
 		set_channel_volume(int(channel), save_file.sound_settings.channels[channel].volume)
+	tts_enabled = save_file.sound_settings.tts_enabled
 	
 func on_save_file_saving(save_file: Dictionary) -> void:
 	save_file.sound_settings = {
-		channels = {}
+		channels = {},
+		tts_enabled = tts_enabled
 	}
 	for channel in channels.keys():
 		save_file.sound_settings.channels[channel] = {
@@ -170,13 +173,14 @@ func get_channel_volume(channel: Channel) -> float:
 	return channels[channel].volume
 
 func play_tts(text: String) -> void:
-	if DisplayServer.tts_is_speaking():
-		DisplayServer.tts_stop()
-	var voices = DisplayServer.tts_get_voices_for_language("en")
-	var voice_id = voices[0]
-	DisplayServer.tts_speak(text, voice_id, int(
-		min(channels[Channel.MASTER].volume, channels[Channel.DIALOG].volume) * 100
-	))
+	if tts_enabled:
+		if DisplayServer.tts_is_speaking():
+			DisplayServer.tts_stop()
+		var voices = DisplayServer.tts_get_voices_for_language("en")
+		var voice_id = voices[0]
+		DisplayServer.tts_speak(text, voice_id, int(
+			min(channels[Channel.MASTER].volume, channels[Channel.DIALOG].volume) * 100
+		))
 		
 func get_volume(bus: String) -> float:
 	return AudioServer.get_bus_volume_db(AudioServer.get_bus_index(bus))

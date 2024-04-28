@@ -11,7 +11,7 @@ var turnin_quest_texture: Texture2D = load("res://assets/ui/quest/complete_quest
 func _ready() -> void:
 	animation.play("Bounce")
 	Globals.get_player().level_changed.connect(func(_level: int): update())
-	SaveFileManager.save_file_loaded.connect(func(_save_file: Dictionary): update())
+	SaveFileManager.game_state_loaded.connect(func(_game_state: Dictionary): update())
 	QuestManager.quest_accepted.connect(func(_quest: Quest): update())
 	QuestManager.quest_completed.connect(func(_quest: Quest): update())
 	QuestManager.quest_abandoned.connect(func(_quest: Quest): update())

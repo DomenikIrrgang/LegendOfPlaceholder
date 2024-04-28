@@ -5,11 +5,7 @@ extends Node2D
 var initial_scene: String
 
 func _ready():
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
-	if not SaveFileManager.save_file_exists():
-		SaveFileManager.save_file_start_loading.emit()
-		SaveFileManager.save_to_save_file()
-	SaveFileManager.load_save_file()
+	SaveFileManager.load_game_state(SaveFileManager.loaded_game_state_index)
 	
 func _input(event) -> void:
 	if (event.is_action_released("pause")):

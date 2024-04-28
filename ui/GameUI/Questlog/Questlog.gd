@@ -14,7 +14,7 @@ var seperator: NinePatchRect = $MarginContainer/VBoxContainer/Content/Seperator
 
 func _ready() -> void:
 	update_quest_log()
-	SaveFileManager.save_file_loaded.connect(func(_save_file: Dictionary): update_quest_log())
+	SaveFileManager.game_state_loaded.connect(func(_game_state: Dictionary): update_quest_log())
 	QuestManager.quest_accepted.connect(func(_quest: Quest): update_quest_log())
 	QuestManager.quest_completed.connect(func(_quest: Quest): update_quest_log())
 	QuestManager.quest_abandoned.connect(func(_quest: Quest): update_quest_log())

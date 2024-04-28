@@ -128,6 +128,7 @@ texture_normal = ExtResource("6_j1jis")
 
 [node name="Label" type="Label" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/VBoxContainer/CenterContainer/HBoxContainer/Accept2"]
 self_modulate = Color(0.266667, 0.266667, 0.266667, 1)
+layout_mode = 0
 offset_right = 130.0
 offset_bottom = 60.0
 text = "Decline"
@@ -142,6 +143,7 @@ texture_normal = ExtResource("6_j1jis")
 
 [node name="Label" type="Label" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/VBoxContainer/CenterContainer/HBoxContainer/Accept"]
 self_modulate = Color(0.266667, 0.266667, 0.266667, 1)
+layout_mode = 0
 offset_right = 130.0
 offset_bottom = 60.0
 text = "Accept"

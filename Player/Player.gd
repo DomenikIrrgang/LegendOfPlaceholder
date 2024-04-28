@@ -88,7 +88,7 @@ func respawn() -> void:
 	last_pushback = Time.get_unix_time_from_system()
 	pushback_velocity = Vector2(0.0, 0.0)
 	state.transition_to("Idle")
-	SaveFileManager.load_save_file()
+	SaveFileManager.load_game_state(SaveFileManager.loaded_game_state_index)
 	
 func level_up() -> void:
 	gain_experience(experience_needed_for_next_level())

@@ -3,26 +3,26 @@ extends Node
 var active_bonuses: Array[SetBonus] = []
 
 func _ready() -> void:
-	SaveFileManager.save_file_start_loading.connect(reset)
-	SaveFileManager.save_file_saving.connect(on_save)
-	SaveFileManager.save_file_loaded.connect(on_load)
-	Globals.get_player().equipped_gear.connect(on_gear_changed)
-	Globals.get_player().unequipped_gear.connect(on_gear_changed)
+	SaveFileManager.game_state_start_loading.connect(reset)
+	SaveFileManager.game_state_saving.connect(on_save)
+	SaveFileManager.game_state_loaded.connect(on_load)
 	
 func reset() -> void:
 	for slot in Gear.Slot.values():
 		Globals.get_player().unequip_gear_in_slot(slot)
 	
-func on_save(save_file: Dictionary) -> void:
-	save_file.gear = Gear.Slot.values().map(func(value: int):
+func on_save(game_state: Dictionary) -> void:
+	game_state.gear = Gear.Slot.values().map(func(value: int):
 		return {
 			slot = Gear.Slot.keys()[value],
 			gear = SaveFileManager.get_resource_uid(Globals.get_player().gear_slots[value]) if Globals.get_player().gear_slots[value] != null else null
 		}
 	)
 	
-func on_load(save_file: Dictionary) -> void:
-	for equiped_gear in save_file.gear:
+func on_load(game_state: Dictionary) -> void:
+	Globals.get_player().equipped_gear.connect(on_gear_changed)
+	Globals.get_player().unequipped_gear.connect(on_gear_changed)
+	for equiped_gear in game_state.gear:
 		if equiped_gear.gear != null:
 			Globals.get_player().equip_gear_in_slot(
 				Gear.Slot[equiped_gear.slot],

@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://mugu4qix3h4n"]
+
+[ext_resource type="Script" path="res://MainMenue/MainMenue.gd" id="1_46vi5"]
+[ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="1_d40p0"]
+[ext_resource type="PackedScene" uid="uid://ddnsu8hllewh7" path="res://Zones/BaseScene.tscn" id="2_y0fhv"]
+[ext_resource type="PackedScene" uid="uid://bnrnb4iqpe0df" path="res://MainMenue/GameState.tscn" id="4_0wh72"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r4wkc"]
+font = ExtResource("1_d40p0")
+font_size = 44
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0jxo3"]
+font = ExtResource("1_d40p0")
+
+[node name="MainMenue" type="Node2D"]
+script = ExtResource("1_46vi5")
+
+[node name="BaseScene" parent="." instance=ExtResource("2_y0fhv")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LogoCenter" type="CenterContainer" parent="CanvasLayer"]
+offset_top = 108.0
+offset_right = 1920.0
+offset_bottom = 237.0
+
+[node name="Message" type="Label" parent="CanvasLayer/LogoCenter"]
+layout_mode = 2
+text = "Rinia: Return of Duland"
+label_settings = SubResource("LabelSettings_r4wkc")
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+offset_top = 684.0
+offset_right = 1920.0
+offset_bottom = 884.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="GameState1" parent="CanvasLayer/CenterContainer/VBoxContainer" instance=ExtResource("4_0wh72")]
+layout_mode = 2
+
+[node name="GameState2" parent="CanvasLayer/CenterContainer/VBoxContainer" instance=ExtResource("4_0wh72")]
+layout_mode = 2
+game_state_index = 1
+
+[node name="GameState3" parent="CanvasLayer/CenterContainer/VBoxContainer" instance=ExtResource("4_0wh72")]
+layout_mode = 2
+game_state_index = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(1920, 0)
+offset_top = 1050.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Version" type="Label" parent="CanvasLayer/HBoxContainer/MarginContainer"]
+self_modulate = Color(0.360784, 0.360784, 0.360784, 1)
+layout_mode = 2
+text = "0.0.1-pre-alpha"
+label_settings = SubResource("LabelSettings_0jxo3")
+horizontal_alignment = 1

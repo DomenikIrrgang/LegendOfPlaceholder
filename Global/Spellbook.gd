@@ -6,9 +6,9 @@ signal new_ability_learned(ability: Ability)
 signal known_abilities_changed()
 
 func _ready() -> void:
-	SaveFileManager.save_file_loaded.connect(on_load)
-	SaveFileManager.save_file_saving.connect(on_save)
-	SaveFileManager.save_file_start_loading.connect(reset)
+	SaveFileManager.game_state_loaded.connect(on_load)
+	SaveFileManager.game_state_saving.connect(on_save)
+	SaveFileManager.game_state_start_loading.connect(reset)
 	
 func reset() -> void:
 	known_abilities = []
@@ -17,19 +17,19 @@ func reset() -> void:
 	learn_ability(dash)
 	known_abilities_changed.emit()
 	
-func on_save(save_file: Dictionary) -> void:
-	save_file.known_abilities = []
+func on_save(game_state: Dictionary) -> void:
+	game_state.known_abilities = []
 	for ability in known_abilities:
-		save_file.known_abilities.append(
+		game_state.known_abilities.append(
 			SaveFileManager.get_node_uid(ability)
 		)
 	
-func on_load(save_file: Dictionary) -> void:
-	for abiity in save_file.known_abilities:
+func on_load(game_state: Dictionary) -> void:
+	for abiity in game_state.known_abilities:
 		var ability_instance = SaveFileManager.get_resource_from_uid(abiity).instantiate()
 		if not ability_known(ability_instance):
 			learn_ability(ability_instance)
-	for keybind in save_file.keybinds:
+	for keybind in game_state.keybinds:
 		if keybind != null:
 			for ability in known_abilities:
 				if SaveFileManager.get_node_uid(ability) == keybind.ability:

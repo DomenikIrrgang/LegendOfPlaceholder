@@ -12,7 +12,7 @@ signal quest_selected(quest: Quest)
 
 func _ready():
 	update_quest_list()
-	SaveFileManager.save_file_loaded.connect(func(_save_file: Dictionary): update_quest_list())
+	SaveFileManager.game_state_loaded.connect(func(_game_state: Dictionary): update_quest_list())
 	QuestManager.quest_accepted.connect(func(_quest: Quest): update_quest_list())
 	QuestManager.quest_completed.connect(func(_quest: Quest): update_quest_list())
 	QuestManager.quest_abandoned.connect(func(_quest: Quest): update_quest_list())
