@@ -16,6 +16,10 @@ func _ready():
 	original_position = position
 	original_scale = scale
 	InputControlls.input_event.connect(on_input)
+	InputControlls.keybind_changed.connect(func(keybind_type: InputControlls.KeybindType, action: String):
+		if action == action_name:
+			set_button_texture(InputControlls.get_button_texture(action))
+	)
 	
 func on_input(state: InputState) -> void:
 	if (state.action_map.has(action_name) and state.action_map[action_name] == false):
