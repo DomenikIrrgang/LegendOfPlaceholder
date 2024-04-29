@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://domwyhe8peexf"]
+
+[ext_resource type="Texture2D" uid="uid://bv6wfeioo72li" path="res://assets/ui/items/physical_spelltome.png" id="1_7hopf"]
+[ext_resource type="Script" path="res://Resources/Items/Item.gd" id="1_em26n"]
+[ext_resource type="PackedScene" uid="uid://cjobwv3dfep45" path="res://Combat/abilities/Dash.tscn" id="3_15qke"]
+[ext_resource type="Resource" uid="uid://bbgka06dmjbii" path="res://Resources/Items/Spelltomes/SpelltomeCooldownGroup.tres" id="4_8qkob"]
+[ext_resource type="Script" path="res://Resources/Items/Spelltomes/SpellTomeEffect.gd" id="5_h8ca3"]
+
+[sub_resource type="Resource" id="Resource_skv6w"]
+script = ExtResource("5_h8ca3")
+ability = ExtResource("3_15qke")
+cooldown_group = ExtResource("4_8qkob")
+
+[resource]
+script = ExtResource("1_em26n")
+alias = "Spelltome: Dash"
+useable = true
+use_effect = SubResource("Resource_skv6w")
+use_description = "Teaches you the Dash  Ability."
+limited = true
+limit = 1
+stackable = false
+stack_amount = 1
+description = "Like the wind...."
+icon = ExtResource("1_7hopf")

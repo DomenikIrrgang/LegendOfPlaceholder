@@ -4,6 +4,7 @@ var loading_scene: bool = false
 
 const STARTING_ZONE: String = "res://Zones/ForestGrove/RemsHouse/RemsRoom.tscn"
 
+signal zone_loading(scene: Zone)
 signal zone_loaded(scene: Zone)
 
 func _ready() -> void:
@@ -35,7 +36,7 @@ func load_scene(path: String, spawn_position: Vector2) -> void:
 	loading_scene = true
 		
 func defered_load_scene(path: String, spawn_position: Vector2) -> void:
-	Globals.get_loading_screen().take_screenshot()
+	zone_loading.emit()
 	for child in Globals.get_world().get_children():
 		child.queue_free()
 	var scene = ResourceLoader.load(path)
