@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://mugu4qix3h4n"]
+[gd_scene load_steps=8 format=3 uid="uid://mugu4qix3h4n"]
 
 [ext_resource type="Script" path="res://MainMenue/MainMenue.gd" id="1_46vi5"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="1_d40p0"]
 [ext_resource type="PackedScene" uid="uid://ddnsu8hllewh7" path="res://Zones/BaseScene.tscn" id="2_y0fhv"]
+[ext_resource type="PackedScene" uid="uid://y1utto7qe73j" path="res://ui/Settings/Settings.tscn" id="3_4b2gd"]
 [ext_resource type="PackedScene" uid="uid://bnrnb4iqpe0df" path="res://MainMenue/GameState.tscn" id="4_0wh72"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r4wkc"]
@@ -70,3 +71,6 @@ layout_mode = 2
 text = "0.0.1-pre-alpha"
 label_settings = SubResource("LabelSettings_0jxo3")
 horizontal_alignment = 1
+
+[node name="Settings" parent="CanvasLayer" instance=ExtResource("3_4b2gd")]
+visible = false

@@ -82,7 +82,7 @@ func get_world() -> Node2D:
 	return get_scene_tree().get_first_node_in_group("world")
 	
 func get_user_interface() -> CanvasLayer:
-	return get_scene_tree().get_first_node_in_group("UserInterfaceCanvas")
+	return get_scene_tree().get_first_node_in_group("UserInterface")
 	
 func get_game_user_inteface() -> Control:
 	return get_user_interface().get_node("GameUI")

@@ -1,6 +1,9 @@
 extends Button
 
-func _on_pressed():
+func _ready() -> void:
+	pressed.connect(on_pressed)
+
+func on_pressed():
 	Globals.get_tree().paused = false
 	await Globals.get_tree().process_frame
 	SaveFileManager.unload_game_state()

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyq0jj8w8ouh5"]
+
+[ext_resource type="Texture2D" uid="uid://0t3jxqaoxejc" path="res://assets/ui/buttons/a_button.png" id="1_0mu3q"]
+[ext_resource type="Script" path="res://ui/Settings/KeybindSetting.gd" id="1_y5xwq"]
+[ext_resource type="Texture2D" uid="uid://cjpxy7wx2tpmh" path="res://assets/ui/buttons/key_k.png" id="2_u3va0"]
+[ext_resource type="Script" path="res://ui/Settings/Keybind.gd" id="3_tfr2p"]
+
+[node name="Keybind" type="HBoxContainer"]
+script = ExtResource("1_y5xwq")
+
+[node name="Action" type="Label" parent="."]
+layout_mode = 2
+text = "Interact
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 35
+alignment = 2
+
+[node name="ControllerKeybind" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+texture = ExtResource("1_0mu3q")
+script = ExtResource("3_tfr2p")
+
+[node name="KeyboardKeybind" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+texture = ExtResource("2_u3va0")
+script = ExtResource("3_tfr2p")
+keybind_type = 1

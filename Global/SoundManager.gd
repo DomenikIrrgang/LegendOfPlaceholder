@@ -63,9 +63,14 @@ func on_save_file_loaded(save_file: Dictionary) -> void:
 	for channel in save_file.sound_settings.channels:
 		set_channel_volume(int(channel), save_file.sound_settings.channels[channel].volume)
 	tts_enabled = save_file.sound_settings.tts_enabled
+	AudioServer.output_device = save_file.sound_settings.output_device
+	
+func set_tts(enabled: bool) -> void:
+	tts_enabled = enabled
 	
 func on_save_file_saving(save_file: Dictionary) -> void:
 	save_file.sound_settings = {
+		output_device = AudioServer.output_device,
 		channels = {},
 		tts_enabled = tts_enabled
 	}

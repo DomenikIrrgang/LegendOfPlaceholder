@@ -1,22 +1,25 @@
-[gd_scene load_steps=31 format=3 uid="uid://ddnsu8hllewh7"]
+[gd_scene load_steps=33 format=3 uid="uid://ddnsu8hllewh7"]
 
 [ext_resource type="Script" path="res://Zones/BaseScene.gd" id="1_3m1id"]
 [ext_resource type="Script" path="res://CustomCamera.gd" id="1_yk0hc"]
 [ext_resource type="PackedScene" uid="uid://vpck8gxc3g0" path="res://Player/Player.tscn" id="2_21w2i"]
 [ext_resource type="PackedScene" uid="uid://cgfm1ac4pe23t" path="res://ui/GameUI/GameUI.tscn" id="4_i5ie3"]
 [ext_resource type="Script" path="res://Dialogs.gd" id="5_3r0j6"]
+[ext_resource type="Theme" uid="uid://dijdy4xqx36dl" path="res://ui/DefaultTheme.tres" id="5_4p5kc"]
 [ext_resource type="Script" path="res://CutsceneBars.gd" id="6_f08no"]
 [ext_resource type="Script" path="res://ui/GameUI/PauseMenu.gd" id="7_f4tx3"]
 [ext_resource type="Shader" path="res://Shaders/Blur.gdshader" id="8_4hluv"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="9_0jh1n"]
 [ext_resource type="Script" path="res://ui/LoadingScreen.gd" id="10_nu1qd"]
 [ext_resource type="Script" path="res://Zones/EnvironmentLighting.gd" id="11_dggdl"]
-[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="11_uxh6b"]
-[ext_resource type="Script" path="res://ui/PauseMenu/BusVolumeSetting.gd" id="11_x3djv"]
 [ext_resource type="Script" path="res://ui/DeathScreen/DeathScreen.gd" id="13_agrxk"]
-[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="13_rrogc"]
 [ext_resource type="Script" path="res://ui/DeathScreen/Respawn.gd" id="14_5yh4g"]
 [ext_resource type="Script" path="res://ui/DeathScreen/MainMenue.gd" id="15_jpvca"]
+[ext_resource type="Script" path="res://ui/PauseMenu/Continue.gd" id="15_y27up"]
+[ext_resource type="Script" path="res://ui/PauseMenu/Settings.gd" id="16_qopk4"]
+[ext_resource type="PackedScene" uid="uid://y1utto7qe73j" path="res://ui/Settings/Settings.tscn" id="17_0yn3y"]
+[ext_resource type="Script" path="res://ui/PauseMenu/CloseSettings.gd" id="18_cvr6q"]
+[ext_resource type="Script" path="res://ui/Settings/KeybindScreen.gd" id="19_6piqc"]
 
 [sub_resource type="Animation" id="Animation_58ieq"]
 resource_name = "Hide"
@@ -88,13 +91,6 @@ font_size = 46
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3s4qu"]
-texture = ExtResource("13_rrogc")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0
-
 [sub_resource type="Shader" id="Shader_7wgod"]
 code = "shader_type canvas_item;
 
@@ -157,17 +153,25 @@ script = ExtResource("11_dggdl")
 
 [node name="UserInterface" type="CanvasLayer" parent="." groups=["UserInterfaceCanvas"]]
 
-[node name="GameUI" parent="UserInterface" node_paths=PackedStringArray("player") instance=ExtResource("4_i5ie3")]
-player = NodePath("../../Player")
+[node name="Theme" type="Control" parent="UserInterface" groups=["UserInterface"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("5_4p5kc")
 
-[node name="Dialogs" type="Control" parent="UserInterface"]
+[node name="GameUI" parent="UserInterface/Theme" node_paths=PackedStringArray("player") groups=["GameUI"] instance=ExtResource("4_i5ie3")]
+layout_mode = 1
+player = NodePath("../../../Player")
+
+[node name="Dialogs" type="Control" parent="UserInterface/Theme"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_3r0j6")
 
-[node name="CutsceneBars" type="Control" parent="UserInterface"]
+[node name="CutsceneBars" type="Control" parent="UserInterface/Theme"]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -175,121 +179,25 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6_f08no")
 
-[node name="ColorRect" type="ColorRect" parent="UserInterface/CutsceneBars"]
+[node name="ColorRect" type="ColorRect" parent="UserInterface/Theme/CutsceneBars"]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 89.9999
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="UserInterface/CutsceneBars"]
+[node name="ColorRect2" type="ColorRect" parent="UserInterface/Theme/CutsceneBars"]
 layout_mode = 0
 offset_top = 990.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UserInterface/CutsceneBars"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UserInterface/Theme/CutsceneBars"]
 libraries = {
 "": SubResource("AnimationLibrary_btnq7")
 }
 
-[node name="PauseMenu" type="Control" parent="UserInterface"]
-process_mode = 2
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-script = ExtResource("7_f4tx3")
-
-[node name="ColorRect" type="ColorRect" parent="UserInterface/PauseMenu"]
-material = SubResource("ShaderMaterial_aq4yp")
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-
-[node name="CenterContainer" type="CenterContainer" parent="UserInterface/PauseMenu/ColorRect"]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/PauseMenu/ColorRect/CenterContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Pause" type="Label" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "- PAUSE -"
-label_settings = SubResource("LabelSettings_ipaw4")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="MasterVolumeLabel" type="Label" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Master Volume"
-label_settings = ExtResource("11_uxh6b")
-horizontal_alignment = 1
-
-[node name="MasterVolume" type="HSlider" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-max_value = 1.0
-step = 0.01
-script = ExtResource("11_x3djv")
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="BackgroundMusicVolume2" type="Label" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer2"]
-layout_mode = 2
-text = "Background Music"
-label_settings = ExtResource("11_uxh6b")
-horizontal_alignment = 1
-
-[node name="BackgroundMusicVolume" type="HSlider" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer2"]
-layout_mode = 2
-max_value = 1.0
-step = 0.01
-script = ExtResource("11_x3djv")
-channel = 2
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="SoundEffectVolume2" type="Label" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer3"]
-layout_mode = 2
-text = "Sound Effects"
-label_settings = ExtResource("11_uxh6b")
-horizontal_alignment = 1
-
-[node name="SoundEffectVolume" type="HSlider" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer3"]
-layout_mode = 2
-max_value = 1.0
-step = 0.01
-script = ExtResource("11_x3djv")
-channel = 1
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="SoundEffectVolume2" type="Label" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer4"]
-layout_mode = 2
-text = "Dialog"
-label_settings = ExtResource("11_uxh6b")
-horizontal_alignment = 1
-
-[node name="SoundEffectVolume" type="HSlider" parent="UserInterface/PauseMenu/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/VBoxContainer4"]
-layout_mode = 2
-max_value = 1.0
-step = 0.01
-script = ExtResource("11_x3djv")
-channel = 3
-
-[node name="DeathScreen" type="Control" parent="UserInterface"]
+[node name="DeathScreen" type="Control" parent="UserInterface/Theme"]
 process_mode = 3
 visible = false
 layout_mode = 3
@@ -298,37 +206,112 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("13_agrxk")
 
-[node name="ColorRect" type="ColorRect" parent="UserInterface/DeathScreen"]
+[node name="ColorRect" type="ColorRect" parent="UserInterface/Theme/DeathScreen"]
 material = SubResource("ShaderMaterial_aq4yp")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="CenterContainer" type="CenterContainer" parent="UserInterface/DeathScreen/ColorRect"]
+[node name="CenterContainer" type="CenterContainer" parent="UserInterface/Theme/DeathScreen/ColorRect"]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/DeathScreen/ColorRect/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/Theme/DeathScreen/ColorRect/CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Death" type="Label" parent="UserInterface/DeathScreen/ColorRect/CenterContainer/VBoxContainer"]
+[node name="Death" type="Label" parent="UserInterface/Theme/DeathScreen/ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "- YOU DIED -"
 label_settings = SubResource("LabelSettings_ipaw4")
 
-[node name="Respawn" type="Button" parent="UserInterface/DeathScreen/ColorRect/CenterContainer/VBoxContainer"]
+[node name="Respawn" type="Button" parent="UserInterface/Theme/DeathScreen/ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_3s4qu")
 text = "Respawn"
 script = ExtResource("14_5yh4g")
 
-[node name="MainMenue" type="Button" parent="UserInterface/DeathScreen/ColorRect/CenterContainer/VBoxContainer"]
+[node name="MainMenue" type="Button" parent="UserInterface/Theme/DeathScreen/ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_3s4qu")
 text = "Return to Mainmenu"
 script = ExtResource("15_jpvca")
+
+[node name="PauseMenu" type="Control" parent="UserInterface/Theme" groups=["PauseMenu"]]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("7_f4tx3")
+
+[node name="ColorRect" type="ColorRect" parent="UserInterface/Theme/PauseMenu"]
+material = SubResource("ShaderMaterial_aq4yp")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="CenterContainer" type="CenterContainer" parent="UserInterface/Theme/PauseMenu"]
+layout_mode = 0
+offset_right = 1960.0
+offset_bottom = 1160.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/Theme/PauseMenu/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Pause" type="Label" parent="UserInterface/Theme/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "- PAUSE -"
+label_settings = SubResource("LabelSettings_ipaw4")
+
+[node name="Continue" type="Button" parent="UserInterface/Theme/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Continue
+"
+script = ExtResource("15_y27up")
+
+[node name="Settings" type="Button" parent="UserInterface/Theme/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+script = ExtResource("16_qopk4")
+
+[node name="MainMenu" type="Button" parent="UserInterface/Theme/PauseMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menue"
+script = ExtResource("15_jpvca")
+
+[node name="Settings" type="VBoxContainer" parent="UserInterface/Theme/PauseMenu/CenterContainer" groups=["Settings"]]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Settings" parent="UserInterface/Theme/PauseMenu/CenterContainer/Settings" instance=ExtResource("17_0yn3y")]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="UserInterface/Theme/PauseMenu/CenterContainer/Settings"]
+layout_mode = 2
+text = "Close
+"
+script = ExtResource("18_cvr6q")
+
+[node name="KeybindScreen" type="CenterContainer" parent="UserInterface/Theme"]
+visible = false
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("19_6piqc")
+
+[node name="Background" type="ColorRect" parent="UserInterface/Theme/KeybindScreen"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+color = Color(0, 0, 0, 0.376471)
+
+[node name="Label" type="Label" parent="UserInterface/Theme/KeybindScreen"]
+layout_mode = 2
+text = "Press key or button to bind to
+Controller: Left"
+horizontal_alignment = 1
 
 [node name="LoadingScreen" type="CanvasLayer" parent="." groups=["loadingscreen"]]
 script = ExtResource("10_nu1qd")
@@ -341,5 +324,4 @@ centered = false
 region_enabled = true
 region_rect = Rect2(2.08165e-12, 2.08165e-12, 1920, 1080)
 
-[connection signal="pressed" from="UserInterface/DeathScreen/ColorRect/CenterContainer/VBoxContainer/Respawn" to="UserInterface/DeathScreen/ColorRect/CenterContainer/VBoxContainer/Respawn" method="_on_pressed"]
-[connection signal="pressed" from="UserInterface/DeathScreen/ColorRect/CenterContainer/VBoxContainer/MainMenue" to="UserInterface/DeathScreen/ColorRect/CenterContainer/VBoxContainer/MainMenue" method="_on_pressed"]
+[connection signal="pressed" from="UserInterface/Theme/DeathScreen/ColorRect/CenterContainer/VBoxContainer/Respawn" to="UserInterface/Theme/DeathScreen/ColorRect/CenterContainer/VBoxContainer/Respawn" method="_on_pressed"]

@@ -29,6 +29,11 @@ const KEY_TEXTURE = {
 	KEY_X: InputTextures.KEY_X
 }
 
+enum KeybindType {
+	GAMEPAD,
+	KEYBOARD_MOUSE
+}
+
 const MOUSE_TEXTURE = {
 	MOUSE_BUTTON_LEFT: InputTextures.LEFT_MOUSE,
 	MOUSE_BUTTON_RIGHT: InputTextures.RIGHT_MOUSE
@@ -38,6 +43,7 @@ var device_id = -1
 var dead_zone = 0.05
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	Input.joy_connection_changed.connect(joy_connection_changed)
 	if has_controller():
 		self.device_id = Input.get_connected_joypads()[0]
@@ -66,6 +72,65 @@ func get_button_texture(action_name: String) -> String:
 			return MOUSE_TEXTURE[_input_event.button_index]
 	return InputTextures.KEY_ESCAPE
 	
+func get_action_texture(action_name: String, keybind_type: KeybindType) -> String:
+	match(keybind_type):
+		KeybindType.KEYBOARD_MOUSE:
+			return get_keyboard_texture(action_name)
+		KeybindType.GAMEPAD:
+			return get_controller_texture(action_name)
+		_:
+			return ""
+	
+func get_keyboard_texture(action_name: String) -> String:
+	var input_events: Array[InputEvent] = InputMap.action_get_events(action_name)
+	for _input_event in input_events:
+		if _input_event is InputEventKey:
+			var keycode = _input_event.physical_keycode if _input_event.physical_keycode != 0 else _input_event.keycode
+			return KEY_TEXTURE[keycode] if KEY_TEXTURE.has(keycode) else InputTextures.KEY_ESCAPE
+		if !has_controller() and _input_event is InputEventMouseButton:
+			return MOUSE_TEXTURE[_input_event.button_index]
+	return InputTextures.KEY_ESCAPE
+	
+func get_controller_texture(action_name: String) -> String:
+	var input_events: Array[InputEvent] = InputMap.action_get_events(action_name)
+	for _input_event in input_events:
+		if _input_event is InputEventJoypadButton:
+			return XBOX_BUTTON_TEXTURE[_input_event.button_index] if XBOX_BUTTON_TEXTURE.has(_input_event.button_index) else InputTextures.GAMEPAD_A 
+		if _input_event is InputEventJoypadMotion:
+			return XBOX_BUTTON_TEXTURE[_input_event.axis] if XBOX_BUTTON_TEXTURE.has(_input_event.axis) else InputTextures.GAMEPAD_A
+	return InputTextures.GAMEPAD_A
+	
+func isKeybindType(keybind_type: KeybindType, event: InputEvent) -> bool:
+	match(keybind_type):
+		KeybindType.KEYBOARD_MOUSE:
+			return event is InputEventKey or event is InputEventMouseButton
+		KeybindType.GAMEPAD:
+			return event is InputEventJoypadButton or event is InputEventJoypadMotion
+	return false
+	
+func getKeybindType(event: InputEvent) -> KeybindType:
+	if event is InputEventKey or event is InputEventMouseButton:
+		return KeybindType.KEYBOARD_MOUSE
+	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+		return KeybindType.GAMEPAD
+	return -1
+	
+func setActionKeybind(action_name: String, event: InputEvent) -> void:
+	InputMap.action_erase_event(
+		action_name,
+		getActionKeybindForKeybindType(action_name, getKeybindType(event))
+	)
+	InputMap.action_add_event(action_name, event)
+	keybind_changed.emit(getKeybindType(event), action_name)
+
+func getActionKeybindForKeybindType(action_name: String, keybind_type: KeybindType) -> InputEvent:
+	var input_events: Array[InputEvent] = InputMap.action_get_events(action_name)
+	for input_event in input_events:
+		if getKeybindType(input_event) == keybind_type:
+			return input_event
+	return null
+	
+	
 func get_directional_vector() -> Vector2:
 	return Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
@@ -76,6 +141,10 @@ func get_directional_vector() -> Vector2:
 
 signal input_event(input_state: InputState)
 
+signal entered_keybind_mode(keybind_type: KeybindType, action: String)
+signal keybind_changed(keybind_type: KeybindType, action: String)
+signal exited_keybind_mode(keybind_type: KeybindType, action: String)
+
 var interceptors: Array[InputInterceptor] = [
 	PlayerControlInputInterceptor.new(),
 	InteractableInRangeInterceptor.new(),
@@ -85,11 +154,37 @@ var interceptors: Array[InputInterceptor] = [
 ]
 
 var state: InputState = InputState.new()
+var keybind_mode = {
+	active = false,
+	keybind_type = -1,
+	action = ""
+}
+
+func enter_keybind_mode(keybind_type: KeybindType, action: String) -> void:
+	if keybind_type == KeybindType.GAMEPAD and not has_controller():
+		return
+	keybind_mode = {
+		active = true,
+		keybind_type = keybind_type,
+		action = action
+	}
+	entered_keybind_mode.emit(keybind_type, action)
+	
+func exit_keybind_mode() -> void:
+	exited_keybind_mode.emit(keybind_mode.keybind_type, keybind_mode.action)
+	keybind_mode = {
+		active = false,
+		keybind_type = -1,
+		action = ""
+	}
 
 func _input(event: InputEvent) -> void:
-	if is_action(event):
+	if not keybind_mode.active and not Globals.get_tree().paused and is_action(event):
 		state = calculate_input_state()
 		input_event.emit(state)
+	if keybind_mode.active and isKeybindType(keybind_mode.keybind_type, event):
+		setActionKeybind(keybind_mode.action, event)
+		exit_keybind_mode()
 
 func calculate_input_state() -> InputState:
 	for interceptor in interceptors:

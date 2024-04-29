@@ -1,8 +1,9 @@
-[gd_scene load_steps=103 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=104 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="3_60v0h"]
+[ext_resource type="Theme" uid="uid://dijdy4xqx36dl" path="res://ui/DefaultTheme.tres" id="3_pxytv"]
 [ext_resource type="Script" path="res://ui/GameUI/Messages.gd" id="4_gsrev"]
 [ext_resource type="Script" path="res://ui/GameUI/MainHUD.gd" id="4_u1bay"]
 [ext_resource type="Texture2D" uid="uid://b3jelvjfa2rtj" path="res://assets/ui/bottom_hud/overlay.png" id="5_xupsv"]
@@ -341,6 +342,7 @@ metadata/_edit_lock_ = true
 
 [node name="Message" type="Label" parent="SystemMessage"]
 layout_mode = 2
+theme = ExtResource("3_pxytv")
 text = "SystemMessage"
 label_settings = SubResource("LabelSettings_5a6ab")
 horizontal_alignment = 1
