@@ -9,4 +9,3 @@ func use(source: Unit, _target: Unit) -> void:
 	for target in targets:
 		if target.is_casting():
 			target.interupt_casting()
-

@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="StatusEffect" load_steps=10 format=3 uid="uid://p42pgd64208i"]
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=11 format=3 uid="uid://p42pgd64208i"]
 
+[ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffectScript.gd" id="1_276i6"]
 [ext_resource type="PackedScene" uid="uid://s1djblvtvpjv" path="res://Enemy/ElementalSlime/Abilities/EngulfingPlain.tscn" id="1_cjs3x"]
 [ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_pdw5l"]
 [ext_resource type="Script" path="res://Resources/StatusEffects/Effects/DamageOverTimeEffect.gd" id="2_khh5j"]
@@ -33,5 +34,5 @@ duration = 0.0
 unique = true
 stackable = false
 max_stacks = 1
-effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([SubResource("Resource_lvdq1"), SubResource("Resource_uod36")])
+effects = Array[ExtResource("1_276i6")]([SubResource("Resource_lvdq1"), SubResource("Resource_uod36")])
 icon = ExtResource("3_j2bq1")

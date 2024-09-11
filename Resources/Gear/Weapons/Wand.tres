@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Gear" load_steps=13 format=3 uid="uid://cpxxyonmf508"]
+[gd_resource type="Resource" script_class="Gear" load_steps=14 format=3 uid="uid://cpxxyonmf508"]
 
 [ext_resource type="Script" path="res://Resources/Gear/Gear.gd" id="1_4ihsc"]
+[ext_resource type="Script" path="res://Resources/Gear/GearEffect.gd" id="1_5p38l"]
 [ext_resource type="Script" path="res://Resources/Gear/StatGearEffect.gd" id="1_ke1rr"]
 [ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="2_bt3ee"]
 [ext_resource type="Script" path="res://Resources/Gear/Weapons/SetWeaponGearEffect.gd" id="3_kb5uh"]
@@ -30,7 +31,7 @@ tooltip = "Allows you to shoot a wand."
 [resource]
 script = ExtResource("1_4ihsc")
 slot = 11
-gear_effects = Array[Resource("res://Resources/Gear/GearEffect.gd")]([SubResource("Resource_dl05n"), SubResource("Resource_o0wby"), SubResource("Resource_stxoc")])
+gear_effects = Array[ExtResource("1_5p38l")]([SubResource("Resource_dl05n"), SubResource("Resource_o0wby"), SubResource("Resource_stxoc")])
 alias = "Fire Wand"
 useable = false
 use_description = ""

@@ -30,4 +30,3 @@ var description: String
 
 @export
 var icon: Texture
-

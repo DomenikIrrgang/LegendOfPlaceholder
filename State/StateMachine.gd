@@ -49,4 +49,4 @@ func transition_to(target_state_name: String, data: Dictionary = {}) -> void:
 	previous_state = current_state
 	current_state = get_node(target_state_name)
 	current_state.enter(data)
-	emit_signal("transitioned", current_state.name)
+	transitioned.emit(current_state.name)

@@ -89,4 +89,3 @@ func boss_health_changed(resource: UnitResource, _new_value: int, _change: int, 
 			ability_unlocks = ability_unlocks
 		})
 		
-

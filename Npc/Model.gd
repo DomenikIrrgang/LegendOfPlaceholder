@@ -39,5 +39,3 @@ func get_left_animation() -> String:
 	
 func get_right_animation() -> String:
 	return "PlayerAnimations/Right"
-
-

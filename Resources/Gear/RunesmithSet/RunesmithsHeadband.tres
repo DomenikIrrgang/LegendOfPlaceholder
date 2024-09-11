@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Gear" load_steps=9 format=3 uid="uid://dribn3a0vyi3v"]
+[gd_resource type="Resource" script_class="Gear" load_steps=10 format=3 uid="uid://dribn3a0vyi3v"]
 
+[ext_resource type="Script" path="res://Resources/Gear/GearEffect.gd" id="1_2eb8n"]
 [ext_resource type="Script" path="res://Resources/Gear/Gear.gd" id="1_gq4fl"]
 [ext_resource type="Script" path="res://Resources/Gear/StatGearEffect.gd" id="1_i6nhx"]
 [ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="2_vnljk"]
@@ -23,7 +24,7 @@ stats = Array[ExtResource("2_vnljk")]([SubResource("Resource_xqbnu"), SubResourc
 [resource]
 script = ExtResource("1_gq4fl")
 slot = 0
-gear_effects = Array[Resource("res://Resources/Gear/GearEffect.gd")]([SubResource("Resource_erb13")])
+gear_effects = Array[ExtResource("1_2eb8n")]([SubResource("Resource_erb13")])
 gear_set = ExtResource("3_sjt7b")
 alias = "Runesmiths Headband"
 useable = false

@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Gear" load_steps=13 format=3 uid="uid://bktcvwul60867"]
+[gd_resource type="Resource" script_class="Gear" load_steps=14 format=3 uid="uid://bktcvwul60867"]
 
+[ext_resource type="Script" path="res://Resources/Gear/GearEffect.gd" id="1_kqi3w"]
 [ext_resource type="Script" path="res://Resources/Gear/Gear.gd" id="1_m0kq3"]
 [ext_resource type="Script" path="res://Resources/Gear/StatGearEffect.gd" id="1_qs63h"]
 [ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="2_mwurh"]
@@ -30,7 +31,7 @@ weapon = ExtResource("6_sboca")
 [resource]
 script = ExtResource("1_m0kq3")
 slot = 11
-gear_effects = Array[Resource("res://Resources/Gear/GearEffect.gd")]([SubResource("Resource_4ac0m"), SubResource("Resource_32bh8"), SubResource("Resource_d62x3")])
+gear_effects = Array[ExtResource("1_kqi3w")]([SubResource("Resource_4ac0m"), SubResource("Resource_32bh8"), SubResource("Resource_d62x3")])
 alias = "Simple Sword"
 useable = false
 use_description = ""

@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="GearSet" load_steps=13 format=3 uid="uid://b0guwsg1304u2"]
+[gd_resource type="Resource" script_class="GearSet" load_steps=15 format=3 uid="uid://b0guwsg1304u2"]
 
 [ext_resource type="Script" path="res://Resources/Gear/GearSet.gd" id="1_vgl5l"]
 [ext_resource type="Script" path="res://Resources/Gear/StatGearEffect.gd" id="2_b823d"]
+[ext_resource type="Script" path="res://Resources/Gear/SetBonus.gd" id="2_ffdad"]
+[ext_resource type="Script" path="res://Resources/Gear/GearEffect.gd" id="3_6h5er"]
 [ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="3_tjfdp"]
 [ext_resource type="Script" path="res://Resources/Gear/PartialSetBonus.gd" id="4_ggyfk"]
 
@@ -23,7 +25,7 @@ stats = Array[ExtResource("3_tjfdp")]([SubResource("Resource_y3n70"), SubResourc
 script = ExtResource("4_ggyfk")
 description = "Increases your intellect and agility by 5."
 required_pieces = 2
-gear_effects = Array[Resource("res://Resources/Gear/GearEffect.gd")]([SubResource("Resource_hn5dj")])
+gear_effects = Array[ExtResource("3_6h5er")]([SubResource("Resource_hn5dj")])
 
 [sub_resource type="Resource" id="Resource_3adhd"]
 script = ExtResource("3_tjfdp")
@@ -43,10 +45,10 @@ stats = Array[ExtResource("3_tjfdp")]([SubResource("Resource_3adhd"), SubResourc
 script = ExtResource("4_ggyfk")
 description = "Increases your intellect and agility by 10."
 required_pieces = 3
-gear_effects = Array[Resource("res://Resources/Gear/GearEffect.gd")]([SubResource("Resource_v6gii")])
+gear_effects = Array[ExtResource("3_6h5er")]([SubResource("Resource_v6gii")])
 
 [resource]
 script = ExtResource("1_vgl5l")
 alias = "Runesmith Apprentice"
 set_pieces = Array[int]([0, 1, 2])
-set_bonuses = Array[Resource("res://Resources/Gear/SetBonus.gd")]([SubResource("Resource_khewr"), SubResource("Resource_yfsdb")])
+set_bonuses = Array[ExtResource("2_ffdad")]([SubResource("Resource_khewr"), SubResource("Resource_yfsdb")])

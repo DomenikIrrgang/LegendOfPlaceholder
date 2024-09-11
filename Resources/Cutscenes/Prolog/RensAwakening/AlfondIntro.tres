@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="Cutscene" load_steps=23 format=3 uid="uid://dun0v2ids3fgu"]
+[gd_resource type="Resource" script_class="Cutscene" load_steps=25 format=3 uid="uid://dun0v2ids3fgu"]
 
 [ext_resource type="Script" path="res://Resources/Cutscenes/Cutscene.gd" id="1_t0e3o"]
 [ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="2_p0s3m"]
 [ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="3_1r7q2"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/CutsceneAction.gd" id="3_stgex"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/ShowDialogAction.gd" id="4_vkhhc"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/MoveUnitAction.gd" id="5_ejqew"]
+[ext_resource type="Script" path="res://Resources/Dialogs/DialogAction.gd" id="6_a55pj"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/CutsceneStep.gd" id="6_nncfm"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/DespawnUnitAction.gd" id="7_ut3cd"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/SetFlagCutsceneAction.gd" id="8_2lnmb"]
@@ -14,21 +16,21 @@ script = ExtResource("3_1r7q2")
 type = 0
 author = 1
 text = " Happy birthday son! "
-actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
+actions = Array[ExtResource("6_a55pj")]([])
 
 [sub_resource type="Resource" id="Resource_k2l1a"]
 script = ExtResource("3_1r7q2")
 type = 0
 author = 1
 text = "Today marks the start of your journey to become a master runesmith. I tought you all I can. Now it is time for you to travel across the land and learn from other runesmiths. "
-actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
+actions = Array[ExtResource("6_a55pj")]([])
 
 [sub_resource type="Resource" id="Resource_fdydl"]
 script = ExtResource("3_1r7q2")
 type = 0
 author = 1
 text = "I packed some things for you that will help you on your journey. Go and pick up your backbag and let's meet outside."
-actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
+actions = Array[ExtResource("6_a55pj")]([])
 
 [sub_resource type="Resource" id="Resource_7muwf"]
 script = ExtResource("2_p0s3m")
@@ -40,7 +42,7 @@ dialog = SubResource("Resource_7muwf")
 
 [sub_resource type="Resource" id="Resource_i5l01"]
 script = ExtResource("6_nncfm")
-actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_hl6n1")])
+actions = Array[ExtResource("3_stgex")]([SubResource("Resource_hl6n1")])
 
 [sub_resource type="Resource" id="Resource_efxov"]
 script = ExtResource("5_ejqew")
@@ -50,7 +52,7 @@ relative_path = true
 
 [sub_resource type="Resource" id="Resource_fawma"]
 script = ExtResource("6_nncfm")
-actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_efxov")])
+actions = Array[ExtResource("3_stgex")]([SubResource("Resource_efxov")])
 
 [sub_resource type="Resource" id="Resource_sst0w"]
 script = ExtResource("5_ejqew")
@@ -60,7 +62,7 @@ relative_path = false
 
 [sub_resource type="Resource" id="Resource_8hd7n"]
 script = ExtResource("6_nncfm")
-actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_sst0w")])
+actions = Array[ExtResource("3_stgex")]([SubResource("Resource_sst0w")])
 
 [sub_resource type="Resource" id="Resource_c2lyp"]
 script = ExtResource("7_ut3cd")
@@ -68,7 +70,7 @@ unit_name = "Alfond"
 
 [sub_resource type="Resource" id="Resource_vw7kx"]
 script = ExtResource("6_nncfm")
-actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_c2lyp")])
+actions = Array[ExtResource("3_stgex")]([SubResource("Resource_c2lyp")])
 
 [sub_resource type="Resource" id="Resource_3xos8"]
 script = ExtResource("8_2lnmb")
@@ -77,7 +79,7 @@ value = true
 
 [sub_resource type="Resource" id="Resource_v7m56"]
 script = ExtResource("6_nncfm")
-actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_3xos8")])
+actions = Array[ExtResource("3_stgex")]([SubResource("Resource_3xos8")])
 
 [resource]
 script = ExtResource("1_t0e3o")

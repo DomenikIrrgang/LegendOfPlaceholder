@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="Cutscene" load_steps=13 format=3 uid="uid://bbvdyoem4obpd"]
+[gd_resource type="Resource" script_class="Cutscene" load_steps=15 format=3 uid="uid://bbvdyoem4obpd"]
 
 [ext_resource type="Script" path="res://Resources/Cutscenes/Cutscene.gd" id="1_5imc6"]
 [ext_resource type="Script" path="res://Resources/Dialogs/Dialog.gd" id="2_t82h0"]
+[ext_resource type="Script" path="res://Resources/Cutscenes/CutsceneAction.gd" id="3_5dcwk"]
 [ext_resource type="Script" path="res://Resources/Dialogs/DialogStep.gd" id="3_aljw5"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/ShowDialogAction.gd" id="4_y55d1"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/CutsceneStep.gd" id="5_mf61k"]
+[ext_resource type="Script" path="res://Resources/Dialogs/DialogAction.gd" id="6_4brgp"]
 [ext_resource type="Script" path="res://Resources/Cutscenes/MoveUnitAction.gd" id="6_vddd2"]
 
 [sub_resource type="Resource" id="Resource_xt472"]
@@ -12,7 +14,7 @@ script = ExtResource("3_aljw5")
 type = 0
 author = 1
 text = "Don't leave yet! Let#s talk first."
-actions = Array[Resource("res://Resources/Dialogs/DialogAction.gd")]([])
+actions = Array[ExtResource("6_4brgp")]([])
 
 [sub_resource type="Resource" id="Resource_xewu4"]
 script = ExtResource("2_t82h0")
@@ -24,7 +26,7 @@ dialog = SubResource("Resource_xewu4")
 
 [sub_resource type="Resource" id="Resource_y60tg"]
 script = ExtResource("5_mf61k")
-actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_afqld")])
+actions = Array[ExtResource("3_5dcwk")]([SubResource("Resource_afqld")])
 
 [sub_resource type="Resource" id="Resource_ir0my"]
 script = ExtResource("6_vddd2")
@@ -34,7 +36,7 @@ relative_path = true
 
 [sub_resource type="Resource" id="Resource_yrl4r"]
 script = ExtResource("5_mf61k")
-actions = Array[Resource("res://Resources/Cutscenes/CutsceneAction.gd")]([SubResource("Resource_ir0my")])
+actions = Array[ExtResource("3_5dcwk")]([SubResource("Resource_ir0my")])
 
 [resource]
 script = ExtResource("1_5imc6")

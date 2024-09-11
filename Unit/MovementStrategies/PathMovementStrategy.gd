@@ -16,7 +16,6 @@ func calculateMovementVelocity() -> Vector2:
 	var direction = (path[current_index] - unit.global_position).normalized()
 	var distance =  unit.global_position.distance_to(path[current_index])
 	var direction_distance = direction.length()
-	var position = unit.global_position
 	if direction_distance > distance:
 		unit.global_position = path[current_index]
 		return Vector2(0, 0)

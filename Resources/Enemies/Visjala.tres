@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=4 format=3 uid="uid://dgw6ivp3fei2h"]
+[gd_resource type="Resource" script_class="EnemyData" load_steps=5 format=3 uid="uid://dgw6ivp3fei2h"]
 
+[ext_resource type="Script" path="res://Resources/Enemies/LootDrop.gd" id="1_3jm7d"]
 [ext_resource type="Script" path="res://Resources/Enemies/EnemyData.gd" id="1_q8bqv"]
 [ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="2_bhj30"]
 
@@ -11,7 +12,7 @@ value = 3000
 [resource]
 script = ExtResource("1_q8bqv")
 experience = 50
-loot_table = Array[Resource("res://Resources/Enemies/LootDrop.gd")]([])
+loot_table = Array[ExtResource("1_3jm7d")]([])
 death_flags = Array[int]([7])
 alias = "Visjala"
 level = 5

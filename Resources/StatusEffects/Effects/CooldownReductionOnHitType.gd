@@ -17,4 +17,3 @@ func on_combat_logic_result(combat_result: CombatLogicResult, unit: Unit) -> voi
 	if combat_result.hit_type == hit_type and combat_result.source == unit:
 		for ability in unit.get_abilities():
 			ability.update(amount)
-

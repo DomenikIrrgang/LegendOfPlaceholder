@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="Quest" load_steps=7 format=3 uid="uid://b8sib7px37sjg"]
+[gd_resource type="Resource" script_class="Quest" load_steps=10 format=3 uid="uid://b8sib7px37sjg"]
 
 [ext_resource type="Script" path="res://Resources/Quests/FlagValueObjective.gd" id="1_131uy"]
 [ext_resource type="Script" path="res://Resources/Quests/Quest.gd" id="1_qeh3f"]
+[ext_resource type="Script" path="res://Resources/Quests/QuestObjective.gd" id="1_r0t7g"]
 [ext_resource type="Resource" uid="uid://1dht423wf6t6" path="res://Resources/Items/Spelltomes/BurningVeinsTome.tres" id="3_epqgs"]
+[ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="3_o322u"]
 [ext_resource type="Script" path="res://Resources/Quests/ItemQuestReward.gd" id="4_164tq"]
+[ext_resource type="Script" path="res://Resources/Quests/QuestReward.gd" id="4_i107x"]
 
 [sub_resource type="Resource" id="Resource_w7abc"]
 script = ExtResource("1_131uy")
@@ -22,6 +25,6 @@ name = "Egg Party"
 description = "The vicious snake Visjala has invaded this forest and has been laying eggs. Drive him away from this forest and report back to me."
 recommended_level = 1
 turnin_type = 0
-objectives = Array[Resource("res://Resources/Quests/QuestObjective.gd")]([SubResource("Resource_w7abc")])
-rewards = Array[Resource("res://Resources/Quests/QuestReward.gd")]([SubResource("Resource_rfjv8")])
-requirements = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+objectives = Array[ExtResource("1_r0t7g")]([SubResource("Resource_w7abc")])
+rewards = Array[ExtResource("4_i107x")]([SubResource("Resource_rfjv8")])
+requirements = Array[ExtResource("3_o322u")]([])

@@ -11,4 +11,3 @@ func enter(data = {}) -> void:
 	get_enemy().get_node("State/Casting").movement_strategy = EscapeMovementStrategy.new(get_enemy(), Globals.get_player())
 	add_timed_ability(MendBoss, func(): return get_enemy().heal_target if get_enemy().heal_target != null else get_enemy(), 8.0, 8.0, 100.0, 10.0)
 	
-

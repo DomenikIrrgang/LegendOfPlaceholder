@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="Quest" load_steps=9 format=3 uid="uid://ce6wwfe3u7old"]
+[gd_resource type="Resource" script_class="Quest" load_steps=12 format=3 uid="uid://ce6wwfe3u7old"]
 
 [ext_resource type="Script" path="res://Resources/Quests/FlagValueObjective.gd" id="1_6e7o6"]
+[ext_resource type="Script" path="res://Resources/Quests/QuestObjective.gd" id="1_ibwue"]
+[ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="3_3m84f"]
 [ext_resource type="Resource" uid="uid://bh7e8ddcf8rpu" path="res://Resources/Items/Spelltomes/TimestopTome.tres" id="3_xhxfh"]
 [ext_resource type="Script" path="res://Resources/Quests/ItemQuestReward.gd" id="4_b0koh"]
+[ext_resource type="Script" path="res://Resources/Quests/QuestReward.gd" id="4_pq0x7"]
 [ext_resource type="Resource" uid="uid://dujjey8vdpgho" path="res://Resources/Items/Spelltomes/InnerFlameTome.tres" id="5_ju7bi"]
 [ext_resource type="Script" path="res://Resources/Quests/Quest.gd" id="6_oaeok"]
 
@@ -29,6 +32,6 @@ description = "A wizard has been setting parts of the forest on fire. Find him a
 "
 recommended_level = 1
 turnin_type = 1
-objectives = Array[Resource("res://Resources/Quests/QuestObjective.gd")]([SubResource("Resource_a45vm")])
-rewards = Array[Resource("res://Resources/Quests/QuestReward.gd")]([SubResource("Resource_q8j34"), SubResource("Resource_ng0b4")])
-requirements = Array[Resource("res://Resources/Conditions/Condition.gd")]([])
+objectives = Array[ExtResource("1_ibwue")]([SubResource("Resource_a45vm")])
+rewards = Array[ExtResource("4_pq0x7")]([SubResource("Resource_q8j34"), SubResource("Resource_ng0b4")])
+requirements = Array[ExtResource("3_3m84f")]([])

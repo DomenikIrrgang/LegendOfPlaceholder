@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="StatusEffect" load_steps=5 format=3 uid="uid://bww2dg1vaqxrb"]
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=6 format=3 uid="uid://bww2dg1vaqxrb"]
 
+[ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffectScript.gd" id="1_0fl4g"]
 [ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_qubfb"]
 [ext_resource type="Script" path="res://Resources/StatusEffects/Effects/CooldownReductionOnHitType.gd" id="1_wcmso"]
 [ext_resource type="Texture2D" uid="uid://brpedb2kjpxu7" path="res://assets/ui/bottom_hud/inner_fire_icon.png" id="2_ovnxi"]
@@ -20,5 +21,5 @@ duration = 10.0
 unique = true
 stackable = false
 max_stacks = 1
-effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([SubResource("Resource_jwmny")])
+effects = Array[ExtResource("1_0fl4g")]([SubResource("Resource_jwmny")])
 icon = ExtResource("2_ovnxi")
