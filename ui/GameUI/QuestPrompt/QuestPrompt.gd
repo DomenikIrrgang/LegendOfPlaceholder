@@ -22,6 +22,7 @@ func prompt_quest(quest: Quest) -> void:
 	visible = true
 	quest_name.text = quest.name
 	quest_descirption.text = quest.description
+	SoundManager.play_tts(quest.description)
 	for child in rewards.get_children():
 		child.queue_free()
 	for reward in quest.rewards:

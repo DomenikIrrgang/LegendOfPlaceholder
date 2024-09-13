@@ -7,7 +7,7 @@ var titel: Label = $MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/
 var description: Label = $MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/DescirptionContainer/Description
 
 @onready
-var objectives: Label = $MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/ObjectivesContainer/ObjectivesLabel
+var objectives: Label = $MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/ObjectivesContainer/VBoxContainer/Objective
 
 @onready
 var rewards: FlowContainer = $MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/RewardsContainer/Rewards

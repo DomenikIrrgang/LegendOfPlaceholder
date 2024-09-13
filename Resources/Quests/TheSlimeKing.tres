@@ -41,6 +41,7 @@ amount = 1
 [resource]
 script = ExtResource("7_mcslu")
 name = "The Slime King"
+type = 2
 description = "A giant slime has been producing a lot of offspring that is invading this forest. Clean the forest of his slimes and bring me his head."
 recommended_level = 1
 turnin_type = 1
