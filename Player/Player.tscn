@@ -29,7 +29,7 @@
 [ext_resource type="Script" path="res://State/StateTransition.gd" id="20_ftpep"]
 [ext_resource type="Script" path="res://Player/State/DashToRun.gd" id="24_fsluq"]
 [ext_resource type="Script" path="res://Unit/HurtBox.gd" id="27_3nmce"]
-[ext_resource type="Script" path="res://Player/Disabled.gd" id="29_4b2cp"]
+[ext_resource type="Script" path="res://Player/State/Disabled.gd" id="29_4b2cp"]
 [ext_resource type="Script" path="res://Player/PlayerInteractionArea.gd" id="31_kxxqh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5l03r"]

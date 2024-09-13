@@ -23,10 +23,10 @@ func update() -> void:
 	visible = true
 	if can_turn_in_quest():
 		texture = turnin_quest_texture
-	elif can_potentially_turn_in_quest():
-		texture = potential_turnin_quest_texture
 	elif quest_available():
 		texture = availalbe_quest_texture
+	elif can_potentially_turn_in_quest():
+		texture = potential_turnin_quest_texture
 	elif quest_potentially_available():
 		texture = potential_quest_texture
 	else:

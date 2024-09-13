@@ -1,23 +1,26 @@
 extends ScrollContainer
 
 @onready
-var titel: Label = $MarginContainer/QuestDescription/Titel
+var titel: Label = $MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/Titel
 
 @onready
-var description: Label = $MarginContainer/QuestDescription/DescirptionContainer/Description
+var description: Label = $MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/DescirptionContainer/Description
 
 @onready
-var objectives: Label = $MarginContainer/QuestDescription/ObjectivesContainer/VBoxContainer/Objective
+var objectives: Label = $MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/ObjectivesContainer/ObjectivesLabel
 
 @onready
-var rewards: FlowContainer = $MarginContainer/QuestDescription/RewardsContainer/Rewards
+var rewards: FlowContainer = $MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/RewardsContainer/Rewards
 
 @onready
-var objecives_container: VBoxContainer = $MarginContainer/QuestDescription/ObjectivesContainer
+var objecives_container: VBoxContainer = $MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/ObjectivesContainer/VBoxContainer
 
 var RewardPanel = preload("res://ui/GameUI/Questlog/RewardPanel.tscn")
 
-func set_quest(quest: Quest) -> void:
+var quest: Quest = null
+
+func set_quest(_quest: Quest) -> void:
+	quest = _quest
 	titel.text = quest.name
 	description.text = quest.description
 	for child in rewards.get_children():
@@ -34,3 +37,7 @@ func set_quest(quest: Quest) -> void:
 			objectives.text += objective.get_progess_string() + "\n"
 	else:
 		objecives_container.visible = false
+
+
+func _on_abandon_quest_button_pressed() -> void:
+	QuestManager.abandon_quest(quest)

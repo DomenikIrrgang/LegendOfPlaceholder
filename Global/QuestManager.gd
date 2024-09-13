@@ -70,6 +70,11 @@ func complete_quest(quest: Quest) -> bool:
 		return true
 	return false
 	
+func abandon_quest(quest: Quest) -> void:
+	if is_on_quest(quest):
+		quests.erase(quest)
+		quest_abandoned.emit(quest)
+	
 func quest_objectives_completed(quest: Quest) -> bool:
 	for objective in quest.objectives:
 		if not objective.is_completed():

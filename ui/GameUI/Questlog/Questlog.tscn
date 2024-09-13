@@ -106,33 +106,48 @@ script = ExtResource("5_vevst")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="QuestDescription" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="QuestDescription" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Titel" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription"]
+[node name="Titel" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription"]
 layout_mode = 2
 text = "A firiendly Gesture"
 label_settings = ExtResource("3_mos0f")
 vertical_alignment = 1
 
-[node name="ObjectivesContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription"]
+[node name="ObjectivesContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription"]
 layout_mode = 2
 
-[node name="ObjectivesLabel" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription/ObjectivesContainer"]
+[node name="ObjectivesLabel" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/ObjectivesContainer"]
 layout_mode = 2
 text = "Objectives:"
 label_settings = ExtResource("3_mos0f")
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription/ObjectivesContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/ObjectivesContainer"]
 layout_mode = 2
 
-[node name="Objective" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription/ObjectivesContainer/VBoxContainer"]
+[node name="Objective" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/ObjectivesContainer/VBoxContainer"]
 layout_mode = 2
 text = "Reach Level 3/3
 Collect Testing Chest 0/1"
@@ -140,36 +155,52 @@ label_settings = ExtResource("3_mos0f")
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="DescirptionContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription"]
+[node name="DescirptionContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription"]
 layout_mode = 2
 
-[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription/DescirptionContainer"]
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/DescirptionContainer"]
 layout_mode = 2
 text = "Description:"
 label_settings = ExtResource("3_mos0f")
 vertical_alignment = 1
 
-[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription/DescirptionContainer"]
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/DescirptionContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.
+Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.
+Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.
+Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.
+Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.
 "
 label_settings = ExtResource("3_mos0f")
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="RewardsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription"]
+[node name="RewardsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="RewardsLabel" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription/RewardsContainer"]
+[node name="RewardsLabel" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/RewardsContainer"]
 layout_mode = 2
 text = "Rewards:"
 label_settings = ExtResource("3_mos0f")
 vertical_alignment = 1
 
-[node name="Rewards" type="FlowContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/QuestDescription/RewardsContainer"]
+[node name="Rewards" type="FlowContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/RewardsContainer"]
 layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer/HFlowContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 10
+
+[node name="AbandonQuestButton" type="Button" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer/HFlowContainer/MarginContainer"]
+layout_mode = 2
+text = "Abandon Quest"
 
 [node name="NoActiveQuests" type="Label" parent="MarginContainer/VBoxContainer/Content"]
 visible = false
@@ -182,3 +213,5 @@ label_settings = ExtResource("3_mos0f")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer/HFlowContainer/MarginContainer/AbandonQuestButton" to="MarginContainer/VBoxContainer/Content/QuestInformation" method="_on_abandon_quest_button_pressed"]
