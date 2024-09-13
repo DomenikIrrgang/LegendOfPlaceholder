@@ -37,6 +37,7 @@ layout_mode = 2
 texture = ExtResource("2_3yu73")
 
 [node name="ScrollMiddle" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_hkvj8")
 script = SubResource("GDScript_4h23a")
@@ -122,11 +123,11 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 100
 
-[node name="Accept2" type="TextureButton" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/VBoxContainer/CenterContainer/HBoxContainer"]
+[node name="Decline" type="TextureButton" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/VBoxContainer/CenterContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("6_j1jis")
 
-[node name="Label" type="Label" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/VBoxContainer/CenterContainer/HBoxContainer/Accept2"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollMiddle/Margin/Spacing/VBoxContainer/CenterContainer/HBoxContainer/Decline"]
 self_modulate = Color(0.266667, 0.266667, 0.266667, 1)
 layout_mode = 0
 offset_right = 130.0
@@ -155,3 +156,6 @@ autowrap_mode = 2
 [node name="ScrollBottom" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("6_shcbg")
+
+[connection signal="pressed" from="VBoxContainer/ScrollMiddle/Margin/Spacing/VBoxContainer/CenterContainer/HBoxContainer/Decline" to="." method="decline_quest"]
+[connection signal="pressed" from="VBoxContainer/ScrollMiddle/Margin/Spacing/VBoxContainer/CenterContainer/HBoxContainer/Accept" to="." method="accept_quest"]

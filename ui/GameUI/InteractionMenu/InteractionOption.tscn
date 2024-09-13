@@ -59,4 +59,4 @@ label_settings = SubResource("LabelSettings_vmsgq")
 
 [node name="Shade" type="ColorRect" parent="."]
 layout_mode = 2
-color = Color(0, 0, 0, 0.411765)
+color = Color(0, 0, 0, 0.266667)

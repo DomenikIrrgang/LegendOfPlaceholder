@@ -149,6 +149,7 @@ var interceptors: Array[InputInterceptor] = [
 	PlayerControlInputInterceptor.new(),
 	InteractableInRangeInterceptor.new(),
 	InteractionPromptInterceptor.new(),
+	QuestDialogInterceptor.new(),
 	DialogInputInterceptor.new(),
 	CutsceneInputInterceptor.new(),
 ]

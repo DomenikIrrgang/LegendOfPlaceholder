@@ -44,6 +44,7 @@ InteractionManager="*res://Global/InteractionManager.gd"
 GameStateManager="*res://GameState/GameStateManager.gd"
 SoundManager="*res://Global/SoundManager.gd"
 SaveFileManager="*res://Global/SaveFileManager.gd"
+QuestDialogManager="*res://Global/QuestDialogManager.gd"
 
 [debug]
 

@@ -54,5 +54,5 @@ func despawn_conditions_fulfilled() -> bool:
 func init_cast_bar() -> void:
 	castbar = CastBar.instantiate()
 	add_child(castbar)
-	castbar.global_position.y -= model.get_rect().size.y * model.scale.y - (3 * model.scale.y) + 9.5
+	castbar.global_position.y -= model.get_rect().	size.y * model.scale.y - (3 * model.scale.y) + 9.5
 	castbar.initialize(self)

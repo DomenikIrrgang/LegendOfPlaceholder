@@ -6,7 +6,7 @@ var quest: Quest
 
 func start() -> void:
 	if QuestManager.can_accept_quest(quest):
-		QuestManager.accept_quest(quest)
+		QuestDialogManager.prompt_quest(quest)
 
 func get_icon() -> Texture:
 	if QuestManager.can_accept_quest(quest):

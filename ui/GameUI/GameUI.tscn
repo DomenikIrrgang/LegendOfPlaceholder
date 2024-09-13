@@ -315,13 +315,13 @@ func _process(_delta: float) -> void:
 		text = \"No player found.\"
 "
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hkqp6"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_uc4gr"]
 font = ExtResource("3_60v0h")
 font_size = 20
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hkqp6"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -1031,27 +1031,10 @@ alignment = 2
 script = ExtResource("50_4qtxk")
 status_effect_type = 1
 
-[node name="Interactable" type="CenterContainer" parent="."]
-visible = false
-layout_mode = 1
-offset_left = -50.0
-offset_top = -10.0
-offset_right = 50.0
-offset_bottom = 10.0
-script = ExtResource("53_gchnq")
-
-[node name="Text" type="Label" parent="Interactable"]
-layout_mode = 2
-text = "Interact"
-label_settings = SubResource("LabelSettings_uc4gr")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="InteractionPrompt" type="VBoxContainer" parent="."]
 layout_mode = 2
-offset_top = 611.0
 offset_right = 1920.0
-offset_bottom = 942.0
+offset_bottom = 953.0
 mouse_filter = 2
 alignment = 2
 script = ExtResource("54_w3j3o")
@@ -1102,6 +1085,22 @@ stretch_mode = 2
 [node name="InteractionMenue" type="VBoxContainer" parent="InteractionPrompt/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 alignment = 2
+
+[node name="Interactable" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+offset_left = -50.0
+offset_top = -10.0
+offset_right = 50.0
+offset_bottom = 10.0
+script = ExtResource("53_gchnq")
+
+[node name="Text" type="Label" parent="Interactable"]
+layout_mode = 2
+text = "Interact"
+label_settings = SubResource("LabelSettings_uc4gr")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Inventory" type="VBoxContainer" parent="."]
 layout_mode = 0
