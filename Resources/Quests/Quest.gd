@@ -6,8 +6,17 @@ enum TurninType {
 	UNIT
 }
 
+enum Type {
+	STORY,
+	RUNESMITH,
+	SIDE
+}
+
 @export
 var name: String = ""
+
+@export
+var type: Type = Type.SIDE
 
 @export_multiline
 var description: String = ""

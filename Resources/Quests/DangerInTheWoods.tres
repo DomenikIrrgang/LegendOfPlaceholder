@@ -40,6 +40,7 @@ amount = 1
 [resource]
 script = ExtResource("1_qb7w6")
 name = "Danger in the Woods!"
+type = 0
 description = "Talk to Alfond to find out more about what has happened in the woods."
 recommended_level = 1
 turnin_type = 1
