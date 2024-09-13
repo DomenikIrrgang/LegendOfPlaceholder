@@ -117,6 +117,7 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 10
 alignment = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer"]
@@ -167,12 +168,7 @@ vertical_alignment = 1
 [node name="Description" type="Label" parent="MarginContainer/VBoxContainer/Content/QuestInformation/MarginContainer/VBoxContainer/VBoxContainer/ScrollContainer/QuestDescription/DescirptionContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-text = "Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.
-Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.
-Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.
-Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.
-Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.
-"
+text = "Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries.Alfond has been attacked by Monsters and is badly injured. Bring him a healing potion to heal his injuries."
 label_settings = ExtResource("3_mos0f")
 vertical_alignment = 1
 autowrap_mode = 2
