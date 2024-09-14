@@ -9,7 +9,8 @@ enum TurninType {
 enum Type {
 	STORY,
 	RUNESMITH,
-	SIDE
+	SIDE,
+	REPEATABLE
 }
 
 @export

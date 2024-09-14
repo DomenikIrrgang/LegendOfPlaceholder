@@ -56,14 +56,15 @@ func _ready():
 			create_polyphnic_audio_stream("Dialog", 8)
 		])
 	}
-	SaveFileManager.save_file_loaded.connect(on_save_file_loaded)
-	SaveFileManager.save_file_saving.connect(on_save_file_saving)
+	SettingsManager.settings_file_loaded.connect(on_save_file_loaded)
+	SettingsManager.settings_file_saving.connect(on_save_file_saving)
 	
 func on_save_file_loaded(save_file: Dictionary) -> void:
-	for channel in save_file.sound_settings.channels:
-		set_channel_volume(int(channel), save_file.sound_settings.channels[channel].volume)
-	tts_enabled = save_file.sound_settings.tts_enabled
-	AudioServer.output_device = save_file.sound_settings.output_device
+	if save_file.has("sound_settings"):
+		for channel in save_file.sound_settings.channels:
+			set_channel_volume(int(channel), save_file.sound_settings.channels[channel].volume)
+		tts_enabled = save_file.sound_settings.tts_enabled
+		AudioServer.output_device = save_file.sound_settings.output_device
 	
 func set_tts(enabled: bool) -> void:
 	tts_enabled = enabled
