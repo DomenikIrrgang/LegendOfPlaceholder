@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmaqacbvany1n"]
+
+[ext_resource type="Script" path="res://ui/GameUI/Fps.gd" id="1_q24a6"]
+
+[node name="Fps" type="Label"]
+visible = false
+text = "FPS: "
+script = ExtResource("1_q24a6")

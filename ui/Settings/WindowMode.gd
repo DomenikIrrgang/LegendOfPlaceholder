@@ -1,7 +1,10 @@
 extends OptionButton
 
 func _ready():
-	select(0)
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		select(0)
+	else:
+		select(1)
 	item_selected.connect(on_mode_selected)
 		
 func on_mode_selected(index: int) -> void:

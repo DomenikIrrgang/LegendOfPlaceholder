@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ddnsu8hllewh7"]
+[gd_scene load_steps=33 format=3 uid="uid://ddnsu8hllewh7"]
 
 [ext_resource type="Script" path="res://Zones/BaseScene.gd" id="1_3m1id"]
 [ext_resource type="Script" path="res://CustomCamera.gd" id="1_yk0hc"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://ui/PauseMenu/Settings.gd" id="16_qopk4"]
 [ext_resource type="PackedScene" uid="uid://y1utto7qe73j" path="res://ui/Settings/Settings.tscn" id="17_0yn3y"]
 [ext_resource type="Script" path="res://ui/Settings/KeybindScreen.gd" id="19_6piqc"]
+[ext_resource type="PackedScene" uid="uid://bmaqacbvany1n" path="res://ui/FPS/Fps.tscn" id="19_43sg3"]
 
 [sub_resource type="Animation" id="Animation_58ieq"]
 resource_name = "Hide"
@@ -152,25 +153,30 @@ script = ExtResource("11_dggdl")
 
 [node name="UserInterface" type="CanvasLayer" parent="." groups=["UserInterfaceCanvas"]]
 
-[node name="Theme" type="Control" parent="UserInterface" groups=["UserInterface"]]
+[node name="Theme" type="Control" parent="UserInterface"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("5_4p5kc")
 
-[node name="GameUI" parent="UserInterface/Theme" node_paths=PackedStringArray("player") groups=["GameUI"] instance=ExtResource("4_i5ie3")]
-layout_mode = 1
-player = NodePath("../../../Player")
+[node name="UI" type="Control" parent="UserInterface/Theme" groups=["UserInterface"]]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Dialogs" type="Control" parent="UserInterface/Theme"]
+[node name="GameUI" parent="UserInterface/Theme/UI" node_paths=PackedStringArray("player") groups=["GameUI"] instance=ExtResource("4_i5ie3")]
+layout_mode = 1
+player = NodePath("../../../../Player")
+
+[node name="Dialogs" type="Control" parent="UserInterface/Theme/UI"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_3r0j6")
 
-[node name="CutsceneBars" type="Control" parent="UserInterface/Theme"]
+[node name="CutsceneBars" type="Control" parent="UserInterface/Theme/UI"]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -178,25 +184,25 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6_f08no")
 
-[node name="ColorRect" type="ColorRect" parent="UserInterface/Theme/CutsceneBars"]
+[node name="ColorRect" type="ColorRect" parent="UserInterface/Theme/UI/CutsceneBars"]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 89.9999
 color = Color(0, 0, 0, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="UserInterface/Theme/CutsceneBars"]
+[node name="ColorRect2" type="ColorRect" parent="UserInterface/Theme/UI/CutsceneBars"]
 layout_mode = 0
 offset_top = 990.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UserInterface/Theme/CutsceneBars"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UserInterface/Theme/UI/CutsceneBars"]
 libraries = {
 "": SubResource("AnimationLibrary_btnq7")
 }
 
-[node name="DeathScreen" type="Control" parent="UserInterface/Theme"]
+[node name="DeathScreen" type="Control" parent="UserInterface/Theme/UI"]
 process_mode = 3
 visible = false
 layout_mode = 3
@@ -205,37 +211,37 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("13_agrxk")
 
-[node name="ColorRect" type="ColorRect" parent="UserInterface/Theme/DeathScreen"]
+[node name="ColorRect" type="ColorRect" parent="UserInterface/Theme/UI/DeathScreen"]
 material = SubResource("ShaderMaterial_aq4yp")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="CenterContainer" type="CenterContainer" parent="UserInterface/Theme/DeathScreen/ColorRect"]
+[node name="CenterContainer" type="CenterContainer" parent="UserInterface/Theme/UI/DeathScreen/ColorRect"]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/Theme/DeathScreen/ColorRect/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/Theme/UI/DeathScreen/ColorRect/CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Death" type="Label" parent="UserInterface/Theme/DeathScreen/ColorRect/CenterContainer/VBoxContainer"]
+[node name="Death" type="Label" parent="UserInterface/Theme/UI/DeathScreen/ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "- YOU DIED -"
 label_settings = SubResource("LabelSettings_ipaw4")
 
-[node name="Respawn" type="Button" parent="UserInterface/Theme/DeathScreen/ColorRect/CenterContainer/VBoxContainer"]
+[node name="Respawn" type="Button" parent="UserInterface/Theme/UI/DeathScreen/ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Respawn"
 script = ExtResource("14_5yh4g")
 
-[node name="MainMenue" type="Button" parent="UserInterface/Theme/DeathScreen/ColorRect/CenterContainer/VBoxContainer"]
+[node name="MainMenue" type="Button" parent="UserInterface/Theme/UI/DeathScreen/ColorRect/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Return to Mainmenu"
 script = ExtResource("15_jpvca")
 
-[node name="PauseMenu" type="Control" parent="UserInterface/Theme" groups=["PauseMenu"]]
+[node name="PauseMenu" type="Control" parent="UserInterface/Theme/UI" groups=["PauseMenu"]]
 process_mode = 2
 visible = false
 layout_mode = 3
@@ -244,62 +250,71 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("7_f4tx3")
 
-[node name="ColorRect" type="ColorRect" parent="UserInterface/Theme/PauseMenu"]
+[node name="ColorRect" type="ColorRect" parent="UserInterface/Theme/UI/PauseMenu"]
 material = SubResource("ShaderMaterial_aq4yp")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="CenterContainer" type="CenterContainer" parent="UserInterface/Theme/PauseMenu"]
+[node name="CenterContainer" type="CenterContainer" parent="UserInterface/Theme/UI/PauseMenu"]
 layout_mode = 0
 offset_right = 1960.0
 offset_bottom = 1160.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/Theme/PauseMenu/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UserInterface/Theme/UI/PauseMenu/CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Pause" type="Label" parent="UserInterface/Theme/PauseMenu/CenterContainer/VBoxContainer"]
+[node name="Pause" type="Label" parent="UserInterface/Theme/UI/PauseMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "- PAUSE -"
 label_settings = SubResource("LabelSettings_ipaw4")
 
-[node name="Continue" type="Button" parent="UserInterface/Theme/PauseMenu/CenterContainer/VBoxContainer"]
+[node name="Continue" type="Button" parent="UserInterface/Theme/UI/PauseMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Continue
 "
 script = ExtResource("15_y27up")
 
-[node name="Settings" type="Button" parent="UserInterface/Theme/PauseMenu/CenterContainer/VBoxContainer"]
+[node name="Settings" type="Button" parent="UserInterface/Theme/UI/PauseMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Settings"
 script = ExtResource("16_qopk4")
 
-[node name="MainMenu" type="Button" parent="UserInterface/Theme/PauseMenu/CenterContainer/VBoxContainer"]
+[node name="MainMenu" type="Button" parent="UserInterface/Theme/UI/PauseMenu/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Main Menue"
 script = ExtResource("15_jpvca")
 
-[node name="Settings" parent="UserInterface/Theme/PauseMenu/CenterContainer" groups=["Settings"] instance=ExtResource("17_0yn3y")]
+[node name="Settings" parent="UserInterface/Theme/UI/PauseMenu/CenterContainer" groups=["Settings"] instance=ExtResource("17_0yn3y")]
+visible = false
 layout_mode = 2
 
-[node name="KeybindScreen" type="CenterContainer" parent="UserInterface/Theme"]
+[node name="KeybindScreen" type="CenterContainer" parent="UserInterface/Theme/UI"]
 visible = false
 layout_mode = 2
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("19_6piqc")
 
-[node name="Background" type="ColorRect" parent="UserInterface/Theme/KeybindScreen"]
+[node name="Background" type="ColorRect" parent="UserInterface/Theme/UI/KeybindScreen"]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 2
 color = Color(0, 0, 0, 0.376471)
 
-[node name="Label" type="Label" parent="UserInterface/Theme/KeybindScreen"]
+[node name="Label" type="Label" parent="UserInterface/Theme/UI/KeybindScreen"]
 layout_mode = 2
 text = "Press key or button to bind to
 Controller: Left"
 horizontal_alignment = 1
+
+[node name="Fps" parent="UserInterface/Theme" instance=ExtResource("19_43sg3")]
+visible = true
+layout_mode = 0
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 53.0
+offset_bottom = 30.0
 
 [node name="LoadingScreen" type="CanvasLayer" parent="." groups=["loadingscreen"]]
 visible = false
@@ -313,4 +328,4 @@ centered = false
 region_enabled = true
 region_rect = Rect2(2.08165e-12, 2.08165e-12, 1920, 1080)
 
-[connection signal="pressed" from="UserInterface/Theme/DeathScreen/ColorRect/CenterContainer/VBoxContainer/Respawn" to="UserInterface/Theme/DeathScreen/ColorRect/CenterContainer/VBoxContainer/Respawn" method="_on_pressed"]
+[connection signal="pressed" from="UserInterface/Theme/UI/DeathScreen/ColorRect/CenterContainer/VBoxContainer/Respawn" to="UserInterface/Theme/UI/DeathScreen/ColorRect/CenterContainer/VBoxContainer/Respawn" method="_on_pressed"]

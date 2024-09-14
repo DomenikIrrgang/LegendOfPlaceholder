@@ -16,6 +16,7 @@ func _ready() -> void:
 		settings_file = create_settings_file()
 	else:
 		settings_file = load_settings_file()
+	
 
 func settings_file_exists() -> bool:
 	return FileAccess.file_exists(SETTINGS_FILE_PATH)

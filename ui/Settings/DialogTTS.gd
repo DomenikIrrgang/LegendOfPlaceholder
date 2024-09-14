@@ -5,5 +5,4 @@ func _ready():
 	toggled.connect(on_toggle)
 	
 func on_toggle(toggled: bool) -> void:
-	print("toggled")
 	SoundManager.set_tts(toggled)

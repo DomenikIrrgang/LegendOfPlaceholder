@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://y1utto7qe73j"]
+[gd_scene load_steps=11 format=3 uid="uid://y1utto7qe73j"]
 
 [ext_resource type="Theme" uid="uid://dijdy4xqx36dl" path="res://ui/DefaultTheme.tres" id="1_5armt"]
 [ext_resource type="Script" path="res://ui/Settings/WindowMode.gd" id="2_s2tdu"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" path="res://ui/Settings/SoundDevice.gd" id="2_wrklo"]
 [ext_resource type="Script" path="res://ui/PauseMenu/BusVolumeSetting.gd" id="3_kd0ya"]
 [ext_resource type="Script" path="res://ui/Settings/DialogTTS.gd" id="4_m6wkk"]
+[ext_resource type="Script" path="res://ui/Settings/VSyinc.gd" id="4_u6w53"]
 [ext_resource type="Script" path="res://ui/Settings/Keybinds.gd" id="5_70hl3"]
+[ext_resource type="Script" path="res://ui/Settings/FpsCounter.gd" id="5_rflj7"]
 [ext_resource type="Script" path="res://ui/Settings/KeybindScreen.gd" id="6_wlgle"]
 
 [node name="MarginContainer" type="MarginContainer"]
@@ -28,6 +30,7 @@ current_tab = 0
 
 [node name="Graphics" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
 metadata/_tab_index = 0
 
 [node name="WindowMode" type="VBoxContainer" parent="VBoxContainer/TabContainer/Graphics"]
@@ -44,6 +47,16 @@ popup/item_0/text = "Windowed Fullscreen"
 popup/item_1/text = "Windowed"
 popup/item_1/id = 1
 script = ExtResource("2_s2tdu")
+
+[node name="Vsync" type="CheckBox" parent="VBoxContainer/TabContainer/Graphics"]
+layout_mode = 2
+text = "V-Sync:"
+script = ExtResource("4_u6w53")
+
+[node name="FpsCounter" type="CheckBox" parent="VBoxContainer/TabContainer/Graphics"]
+layout_mode = 2
+text = "FPS Counter"
+script = ExtResource("5_rflj7")
 
 [node name="Sound" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
 visible = false
@@ -121,11 +134,6 @@ step = 0.01
 script = ExtResource("3_kd0ya")
 channel = 3
 
-[node name="DialogTTS" type="CheckBox" parent="VBoxContainer/TabContainer/Sound"]
-layout_mode = 2
-text = "TTS (Dialog)"
-script = ExtResource("4_m6wkk")
-
 [node name="Keybinds" type="ScrollContainer" parent="VBoxContainer/TabContainer"]
 visible = false
 custom_minimum_size = Vector2(500, 300)
@@ -143,6 +151,11 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="DialogTTS" type="CheckBox" parent="VBoxContainer/TabContainer/Keybinds"]
+layout_mode = 2
+text = "TTS (Dialog)"
+script = ExtResource("4_m6wkk")
 
 [node name="Close" type="Button" parent="VBoxContainer"]
 layout_mode = 2
