@@ -7,7 +7,6 @@ var slots: Array[InventorySlot] = []
 signal received_item(item: Item, amount: int)
 signal removed_item(item: Item, amount: int)
 signal slot_changed(slot: int, item: Item, amount: int)
-signal swapped_item(slot1: int, slot2: int)
 
 func _init(_size: int = 32):
 	size = _size

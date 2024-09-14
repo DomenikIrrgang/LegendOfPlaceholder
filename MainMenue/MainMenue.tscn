@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://mugu4qix3h4n"]
+[gd_scene load_steps=12 format=3 uid="uid://mugu4qix3h4n"]
 
 [ext_resource type="Script" path="res://MainMenue/MainMenue.gd" id="1_46vi5"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="1_d40p0"]
 [ext_resource type="PackedScene" uid="uid://ddnsu8hllewh7" path="res://Zones/BaseScene.tscn" id="2_y0fhv"]
 [ext_resource type="PackedScene" uid="uid://y1utto7qe73j" path="res://ui/Settings/Settings.tscn" id="3_4b2gd"]
+[ext_resource type="Theme" uid="uid://dijdy4xqx36dl" path="res://ui/DefaultTheme.tres" id="3_w34uu"]
 [ext_resource type="PackedScene" uid="uid://bnrnb4iqpe0df" path="res://MainMenue/GameState.tscn" id="4_0wh72"]
 [ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="5_8tq7a"]
 [ext_resource type="Texture2D" uid="uid://btclwllqikiap" path="res://assets/ui/mainmenu/cogwheel.png" id="6_xj4dx"]
@@ -26,67 +27,85 @@ z_index = -4000
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="LogoCenter" type="CenterContainer" parent="CanvasLayer"]
+[node name="Theme" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("3_w34uu")
+
+[node name="LogoCenter" type="CenterContainer" parent="CanvasLayer/Theme"]
+layout_mode = 0
 offset_top = 108.0
 offset_right = 1920.0
 offset_bottom = 237.0
 
-[node name="Message" type="Label" parent="CanvasLayer/LogoCenter"]
+[node name="Message" type="Label" parent="CanvasLayer/Theme/LogoCenter"]
 layout_mode = 2
 text = "Rinia: Return of Duland"
 label_settings = SubResource("LabelSettings_r4wkc")
 horizontal_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Theme"]
+layout_mode = 0
 offset_top = 684.0
 offset_right = 1920.0
-offset_bottom = 884.0
+offset_bottom = 962.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Theme/CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="GameState1" parent="CanvasLayer/CenterContainer/VBoxContainer" instance=ExtResource("4_0wh72")]
+[node name="GameState1" parent="CanvasLayer/Theme/CenterContainer/VBoxContainer" instance=ExtResource("4_0wh72")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../GameState3")
+focus_neighbor_bottom = NodePath("../GameState2")
 
-[node name="GameState2" parent="CanvasLayer/CenterContainer/VBoxContainer" instance=ExtResource("4_0wh72")]
+[node name="GameState2" parent="CanvasLayer/Theme/CenterContainer/VBoxContainer" instance=ExtResource("4_0wh72")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../GameState1")
+focus_neighbor_bottom = NodePath("../GameState3")
 game_state_index = 1
 
-[node name="GameState3" parent="CanvasLayer/CenterContainer/VBoxContainer" instance=ExtResource("4_0wh72")]
+[node name="GameState3" parent="CanvasLayer/Theme/CenterContainer/VBoxContainer" instance=ExtResource("4_0wh72")]
 layout_mode = 2
+focus_neighbor_top = NodePath("../GameState2")
+focus_neighbor_bottom = NodePath("../GameState1")
 game_state_index = 2
 
-[node name="LeftFooter" type="HBoxContainer" parent="CanvasLayer"]
+[node name="LeftFooter" type="HBoxContainer" parent="CanvasLayer/Theme"]
 custom_minimum_size = Vector2(1920, 0)
+layout_mode = 0
 offset_top = 1050.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/LeftFooter"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Theme/LeftFooter"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 
-[node name="Version" type="Label" parent="CanvasLayer/LeftFooter/MarginContainer"]
+[node name="Version" type="Label" parent="CanvasLayer/Theme/LeftFooter/MarginContainer"]
 self_modulate = Color(0.360784, 0.360784, 0.360784, 1)
 layout_mode = 2
 text = "0.0.1-pre-alpha"
 label_settings = SubResource("LabelSettings_0jxo3")
 horizontal_alignment = 1
 
-[node name="RightFooter" type="VBoxContainer" parent="CanvasLayer"]
+[node name="RightFooter" type="VBoxContainer" parent="CanvasLayer/Theme"]
 custom_minimum_size = Vector2(1920, 0)
+layout_mode = 0
 offset_top = 907.0
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/RightFooter"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Theme/RightFooter"]
 layout_mode = 2
 alignment = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/RightFooter/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Theme/RightFooter/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -95,26 +114,31 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/RightFooter/HBoxContainer/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/RightFooter/HBoxContainer/MarginContainer/PanelContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/PanelContainer"]
 layout_mode = 2
 texture = ExtResource("5_8tq7a")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/RightFooter/HBoxContainer/MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="SettingsIcon" type="TextureRect" parent="CanvasLayer/RightFooter/HBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
+[node name="SettingsIcon" type="TextureRect" parent="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 texture = ExtResource("6_xj4dx")
 script = ExtResource("7_l5iec")
 
-[node name="Settings" parent="CanvasLayer" instance=ExtResource("3_4b2gd")]
+[node name="Settings" parent="CanvasLayer/Theme" instance=ExtResource("3_4b2gd")]
 visible = false
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 570.0
+offset_bottom = 783.0
 
-[connection signal="gui_input" from="CanvasLayer/RightFooter/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/SettingsIcon" to="CanvasLayer/RightFooter/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/SettingsIcon" method="_on_gui_input"]
-[connection signal="hidden" from="CanvasLayer/Settings" to="CanvasLayer/RightFooter/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/SettingsIcon" method="_on_settings_hidden"]
+[connection signal="gui_input" from="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/SettingsIcon" to="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/SettingsIcon" method="_on_gui_input"]
+[connection signal="hidden" from="CanvasLayer/Theme/Settings" to="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/SettingsIcon" method="_on_settings_hidden"]

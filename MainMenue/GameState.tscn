@@ -12,6 +12,7 @@ font_size = 24
 
 [node name="GameState" type="PanelContainer"]
 custom_minimum_size = Vector2(400, 0)
+focus_mode = 2
 script = ExtResource("1_xo0hl")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
@@ -21,26 +22,53 @@ patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+
+[node name="Header" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Header"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="HBoxContainer/Header/VBoxContainer"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_vyhwa")
 horizontal_alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/Header"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_iq4rf")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_6xjc6")
 placeholder_text = "New Game"
 alignment = 1
+max_length = 16
+context_menu_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="SaveFileDetails" type="MarginContainer" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="CenterContainer" parent="HBoxContainer/SaveFileDetails"]
+layout_mode = 2
+
+[node name="Level" type="Label" parent="HBoxContainer/SaveFileDetails/VBoxContainer"]
+layout_mode = 2
+text = "Level: 2"

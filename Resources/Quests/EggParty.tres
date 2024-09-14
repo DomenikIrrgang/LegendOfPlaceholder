@@ -22,6 +22,7 @@ amount = 1
 [resource]
 script = ExtResource("1_qeh3f")
 name = "Egg Party"
+type = 2
 description = "The vicious snake Visjala has invaded this forest and has been laying eggs. Drive him away from this forest and report back to me."
 recommended_level = 1
 turnin_type = 0

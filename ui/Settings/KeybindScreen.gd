@@ -5,7 +5,7 @@ var label: Label = $Label
 
 func _ready():
 	InputControlls.entered_keybind_mode.connect(on_entered_keybind_mode)
-	InputControlls.exited_keybind_mode.connect(func(keybind_type: InputControlls.KeybindType, action: String): visible = false)
+	InputControlls.exited_keybind_mode.connect(func(_keybind_type: InputControlls.KeybindType, _action: String): visible = false)
 	
 func on_entered_keybind_mode(keybind_type: InputControlls.KeybindType, action: String) -> void:
 	if keybind_type == InputControlls.KeybindType.GAMEPAD:

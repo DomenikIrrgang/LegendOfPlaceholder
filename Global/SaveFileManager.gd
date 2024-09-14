@@ -79,8 +79,8 @@ func save_game_state() -> Dictionary:
 func get_game_state(index: int) -> Dictionary:
 	return save_file.game_states[index]
 	
-func set_game_state_name(index: int, name: String) -> void:
-	save_file.game_states[index].name = name
+func set_game_state_name(index: int, state_name: String) -> void:
+	save_file.game_states[index].name = state_name
 	
 func save_to_save_file() -> void:
 	var save_file_handle: FileAccess
@@ -95,11 +95,11 @@ func save_to_save_file() -> void:
 	save_file_saved.emit()
 	
 func create_save_file() -> Dictionary:
-	var save_file: FileAccess
+	var save_file_handle: FileAccess
 	if USE_ENCRYPTION:
-		save_file = FileAccess.open_encrypted_with_pass(SAVE_FILE_PATH, FileAccess.WRITE, SAVE_FILE_PASSWORD)
+		save_file_handle = FileAccess.open_encrypted_with_pass(SAVE_FILE_PATH, FileAccess.WRITE, SAVE_FILE_PASSWORD)
 	else:
-		save_file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+		save_file_handle = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 	var save_file_content = {}
 	save_file_content.version = version
 	save_file_content.game_states = []
@@ -109,19 +109,16 @@ func create_save_file() -> Dictionary:
 			name = ""
 		})
 	save_file_saving.emit(save_file_content)
-	save_file.store_line(JSON.stringify(save_file_content))
-	save_file.close()
+	save_file_handle.store_line(JSON.stringify(save_file_content))
+	save_file_handle.close()
 	save_file_saved.emit()
 	return save_file_content
 	
 func get_resource_uid(resource: Resource) -> String:
-	var id = str(ResourceLoader.get_resource_uid(resource.resource_path))
 	return str(ResourceLoader.get_resource_uid(resource.resource_path))
 	
 func get_resource_from_uid(uid: String) -> Resource:
-	var path = ResourceLoader.load(ResourceUID.get_id_path(int(uid)))
 	return ResourceLoader.load(ResourceUID.get_id_path(int(uid)))
 	
 func get_node_uid(node: Node) -> String:
-	var path = str(ResourceLoader.get_resource_uid(node.scene_file_path))
 	return str(ResourceLoader.get_resource_uid(node.scene_file_path))

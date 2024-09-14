@@ -27,6 +27,7 @@ amount = 1500
 [resource]
 script = ExtResource("8_dstii")
 name = "A friendly Gesture"
+type = 2
 description = "Alfond has been attacked by Monsters and badly injured. Bring him a healing potion to recover from his injuries."
 recommended_level = 2
 turnin_type = 1

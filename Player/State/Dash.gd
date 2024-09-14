@@ -17,7 +17,7 @@ func enter(_data := {}) -> void:
 	player.get_node("Dust").emitting = true
 	player.movement_strategy = KeepVelocityMovementStrategy.new(player)
 	
-func on_zone_switch(zone: Zone) -> void:
+func on_zone_switch(_zone: Zone) -> void:
 	tween.finished.disconnect(dash_finished)
 	SceneSwitcher.zone_loaded.disconnect(on_zone_switch)
 	tween.kill()

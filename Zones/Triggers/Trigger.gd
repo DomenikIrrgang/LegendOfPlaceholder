@@ -16,7 +16,7 @@ func on_player_entered(player_collision: Area2D) -> void:
 		if are_conditions_fulfilled():
 			trigger()
 	
-func on_player_exited(player_collision: Area2D) -> void:
+func on_player_exited(_player_collision: Area2D) -> void:
 	player_inside = false
 	
 func are_conditions_fulfilled() -> bool:

@@ -306,7 +306,6 @@ signal direction_changed(direction: int)
 # Combat
 var combat_logic: CombatLogic = CombatLogic.new()
 
-signal took_damage(value: int)
 signal died(unit: Unit)
 signal combat_logic_result(result: CombatLogicResult)
 

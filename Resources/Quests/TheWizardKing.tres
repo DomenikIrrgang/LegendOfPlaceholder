@@ -28,6 +28,7 @@ amount = 1
 [resource]
 script = ExtResource("6_oaeok")
 name = "The Wizard King"
+type = 2
 description = "A wizard has been setting parts of the forest on fire. Find him and eliminate him.
 "
 recommended_level = 1

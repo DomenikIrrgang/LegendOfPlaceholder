@@ -30,7 +30,7 @@ func on_load(game_state: Dictionary) -> void:
 func get_inventory_save(_inventory: Inventory) -> Array:
 	return _inventory.slots.map(func(slot: InventorySlot):
 		return {
-			item = SaveFileManager.get_resource_uid(slot.item) if slot.item != null else null,
+			item = SaveFileManager.get_resource_uid(slot.item) if slot.item != null else "null",
 			amount = slot.amount
 		}
 	)
@@ -149,7 +149,7 @@ func spawn_unit(unit: Unit, position: Vector2) -> Unit:
 	return unit
 
 func get_closest_enemy() -> Enemy:
-	var enemy: Enemy
+	var enemy: Enemy = null
 	for node in get_scene_tree().get_nodes_in_group("enemy"):
 		if enemy == null:
 			enemy = node

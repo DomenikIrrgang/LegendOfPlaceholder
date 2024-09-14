@@ -9,5 +9,5 @@ func on_graphics_setting_changed(setting: GraphicsManager.Setting, value: bool) 
 	if setting == GraphicsManager.Setting.FPS_COUNTER_SHOWN:
 		visible = value
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	text = "FPS: " + str(Engine.get_frames_per_second())

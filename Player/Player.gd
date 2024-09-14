@@ -115,9 +115,11 @@ func gain_experience(amount: int) -> void:
 		experience_changed.emit(amount)
 	
 func current_experience() -> int:
+	var current_experience = unit_data.experience - experience_needed_for_level(get_level() - 1)
 	return unit_data.experience - experience_needed_for_level(get_level() - 1)
 	
 func experience_needed_for_next_level() -> int:
+	var experience_needed_for_next_level = experience_needed_for_level(get_level()) - experience_needed_for_level(get_level() - 1)
 	return experience_needed_for_level(get_level()) - experience_needed_for_level(get_level() - 1)
 	
 func experience_needed_for_level(_level: int) -> int:

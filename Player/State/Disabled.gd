@@ -14,7 +14,7 @@ func exit() -> void:
 	player.casting_enabled = true
 	player.status_effect_updates_enabled = true
 	
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	update_animation()
 
 func update_animation() -> void:
