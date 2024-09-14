@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ddnsu8hllewh7"]
+[gd_scene load_steps=32 format=3 uid="uid://ddnsu8hllewh7"]
 
 [ext_resource type="Script" path="res://Zones/BaseScene.gd" id="1_3m1id"]
 [ext_resource type="Script" path="res://CustomCamera.gd" id="1_yk0hc"]
@@ -18,7 +18,6 @@
 [ext_resource type="Script" path="res://ui/PauseMenu/Continue.gd" id="15_y27up"]
 [ext_resource type="Script" path="res://ui/PauseMenu/Settings.gd" id="16_qopk4"]
 [ext_resource type="PackedScene" uid="uid://y1utto7qe73j" path="res://ui/Settings/Settings.tscn" id="17_0yn3y"]
-[ext_resource type="Script" path="res://ui/PauseMenu/CloseSettings.gd" id="18_cvr6q"]
 [ext_resource type="Script" path="res://ui/Settings/KeybindScreen.gd" id="19_6piqc"]
 
 [sub_resource type="Animation" id="Animation_58ieq"]
@@ -281,19 +280,8 @@ layout_mode = 2
 text = "Main Menue"
 script = ExtResource("15_jpvca")
 
-[node name="Settings" type="VBoxContainer" parent="UserInterface/Theme/PauseMenu/CenterContainer" groups=["Settings"]]
-visible = false
+[node name="Settings" parent="UserInterface/Theme/PauseMenu/CenterContainer" groups=["Settings"] instance=ExtResource("17_0yn3y")]
 layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="Settings" parent="UserInterface/Theme/PauseMenu/CenterContainer/Settings" instance=ExtResource("17_0yn3y")]
-layout_mode = 2
-
-[node name="Close" type="Button" parent="UserInterface/Theme/PauseMenu/CenterContainer/Settings"]
-layout_mode = 2
-text = "Close
-"
-script = ExtResource("18_cvr6q")
 
 [node name="KeybindScreen" type="CenterContainer" parent="UserInterface/Theme"]
 visible = false

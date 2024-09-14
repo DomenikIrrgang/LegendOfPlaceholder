@@ -5,3 +5,6 @@ func _ready() -> void:
 	
 func on_hide():
 	SettingsManager.save_to_settings_file()
+
+func _on_close_pressed() -> void:
+	hide()

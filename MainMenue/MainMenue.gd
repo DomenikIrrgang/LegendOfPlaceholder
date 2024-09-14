@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready
-var version: Label = $CanvasLayer/HBoxContainer/MarginContainer/Version
+var version: Label = $CanvasLayer/LeftFooter/MarginContainer/Version
 
 func _ready():
 	version.text = "version " + ProjectSettings.get_setting("application/config/version")
