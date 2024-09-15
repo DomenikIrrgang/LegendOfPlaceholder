@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://mugu4qix3h4n"]
+[gd_scene load_steps=13 format=3 uid="uid://mugu4qix3h4n"]
 
 [ext_resource type="Script" path="res://MainMenue/MainMenue.gd" id="1_46vi5"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="1_d40p0"]
@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://y1utto7qe73j" path="res://ui/Settings/Settings.tscn" id="3_4b2gd"]
 [ext_resource type="Theme" uid="uid://dijdy4xqx36dl" path="res://ui/DefaultTheme.tres" id="3_w34uu"]
 [ext_resource type="PackedScene" uid="uid://bnrnb4iqpe0df" path="res://MainMenue/GameState.tscn" id="4_0wh72"]
-[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="5_8tq7a"]
 [ext_resource type="Texture2D" uid="uid://btclwllqikiap" path="res://assets/ui/mainmenu/cogwheel.png" id="6_xj4dx"]
-[ext_resource type="Script" path="res://MainMenue/SettingsIcon.gd" id="7_l5iec"]
+[ext_resource type="Script" path="res://MainMenue/SettingsButton.gd" id="8_fcdnq"]
+[ext_resource type="Texture2D" uid="uid://jtgn2ueksl56" path="res://assets/ui/bottom_hud/attack_icon.png" id="9_t557v"]
+[ext_resource type="Script" path="res://MainMenue/ExitGame.gd" id="10_m25cl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r4wkc"]
 font = ExtResource("1_d40p0")
@@ -58,18 +59,24 @@ theme_override_constants/separation = 25
 
 [node name="GameState1" parent="CanvasLayer/Theme/CenterContainer/VBoxContainer" instance=ExtResource("4_0wh72")]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../RightFooter/HBoxContainer/MarginContainer/Buttons/SettingsButton")
 focus_neighbor_top = NodePath("../GameState3")
+focus_neighbor_right = NodePath("../../../RightFooter/HBoxContainer/MarginContainer/Buttons/SettingsButton")
 focus_neighbor_bottom = NodePath("../GameState2")
 
 [node name="GameState2" parent="CanvasLayer/Theme/CenterContainer/VBoxContainer" instance=ExtResource("4_0wh72")]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../RightFooter/HBoxContainer/MarginContainer/Buttons/SettingsButton")
 focus_neighbor_top = NodePath("../GameState1")
+focus_neighbor_right = NodePath("../../../RightFooter/HBoxContainer/MarginContainer/Buttons/SettingsButton")
 focus_neighbor_bottom = NodePath("../GameState3")
 game_state_index = 1
 
 [node name="GameState3" parent="CanvasLayer/Theme/CenterContainer/VBoxContainer" instance=ExtResource("4_0wh72")]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../RightFooter/HBoxContainer/MarginContainer/Buttons/SettingsButton")
 focus_neighbor_top = NodePath("../GameState2")
+focus_neighbor_right = NodePath("../../../RightFooter/HBoxContainer/MarginContainer/Buttons/SettingsButton")
 focus_neighbor_bottom = NodePath("../GameState1")
 game_state_index = 2
 
@@ -114,28 +121,27 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer"]
+[node name="Buttons" type="VBoxContainer" parent="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+theme_override_constants/separation = 5
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/PanelContainer"]
+[node name="SettingsButton" type="Button" parent="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/Buttons"]
 layout_mode = 2
-texture = ExtResource("5_8tq7a")
+text = "Settings"
+icon = ExtResource("6_xj4dx")
+script = ExtResource("8_fcdnq")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/PanelContainer"]
+[node name="ExitButton" type="Button" parent="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/Buttons"]
 layout_mode = 2
-
-[node name="SettingsIcon" type="TextureRect" parent="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/PanelContainer/MarginContainer"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-texture = ExtResource("6_xj4dx")
-script = ExtResource("7_l5iec")
+focus_neighbor_left = NodePath("../../../../../CenterContainer/VBoxContainer/GameState1")
+focus_neighbor_top = NodePath("../SettingsButton")
+focus_neighbor_right = NodePath("../../../../../CenterContainer/VBoxContainer/GameState1")
+focus_neighbor_bottom = NodePath("../SettingsButton")
+text = "Exit Game"
+icon = ExtResource("9_t557v")
+script = ExtResource("10_m25cl")
 
 [node name="Settings" parent="CanvasLayer/Theme" instance=ExtResource("3_4b2gd")]
 visible = false
 layout_mode = 2
 offset_bottom = 783.0
-
-[connection signal="gui_input" from="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/SettingsIcon" to="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/SettingsIcon" method="_on_gui_input"]
-[connection signal="hidden" from="CanvasLayer/Theme/Settings" to="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/SettingsIcon" method="_on_settings_hidden"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://y1utto7qe73j"]
+[gd_scene load_steps=14 format=3 uid="uid://y1utto7qe73j"]
 
 [ext_resource type="Theme" uid="uid://dijdy4xqx36dl" path="res://ui/DefaultTheme.tres" id="1_5armt"]
 [ext_resource type="Script" path="res://ui/Settings/WindowMode.gd" id="2_s2tdu"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://ui/Settings/FpsCounter.gd" id="5_rflj7"]
 [ext_resource type="Script" path="res://ui/Settings/FpsLimitBackground.gd" id="6_rec7d"]
 [ext_resource type="Script" path="res://ui/Settings/KeybindScreen.gd" id="6_wlgle"]
+[ext_resource type="Script" path="res://ui/Settings/FpsLimitForeground.gd" id="7_5qc58"]
+[ext_resource type="Script" path="res://ui/Settings/FPSLimitSlider.gd" id="7_custa"]
 
 [node name="MarginContainer" type="MarginContainer"]
 offset_left = 675.0
@@ -59,10 +61,59 @@ layout_mode = 2
 text = "FPS Counter"
 script = ExtResource("5_rflj7")
 
-[node name="FpsLimitBackground" type="CheckBox" parent="VBoxContainer/TabContainer/Graphics"]
+[node name="FpsLimitBackgroundEnabled" type="CheckBox" parent="VBoxContainer/TabContainer/Graphics"]
 layout_mode = 2
 text = "Limit FPS when running in Background"
 script = ExtResource("6_rec7d")
+
+[node name="FpsLimitBackground" type="VBoxContainer" parent="VBoxContainer/TabContainer/Graphics"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Graphics/FpsLimitBackground"]
+layout_mode = 2
+text = "FPS Limit Backgrouund"
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="VBoxContainer/TabContainer/Graphics/FpsLimitBackground" node_paths=PackedStringArray("anount_label")]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("7_custa")
+type = 4
+editable_setting = 2
+anount_label = NodePath("../Amount")
+
+[node name="Amount" type="Label" parent="VBoxContainer/TabContainer/Graphics/FpsLimitBackground"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
+
+[node name="FpsLimitForegroundEnabled" type="CheckBox" parent="VBoxContainer/TabContainer/Graphics"]
+layout_mode = 2
+text = "Limit FPS when running in Foreground"
+script = ExtResource("7_5qc58")
+
+[node name="FpsLimitForeground" type="VBoxContainer" parent="VBoxContainer/TabContainer/Graphics"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Graphics/FpsLimitForeground"]
+layout_mode = 2
+text = "FPS Limit Foreground"
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="VBoxContainer/TabContainer/Graphics/FpsLimitForeground" node_paths=PackedStringArray("anount_label")]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("7_custa")
+type = 3
+editable_setting = 1
+anount_label = NodePath("../Amount")
+
+[node name="Amount" type="Label" parent="VBoxContainer/TabContainer/Graphics/FpsLimitForeground"]
+layout_mode = 2
+text = "1"
+horizontal_alignment = 1
 
 [node name="Sound" type="VBoxContainer" parent="VBoxContainer/TabContainer"]
 visible = false
@@ -140,6 +191,11 @@ step = 0.01
 script = ExtResource("3_kd0ya")
 channel = 3
 
+[node name="DialogTTS" type="CheckBox" parent="VBoxContainer/TabContainer/Sound"]
+layout_mode = 2
+text = "TTS (Dialog)"
+script = ExtResource("4_m6wkk")
+
 [node name="Keybinds" type="ScrollContainer" parent="VBoxContainer/TabContainer"]
 visible = false
 custom_minimum_size = Vector2(500, 300)
@@ -157,11 +213,6 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="DialogTTS" type="CheckBox" parent="VBoxContainer/TabContainer/Keybinds"]
-layout_mode = 2
-text = "TTS (Dialog)"
-script = ExtResource("4_m6wkk")
 
 [node name="Close" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -189,4 +240,5 @@ text = "Press key or button to bind to
 Controller: Left"
 horizontal_alignment = 1
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="VBoxContainer/Close" to="." method="_on_close_pressed"]
