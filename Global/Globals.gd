@@ -30,7 +30,7 @@ func on_load(game_state: Dictionary) -> void:
 func get_inventory_save(_inventory: Inventory) -> Array:
 	return _inventory.slots.map(func(slot: InventorySlot):
 		return {
-			item = SaveFileManager.get_resource_uid(slot.item) if slot.item != null else "null",
+			item = SaveFileManager.get_resource_uid(slot.item) if slot.item != null else null,
 			amount = slot.amount
 		}
 	)
