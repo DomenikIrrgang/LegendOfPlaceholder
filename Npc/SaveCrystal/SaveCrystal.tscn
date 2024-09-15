@@ -73,6 +73,7 @@ texture = ExtResource("2_oix5s")
 y_sort_enabled = true
 texture = ExtResource("1_2qscy")
 hframes = 4
+frame = 3
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Model"]
 y_sort_enabled = true
@@ -85,11 +86,14 @@ fixed_fps = 60
 [node name="Crystal" type="Sprite2D" parent="Model"]
 y_sort_enabled = true
 texture = ExtResource("2_oix5s")
+offset = Vector2(0, -2.08514)
 
 [node name="Interaction" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_fn8aq")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1.5, -11.25)
 shape = SubResource("RectangleShape2D_x7pd8")

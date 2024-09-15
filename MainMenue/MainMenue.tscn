@@ -134,10 +134,7 @@ script = ExtResource("7_l5iec")
 
 [node name="Settings" parent="CanvasLayer/Theme" instance=ExtResource("3_4b2gd")]
 visible = false
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 570.0
+layout_mode = 2
 offset_bottom = 783.0
 
 [connection signal="gui_input" from="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/SettingsIcon" to="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/SettingsIcon" method="_on_gui_input"]
