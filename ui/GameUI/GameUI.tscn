@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=105 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -63,6 +63,7 @@
 [ext_resource type="Script" path="res://ui/GameUI/InventoryChange/InventoryChange.gd" id="59_guo78"]
 [ext_resource type="Script" path="res://ui/GameUI/QuestObjectiveTracker/QuestObjectiveTracker.gd" id="61_hoquh"]
 [ext_resource type="PackedScene" uid="uid://cbo2sfnlbakrj" path="res://ui/GameUI/QuestPrompt/QuestPrompt.tscn" id="62_lavu2"]
+[ext_resource type="PackedScene" uid="uid://bu4uefcm2okaa" path="res://ui/GameUI/Runesmithing/Runesmithing.tscn" id="64_ybdmu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
 font = ExtResource("3_60v0h")
@@ -256,16 +257,8 @@ default_font = ExtResource("3_60v0h")
 script/source = "extends Button
 
 func _on_pressed():
-	Globals.get_player().level_up()
-
-func getallnodes(nodes, node):
-	nodes.append(node)
-	for n in node.get_children():
-		if n.get_child_count() > 0:
-			getallnodes(nodes, n)
-		else:
-			nodes.append(n)
-	return nodes"
+	RunesmithingManager.gain_experience(400)
+"
 
 [sub_resource type="GDScript" id="GDScript_axn2g"]
 script/source = "extends Button
@@ -943,7 +936,6 @@ offset_bottom = 66.0
 layout_mode = 2
 
 [node name="LevelUp" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 focus_mode = 0
 theme = SubResource("Theme_sqxju")
@@ -1137,6 +1129,16 @@ theme_override_constants/separation = 15
 [node name="QuestPrompt" parent="." instance=ExtResource("62_lavu2")]
 visible = false
 layout_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Runesmithing" parent="CenterContainer" instance=ExtResource("64_ybdmu")]
+layout_mode = 2
 
 [connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_exited"]

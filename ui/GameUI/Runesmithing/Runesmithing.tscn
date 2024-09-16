@@ -1,0 +1,173 @@
+[gd_scene load_steps=12 format=3 uid="uid://bu4uefcm2okaa"]
+
+[ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="1_wirij"]
+[ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="2_c8t8n"]
+[ext_resource type="LabelSettings" uid="uid://bb1nybbc51atq" path="res://ui/Dialog/DialogLabelSettings.tres" id="3_mvcwc"]
+[ext_resource type="Texture2D" uid="uid://cub6t8pg6hs5y" path="res://assets/ui/bottom_hud/xp_progress_texture_under.png" id="4_4jwnt"]
+[ext_resource type="Script" path="res://ui/GameUI/Runesmithing/Level.gd" id="4_ogw2x"]
+[ext_resource type="Texture2D" uid="uid://dnnrkom0xsipj" path="res://assets/ui/bottom_hud/xp_progress_texture.png" id="5_wrcxy"]
+[ext_resource type="Script" path="res://ui/GameUI/Runesmithing/ExperienceBarPreview.gd" id="7_r6uim"]
+[ext_resource type="Script" path="res://ui/GameUI/Runesmithing/ExperienceBar.gd" id="7_uevks"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fs2sm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2u2x8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tnes6"]
+
+[node name="Runesmithing" type="PanelContainer"]
+custom_minimum_size = Vector2(1280, 720)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fs2sm")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_wirij")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TitleBar" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2u2x8")
+
+[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/TitleBar"]
+layout_mode = 2
+texture = ExtResource("2_c8t8n")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TitleBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/TitleBar/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/TitleBar/MarginContainer/CenterContainer"]
+layout_mode = 2
+text = "Runesmithing"
+label_settings = ExtResource("3_mvcwc")
+
+[node name="Level" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Level"]
+layout_mode = 2
+text = "Level 1"
+label_settings = ExtResource("3_mvcwc")
+script = ExtResource("4_ogw2x")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tnes6")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Experience" type="CenterContainer" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="ExperienceBarPreview" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer/Experience"]
+self_modulate = Color(1, 1, 1, 0.45098)
+show_behind_parent = true
+layout_mode = 2
+value = 60.0
+nine_patch_stretch = true
+stretch_margin_left = 620
+stretch_margin_top = 4
+stretch_margin_right = 620
+stretch_margin_bottom = 4
+texture_under = ExtResource("4_4jwnt")
+texture_progress = ExtResource("5_wrcxy")
+script = ExtResource("7_r6uim")
+
+[node name="ExperienceBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/MarginContainer/PanelContainer/Experience"]
+show_behind_parent = true
+layout_mode = 2
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 620
+stretch_margin_top = 4
+stretch_margin_right = 620
+stretch_margin_bottom = 4
+texture_under = ExtResource("4_4jwnt")
+texture_progress = ExtResource("5_wrcxy")
+script = ExtResource("7_uevks")
+
+[node name="Content" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Content" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RecipeList" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList"]
+layout_mode = 2
+texture = ExtResource("2_c8t8n")
+
+[node name="RecipeDetails" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RecipeMaterials" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/HBoxContainer/RecipeMaterials"]
+layout_mode = 2
+texture = ExtResource("2_c8t8n")
+
+[node name="RecipeResult" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/HBoxContainer/RecipeResult"]
+layout_mode = 2
+texture = ExtResource("2_c8t8n")
+
+[node name="Minigame" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Minigame"]
+layout_mode = 2
+texture = ExtResource("2_c8t8n")

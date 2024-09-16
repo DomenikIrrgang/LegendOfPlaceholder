@@ -1,29 +1,35 @@
-[gd_resource type="Resource" script_class="Recipe" load_steps=10 format=3 uid="uid://bu446rxm0itaj"]
+[gd_resource type="Resource" script_class="Recipe" load_steps=12 format=3 uid="uid://bu446rxm0itaj"]
 
 [ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="1_tm8ok"]
 [ext_resource type="Script" path="res://Resources/Conditions/PlayerLevelCondition.gd" id="2_tcgyo"]
 [ext_resource type="Script" path="res://Resources/Runesmithing/Ingridient.gd" id="2_wvejw"]
 [ext_resource type="Script" path="res://Resources/Runesmithing/Recipe.gd" id="4_fol1v"]
-[ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/HealingPotion.tres" id="4_x872a"]
+[ext_resource type="Resource" uid="uid://cpxxyonmf508" path="res://Resources/Gear/Weapons/Wand.tres" id="5_d3hvm"]
 [ext_resource type="Resource" uid="uid://bi6vdjcijdpu0" path="res://Resources/Items/ManaPotions/LesserManaPotion.tres" id="5_m5g0g"]
+[ext_resource type="Resource" uid="uid://buwphdeqkddc6" path="res://Resources/Gear/ResourceCrystals/ManaCrystal.tres" id="6_x040j"]
 
 [sub_resource type="Resource" id="Resource_jn8th"]
 script = ExtResource("2_tcgyo")
 level = 5
 
-[sub_resource type="Resource" id="Resource_83kow"]
-script = ExtResource("2_wvejw")
-item = ExtResource("4_x872a")
-amount = 1
-
 [sub_resource type="Resource" id="Resource_rff2n"]
 script = ExtResource("2_wvejw")
 item = ExtResource("5_m5g0g")
+amount = 2
+
+[sub_resource type="Resource" id="Resource_2582d"]
+script = ExtResource("2_wvejw")
+item = ExtResource("5_d3hvm")
 amount = 1
+
+[sub_resource type="Resource" id="Resource_6ydmx"]
+script = ExtResource("2_wvejw")
+item = ExtResource("6_x040j")
+amount = 5
 
 [resource]
 script = ExtResource("4_fol1v")
 name = "Testrune"
 conditions = Array[ExtResource("1_tm8ok")]([SubResource("Resource_jn8th")])
-ingredients = Array[ExtResource("2_wvejw")]([SubResource("Resource_83kow"), SubResource("Resource_rff2n")])
-results = Array[ExtResource("2_wvejw")]([])
+ingredients = Array[ExtResource("2_wvejw")]([SubResource("Resource_rff2n"), SubResource("Resource_2582d")])
+results = Array[ExtResource("2_wvejw")]([SubResource("Resource_6ydmx")])
