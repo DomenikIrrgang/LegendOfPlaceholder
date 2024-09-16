@@ -256,8 +256,11 @@ default_font = ExtResource("3_60v0h")
 [sub_resource type="GDScript" id="GDScript_pwi1q"]
 script/source = "extends Button
 
+var test_recipe = preload(\"res://Resources/Runesmithing/TestRune.tres\")
+
 func _on_pressed():
-	RunesmithingManager.gain_experience(400)
+	RunesmithingManager.learn_recipe(test_recipe)
+	RunesmithingManager.craft_recipe(test_recipe)
 "
 
 [sub_resource type="GDScript" id="GDScript_axn2g"]

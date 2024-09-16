@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bu4uefcm2okaa"]
+[gd_scene load_steps=14 format=3 uid="uid://bu4uefcm2okaa"]
 
 [ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="1_wirij"]
 [ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="2_c8t8n"]
@@ -8,12 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://dnnrkom0xsipj" path="res://assets/ui/bottom_hud/xp_progress_texture.png" id="5_wrcxy"]
 [ext_resource type="Script" path="res://ui/GameUI/Runesmithing/ExperienceBarPreview.gd" id="7_r6uim"]
 [ext_resource type="Script" path="res://ui/GameUI/Runesmithing/ExperienceBar.gd" id="7_uevks"]
+[ext_resource type="Texture2D" uid="uid://jtgn2ueksl56" path="res://assets/ui/bottom_hud/attack_icon.png" id="9_tcl16"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fs2sm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2u2x8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tnes6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjqh0"]
 
 [node name="Runesmithing" type="PanelContainer"]
 custom_minimum_size = Vector2(1280, 720)
@@ -136,6 +139,165 @@ size_flags_horizontal = 3
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList"]
 layout_mode = 2
 texture = ExtResource("2_c8t8n")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList"]
+layout_mode = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer"]
+layout_mode = 2
+
+[node name="List" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Recipe" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rjqh0")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List/Recipe"]
+layout_mode = 2
+texture = ExtResource("1_wirij")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List/Recipe"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List/Recipe/MarginContainer"]
+layout_mode = 2
+text = "TestRune"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button4" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button5" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button6" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button7" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button8" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button9" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button10" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button11" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button12" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button13" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button14" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button15" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button16" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button17" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button18" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button19" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
+
+[node name="Button20" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/MarginContainer/ScrollContainer/List"]
+layout_mode = 2
+text = "Testrune"
+icon = ExtResource("9_tcl16")
+alignment = 0
 
 [node name="RecipeDetails" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/Content"]
 layout_mode = 2

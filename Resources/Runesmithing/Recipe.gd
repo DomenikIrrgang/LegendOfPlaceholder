@@ -5,6 +5,15 @@ extends Resource
 var name: String
 
 @export
+var level: int = 1
+
+@export
+var required_level: int = 1
+
+@export_range(1, 100) # a difficulty of 1 means the recipe is easy, a difficulty of 10 is the hardest.
+var difficulty: int = 10
+
+@export
 var conditions: Array[Condition] = []
 
 @export
@@ -12,3 +21,6 @@ var ingredients: Array[Ingredient] = []
 
 @export
 var results: Array[Ingredient] = []
+
+func get_experience() -> int:
+	return difficulty * level

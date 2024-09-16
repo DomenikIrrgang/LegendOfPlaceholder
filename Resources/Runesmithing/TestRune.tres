@@ -25,11 +25,14 @@ amount = 1
 [sub_resource type="Resource" id="Resource_6ydmx"]
 script = ExtResource("2_wvejw")
 item = ExtResource("6_x040j")
-amount = 5
+amount = 1
 
 [resource]
 script = ExtResource("4_fol1v")
 name = "Testrune"
+level = 1
+required_level = 1
+difficulty = 10
 conditions = Array[ExtResource("1_tm8ok")]([SubResource("Resource_jn8th")])
 ingredients = Array[ExtResource("2_wvejw")]([SubResource("Resource_rff2n"), SubResource("Resource_2582d")])
 results = Array[ExtResource("2_wvejw")]([SubResource("Resource_6ydmx")])
