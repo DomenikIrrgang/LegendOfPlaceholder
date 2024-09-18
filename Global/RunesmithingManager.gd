@@ -82,7 +82,7 @@ func get_recipes() -> Array[Recipe]:
 	return learned_recipes
 
 func learn_recipe(recipe: Recipe) -> bool:
-	if not recipe_known(recipe):
+	if not recipe_known(recipe) and recipe.required_level <= level:
 		learned_recipes.append(recipe)
 		recipe_learned.emit(recipe)
 		return true

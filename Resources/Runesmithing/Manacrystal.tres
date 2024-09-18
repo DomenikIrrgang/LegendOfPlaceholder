@@ -30,9 +30,9 @@ amount = 2
 [resource]
 script = ExtResource("6_ycnjd")
 name = "Mana Crystal"
-level = 1
-required_level = 1
-difficulty = 10
+level = 2
+required_level = 2
+difficulty = 100
 conditions = Array[ExtResource("1_0e34r")]([SubResource("Resource_jn8th")])
 ingredients = Array[ExtResource("3_wqtum")]([SubResource("Resource_rff2n")])
 results = Array[ExtResource("3_wqtum")]([SubResource("Resource_u4jk6"), SubResource("Resource_pxwco")])
