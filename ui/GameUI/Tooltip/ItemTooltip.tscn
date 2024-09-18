@@ -68,6 +68,9 @@ layout_mode = 2
 text = "Cooldown: 90 seconds"
 label_settings = ExtResource("2_dqthv")
 
+[node name="UseConditions" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="UseDescripton" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Use: Restores a small amount of health."

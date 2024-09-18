@@ -31,4 +31,4 @@ func get_stack_amount() -> int:
 	return 1
 	
 func get_limited() -> bool:
-	return true
+	return false

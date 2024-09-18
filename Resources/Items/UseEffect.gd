@@ -4,6 +4,9 @@ extends Resource
 @export
 var cooldown_group: CooldownGroup
 
+@export
+var conditions: Array[Condition] = [] : get = get_conditions
+
 func use(source: Unit) -> bool:
 	if !is_on_cooldown():
 		var success = on_use(source)
@@ -36,3 +39,6 @@ func get_remaining_cooldown() -> float:
 	
 func get_cooldown_progress() -> float:
 	return get_remaining_cooldown() * 100.0 / cooldown_group.cooldown
+	
+func get_conditions() -> Array[Condition]:
+	return conditions

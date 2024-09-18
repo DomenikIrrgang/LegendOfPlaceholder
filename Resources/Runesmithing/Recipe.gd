@@ -8,7 +8,7 @@ var name: String
 var level: int = 1
 
 @export
-var required_level: int = 1
+var learning_conditions: Array[Condition] = []
 
 @export_range(1, 100) # a difficulty of 1 means the recipe is easy, a difficulty of 10 is the hardest.
 var difficulty: int = 10

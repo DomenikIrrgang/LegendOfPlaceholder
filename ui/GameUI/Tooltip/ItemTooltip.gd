@@ -37,6 +37,9 @@ var set_piece_names: Container = $MarginContainer/VBoxContainer/Set/VBoxContaine
 @onready
 var bonuses: Container = $MarginContainer/VBoxContainer/Set/VBoxContainer/Bonuses
 
+@onready
+var use_conditions = $MarginContainer/VBoxContainer/UseConditions
+
 var ActiveSetPieceName = preload("res://ui/GameUI/Tooltip/SetPieceActive.tscn")
 var InactiveSetPieceName = preload("res://ui/GameUI/Tooltip/SetPieceInactive.tscn")
 
@@ -46,9 +49,9 @@ var InactiveBonus = preload("res://ui/GameUI/Tooltip/BonusInactive.tscn")
 func _process(_delta: float) -> void:
 	visible = true
 	global_position = get_viewport().get_mouse_position()
-	if global_position.x >= get_viewport().size.x / 2:
+	if global_position.x >= get_viewport().get_visible_rect().size.x / 2:
 		global_position.x -= size.x
-	if global_position.y >= get_viewport().size.y / 2:
+	if global_position.y >= get_viewport().get_visible_rect().size.y / 2:
 		global_position.y -= size.y
 
 func show_item(item: Item) -> void:
@@ -56,10 +59,22 @@ func show_item(item: Item) -> void:
 	if item.useable:
 		cooldown.text = "Cooldown: " + str(item.use_effect.cooldown_group.cooldown) + " seconds"
 		cooldown.visible = false
+		if item.use_effect.conditions.size() > 0:
+			Globals.free_children(use_conditions)
+			use_conditions.visible = true
+			for condition in item.use_effect.conditions:
+				var label = Label.new()
+				label.text = condition.get_string()
+				if condition.is_fulfilled():
+					label.self_modulate = Color.GREEN
+				else:
+					label.self_modulate = Color.RED
+				use_conditions.add_child(label)
 		use_description.text = "Use: " + item.use_description + " (" + str(item.use_effect.cooldown_group.cooldown) + " seconds cooldown)"
 		use_description.visible = true
 	else:
 		cooldown.visible = false
+		use_conditions.visible = false
 		use_description.visible = false
 	if item.limited:
 		limit.text = "Limit: " + str(Globals.get_inventory().get_item_amount(item)) + "/" + str(item.limit)

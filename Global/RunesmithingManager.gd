@@ -80,9 +80,18 @@ func get_experience_needed_for_level_up(level: int) -> int:
 	
 func get_recipes() -> Array[Recipe]:
 	return learned_recipes
+	
+func can_learn_recipe(recipe: Recipe) -> bool:
+	return not recipe_known(recipe) and meets_learning_conditions(recipe)
+	
+func meets_learning_conditions(recipe: Recipe) -> bool:
+	for condition in recipe.learning_conditions:
+		if not condition.is_fulfilled():
+			return false
+	return true
 
 func learn_recipe(recipe: Recipe) -> bool:
-	if not recipe_known(recipe) and recipe.required_level <= level:
+	if can_learn_recipe(recipe):
 		learned_recipes.append(recipe)
 		recipe_learned.emit(recipe)
 		return true
