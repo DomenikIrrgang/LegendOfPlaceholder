@@ -256,12 +256,12 @@ default_font = ExtResource("3_60v0h")
 [sub_resource type="GDScript" id="GDScript_pwi1q"]
 script/source = "extends Button
 
-var energy_crystal_recipe = preload(\"res://Resources/Runesmithing/EnergyCrystal.tres\")
-var mana_crystal_recipe = preload(\"res://Resources/Runesmithing/ManaCrystal.tres\")
+var mana_crystal_recipe = preload(\"res://Resources/Items/Runesmithing/Recipe/ManacrystalTome.tres\")
+var energy_crystal_recipe = preload(\"res://Resources/Items/Runesmithing/Recipe/EnergyCrystal.tres\")
 
 func _on_pressed():
-	RunesmithingManager.learn_recipe(energy_crystal_recipe)
-	RunesmithingManager.learn_recipe(mana_crystal_recipe)
+	Globals.get_inventory().add_item(mana_crystal_recipe, 1)
+	Globals.get_inventory().add_item(energy_crystal_recipe, 1)
 "
 
 [sub_resource type="GDScript" id="GDScript_axn2g"]

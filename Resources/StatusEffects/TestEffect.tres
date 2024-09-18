@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="StatusEffect" load_steps=8 format=3 uid="uid://cwpbu0ti4828t"]
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=9 format=3 uid="uid://cwpbu0ti4828t"]
 
 [ext_resource type="Script" path="res://Resources/StatusEffects/TextureStatusEffectAnimation.gd" id="1_1c54k"]
 [ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffect.gd" id="1_vj73m"]
 [ext_resource type="Texture2D" uid="uid://ptj35ec4hyeo" path="res://assets/textures/fire.jpeg" id="2_wr37h"]
+[ext_resource type="Script" path="res://Resources/StatusEffects/StatusEffectScript.gd" id="3_86exx"]
 [ext_resource type="Script" path="res://Resources/StatusEffects/Effects/ImmuneEffect.gd" id="3_r1uxc"]
 [ext_resource type="Texture2D" uid="uid://dnnj48dx2glf3" path="res://assets/ui/items/healing_potion.png" id="5_vccm8"]
 
@@ -25,6 +26,6 @@ duration = 5.0
 unique = true
 stackable = false
 max_stacks = 1
-effects = Array[Resource("res://Resources/StatusEffects/StatusEffectScript.gd")]([SubResource("Resource_csyqy")])
+effects = Array[ExtResource("3_86exx")]([SubResource("Resource_csyqy")])
 animation = SubResource("Resource_necm0")
 icon = ExtResource("5_vccm8")
