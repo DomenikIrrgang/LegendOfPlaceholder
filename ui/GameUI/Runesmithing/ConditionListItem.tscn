@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://devpo6yvyi341"]
+
+[ext_resource type="Script" path="res://ui/GameUI/Runesmithing/ConditionListItem.gd" id="1_oi7eq"]
+
+[node name="ConditionListItem" type="MarginContainer"]
+script = ExtResource("1_oi7eq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Anvil"

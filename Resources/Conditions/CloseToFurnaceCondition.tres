@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PlayerCloseToNodeGroupCondition" load_steps=2 format=3 uid="uid://ci6er3ptjceo7"]
+
+[ext_resource type="Script" path="res://Resources/Conditions/PlayerCloseToNodeGroupCondition.gd" id="1_3rh6e"]
+
+[resource]
+script = ExtResource("1_3rh6e")
+node_group = "Furnace"
+distance = 30.0

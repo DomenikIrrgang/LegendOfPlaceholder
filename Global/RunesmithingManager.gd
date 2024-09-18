@@ -41,13 +41,22 @@ func remove_ingridients_from_inventory(recipe: Recipe) -> void:
 		Globals.get_inventory().remove_item(ingridient.item, ingridient.amount)
 		
 func can_craft_recipe(recipe: Recipe) -> bool:
-	return recipe_known(recipe) && can_receive_recipe_results(recipe) and has_materials(recipe)
+	return recipe_known(recipe) and can_receive_recipe_results(recipe) and has_materials(recipe) and fulfills_recipe_conditions(recipe)
+	
+func fulfills_recipe_conditions(recipe: Recipe) -> bool:
+	var fulfills_conditions: bool = true
+	for condition in recipe.conditions:
+		if not condition.is_fulfilled():
+			fulfills_conditions = false
+			break
+	return fulfills_conditions
 	
 func can_receive_recipe_results(recipe: Recipe) -> bool:
 	var receivable: bool = true
 	for result in recipe.results:
 		if not result.can_receive():
 			receivable = false
+			break
 	return receivable
 	
 func has_materials(recipe: Recipe) -> bool:
@@ -55,6 +64,7 @@ func has_materials(recipe: Recipe) -> bool:
 	for ingridient in recipe.ingredients:
 		if not Globals.get_inventory().has_item_amount(ingridient.item, ingridient.amount):
 			materials = false
+			break
 	return materials
 		
 func level_up() -> void:

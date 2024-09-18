@@ -9,6 +9,14 @@ var level_label: Label = $MarginContainer/VBoxContainer/Level/MarginContainer/Le
 @onready
 var difficulty_label: Label = $MarginContainer/VBoxContainer/Difficulty/MarginContainer/Level
 
+@onready
+var condition_list: VBoxContainer = $MarginContainer/VBoxContainer/Conditions/MarginContainer/VBoxContainer/ConditionList
+
+@onready
+var conditions_label: Label = $MarginContainer/VBoxContainer/Conditions/MarginContainer/VBoxContainer/Conditions
+
+var ConditionListItem = preload("res://ui/GameUI/Runesmithing/ConditionListItem.tscn")
+
 func _ready() -> void:
 	Globals.get_tree().get_first_node_in_group("Recipelist").recipe_selected.connect(on_recipe_selected)
 	
@@ -16,3 +24,12 @@ func on_recipe_selected(recipe: Recipe) -> void:
 	name_label.text = "Name: " + recipe.name
 	level_label.text = "Level: " + str(recipe.level)
 	difficulty_label.text = "Difficulty: " + str(recipe.difficulty)
+	Globals.free_children(condition_list)
+	if recipe.conditions.size() > 0:
+		conditions_label.text = "Conditions:"
+		for condition in recipe.conditions:
+			var condition_list_item = ConditionListItem.instantiate()
+			condition_list.add_child(condition_list_item)
+			condition_list_item.set_condition(condition)
+	else:
+		conditions_label.text = "Conditions: None"

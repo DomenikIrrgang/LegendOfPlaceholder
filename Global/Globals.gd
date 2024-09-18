@@ -142,6 +142,14 @@ func get_units_around_unit(source: Unit, radius: float, execlude: Array[Unit] = 
 		if distance <= radius and target != source and not execlude.has(target):
 			result.append(target)
 	return result
+	
+func get_nodes_around_unit_in_group(group: String, source: Unit, radius: float, execlude: Array[Unit] = []) -> Array[Node]:
+	var result: Array[Node] = []
+	for target in get_scene_tree().get_nodes_in_group(group):
+		var distance = (source.global_position - target.global_position).length()
+		if distance <= radius and target != source and not execlude.has(target):
+			result.append(target)
+	return result
 
 func spawn_unit(unit: Unit, position: Vector2) -> Unit:
 	Globals.get_world().add_child(unit)

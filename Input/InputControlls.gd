@@ -67,7 +67,7 @@ func get_button_texture(action_name: String) -> String:
 				return XBOX_BUTTON_TEXTURE[_input_event.axis]
 		if !has_controller() and _input_event is InputEventKey:
 			var keycode = _input_event.physical_keycode if _input_event.physical_keycode != 0 else _input_event.keycode
-			return KEY_TEXTURE[keycode]
+			return KEY_TEXTURE[keycode] if KEY_TEXTURE.has(keycode) else KEY_TEXTURE[KEY_ESCAPE]
 		if !has_controller() and _input_event is InputEventMouse:
 			return MOUSE_TEXTURE[_input_event.button_index]
 	return InputTextures.KEY_ESCAPE

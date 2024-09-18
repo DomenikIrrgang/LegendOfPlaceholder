@@ -71,6 +71,7 @@ export/convert_text_resources_to_binary=false
 [global_group]
 
 Runesmithing=""
+Furnace="Enables runesmithing recipes that require a furnace."
 
 [input]
 
