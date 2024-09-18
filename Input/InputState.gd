@@ -16,6 +16,7 @@ var action_map = {
 	"Toggle_Questlog": false,
 	"Use_Consumeable": false,
 	"Toggle_Spellbook": false,
+	"Toggle_Runesmithing": false,
 	"Interact": false,
 	"up": false,
 	"down": false,

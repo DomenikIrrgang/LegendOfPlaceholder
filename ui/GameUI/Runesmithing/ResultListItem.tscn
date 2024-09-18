@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0mbafl3csowh"]
+
+[ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="1_0d4cg"]
+[ext_resource type="Script" path="res://ui/GameUI/Runesmithing/ResultListItem.gd" id="1_02rtk"]
+[ext_resource type="Texture2D" uid="uid://bysqswru45dv4" path="res://assets/ui/bottom_hud/mana_crystal.png" id="2_aau4l"]
+[ext_resource type="PackedScene" uid="uid://bt8umr5bwbj3j" path="res://ui/GameUI/Tooltip/ItemTooltipComponent.tscn" id="4_c0ss7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fjyfg"]
+
+[node name="ResultListItem" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fjyfg")
+script = ExtResource("1_02rtk")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_0d4cg")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_right = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_aau4l")
+
+[node name="Item" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "2x Manacrystal"
+
+[node name="ItemTooltipComponent" parent="." node_paths=PackedStringArray("item_node") instance=ExtResource("4_c0ss7")]
+layout_mode = 2
+item_node = NodePath("..")

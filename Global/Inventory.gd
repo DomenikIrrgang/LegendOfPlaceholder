@@ -6,14 +6,20 @@ var slots: Array[InventorySlot] = []
 
 signal received_item(item: Item, amount: int)
 signal removed_item(item: Item, amount: int)
+signal inventory_changed(item: Item, amount: int)
 signal slot_changed(slot: int, item: Item, amount: int)
 
 func _init(_size: int = 32):
 	size = _size
 	slots.resize(size)
+	received_item.connect(on_inventory_changed)
+	removed_item.connect(on_inventory_changed)
 	for i in size:
 		slots[i] = InventorySlot.new(null, 0, i)
 		
+func on_inventory_changed(item: Item, amount: int) -> void:
+	inventory_changed.emit(item, amount)
+
 func empty() -> void:
 	for slot in range(slots.size()):
 		change_slot(slot, null, 0)

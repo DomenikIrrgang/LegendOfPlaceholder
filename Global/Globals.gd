@@ -156,3 +156,7 @@ func get_closest_enemy() -> Enemy:
 		if get_player().global_position.distance_to(node.global_position) < get_player().global_position.distance_to(enemy.global_position):
 			enemy = node
 	return enemy
+	
+func free_children(node: Node) -> void:
+	for child in node.get_children():
+		child.queue_free()

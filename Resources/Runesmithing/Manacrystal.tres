@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=12 format=3 uid="uid://bu446rxm0itaj"]
+
+[ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="1_0e34r"]
+[ext_resource type="Script" path="res://Resources/Conditions/PlayerLevelCondition.gd" id="2_ry3j0"]
+[ext_resource type="Script" path="res://Resources/Runesmithing/Ingridient.gd" id="3_wqtum"]
+[ext_resource type="Resource" uid="uid://bmuldcmdv7w23" path="res://Resources/Gear/ResourceCrystals/EnergyCrystal.tres" id="4_13fc0"]
+[ext_resource type="Resource" uid="uid://buwphdeqkddc6" path="res://Resources/Gear/ResourceCrystals/ManaCrystal.tres" id="5_tp0cv"]
+[ext_resource type="Script" path="res://Resources/Runesmithing/Recipe.gd" id="6_ycnjd"]
+[ext_resource type="Resource" uid="uid://ddtneygn8e46h" path="res://Resources/Gear/ResourceCrystals/RageCrystal.tres" id="6_yvfdb"]
+
+[sub_resource type="Resource" id="Resource_jn8th"]
+script = ExtResource("2_ry3j0")
+level = 5
+
+[sub_resource type="Resource" id="Resource_rff2n"]
+script = ExtResource("3_wqtum")
+item = ExtResource("4_13fc0")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_u4jk6"]
+script = ExtResource("3_wqtum")
+item = ExtResource("5_tp0cv")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_pxwco"]
+script = ExtResource("3_wqtum")
+item = ExtResource("6_yvfdb")
+amount = 2
+
+[resource]
+script = ExtResource("6_ycnjd")
+name = "Mana Crystal"
+level = 1
+required_level = 1
+difficulty = 10
+conditions = Array[ExtResource("1_0e34r")]([SubResource("Resource_jn8th")])
+ingredients = Array[ExtResource("3_wqtum")]([SubResource("Resource_rff2n")])
+results = Array[ExtResource("3_wqtum")]([SubResource("Resource_u4jk6"), SubResource("Resource_pxwco")])

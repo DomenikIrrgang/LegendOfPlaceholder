@@ -5,7 +5,9 @@ var speed = 1.5
 
 func _ready() -> void:
 	RunesmithingManager.experience_gained.connect(on_experience_gained)
-	update_experience_amount()
+	level = RunesmithingManager.level
+	value = RunesmithingManager.experience
+	max_value = RunesmithingManager.get_experience_needed_for_level(level)
 	
 func update_experience_amount() -> void:
 	if level == RunesmithingManager.level:

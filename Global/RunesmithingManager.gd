@@ -30,16 +30,32 @@ func gain_experience(amount: int) -> void:
 		
 func craft_recipe(recipe: Recipe) -> void:
 	if can_craft_recipe(recipe):
+		remove_ingridients_from_inventory(recipe)
 		for result in recipe.results:
 			result.receive()
 		gain_experience(recipe.get_experience())
+		recipe_crafted.emit(recipe)
+		
+func remove_ingridients_from_inventory(recipe: Recipe) -> void:
+	for ingridient in recipe.ingredients:
+		Globals.get_inventory().remove_item(ingridient.item, ingridient.amount)
 		
 func can_craft_recipe(recipe: Recipe) -> bool:
-	var can_receive_results: bool = true
+	return recipe_known(recipe) && can_receive_recipe_results(recipe) and has_materials(recipe)
+	
+func can_receive_recipe_results(recipe: Recipe) -> bool:
+	var receivable: bool = true
 	for result in recipe.results:
 		if not result.can_receive():
-			can_receive_results = false
-	return recipe_known(recipe) && can_receive_results
+			receivable = false
+	return receivable
+	
+func has_materials(recipe: Recipe) -> bool:
+	var materials: bool = true
+	for ingridient in recipe.ingredients:
+		if not Globals.get_inventory().has_item_amount(ingridient.item, ingridient.amount):
+			materials = false
+	return materials
 		
 func level_up() -> void:
 	experience = 0

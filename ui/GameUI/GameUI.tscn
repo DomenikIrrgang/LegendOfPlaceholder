@@ -256,11 +256,12 @@ default_font = ExtResource("3_60v0h")
 [sub_resource type="GDScript" id="GDScript_pwi1q"]
 script/source = "extends Button
 
-var test_recipe = preload(\"res://Resources/Runesmithing/TestRune.tres\")
+var energy_crystal_recipe = preload(\"res://Resources/Runesmithing/EnergyCrystal.tres\")
+var mana_crystal_recipe = preload(\"res://Resources/Runesmithing/ManaCrystal.tres\")
 
 func _on_pressed():
-	RunesmithingManager.learn_recipe(test_recipe)
-	RunesmithingManager.craft_recipe(test_recipe)
+	RunesmithingManager.learn_recipe(energy_crystal_recipe)
+	RunesmithingManager.learn_recipe(mana_crystal_recipe)
 "
 
 [sub_resource type="GDScript" id="GDScript_axn2g"]
@@ -535,6 +536,30 @@ layout_mode = 0
 offset_right = 253.0
 offset_bottom = 42.0
 alignment = 2
+
+[node name="Runesmithing" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("20_wubgf")
+
+[node name="Icon" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer/Runesmithing"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 3.0
+offset_right = 29.0
+offset_bottom = 36.0
+texture = ExtResource("22_nsanx")
+stretch_mode = 2
+
+[node name="KeybindDisplay" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer/Runesmithing"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 34.0
+offset_right = 35.0
+offset_bottom = 66.0
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("22_o1px3")
+script = ExtResource("22_ruylf")
+action_name = "Toggle_Runesmithing"
 
 [node name="QuestLogBUtton" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/SystemSlots/HBoxContainer"]
 layout_mode = 2
@@ -1141,6 +1166,7 @@ offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="Runesmithing" parent="CenterContainer" instance=ExtResource("64_ybdmu")]
+visible = false
 layout_mode = 2
 
 [connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_entered"]

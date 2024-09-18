@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://mugu4qix3h4n"]
+[gd_scene load_steps=14 format=3 uid="uid://mugu4qix3h4n"]
 
 [ext_resource type="Script" path="res://MainMenue/MainMenue.gd" id="1_46vi5"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="1_d40p0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://y1utto7qe73j" path="res://ui/Settings/Settings.tscn" id="3_4b2gd"]
 [ext_resource type="Theme" uid="uid://dijdy4xqx36dl" path="res://ui/DefaultTheme.tres" id="3_w34uu"]
 [ext_resource type="PackedScene" uid="uid://bnrnb4iqpe0df" path="res://MainMenue/GameState.tscn" id="4_0wh72"]
+[ext_resource type="Texture2D" uid="uid://faj01f7jg5k2" path="res://assets/ui/mainmenu/Logotext.png" id="5_wvpkb"]
 [ext_resource type="Texture2D" uid="uid://btclwllqikiap" path="res://assets/ui/mainmenu/cogwheel.png" id="6_xj4dx"]
 [ext_resource type="Script" path="res://MainMenue/SettingsButton.gd" id="8_fcdnq"]
 [ext_resource type="Texture2D" uid="uid://jtgn2ueksl56" path="res://assets/ui/bottom_hud/attack_icon.png" id="9_t557v"]
@@ -37,15 +38,21 @@ theme = ExtResource("3_w34uu")
 
 [node name="LogoCenter" type="CenterContainer" parent="CanvasLayer/Theme"]
 layout_mode = 0
-offset_top = 108.0
-offset_right = 1920.0
-offset_bottom = 237.0
+offset_top = -767.0
+offset_right = 2734.0
+offset_bottom = 2150.0
+scale = Vector2(0.7, 0.7)
 
 [node name="Message" type="Label" parent="CanvasLayer/Theme/LogoCenter"]
+visible = false
 layout_mode = 2
 text = "Rinia: Return of Duland"
 label_settings = SubResource("LabelSettings_r4wkc")
 horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Theme/LogoCenter"]
+layout_mode = 2
+texture = ExtResource("5_wvpkb")
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Theme"]
 layout_mode = 0
@@ -129,6 +136,7 @@ theme_override_constants/separation = 5
 layout_mode = 2
 text = "Settings"
 icon = ExtResource("6_xj4dx")
+alignment = 0
 script = ExtResource("8_fcdnq")
 
 [node name="ExitButton" type="Button" parent="CanvasLayer/Theme/RightFooter/HBoxContainer/MarginContainer/Buttons"]
@@ -139,6 +147,7 @@ focus_neighbor_right = NodePath("../../../../../CenterContainer/VBoxContainer/Ga
 focus_neighbor_bottom = NodePath("../SettingsButton")
 text = "Exit Game"
 icon = ExtResource("9_t557v")
+alignment = 0
 script = ExtResource("10_m25cl")
 
 [node name="Settings" parent="CanvasLayer/Theme" instance=ExtResource("3_4b2gd")]
