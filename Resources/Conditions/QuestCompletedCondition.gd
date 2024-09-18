@@ -6,3 +6,6 @@ var quest: Quest
 
 func is_fulfilled() -> bool:
 	return QuestManager.has_completed_quest(quest)
+	
+func get_string() -> String:
+	return "Requires Quest \"" + quest.name + "\" to be completed"
