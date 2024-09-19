@@ -67,13 +67,11 @@ libraries = {
 self_modulate = Color(1, 1, 1, 0)
 y_sort_enabled = true
 position = Vector2(-1, -16)
-texture = ExtResource("2_oix5s")
 
 [node name="MagicCircle" type="Sprite2D" parent="Model"]
 y_sort_enabled = true
 texture = ExtResource("1_2qscy")
 hframes = 4
-frame = 3
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Model"]
 y_sort_enabled = true
@@ -86,7 +84,6 @@ fixed_fps = 60
 [node name="Crystal" type="Sprite2D" parent="Model"]
 y_sort_enabled = true
 texture = ExtResource("2_oix5s")
-offset = Vector2(0, -2.08514)
 
 [node name="Interaction" type="CollisionShape2D" parent="."]
 visible = false

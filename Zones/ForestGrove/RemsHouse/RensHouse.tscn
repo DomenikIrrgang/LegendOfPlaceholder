@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cex8g67gr43h7"]
+[gd_scene load_steps=45 format=3 uid="uid://cex8g67gr43h7"]
 
 [ext_resource type="Script" path="res://Zones/ForestGrove/RemsHouse/RensHouse.gd" id="1_ocifb"]
 [ext_resource type="TileSet" uid="uid://c65yuai7jjlwb" path="res://Zones/ForestGrove/ForestGroveTileSet.tres" id="2_7djdw"]
@@ -63,6 +63,8 @@ flag_value = false
 script = ExtResource("5_yr2uk")
 flag = 3
 flag_value = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n0hw3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q4etr"]
 atlas = ExtResource("5_v6x8x")
@@ -252,6 +254,7 @@ gravity_scale = 0.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Furnace"]
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_n0hw3")
 sprite_frames = SubResource("SpriteFrames_o8c54")
 autoplay = "default"
 frame_progress = 0.82758

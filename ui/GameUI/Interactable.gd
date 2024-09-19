@@ -19,7 +19,11 @@ func interactable_in_range_changed(_interactable: Interactable) -> void:
 		visible = false
 		
 func get_interactable_position() -> Vector2:
-	var offset = (((interactable.owner.model.get_rect().size.y - interactable.owner.model.offset.y)) * 0.8) * interactable.owner.get_global_transform_with_canvas().get_scale().y
+	var highest_point_y = interactable.owner.model.get_rect().size.y 
+	for model in interactable.owner.model.get_children():
+		if model is Sprite2D and model.get_rect().size.y > highest_point_y:
+			highest_point_y = model.get_rect().size.y
+	var offset = (((highest_point_y - interactable.owner.model.offset.y)) * 0.8) * interactable.owner.get_global_transform_with_canvas().get_scale().y
 	return interactable.owner.model.get_global_transform_with_canvas().origin - Vector2(0, offset) - Vector2(size.x / 2, size.y / 2)
 	
 func _process(_delta: float) -> void:

@@ -25,6 +25,10 @@ func on_area_exited(interactable: Interactable) -> void:
 func update_closest_interactable_in_range() -> void:
 	var closest = get_closest_interactable()
 	if closest != closest_interactable:
+		if closest_interactable:
+			closest_interactable.set_outline(false)
+		if closest:
+			closest.set_outline(true)
 		closest_interactable = closest
 		interactable_in_range_changed.emit(closest_interactable)
 	
