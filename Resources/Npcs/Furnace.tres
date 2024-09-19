@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="NpcData" load_steps=8 format=3 uid="uid://c4y5gufactidt"]
+
+[ext_resource type="Script" path="res://Resources/Interactions/Interaction.gd" id="1_0kn2p"]
+[ext_resource type="Script" path="res://Resources/Interactions/RunesmithingInteraction.gd" id="2_bjxi5"]
+[ext_resource type="Script" path="res://Resources/Npcs/NpcData.gd" id="2_grjm4"]
+[ext_resource type="PackedScene" uid="uid://bkluvtdl8scac" path="res://Npc/Furnace/Furnace.tscn" id="2_p4esl"]
+[ext_resource type="Script" path="res://Resources/StatAssignment.gd" id="3_bplco"]
+[ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="3_lkcmx"]
+
+[sub_resource type="Resource" id="Resource_7wud6"]
+script = ExtResource("2_bjxi5")
+visible_conditions = Array[ExtResource("3_lkcmx")]([])
+useable_conditions = Array[ExtResource("3_lkcmx")]([])
+
+[resource]
+script = ExtResource("2_grjm4")
+model = ExtResource("2_p4esl")
+interactions = Array[ExtResource("1_0kn2p")]([SubResource("Resource_7wud6")])
+alias = "Furnace"
+level = 1
+is_friendly = true
+base_movement_speed = 0.0
+mass = 50.0
+knockbackable = false
+stats = Array[ExtResource("3_bplco")]([])

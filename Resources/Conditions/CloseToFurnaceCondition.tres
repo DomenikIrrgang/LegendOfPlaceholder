@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="PlayerCloseToNodeGroupCondition" load_steps=2 format=3 uid="uid://ci6er3ptjceo7"]
+[gd_resource type="Resource" script_class="InteractableInRangeCondition" load_steps=2 format=3 uid="uid://csutxux8mrcb2"]
 
-[ext_resource type="Script" path="res://Resources/Conditions/PlayerCloseToNodeGroupCondition.gd" id="1_3rh6e"]
+[ext_resource type="Script" path="res://Resources/Conditions/InteractableInRangeCondition.gd" id="1_0g1bw"]
 
 [resource]
-script = ExtResource("1_3rh6e")
-node_group = "Furnace"
-distance = 30.0
+script = ExtResource("1_0g1bw")
+interactable_unit_name = "Furnace"

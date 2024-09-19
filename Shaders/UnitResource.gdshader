@@ -31,7 +31,7 @@ float flow(vec2 p) {
 	float z = 2.;
 	float rz = 0.;
 	vec2 bp = p;
-	
+
 	for(float i = 1.; i < 7.; ++i) {
 		p += localTime() * .6;
 		bp += localTime() * 1.9;
@@ -52,14 +52,14 @@ void fragment() {
 	vec2 fragCoord = FRAGCOORD.xy;
 	fragCoord = vec2(fragCoord.x, resolution.y - fragCoord.y);
 	vec2 p = fragCoord / resolution - 0.5;
-	
+
 	p.x *= resolution.x / resolution.y;
 	p *= 16.;
-	
+
 	float rz = flow(p);
 	vec4 original_color = texture(TEXTURE, UV);
 	vec3 col = vec3(original_color.r, original_color.g, original_color.b) / (rz + brightness);
 	col = pow(col, vec3(1.4));
-	
+
 	COLOR = vec4(col, original_color.a);
 }

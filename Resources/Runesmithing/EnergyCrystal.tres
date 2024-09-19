@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://c387gu1o8d7du"]
 
 [ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="1_cps3f"]
-[ext_resource type="Resource" uid="uid://ci6er3ptjceo7" path="res://Resources/Conditions/CloseToFurnaceCondition.tres" id="2_uxm0o"]
+[ext_resource type="Resource" uid="uid://csutxux8mrcb2" path="res://Resources/Conditions/CloseToFurnaceCondition.tres" id="2_uxm0o"]
 [ext_resource type="Script" path="res://Resources/Runesmithing/Ingridient.gd" id="3_yksxg"]
 [ext_resource type="Resource" uid="uid://buwphdeqkddc6" path="res://Resources/Gear/ResourceCrystals/ManaCrystal.tres" id="4_dxjep"]
 [ext_resource type="Script" path="res://Resources/Runesmithing/Recipe.gd" id="5_rmgty"]
