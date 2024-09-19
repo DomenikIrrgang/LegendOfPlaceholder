@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://bi6vdjcijdpu0"]
+[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://bi6vdjcijdpu0"]
 
 [ext_resource type="Texture2D" uid="uid://btkbvp2nbhwag" path="res://assets/ui/items/lesser_mana_potion.png" id="1_benh5"]
 [ext_resource type="Script" path="res://Resources/Items/Item.gd" id="1_tixdp"]
+[ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="3_1ug1b"]
 [ext_resource type="Resource" uid="uid://ebu22nnhv3ly" path="res://Resources/Items/ConsumeableCooldownGroup.tres" id="3_ga2jr"]
 [ext_resource type="Script" path="res://Resources/Items/ResourcePotionEffect.gd" id="3_qkcsu"]
 
@@ -10,6 +11,7 @@ script = ExtResource("3_qkcsu")
 resource_type = 0
 value = 50
 cooldown_group = ExtResource("3_ga2jr")
+conditions = Array[ExtResource("3_1ug1b")]([])
 
 [resource]
 script = ExtResource("1_tixdp")

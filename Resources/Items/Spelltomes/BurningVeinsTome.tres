@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://1dht423wf6t6"]
+[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://1dht423wf6t6"]
 
 [ext_resource type="Texture2D" uid="uid://cm6dd5rsq5ve2" path="res://assets/ui/items/fire_spelltome.png" id="1_oxv1c"]
 [ext_resource type="Script" path="res://Resources/Items/Item.gd" id="1_rx7c4"]
 [ext_resource type="PackedScene" uid="uid://c1y0c1fk60ylj" path="res://Combat/abilities/BurningVeins.tscn" id="2_qs281"]
 [ext_resource type="Resource" uid="uid://bbgka06dmjbii" path="res://Resources/Items/Spelltomes/SpelltomeCooldownGroup.tres" id="3_mdwo6"]
 [ext_resource type="Script" path="res://Resources/Items/Spelltomes/SpellTomeEffect.gd" id="4_1fiww"]
+[ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="4_thely"]
 
 [sub_resource type="Resource" id="Resource_74ge5"]
 script = ExtResource("4_1fiww")
 ability = ExtResource("2_qs281")
 cooldown_group = ExtResource("3_mdwo6")
+conditions = Array[ExtResource("4_thely")]([])
 
 [resource]
 script = ExtResource("1_rx7c4")
