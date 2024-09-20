@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=17 format=3 uid="uid://cpj1f7nunm483"]
+
+[ext_resource type="Script" path="res://Resources/Quests/QuestObjective.gd" id="1_8fbcn"]
+[ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="2_sgace"]
+[ext_resource type="Resource" uid="uid://bu446rxm0itaj" path="res://Resources/Runesmithing/Recipes/Manacrystal.tres" id="2_yyobt"]
+[ext_resource type="Script" path="res://Resources/Quests/QuestReward.gd" id="3_0c1sh"]
+[ext_resource type="Script" path="res://Resources/Quests/Objectives/RunesmithingCraftObjective.gd" id="3_p63c0"]
+[ext_resource type="Script" path="res://Resources/Quests/Quest.gd" id="4_aev06"]
+[ext_resource type="Resource" uid="uid://bpovgwlfk7xcn" path="res://Resources/Items/Runesmithing/RecipeTomes/EnergyCrystal.tres" id="6_ooc6n"]
+[ext_resource type="Script" path="res://Resources/Quests/ItemQuestReward.gd" id="7_1o66o"]
+[ext_resource type="Resource" uid="uid://oby811ep8lc7" path="res://Resources/Items/Runesmithing/RecipeTomes/Ragecrystal.tres" id="8_yegtg"]
+[ext_resource type="Resource" uid="uid://b218q40nnjk7b" path="res://Resources/Items/Runesmithing/RecipeTomes/RunicHealthPotion.tres" id="9_1d3xn"]
+[ext_resource type="Resource" uid="uid://bttkjbygaodak" path="res://Resources/Items/Runesmithing/RecipeTomes/RunicManaPotion.tres" id="10_4ym3p"]
+
+[sub_resource type="Resource" id="Resource_awvkf"]
+script = ExtResource("3_p63c0")
+recipe = ExtResource("2_yyobt")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_i5b3n"]
+script = ExtResource("7_1o66o")
+item = ExtResource("6_ooc6n")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_2atvt"]
+script = ExtResource("7_1o66o")
+item = ExtResource("8_yegtg")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_mw3bk"]
+script = ExtResource("7_1o66o")
+item = ExtResource("9_1d3xn")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_gd2sy"]
+script = ExtResource("7_1o66o")
+item = ExtResource("10_4ym3p")
+amount = 1
+
+[resource]
+script = ExtResource("4_aev06")
+name = "Forge Ahead"
+type = 1
+description = "Alfond asked you to create a Manacrystal for your Journey."
+recommended_level = 1
+turnin_type = 1
+objectives = Array[ExtResource("1_8fbcn")]([SubResource("Resource_awvkf")])
+rewards = Array[ExtResource("3_0c1sh")]([SubResource("Resource_i5b3n"), SubResource("Resource_2atvt"), SubResource("Resource_mw3bk"), SubResource("Resource_gd2sy")])
+requirements = Array[ExtResource("2_sgace")]([])

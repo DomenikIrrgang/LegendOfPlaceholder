@@ -35,7 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="24_mnwe0"]
 [ext_resource type="Script" path="res://ui/GameUI/PlayerCastBar.gd" id="24_vl06k"]
 [ext_resource type="Texture2D" uid="uid://dl0u83xiv6kk1" path="res://assets/ui/bossframe/castbar_background.png" id="25_28qlq"]
-[ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/HealingPotion.tres" id="25_ggroc"]
+[ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/RunicHealthPotion.tres" id="25_ggroc"]
 [ext_resource type="Texture2D" uid="uid://cxc4a52dgwh5v" path="res://assets/ui/bottom_hud/spellbook_closed.png" id="25_vw1gr"]
 [ext_resource type="Texture2D" uid="uid://dnnj48dx2glf3" path="res://assets/ui/items/healing_potion.png" id="25_ynpml"]
 [ext_resource type="LabelSettings" uid="uid://b304vmcf3x1f0" path="res://ui/GameUI/AbilitySlotFont.tres" id="26_aa5cb"]
@@ -256,12 +256,8 @@ default_font = ExtResource("3_60v0h")
 [sub_resource type="GDScript" id="GDScript_pwi1q"]
 script/source = "extends Button
 
-var mana_crystal_recipe = preload(\"res://Resources/Items/Runesmithing/Recipe/ManacrystalTome.tres\")
-var energy_crystal_recipe = preload(\"res://Resources/Items/Runesmithing/Recipe/EnergyCrystal.tres\")
-
 func _on_pressed():
-	Globals.get_inventory().add_item(mana_crystal_recipe, 1)
-	Globals.get_inventory().add_item(energy_crystal_recipe, 1)
+	pass
 "
 
 [sub_resource type="GDScript" id="GDScript_axn2g"]
@@ -964,6 +960,7 @@ offset_bottom = 66.0
 layout_mode = 2
 
 [node name="LevelUp" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 theme = SubResource("Theme_sqxju")

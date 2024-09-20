@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=9 format=3 uid="uid://bu446rxm0itaj"]
+
+[ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="1_0e34r"]
+[ext_resource type="Resource" uid="uid://csutxux8mrcb2" path="res://Resources/Conditions/CloseToFurnaceCondition.tres" id="2_c2b30"]
+[ext_resource type="Script" path="res://Resources/Runesmithing/Recipes/Ingridient.gd" id="3_wqtum"]
+[ext_resource type="Resource" uid="uid://7ve1wdy2802j" path="res://Resources/Items/Runesmithing/Materials/RunicEssence.tres" id="4_gsrjf"]
+[ext_resource type="Resource" uid="uid://buwphdeqkddc6" path="res://Resources/Gear/ResourceCrystals/ManaCrystal.tres" id="5_tp0cv"]
+[ext_resource type="Script" path="res://Resources/Runesmithing/Recipes/Recipe.gd" id="6_ycnjd"]
+
+[sub_resource type="Resource" id="Resource_rff2n"]
+script = ExtResource("3_wqtum")
+item = ExtResource("4_gsrjf")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_u4jk6"]
+script = ExtResource("3_wqtum")
+item = ExtResource("5_tp0cv")
+amount = 1
+
+[resource]
+script = ExtResource("6_ycnjd")
+name = "Mana Crystal"
+level = 1
+learning_conditions = Array[ExtResource("1_0e34r")]([])
+difficulty = 100
+conditions = Array[ExtResource("1_0e34r")]([ExtResource("2_c2b30")])
+ingredients = Array[ExtResource("3_wqtum")]([SubResource("Resource_rff2n")])
+results = Array[ExtResource("3_wqtum")]([SubResource("Resource_u4jk6")])

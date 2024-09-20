@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="Quest" load_steps=17 format=3 uid="uid://j32bp3npa3l4"]
 
-[ext_resource type="Script" path="res://Resources/Quests/KillUnitsObjective.gd" id="1_0wh5c"]
+[ext_resource type="Script" path="res://Resources/Quests/Objectives/KillUnitsObjective.gd" id="1_0wh5c"]
 [ext_resource type="Script" path="res://Resources/Quests/QuestObjective.gd" id="1_csyqa"]
 [ext_resource type="Resource" uid="uid://djsprq100uefx" path="res://Resources/Enemies/Slime.tres" id="2_xtn0x"]
-[ext_resource type="Script" path="res://Resources/Quests/FlagValueObjective.gd" id="3_hvywn"]
-[ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/HealingPotion.tres" id="4_h34hh"]
+[ext_resource type="Script" path="res://Resources/Quests/Objectives/FlagValueObjective.gd" id="3_hvywn"]
+[ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/RunicHealthPotion.tres" id="4_h34hh"]
 [ext_resource type="Script" path="res://Resources/Quests/ItemQuestReward.gd" id="5_lst50"]
 [ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="5_olw6d"]
 [ext_resource type="Script" path="res://Resources/Quests/QuestReward.gd" id="6_2ud52"]
-[ext_resource type="Resource" uid="uid://bi6vdjcijdpu0" path="res://Resources/Items/ManaPotions/LesserManaPotion.tres" id="6_uxcoi"]
+[ext_resource type="Resource" uid="uid://bi6vdjcijdpu0" path="res://Resources/Items/ManaPotions/RunicManaPotion.tres" id="6_uxcoi"]
 [ext_resource type="Script" path="res://Resources/Quests/Quest.gd" id="7_mcslu"]
 [ext_resource type="Resource" uid="uid://br2041q0wjtfb" path="res://Resources/Items/Spelltomes/MeteoriteTome.tres" id="7_nnyyf"]
 

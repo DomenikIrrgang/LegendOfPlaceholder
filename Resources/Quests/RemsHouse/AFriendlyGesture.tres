@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Quest" load_steps=13 format=3 uid="uid://bua2ijg7n471w"]
 
 [ext_resource type="Script" path="res://Resources/Quests/QuestObjective.gd" id="1_y781g"]
-[ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/HealingPotion.tres" id="1_yofoy"]
-[ext_resource type="Script" path="res://Resources/Quests/CollectItemQuestObjective.gd" id="2_jceya"]
+[ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/RunicHealthPotion.tres" id="1_yofoy"]
+[ext_resource type="Script" path="res://Resources/Quests/Objectives/CollectItemQuestObjective.gd" id="2_jceya"]
 [ext_resource type="Resource" uid="uid://b444o8dniqos8" path="res://Resources/Items/Spelltomes/MendTome.tres" id="3_myh2j"]
 [ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="4_dbsli"]
 [ext_resource type="Script" path="res://Resources/Quests/QuestReward.gd" id="5_w00la"]

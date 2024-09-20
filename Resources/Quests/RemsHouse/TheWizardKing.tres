@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Quest" load_steps=12 format=3 uid="uid://ce6wwfe3u7old"]
 
-[ext_resource type="Script" path="res://Resources/Quests/FlagValueObjective.gd" id="1_6e7o6"]
+[ext_resource type="Script" path="res://Resources/Quests/Objectives/FlagValueObjective.gd" id="1_6e7o6"]
 [ext_resource type="Script" path="res://Resources/Quests/QuestObjective.gd" id="1_ibwue"]
 [ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="3_3m84f"]
 [ext_resource type="Resource" uid="uid://bh7e8ddcf8rpu" path="res://Resources/Items/Spelltomes/TimestopTome.tres" id="3_xhxfh"]

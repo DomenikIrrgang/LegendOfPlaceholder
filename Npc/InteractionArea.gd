@@ -25,6 +25,7 @@ func set_outline(enabled: bool) -> void:
 			child.material.shader = outline_shader
 			child.material.set_shader_parameter("color", Vector4(1, 1, 1, 0.7))
 	else:
-		owner.model.material = null
-		for child in owner.model.get_children():
-			child.material = null
+		if owner:
+			owner.model.material = null
+			for child in owner.model.get_children():
+				child.material = null

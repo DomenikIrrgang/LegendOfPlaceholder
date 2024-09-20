@@ -21,7 +21,7 @@ func on_player_exited(_player_collision: Area2D) -> void:
 	
 func are_conditions_fulfilled() -> bool:
 	for condition in conditions:
-		if not condition.is_fulsfilled():
+		if not condition.is_fulfilled():
 			return false
 	return true
 	

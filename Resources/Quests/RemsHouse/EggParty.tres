@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Quest" load_steps=10 format=3 uid="uid://b8sib7px37sjg"]
 
-[ext_resource type="Script" path="res://Resources/Quests/FlagValueObjective.gd" id="1_131uy"]
+[ext_resource type="Script" path="res://Resources/Quests/Objectives/FlagValueObjective.gd" id="1_131uy"]
 [ext_resource type="Script" path="res://Resources/Quests/Quest.gd" id="1_qeh3f"]
 [ext_resource type="Script" path="res://Resources/Quests/QuestObjective.gd" id="1_r0t7g"]
 [ext_resource type="Resource" uid="uid://1dht423wf6t6" path="res://Resources/Items/Spelltomes/BurningVeinsTome.tres" id="3_epqgs"]

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="RunesmithingTome" load_steps=4 format=3 uid="uid://b218q40nnjk7b"]
+
+[ext_resource type="Texture2D" uid="uid://cmf8odpi145n5" path="res://assets/ui/items/nature_spelltome.png" id="1_d8agh"]
+[ext_resource type="Script" path="res://Resources/Items/Runesmithing/RecipeTomes/RunesmithingTome.gd" id="1_wvk6b"]
+[ext_resource type="Resource" uid="uid://cwyws4bswyd04" path="res://Resources/Runesmithing/Recipes/Runicpotion.tres" id="2_bsf8f"]
+
+[resource]
+script = ExtResource("1_wvk6b")
+recipe = ExtResource("2_bsf8f")
+alias = ""
+useable = false
+use_description = ""
+limited = false
+limit = 1
+stackable = false
+stack_amount = 5
+description = ""
+icon = ExtResource("1_d8agh")

@@ -20,7 +20,7 @@ conditions = Array[ExtResource("3_loco6")]([SubResource("Resource_xqjx2")])
 
 [resource]
 script = ExtResource("1_wr26y")
-alias = "Healing Potion"
+alias = "Runic Health Potion"
 useable = true
 use_effect = SubResource("Resource_57378")
 use_description = "Restores a moderate amount of health."

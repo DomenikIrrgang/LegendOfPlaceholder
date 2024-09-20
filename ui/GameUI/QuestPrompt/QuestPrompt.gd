@@ -1,8 +1,6 @@
 class_name QuestPrompt
 extends CenterContainer
 
-var test_quest: Quest = preload("res://Resources/Quests/DangerInTheWoods.tres")
-
 @onready
 var quest_name: Label = $VBoxContainer/ScrollMiddle/Margin/Spacing/QuestInfo/QuestName
 

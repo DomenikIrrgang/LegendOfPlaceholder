@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://7ve1wdy2802j"]
+
+[ext_resource type="Texture2D" uid="uid://dsc7t67tufaph" path="res://assets/ui/bottom_hud/fireball_icon.png" id="1_b0e87"]
+[ext_resource type="Script" path="res://Resources/Items/Item.gd" id="1_r230a"]
+
+[resource]
+script = ExtResource("1_r230a")
+alias = "Runic Essence"
+useable = false
+use_description = ""
+limited = false
+limit = 1
+stackable = true
+stack_amount = 99
+description = "Contains energies needed to power runes."
+icon = ExtResource("1_b0e87")
