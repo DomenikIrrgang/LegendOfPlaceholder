@@ -24,7 +24,7 @@ amount = 1
 
 [resource]
 script = ExtResource("7_g7shp")
-name = "Ragecrystal"
+name = "Rage Crystal"
 level = 3
 learning_conditions = Array[ExtResource("1_qm55a")]([SubResource("Resource_51fs6")])
 difficulty = 20

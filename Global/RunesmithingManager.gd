@@ -9,6 +9,7 @@ var level: int = 1
 var experience: int = 0
 
 signal experience_gained(amount: int)
+signal experience_set(amount: int)
 signal leveled_up(level: int)
 
 signal recipe_learned(recipe: Recipe)
@@ -22,6 +23,8 @@ func _ready() -> void:
 	
 func reset() -> void:
 	learned_recipes = []
+	level = 1
+	experience = 0
 	
 func on_save(game_state: Dictionary) -> void:
 	var runesmithing: Dictionary = {}
@@ -37,7 +40,9 @@ func on_save(game_state: Dictionary) -> void:
 func on_load(game_state: Dictionary) -> void:
 	if game_state.has("runesmithing"):
 		level = game_state.runesmithing.level
+		leveled_up.emit(level)
 		experience = game_state.runesmithing.experience
+		experience_set.emit(experience)
 		for recipe_uid in game_state.runesmithing.learned_recipes:
 			var recipe = SaveFileManager.get_resource_from_uid(recipe_uid)
 			if not recipe_known(recipe):

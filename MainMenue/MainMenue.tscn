@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://y1utto7qe73j" path="res://ui/Settings/Settings.tscn" id="3_4b2gd"]
 [ext_resource type="Theme" uid="uid://dijdy4xqx36dl" path="res://ui/DefaultTheme.tres" id="3_w34uu"]
 [ext_resource type="PackedScene" uid="uid://bnrnb4iqpe0df" path="res://MainMenue/GameState.tscn" id="4_0wh72"]
-[ext_resource type="Texture2D" uid="uid://faj01f7jg5k2" path="res://assets/ui/mainmenu/Logotext.png" id="5_wvpkb"]
+[ext_resource type="Texture2D" uid="uid://buqewc8i0asg2" path="res://assets/ui/mainmenu/Logo2.png" id="5_uahdl"]
 [ext_resource type="Texture2D" uid="uid://btclwllqikiap" path="res://assets/ui/mainmenu/cogwheel.png" id="6_xj4dx"]
 [ext_resource type="Script" path="res://MainMenue/SettingsButton.gd" id="8_fcdnq"]
 [ext_resource type="Texture2D" uid="uid://jtgn2ueksl56" path="res://assets/ui/bottom_hud/attack_icon.png" id="9_t557v"]
@@ -38,9 +38,9 @@ theme = ExtResource("3_w34uu")
 
 [node name="LogoCenter" type="CenterContainer" parent="CanvasLayer/Theme"]
 layout_mode = 0
-offset_top = -767.0
-offset_right = 2734.0
-offset_bottom = 2150.0
+offset_top = -283.0
+offset_right = 2743.0
+offset_bottom = 1427.0
 scale = Vector2(0.7, 0.7)
 
 [node name="Message" type="Label" parent="CanvasLayer/Theme/LogoCenter"]
@@ -52,7 +52,7 @@ horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Theme/LogoCenter"]
 layout_mode = 2
-texture = ExtResource("5_wvpkb")
+texture = ExtResource("5_uahdl")
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Theme"]
 layout_mode = 0
