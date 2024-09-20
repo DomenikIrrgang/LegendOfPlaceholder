@@ -15,7 +15,33 @@ signal recipe_learned(recipe: Recipe)
 signal recipe_crafted(recipe: Recipe)
 
 func _ready() -> void:
-	pass
+	SaveFileManager.game_state_loaded.connect(on_load)
+	SaveFileManager.game_state_saving.connect(on_save)
+	SaveFileManager.game_state_start_loading.connect(reset)
+	SaveFileManager.game_state_start_unloading.connect(reset)
+	
+func reset() -> void:
+	learned_recipes = []
+	
+func on_save(game_state: Dictionary) -> void:
+	var runesmithing: Dictionary = {}
+	runesmithing.level = level
+	runesmithing.experience = experience
+	runesmithing.learned_recipes = []
+	for recipe in learned_recipes:
+		runesmithing.learned_recipes.append(
+			SaveFileManager.get_resource_uid(recipe)
+		)
+	game_state.runesmithing = runesmithing
+	
+func on_load(game_state: Dictionary) -> void:
+	if game_state.has("runesmithing"):
+		level = game_state.runesmithing.level
+		experience = game_state.runesmithing.experience
+		for recipe_uid in game_state.runesmithing.learned_recipes:
+			var recipe = SaveFileManager.get_resource_from_uid(recipe_uid)
+			if not recipe_known(recipe):
+				learn_recipe(recipe)
 	
 func gain_experience(amount: int) -> void:
 	if level < max_level:

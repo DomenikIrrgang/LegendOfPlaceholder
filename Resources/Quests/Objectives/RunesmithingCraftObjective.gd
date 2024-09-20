@@ -12,6 +12,7 @@ func init() -> void:
 	RunesmithingManager.recipe_crafted.connect(on_recipe_crafted)
 	
 func reset() -> void:
+	progress = 0
 	RunesmithingManager.recipe_crafted.disconnect(on_recipe_crafted)
 
 func on_recipe_crafted(_recipe: Recipe) -> void:
