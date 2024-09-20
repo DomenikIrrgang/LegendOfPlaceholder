@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bu4uefcm2okaa"]
+[gd_scene load_steps=23 format=3 uid="uid://bu4uefcm2okaa"]
 
 [ext_resource type="Script" path="res://ui/GameUI/Runesmithing/RunesmithingWindow.gd" id="1_6xf33"]
 [ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="1_wirij"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://ui/GameUI/Runesmithing/RecipeDetails.gd" id="11_qwfu3"]
 [ext_resource type="Script" path="res://ui/GameUI/Runesmithing/RecipeMaterials.gd" id="12_5np2v"]
 [ext_resource type="Script" path="res://ui/GameUI/Runesmithing/RecipeResult.gd" id="13_j6tbu"]
+[ext_resource type="Script" path="res://ui/GameUI/Runesmithing/Close.gd" id="14_nai4v"]
 [ext_resource type="Script" path="res://ui/GameUI/Runesmithing/CraftButton.gd" id="15_76oih"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fs2sm"]
@@ -138,23 +139,26 @@ theme_override_constants/margin_left = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="Content" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content"]
+layout_mode = 2
+
+[node name="Content" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="RecipeList" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content"]
+[node name="RecipeList" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_lklqn")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeList"]
 layout_mode = 2
 
-[node name="TitleBar" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/VBoxContainer"]
+[node name="TitleBar" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeList/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2u2x8")
 
-[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/VBoxContainer/TitleBar"]
+[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeList/VBoxContainer/TitleBar"]
 layout_mode = 2
 texture = ExtResource("2_c8t8n")
 patch_margin_left = 4
@@ -162,60 +166,72 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/VBoxContainer/TitleBar"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeList/VBoxContainer/TitleBar"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/VBoxContainer/TitleBar/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeList/VBoxContainer/TitleBar/MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/VBoxContainer/TitleBar/MarginContainer/CenterContainer"]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeList/VBoxContainer/TitleBar/MarginContainer/CenterContainer"]
 layout_mode = 2
 text = "Recipe List"
 label_settings = ExtResource("3_mvcwc")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeList/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/VBoxContainer/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeList/VBoxContainer/MarginContainer"]
 layout_mode = 2
 follow_focus = true
 
-[node name="RecipeList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeList/VBoxContainer/MarginContainer/ScrollContainer" groups=["Recipelist"]]
+[node name="RecipeList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeList/VBoxContainer/MarginContainer/ScrollContainer" groups=["Recipelist"]]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("9_ceqdf")
 
-[node name="RecipeDetails" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/Content"]
+[node name="NoRecipes" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeList/VBoxContainer/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Details" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails"]
+[node name="NoRecipes" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeList/VBoxContainer/MarginContainer/ScrollContainer/NoRecipes"]
+layout_mode = 2
+text = "No recipes known.
+"
+horizontal_alignment = 1
+
+[node name="RecipeDetails" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Details" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_o5ocw")
 script = ExtResource("11_qwfu3")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="TitleBar" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer"]
+[node name="TitleBar" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2u2x8")
 
-[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/TitleBar"]
+[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/TitleBar"]
 layout_mode = 2
 texture = ExtResource("2_c8t8n")
 patch_margin_left = 4
@@ -223,25 +239,25 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/TitleBar"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/TitleBar"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/TitleBar/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/TitleBar/MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/TitleBar/MarginContainer/CenterContainer"]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/TitleBar/MarginContainer/CenterContainer"]
 layout_mode = 2
 text = "Recipe Details"
 label_settings = ExtResource("3_mvcwc")
 
-[node name="Name" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer"]
+[node name="Name" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Name"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Name"]
 layout_mode = 2
 texture = ExtResource("1_wirij")
 patch_margin_left = 5
@@ -249,21 +265,21 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Name"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Name"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Level" type="Label" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Name/MarginContainer"]
+[node name="Level" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Name/MarginContainer"]
 layout_mode = 2
 text = "Name: "
 
-[node name="Level" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer"]
+[node name="Level" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Level"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Level"]
 layout_mode = 2
 texture = ExtResource("1_wirij")
 patch_margin_left = 5
@@ -271,21 +287,21 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Level"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Level"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Level" type="Label" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Level/MarginContainer"]
+[node name="Level" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Level/MarginContainer"]
 layout_mode = 2
 text = "Level: 1"
 
-[node name="Difficulty" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer"]
+[node name="Difficulty" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Difficulty"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Difficulty"]
 layout_mode = 2
 texture = ExtResource("1_wirij")
 patch_margin_left = 5
@@ -293,21 +309,21 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Difficulty"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Difficulty"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Level" type="Label" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Difficulty/MarginContainer"]
+[node name="Level" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Difficulty/MarginContainer"]
 layout_mode = 2
 text = "Difficulty: 10"
 
-[node name="Conditions" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer"]
+[node name="Conditions" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Conditions"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Conditions"]
 layout_mode = 2
 texture = ExtResource("1_wirij")
 patch_margin_left = 5
@@ -315,50 +331,50 @@ patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Conditions"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Conditions"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Conditions/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Conditions/MarginContainer"]
 layout_mode = 2
 
-[node name="Conditions" type="Label" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Conditions/MarginContainer/VBoxContainer"]
+[node name="Conditions" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Conditions/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Conditions:"
 
-[node name="ConditionList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Conditions/MarginContainer/VBoxContainer"]
+[node name="ConditionList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/Conditions/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Ingridients" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails"]
+[node name="Ingridients" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="RecipeMaterials" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients"]
+[node name="RecipeMaterials" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_x8m3f")
 script = ExtResource("12_5np2v")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients/RecipeMaterials"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients/RecipeMaterials"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients/RecipeMaterials/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients/RecipeMaterials/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="TitleBar" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients/RecipeMaterials/MarginContainer/VBoxContainer"]
+[node name="TitleBar" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients/RecipeMaterials/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2u2x8")
 
-[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients/RecipeMaterials/MarginContainer/VBoxContainer/TitleBar"]
+[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients/RecipeMaterials/MarginContainer/VBoxContainer/TitleBar"]
 layout_mode = 2
 texture = ExtResource("2_c8t8n")
 patch_margin_left = 4
@@ -366,46 +382,46 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients/RecipeMaterials/MarginContainer/VBoxContainer/TitleBar"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients/RecipeMaterials/MarginContainer/VBoxContainer/TitleBar"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients/RecipeMaterials/MarginContainer/VBoxContainer/TitleBar/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients/RecipeMaterials/MarginContainer/VBoxContainer/TitleBar/MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients/RecipeMaterials/MarginContainer/VBoxContainer/TitleBar/MarginContainer/CenterContainer"]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients/RecipeMaterials/MarginContainer/VBoxContainer/TitleBar/MarginContainer/CenterContainer"]
 layout_mode = 2
 text = "Materials"
 label_settings = ExtResource("3_mvcwc")
 
-[node name="MaterialList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients/RecipeMaterials/MarginContainer/VBoxContainer"]
+[node name="MaterialList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients/RecipeMaterials/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="RecipeResult" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients"]
+[node name="RecipeResult" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_6awkw")
 script = ExtResource("13_j6tbu")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients/RecipeResult"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients/RecipeResult"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients/RecipeResult/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients/RecipeResult/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="TitleBar" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients/RecipeResult/MarginContainer/VBoxContainer"]
+[node name="TitleBar" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients/RecipeResult/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2u2x8")
 
-[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients/RecipeResult/MarginContainer/VBoxContainer/TitleBar"]
+[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients/RecipeResult/MarginContainer/VBoxContainer/TitleBar"]
 layout_mode = 2
 texture = ExtResource("2_c8t8n")
 patch_margin_left = 4
@@ -413,29 +429,35 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients/RecipeResult/MarginContainer/VBoxContainer/TitleBar"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients/RecipeResult/MarginContainer/VBoxContainer/TitleBar"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients/RecipeResult/MarginContainer/VBoxContainer/TitleBar/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients/RecipeResult/MarginContainer/VBoxContainer/TitleBar/MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients/RecipeResult/MarginContainer/VBoxContainer/TitleBar/MarginContainer/CenterContainer"]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients/RecipeResult/MarginContainer/VBoxContainer/TitleBar/MarginContainer/CenterContainer"]
 layout_mode = 2
 text = "Result"
 label_settings = ExtResource("3_mvcwc")
 
-[node name="ResultList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Ingridients/RecipeResult/MarginContainer/VBoxContainer"]
+[node name="ResultList" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Ingridients/RecipeResult/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Footer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails"]
+[node name="Footer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer"]
 layout_mode = 2
 alignment = 2
 
-[node name="CraftButton" type="Button" parent="MarginContainer/VBoxContainer/Content/Content/RecipeDetails/Footer"]
+[node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Close"
+script = ExtResource("14_nai4v")
+
+[node name="CraftButton" type="Button" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Footer"]
 layout_mode = 2
 text = "Craft"
 script = ExtResource("15_76oih")
