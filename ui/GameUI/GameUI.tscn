@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=106 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -57,6 +57,7 @@
 [ext_resource type="Script" path="res://ui/GameUI/StatusEffect/StatusEffectBar.gd" id="50_4qtxk"]
 [ext_resource type="PackedScene" uid="uid://dfy4f1jtgdm5d" path="res://ui/GameUI/Questlog/Questlog.tscn" id="53_7nktq"]
 [ext_resource type="Script" path="res://ui/GameUI/Interactable.gd" id="53_gchnq"]
+[ext_resource type="Script" path="res://ui/GameUI/DebugTime.gd" id="53_krghy"]
 [ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="54_cq3xn"]
 [ext_resource type="Script" path="res://ui/GameUI/InteractionPrompt.gd" id="54_w3j3o"]
 [ext_resource type="Texture2D" uid="uid://eei3t6d1xjue" path="res://assets/ui/dialog/player_dialog_100x100.png" id="55_fnv2a"]
@@ -64,12 +65,6 @@
 [ext_resource type="Script" path="res://ui/GameUI/QuestObjectiveTracker/QuestObjectiveTracker.gd" id="61_hoquh"]
 [ext_resource type="PackedScene" uid="uid://cbo2sfnlbakrj" path="res://ui/GameUI/QuestPrompt/QuestPrompt.tscn" id="62_lavu2"]
 [ext_resource type="PackedScene" uid="uid://bu4uefcm2okaa" path="res://ui/GameUI/Runesmithing/Runesmithing.tscn" id="64_ybdmu"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
-font = ExtResource("3_60v0h")
-font_size = 44
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Shader" id="Shader_ds05e"]
 code = "shader_type canvas_item;
@@ -316,6 +311,12 @@ font_size = 20
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_5a6ab"]
+font = ExtResource("3_60v0h")
+font_size = 44
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
 [node name="GameUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -325,40 +326,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8sgfl")
 metadata/_edit_lock_ = true
-
-[node name="SystemMessage" type="CenterContainer" parent="."]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 473.0
-script = ExtResource("2_oedgj")
-metadata/_edit_lock_ = true
-
-[node name="Message" type="Label" parent="SystemMessage"]
-layout_mode = 2
-theme = ExtResource("3_pxytv")
-text = "SystemMessage"
-label_settings = SubResource("LabelSettings_5a6ab")
-horizontal_alignment = 1
-
-[node name="Messages" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_top = 301.0
-offset_right = 1920.0
-offset_bottom = 672.0
-
-[node name="Messages" type="CenterContainer" parent="Messages"]
-layout_mode = 2
-script = ExtResource("4_gsrev")
-
-[node name="Container" type="VBoxContainer" parent="Messages/Messages"]
-layout_mode = 2
-
-[node name="ErrorMessages" type="CenterContainer" parent="Messages"]
-layout_mode = 2
-script = ExtResource("27_hnvam")
-
-[node name="Container" type="VBoxContainer" parent="Messages/ErrorMessages"]
-layout_mode = 2
 
 [node name="MainHUD" type="Control" parent="."]
 anchors_preset = 0
@@ -946,7 +913,8 @@ mouse_filter = 2
 
 [node name="Debug" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = 86.0
+offset_right = 126.0
 offset_bottom = 40.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Debug"]
@@ -1000,6 +968,10 @@ theme = SubResource("Theme_7fwd3")
 text = "Load
 "
 script = SubResource("GDScript_jvssh")
+
+[node name="Time" type="Label" parent="Debug/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("53_krghy")
 
 [node name="PlayerPosition" type="Label" parent="Debug/VBoxContainer"]
 visible = false
@@ -1165,6 +1137,40 @@ mouse_filter = 2
 [node name="Runesmithing" parent="CenterContainer" instance=ExtResource("64_ybdmu")]
 visible = false
 layout_mode = 2
+
+[node name="Messages" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 301.0
+offset_right = 1920.0
+offset_bottom = 672.0
+
+[node name="Messages" type="CenterContainer" parent="Messages"]
+layout_mode = 2
+script = ExtResource("4_gsrev")
+
+[node name="Container" type="VBoxContainer" parent="Messages/Messages"]
+layout_mode = 2
+
+[node name="ErrorMessages" type="CenterContainer" parent="Messages"]
+layout_mode = 2
+script = ExtResource("27_hnvam")
+
+[node name="Container" type="VBoxContainer" parent="Messages/ErrorMessages"]
+layout_mode = 2
+
+[node name="SystemMessage" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 473.0
+script = ExtResource("2_oedgj")
+metadata/_edit_lock_ = true
+
+[node name="Message" type="Label" parent="SystemMessage"]
+layout_mode = 2
+theme = ExtResource("3_pxytv")
+text = "SystemMessage"
+label_settings = SubResource("LabelSettings_5a6ab")
+horizontal_alignment = 1
 
 [connection signal="mouse_entered" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="MainHUD/CenterContainer/Overlay/HealthBar" to="MainHUD/CenterContainer/Overlay/HealthBar" method="_on_mouse_exited"]

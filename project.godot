@@ -48,6 +48,7 @@ QuestDialogManager="*res://Global/QuestDialogManager.gd"
 SaveFileManager="*res://Global/SaveFileManager.gd"
 SettingsManager="*res://Global/SettingsManager.gd"
 RunesmithingManager="*res://Global/RunesmithingManager.gd"
+GametimeManager="*res://Global/GametimeManager.gd"
 
 [debug]
 
