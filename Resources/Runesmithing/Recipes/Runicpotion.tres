@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Resources/Runesmithing/Recipes/Ingridient.gd" id="2_6hf0x"]
 [ext_resource type="Script" path="res://Resources/Runesmithing/Recipes/Recipe.gd" id="3_5kd5t"]
 [ext_resource type="Resource" uid="uid://7ve1wdy2802j" path="res://Resources/Items/Runesmithing/Materials/RunicEssence.tres" id="3_cbbsa"]
-[ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/HealingPotion.tres" id="4_udkd6"]
+[ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/RunicHealthPotion.tres" id="4_udkd6"]
 
 [sub_resource type="Resource" id="Resource_eokv7"]
 script = ExtResource("2_6hf0x")
