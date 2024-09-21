@@ -273,8 +273,18 @@ default_font = ExtResource("3_60v0h")
 [sub_resource type="GDScript" id="GDScript_3g0do"]
 script/source = "extends Button
 
+var rage_crystal = preload(\"res://Resources/Gear/ResourceCrystals/RageCrystal.tres\")
+var Drop = preload(\"res://Unit/Drops/Drop.tscn\")
+
 func _on_pressed():
-	pass
+	rage_crystal.rune_slots[0].rune = null
+	var drop = Drop.instantiate()
+	var amount = 1
+	Globals.get_world().add_child(drop)
+	drop.set_item(
+		rage_crystal, 
+		amount
+	)
 "
 
 [sub_resource type="GDScript" id="GDScript_j6glr"]
@@ -914,8 +924,9 @@ mouse_filter = 2
 [node name="Debug" type="Control" parent="."]
 anchors_preset = 0
 offset_left = 86.0
+offset_top = 49.0
 offset_right = 126.0
-offset_bottom = 40.0
+offset_bottom = 89.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Debug"]
 layout_mode = 0
@@ -928,7 +939,6 @@ offset_bottom = 66.0
 layout_mode = 2
 
 [node name="LevelUp" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 focus_mode = 0
 theme = SubResource("Theme_sqxju")
@@ -945,7 +955,6 @@ text = "Fullscreen
 script = SubResource("GDScript_axn2g")
 
 [node name="AddItem" type="Button" parent="Debug/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 focus_mode = 0
 theme = SubResource("Theme_7fwd3")
@@ -1143,6 +1152,7 @@ layout_mode = 0
 offset_top = 301.0
 offset_right = 1920.0
 offset_bottom = 672.0
+mouse_filter = 2
 
 [node name="Messages" type="CenterContainer" parent="Messages"]
 layout_mode = 2
@@ -1162,6 +1172,7 @@ layout_mode = 2
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 473.0
+mouse_filter = 2
 script = ExtResource("2_oedgj")
 metadata/_edit_lock_ = true
 
