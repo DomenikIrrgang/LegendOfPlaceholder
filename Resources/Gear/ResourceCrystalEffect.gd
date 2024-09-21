@@ -19,3 +19,6 @@ func get_unit_resource(resource_type: ResourceType.Enum, target: Unit) -> UnitRe
 		ResourceType.Enum.ENERGY:
 			return Energy.new(target)
 	return null
+
+func get_description() -> String:
+	return "Grants the \"" + ResourceType.Enum.keys()[resource].capitalize() + "\" resource."

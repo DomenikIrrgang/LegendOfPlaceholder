@@ -40,11 +40,16 @@ var bonuses: Container = $MarginContainer/VBoxContainer/Set/VBoxContainer/Bonuse
 @onready
 var use_conditions = $MarginContainer/VBoxContainer/UseConditions
 
+@onready
+var runes = $MarginContainer/VBoxContainer/Runes
+
 var ActiveSetPieceName = preload("res://ui/GameUI/Tooltip/SetPieceActive.tscn")
 var InactiveSetPieceName = preload("res://ui/GameUI/Tooltip/SetPieceInactive.tscn")
 
 var ActiveBonus = preload("res://ui/GameUI/Tooltip/BonusActive.tscn")
 var InactiveBonus = preload("res://ui/GameUI/Tooltip/BonusInactive.tscn")
+
+var RuneSlotTooltip = preload("res://ui/GameUI/Tooltip/RuneSlot.tscn")
 
 func _process(_delta: float) -> void:
 	visible = true
@@ -93,6 +98,13 @@ func show_item(item: Item) -> void:
 		equip_description.text = ""
 		equip_description.visible = false
 		stats.visible = false
+		if item.rune_slots.size() > 0:
+			runes.visible = true
+			Globals.free_children(runes)
+			for rune_slot in item.rune_slots:
+				var tooltip = RuneSlotTooltip.instantiate()
+				runes.add_child(tooltip)
+				tooltip.set_rune_slot(rune_slot)
 		if item.gear_set != null:
 			set_container.visible = true
 			set_name.text = item.gear_set.alias
@@ -119,16 +131,18 @@ func show_item(item: Item) -> void:
 				bonuses.add_child(label)
 		else:
 			set_container.visible = false
+		item.gear_effects.sort_custom(func(a, b): return a is StatGearEffect)
 		for gear_effect in item.gear_effects:
 			if gear_effect is StatGearEffect:
-				for stat_assignment in gear_effect.stats:
-					stats.text = stats.text + "+ " + str(stat_assignment.value) + " " + Stat.Enum.keys()[stat_assignment.stat].capitalize() + "\n"
+				stats.text = gear_effect.get_description()
 				stats.visible = true
 			if gear_effect is OnEquipEffect:
-				equip_description.text = equip_description.text + "On Equip: " + gear_effect.tooltip + "\n"
+				equip_description.text = equip_description.text + "On Equip: " + gear_effect.description + "\n"
 				equip_description.visible = true
 	else:
 		slot.visible = false
 		stats.visible = false
 		equip_description.visible = false
 		set_container.visible = false
+		runes.visible = false
+		Globals.free_children(runes)

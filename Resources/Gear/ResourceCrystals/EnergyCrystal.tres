@@ -1,19 +1,24 @@
-[gd_resource type="Resource" script_class="Gear" load_steps=6 format=3 uid="uid://bmuldcmdv7w23"]
+[gd_resource type="Resource" script_class="Gear" load_steps=8 format=3 uid="uid://bmuldcmdv7w23"]
 
 [ext_resource type="Script" path="res://Resources/Gear/Gear.gd" id="1_7rllk"]
 [ext_resource type="Script" path="res://Resources/Gear/GearEffect.gd" id="1_ofsr7"]
 [ext_resource type="Script" path="res://Resources/Gear/ResourceCrystalEffect.gd" id="1_s4uq0"]
 [ext_resource type="Texture2D" uid="uid://l6m88vdw4oqm" path="res://assets/ui/bottom_hud/energy_crystal.png" id="2_83s7s"]
+[ext_resource type="Script" path="res://Resources/Gear/RuneSlot.gd" id="4_n71k3"]
 
 [sub_resource type="Resource" id="Resource_vx3nm"]
 script = ExtResource("1_s4uq0")
 resource = 2
-tooltip = "Grants you a energy resource."
+
+[sub_resource type="Resource" id="Resource_wopyd"]
+script = ExtResource("4_n71k3")
+spell_school = 9
 
 [resource]
 script = ExtResource("1_7rllk")
 slot = 12
 gear_effects = Array[ExtResource("1_ofsr7")]([SubResource("Resource_vx3nm")])
+rune_slots = Array[ExtResource("4_n71k3")]([SubResource("Resource_wopyd")])
 alias = "Energy Crystal"
 useable = false
 use_description = ""

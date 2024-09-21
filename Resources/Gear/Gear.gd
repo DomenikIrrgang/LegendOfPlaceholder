@@ -26,3 +26,6 @@ var gear_effects: Array[GearEffect] = []
 
 @export
 var gear_set: GearSet
+
+@export
+var rune_slots: Array[RuneSlot] = []

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0y5tgytk0cno"]
+
+[ext_resource type="Script" path="res://ui/GameUI/Tooltip/RuneSlot.gd" id="1_264c7"]
+
+[node name="RuneSlot" type="HBoxContainer"]
+theme_override_constants/separation = 10
+script = ExtResource("1_264c7")
+
+[node name="Icon" type="Label" parent="."]
+layout_mode = 2
+text = "◯"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 2
+text = "Physical Rune Slot"

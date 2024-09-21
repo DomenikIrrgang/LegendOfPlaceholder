@@ -11,3 +11,9 @@ func on_gear_equipped(_gear: Gear, target: Unit) -> void:
 func on_gear_unequipped(_gear: Gear, target: Unit) -> void:
 	for status_effect in status_effects:
 		target.remove_status_effect(status_effect, target)
+
+func get_description() -> String:
+	var effect = ""
+	for status_effect in status_effects:
+		effect += status_effect.description + "\n"
+	return effect

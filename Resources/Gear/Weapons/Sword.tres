@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Gear" load_steps=14 format=3 uid="uid://bktcvwul60867"]
+[gd_resource type="Resource" script_class="Gear" load_steps=15 format=3 uid="uid://bktcvwul60867"]
 
 [ext_resource type="Script" path="res://Resources/Gear/GearEffect.gd" id="1_kqi3w"]
 [ext_resource type="Script" path="res://Resources/Gear/Gear.gd" id="1_m0kq3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Resources/Gear/AbilityGearEffect.gd" id="4_t0q06"]
 [ext_resource type="Script" path="res://Resources/Gear/Weapons/SetWeaponGearEffect.gd" id="5_k3tjb"]
 [ext_resource type="PackedScene" uid="uid://bynepnt28k52g" path="res://Weapons/Sword.tscn" id="6_sboca"]
+[ext_resource type="Script" path="res://Resources/Gear/RuneSlot.gd" id="9_0iirp"]
 
 [sub_resource type="Resource" id="Resource_fd6qg"]
 script = ExtResource("2_mwurh")
@@ -22,7 +23,6 @@ stats = Array[ExtResource("2_mwurh")]([SubResource("Resource_fd6qg")])
 [sub_resource type="Resource" id="Resource_32bh8"]
 script = ExtResource("4_t0q06")
 ability = ExtResource("3_te6dk")
-tooltip = "Able to use melee weapon."
 
 [sub_resource type="Resource" id="Resource_d62x3"]
 script = ExtResource("5_k3tjb")
@@ -32,6 +32,7 @@ weapon = ExtResource("6_sboca")
 script = ExtResource("1_m0kq3")
 slot = 11
 gear_effects = Array[ExtResource("1_kqi3w")]([SubResource("Resource_4ac0m"), SubResource("Resource_32bh8"), SubResource("Resource_d62x3")])
+rune_slots = Array[ExtResource("9_0iirp")]([])
 alias = "Simple Sword"
 useable = false
 use_description = ""

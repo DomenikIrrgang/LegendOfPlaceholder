@@ -10,3 +10,6 @@ func on_gear_equipped(_gear: Gear, _target: Unit) -> void:
 	
 func on_gear_unequipped(_gear: Gear, _target: Unit) -> void:
 	Globals.get_player().set_weapon(null)
+
+func get_description() -> String:
+	return "Grants you a weapon to use."
