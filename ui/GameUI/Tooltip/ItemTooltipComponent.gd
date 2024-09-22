@@ -14,7 +14,7 @@ func _on_mouse_in():
 			if tooltip_instance == null:
 				tooltip_instance = tooltip.instantiate()
 				Globals.get_game_user_inteface().add_child(tooltip_instance)
-			tooltip_instance.show_item(item_instance.item)
+			tooltip_instance.show_item(item_instance)
 			tooltip_instance.visible = false
 
 func _on_mouse_out():

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=9 format=3 uid="uid://bivw24sao47o0"]
+
+[ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="1_xmcw4"]
+[ext_resource type="Script" path="res://Resources/Runesmithing/Recipes/Ingridient.gd" id="2_hdua4"]
+[ext_resource type="Resource" uid="uid://csutxux8mrcb2" path="res://Resources/Conditions/CloseToFurnaceCondition.tres" id="2_jqqdy"]
+[ext_resource type="Script" path="res://Resources/Runesmithing/Recipes/CraftingRecipe.gd" id="3_jmql7"]
+[ext_resource type="Resource" uid="uid://7ve1wdy2802j" path="res://Resources/Items/Runesmithing/Materials/RunicEssence.tres" id="4_w5xrw"]
+[ext_resource type="Resource" uid="uid://ddtneygn8e46h" path="res://Resources/Gear/ResourceCrystals/RageCrystal.tres" id="5_85gtj"]
+
+[sub_resource type="Resource" id="Resource_o6ssc"]
+script = ExtResource("2_hdua4")
+item = ExtResource("4_w5xrw")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_a4yka"]
+script = ExtResource("2_hdua4")
+item = ExtResource("5_85gtj")
+amount = 1
+
+[resource]
+script = ExtResource("3_jmql7")
+ingredients = Array[ExtResource("2_hdua4")]([SubResource("Resource_o6ssc")])
+results = Array[ExtResource("2_hdua4")]([SubResource("Resource_a4yka")])
+name = "Rage Crystal"
+level = 1
+learning_conditions = Array[ExtResource("1_xmcw4")]([])
+difficulty = 40
+conditions = Array[ExtResource("1_xmcw4")]([ExtResource("2_jqqdy")])

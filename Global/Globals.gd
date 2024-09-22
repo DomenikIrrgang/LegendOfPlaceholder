@@ -40,13 +40,12 @@ func load_inventory(_inventory: Inventory, data: Array):
 	for index in range(data.size()):
 		if data[index].item != null:
 			var item = SaveFileManager.get_resource_from_uid(data[index].item)
-			#var save_data = data[index].data
 			var item_instance: ItemInstance
 			if item is Gear:
 				item_instance = Globals.generate_gear_instance(item)
 			else:
 				item_instance = Globals.generate_item_instance(item)
-			#item_instance.load_save_data(save_data)
+			item_instance.load_save_data(data[index].data)
 			_inventory.change_slot(index, item_instance, data[index].amount)
 	
 func get_unit(unit_name: String) -> Unit:

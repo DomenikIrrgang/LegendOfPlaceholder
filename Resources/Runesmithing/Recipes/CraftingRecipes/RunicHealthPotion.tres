@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=8 format=3 uid="uid://c7m86rg7newl6"]
+
+[ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="1_o3rrn"]
+[ext_resource type="Script" path="res://Resources/Runesmithing/Recipes/Ingridient.gd" id="2_t64an"]
+[ext_resource type="Resource" uid="uid://7ve1wdy2802j" path="res://Resources/Items/Runesmithing/Materials/RunicEssence.tres" id="3_opvg2"]
+[ext_resource type="Script" path="res://Resources/Runesmithing/Recipes/CraftingRecipe.gd" id="3_oqyxh"]
+[ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/RunicHealthPotion.tres" id="4_x4jg3"]
+
+[sub_resource type="Resource" id="Resource_fvmjd"]
+script = ExtResource("2_t64an")
+item = ExtResource("3_opvg2")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_yw0w7"]
+script = ExtResource("2_t64an")
+item = ExtResource("4_x4jg3")
+amount = 1
+
+[resource]
+script = ExtResource("3_oqyxh")
+ingredients = Array[ExtResource("2_t64an")]([SubResource("Resource_fvmjd")])
+results = Array[ExtResource("2_t64an")]([SubResource("Resource_yw0w7")])
+name = "Runic Health Potion"
+level = 1
+learning_conditions = Array[ExtResource("1_o3rrn")]([])
+difficulty = 10
+conditions = Array[ExtResource("1_o3rrn")]([])

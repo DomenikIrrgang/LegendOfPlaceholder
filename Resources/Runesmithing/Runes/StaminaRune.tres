@@ -16,5 +16,5 @@ stats = Array[ExtResource("2_6l6wl")]([SubResource("Resource_ii8vf")])
 [resource]
 script = ExtResource("1_hmsi1")
 name = "Stamina"
-type = 0
+spell_school = 1
 effect = SubResource("Resource_ojxxg")

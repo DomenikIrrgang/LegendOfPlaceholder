@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://cmf8odpi145n5" path="res://assets/ui/items/nature_spelltome.png" id="1_d8agh"]
 [ext_resource type="Script" path="res://Resources/Items/Runesmithing/RecipeTomes/RunesmithingTome.gd" id="1_wvk6b"]
-[ext_resource type="Resource" uid="uid://cwyws4bswyd04" path="res://Resources/Runesmithing/Recipes/Runicpotion.tres" id="2_bsf8f"]
+[ext_resource type="Resource" uid="uid://c7m86rg7newl6" path="res://Resources/Runesmithing/Recipes/CraftingRecipes/RunicHealthPotion.tres" id="2_benh6"]
 
 [resource]
 script = ExtResource("1_wvk6b")
-recipe = ExtResource("2_bsf8f")
+recipe = ExtResource("2_benh6")
 alias = ""
 useable = false
 use_description = ""

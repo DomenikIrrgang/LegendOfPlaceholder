@@ -5,7 +5,7 @@ extends Resource
 var name: String
 
 @export
-var type: SpellSchool.Enum
+var spell_school: SpellSchool.Enum
 
 @export
 var effect: GearEffect

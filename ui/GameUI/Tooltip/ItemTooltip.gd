@@ -59,15 +59,15 @@ func _process(_delta: float) -> void:
 	if global_position.y >= get_viewport().get_visible_rect().size.y / 2:
 		global_position.y -= size.y
 
-func show_item(item: Item) -> void:
-	alias.text = item.alias
-	if item.useable:
-		cooldown.text = "Cooldown: " + str(item.use_effect.cooldown_group.cooldown) + " seconds"
+func show_item(item_instance: ItemInstance) -> void:
+	alias.text = item_instance.item.alias
+	if item_instance.item.useable:
+		cooldown.text = "Cooldown: " + str(item_instance.item.use_effect.cooldown_group.cooldown) + " seconds"
 		cooldown.visible = false
-		if item.use_effect.conditions.size() > 0:
+		if item_instance.item.use_effect.conditions.size() > 0:
 			Globals.free_children(use_conditions)
 			use_conditions.visible = true
-			for condition in item.use_effect.conditions:
+			for condition in item_instance.item.use_effect.conditions:
 				var label = Label.new()
 				label.text = condition.get_string()
 				if condition.is_fulfilled():
@@ -75,42 +75,46 @@ func show_item(item: Item) -> void:
 				else:
 					label.self_modulate = Color.RED
 				use_conditions.add_child(label)
-		use_description.text = "Use: " + item.use_description + " (" + str(item.use_effect.cooldown_group.cooldown) + " seconds cooldown)"
+		use_description.text = "Use: " + item_instance.item.use_description + " (" + str(item_instance.item.use_effect.cooldown_group.cooldown) + " seconds cooldown)"
 		use_description.visible = true
 	else:
 		cooldown.visible = false
 		use_conditions.visible = false
 		use_description.visible = false
-	if item.limited:
-		limit.text = "Limit: " + str(Globals.get_inventory().get_item_amount(item)) + "/" + str(item.limit)
+	if item_instance.item.limited:
+		limit.text = "Limit: " + str(Globals.get_inventory().get_item_amount(item_instance.item)) + "/" + str(item_instance.item.limit)
 		limit.visible = true
 	else:
 		limit.visible = false
-	if item.description != null and item.description != "":
-		description.text = "\"" + item.description + "\""
+	if item_instance.item.description != null and item_instance.item.description != "":
+		description.text = "\"" + item_instance.item.description + "\""
 		description.visible = true
 	else:
 		description.visible = false
-	if item is Gear:
-		slot.text = Gear.Slot.keys()[item.slot].capitalize()
+	if item_instance is GearInstance:
+		slot.text = Gear.Slot.keys()[item_instance.item.slot].capitalize()
 		slot.visible = true
 		stats.text = ""
 		equip_description.text = ""
 		equip_description.visible = false
 		stats.visible = false
-		if item.rune_slots.size() > 0:
+		if item_instance.item.rune_slots.size() > 0:
 			runes.visible = true
 			Globals.free_children(runes)
-			for rune_slot in item.rune_slots:
+			for i in item_instance.item.rune_slots.size():
 				var tooltip = RuneSlotTooltip.instantiate()
+				var rune = item_instance.runes[i] if item_instance.runes[i] != null else null
+				var rune_slot = RuneSlot.new()
+				rune_slot.rune = rune
+				rune_slot.spell_school = item_instance.item.rune_slots[i].spell_school
 				runes.add_child(tooltip)
 				tooltip.set_rune_slot(rune_slot)
-		if item.gear_set != null:
+		if item_instance.item.gear_set != null:
 			set_container.visible = true
-			set_name.text = item.gear_set.alias
+			set_name.text = item_instance.item.gear_set.alias
 			for set_piece_name in set_piece_names.get_children():
 				set_piece_name.queue_free()
-			for set_piece in item.gear_set.set_pieces:
+			for set_piece in item_instance.item.gear_set.set_pieces:
 				var gear = Equipment.get_gear_data(set_piece)
 				var label
 				if Globals.get_player().has_gear_equipped(gear):
@@ -121,9 +125,9 @@ func show_item(item: Item) -> void:
 				set_piece_names.add_child(label)
 			for bonus in bonuses.get_children():
 				bonus.queue_free()
-			for bonus in item.gear_set.get_ordered_bonuses():
+			for bonus in item_instance.item.gear_set.get_ordered_bonuses():
 				var label
-				if item.gear_set.is_bonus_completed(bonus):
+				if item_instance.item.gear_set.is_bonus_completed(bonus):
 					label = ActiveBonus.instantiate()
 				else:
 					label = InactiveBonus.instantiate()
@@ -131,8 +135,8 @@ func show_item(item: Item) -> void:
 				bonuses.add_child(label)
 		else:
 			set_container.visible = false
-		item.gear_effects.sort_custom(func(a, b): return a is StatGearEffect)
-		for gear_effect in item.gear_effects:
+		item_instance.item.gear_effects.sort_custom(func(a, b): return a is StatGearEffect)
+		for gear_effect in item_instance.item.gear_effects:
 			if gear_effect is StatGearEffect:
 				stats.text = gear_effect.get_description()
 				stats.visible = true

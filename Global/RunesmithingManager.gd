@@ -59,6 +59,10 @@ func gain_experience(amount: int) -> void:
 		experience += remaining_amount
 		experience_gained.emit(amount)
 		
+func imbue_gear(gear: GearInstance, rune_slot_index: int, rune: Rune) -> void:
+	if gear.item.rune_slots[rune_slot_index].spell_school == rune.spell_school:
+		gear.runes[rune_slot_index] = rune
+		
 func craft_recipe(recipe: Recipe) -> void:
 	if can_craft_recipe(recipe):
 		remove_ingridients_from_inventory(recipe)

@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Quest" load_steps=17 format=3 uid="uid://cpj1f7nunm483"]
 
 [ext_resource type="Script" path="res://Resources/Quests/QuestObjective.gd" id="1_8fbcn"]
+[ext_resource type="Resource" uid="uid://cy6n2ji5j0w8a" path="res://Resources/Runesmithing/Recipes/CraftingRecipes/ManaCrystal.tres" id="2_b1vij"]
 [ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="2_sgace"]
-[ext_resource type="Resource" uid="uid://bu446rxm0itaj" path="res://Resources/Runesmithing/Recipes/Manacrystal.tres" id="2_yyobt"]
 [ext_resource type="Script" path="res://Resources/Quests/QuestReward.gd" id="3_0c1sh"]
 [ext_resource type="Script" path="res://Resources/Quests/Objectives/RunesmithingCraftObjective.gd" id="3_p63c0"]
 [ext_resource type="Script" path="res://Resources/Quests/Quest.gd" id="4_aev06"]
@@ -14,7 +14,7 @@
 
 [sub_resource type="Resource" id="Resource_awvkf"]
 script = ExtResource("3_p63c0")
-recipe = ExtResource("2_yyobt")
+recipe = ExtResource("2_b1vij")
 amount = 1
 
 [sub_resource type="Resource" id="Resource_i5b3n"]

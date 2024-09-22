@@ -30,7 +30,7 @@ func equip_gear_in_slot(slot: Gear.Slot, gear: GearInstance) -> bool:
 		if gear_slots[slot] != null:
 			unequip_gear_in_slot(slot)
 		gear_slots[slot] = gear
-		for gear_effect in gear.item.gear_effects:
+		for gear_effect in gear.get_gear_effects():
 			gear_effect.on_gear_equipped(gear, self)
 		equipped_gear.emit(gear)
 		gear_slot_changed.emit(slot, gear)
@@ -39,7 +39,7 @@ func equip_gear_in_slot(slot: Gear.Slot, gear: GearInstance) -> bool:
 	
 func unequip_gear_in_slot(slot: Gear.Slot) -> bool:
 	if gear_slots[slot] != null:
-		for gear_effect in gear_slots[slot].item.gear_effects:
+		for gear_effect in gear_slots[slot].get_gear_effects():
 			gear_effect.on_gear_unequipped(gear_slots[slot], self)
 		var tmp_gear = gear_slots[slot]
 		gear_slots[slot] = null

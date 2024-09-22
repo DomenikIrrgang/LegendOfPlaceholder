@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Resources/Items/Runesmithing/RecipeTomes/RunesmithingTome.gd" id="1_1g7e0"]
 [ext_resource type="Texture2D" uid="uid://d0wbm1pacw2wk" path="res://assets/ui/items/light_spelltome.png" id="1_8ol6s"]
-[ext_resource type="Resource" uid="uid://c387gu1o8d7du" path="res://Resources/Runesmithing/Recipes/EnergyCrystal.tres" id="1_y0eb5"]
+[ext_resource type="Resource" uid="uid://p2dfn7ht35bg" path="res://Resources/Runesmithing/Recipes/CraftingRecipes/EnergyCrystal.tres" id="2_tjbd6"]
 
 [resource]
 script = ExtResource("1_1g7e0")
-recipe = ExtResource("1_y0eb5")
+recipe = ExtResource("2_tjbd6")
 alias = ""
 useable = false
 use_description = ""

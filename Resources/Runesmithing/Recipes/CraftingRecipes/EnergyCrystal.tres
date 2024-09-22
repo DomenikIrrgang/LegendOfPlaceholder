@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=9 format=3 uid="uid://p2dfn7ht35bg"]
+
+[ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="1_rouiu"]
+[ext_resource type="Resource" uid="uid://csutxux8mrcb2" path="res://Resources/Conditions/CloseToFurnaceCondition.tres" id="2_nnkg1"]
+[ext_resource type="Script" path="res://Resources/Runesmithing/Recipes/Ingridient.gd" id="2_r8u32"]
+[ext_resource type="Script" path="res://Resources/Runesmithing/Recipes/CraftingRecipe.gd" id="3_2lhrg"]
+[ext_resource type="Resource" uid="uid://7ve1wdy2802j" path="res://Resources/Items/Runesmithing/Materials/RunicEssence.tres" id="4_s8t4v"]
+[ext_resource type="Resource" uid="uid://bmuldcmdv7w23" path="res://Resources/Gear/ResourceCrystals/EnergyCrystal.tres" id="5_2v0f4"]
+
+[sub_resource type="Resource" id="Resource_k6t20"]
+script = ExtResource("2_r8u32")
+item = ExtResource("4_s8t4v")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_vf0ju"]
+script = ExtResource("2_r8u32")
+item = ExtResource("5_2v0f4")
+amount = 1
+
+[resource]
+script = ExtResource("3_2lhrg")
+ingredients = Array[ExtResource("2_r8u32")]([SubResource("Resource_k6t20")])
+results = Array[ExtResource("2_r8u32")]([SubResource("Resource_vf0ju")])
+name = "Energy Crystal"
+level = 1
+learning_conditions = Array[ExtResource("1_rouiu")]([])
+difficulty = 40
+conditions = Array[ExtResource("1_rouiu")]([ExtResource("2_nnkg1")])

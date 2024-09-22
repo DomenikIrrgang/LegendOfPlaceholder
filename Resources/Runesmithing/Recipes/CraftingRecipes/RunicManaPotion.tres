@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=8 format=3 uid="uid://dphle4xmfftjq"]
+
+[ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="1_slqyd"]
+[ext_resource type="Script" path="res://Resources/Runesmithing/Recipes/Ingridient.gd" id="2_6ps88"]
+[ext_resource type="Script" path="res://Resources/Runesmithing/Recipes/CraftingRecipe.gd" id="3_jw3jv"]
+[ext_resource type="Resource" uid="uid://7ve1wdy2802j" path="res://Resources/Items/Runesmithing/Materials/RunicEssence.tres" id="3_n4nf6"]
+[ext_resource type="Resource" uid="uid://bi6vdjcijdpu0" path="res://Resources/Items/ManaPotions/RunicManaPotion.tres" id="4_ad6o2"]
+
+[sub_resource type="Resource" id="Resource_wand4"]
+script = ExtResource("2_6ps88")
+item = ExtResource("3_n4nf6")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_2jn31"]
+script = ExtResource("2_6ps88")
+item = ExtResource("4_ad6o2")
+amount = 1
+
+[resource]
+script = ExtResource("3_jw3jv")
+ingredients = Array[ExtResource("2_6ps88")]([SubResource("Resource_wand4")])
+results = Array[ExtResource("2_6ps88")]([SubResource("Resource_2jn31")])
+name = "Runic Mana Potion"
+level = 1
+learning_conditions = Array[ExtResource("1_slqyd")]([])
+difficulty = 10
+conditions = Array[ExtResource("1_slqyd")]([])

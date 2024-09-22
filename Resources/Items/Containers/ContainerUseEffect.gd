@@ -25,6 +25,6 @@ func on_use(_source: Unit) -> bool:
 		slots_needed += Globals.get_inventory().get_slots_needed_for_item_amount(item_assignment.item, item_assignment.amount)
 	if slots_needed <= Globals.get_inventory().get_free_slot_amount():
 		for item_assignment in loot:
-			assert(Globals.get_inventory().add_item(item_assignment.item, item_assignment.amount), "Failed to add loot from container to inventory.")
+			assert(Globals.get_inventory().add_item(Globals.new_item_instance(item_assignment.item), item_assignment.amount), "Failed to add loot from container to inventory.")
 		return true
 	return false

@@ -273,17 +273,13 @@ default_font = ExtResource("3_60v0h")
 script/source = "extends Button
 
 var rage_crystal = preload(\"res://Resources/Gear/ResourceCrystals/RageCrystal.tres\")
+var stamina_rune = preload(\"res://Resources/Runesmithing/Runes/StaminaRune.tres\")
 var Drop = preload(\"res://Unit/Drops/Drop.tscn\")
 
 func _on_pressed():
-	rage_crystal.rune_slots[0].rune = null
-	var drop = Drop.instantiate()
-	var amount = 1
-	Globals.get_world().add_child(drop)
-	drop.set_item(
-		rage_crystal, 
-		amount
-	)
+	var gear_instance = Globals.new_item_instance(rage_crystal)
+	RunesmithingManager.imbue_gear(gear_instance, 0, stamina_rune)
+	Globals.get_inventory().add_item(gear_instance, 1)
 "
 
 [sub_resource type="GDScript" id="GDScript_j6glr"]
