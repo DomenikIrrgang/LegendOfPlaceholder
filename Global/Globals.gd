@@ -30,7 +30,8 @@ func on_load(game_state: Dictionary) -> void:
 func get_inventory_save(_inventory: Inventory) -> Array:
 	return _inventory.slots.map(func(slot: InventorySlot):
 		return {
-			item = SaveFileManager.get_resource_uid(slot.item) if slot.item != null else null,
+			item = SaveFileManager.get_resource_uid(slot.item_instance.item) if slot.item_instance != null else null,
+			data = slot.item_instance.get_save_data() if slot.item_instance != null else null,
 			amount = slot.amount
 		}
 	)
@@ -38,7 +39,15 @@ func get_inventory_save(_inventory: Inventory) -> Array:
 func load_inventory(_inventory: Inventory, data: Array):
 	for index in range(data.size()):
 		if data[index].item != null:
-			_inventory.change_slot(index, SaveFileManager.get_resource_from_uid(data[index].item), data[index].amount)
+			var item = SaveFileManager.get_resource_from_uid(data[index].item)
+			#var save_data = data[index].data
+			var item_instance: ItemInstance
+			if item is Gear:
+				item_instance = Globals.generate_gear_instance(item)
+			else:
+				item_instance = Globals.generate_item_instance(item)
+			#item_instance.load_save_data(save_data)
+			_inventory.change_slot(index, item_instance, data[index].amount)
 	
 func get_unit(unit_name: String) -> Unit:
 	var scene_treer_root = get_scene_tree().root
@@ -168,3 +177,18 @@ func get_closest_enemy() -> Enemy:
 func free_children(node: Node) -> void:
 	for child in node.get_children():
 		child.queue_free()
+		
+func new_item_instance(item: Item) -> ItemInstance:
+	if item is Gear:
+		return generate_gear_instance(item)
+	return generate_item_instance(item)
+		
+func generate_item_instance(item: Item) -> ItemInstance:
+	var item_instance = ItemInstance.new()
+	item_instance.item = item
+	return item_instance
+	
+func generate_gear_instance(gear: Gear) -> GearInstance:
+	var item_instance = GearInstance.new()
+	item_instance.item = gear
+	return item_instance

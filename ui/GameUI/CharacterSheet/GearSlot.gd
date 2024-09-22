@@ -4,7 +4,7 @@ extends CenterContainer
 var slot: Gear.Slot
 
 @export
-var gear: Gear
+var gear: GearInstance
 
 @onready
 var icon: TextureRect = $Icon
@@ -16,7 +16,7 @@ var highlight: NinePatchRect = $Highlight
 var slot_tooltip: Control = $TextTooltipCompnent
 
 var text: String = ""
-var item: Item
+var item_instance: ItemInstance
 
 func _ready() -> void:
 	Globals.get_player().gear_slot_changed.connect(on_gear_slot_changed)
@@ -27,18 +27,18 @@ func _ready() -> void:
 	
 func on_start_dragging() -> void:
 	var drag_and_drop = Globals.get_drag_and_drop()
-	if drag_and_drop.data.has("inventory") and drag_and_drop.data.inventory_slot.item is Gear and drag_and_drop.data.inventory_slot.item.slot == slot:
+	if drag_and_drop.data.has("inventory") and drag_and_drop.data.inventory_slot.item_instance is GearInstance and drag_and_drop.data.inventory_slot.item_instance.item.slot == slot:
 		highlight.visible = true
 					
 func on_stop_dragging() -> void:
 	highlight.visible = false
 
-func on_gear_slot_changed(_slot: Gear.Slot, _gear: Gear) -> void:
+func on_gear_slot_changed(_slot: Gear.Slot, _gear: GearInstance) -> void:
 	if slot == _slot:
 		gear = _gear
-		item = _gear
+		item_instance = _gear
 		if gear != null:
-			icon.texture = _gear.icon
+			icon.texture = _gear.item.icon
 			text = ""
 			slot_tooltip.visible = false
 		else:
@@ -55,19 +55,19 @@ func on_gear_slot_input(event: InputEvent) -> void:
 			
 func pick_gear() -> void:
 	if Globals.get_player().gear_slots[slot] != null:
-		var _gear = Globals.get_player().gear_slots[slot]
+		var gear_instance = Globals.get_player().gear_slots[slot]
 		Globals.get_drag_and_drop().start_dragging({
-			"gear": _gear,
-		}, _gear.icon)
+			"gear": gear_instance,
+		}, gear_instance.item.icon)
 	
 func equip_gear() -> void:
 	var drag_and_drop = Globals.get_drag_and_drop()
 	if drag_and_drop.data.has("inventory"):
 		var inventory = drag_and_drop.data.inventory
 		var inventory_slot = drag_and_drop.data.inventory_slot
-		var inventory_gear = inventory_slot.item
-		if inventory_gear is Gear and inventory_gear.slot == slot:
-			var previous_gear: Gear = null
+		var inventory_gear = inventory_slot.item_instance
+		if inventory_gear is GearInstance and inventory_gear.item.slot == slot:
+			var previous_gear: GearInstance = null
 			if Globals.get_player().gear_slots[slot] != null:
 				previous_gear = Globals.get_player().gear_slots[slot]
 			Globals.get_player().equip_gear_in_slot(slot, inventory_gear)

@@ -8,7 +8,7 @@ var item: Item
 var amount: int = 1
 
 func reward() -> void:
-	Globals.get_inventory().add_item(item, amount)
+	Globals.get_inventory().add_item(Globals.new_item_instance(item), amount)
 	
 func can_reward() -> bool:
 	return Globals.get_inventory().can_receive_item(item, amount)

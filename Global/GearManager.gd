@@ -16,7 +16,9 @@ func on_save(game_state: Dictionary) -> void:
 	game_state.gear = Gear.Slot.values().map(func(value: int):
 		return {
 			slot = Gear.Slot.keys()[value],
-			gear = SaveFileManager.get_resource_uid(Globals.get_player().gear_slots[value]) if Globals.get_player().gear_slots[value] != null else null
+			gear = {
+				item = SaveFileManager.get_resource_uid(Globals.get_player().gear_slots[value].item) if Globals.get_player().gear_slots[value] != null else null
+			}
 		}
 	)
 	
@@ -24,10 +26,12 @@ func on_load(game_state: Dictionary) -> void:
 	Globals.get_player().equipped_gear.connect(on_gear_changed)
 	Globals.get_player().unequipped_gear.connect(on_gear_changed)
 	for equiped_gear in game_state.gear:
-		if equiped_gear.gear != null:
+		if equiped_gear.gear.item != null:
+			var item = SaveFileManager.get_resource_from_uid(equiped_gear.gear.item)
+			var gear_instance = Globals.generate_gear_instance(item)
 			Globals.get_player().equip_gear_in_slot(
 				Gear.Slot[equiped_gear.slot],
-				SaveFileManager.get_resource_from_uid(equiped_gear.gear)
+				gear_instance
 			)
 
 func on_gear_changed(gear: Gear) -> void:

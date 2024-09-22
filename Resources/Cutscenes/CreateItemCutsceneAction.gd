@@ -8,5 +8,5 @@ var item: Item
 var amount: int = 1
 
 func start() -> void:
-	Globals.get_inventory().add_item(item, amount)
+	Globals.get_inventory().add_item(Globals.new_item_instance(item), amount)
 	cutscene_action_finished.emit(self)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://cgfm1ac4pe23t"]
+[gd_scene load_steps=105 format=3 uid="uid://cgfm1ac4pe23t"]
 
 [ext_resource type="Script" path="res://ui/GameUI/GameUI.gd" id="1_8sgfl"]
 [ext_resource type="Script" path="res://ui/GameUI/SystemMessage.gd" id="2_oedgj"]
@@ -35,7 +35,6 @@
 [ext_resource type="Texture2D" uid="uid://b6k6fi503b648" path="res://assets/ui/bottom_hud/keybind_slot.png" id="24_mnwe0"]
 [ext_resource type="Script" path="res://ui/GameUI/PlayerCastBar.gd" id="24_vl06k"]
 [ext_resource type="Texture2D" uid="uid://dl0u83xiv6kk1" path="res://assets/ui/bossframe/castbar_background.png" id="25_28qlq"]
-[ext_resource type="Resource" uid="uid://cumtmrjqwnp4g" path="res://Resources/Items/HealingPotions/RunicHealthPotion.tres" id="25_ggroc"]
 [ext_resource type="Texture2D" uid="uid://cxc4a52dgwh5v" path="res://assets/ui/bottom_hud/spellbook_closed.png" id="25_vw1gr"]
 [ext_resource type="Texture2D" uid="uid://dnnj48dx2glf3" path="res://assets/ui/items/healing_potion.png" id="25_ynpml"]
 [ext_resource type="LabelSettings" uid="uid://b304vmcf3x1f0" path="res://ui/GameUI/AbilitySlotFont.tres" id="26_aa5cb"]
@@ -636,7 +635,6 @@ offset_top = 50.0
 offset_right = 726.0
 offset_bottom = 86.0
 script = ExtResource("24_4sy14")
-item = ExtResource("25_ggroc")
 
 [node name="Background" type="TextureRect" parent="MainHUD/CenterContainer/Overlay/ConsumeableSlot"]
 layout_mode = 0

@@ -13,24 +13,24 @@ var weapon: Weapon
 signal experience_changed(change: int)
 
 # Gear
-var gear_slots: Array[Gear] = []
+var gear_slots: Array[GearInstance] = []
 
-signal gear_slot_changed(slot: Gear.Slot, gear: Gear)
-signal unequipped_gear(gear: Gear)
-signal equipped_gear(gear: Gear)
+signal gear_slot_changed(slot: Gear.Slot, gear: GearInstance)
+signal unequipped_gear(gear: GearInstance)
+signal equipped_gear(gear: GearInstance)
 
-func equip_gear(gear: Gear) -> bool:
+func equip_gear(gear: GearInstance) -> bool:
 	return equip_gear_in_slot(gear.slot, gear)
 	
 func has_gear_equipped(gear: Gear) -> bool:
-	return gear_slots[gear.slot] != null and gear_slots[gear.slot] == gear
+	return gear_slots[gear.slot] != null and gear_slots[gear.slot].item == gear
 
-func equip_gear_in_slot(slot: Gear.Slot, gear: Gear) -> bool:
-	if gear.slot == slot:
+func equip_gear_in_slot(slot: Gear.Slot, gear: GearInstance) -> bool:
+	if gear.item.slot == slot:
 		if gear_slots[slot] != null:
 			unequip_gear_in_slot(slot)
 		gear_slots[slot] = gear
-		for gear_effect in gear.gear_effects:
+		for gear_effect in gear.item.gear_effects:
 			gear_effect.on_gear_equipped(gear, self)
 		equipped_gear.emit(gear)
 		gear_slot_changed.emit(slot, gear)
@@ -39,7 +39,7 @@ func equip_gear_in_slot(slot: Gear.Slot, gear: Gear) -> bool:
 	
 func unequip_gear_in_slot(slot: Gear.Slot) -> bool:
 	if gear_slots[slot] != null:
-		for gear_effect in gear_slots[slot].gear_effects:
+		for gear_effect in gear_slots[slot].item.gear_effects:
 			gear_effect.on_gear_unequipped(gear_slots[slot], self)
 		var tmp_gear = gear_slots[slot]
 		gear_slots[slot] = null
