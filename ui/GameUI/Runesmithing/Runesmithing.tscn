@@ -298,6 +298,29 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 text = "Level: 1"
 
+[node name="RuneSlot" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/RuneSlot"]
+layout_mode = 2
+texture = ExtResource("1_wirij")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/RuneSlot"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Level" type="Label" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer/RuneSlot/MarginContainer"]
+layout_mode = 2
+text = "Rune Slot:"
+
 [node name="Difficulty" type="PanelContainer" parent="MarginContainer/VBoxContainer/Content/VBoxContainer/Content/RecipeDetails/Details/MarginContainer/VBoxContainer"]
 layout_mode = 2
 

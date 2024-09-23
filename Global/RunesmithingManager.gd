@@ -59,11 +59,32 @@ func gain_experience(amount: int) -> void:
 		experience += remaining_amount
 		experience_gained.emit(amount)
 		
-func imbue_gear(gear: GearInstance, rune_slot_index: int, rune: Rune) -> void:
-	if gear.item.rune_slots[rune_slot_index].spell_school == rune.spell_school:
-		gear.runes[rune_slot_index] = rune
+func craft_recipe(recipe: Recipe) -> void:
+	if recipe is CraftingRecipe:
+		craft_crafting_recipe(recipe)
+	elif recipe is RuneRecipe:
+		craft_rune_recipe(recipe)
+	else:
+		assert(false, "Trying to craft unknown recipe type.")
 		
-func craft_recipe(recipe: CraftingRecipe) -> void:
+func craft_rune_recipe(recipe: RuneRecipe) -> void:
+	if can_craft_rune_recipe(recipe):
+		remove_ingridients_from_inventory(recipe)
+		for rune_slot in recipe.gear_ingridient.item_instance.item.rune_slots.size():
+			if recipe.gear_ingridient.item_instance.item.rune_slots[rune_slot].spell_school == recipe.rune.spell_school:
+				recipe.gear_ingridient.item_instance.runes[rune_slot] = recipe.rune
+		gain_experience(recipe.get_experience())
+		recipe_crafted.emit(recipe)
+		
+func can_craft_rune_recipe(recipe: RuneRecipe) -> bool:
+	var rune_fits: bool = false
+	if recipe.gear_ingridient.item_instance != null:
+		for rune_slot in recipe.gear_ingridient.item_instance.item.rune_slots:
+			if rune_slot.spell_school == recipe.rune.spell_school:
+				rune_fits = true
+	return recipe_known(recipe) and has_materials(recipe) and fulfills_recipe_conditions(recipe) and rune_fits
+	
+func craft_crafting_recipe(recipe: CraftingRecipe) -> void:
 	if can_craft_recipe(recipe):
 		remove_ingridients_from_inventory(recipe)
 		for result in recipe.results:

@@ -13,6 +13,12 @@ var difficulty_label: Label = $MarginContainer/VBoxContainer/Difficulty/MarginCo
 var condition_list: VBoxContainer = $MarginContainer/VBoxContainer/Conditions/MarginContainer/VBoxContainer/ConditionList
 
 @onready
+var rune_slot: PanelContainer = $MarginContainer/VBoxContainer/RuneSlot
+
+@onready
+var rune_slot_label: Label = $MarginContainer/VBoxContainer/RuneSlot/MarginContainer/Level
+
+@onready
 var conditions_label: Label = $MarginContainer/VBoxContainer/Conditions/MarginContainer/VBoxContainer/Conditions
 
 var ConditionListItem = preload("res://ui/GameUI/Runesmithing/ConditionListItem.tscn")
@@ -24,6 +30,9 @@ func on_recipe_selected(recipe: Recipe) -> void:
 	name_label.text = "Name: " + recipe.name
 	level_label.text = "Level: " + str(recipe.level)
 	difficulty_label.text = "Difficulty: " + str(recipe.difficulty)
+	rune_slot.visible = recipe is RuneRecipe
+	if recipe is RuneRecipe:
+		rune_slot_label.text = "Rune Slot: " + SpellSchool.Enum.keys()[recipe.rune.spell_school].capitalize()
 	Globals.free_children(condition_list)
 	if recipe.conditions.size() > 0:
 		conditions_label.text = "Conditions:"

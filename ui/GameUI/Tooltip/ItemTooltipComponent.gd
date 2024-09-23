@@ -8,8 +8,9 @@ var tooltip = load("res://ui/GameUI/Tooltip/ItemTooltip.tscn")
 var tooltip_instance
 
 func _ready() -> void:
-	owner.focus_entered.connect(on_focus_entered)
-	owner.focus_exited.connect(on_focus_exited)
+	if "focus_entered" in owner:
+		owner.focus_entered.connect(on_focus_entered)
+		owner.focus_exited.connect(on_focus_exited)
 	
 func on_focus_entered() -> void:
 	var item_instance = item_node.item_instance

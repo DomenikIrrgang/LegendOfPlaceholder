@@ -47,3 +47,7 @@ func set_ingridient(_ingridient: Ingredient) -> void:
 			item_label.text = ingridient.item_instance.item.alias
 			icon.texture = ingridient.item_instance.item.icon
 		item_instance = ingridient.item_instance
+		
+func _notification(what):
+	if (what == NOTIFICATION_PREDELETE) and ingridient is DynamicIngridient:
+		ingridient.item_instance = null
