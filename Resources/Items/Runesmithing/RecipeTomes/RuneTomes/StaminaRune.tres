@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="RunesmithingTome" load_steps=3 format=3 uid="uid://jmggdkgqnpw0"]
+
+[ext_resource type="Resource" uid="uid://ogcnygjsqqp7" path="res://Resources/Runesmithing/Recipes/RuneRecipes/StaminaRune.tres" id="1_kis7r"]
+[ext_resource type="Script" path="res://Resources/Items/Runesmithing/RecipeTomes/RunesmithingTome.gd" id="2_6lebc"]
+
+[resource]
+script = ExtResource("2_6lebc")
+recipe = ExtResource("1_kis7r")
+alias = ""
+useable = false
+use_description = ""
+limited = false
+limit = 1
+stackable = false
+stack_amount = 5
+description = ""

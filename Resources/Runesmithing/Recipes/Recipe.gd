@@ -16,5 +16,8 @@ var difficulty: int = 10
 @export
 var conditions: Array[Condition] = []
 
+@export
+var ingredients: Array[Ingredient] = []
+
 func get_experience() -> int:
 	return difficulty * level

@@ -26,7 +26,8 @@ func add_recipe(recipe: Recipe) -> void:
 	if is_visible_in_tree():
 		var list_entry = Button.new()
 		list_entry.text = recipe.name
-		list_entry.icon = recipe.results[0].item.icon
+		if recipe is CraftingRecipe:
+			list_entry.icon = recipe.results[0].item.icon
 		list_entry.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		list_entry.focus_entered.connect(func():
 			selected_recipe = recipe

@@ -287,14 +287,26 @@ texture_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6rpfq"]
 texture = ExtResource("3_4nx7b")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ka12b"]
 texture = ExtResource("3_4nx7b")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kjc0u"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n6m06"]
 texture = ExtResource("3_4nx7b")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ki1jy"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ede70"]
+content_margin_left = 3.0
+content_margin_top = 0.0
+content_margin_right = 3.0
+content_margin_bottom = 0.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_right = 3
+border_color = Color(0.8, 0.8, 0.8, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hpccj"]
 texture = ExtResource("3_4nx7b")
@@ -360,8 +372,8 @@ VScrollBar/icons/increment_highlight = null
 VScrollBar/icons/increment_pressed = null
 VScrollBar/styles/grabber = SubResource("StyleBoxTexture_6rpfq")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_ka12b")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_kjc0u")
-VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_ki1jy")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_n6m06")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ede70")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxTexture_hpccj")
 VSlider/styles/grabber_area = SubResource("StyleBoxFlat_anhvl")
 VSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_wqcsu")

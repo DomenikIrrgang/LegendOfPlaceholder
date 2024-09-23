@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://c737uxb86ltq8"]
+
+[ext_resource type="Texture2D" uid="uid://c5t1h65r8sqdn" path="res://assets/ui/tooltip/background.png" id="1_1o1oq"]
+[ext_resource type="Script" path="res://ui/GameUI/SelectionList/SelectionListEntry.gd" id="1_lk058"]
+[ext_resource type="Texture2D" uid="uid://jtgn2ueksl56" path="res://assets/ui/bottom_hud/attack_icon.png" id="2_g05mp"]
+
+[node name="SelectionListEntry" type="PanelContainer"]
+focus_mode = 2
+script = ExtResource("1_lk058")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_1o1oq")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Content" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/Content"]
+layout_mode = 2
+texture = ExtResource("2_g05mp")
+
+[node name="Label" type="Label" parent="MarginContainer/Content"]
+layout_mode = 2
+text = "Sword"
+vertical_alignment = 1

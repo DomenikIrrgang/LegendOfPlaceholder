@@ -11,7 +11,7 @@ func _process(_delta: float) -> void:
 		if !mouse_inside:
 			mouse_in.emit()
 			mouse_inside = true
-	else:
+	elif mouse_inside:
 		if mouse_in:
 			mouse_out.emit()
 			mouse_inside = false

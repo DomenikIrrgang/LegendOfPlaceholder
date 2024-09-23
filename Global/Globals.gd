@@ -89,7 +89,7 @@ func get_loading_screen() -> CanvasLayer:
 func get_world() -> Node2D:
 	return get_scene_tree().get_first_node_in_group("world")
 	
-func get_user_interface() -> CanvasLayer:
+func get_user_interface() -> Control:
 	return get_scene_tree().get_first_node_in_group("UserInterface")
 	
 func get_game_user_inteface() -> Control:

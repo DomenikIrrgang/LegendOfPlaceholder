@@ -90,7 +90,7 @@ func contains_item(item: Item) -> bool:
 	
 func find_item(item: Item) -> int:
 	for i in size:
-		if item == slots[i].item_instance.item:
+		if slots[i].item_instance != null and item == slots[i].item_instance.item:
 			return i
 	return -1
 	
@@ -174,3 +174,11 @@ func swap_slots(slot1: int, slot2: int) -> bool:
 
 func get_size() -> int:
 	return size
+	
+func get_all_items() -> Array[ItemInstance]:
+	var result: Array[ItemInstance] = []
+	var item_instances = slots.map(func(slot: InventorySlot):
+		return slot.item_instance
+	).filter(func(item_instance: ItemInstance): return item_instance != null)
+	result.append_array(item_instances)
+	return result

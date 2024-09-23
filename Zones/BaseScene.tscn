@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ddnsu8hllewh7"]
+[gd_scene load_steps=34 format=3 uid="uid://ddnsu8hllewh7"]
 
 [ext_resource type="Script" path="res://Zones/BaseScene.gd" id="1_3m1id"]
 [ext_resource type="Script" path="res://CustomCamera.gd" id="1_yk0hc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://dijdy4xqx36dl" path="res://ui/DefaultTheme.tres" id="5_4p5kc"]
 [ext_resource type="Script" path="res://CutsceneBars.gd" id="6_f08no"]
 [ext_resource type="Script" path="res://ui/GameUI/PauseMenu.gd" id="7_f4tx3"]
+[ext_resource type="PackedScene" uid="uid://b0bccwpa75yd2" path="res://ui/GameUI/SelectionList/SelectionList.tscn" id="8_0ivpv"]
 [ext_resource type="Shader" path="res://Shaders/Blur.gdshader" id="8_4hluv"]
 [ext_resource type="FontFile" uid="uid://ygvmsmppelgp" path="res://assets/fonts/PixeloidSans-JR6qo.ttf" id="9_0jh1n"]
 [ext_resource type="Script" path="res://ui/LoadingScreen.gd" id="10_nu1qd"]
@@ -175,6 +176,10 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_3r0j6")
+
+[node name="SelectionList" parent="UserInterface/Theme/UI" instance=ExtResource("8_0ivpv")]
+visible = false
+layout_mode = 0
 
 [node name="CutsceneBars" type="Control" parent="UserInterface/Theme/UI"]
 visible = false

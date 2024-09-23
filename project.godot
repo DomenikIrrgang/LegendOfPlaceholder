@@ -49,6 +49,8 @@ SaveFileManager="*res://Global/SaveFileManager.gd"
 SettingsManager="*res://Global/SettingsManager.gd"
 RunesmithingManager="*res://Global/RunesmithingManager.gd"
 GametimeManager="*res://Global/GametimeManager.gd"
+UIFocusManager="*res://Global/UIFocusManager.gd"
+SelectionListManager="*res://Global/SelectionListManager.gd"
 
 [debug]
 
@@ -73,6 +75,8 @@ export/convert_text_resources_to_binary=false
 
 Runesmithing=""
 Furnace="Enables runesmithing recipes that require a furnace."
+SelectionList=""
+GameUI=""
 
 [input]
 

@@ -10,7 +10,12 @@ func _ready() -> void:
 	
 func on_recipe_selected(recipe: Recipe) -> void:
 	Globals.free_children(result_list)
-	for ingridient in recipe.results:
+	if recipe is CraftingRecipe:
+		for ingridient in recipe.results:
+			var result_list_item = ResultListItem.instantiate()
+			result_list.add_child(result_list_item)
+			result_list_item.set_ingridient(ingridient)
+	if recipe is RuneRecipe:
 		var result_list_item = ResultListItem.instantiate()
 		result_list.add_child(result_list_item)
-		result_list_item.set_ingridient(ingridient)
+		result_list_item.set_ingridient(recipe.gear_ingridient)

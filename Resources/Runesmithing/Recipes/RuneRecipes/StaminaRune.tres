@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="RuneRecipe" load_steps=12 format=3 uid="uid://ogcnygjsqqp7"]
+
+[ext_resource type="Script" path="res://Resources/Conditions/Condition.gd" id="1_i5v4r"]
+[ext_resource type="Resource" uid="uid://csutxux8mrcb2" path="res://Resources/Conditions/CloseToFurnaceCondition.tres" id="2_66jtq"]
+[ext_resource type="Script" path="res://Resources/Runesmithing/Recipes/RuneRecipe.gd" id="2_svnr3"]
+[ext_resource type="Script" path="res://Resources/Runesmithing/Recipes/Ingridient.gd" id="3_gdnw0"]
+[ext_resource type="Script" path="res://Resources/Runesmithing/Recipes/GearIngridient.gd" id="3_ylhcp"]
+[ext_resource type="Script" path="res://Resources/Conditions/RunesmithingLevelCondition.gd" id="4_vw2ho"]
+[ext_resource type="Resource" uid="uid://ca5ke82bnopnb" path="res://Resources/Runesmithing/Runes/StaminaRune.tres" id="5_d0lvy"]
+[ext_resource type="Resource" uid="uid://7ve1wdy2802j" path="res://Resources/Items/Runesmithing/Materials/RunicEssence.tres" id="5_l5vli"]
+
+[sub_resource type="Resource" id="Resource_l7bau"]
+script = ExtResource("3_ylhcp")
+slots = Array[int]([])
+rune_slots = Array[int]([1])
+amount = 1
+
+[sub_resource type="Resource" id="Resource_7bo07"]
+script = ExtResource("3_gdnw0")
+item = ExtResource("5_l5vli")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_fnbid"]
+script = ExtResource("4_vw2ho")
+level = 3
+
+[resource]
+script = ExtResource("2_svnr3")
+gear_ingridient = SubResource("Resource_l7bau")
+rune = ExtResource("5_d0lvy")
+name = "Stamina Rune"
+level = 3
+learning_conditions = Array[ExtResource("1_i5v4r")]([SubResource("Resource_fnbid")])
+difficulty = 20
+conditions = Array[ExtResource("1_i5v4r")]([ExtResource("2_66jtq")])
+ingredients = Array[ExtResource("3_gdnw0")]([SubResource("Resource_7bo07")])

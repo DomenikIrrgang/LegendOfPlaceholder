@@ -51,13 +51,52 @@ var InactiveBonus = preload("res://ui/GameUI/Tooltip/BonusInactive.tscn")
 
 var RuneSlotTooltip = preload("res://ui/GameUI/Tooltip/RuneSlot.tscn")
 
+enum PositionMode {
+	CURSOR,
+	NODE,
+	FIXED,
+	CONTAINER
+}
+
+var position_mode: PositionMode = PositionMode.CURSOR
+var attached_node: Node = null
+var fixed_position: Vector2 = Vector2(0, 0)
+
+func _ready() -> void:
+	visible = false
+
 func _process(_delta: float) -> void:
+	update_position()
+		
+func update_position() -> void:
 	visible = true
-	global_position = get_viewport().get_mouse_position()
-	if global_position.x >= get_viewport().get_visible_rect().size.x / 2:
-		global_position.x -= size.x
-	if global_position.y >= get_viewport().get_visible_rect().size.y / 2:
-		global_position.y -= size.y
+	if position_mode == PositionMode.CURSOR:
+		global_position = get_viewport().get_mouse_position()
+		if global_position.x >= get_viewport().get_visible_rect().size.x / 2:
+			global_position.x -= size.x
+		if global_position.y >= get_viewport().get_visible_rect().size.y / 2:
+			global_position.y -= size.y
+	if position_mode == PositionMode.NODE:
+		if attached_node.global_position.y >= get_viewport().get_visible_rect().size.y / 2:
+			global_position.y = attached_node.global_position.y - size.y
+		else:
+			global_position.y = attached_node.global_position.y + attached_node.size.y
+		if attached_node.global_position.x >= get_viewport().get_visible_rect().size.x / 2:
+			global_position.x = attached_node.global_position.x - size.x + attached_node.size.x
+		else:
+			global_position.x = attached_node.global_position.x
+	if position_mode == PositionMode.FIXED:
+		global_position = fixed_position
+func set_fixed_position(_fixed_position: Vector2) -> void:
+	position_mode = PositionMode.FIXED
+	fixed_position = _fixed_position
+	
+func attach_to_node(node: Node) -> void:
+	position_mode = PositionMode.NODE
+	attached_node = node
+	
+func position_with_container() -> void:
+	position_mode = PositionMode.CONTAINER
 
 func show_item(item_instance: ItemInstance) -> void:
 	alias.text = item_instance.item.alias

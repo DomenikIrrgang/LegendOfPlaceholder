@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://dribn3a0vyi3v" path="res://Resources/Gear/RunesmithSet/RunesmithsHeadband.tres" id="5_rk7nc"]
 [ext_resource type="Script" path="res://Resources/Items/Containers/ContainerUseEffect.gd" id="6_8ungl"]
 [ext_resource type="Resource" uid="uid://7ve1wdy2802j" path="res://Resources/Items/Runesmithing/Materials/RunicEssence.tres" id="9_okqwb"]
-[ext_resource type="Resource" uid="uid://k0u5jx4xxy05" path="res://Resources/Items/Runesmithing/RecipeTomes/ManacrystalTome.tres" id="10_vbw7y"]
+[ext_resource type="Resource" uid="uid://k0u5jx4xxy05" path="res://Resources/Items/Runesmithing/RecipeTomes/CraftingTomes/ManacrystalTome.tres" id="10_vbw7y"]
 
 [sub_resource type="Resource" id="Resource_682io"]
 script = ExtResource("3_puhgg")

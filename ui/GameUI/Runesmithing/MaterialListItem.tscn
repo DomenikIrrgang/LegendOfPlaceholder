@@ -9,6 +9,7 @@
 
 [node name="MaterialListItem" type="PanelContainer"]
 custom_minimum_size = Vector2(170, 0)
+focus_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_fjyfg")
 script = ExtResource("1_ila52")
 
@@ -22,10 +23,14 @@ patch_margin_bottom = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_right = 7
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
 
 [node name="Left" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 5
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/Left"]
 layout_mode = 2
