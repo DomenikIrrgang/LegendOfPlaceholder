@@ -32,5 +32,5 @@ texture = ExtResource("2_g05mp")
 
 [node name="Label" type="Label" parent="MarginContainer/Content"]
 layout_mode = 2
-text = "Sword"
+text = "This is a very long label"
 vertical_alignment = 1

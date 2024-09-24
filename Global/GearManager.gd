@@ -36,14 +36,15 @@ func on_load(game_state: Dictionary) -> void:
 				Gear.Slot[equiped_gear.slot],
 				gear_instance
 			)
+	Globals.get_player().reset_resources()
 
-func on_gear_changed(gear: Gear) -> void:
-	if gear != null and gear.gear_set != null:
-		var gear_set = gear.gear_set
+func on_gear_changed(gear_instance: GearInstance) -> void:
+	if gear_instance != null and gear_instance.item.gear_set != null:
+		var gear_set = gear_instance.item.gear_set
 		for bonus in gear_set.set_bonuses:
 			if gear_set.is_bonus_completed(bonus) and not active_bonuses.has(bonus):
 				active_bonuses.append(bonus)
-				bonus.on_bonus_active(gear, Globals.get_player())
+				bonus.on_bonus_active(gear_instance, Globals.get_player())
 			if not gear_set.is_bonus_completed(bonus) and active_bonuses.has(bonus):
 				active_bonuses.erase(bonus)
-				bonus.on_bonus_inactive(gear, Globals.get_player())
+				bonus.on_bonus_inactive(gear_instance, Globals.get_player())

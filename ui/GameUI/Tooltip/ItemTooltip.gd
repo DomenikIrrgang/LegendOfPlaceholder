@@ -62,6 +62,8 @@ var position_mode: PositionMode = PositionMode.CURSOR
 var attached_node: Node = null
 var fixed_position: Vector2 = Vector2(0, 0)
 
+var should_be_visible: bool = false
+
 func _ready() -> void:
 	visible = false
 
@@ -69,7 +71,7 @@ func _process(_delta: float) -> void:
 	update_position()
 		
 func update_position() -> void:
-	visible = true
+	visible = should_be_visible
 	if position_mode == PositionMode.CURSOR:
 		global_position = get_viewport().get_mouse_position()
 		if global_position.x >= get_viewport().get_visible_rect().size.x / 2:

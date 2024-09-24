@@ -23,6 +23,7 @@ func on_focus_entered() -> void:
 		tooltip_instance.attach_to_node(owner)
 		#tooltip_instance.global_position = owner.global_position + Vector2(0, owner.size.y)
 		#tooltip_instance.reset_size()
+		tooltip_instance.should_be_visible = true
 		tooltip_instance.visible = false
 		
 func on_focus_exited() -> void:
@@ -37,6 +38,7 @@ func _on_mouse_in():
 				tooltip_instance = tooltip.instantiate()
 				Globals.get_game_user_inteface().add_child(tooltip_instance)
 			tooltip_instance.show_item(item_instance)
+			tooltip_instance.should_be_visible = true
 			tooltip_instance.visible = false
 
 func _on_mouse_out():
