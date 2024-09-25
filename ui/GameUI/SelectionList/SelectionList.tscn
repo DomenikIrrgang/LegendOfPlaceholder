@@ -41,14 +41,16 @@ layout_mode = 2
 [node name="ItemTooltip" parent="MarginContainer/CenterContainer" instance=ExtResource("2_vuxjb")]
 layout_mode = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-custom_minimum_size = Vector2(1920, 1080)
+[node name="CenterContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 799.0
+offset_top = 440.0
+offset_right = 1254.0
+offset_bottom = 1080.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/separation = 20
 
 [node name="Prompt" type="Label" parent="CenterContainer/VBoxContainer"]
@@ -71,6 +73,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 20
 
 [node name="List" type="VBoxContainer" parent="CenterContainer/VBoxContainer/ScrollContainer/MarginContainer"]
 layout_mode = 2
